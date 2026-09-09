@@ -407,35 +407,6 @@
   line-height: 1.6;
 }
 
-/* ---------- 하단 콘텐츠 링크 (애드센스 대비) ---------- */
-.footer {
-  border-top: 2px solid var(--ink);
-  background: #fff;
-  padding: 24px 20px 32px;
-}
-.footerInner {
-  max-width: 920px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 18px;
-  font-size: 13px;
-}
-.footerInner a {
-  color: var(--muted-ink);
-  text-decoration: none;
-}
-.footerInner a:hover {
-  color: var(--accent);
-  text-decoration: underline;
-}
-.footerNote {
-  max-width: 920px;
-  margin: 12px auto 0;
-  font-size: 12px;
-  color: var(--muted-ink);
-}
-
 @media (max-width: 480px) {
   .title {
     font-size: 22px;

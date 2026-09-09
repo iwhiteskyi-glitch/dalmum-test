@@ -9,6 +9,7 @@ import {
   analyzePair,
 } from "@/lib/faceAnalysis";
 import { buildShareCard } from "@/lib/shareCard";
+import SiteFooter from "@/components/SiteFooter";
 
 const CAPTIONS = [
   "눈 뜯어보는 중...",
@@ -487,19 +488,7 @@ export default function Page() {
         )}
       </main>
 
-      <footer className={styles.footer}>
-        <nav className={styles.footerInner}>
-          <a href="/about">서비스 소개</a>
-          <a href="/guide">사용법</a>
-          <a href="/faq">자주 묻는 질문</a>
-          <a href="/privacy">개인정보처리방침</a>
-          <a href="/terms">이용약관</a>
-          <a href="/contact">문의하기</a>
-        </nav>
-        <p className={styles.footerNote}>
-          © {new Date().getFullYear()} 닮음테스트 · 재미로 보는 닮은꼴 분석 서비스
-        </p>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

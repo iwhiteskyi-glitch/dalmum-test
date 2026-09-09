@@ -1,0 +1,263 @@
+/* 콘텐츠 페이지(소개/약관/FAQ 등) 공통 스타일 */
+
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- 상단 헤더 ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+}
+.brand {
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  align-items: center;
+}
+.navLink {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  text-decoration: none;
+  padding: 4px 2px;
+}
+.navLink:hover,
+.navLinkActive {
+  color: var(--ink);
+}
+.cta {
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 8px 14px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ---------- 본문 ---------- */
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 20px 64px;
+}
+.kicker {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+.pageTitle {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+.lead {
+  font-size: 16px;
+  color: var(--muted-ink);
+  margin: 0 0 8px;
+}
+.meta {
+  font-size: 13px;
+  color: var(--muted-ink);
+  margin: 0 0 28px;
+}
+
+/* 글 본문 (prose) */
+.prose {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.prose h2 {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 36px 0 12px;
+}
+.prose h3 {
+  font-size: 16.5px;
+  font-weight: 800;
+  margin: 24px 0 8px;
+}
+.prose p {
+  margin: 0 0 14px;
+}
+.prose ul,
+.prose ol {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+.prose li {
+  margin: 6px 0;
+}
+/* 본문 안의 일반 링크만 강조색으로. 버튼(class 있는 링크)은 각자 스타일을 따름 */
+.prose a:not([class]) {
+  color: var(--accent);
+  font-weight: 700;
+}
+.prose strong {
+  font-weight: 800;
+}
+.prose hr {
+  border: none;
+  border-top: 2px solid rgba(26, 26, 26, 0.1);
+  margin: 32px 0;
+}
+.callout {
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  margin: 20px 0;
+  font-size: 14.5px;
+}
+.calloutYellow {
+  background: rgba(255, 210, 63, 0.22);
+  border-color: rgba(26, 26, 26, 0.15);
+}
+
+/* 정의형 목록 (약관 조항 등) */
+.article + .article {
+  margin-top: 28px;
+}
+.qa {
+  border-top: 2px solid rgba(26, 26, 26, 0.1);
+  padding: 20px 0;
+}
+.qa:last-child {
+  border-bottom: 2px solid rgba(26, 26, 26, 0.1);
+}
+.qaQ {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+.qaA {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0;
+}
+.qaA p {
+  margin: 0 0 10px;
+}
+.qaA p:last-child {
+  margin: 0;
+}
+
+/* 읽을거리 목록 */
+.cardList {
+  display: grid;
+  gap: 16px;
+  margin-top: 8px;
+}
+.readCard {
+  display: block;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  padding: 20px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.readCard:hover {
+  box-shadow: 0 8px 20px rgba(26, 26, 26, 0.1);
+}
+.readCardTitle {
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+.readCardDesc {
+  font-size: 14px;
+  color: var(--muted-ink);
+  margin: 0;
+  line-height: 1.6;
+}
+.backLink {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  text-decoration: none;
+}
+.backLink:hover {
+  color: var(--accent);
+}
+
+.primaryBtn {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--accent);
+  border-radius: var(--radius-md);
+  padding: 14px 22px;
+  text-decoration: none;
+}
+
+/* ---------- 하단 푸터 ---------- */
+.footer {
+  border-top: 2px solid var(--ink);
+  background: #fff;
+  padding: 24px 20px 32px;
+}
+.footerInner {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 13px;
+}
+.footerInner a {
+  color: var(--muted-ink);
+  text-decoration: none;
+}
+.footerInner a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.footerNote {
+  max-width: 920px;
+  margin: 12px auto 0;
+  font-size: 12px;
+  color: var(--muted-ink);
+  line-height: 1.6;
+}
+
+@media (max-width: 560px) {
+  .header {
+    flex-wrap: wrap;
+  }
+  .pageTitle {
+    font-size: 25px;
+  }
+}

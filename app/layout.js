@@ -1,28 +1,39 @@
 import "./globals.css";
+import { SITE } from "@/lib/site";
 
-const SITE_NAME = "닮음테스트";
-const DESCRIPTION =
-  "사진 두 장을 올리면 눈·코·입·얼굴형까지 부위별로 얼마나 닮았는지, 전체 닮음도 몇 %인지 알려주는 재미용 서비스. 사진은 서버로 전송되지 않고 브라우저에서만 분석돼요.";
+const TITLE_DEFAULT = `${SITE.name} — ${SITE.shortDesc}`;
 
 export const metadata = {
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE_NAME} — 사진 두 장으로 부위별 닮은 정도 확인`,
-    template: `%s — ${SITE_NAME}`,
+    default: TITLE_DEFAULT,
+    template: `%s — ${SITE.name}`,
   },
-  description: DESCRIPTION,
-  keywords: ["닮음 테스트", "얼굴 비교", "닮은꼴", "유사도 분석", "누구랑 닮았을까"],
+  description: SITE.description,
+  applicationName: SITE.name,
+  keywords: [
+    "닮음 테스트",
+    "얼굴 비교",
+    "닮은꼴",
+    "닮은꼴 테스트",
+    "유사도 분석",
+    "누구랑 닮았을까",
+    "커플 닮음",
+    "가족 닮음",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: `${SITE_NAME} — 사진 두 장으로 부위별 닮은 정도 확인`,
-    description: DESCRIPTION,
+    title: TITLE_DEFAULT,
+    description: SITE.description,
     type: "website",
     locale: "ko_KR",
-    siteName: SITE_NAME,
+    siteName: SITE.name,
+    url: SITE.url,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME}`,
-    description: DESCRIPTION,
+    title: SITE.name,
+    description: SITE.description,
   },
   robots: { index: true, follow: true },
 };
