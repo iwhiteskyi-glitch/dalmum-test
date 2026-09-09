@@ -1,0 +1,71 @@
+:root {
+  /* --- 디자인 토큰 (design_handoff_face_match 기준) --- */
+  --accent: #ff3b5c;      /* 메인: 코랄/핑크 */
+  --accent-2: #ffd23f;    /* 포인트: 노랑 */
+  --ink: #1a1a1a;         /* 글자/테두리 */
+  --muted-ink: rgba(26, 26, 26, 0.55);
+  --bg: #fffbf3;          /* 따뜻한 미색 배경 */
+  --success: #1aae6f;     /* 로딩 완료 체크 */
+
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Malgun Gothic", "맑은 고딕", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--accent);
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+@keyframes dm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dm-pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

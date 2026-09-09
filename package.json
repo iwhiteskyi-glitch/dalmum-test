@@ -1,0 +1,22 @@
+{
+  "name": "dalmum-test",
+  "version": "0.1.0",
+  "private": true,
+  "description": "사진 두 장을 올려 부위별 닮음도와 전체 닮음 %를 보여주는 재미용 웹서비스",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@vladmandic/face-api": "^1.7.15",
+    "next": "^15.5.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^9",
+    "eslint-config-next": "^15.5.4"
+  }
+}

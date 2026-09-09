@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0}
+@keyframes dm-spin{to{transform:rotate(360deg)}}
+@keyframes dm-pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:{{ bg }};font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:{{ ink }};display:flex;flex-direction:column">
+
+<div style="position:sticky;top:0;z-index:10;background:#fff;border-bottom:2px solid {{ ink }};display:flex;align-items:center;justify-content:space-between;padding:14px 20px">
+  <div style="font-weight:800;font-size:19px;letter-spacing:-.02em;color:{{ accent }}">닮음테스트</div>
+  <div style="display:flex;gap:7px">
+    <sc-for list="{{ stepDots }}" as="d" hint-placeholder-count="4">
+      <div onClick="{{ d.go }}" style="width:9px;height:9px;border-radius:50%;cursor:pointer;background:{{ d.color }}"></div>
+    </sc-for>
+  </div>
+</div>
+
+<div style="flex:1;width:100%;max-width:920px;margin:0 auto;padding:28px 20px 60px;box-sizing:border-box">
+
+<sc-if value="{{ isUpload }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:20px;max-width:520px;margin:0 auto">
+  <div>
+    <div style="font-size:26px;font-weight:800;letter-spacing:-.02em">사진 두 장을 올려주세요</div>
+    <div style="font-size:14px;color:{{ mutedInk }};margin-top:4px">누구랑 닮았는지 확인해봐요 👀</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+      <image-slot id="photo-me" shape="rounded" radius="20" placeholder="내 사진" style="width:100%;aspect-ratio:1"></image-slot>
+      <div style="font-size:13px;font-weight:700">내 사진</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+      <image-slot id="photo-target" shape="rounded" radius="20" placeholder="비교 대상 사진" style="width:100%;aspect-ratio:1"></image-slot>
+      <div style="font-size:13px;font-weight:700">비교 대상</div>
+    </div>
+  </div>
+  <button onClick="{{ goNext }}" style="border:none;border-radius:16px;padding:16px;font-size:16px;font-weight:800;background:{{ accent }};color:#fff;cursor:pointer">다음</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCrop }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:20px;max-width:520px;margin:0 auto">
+  <div>
+    <div style="font-size:26px;font-weight:800;letter-spacing:-.02em">얼굴 위치를 맞춰주세요</div>
+    <div style="font-size:14px;color:{{ mutedInk }};margin-top:4px">동그라미 안에 얼굴이 딱 맞게요</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+      <div style="position:relative;width:100%;aspect-ratio:1;border-radius:20px;overflow:hidden">
+        <image-slot id="photo-me" shape="rounded" radius="20" placeholder="내 사진" style="width:100%;height:100%"></image-slot>
+        <div style="position:absolute;inset:10%;border:3px dashed {{ accent2 }};border-radius:50%;pointer-events:none"></div>
+      </div>
+      <div style="font-size:13px;font-weight:700">내 사진</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+      <div style="position:relative;width:100%;aspect-ratio:1;border-radius:20px;overflow:hidden">
+        <image-slot id="photo-target" shape="rounded" radius="20" placeholder="비교 대상 사진" style="width:100%;height:100%"></image-slot>
+        <div style="position:absolute;inset:10%;border:3px dashed {{ accent2 }};border-radius:50%;pointer-events:none"></div>
+      </div>
+      <div style="font-size:13px;font-weight:700">비교 대상</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px">
+    <button onClick="{{ goBack }}" style="flex:1;border:2px solid {{ ink }};border-radius:16px;padding:16px;font-size:15px;font-weight:800;background:#fff;cursor:pointer">뒤로</button>
+    <button onClick="{{ goNext }}" style="flex:2;border:none;border-radius:16px;padding:16px;font-size:16px;font-weight:800;background:{{ accent }};color:#fff;cursor:pointer">분석 시작</button>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;align-items:center;gap:22px;max-width:400px;margin:60px auto 0">
+  <div style="width:64px;height:64px;border-radius:50%;border:6px solid {{ ink }}22;border-top-color:{{ accent }};animation:dm-spin 0.9s linear infinite"></div>
+  <div style="font-size:16px;font-weight:800">{{ loadingCaption }}</div>
+  <div style="display:flex;flex-direction:column;gap:10px;width:100%">
+    <sc-for list="{{ loadingChecks }}" as="lc" hint-placeholder-count="4">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border:2px solid {{ ink }};border-radius:12px;font-size:14px;font-weight:700;background:{{ lc.done }} ? '#fff' : '#fff'">
+        <span>{{ lc.label }}</span>
+        <span style="color:{{ lc.color }}">{{ lc.status }}</span>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:center;background:#fff;border:2px solid {{ ink }};border-radius:24px;padding:28px">
+    <div style="display:flex;gap:10px">
+      <image-slot id="photo-me" shape="circle" placeholder="내 사진" style="width:88px;height:88px"></image-slot>
+      <div style="align-self:center;font-size:20px;font-weight:800;color:{{ mutedInk }}">×</div>
+      <image-slot id="photo-target" shape="circle" placeholder="대상" style="width:88px;height:88px"></image-slot>
+    </div>
+    <div style="text-align:center;animation:dm-pop .5s ease">
+      <div style="font-size:56px;font-weight:800;line-height:1;color:{{ accent }}">{{ overallPercent }}%</div>
+      <div style="font-size:13px;color:{{ mutedInk }};font-weight:700">전체 닮음도</div>
+    </div>
+    <div style="padding:10px 18px;border-radius:14px;background:{{ accent2 }};font-size:14px;font-weight:800">{{ overallComment }}</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+    <sc-for list="{{ parts }}" as="p" hint-placeholder-count="6">
+      <div style="background:#fff;border:{{ p.borderWidth }} solid {{ p.borderColor }};border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:{{ p.highlight }}">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div style="font-size:15px;font-weight:800">{{ p.name }}{{ p.crown }}</div>
+          <div style="font-size:15px;font-weight:800;color:{{ accent }}">{{ p.score }}%</div>
+        </div>
+        <div style="height:8px;border-radius:5px;background:{{ ink }}14;overflow:hidden">
+          <div style="height:100%;border-radius:5px;background:{{ accent }};width:{{ p.score }}%"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <image-slot id="{{ p.slotMe }}" shape="rounded" radius="12" placeholder="{{ p.placeholderMe }}" style="width:100%;aspect-ratio:1"></image-slot>
+          <image-slot id="{{ p.slotTarget }}" shape="rounded" radius="12" placeholder="{{ p.placeholderTarget }}" style="width:100%;aspect-ratio:1"></image-slot>
+        </div>
+        <div style="font-size:12px;line-height:1.5;color:{{ mutedInk }}">
+          <div><strong style="color:{{ ink }}">나</strong> · {{ p.meDesc }}</div>
+          <div><strong style="color:{{ ink }}">대상</strong> · {{ p.targetDesc }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <button onClick="{{ restart }}" style="flex:1;min-width:140px;border:2px solid {{ ink }};border-radius:16px;padding:15px;font-size:15px;font-weight:800;background:#fff;cursor:pointer">다시하기</button>
+    <button style="flex:1;min-width:140px;border:none;border-radius:16px;padding:15px;font-size:15px;font-weight:800;background:{{ accent2 }};color:{{ ink }};cursor:pointer">저장</button>
+    <button style="flex:1;min-width:140px;border:none;border-radius:16px;padding:15px;font-size:15px;font-weight:800;background:{{ accent }};color:#fff;cursor:pointer">공유하기</button>
+  </div>
+</div>
+</sc-if>
+
+</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:760},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FF3B5C&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#FF3B5C&quot;,&quot;#FF7A3D&quot;,&quot;#7A5CFF&quot;,&quot;#1AAE6F&quot;]},&quot;overallPercent&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:73,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:100,&quot;step&quot;:1},&quot;targetName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;아이유&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = {
+    step: 0,
+    chip: '연예인',
+    loadingIdx: 0
+  };
+
+  componentDidMount() {
+    this._captions = ['눈 뜯어보는 중...', '코 스캔중...', '입 모양 비교중...', '얼굴형 계산중...'];
+  }
+
+  goNext = () => {
+    this.setState(s => ({ step: Math.min(s.step + 1, 3) }));
+    if (this.state.step + 1 === 2) this._runLoading();
+  };
+  goBack = () => this.setState(s => ({ step: Math.max(s.step - 1, 0) }));
+  restart = () => this.setState({ step: 0, loadingIdx: 0 });
+  goTo = (n) => {
+    this.setState({ step: n });
+    if (n === 2) this._runLoading();
+  };
+
+  _runLoading() {
+    this.setState({ loadingIdx: 0 });
+    clearInterval(this._t);
+    this._t = setInterval(() => {
+      this.setState(s => {
+        const next = s.loadingIdx + 1;
+        if (next >= 4) {
+          clearInterval(this._t);
+          setTimeout(() => this.setState({ step: 3 }), 500);
+          return { loadingIdx: 4 };
+        }
+        return { loadingIdx: next };
+      });
+    }, 650);
+  }
+
+  renderVals() {
+    const accent = this.props.accentColor ?? '#FF3B5C';
+    const accent2 = '#FFD23F';
+    const ink = '#1A1A1A';
+    const mutedInk = 'rgba(26,26,26,.55)';
+    const bg = '#FFFBF3';
+    const step = this.state.step;
+    const overallPercent = this.props.overallPercent ?? 73;
+    const targetName = this.props.targetName ?? '아이유';
+
+    const chipDefs = ['연예인', '가족', '친구', '반려동물'];
+    const chips = chipDefs.map(label => ({
+      label,
+      select: () => this.setState({ chip: label }),
+      bg: this.state.chip === label ? ink : '#fff',
+      fg: this.state.chip === label ? '#fff' : ink
+    }));
+
+    const captions = ['눈 뜯어보는 중...', '코 스캔중...', '입 모양 비교중...', '얼굴형 계산중...'];
+    const checkLabels = ['눈', '코', '입', '얼굴형'];
+    const loadingChecks = checkLabels.map((label, i) => ({
+      label,
+      done: i < this.state.loadingIdx,
+      status: i < this.state.loadingIdx ? '완료 ✓' : (i === this.state.loadingIdx ? '분석중...' : '대기'),
+      color: i < this.state.loadingIdx ? '#1AAE6F' : mutedInk
+    }));
+    const loadingCaption = captions[Math.min(this.state.loadingIdx, 3)];
+
+    const partsRaw = [
+      { name: '눈', score: 82, slotMe: 'part-eye-me', slotTarget: 'part-eye-target', placeholderMe: '내 눈', placeholderTarget: `${targetName} 눈`, meDesc: '쌍꺼풀, 처진 눈매', targetDesc: '쌍꺼풀, 처진 눈매' },
+      { name: '눈썹', score: 68, slotMe: 'part-brow-me', slotTarget: 'part-brow-target', placeholderMe: '내 눈썹', placeholderTarget: `${targetName} 눈썹`, meDesc: '일자 눈썹', targetDesc: '아치형 눈썹' },
+      { name: '코', score: 65, slotMe: 'part-nose-me', slotTarget: 'part-nose-target', placeholderMe: '내 코', placeholderTarget: `${targetName} 코`, meDesc: '둥근 코끝', targetDesc: '오똑한 콧대' },
+      { name: '입', score: 70, slotMe: 'part-mouth-me', slotTarget: 'part-mouth-target', placeholderMe: '내 입', placeholderTarget: `${targetName} 입`, meDesc: '도톰한 입술', targetDesc: '얇은 입술' },
+      { name: '얼굴형(윤곽)', score: 75, slotMe: 'part-face-me', slotTarget: 'part-face-target', placeholderMe: '내 윤곽', placeholderTarget: `${targetName} 윤곽`, meDesc: '계란형', targetDesc: '둥근형' },
+      { name: '이목구비 배치 비율', score: 79, slotMe: 'part-layout-me', slotTarget: 'part-layout-target', placeholderMe: '내 비율', placeholderTarget: `${targetName} 비율`, meDesc: '눈-코-입 간격 넓음', targetDesc: '눈-코-입 간격 좁음' }
+    ];
+    const bestPart = partsRaw.reduce((a, b) => (b.score > a.score ? b : a), partsRaw[0]);
+    partsRaw.forEach(p => {
+      const isBest = p.name === bestPart.name;
+      p.highlight = isBest ? `0 0 0 4px ${accent2}, 0 8px 20px ${ink}22` : 'none';
+      p.crown = isBest ? ' 🏆' : '';
+      p.borderColor = isBest ? accent : ink;
+      p.borderWidth = isBest ? '3px' : '2px';
+    });
+
+    let overallComment = '이 정도면 남매급 ㅋㅋ';
+    if (overallPercent >= 85) overallComment = '이 정도면 쌍둥이 아니야?';
+    else if (overallPercent >= 70) overallComment = '이 정도면 남매급 ㅋㅋ';
+    else if (overallPercent >= 50) overallComment = '살짝 닮은 듯?';
+    else overallComment = '음... 그래도 재밌었죠?';
+
+    const stepColors = (idx) => idx === step ? accent : `${ink}22`;
+    const stepDots = [0, 1, 2, 3].map(i => ({ color: stepColors(i), go: () => this.goTo(i) }));
+
+    return {
+      accent, accent2, ink, mutedInk, bg,
+      isUpload: step === 0, isCrop: step === 1, isLoading: step === 2, isResult: step === 3,
+      chips, goNext: this.goNext, goBack: this.goBack, restart: this.restart,
+      loadingCaption, loadingChecks,
+      overallPercent, overallComment, parts: partsRaw, bestPart,
+      stepDots
+    };
+  }
+}
+
+</script>
+</body>
+</html>

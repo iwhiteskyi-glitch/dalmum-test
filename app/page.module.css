@@ -1,0 +1,446 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- 헤더 ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+}
+.brand {
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  text-decoration: none;
+}
+.dots {
+  display: flex;
+  gap: 7px;
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(26, 26, 26, 0.13);
+}
+.dotActive {
+  background: var(--accent);
+}
+
+/* ---------- 본문 골격 ---------- */
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+.narrow {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.subtitle {
+  font-size: 14px;
+  color: var(--muted-ink);
+  margin-top: 4px;
+}
+.disclaimer {
+  font-size: 12px;
+  color: var(--muted-ink);
+  text-align: center;
+}
+.disclaimer a {
+  color: var(--muted-ink);
+}
+
+/* ---------- 이미지 슬롯 ---------- */
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+.slotWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+.slot {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 2px dashed rgba(26, 26, 26, 0.28);
+  border-radius: var(--radius-lg);
+  background: rgba(26, 26, 26, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  color: var(--muted-ink);
+  font-size: 13px;
+  text-align: center;
+  padding: 12px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.slot:hover,
+.slot:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+.slotDrag {
+  border-color: var(--accent);
+  background: rgba(255, 59, 92, 0.06);
+}
+.slotFilled {
+  border-style: solid;
+  border-color: var(--ink);
+  background: #fff;
+}
+.slotCircle {
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+.slotImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.slotIcon {
+  width: 30px;
+  height: 30px;
+  opacity: 0.55;
+}
+.browse {
+  text-decoration: underline;
+}
+.slotLabel {
+  font-size: 13px;
+  font-weight: 700;
+}
+.changeHint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px;
+  text-align: center;
+}
+
+/* 얼굴 위치 맞추기 가이드 */
+.cropFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.cropFrame .slot {
+  height: 100%;
+}
+.cropGuide {
+  position: absolute;
+  inset: 10%;
+  border: 3px dashed var(--accent-2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ---------- 버튼 ---------- */
+.btn {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btnPrimary {
+  background: var(--accent);
+  color: #fff;
+}
+.btnSecondary {
+  background: #fff;
+  color: var(--ink);
+  border: 2px solid var(--ink);
+}
+.btnYellow {
+  background: var(--accent-2);
+  color: var(--ink);
+}
+.btnRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.flex1 {
+  flex: 1;
+  min-width: 140px;
+}
+.flex2 {
+  flex: 2;
+}
+.actionRow .btn {
+  padding: 15px;
+  font-size: 15px;
+}
+
+/* ---------- 로딩 ---------- */
+.loadingWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  max-width: 400px;
+  margin: 60px auto 0;
+}
+.spinner {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 6px solid rgba(26, 26, 26, 0.13);
+  border-top-color: var(--accent);
+  animation: dm-spin 0.9s linear infinite;
+}
+.caption {
+  font-size: 16px;
+  font-weight: 800;
+}
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.checkRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+  background: #fff;
+}
+.checkStatus {
+  color: var(--muted-ink);
+}
+.checkStatus.done {
+  color: var(--success);
+}
+
+/* ---------- 결과 ---------- */
+.resultWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.summaryCard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+}
+.avatars {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--ink);
+  background: #eee;
+}
+.times {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--muted-ink);
+}
+.bigWrap {
+  text-align: center;
+  animation: dm-pop 0.5s ease;
+}
+.bigPct {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--accent);
+}
+.pctLabel {
+  font-size: 13px;
+  color: var(--muted-ink);
+  font-weight: 700;
+}
+.commentPill {
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: var(--accent-2);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.partsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.partCard {
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.partCardBest {
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-2), 0 8px 20px rgba(26, 26, 26, 0.13);
+}
+.partHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.partName {
+  font-size: 15px;
+  font-weight: 800;
+}
+.partScore {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.track {
+  height: 8px;
+  border-radius: 5px;
+  background: rgba(26, 26, 26, 0.08);
+  overflow: hidden;
+}
+.fill {
+  height: 100%;
+  border-radius: 5px;
+  background: var(--accent);
+}
+.miniGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.mini {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background: rgba(26, 26, 26, 0.05);
+  border: 1px solid rgba(26, 26, 26, 0.1);
+}
+.partDesc {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted-ink);
+}
+.partDesc strong {
+  color: var(--ink);
+}
+
+/* ---------- 에러 ---------- */
+.errorBox {
+  max-width: 460px;
+  margin: 40px auto 0;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+.errorTitle {
+  font-size: 17px;
+  font-weight: 800;
+}
+.errorMsg {
+  font-size: 14px;
+  color: var(--muted-ink);
+  line-height: 1.6;
+}
+
+/* ---------- 하단 콘텐츠 링크 (애드센스 대비) ---------- */
+.footer {
+  border-top: 2px solid var(--ink);
+  background: #fff;
+  padding: 24px 20px 32px;
+}
+.footerInner {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 13px;
+}
+.footerInner a {
+  color: var(--muted-ink);
+  text-decoration: none;
+}
+.footerInner a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.footerNote {
+  max-width: 920px;
+  margin: 12px auto 0;
+  font-size: 12px;
+  color: var(--muted-ink);
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 22px;
+  }
+  .bigPct {
+    font-size: 44px;
+  }
+}
