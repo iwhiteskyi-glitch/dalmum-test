@@ -39,15 +39,20 @@ npm run build    # 배포 전 오류 점검
 npm start        # 빌드 결과 실행
 ```
 
-## 배포 (Vercel, 무료)
+## 배포
 
-1. 이 폴더를 GitHub 저장소로 올립니다.
-2. [vercel.com](https://vercel.com) 로그인 → **Add New → Project** → 저장소 선택.
-3. **Environment Variables**에 아래 두 개를 넣습니다. (안 넣어도 배포는 되지만 주소·이메일이 임시값으로 나옵니다.)
-   - `NEXT_PUBLIC_SITE_URL` = 실제 도메인 (예: `https://내도메인.com`)
-   - `NEXT_PUBLIC_CONTACT_EMAIL` = 문의 받을 이메일 주소
-4. 설정 변경 없이 **Deploy**. Next.js 프로젝트로 자동 인식되고 HTTPS 주소가 발급됩니다.
-5. 이후 GitHub에 push하면 자동으로 다시 배포됩니다.
+단계별 안내는 **[DEPLOY.md](DEPLOY.md)** 를 보세요 (비전공자용, 순서대로 따라 하기).
+요약: GitHub에 push → Vercel에서 Import → 환경 변수 입력 → Deploy. 이후 push하면 자동 재배포.
+
+### 환경 변수
+
+| 이름 | 용도 | 없을 때 |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | 사이트 실제 주소 (sitemap·공유 미리보기) | `https://example.com` |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | 문의 이메일 | `your-email@example.com` |
+| `NEXT_PUBLIC_ADSENSE_CLIENT` | `ca-pub-…` 게시자 ID | 광고 대신 자리표시 |
+| `NEXT_PUBLIC_AD_SLOT_CONTENT` | 콘텐츠 하단 광고 슬롯 ID | 자리표시 |
+| `NEXT_PUBLIC_AD_SLOT_RESULT` | 결과 하단 광고 슬롯 ID | 자리표시 |
 
 ## 완료된 것
 
@@ -55,14 +60,15 @@ npm start        # 빌드 결과 실행
 - [x] 서비스 소개 / 사용법 / FAQ 페이지
 - [x] 개인정보처리방침 / 이용약관 / 문의하기 페이지
 - [x] 읽을거리 글 3편 (`/reads`)
-- [x] `robots.txt`, `sitemap.xml`, 커스텀 404, 검색엔진용 메타데이터
+- [x] `robots.txt`, `sitemap.xml`, `ads.txt`(게시자 ID 입력 시 자동), 커스텀 404, 검색엔진용 메타데이터
+- [x] 광고 자리 2곳 (콘텐츠 페이지 하단 / 결과 화면 하단) — 버튼·콘텐츠와 떨어진 위치, 승인 전에는 자리표시만 표시
 
 ## 남은 것 (배포 전/후 체크)
 
-- [ ] `lib/site.js`의 도메인·문의 이메일을 실제 값으로 (또는 위 환경 변수 사용)
+- [ ] `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_CONTACT_EMAIL` 실제 값 설정
 - [ ] 개인정보처리방침·이용약관 문구 검토 (현재는 표준 양식 기반 초안)
-- [ ] 광고 슬롯 배치 (애드센스 승인 후, 콘텐츠를 가리지 않는 위치)
-- [ ] SNS/커뮤니티 공유 테스트 → 어느 정도 트래픽이 쌓인 뒤 애드센스 신청
+- [ ] Vercel 배포 → 구글 서치콘솔 등록 → sitemap 제출 ([DEPLOY.md](DEPLOY.md))
+- [ ] SNS/커뮤니티 공유 테스트 → 트래픽이 쌓인 뒤 애드센스 신청 → 승인되면 광고 환경 변수 3개 입력
 
 ## 참고
 

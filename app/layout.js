@@ -1,5 +1,6 @@
+import Script from "next/script";
 import "./globals.css";
-import { SITE } from "@/lib/site";
+import { SITE, ADS } from "@/lib/site";
 
 const TITLE_DEFAULT = `${SITE.name} — ${SITE.shortDesc}`;
 
@@ -47,7 +48,18 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        {children}
+        {ADS.client ? (
+          <Script
+            id="adsbygoogle-init"
+            async
+            strategy="afterInteractive"
+            crossOrigin="anonymous"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS.client}`}
+          />
+        ) : null}
+      </body>
     </html>
   );
 }

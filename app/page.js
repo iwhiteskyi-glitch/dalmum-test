@@ -10,6 +10,7 @@ import {
 } from "@/lib/faceAnalysis";
 import { buildShareCard } from "@/lib/shareCard";
 import SiteFooter from "@/components/SiteFooter";
+import AdSlot from "@/components/AdSlot";
 
 const CAPTIONS = [
   "눈 뜯어보는 중...",
@@ -394,6 +395,7 @@ export default function Page() {
 
         {/* ---------- 3. 결과 ---------- */}
         {step === 3 && result && (
+          <>
           <div className={styles.resultWrap}>
             <div className={styles.summaryCard}>
               <div className={styles.avatars}>
@@ -485,6 +487,8 @@ export default function Page() {
               </button>
             </div>
           </div>
+          <AdSlot slot="result-bottom" />
+          </>
         )}
       </main>
 
