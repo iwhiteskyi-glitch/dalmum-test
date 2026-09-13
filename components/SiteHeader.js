@@ -6,6 +6,7 @@ export default function SiteHeader() {
   return (
     <header className={styles.header}>
       <Link href="/" className={styles.brand}>
+        <img src="/logo.png" alt="" className={styles.brandLogo} />
         {SITE.name}
       </Link>
       <nav className={styles.nav} aria-label="주요 메뉴">

@@ -30,17 +30,10 @@
   text-decoration: none;
   white-space: nowrap;
 }
-.brand::before {
-  content: "";
-  display: inline-block;
-  width: 22px;
-  height: 12px;
+.brandLogo {
+  width: 26px;
+  height: auto;
   flex-shrink: 0;
-  background-image: radial-gradient(circle, var(--accent) 42%, transparent 43%),
-    radial-gradient(circle, var(--accent) 42%, transparent 43%);
-  background-repeat: no-repeat;
-  background-size: 12px 12px;
-  background-position: left center, right center;
 }
 .nav {
   display: flex;

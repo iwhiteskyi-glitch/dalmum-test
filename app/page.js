@@ -484,7 +484,8 @@ export default function Page() {
     <div className={styles.page}>
       <header className={styles.header}>
         <a className={styles.brand} href="/">
-          닮았네
+          <img src="/logo.png" alt="" className={styles.brandLogo} />
+          {SITE.name}
         </a>
         <nav className={styles.steps} aria-label="진행 단계">
           {STEP_LABELS.map((label, i) => (
