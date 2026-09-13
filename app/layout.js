@@ -39,6 +39,9 @@ export const metadata = {
   robots: { index: true, follow: true },
   verification: {
     google: "DcgMot_9dJlqREYWtLv5-tuwX3O5CTJoPSzhHBUCGPU",
+    other: {
+      "naver-site-verification": "5a159ab7b2f21ba11be0a02f248a30dd25ffa76a",
+    },
   },
 };
 
