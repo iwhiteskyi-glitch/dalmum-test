@@ -33,6 +33,13 @@ const CHECK_LABELS = ["눈", "눈썹", "코", "입", "얼굴형", "이목구비"
 const STEP_LABELS = ["01 사진 선택", "02 비교", "03 결과"];
 const KOREAN_COUNT = ["", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟"];
 
+/** 설명(예: "보통 크기의 눈 · 부드러운 눈매 · 눈꼬리가 일자에 가까운 편")을
+ *  구절 단위로 나눠서 한 줄씩 보여줍니다 — 나/대상을 줄 단위로 나란히
+ *  비교하기 쉽도록. */
+function splitClauses(text) {
+  return (text || "").split(" · ").filter(Boolean);
+}
+
 /* ------------------------------------------------------------------ *
  *  사진 업로드 + 위치/확대 조정 슬롯
  *  - 사진이 없으면: 클릭/드래그로 파일을 고르는 드롭존
@@ -735,7 +742,11 @@ export default function Page() {
                         <div className={`${styles.miniItem} ${styles.miniItemMe}`}>
                           <img className={styles.mini} src={p.meCrop} alt={p.placeholderMe} />
                           <span className={styles.miniLabel}>나</span>
-                          <p className={styles.miniDesc}>{p.meDesc}</p>
+                          <ul className={styles.miniDesc}>
+                            {splitClauses(p.meDesc).map((clause, i) => (
+                              <li key={i}>{clause}</li>
+                            ))}
+                          </ul>
                         </div>
                         <div className={`${styles.miniItem} ${styles.miniItemTarget}`}>
                           <img
@@ -744,7 +755,11 @@ export default function Page() {
                             alt={p.placeholderTarget}
                           />
                           <span className={styles.miniLabel}>대상</span>
-                          <p className={styles.miniDesc}>{p.targetDesc}</p>
+                          <ul className={styles.miniDesc}>
+                            {splitClauses(p.targetDesc).map((clause, i) => (
+                              <li key={i}>{clause}</li>
+                            ))}
+                          </ul>
                         </div>
                       </div>
                     </div>
