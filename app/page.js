@@ -228,6 +228,11 @@ export default function Page() {
   useEffect(() => {
     loadModels().catch(() => {});
   }, []);
+  // 단계가 바뀔 때마다 화면 맨 위로 스크롤을 올려줍니다. 안 그러면 이전 화면에서
+  // 스크롤을 내려놓은 위치가 그대로 남아, 로딩/결과 화면이 중간부터 잘려 보여요.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [step]);
   // 컴포넌트가 사라질 때 이미지 objectURL 정리
   // (me/target을 최신 값으로 참조해야 하므로 ref에 항상 최신값을 담아둡니다)
   const meRef = useRef(null);
