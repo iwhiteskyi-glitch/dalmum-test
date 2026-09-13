@@ -5,7 +5,7 @@ import styles from "@/components/site.module.css";
 export const metadata = {
   title: "서비스 소개",
   description:
-    "닮았네는 사진 두 장을 올려 눈·코·입·얼굴형까지 부위별 닮음도와 전체 닮음 %를 보여주는 재미용 웹서비스입니다. 사진은 서버로 전송되지 않습니다.",
+    "닮았네는 사진 두 장으로 부위별 닮음도와 전체 닮음 %를 보여주는 재미용 웹서비스입니다. 사진은 서버에 저장되지 않아요.",
   alternates: { canonical: "/about" },
 };
 
