@@ -23,7 +23,10 @@ export const metadata = {
     "커플 닮음",
     "가족 닮음",
   ],
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": "/rss.xml" },
+  },
   openGraph: {
     title: TITLE_DEFAULT,
     description: SITE.description,
@@ -52,10 +55,43 @@ export const viewport = {
   initialScale: 1,
 };
 
+// 검색엔진이 사이트 성격을 더 잘 이해하도록 돕는 구조화 데이터(JSON-LD).
+// 순위를 직접 올려주진 않지만, 사이트명 검색 시 정확한 결과로 뜨거나
+// 리치 결과(예: FAQ 펼침) 후보가 되는 데 도움이 됩니다.
+const WEBSITE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  inLanguage: "ko",
+};
+
+const WEBAPP_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  applicationCategory: "LifestyleApplication",
+  operatingSystem: "Any",
+  browserRequirements: "requires JavaScript",
+  isAccessibleForFree: true,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSONLD) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBAPP_JSONLD) }}
+        />
         {children}
         <Analytics />
         {ADS.client ? (
