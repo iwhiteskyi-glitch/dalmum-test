@@ -348,6 +348,16 @@
 .btnSecondary:hover:not(:disabled) {
   border-color: var(--accent);
 }
+/* 공유 다음으로 중요한 액션(링크 복사=트래픽 유입)이라, 흰 배경에
+   포인트 색 테두리/글자로 눈에 띄게 하되 채워진 주 버튼보단 한 단계 약하게 */
+.btnHighlight {
+  background: var(--surface);
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+.btnHighlight:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
 .btnText {
   background: none;
   border: none;
@@ -533,18 +543,6 @@
 }
 .summaryActions .btnText {
   text-align: center;
-}
-.linkRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  color: var(--muted-ink);
-  font-size: 13px;
-}
-.linkRow .btnText {
-  padding: 6px 4px;
 }
 
 .detailCol {

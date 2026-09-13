@@ -734,21 +734,22 @@ export default function Page() {
                     {saving ? "만드는 중..." : "이 닮음, 공유하기"}
                   </button>
                   <button
+                    type="button"
+                    className={`${styles.btn} ${styles.btnHighlight}`}
+                    onClick={onCopyLink}
+                  >
+                    {linkCopied ? "링크가 복사됐어요 ✓" : "친구 초대 링크 복사하기"}
+                  </button>
+                  <button
                     className={`${styles.btn} ${styles.btnSecondary}`}
                     onClick={onSave}
                     disabled={saving}
                   >
                     결과 이미지 저장
                   </button>
-                  <div className={styles.linkRow}>
-                    <button type="button" className={styles.btnText} onClick={onCopyLink}>
-                      {linkCopied ? "링크가 복사됐어요 ✓" : "링크만 복사하기"}
-                    </button>
-                    <span aria-hidden="true">·</span>
-                    <button type="button" className={styles.btnText} onClick={restart}>
-                      다른 사진으로 비교하기
-                    </button>
-                  </div>
+                  <button type="button" className={styles.btnText} onClick={restart}>
+                    다른 사진으로 비교하기
+                  </button>
                 </div>
               </div>
 
