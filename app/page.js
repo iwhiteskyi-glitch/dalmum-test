@@ -15,6 +15,7 @@ import {
   faceThumbnail,
   detectFace,
   analyzePair,
+  splitClauses,
 } from "@/lib/faceAnalysis";
 import { buildShareCard } from "@/lib/shareCard";
 import { SITE } from "@/lib/site";
@@ -32,13 +33,6 @@ const CAPTIONS = [
 const CHECK_LABELS = ["눈", "눈썹", "코", "입", "얼굴형", "이목구비"];
 const STEP_LABELS = ["01 사진 선택", "02 비교", "03 결과"];
 const KOREAN_COUNT = ["", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟"];
-
-/** 설명(예: "보통 크기의 눈 · 부드러운 눈매 · 눈꼬리가 일자에 가까운 편")을
- *  구절 단위로 나눠서 한 줄씩 보여줍니다 — 나/대상을 줄 단위로 나란히
- *  비교하기 쉽도록. */
-function splitClauses(text) {
-  return (text || "").split(" · ").filter(Boolean);
-}
 
 /* ------------------------------------------------------------------ *
  *  사진 업로드 + 위치/확대 조정 슬롯
@@ -395,8 +389,8 @@ export default function Page() {
     setLoadingPreview(null);
   };
 
-  const makeCard = async () => {
-    return buildShareCard(result, result.meCroppedUrl, result.targetCroppedUrl);
+  const makeCard = async (variant = "summary") => {
+    return buildShareCard(result, result.meCroppedUrl, result.targetCroppedUrl, variant);
   };
 
   const onSave = async () => {
@@ -416,10 +410,10 @@ export default function Page() {
     }
   };
 
-  const onShare = async () => {
+  const onShare = async (variant = "summary") => {
     setSaving(true);
     try {
-      const { blob, dataUrl } = await makeCard();
+      const { blob, dataUrl } = await makeCard(variant);
       const file = new File([blob], "dalmum-test.png", { type: "image/png" });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
@@ -739,10 +733,17 @@ export default function Page() {
                 <div className={styles.summaryActions}>
                   <button
                     className={`${styles.btn} ${styles.btnPrimary}`}
-                    onClick={onShare}
+                    onClick={() => onShare("summary")}
                     disabled={saving}
                   >
-                    {saving ? "만드는 중..." : "이 닮음, 공유하기"}
+                    {saving ? "만드는 중..." : "이 닮음, 공유하기 (요약)"}
+                  </button>
+                  <button
+                    className={`${styles.btn} ${styles.btnPrimary}`}
+                    onClick={() => onShare("detailed")}
+                    disabled={saving}
+                  >
+                    {saving ? "만드는 중..." : "이 닮음, 공유하기 (상세)"}
                   </button>
                   <button
                     type="button"
@@ -762,6 +763,9 @@ export default function Page() {
                     다른 사진으로 비교하기
                   </button>
                 </div>
+                <p className={styles.summaryHint}>
+                  요약은 부위별 점수만, 상세는 나/대상 설명까지 전부 담긴 긴 이미지예요.
+                </p>
               </div>
 
               <div className={styles.detailCol}>

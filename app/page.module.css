@@ -544,6 +544,12 @@
 .summaryActions .btnText {
   text-align: center;
 }
+.summaryHint {
+  font-size: 12px;
+  color: var(--muted-ink);
+  text-align: center;
+  margin: -4px 0 0;
+}
 
 .detailCol {
   display: flex;
