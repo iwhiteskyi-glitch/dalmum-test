@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { SITE, ADS } from "@/lib/site";
 
@@ -56,6 +57,7 @@ export default function RootLayout({ children }) {
     <html lang="ko">
       <body>
         {children}
+        <Analytics />
         {ADS.client ? (
           <Script
             id="adsbygoogle-init"
