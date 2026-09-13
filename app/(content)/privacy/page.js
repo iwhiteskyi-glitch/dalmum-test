@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const metadata = {
   title: "개인정보처리방침",
   description:
-    "닮음테스트 개인정보처리방침 — 업로드한 사진은 서버로 전송·저장되지 않고 브라우저에서만 처리됩니다.",
+    "닮았네 개인정보처리방침 — 업로드한 사진은 서버로 전송·저장되지 않고 브라우저에서만 처리됩니다.",
   alternates: { canonical: "/privacy" },
 };
 

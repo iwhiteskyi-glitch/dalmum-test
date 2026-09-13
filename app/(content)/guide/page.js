@@ -5,7 +5,7 @@ import styles from "@/components/site.module.css";
 export const metadata = {
   title: "사용법",
   description:
-    "닮음테스트 사용법과 정확도를 높이는 사진 고르는 법. 사진 두 장 업로드(자동 얼굴 인식) → 결과 확인 → SNS 공유까지 순서대로 안내합니다.",
+    "닮았네 사용법과 정확도를 높이는 사진 고르는 법. 사진 두 장 업로드(자동 얼굴 인식) → 결과 확인 → SNS 공유까지 순서대로 안내합니다.",
   alternates: { canonical: "/guide" },
 };
 
@@ -14,7 +14,7 @@ export default function GuidePage() {
     <article className={styles.article}>
       <PageIntro
         kicker="GUIDE"
-        title="닮음테스트 사용법"
+        title="닮았네 사용법"
         lead="사진 두 장만 준비하면 30초면 끝나요. 순서대로 따라 해보세요."
       />
 

@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata = {
   title: "문의하기",
-  description: "닮음테스트 관련 문의, 오류 제보, 개인정보 관련 요청은 이메일로 받습니다.",
+  description: "닮았네 관련 문의, 오류 제보, 개인정보 관련 요청은 이메일로 받습니다.",
   alternates: { canonical: "/contact" },
 };
 

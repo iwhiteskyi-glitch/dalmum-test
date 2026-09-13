@@ -13,7 +13,7 @@ export const metadata = {
   description: SITE.description,
   applicationName: SITE.name,
   keywords: [
-    "닮음 테스트",
+    "닮았네",
     "얼굴 비교",
     "닮은꼴",
     "닮은꼴 테스트",
@@ -40,7 +40,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#fffbf3",
+  themeColor: "#faf7f3",
   width: "device-width",
   initialScale: 1,
 };

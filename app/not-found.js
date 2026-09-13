@@ -19,7 +19,7 @@ export default function NotFound() {
           주소가 바뀌었거나 없는 페이지예요. 아래 버튼으로 돌아가 주세요.
         </p>
         <Link href="/" className={styles.primaryBtn}>
-          닮음 테스트로 가기
+          닮았네로 가기
         </Link>
       </main>
       <SiteFooter />

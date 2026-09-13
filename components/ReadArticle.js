@@ -30,7 +30,7 @@ export default function ReadArticle({ slug, children }) {
 
       <div className={styles.callout} style={{ marginTop: 32 }}>
         <strong>바로 해볼까요?</strong> 사진 두 장이면 30초면 끝나요.{" "}
-        <Link href="/">닮음 테스트 하러가기 →</Link>
+        <Link href="/">닮았네 하러가기 →</Link>
       </div>
 
       <Link href="/reads" className={styles.backLink}>

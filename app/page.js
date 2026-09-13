@@ -29,6 +29,14 @@ const CAPTIONS = [
   "이목구비 배치 확인중...",
 ];
 const CHECK_LABELS = ["눈", "눈썹", "코", "입", "얼굴형", "이목구비"];
+const STEP_LABELS = ["01 사진 선택", "02 비교", "03 결과"];
+const KOREAN_COUNT = ["", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟"];
+
+/** 부위 설명(예: "쌍꺼풀이 뚜렷한 편 · 눈이 큰 편")에서 첫 구절만 짧게 보여주고,
+ *  나머지는 "특징 자세히 보기"를 펼쳤을 때만 보여줍니다. */
+function firstClause(text) {
+  return (text || "").split(" · ")[0];
+}
 
 /* ------------------------------------------------------------------ *
  *  사진 업로드 + 위치/확대 조정 슬롯
@@ -177,15 +185,11 @@ function PhotoSlot({ entry, placeholder, onPick, onChange, onClear }) {
             handleFiles(e.dataTransfer.files);
           }}
         >
-          <svg className={styles.slotIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <path d="M21 15l-5-5L5 21" />
-          </svg>
-          <div>{placeholder}</div>
-          <div>
-            or <span className={styles.browse}>browse files</span>
-          </div>
+          <span className={styles.slotPlus} aria-hidden="true">
+            +
+          </span>
+          <div className={styles.slotTitle}>{placeholder}</div>
+          <div className={styles.slotHint}>사진 선택하기</div>
         </div>
       )}
       <input
@@ -211,6 +215,7 @@ export default function Page() {
   const [me, setMe] = useState(null); // { img, url, zoom, sx, sy }
   const [target, setTarget] = useState(null);
   const [loadingIdx, setLoadingIdx] = useState(0);
+  const [loadingPreview, setLoadingPreview] = useState(null); // 로딩 화면에 보여줄 두 사진 미리보기
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [uploadError, setUploadError] = useState(null);
@@ -307,6 +312,13 @@ export default function Page() {
     setStep(1);
     setLoadingIdx(0);
 
+    const meCanvas = renderCrop(me, 640);
+    const targetCanvas = renderCrop(target, 640);
+    // 분석 성공 여부와 무관하게 바로 만들 수 있는 미리보기라, 로딩 화면에 먼저 보여줍니다.
+    const meCroppedUrl = meCanvas.toDataURL("image/jpeg", 0.9);
+    const targetCroppedUrl = targetCanvas.toDataURL("image/jpeg", 0.9);
+    setLoadingPreview({ me: meCroppedUrl, target: targetCroppedUrl });
+
     const STEP_MS = 420;
     // 체감 진행바: 0→6 로 약 2.9초에 걸쳐 이동
     const minDelay = new Promise((resolve) => {
@@ -322,9 +334,6 @@ export default function Page() {
     });
 
     try {
-      const meCanvas = renderCrop(me, 640);
-      const targetCanvas = renderCrop(target, 640);
-
       await loadModels();
       const [meDet, tgDet] = await Promise.all([
         detectFace(meCanvas),
@@ -346,8 +355,6 @@ export default function Page() {
         { canvas: targetCanvas, detection: tgDet },
         "대상"
       );
-      const meCroppedUrl = meCanvas.toDataURL("image/jpeg", 0.9);
-      const targetCroppedUrl = targetCanvas.toDataURL("image/jpeg", 0.9);
       await minDelay;
       setResult({ ...res, meCroppedUrl, targetCroppedUrl });
       // 결과 화면부터는 잘라낸 작은 이미지만 보여주면 되니, 용량이 큰 원본 사진은
@@ -377,6 +384,7 @@ export default function Page() {
     setError(null);
     setUploadError(null);
     setLoadingIdx(0);
+    setLoadingPreview(null);
   };
 
   const makeCard = async () => {
@@ -389,7 +397,7 @@ export default function Page() {
       const { dataUrl } = await makeCard();
       const a = document.createElement("a");
       a.href = dataUrl;
-      a.download = `닮음테스트_${result.overall}퍼센트.png`;
+      a.download = `닮았네_${result.overall}퍼센트.png`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -408,7 +416,7 @@ export default function Page() {
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           files: [file],
-          title: "닮음테스트 결과",
+          title: "닮았네 결과",
           text: `우리 닮음도 ${result.overall}%! 너도 해봐 👀`,
         });
       } else {
@@ -417,7 +425,7 @@ export default function Page() {
         } catch {}
         const a = document.createElement("a");
         a.href = dataUrl;
-        a.download = `닮음테스트_${result.overall}퍼센트.png`;
+        a.download = `닮았네_${result.overall}퍼센트.png`;
         a.click();
         alert("이 브라우저는 바로 공유가 안 돼요. 링크를 복사하고 결과 이미지를 저장했어요!");
       }
@@ -430,141 +438,180 @@ export default function Page() {
   };
 
   const bothReady = me && target;
+  const bestPart = result?.parts.find((p) => p.isBest);
 
   return (
     <div className={styles.page}>
       <header className={styles.header}>
         <a className={styles.brand} href="/">
-          닮음테스트
+          닮았네
         </a>
-        <div className={styles.dots} aria-hidden="true">
-          {[0, 1, 2].map((i) => (
+        <nav className={styles.steps} aria-label="진행 단계">
+          {STEP_LABELS.map((label, i) => (
             <span
-              key={i}
-              className={`${styles.dot} ${i === step ? styles.dotActive : ""}`}
-            />
+              key={label}
+              className={`${styles.step} ${i === step ? styles.stepActive : ""}`}
+            >
+              {label}
+            </span>
           ))}
-        </div>
+        </nav>
       </header>
 
       <main className={styles.main}>
-        {/* ---------- 0. 업로드 + 위치/확대 조정 ---------- */}
+        {/* ---------- 0. 사진 선택 + 위치/확대 조정 ---------- */}
         {step === 0 && (
-          <div className={styles.narrow}>
-            <div>
-              <h1 className={styles.title}>사진 두 장을 올려주세요</h1>
+          <div className={styles.heroGrid}>
+            <div className={styles.heroIntro}>
+              <p className={styles.kicker}>A LITTLE LOOK-ALIKE MOMENT</p>
+              <span className={styles.tagPill}>친구랑 · 연인이랑 · 닮고 싶은 사람과</span>
+              <h1 className={styles.title}>
+                우리,
+                <br />
+                얼마나 닮았을까?
+              </h1>
               <p className={styles.subtitle}>
+                닮았다는 말, 진짜일까?
+                <br />
+                사진 두 장으로 닮은 점을 발견해 보세요.
+              </p>
+              <ol className={styles.miniSteps}>
+                <li>01 사진 두 장</li>
+                <li>02 부위별 비교</li>
+                <li>03 결과 공유</li>
+              </ol>
+            </div>
+
+            <div className={styles.heroPanel}>
+              <h2 className={styles.panelHeading}>두 사람의 사진을 골라주세요</h2>
+              <p className={styles.panelSub}>
                 사진을 올리면 얼굴을 자동으로 찾아 원 안에 맞춰드려요. 잘 안 맞으면
-                슬라이더로 확대하거나, 사진을 두 손가락으로 밀어서 위치를 옮길 수
-                있어요 (PC는 마우스로 바로 드래그) 👀
+                슬라이더로 확대하거나, 사진을 두 손가락으로 밀어서(PC는 마우스로 바로
+                드래그) 위치를 옮길 수 있어요.
+              </p>
+              <div className={styles.grid2}>
+                <div className={styles.slotWrap}>
+                  <PhotoSlot
+                    entry={me}
+                    placeholder="내 사진"
+                    onPick={pickPhoto("me")}
+                    onChange={setMe}
+                    onClear={() => clearPhoto("me")}
+                  />
+                  {me && (
+                    <input
+                      type="range"
+                      min="1"
+                      max="4"
+                      step="0.01"
+                      value={me.zoom}
+                      onChange={(e) => setMe(zoomCropEntry(me, Number(e.target.value)))}
+                      className={styles.zoomSlider}
+                      aria-label="내 사진 확대/축소"
+                    />
+                  )}
+                  {me?.thumbnails && (
+                    <>
+                      <p className={styles.faceHint}>얼굴이 여러 개 보여요 — 원하는 사람을 골라보세요</p>
+                      <div className={styles.faceThumbRow}>
+                        {me.thumbnails.map((src, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            className={`${styles.faceThumb} ${
+                              idx === me.selectedFaceIdx ? styles.faceThumbActive : ""
+                            }`}
+                            onClick={() => selectFace("me", idx)}
+                          >
+                            <img src={src} alt={`${idx + 1}번째 얼굴`} />
+                          </button>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                  {me && <div className={styles.slotLabel}>내 사진</div>}
+                </div>
+                <div className={styles.slotWrap}>
+                  <PhotoSlot
+                    entry={target}
+                    placeholder="비교할 사진"
+                    onPick={pickPhoto("target")}
+                    onChange={setTarget}
+                    onClear={() => clearPhoto("target")}
+                  />
+                  {target && (
+                    <input
+                      type="range"
+                      min="1"
+                      max="4"
+                      step="0.01"
+                      value={target.zoom}
+                      onChange={(e) => setTarget(zoomCropEntry(target, Number(e.target.value)))}
+                      className={styles.zoomSlider}
+                      aria-label="비교 대상 사진 확대/축소"
+                    />
+                  )}
+                  {target?.thumbnails && (
+                    <>
+                      <p className={styles.faceHint}>얼굴이 여러 개 보여요 — 원하는 사람을 골라보세요</p>
+                      <div className={styles.faceThumbRow}>
+                        {target.thumbnails.map((src, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            className={`${styles.faceThumb} ${
+                              idx === target.selectedFaceIdx ? styles.faceThumbActive : ""
+                            }`}
+                            onClick={() => selectFace("target", idx)}
+                          >
+                            <img src={src} alt={`${idx + 1}번째 얼굴`} />
+                          </button>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                  {target && <div className={styles.slotLabel}>비교할 사진</div>}
+                </div>
+              </div>
+              {uploadError && <p className={styles.errorMsg} role="alert">{uploadError}</p>}
+              <div className={styles.ctaRow}>
+                <button
+                  className={`${styles.btn} ${styles.btnPrimary}`}
+                  disabled={!bothReady}
+                  onClick={runAnalysis}
+                  style={{ width: "100%" }}
+                >
+                  얼마나 닮았는지 보기 →
+                </button>
+                <p className={styles.ctaHint}>
+                  {bothReady
+                    ? "준비됐어요. 버튼을 눌러 시작하세요."
+                    : "사진 두 장을 선택하면 시작할 수 있어요"}
+                </p>
+              </div>
+              <p className={styles.disclaimer}>
+                정밀 분석이 아닌 <strong>재미용 결과</strong>예요. 사진은 서버에 전송·저장되지
+                않고 이 브라우저 안에서만 분석돼요.
               </p>
             </div>
-            <div className={styles.grid2}>
-              <div className={styles.slotWrap}>
-                <PhotoSlot
-                  entry={me}
-                  placeholder="내 사진"
-                  onPick={pickPhoto("me")}
-                  onChange={setMe}
-                  onClear={() => clearPhoto("me")}
-                />
-                {me && (
-                  <input
-                    type="range"
-                    min="1"
-                    max="4"
-                    step="0.01"
-                    value={me.zoom}
-                    onChange={(e) => setMe(zoomCropEntry(me, Number(e.target.value)))}
-                    className={styles.zoomSlider}
-                    aria-label="내 사진 확대/축소"
-                  />
-                )}
-                {me?.thumbnails && (
-                  <>
-                    <p className={styles.faceHint}>얼굴이 여러 개 보여요 — 원하는 사람을 골라보세요</p>
-                    <div className={styles.faceThumbRow}>
-                      {me.thumbnails.map((src, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          className={`${styles.faceThumb} ${
-                            idx === me.selectedFaceIdx ? styles.faceThumbActive : ""
-                          }`}
-                          onClick={() => selectFace("me", idx)}
-                        >
-                          <img src={src} alt={`${idx + 1}번째 얼굴`} />
-                        </button>
-                      ))}
-                    </div>
-                  </>
-                )}
-                <div className={styles.slotLabel}>내 사진</div>
-              </div>
-              <div className={styles.slotWrap}>
-                <PhotoSlot
-                  entry={target}
-                  placeholder="비교 대상 사진"
-                  onPick={pickPhoto("target")}
-                  onChange={setTarget}
-                  onClear={() => clearPhoto("target")}
-                />
-                {target && (
-                  <input
-                    type="range"
-                    min="1"
-                    max="4"
-                    step="0.01"
-                    value={target.zoom}
-                    onChange={(e) => setTarget(zoomCropEntry(target, Number(e.target.value)))}
-                    className={styles.zoomSlider}
-                    aria-label="비교 대상 사진 확대/축소"
-                  />
-                )}
-                {target?.thumbnails && (
-                  <>
-                    <p className={styles.faceHint}>얼굴이 여러 개 보여요 — 원하는 사람을 골라보세요</p>
-                    <div className={styles.faceThumbRow}>
-                      {target.thumbnails.map((src, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          className={`${styles.faceThumb} ${
-                            idx === target.selectedFaceIdx ? styles.faceThumbActive : ""
-                          }`}
-                          onClick={() => selectFace("target", idx)}
-                        >
-                          <img src={src} alt={`${idx + 1}번째 얼굴`} />
-                        </button>
-                      ))}
-                    </div>
-                  </>
-                )}
-                <div className={styles.slotLabel}>비교 대상</div>
-              </div>
-            </div>
-            {uploadError && <p className={styles.errorMsg}>{uploadError}</p>}
-            <button
-              className={`${styles.btn} ${styles.btnPrimary}`}
-              disabled={!bothReady}
-              onClick={runAnalysis}
-            >
-              분석 시작
-            </button>
-            <p className={styles.disclaimer}>
-              정밀 분석이 아닌 <strong>재미용 결과</strong>예요. 사진은 서버에 전송·저장되지
-              않고 이 브라우저 안에서만 분석돼요.
-            </p>
           </div>
         )}
 
-        {/* ---------- 1. 로딩 / 에러 ---------- */}
+        {/* ---------- 1. 비교중 / 에러 ---------- */}
         {step === 1 && !error && (
-          <div className={styles.loadingWrap}>
-            <div className={styles.spinner} />
-            <div className={styles.caption}>
+          <div className={styles.loadingWrap} role="status" aria-live="polite">
+            <p className={styles.kicker}>FINDING YOUR SIMILARITIES</p>
+            <h2 className={styles.loadingTitle}>닮은 점을 찾고 있어요</h2>
+            {loadingPreview && (
+              <div className={styles.loadingAvatars}>
+                <img className={styles.avatar} src={loadingPreview.me} alt="내 사진" />
+                <span className={styles.times}>×</span>
+                <img className={styles.avatar} src={loadingPreview.target} alt="비교할 사진" />
+              </div>
+            )}
+            <p className={styles.loadingCaption}>
               {CAPTIONS[Math.min(loadingIdx, CAPTIONS.length - 1)]}
-            </div>
+            </p>
             <div className={styles.checkList}>
               {CHECK_LABELS.map((label, i) => {
                 const done = i < loadingIdx;
@@ -573,9 +620,11 @@ export default function Page() {
                   <div key={label} className={styles.checkRow}>
                     <span>{label}</span>
                     <span
-                      className={`${styles.checkStatus} ${done ? styles.done : ""}`}
+                      className={`${styles.checkStatus} ${done ? styles.done : ""} ${
+                        active ? styles.active : ""
+                      }`}
                     >
-                      {done ? "완료 ✓" : active ? "분석중..." : "대기"}
+                      {done ? "✓ 비교 완료" : active ? "비교 중…" : "대기 중"}
                     </span>
                   </div>
                 );
@@ -585,8 +634,8 @@ export default function Page() {
         )}
 
         {step === 1 && error && (
-          <div className={styles.errorBox}>
-            <div className={styles.errorTitle}>분석을 완료하지 못했어요</div>
+          <div className={styles.errorBox} role="alert">
+            <div className={styles.errorTitle}>비교를 완료하지 못했어요</div>
             <div className={styles.errorMsg}>{error}</div>
             <div className={styles.btnRow}>
               <button
@@ -612,95 +661,116 @@ export default function Page() {
         {step === 2 && result && (
           <>
           <div className={styles.resultWrap}>
-            <div className={styles.summaryCard}>
-              <div className={styles.avatars}>
-                <img className={styles.avatar} src={result.meCroppedUrl} alt="내 사진" />
-                <span className={styles.times}>×</span>
-                <img
-                  className={styles.avatar}
-                  src={result.targetCroppedUrl}
-                  alt="비교 대상"
-                />
-              </div>
-              <div className={styles.bigWrap}>
-                <div className={styles.bigPct}>{result.overall}%</div>
-                <div className={styles.pctLabel}>전체 닮음도</div>
-              </div>
-              <div className={styles.commentPill}>{result.comment}</div>
+            <div className={styles.resultHead}>
+              <h2 className={styles.resultTitle}>두 사람의 닮은 점</h2>
+              <span className={styles.resultMeta}>
+                사진 두 장, {KOREAN_COUNT[result.parts.length] || result.parts.length} 가지 발견
+              </span>
             </div>
 
-            <div className={styles.partsGrid}>
-              {result.parts.map((p) => (
-                <div
-                  key={p.key}
-                  className={`${styles.partCard} ${
-                    p.isBest ? styles.partCardBest : ""
-                  }`}
-                >
-                  <div className={styles.partHead}>
-                    <span className={styles.partName}>
-                      {p.name}
-                      {p.isBest ? " 🏆" : ""}
-                    </span>
-                    <span className={styles.partScore}>{p.score}%</span>
-                  </div>
-                  <div className={styles.track}>
-                    <div
-                      className={styles.fill}
-                      style={{ width: `${p.score}%` }}
-                    />
-                  </div>
-                  <div className={styles.miniGrid}>
-                    <img
-                      className={styles.mini}
-                      src={p.meCrop}
-                      alt={p.placeholderMe}
-                    />
-                    <img
-                      className={styles.mini}
-                      src={p.targetCrop}
-                      alt={p.placeholderTarget}
-                    />
-                  </div>
-                  <div className={styles.partDesc}>
-                    <div>
-                      <strong>나</strong> · {p.meDesc}
-                    </div>
-                    <div>
-                      <strong>대상</strong> · {p.targetDesc}
-                    </div>
-                  </div>
+            <div className={styles.resultLayout}>
+              <div className={styles.summaryCard}>
+                <p className={styles.summaryKicker}>YOUR LOOK-ALIKE REPORT</p>
+                <div className={styles.avatars}>
+                  <img className={styles.avatar} src={result.meCroppedUrl} alt="내 사진" />
+                  <span className={styles.times}>×</span>
+                  <img
+                    className={styles.avatar}
+                    src={result.targetCroppedUrl}
+                    alt="비교 대상"
+                  />
                 </div>
-              ))}
+                <div className={styles.bigWrap}>
+                  <div className={styles.bigPct}>{result.overall}%</div>
+                  <div className={styles.pctLabel}>전체 닮음도</div>
+                </div>
+                <p className={styles.commentText}>{result.comment}</p>
+                {bestPart && (
+                  <div className={styles.bestPill}>
+                    가장 닮은 부위 {bestPart.name} · {bestPart.score}%
+                  </div>
+                )}
+                <div className={styles.summaryActions}>
+                  <button
+                    className={`${styles.btn} ${styles.btnPrimary}`}
+                    onClick={onShare}
+                    disabled={saving}
+                  >
+                    {saving ? "만드는 중..." : "이 닮음, 공유하기"}
+                  </button>
+                  <button
+                    className={`${styles.btn} ${styles.btnSecondary}`}
+                    onClick={onSave}
+                    disabled={saving}
+                  >
+                    결과 이미지 저장
+                  </button>
+                  <button className={styles.btnText} onClick={restart}>
+                    다른 사진으로 비교하기
+                  </button>
+                </div>
+              </div>
+
+              <div className={styles.detailCol}>
+                <h3 className={styles.detailHeading}>어디가 닮았을까?</h3>
+                <div className={styles.partsGrid}>
+                  {result.parts.map((p) => (
+                    <div
+                      key={p.key}
+                      className={`${styles.partCard} ${
+                        p.isBest ? styles.partCardBest : ""
+                      }`}
+                    >
+                      <div className={styles.partHead}>
+                        <span className={styles.partName}>
+                          {p.name}
+                          {p.isBest && <span className={styles.bestBadge}>가장 닮음</span>}
+                        </span>
+                        <span className={styles.partScore}>{p.score}%</span>
+                      </div>
+                      <div className={styles.track}>
+                        <div
+                          className={styles.fill}
+                          style={{ width: `${p.score}%` }}
+                        />
+                      </div>
+                      <div className={styles.miniGrid}>
+                        <div className={styles.miniItem}>
+                          <img className={styles.mini} src={p.meCrop} alt={p.placeholderMe} />
+                          <span className={styles.miniLabel}>나</span>
+                        </div>
+                        <div className={styles.miniItem}>
+                          <img
+                            className={styles.mini}
+                            src={p.targetCrop}
+                            alt={p.placeholderTarget}
+                          />
+                          <span className={styles.miniLabel}>대상</span>
+                        </div>
+                      </div>
+                      <details className={styles.partDetails}>
+                        <summary>
+                          나 {firstClause(p.meDesc)} · 대상 {firstClause(p.targetDesc)}
+                        </summary>
+                        <div className={styles.partDetailBody}>
+                          <div>
+                            <strong>나</strong> · {p.meDesc}
+                          </div>
+                          <div>
+                            <strong>대상</strong> · {p.targetDesc}
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <p className={styles.disclaimer}>
               이 수치는 얼굴 특징점 위치를 비교한 <strong>재미용 결과</strong>이며, 신원
               확인이나 친자 판별 등 어떤 공식적 용도로도 쓸 수 없어요.
             </p>
-
-            <div className={`${styles.btnRow} ${styles.actionRow}`}>
-              <button
-                className={`${styles.btn} ${styles.btnSecondary} ${styles.flex1}`}
-                onClick={restart}
-              >
-                다시하기
-              </button>
-              <button
-                className={`${styles.btn} ${styles.btnYellow} ${styles.flex1}`}
-                onClick={onSave}
-                disabled={saving}
-              >
-                {saving ? "만드는 중..." : "저장"}
-              </button>
-              <button
-                className={`${styles.btn} ${styles.btnPrimary} ${styles.flex1}`}
-                onClick={onShare}
-                disabled={saving}
-              >
-                공유하기
-              </button>
-            </div>
           </div>
           <AdSlot slot="result-bottom" />
           </>

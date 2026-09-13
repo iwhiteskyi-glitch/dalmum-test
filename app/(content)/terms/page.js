@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const metadata = {
   title: "이용약관",
   description:
-    "닮음테스트 이용약관 — 본 서비스는 재미·오락 목적이며 결과의 정확성을 보장하지 않습니다. 타인 사진 업로드에 따른 책임은 이용자에게 있습니다.",
+    "닮았네 이용약관 — 본 서비스는 재미·오락 목적이며 결과의 정확성을 보장하지 않습니다. 타인 사진 업로드에 따른 책임은 이용자에게 있습니다.",
   alternates: { canonical: "/terms" },
 };
 

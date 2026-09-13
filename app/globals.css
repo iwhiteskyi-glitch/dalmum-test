@@ -1,16 +1,19 @@
 :root {
-  /* --- 디자인 토큰 (design_handoff_face_match 기준) --- */
-  --accent: #ff3b5c;      /* 메인: 코랄/핑크 */
-  --accent-2: #ffd23f;    /* 포인트: 노랑 */
-  --ink: #1a1a1a;         /* 글자/테두리 */
-  --muted-ink: rgba(26, 26, 26, 0.55);
-  --bg: #fffbf3;          /* 따뜻한 미색 배경 */
-  --success: #1aae6f;     /* 로딩 완료 체크 */
+  /* --- 디자인 토큰 (2026-09 "닮았네" 리디자인 기준) --- */
+  --bg: #faf7f3;          /* 따뜻한 크림 배경 */
+  --surface: #ffffff;     /* 카드/입력 배경 */
+  --ink: #30242c;         /* 글자/제목 */
+  --muted-ink: #776872;   /* 보조 설명 */
+  --accent: #ce2857;      /* 라즈베리 핑크: 공유/시작 버튼, 주요 점수 */
+  --accent-soft: #ffe7ee; /* 결과 요약 바탕 등 옅은 강조 영역 */
+  --border: #e9e0e4;      /* 카드/입력 경계선 */
+  --success: #22816b;     /* 완료 상태 체크 */
+  --focus: #7b65ca;       /* 키보드 포커스 링 */
 
-  --radius-sm: 12px;
-  --radius-md: 16px;
-  --radius-lg: 20px;
-  --radius-xl: 24px;
+  --radius-sm: 12px;  /* 사진/작은 요소 */
+  --radius-md: 14px;  /* 버튼/입력 */
+  --radius-lg: 20px;  /* 카드 */
+  --radius-xl: 24px;  /* 큰 카드(요약 패널 등) */
 }
 
 * {
@@ -26,9 +29,11 @@ body {
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Malgun Gothic", "맑은 고딕", sans-serif;
+  font-family: -apple-system, "Apple SD Gothic Neo", BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Malgun Gothic", "맑은 고딕", sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
+  font-variant-numeric: tabular-nums;
 }
 
 a {
@@ -41,6 +46,11 @@ button {
 
 img {
   max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }
 
 @keyframes dm-spin {
