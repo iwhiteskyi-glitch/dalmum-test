@@ -214,6 +214,41 @@
   accent-color: var(--accent);
 }
 
+/* 여러 얼굴이 감지됐을 때: 안내 문구 + 고를 수 있는 작은 썸네일 목록 */
+.faceHint {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  text-align: center;
+}
+.faceThumbRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+.faceThumb {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 26, 26, 0.2);
+  overflow: hidden;
+  cursor: pointer;
+  background: #fff;
+  flex-shrink: 0;
+}
+.faceThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.faceThumbActive {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-2);
+}
+
 /* ---------- 버튼 ---------- */
 .btn {
   border: none;

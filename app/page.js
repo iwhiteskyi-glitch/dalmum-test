@@ -10,6 +10,9 @@ import {
   zoomCropEntry,
   drawCropInto,
   renderCrop,
+  detectFaceBoxes,
+  cropEntryForFace,
+  faceThumbnail,
   detectFace,
   analyzePair,
 } from "@/lib/faceAnalysis";
@@ -189,19 +192,33 @@ export default function Page() {
 
   const pickPhoto = useCallback(
     (which) => async (file) => {
+      const setFn = which === "me" ? setMe : setTarget;
       try {
         setUploadError(null);
         const entry = await loadCropEntry(file);
-        if (which === "me") {
-          setMe((prev) => {
-            releaseCropEntry(prev);
-            return entry;
-          });
-        } else {
-          setTarget((prev) => {
-            releaseCropEntry(prev);
-            return entry;
-          });
+        setFn((prev) => {
+          releaseCropEntry(prev);
+          return entry;
+        });
+
+        // 얼굴 자동 인식: 찾으면 가장 크게 나온 얼굴을 원 안에 자동으로 맞춥니다.
+        // 실패하거나 못 찾아도 무시하고 기본(가운데) 위치를 그대로 씁니다 —
+        // 어차피 수동으로 드래그·확대해서 맞출 수 있으니 손해볼 게 없습니다.
+        try {
+          await loadModels();
+          const faces = await detectFaceBoxes(entry.img);
+          if (faces.length > 0) {
+            const fitted = cropEntryForFace(entry, faces[0]);
+            const thumbnails =
+              faces.length > 1 ? faces.map((f) => faceThumbnail(entry.img, f)) : null;
+            setFn((prev) =>
+              prev === entry
+                ? { ...fitted, faces, selectedFaceIdx: 0, thumbnails }
+                : prev
+            );
+          }
+        } catch {
+          /* 자동 인식 실패 — 기본 위치 유지 */
         }
       } catch (e) {
         setUploadError(e.message || "사진을 불러오지 못했어요.");
@@ -209,6 +226,19 @@ export default function Page() {
     },
     []
   );
+
+  /** 여러 얼굴이 감지됐을 때, 사용자가 다른 얼굴을 탭해서 선택 */
+  const selectFace = (which, idx) => {
+    const setFn = which === "me" ? setMe : setTarget;
+    setFn((prev) => {
+      if (!prev?.faces?.[idx]) return prev;
+      return {
+        ...cropEntryForFace(prev, prev.faces[idx]),
+        faces: prev.faces,
+        selectedFaceIdx: idx,
+      };
+    });
+  };
 
   const clearPhoto = (which) => {
     if (which === "me") {
@@ -370,7 +400,8 @@ export default function Page() {
             <div>
               <h1 className={styles.title}>사진 두 장을 올려주세요</h1>
               <p className={styles.subtitle}>
-                동그라미 안에 얼굴이 오도록 드래그로 옮기고, 필요하면 확대해보세요 👀
+                사진을 올리면 얼굴을 자동으로 찾아 원 안에 맞춰드려요. 잘 안 맞으면
+                드래그·확대로 직접 조정할 수 있어요 👀
               </p>
             </div>
             <div className={styles.grid2}>
@@ -394,6 +425,25 @@ export default function Page() {
                     aria-label="내 사진 확대/축소"
                   />
                 )}
+                {me?.thumbnails && (
+                  <>
+                    <p className={styles.faceHint}>얼굴이 여러 개 보여요 — 원하는 사람을 골라보세요</p>
+                    <div className={styles.faceThumbRow}>
+                      {me.thumbnails.map((src, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          className={`${styles.faceThumb} ${
+                            idx === me.selectedFaceIdx ? styles.faceThumbActive : ""
+                          }`}
+                          onClick={() => selectFace("me", idx)}
+                        >
+                          <img src={src} alt={`${idx + 1}번째 얼굴`} />
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
                 <div className={styles.slotLabel}>내 사진</div>
               </div>
               <div className={styles.slotWrap}>
@@ -415,6 +465,25 @@ export default function Page() {
                     className={styles.zoomSlider}
                     aria-label="비교 대상 사진 확대/축소"
                   />
+                )}
+                {target?.thumbnails && (
+                  <>
+                    <p className={styles.faceHint}>얼굴이 여러 개 보여요 — 원하는 사람을 골라보세요</p>
+                    <div className={styles.faceThumbRow}>
+                      {target.thumbnails.map((src, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          className={`${styles.faceThumb} ${
+                            idx === target.selectedFaceIdx ? styles.faceThumbActive : ""
+                          }`}
+                          onClick={() => selectFace("target", idx)}
+                        >
+                          <img src={src} alt={`${idx + 1}번째 얼굴`} />
+                        </button>
+                      ))}
+                    </div>
+                  </>
                 )}
                 <div className={styles.slotLabel}>비교 대상</div>
               </div>
