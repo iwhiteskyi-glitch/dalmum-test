@@ -42,7 +42,9 @@ function PhotoSlot({ entry, placeholder, onPick, onChange, onClear }) {
   const inputRef = useRef(null);
   const [size, setSize] = useState(220);
   const [dragOver, setDragOver] = useState(false);
-  const dragRef = useRef(null);
+  const dragRef = useRef(null); // 마우스 한 손가락(포인터) 드래그
+  const touchPointsRef = useRef(new Map()); // 지금 닿아있는 손가락들
+  const touchPanRef = useRef(null); // 두 손가락 드래그 시작 기준점
 
   useEffect(() => {
     const el = wrapRef.current;
@@ -74,15 +76,52 @@ function PhotoSlot({ entry, placeholder, onPick, onChange, onClear }) {
 
   const onPointerDown = (e) => {
     if (!entry) return;
+    // 터치는 손가락 하나면 화면 스크롤(위/아래 이동)로 그대로 두고,
+    // 두 손가락이 됐을 때만 "위치 조정 드래그"로 받아들입니다.
+    if (e.pointerType === "touch") {
+      touchPointsRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (touchPointsRef.current.size === 2) {
+        for (const id of touchPointsRef.current.keys()) {
+          try {
+            e.currentTarget.setPointerCapture(id);
+          } catch {}
+        }
+        const pts = [...touchPointsRef.current.values()];
+        touchPanRef.current = {
+          x0: (pts[0].x + pts[1].x) / 2,
+          y0: (pts[0].y + pts[1].y) / 2,
+          base: entry,
+        };
+      }
+      return;
+    }
     e.currentTarget.setPointerCapture(e.pointerId);
     dragRef.current = { x: e.clientX, y: e.clientY, base: entry };
   };
   const onPointerMove = (e) => {
+    if (e.pointerType === "touch") {
+      if (!touchPointsRef.current.has(e.pointerId)) return;
+      touchPointsRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (touchPanRef.current && touchPointsRef.current.size >= 2) {
+        e.preventDefault();
+        const pts = [...touchPointsRef.current.values()];
+        const cx = (pts[0].x + pts[1].x) / 2;
+        const cy = (pts[0].y + pts[1].y) / 2;
+        const { x0, y0, base } = touchPanRef.current;
+        onChange(panCropEntry(base, cx - x0, cy - y0, size));
+      }
+      return;
+    }
     if (!dragRef.current) return;
     const { x, y, base } = dragRef.current;
     onChange(panCropEntry(base, e.clientX - x, e.clientY - y, size));
   };
-  const endDrag = () => {
+  const endDrag = (e) => {
+    if (e?.pointerType === "touch") {
+      touchPointsRef.current.delete(e.pointerId);
+      if (touchPointsRef.current.size < 2) touchPanRef.current = null;
+      return;
+    }
     dragRef.current = null;
   };
 
@@ -182,12 +221,20 @@ export default function Page() {
     loadModels().catch(() => {});
   }, []);
   // 컴포넌트가 사라질 때 이미지 objectURL 정리
+  // (me/target을 최신 값으로 참조해야 하므로 ref에 항상 최신값을 담아둡니다)
+  const meRef = useRef(null);
+  const targetRef = useRef(null);
+  useEffect(() => {
+    meRef.current = me;
+  }, [me]);
+  useEffect(() => {
+    targetRef.current = target;
+  }, [target]);
   useEffect(() => {
     return () => {
-      releaseCropEntry(me);
-      releaseCropEntry(target);
+      releaseCropEntry(meRef.current);
+      releaseCropEntry(targetRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const pickPhoto = useCallback(
@@ -303,6 +350,13 @@ export default function Page() {
       const targetCroppedUrl = targetCanvas.toDataURL("image/jpeg", 0.9);
       await minDelay;
       setResult({ ...res, meCroppedUrl, targetCroppedUrl });
+      // 결과 화면부터는 잘라낸 작은 이미지만 보여주면 되니, 용량이 큰 원본 사진은
+      // 바로 해제합니다. (모바일에서 메모리 부족으로 화면이 갑자기 처음으로
+      // 돌아가는 문제를 줄여줍니다)
+      releaseCropEntry(me);
+      releaseCropEntry(target);
+      setMe(null);
+      setTarget(null);
       setStep(2);
     } catch (e) {
       await minDelay.catch(() => {});
@@ -401,7 +455,8 @@ export default function Page() {
               <h1 className={styles.title}>사진 두 장을 올려주세요</h1>
               <p className={styles.subtitle}>
                 사진을 올리면 얼굴을 자동으로 찾아 원 안에 맞춰드려요. 잘 안 맞으면
-                드래그·확대로 직접 조정할 수 있어요 👀
+                슬라이더로 확대하거나, 사진을 두 손가락으로 밀어서 위치를 옮길 수
+                있어요 (PC는 마우스로 바로 드래그) 👀
               </p>
             </div>
             <div className={styles.grid2}>

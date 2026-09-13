@@ -182,7 +182,9 @@
   position: absolute;
   inset: 0;
   display: block;
-  touch-action: none; /* 모바일에서 드래그 중 화면 스크롤 방지 */
+  /* 세로 스크롤은 그대로 두고(한 손가락), 위치 조정은 두 손가락 드래그로만
+     받아서 스크롤하려다 사진이 움직이는 문제를 막습니다. PC 마우스 드래그는 그대로 동작. */
+  touch-action: pan-y;
   cursor: grab;
 }
 .cropCanvas:active {
@@ -489,5 +491,14 @@
   }
   .bigPct {
     font-size: 44px;
+  }
+  /* 좁은 화면에서는 auto-fit이 1칸으로 접혀 사진이 화면 너비만큼 커지므로,
+     항상 2칸으로 고정해 적당한 크기로 나란히 보이게 합니다. */
+  .grid2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .slotWrap {
+    gap: 6px;
   }
 }
