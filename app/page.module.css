@@ -534,6 +534,18 @@
 .summaryActions .btnText {
   text-align: center;
 }
+.linkRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: var(--muted-ink);
+  font-size: 13px;
+}
+.linkRow .btnText {
+  padding: 6px 4px;
+}
 
 .detailCol {
   display: flex;

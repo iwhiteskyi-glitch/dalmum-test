@@ -222,6 +222,7 @@ export default function Page() {
   const [error, setError] = useState(null);
   const [uploadError, setUploadError] = useState(null);
   const [saving, setSaving] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   // 모델은 미리 받아두면 분석 시작이 빨라집니다 (실패해도 분석 때 다시 시도)
   useEffect(() => {
@@ -439,6 +440,31 @@ export default function Page() {
     } finally {
       setSaving(false);
     }
+  };
+
+  /** 카카오톡 등으로 사진과 함께 공유하면, 앱에 따라 같이 보낸 글자(링크 포함)가
+   *  통째로 빠져버리는 경우가 많아요. 그래서 링크만 확실하게 복사할 수 있는
+   *  버튼을 따로 둡니다 — 이걸 눌러 붙여넣으면 항상 클릭 가능한 링크가 돼요. */
+  const onCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(SITE.url);
+    } catch {
+      // 클립보드 API를 못 쓰는 아주 오래된 브라우저용 대체 방법
+      const textarea = document.createElement("textarea");
+      textarea.value = SITE.url;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+      } catch {
+        alert(`링크를 복사하지 못했어요. 직접 복사해 주세요: ${SITE.url}`);
+      }
+      textarea.remove();
+    }
+    setLinkCopied(true);
+    setTimeout(() => setLinkCopied(false), 2000);
   };
 
   const bothReady = me && target;
@@ -709,9 +735,15 @@ export default function Page() {
                   >
                     결과 이미지 저장
                   </button>
-                  <button className={styles.btnText} onClick={restart}>
-                    다른 사진으로 비교하기
-                  </button>
+                  <div className={styles.linkRow}>
+                    <button type="button" className={styles.btnText} onClick={onCopyLink}>
+                      {linkCopied ? "링크가 복사됐어요 ✓" : "링크만 복사하기"}
+                    </button>
+                    <span aria-hidden="true">·</span>
+                    <button type="button" className={styles.btnText} onClick={restart}>
+                      다른 사진으로 비교하기
+                    </button>
+                  </div>
                 </div>
               </div>
 
