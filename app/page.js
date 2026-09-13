@@ -218,9 +218,23 @@ export default function Page() {
   const [saving, setSaving] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
 
-  // 모델은 미리 받아두면 분석 시작이 빨라집니다 (실패해도 분석 때 다시 시도)
+  // 모델은 미리 받아두면 분석 시작이 빨라집니다 (실패해도 분석 때 다시 시도).
+  // 단, 이 파일이 꽤 커서(약 7MB) 페이지가 뜨자마자 바로 받으면 첫 화면
+  // 로딩 속도(모바일 성능 점수)를 깎아먹으므로, 브라우저가 한가할 때
+  // (requestIdleCallback) 받도록 미룹니다.
   useEffect(() => {
-    loadModels().catch(() => {});
+    const idle =
+      typeof window.requestIdleCallback === "function"
+        ? window.requestIdleCallback
+        : (cb) => setTimeout(cb, 1500);
+    const cancelIdle =
+      typeof window.cancelIdleCallback === "function"
+        ? window.cancelIdleCallback
+        : clearTimeout;
+    const id = idle(() => {
+      loadModels().catch(() => {});
+    });
+    return () => cancelIdle(id);
   }, []);
   // 단계가 바뀔 때마다 화면 맨 위로 스크롤을 올려줍니다. 안 그러면 이전 화면에서
   // 스크롤을 내려놓은 위치가 그대로 남아, 로딩/결과 화면이 중간부터 잘려 보여요.
@@ -484,7 +498,13 @@ export default function Page() {
     <div className={styles.page}>
       <header className={styles.header}>
         <a className={styles.brand} href="/">
-          <img src="/logo.png" alt="" className={styles.brandLogo} />
+          <img
+            src="/logo.png"
+            alt=""
+            width={26}
+            height={15}
+            className={styles.brandLogo}
+          />
           {SITE.name}
         </a>
         <nav className={styles.steps} aria-label="진행 단계">
