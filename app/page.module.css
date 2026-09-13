@@ -722,12 +722,10 @@
   .slotWrap {
     gap: 6px;
   }
-  .partsGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 350px) {
+  /* 부위 카드 자체는 한 줄에 하나씩 — 카드 안에서 나/대상 사진+설명이
+     2칸으로 나뉘는데, 카드까지 2칸이면 글자가 너무 좁게 눌려서 줄바꿈이
+     지저분해집니다(예: "보통 크|기의 눈"). 카드를 폭 전체로 넓혀서
+     안쪽 2칸(나/대상)이 읽을 만한 너비를 갖도록 합니다. */
   .partsGrid {
     grid-template-columns: 1fr;
   }
