@@ -17,6 +17,7 @@ import {
   analyzePair,
 } from "@/lib/faceAnalysis";
 import { buildShareCard } from "@/lib/shareCard";
+import { SITE } from "@/lib/site";
 import SiteFooter from "@/components/SiteFooter";
 import AdSlot from "@/components/AdSlot";
 
@@ -31,12 +32,6 @@ const CAPTIONS = [
 const CHECK_LABELS = ["눈", "눈썹", "코", "입", "얼굴형", "이목구비"];
 const STEP_LABELS = ["01 사진 선택", "02 비교", "03 결과"];
 const KOREAN_COUNT = ["", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟"];
-
-/** 부위 설명(예: "쌍꺼풀이 뚜렷한 편 · 눈이 큰 편")에서 첫 구절만 짧게 보여주고,
- *  나머지는 "특징 자세히 보기"를 펼쳤을 때만 보여줍니다. */
-function firstClause(text) {
-  return (text || "").split(" · ")[0];
-}
 
 /* ------------------------------------------------------------------ *
  *  사진 업로드 + 위치/확대 조정 슬롯
@@ -417,7 +412,9 @@ export default function Page() {
         await navigator.share({
           files: [file],
           title: "닮았네 결과",
-          text: `우리 닮음도 ${result.overall}%! 너도 해봐 👀`,
+          // 파일과 함께 공유할 때는 `url` 필드가 무시되는 경우가 많아서,
+          // 링크를 text 안에 직접 넣어야 받은 사람이 눌러서 들어올 수 있어요.
+          text: `우리 닮음도 ${result.overall}%! 너도 해봐 👀\n${SITE.url}`,
         });
       } else {
         try {
@@ -735,32 +732,21 @@ export default function Page() {
                         />
                       </div>
                       <div className={styles.miniGrid}>
-                        <div className={styles.miniItem}>
+                        <div className={`${styles.miniItem} ${styles.miniItemMe}`}>
                           <img className={styles.mini} src={p.meCrop} alt={p.placeholderMe} />
                           <span className={styles.miniLabel}>나</span>
+                          <p className={styles.miniDesc}>{p.meDesc}</p>
                         </div>
-                        <div className={styles.miniItem}>
+                        <div className={`${styles.miniItem} ${styles.miniItemTarget}`}>
                           <img
                             className={styles.mini}
                             src={p.targetCrop}
                             alt={p.placeholderTarget}
                           />
                           <span className={styles.miniLabel}>대상</span>
+                          <p className={styles.miniDesc}>{p.targetDesc}</p>
                         </div>
                       </div>
-                      <details className={styles.partDetails}>
-                        <summary>
-                          나 {firstClause(p.meDesc)} · 대상 {firstClause(p.targetDesc)}
-                        </summary>
-                        <div className={styles.partDetailBody}>
-                          <div>
-                            <strong>나</strong> · {p.meDesc}
-                          </div>
-                          <div>
-                            <strong>대상</strong> · {p.targetDesc}
-                          </div>
-                        </div>
-                      </details>
                     </div>
                   ))}
                 </div>

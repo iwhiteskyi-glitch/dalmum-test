@@ -604,12 +604,22 @@
 .miniGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
 }
 .miniItem {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  border-top: 3px solid transparent;
+}
+.miniItemMe {
+  border-top-color: var(--accent);
+}
+.miniItemTarget {
+  border-top-color: var(--focus);
 }
 .mini {
   width: 100%;
@@ -620,40 +630,22 @@
   border: 1px solid var(--border);
 }
 .miniLabel {
+  display: inline-block;
   font-size: 11px;
-  font-weight: 700;
-  color: var(--muted-ink);
+  font-weight: 800;
   text-align: center;
 }
-.partDetails {
-  font-size: 12.5px;
-  color: var(--muted-ink);
-}
-.partDetails summary {
-  cursor: pointer;
-  font-weight: 700;
-  color: var(--ink);
-  list-style: none;
-}
-.partDetails summary::-webkit-details-marker {
-  display: none;
-}
-.partDetails summary::before {
-  content: "▸ ";
+.miniItemMe .miniLabel {
   color: var(--accent);
 }
-.partDetails[open] summary::before {
-  content: "▾ ";
+.miniItemTarget .miniLabel {
+  color: var(--focus);
 }
-.partDetailBody {
-  margin-top: 8px;
-  line-height: 1.5;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.partDetailBody strong {
+.miniDesc {
+  font-size: 12.5px;
+  line-height: 1.55;
   color: var(--ink);
+  margin: 0;
 }
 
 /* ---------- 에러 ---------- */
