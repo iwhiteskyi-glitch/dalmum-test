@@ -447,10 +447,21 @@ export default function Page() {
     }
   };
 
-  /** 카카오톡 등으로 사진과 함께 공유하면, 앱에 따라 같이 보낸 글자(링크 포함)가
-   *  통째로 빠져버리는 경우가 많아요. 그래서 링크만 확실하게 복사할 수 있는
-   *  버튼을 따로 둡니다 — 이걸 눌러 붙여넣으면 항상 클릭 가능한 링크가 돼요. */
-  const onCopyLink = async () => {
+  /** 사진 없이 "링크 + 짧은 문구"만 공유합니다. (위 onShare는 결과 이미지와
+   *  함께 공유하는 용도라 앱에 따라 링크가 빠질 수 있는데, 이건 그런 문제 없이
+   *  항상 링크가 확실히 전달돼요.) 공유창을 지원하면 바로 띄우고, PC처럼
+   *  지원하지 않으면 클립보드 복사로 대체합니다. */
+  const onShareLink = async () => {
+    const shareText = `우리 얼마나 닮았는지 확인해봐! 👀`;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: SITE.name, text: shareText, url: SITE.url });
+        return; // 공유창에서 처리했으니 복사 안내는 필요 없음
+      } catch (e) {
+        if (e.name === "AbortError") return; // 사용자가 공유를 취소함
+        // 그 외 실패 시 아래 클립보드 복사로 대체
+      }
+    }
     try {
       await navigator.clipboard.writeText(SITE.url);
     } catch {
@@ -736,9 +747,9 @@ export default function Page() {
                   <button
                     type="button"
                     className={`${styles.btn} ${styles.btnHighlight}`}
-                    onClick={onCopyLink}
+                    onClick={onShareLink}
                   >
-                    {linkCopied ? "링크가 복사됐어요 ✓" : "친구 초대 링크 복사하기"}
+                    {linkCopied ? "링크가 복사됐어요 ✓" : "친구 초대 링크 공유하기"}
                   </button>
                   <button
                     className={`${styles.btn} ${styles.btnSecondary}`}
