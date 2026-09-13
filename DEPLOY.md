@@ -3,6 +3,10 @@
 이 문서는 컴퓨터에 만든 사이트를 인터넷에 올리는 방법을 단계별로 설명합니다.
 용어가 낯설어도 그대로 따라 하면 됩니다.
 
+> **지금까지 진행 상황**: 1~3단계(GitHub · Vercel 배포 · 환경 변수 2개)는 이미 끝나서
+> 사이트가 실제로 떠 있는 상태입니다. 지금부터는 4단계(검색 등록)와 5~6단계(애드센스)가
+> 남았습니다 — 트래픽이 좀 쌓인 뒤에 진행하기로 한 부분입니다.
+
 ---
 
 ## 큰 그림
@@ -76,6 +80,17 @@ git push
 
 > 앞으로 GitHub에 `git push` 할 때마다 Vercel이 **자동으로 다시 배포**합니다.
 
+### ⚠️ 배포했는데 접속하면 로그인 화면이 뜨는 경우
+
+Vercel 팀이 Pro 요금제 등일 경우, **Deployment Protection(=Vercel Authentication)**
+이라는 설정이 기본적으로 켜져 있어서 사이트 주인 외에는 아무도 접속할 수 없습니다
+(들어가면 `vercel.com/sso-api`로 튕겨나감). 이건 애드센스 심사는커녕 일반 방문객도
+못 들어오게 막는 설정이라 **꼭 꺼야 합니다**.
+
+1. Vercel 프로젝트 → **Settings → Deployment Protection**
+2. **Vercel Authentication**(또는 "Require Log In") 토글을 **끄기(Off)**
+3. 저장 확인 창이 뜨면 확인 → 잠시 뒤 재접속해서 로그인 없이 열리는지 확인
+
 ---
 
 ## 3. (선택) 내 도메인 연결하기
@@ -143,6 +158,7 @@ AdSense 대시보드 → **광고 → 광고 단위 기준** → **디스플레�
 | 증상 | 해결 |
 | --- | --- |
 | 배포는 됐는데 `sitemap.xml`에 `example.com`이 나옴 | `NEXT_PUBLIC_SITE_URL` 환경 변수를 실제 주소로 넣고 재배포 |
+| 사이트 접속하면 Vercel 로그인 화면으로 넘어감 | Settings → Deployment Protection → Vercel Authentication 끄기 (위 참고) |
 | `git push`가 로그인 오류 | GitHub Personal Access Token 발급해서 비밀번호 대신 입력 |
 | 로컬에서 `npm run build`를 돌렸더니 `npm run dev` 서버가 이상해짐 | 개발 서버를 껐다가 다시 `npm run dev` (빌드가 `.next` 폴더를 덮어써서 생기는 현상) |
 | 광고가 안 나옴 | 승인 완료 + 환경 변수 3개 모두 입력 + 재배포 되었는지 확인. 승인 직후 몇 시간 걸릴 수 있음 |
