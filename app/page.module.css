@@ -173,6 +173,47 @@
   pointer-events: none;
 }
 
+/* 사진이 로드된 뒤: 드래그로 옮기고 슬라이더로 확대하는 캔버스 */
+.cropFrameFilled {
+  border: 2px solid var(--ink);
+  background: #fff;
+}
+.cropCanvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  touch-action: none; /* 모바일에서 드래그 중 화면 스크롤 방지 */
+  cursor: grab;
+}
+.cropCanvas:active {
+  cursor: grabbing;
+}
+.removeBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(26, 26, 26, 0.65);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.removeBtn:hover {
+  background: var(--accent);
+}
+.zoomSlider {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
 /* ---------- 버튼 ---------- */
 .btn {
   border: none;

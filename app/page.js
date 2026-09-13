@@ -4,7 +4,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 import {
   loadModels,
-  fileToCanvas,
+  loadCropEntry,
+  releaseCropEntry,
+  panCropEntry,
+  zoomCropEntry,
+  drawCropInto,
+  renderCrop,
   detectFace,
   analyzePair,
 } from "@/lib/faceAnalysis";
@@ -14,59 +19,122 @@ import AdSlot from "@/components/AdSlot";
 
 const CAPTIONS = [
   "눈 뜯어보는 중...",
+  "눈썹 모양 보는 중...",
   "코 스캔중...",
   "입 모양 비교중...",
   "얼굴형 계산중...",
+  "이목구비 배치 확인중...",
 ];
-const CHECK_LABELS = ["눈", "코", "입", "얼굴형"];
+const CHECK_LABELS = ["눈", "눈썹", "코", "입", "얼굴형", "이목구비"];
 
 /* ------------------------------------------------------------------ *
- *  이미지 업로드 슬롯
+ *  사진 업로드 + 위치/확대 조정 슬롯
+ *  - 사진이 없으면: 클릭/드래그로 파일을 고르는 드롭존
+ *  - 사진이 있으면: 캔버스에 그려서 드래그로 이동, 슬라이더로 확대/축소
+ *    (원 가이드 안에 보이는 영역이 실제로 분석에 쓰이는 영역과 항상 동일)
  * ------------------------------------------------------------------ */
-function ImageSlot({ value, onFile, placeholder, circle = false, guide = false }) {
+function PhotoSlot({ entry, placeholder, onPick, onChange, onClear }) {
+  const wrapRef = useRef(null);
+  const canvasRef = useRef(null);
   const inputRef = useRef(null);
-  const [drag, setDrag] = useState(false);
+  const [size, setSize] = useState(220);
+  const [dragOver, setDragOver] = useState(false);
+  const dragRef = useRef(null);
+
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect?.width;
+      if (w) setSize(Math.round(w));
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!entry) return;
+    const canvas = canvasRef.current;
+    if (!canvas || !size) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = size * dpr;
+    canvas.height = size * dpr;
+    const ctx = canvas.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    drawCropInto(ctx, entry, size);
+  }, [entry, size]);
 
   const handleFiles = (files) => {
     const file = files && files[0];
-    if (file && file.type.startsWith("image/")) onFile(file);
+    if (file && file.type.startsWith("image/")) onPick(file);
   };
 
-  const slot = (
+  const onPointerDown = (e) => {
+    if (!entry) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    dragRef.current = { x: e.clientX, y: e.clientY, base: entry };
+  };
+  const onPointerMove = (e) => {
+    if (!dragRef.current) return;
+    const { x, y, base } = dragRef.current;
+    onChange(panCropEntry(base, e.clientX - x, e.clientY - y, size));
+  };
+  const endDrag = () => {
+    dragRef.current = null;
+  };
+
+  return (
     <div
-      className={[
-        styles.slot,
-        circle ? styles.slotCircle : "",
-        value ? styles.slotFilled : "",
-        drag ? styles.slotDrag : "",
-      ].join(" ")}
-      role="button"
-      tabIndex={0}
-      onClick={() => inputRef.current?.click()}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          inputRef.current?.click();
-        }
-      }}
-      onDragOver={(e) => {
-        e.preventDefault();
-        setDrag(true);
-      }}
-      onDragLeave={() => setDrag(false)}
-      onDrop={(e) => {
-        e.preventDefault();
-        setDrag(false);
-        handleFiles(e.dataTransfer.files);
-      }}
+      ref={wrapRef}
+      className={`${styles.cropFrame} ${entry ? styles.cropFrameFilled : ""}`}
     >
-      {value ? (
+      {entry ? (
         <>
-          <img className={styles.slotImg} src={value} alt={placeholder} />
-          <span className={styles.changeHint}>다른 사진으로 바꾸기</span>
+          <canvas
+            ref={canvasRef}
+            className={styles.cropCanvas}
+            style={{ width: size, height: size }}
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={endDrag}
+            onPointerCancel={endDrag}
+          />
+          <div className={styles.cropGuide} />
+          <button
+            type="button"
+            className={styles.removeBtn}
+            aria-label="사진 삭제"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClear();
+            }}
+          >
+            ✕
+          </button>
         </>
       ) : (
-        <>
+        <div
+          className={`${styles.slot} ${dragOver ? styles.slotDrag : ""}`}
+          role="button"
+          tabIndex={0}
+          onClick={() => inputRef.current?.click()}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              inputRef.current?.click();
+            }
+          }}
+          onDragOver={(e) => {
+            e.preventDefault();
+            setDragOver(true);
+          }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={(e) => {
+            e.preventDefault();
+            setDragOver(false);
+            handleFiles(e.dataTransfer.files);
+          }}
+        >
           <svg className={styles.slotIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <rect x="3" y="3" width="18" height="18" rx="2" />
             <circle cx="8.5" cy="8.5" r="1.5" />
@@ -76,85 +144,114 @@ function ImageSlot({ value, onFile, placeholder, circle = false, guide = false }
           <div>
             or <span className={styles.browse}>browse files</span>
           </div>
-        </>
+        </div>
       )}
       <input
         ref={inputRef}
         type="file"
         accept="image/*"
         hidden
-        onChange={(e) => handleFiles(e.target.files)}
+        onChange={(e) => {
+          handleFiles(e.target.files);
+          // 같은 파일을 다시 골라도 변경 이벤트가 발생하도록 값 초기화
+          e.target.value = "";
+        }}
       />
     </div>
   );
-
-  if (guide) {
-    return (
-      <div className={styles.cropFrame}>
-        {slot}
-        <div className={styles.cropGuide} />
-      </div>
-    );
-  }
-  return slot;
 }
 
 /* ------------------------------------------------------------------ *
  *  메인 페이지
  * ------------------------------------------------------------------ */
 export default function Page() {
-  const [step, setStep] = useState(0); // 0 업로드 · 1 위치맞추기 · 2 로딩 · 3 결과
-  const [me, setMe] = useState(null); // { previewUrl, canvas }
+  const [step, setStep] = useState(0); // 0 업로드+위치조정 · 1 로딩 · 2 결과
+  const [me, setMe] = useState(null); // { img, url, zoom, sx, sy }
   const [target, setTarget] = useState(null);
   const [loadingIdx, setLoadingIdx] = useState(0);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [uploadError, setUploadError] = useState(null);
   const [saving, setSaving] = useState(false);
-  const urlsRef = useRef([]);
 
   // 모델은 미리 받아두면 분석 시작이 빨라집니다 (실패해도 분석 때 다시 시도)
   useEffect(() => {
     loadModels().catch(() => {});
-    return () => urlsRef.current.forEach((u) => URL.revokeObjectURL(u));
+  }, []);
+  // 컴포넌트가 사라질 때 이미지 objectURL 정리
+  useEffect(() => {
+    return () => {
+      releaseCropEntry(me);
+      releaseCropEntry(target);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const setPhoto = useCallback((which) => async (file) => {
-    try {
-      const canvas = await fileToCanvas(file);
-      const previewUrl = URL.createObjectURL(file);
-      urlsRef.current.push(previewUrl);
-      const entry = { previewUrl, canvas };
-      if (which === "me") setMe(entry);
-      else setTarget(entry);
-    } catch (e) {
-      setError(e.message || "사진을 불러오지 못했어요.");
+  const pickPhoto = useCallback(
+    (which) => async (file) => {
+      try {
+        setUploadError(null);
+        const entry = await loadCropEntry(file);
+        if (which === "me") {
+          setMe((prev) => {
+            releaseCropEntry(prev);
+            return entry;
+          });
+        } else {
+          setTarget((prev) => {
+            releaseCropEntry(prev);
+            return entry;
+          });
+        }
+      } catch (e) {
+        setUploadError(e.message || "사진을 불러오지 못했어요.");
+      }
+    },
+    []
+  );
+
+  const clearPhoto = (which) => {
+    if (which === "me") {
+      setMe((prev) => {
+        releaseCropEntry(prev);
+        return null;
+      });
+    } else {
+      setTarget((prev) => {
+        releaseCropEntry(prev);
+        return null;
+      });
     }
-  }, []);
+  };
 
   const runAnalysis = useCallback(async () => {
     setError(null);
     setResult(null);
-    setStep(2);
+    setStep(1);
     setLoadingIdx(0);
 
-    // 체감 진행바: 0→4 로 약 2.9초에 걸쳐 이동
+    const STEP_MS = 420;
+    // 체감 진행바: 0→6 로 약 2.9초에 걸쳐 이동
     const minDelay = new Promise((resolve) => {
       let i = 0;
       const timer = setInterval(() => {
         i += 1;
         setLoadingIdx(i);
-        if (i >= 4) {
+        if (i >= CHECK_LABELS.length) {
           clearInterval(timer);
-          setTimeout(resolve, 450);
+          setTimeout(resolve, 400);
         }
-      }, 620);
+      }, STEP_MS);
     });
 
     try {
+      const meCanvas = renderCrop(me, 640);
+      const targetCanvas = renderCrop(target, 640);
+
       await loadModels();
       const [meDet, tgDet] = await Promise.all([
-        detectFace(me.canvas),
-        detectFace(target.canvas),
+        detectFace(meCanvas),
+        detectFace(targetCanvas),
       ]);
       if (!meDet || !tgDet) {
         const who =
@@ -164,17 +261,19 @@ export default function Page() {
             ? "내 사진에서"
             : "비교 대상 사진에서";
         throw new Error(
-          `${who} 얼굴을 찾지 못했어요. 얼굴이 정면으로, 너무 작지 않게 나온 사진으로 다시 시도해 주세요.`
+          `${who} 얼굴을 찾지 못했어요. 원 안에 얼굴이 정면으로, 너무 작지 않게 오도록 옮기거나 확대해서 다시 시도해 주세요.`
         );
       }
       const res = analyzePair(
-        { canvas: me.canvas, detection: meDet },
-        { canvas: target.canvas, detection: tgDet },
+        { canvas: meCanvas, detection: meDet },
+        { canvas: targetCanvas, detection: tgDet },
         "대상"
       );
+      const meCroppedUrl = meCanvas.toDataURL("image/jpeg", 0.9);
+      const targetCroppedUrl = targetCanvas.toDataURL("image/jpeg", 0.9);
       await minDelay;
-      setResult(res);
-      setStep(3);
+      setResult({ ...res, meCroppedUrl, targetCroppedUrl });
+      setStep(2);
     } catch (e) {
       await minDelay.catch(() => {});
       setError(
@@ -185,14 +284,19 @@ export default function Page() {
   }, [me, target]);
 
   const restart = () => {
+    releaseCropEntry(me);
+    releaseCropEntry(target);
+    setMe(null);
+    setTarget(null);
     setStep(0);
     setResult(null);
     setError(null);
+    setUploadError(null);
     setLoadingIdx(0);
   };
 
   const makeCard = async () => {
-    return buildShareCard(result, me.previewUrl, target.previewUrl);
+    return buildShareCard(result, result.meCroppedUrl, result.targetCroppedUrl);
   };
 
   const onSave = async () => {
@@ -250,7 +354,7 @@ export default function Page() {
           닮음테스트
         </a>
         <div className={styles.dots} aria-hidden="true">
-          {[0, 1, 2, 3].map((i) => (
+          {[0, 1, 2].map((i) => (
             <span
               key={i}
               className={`${styles.dot} ${i === step ? styles.dotActive : ""}`}
@@ -260,37 +364,68 @@ export default function Page() {
       </header>
 
       <main className={styles.main}>
-        {/* ---------- 0. 업로드 ---------- */}
+        {/* ---------- 0. 업로드 + 위치/확대 조정 ---------- */}
         {step === 0 && (
           <div className={styles.narrow}>
             <div>
               <h1 className={styles.title}>사진 두 장을 올려주세요</h1>
-              <p className={styles.subtitle}>누구랑 닮았는지 확인해봐요 👀</p>
+              <p className={styles.subtitle}>
+                동그라미 안에 얼굴이 오도록 드래그로 옮기고, 필요하면 확대해보세요 👀
+              </p>
             </div>
             <div className={styles.grid2}>
               <div className={styles.slotWrap}>
-                <ImageSlot
-                  value={me?.previewUrl}
-                  onFile={setPhoto("me")}
+                <PhotoSlot
+                  entry={me}
                   placeholder="내 사진"
+                  onPick={pickPhoto("me")}
+                  onChange={setMe}
+                  onClear={() => clearPhoto("me")}
                 />
+                {me && (
+                  <input
+                    type="range"
+                    min="1"
+                    max="4"
+                    step="0.01"
+                    value={me.zoom}
+                    onChange={(e) => setMe(zoomCropEntry(me, Number(e.target.value)))}
+                    className={styles.zoomSlider}
+                    aria-label="내 사진 확대/축소"
+                  />
+                )}
                 <div className={styles.slotLabel}>내 사진</div>
               </div>
               <div className={styles.slotWrap}>
-                <ImageSlot
-                  value={target?.previewUrl}
-                  onFile={setPhoto("target")}
+                <PhotoSlot
+                  entry={target}
                   placeholder="비교 대상 사진"
+                  onPick={pickPhoto("target")}
+                  onChange={setTarget}
+                  onClear={() => clearPhoto("target")}
                 />
+                {target && (
+                  <input
+                    type="range"
+                    min="1"
+                    max="4"
+                    step="0.01"
+                    value={target.zoom}
+                    onChange={(e) => setTarget(zoomCropEntry(target, Number(e.target.value)))}
+                    className={styles.zoomSlider}
+                    aria-label="비교 대상 사진 확대/축소"
+                  />
+                )}
                 <div className={styles.slotLabel}>비교 대상</div>
               </div>
             </div>
+            {uploadError && <p className={styles.errorMsg}>{uploadError}</p>}
             <button
               className={`${styles.btn} ${styles.btnPrimary}`}
               disabled={!bothReady}
-              onClick={() => setStep(1)}
+              onClick={runAnalysis}
             >
-              다음
+              분석 시작
             </button>
             <p className={styles.disclaimer}>
               정밀 분석이 아닌 <strong>재미용 결과</strong>예요. 사진은 서버에 전송·저장되지
@@ -299,56 +434,12 @@ export default function Page() {
           </div>
         )}
 
-        {/* ---------- 1. 얼굴 위치 맞추기 ---------- */}
-        {step === 1 && (
-          <div className={styles.narrow}>
-            <div>
-              <h1 className={styles.title}>얼굴 위치를 맞춰주세요</h1>
-              <p className={styles.subtitle}>동그라미 안에 얼굴이 딱 맞게요</p>
-            </div>
-            <div className={styles.grid2}>
-              <div className={styles.slotWrap}>
-                <ImageSlot
-                  value={me?.previewUrl}
-                  onFile={setPhoto("me")}
-                  placeholder="내 사진"
-                  guide
-                />
-                <div className={styles.slotLabel}>내 사진</div>
-              </div>
-              <div className={styles.slotWrap}>
-                <ImageSlot
-                  value={target?.previewUrl}
-                  onFile={setPhoto("target")}
-                  placeholder="비교 대상 사진"
-                  guide
-                />
-                <div className={styles.slotLabel}>비교 대상</div>
-              </div>
-            </div>
-            <div className={styles.btnRow}>
-              <button
-                className={`${styles.btn} ${styles.btnSecondary} ${styles.flex1}`}
-                onClick={() => setStep(0)}
-              >
-                뒤로
-              </button>
-              <button
-                className={`${styles.btn} ${styles.btnPrimary} ${styles.flex2}`}
-                onClick={runAnalysis}
-              >
-                분석 시작
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* ---------- 2. 로딩 / 에러 ---------- */}
-        {step === 2 && !error && (
+        {/* ---------- 1. 로딩 / 에러 ---------- */}
+        {step === 1 && !error && (
           <div className={styles.loadingWrap}>
             <div className={styles.spinner} />
             <div className={styles.caption}>
-              {CAPTIONS[Math.min(loadingIdx, 3)]}
+              {CAPTIONS[Math.min(loadingIdx, CAPTIONS.length - 1)]}
             </div>
             <div className={styles.checkList}>
               {CHECK_LABELS.map((label, i) => {
@@ -369,7 +460,7 @@ export default function Page() {
           </div>
         )}
 
-        {step === 2 && error && (
+        {step === 1 && error && (
           <div className={styles.errorBox}>
             <div className={styles.errorTitle}>분석을 완료하지 못했어요</div>
             <div className={styles.errorMsg}>{error}</div>
@@ -378,7 +469,7 @@ export default function Page() {
                 className={`${styles.btn} ${styles.btnSecondary} ${styles.flex1}`}
                 onClick={() => {
                   setError(null);
-                  setStep(1);
+                  setStep(0);
                 }}
               >
                 사진 다시 맞추기
@@ -393,17 +484,17 @@ export default function Page() {
           </div>
         )}
 
-        {/* ---------- 3. 결과 ---------- */}
-        {step === 3 && result && (
+        {/* ---------- 2. 결과 ---------- */}
+        {step === 2 && result && (
           <>
           <div className={styles.resultWrap}>
             <div className={styles.summaryCard}>
               <div className={styles.avatars}>
-                <img className={styles.avatar} src={me.previewUrl} alt="내 사진" />
+                <img className={styles.avatar} src={result.meCroppedUrl} alt="내 사진" />
                 <span className={styles.times}>×</span>
                 <img
                   className={styles.avatar}
-                  src={target.previewUrl}
+                  src={result.targetCroppedUrl}
                   alt="비교 대상"
                 />
               </div>
