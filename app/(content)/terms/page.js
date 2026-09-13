@@ -115,11 +115,6 @@ export default function TermsPage() {
           </section>
         ))}
 
-        <hr />
-        <p style={{ fontSize: 13, color: "var(--muted-ink)" }}>
-          본 약관은 표준 양식을 바탕으로 작성된 초안입니다. 실제 운영 형태·사업자 정보에
-          맞게 검토한 뒤 게시하세요. 필요 시 법률 전문가의 확인을 권장합니다.
-        </p>
       </div>
 
       <Link href="/" className={styles.backLink}>

@@ -139,11 +139,6 @@ export default function PrivacyPage() {
           안내합니다.
         </p>
 
-        <hr />
-        <p style={{ fontSize: 13, color: "var(--muted-ink)" }}>
-          본 문서는 표준 양식을 바탕으로 작성된 초안입니다. 실제 서비스 운영 방식(사용하는
-          분석 도구, 호스팅·광고 사업자 등)에 맞게 검토·수정한 뒤 게시하세요.
-        </p>
       </div>
 
       <Link href="/" className={styles.backLink}>
