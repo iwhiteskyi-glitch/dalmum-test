@@ -483,16 +483,16 @@
   align-items: center;
 }
 .avatar {
-  width: 76px;
-  height: 76px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--surface);
+  border: 3px solid var(--surface);
   box-shadow: 0 0 0 1px var(--border);
   background: #eee;
 }
 .times {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--muted-ink);
 }
@@ -737,5 +737,14 @@
      안쪽 2칸(나/대상)이 읽을 만한 너비를 갖도록 합니다. */
   .partsGrid {
     grid-template-columns: 1fr;
+  }
+  /* 결과 요약 카드가 화면 전체 너비를 쓰므로 얼굴 사진을 더 크고
+     잘 보이게 키웁니다. */
+  .avatar {
+    width: 116px;
+    height: 116px;
+  }
+  .times {
+    font-size: 22px;
   }
 }
