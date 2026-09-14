@@ -6,13 +6,8 @@
  * 버전입니다. 로직/스타일/분석 엔진은 한국어 버전과 완전히 동일하게 공유합니다.
  *
  * 결과 화면(부위 이름/설명 문장/총평)도 lib/faceAnalysis.js의 analyzePair()에
- * locale="en"을 넘겨서 영문으로 생성합니다 (한국어 버전은 기본값 그대로라 영향
- * 없음).
- *
- * 아직 번역이 안 된 부분 (다음 단계 작업 예정):
- *  - 결과를 이미지로 저장/공유할 때 만들어지는 카드(lib/shareCard.js)는
- *    한글 그대로 나갑니다 (캔버스에 결과 텍스트를 그려 넣는 방식이라 별도
- *    영문 버전이 필요합니다).
+ * locale="en"을 넘겨서 영문으로 생성하고, 저장/공유 이미지 카드(lib/shareCard.js)도
+ * locale="en"을 넘겨서 영문으로 그립니다 (한국어 버전은 기본값 그대로라 영향 없음).
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -398,7 +393,7 @@ export default function Page() {
   };
 
   const makeCard = async (variant = "summary") => {
-    return buildShareCard(result, result.meCroppedUrl, result.targetCroppedUrl, variant);
+    return buildShareCard(result, result.meCroppedUrl, result.targetCroppedUrl, variant, "en");
   };
 
   const onSave = async () => {
