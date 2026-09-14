@@ -20,25 +20,27 @@ export default function SiteHeaderEn() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.brandRow}>
-        <Link href="/en" className={styles.brand}>
-          <img src="/logo.png" alt="" width={26} height={15} className={styles.brandLogo} />
-          Dalmum
-        </Link>
-      </div>
-      <nav className={styles.nav} aria-label="Main menu">
-        {NAV_EN.map((n) => (
-          <Link key={n.href} href={n.href} className={styles.navLink}>
-            {n.label}
+      <div className={styles.headerInner}>
+        <div className={styles.brandRow}>
+          <Link href="/en" className={styles.brand}>
+            <img src="/logo.png" alt="" width={26} height={15} className={styles.brandLogo} />
+            Dalmum
           </Link>
-        ))}
-        <Link href="/en" className={styles.cta}>
-          Take the test
-        </Link>
-        <Link href={koHref} className={styles.langSwitch} aria-label="한국어로 보기">
-          한국어
-        </Link>
-      </nav>
+        </div>
+        <nav className={styles.nav} aria-label="Main menu">
+          {NAV_EN.map((n) => (
+            <Link key={n.href} href={n.href} className={styles.navLink}>
+              {n.label}
+            </Link>
+          ))}
+          <Link href="/en" className={styles.cta}>
+            Take the test
+          </Link>
+          <Link href={koHref} className={styles.langSwitch} aria-label="한국어로 보기">
+            한국어
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }
