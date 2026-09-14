@@ -43,11 +43,6 @@ export default function ContactPage() {
           궁금증이 정리되어 있습니다.
         </p>
 
-        <hr />
-        <p style={{ fontSize: 13, color: "var(--muted-ink)" }}>
-          위 이메일 주소는 임시값입니다. 배포 전에 <code>NEXT_PUBLIC_CONTACT_EMAIL</code>{" "}
-          환경 변수 또는 <code>lib/site.js</code>에서 실제 주소로 바꿔주세요.
-        </p>
       </div>
 
       <Link href="/" className={styles.backLink}>
