@@ -94,6 +94,10 @@
   border-radius: 999px;
   padding: 6px 14px;
   margin-bottom: 18px;
+  /* 영문판처럼 두 줄로 넘어갈 때, 마지막 줄에 단어 하나만 뚝 떨어지지 않고
+     줄 길이가 고르게 나뉘도록 합니다. (지원 브라우저에서만 적용, 나머지는
+     기존처럼 그냥 넘어감) */
+  text-wrap: balance;
 }
 .title {
   font-size: 40px;
@@ -110,6 +114,7 @@
   color: var(--muted-ink);
   line-height: 1.6;
   white-space: pre-line;
+  text-wrap: balance;
   margin: 0 0 20px;
 }
 .miniSteps {

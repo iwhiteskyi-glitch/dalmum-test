@@ -511,7 +511,7 @@ export default function Page() {
             <div className={styles.heroIntro}>
               <p className={styles.kicker}>A LITTLE LOOK-ALIKE MOMENT</p>
               <span className={styles.tagPill}>
-                With friends · partners · anyone you're curious about
+                Friends, partners, anyone you're curious about
               </span>
               <h1 className={styles.title}>{"How much\ndo we look alike?"}</h1>
               <p className={styles.subtitle}>
