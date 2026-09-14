@@ -13,7 +13,7 @@ export default function Page() {
         사람들이 많이 해보는 조합들입니다.
       </p>
 
-      <h2>가족끼리</h2>
+      <h2>가족 닮은꼴 테스트</h2>
       <ul>
         <li>
           <strong>부모 vs 자녀</strong> — 누구를 더 닮았는지 눈·코·입 점수로 확인해
@@ -27,7 +27,7 @@ export default function Page() {
         </li>
       </ul>
 
-      <h2>커플·친구끼리</h2>
+      <h2>커플 닮은꼴 테스트</h2>
       <ul>
         <li>
           <strong>연인끼리</strong> — "오래 사귀면 닮는다"는 말, 점수로 확인해 보세요.
@@ -46,8 +46,8 @@ export default function Page() {
           <Link href="/terms">이용약관</Link>을 확인하세요.)
         </li>
         <li>
-          <strong>반려동물 vs 나</strong> — 인식이 될 때도, 안 될 때도 있지만 되면
-          결과가 아주 웃깁니다.
+          <strong>반려동물 닮은꼴 테스트</strong> — 나와 반려동물을 비교해 보는
+          것으로, 얼굴 인식이 될 때도 안 될 때도 있지만 되면 결과가 아주 웃깁니다.
         </li>
         <li>
           <strong>부부 → 미래의 아이 상상</strong> — 두 사람을 비교해 보고 어느 부위가

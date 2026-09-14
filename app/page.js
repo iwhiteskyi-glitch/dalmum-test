@@ -534,7 +534,7 @@ export default function Page() {
               <p className={styles.subtitle}>
                 닮았다는 말, 진짜일까?
                 <br />
-                사진 두 장으로 닮은 점을 발견해 보세요.
+                사진 두 장으로 얼굴을 비교하는 무료 닮은꼴 테스트예요.
               </p>
               <ol className={styles.miniSteps}>
                 <li>01 사진 두 장</li>
