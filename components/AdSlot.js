@@ -9,11 +9,12 @@ import { ADS } from "@/lib/site";
  * 그 전까지는 레이아웃이 밀리지 않도록 같은 높이의 자리표시만 보여줍니다.
  * 콘텐츠와 버튼에서 충분히 떨어진 위치에만 배치하세요. (오클릭 유도 금지)
  */
-export default function AdSlot({ slot }) {
+export default function AdSlot({ slot, locale = "ko" }) {
   const pushed = useRef(false);
   const client = ADS.client;
   const slotId = ADS.slots[slot] || "";
   const live = Boolean(client && slotId);
+  const isEn = locale === "en";
 
   useEffect(() => {
     if (!live || pushed.current) return;
@@ -28,7 +29,7 @@ export default function AdSlot({ slot }) {
   return (
     <div className={styles.wrap}>
       <div className={styles.inner}>
-        <p className={styles.label}>광고</p>
+        <p className={styles.label}>{isEn ? "Advertisement" : "광고"}</p>
         {live ? (
           <ins
             className={`adsbygoogle ${styles.ins}`}
@@ -39,7 +40,9 @@ export default function AdSlot({ slot }) {
             data-full-width-responsive="true"
           />
         ) : (
-          <div className={styles.placeholder}>광고 영역 (AdSense 승인 후 표시)</div>
+          <div className={styles.placeholder}>
+            {isEn ? "Ad space (shown after AdSense approval)" : "광고 영역 (AdSense 승인 후 표시)"}
+          </div>
         )}
       </div>
     </div>

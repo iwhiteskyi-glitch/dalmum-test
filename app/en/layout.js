@@ -4,7 +4,10 @@
  * (완전히 완성돼서 공개하기로 결정하면 그때 이 설정을 풀면 됩니다.)
  */
 export const metadata = {
-  title: "Dalmum — How much do you look alike?",
+  title: {
+    default: "Dalmum — How much do you look alike?",
+    template: "%s — Dalmum",
+  },
   description:
     "Compare two photos and see how similar your eyes, nose, mouth, and face shape are — a free, just-for-fun look-alike test. Photos are never uploaded or stored.",
   robots: { index: false, follow: false },
