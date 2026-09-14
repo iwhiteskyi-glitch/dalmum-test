@@ -526,15 +526,9 @@ export default function Page() {
             <div className={styles.heroIntro}>
               <p className={styles.kicker}>A LITTLE LOOK-ALIKE MOMENT</p>
               <span className={styles.tagPill}>친구랑 · 연인이랑 · 닮고 싶은 사람과</span>
-              <h1 className={styles.title}>
-                우리,
-                <br />
-                얼마나 닮았을까?
-              </h1>
+              <h1 className={styles.title}>{"우리,\n얼마나 닮았을까?"}</h1>
               <p className={styles.subtitle}>
-                닮았다는 말, 진짜일까?
-                <br />
-                사진 두 장으로 얼굴을 비교하는 무료 닮은꼴 테스트예요.
+                {"닮았다는 말, 진짜일까?\n사진 두 장으로 얼굴을 비교하는 무료 닮은꼴 테스트예요."}
               </p>
               <ol className={styles.miniSteps}>
                 <li>01 사진 두 장</li>

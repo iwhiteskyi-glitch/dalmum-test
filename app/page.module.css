@@ -101,11 +101,15 @@
   letter-spacing: -0.02em;
   line-height: 1.2;
   margin: 0 0 14px;
+  /* <br />로 줄바꿈을 넣으면 자동번역기가 문장을 둘로 쪼개 번역해 어색해지므로,
+     하나의 문자열 안에 줄바꿈(\n)만 넣고 CSS로 그 위치에서 줄이 바뀌게 합니다. */
+  white-space: pre-line;
 }
 .subtitle {
   font-size: 16px;
   color: var(--muted-ink);
   line-height: 1.6;
+  white-space: pre-line;
   margin: 0 0 20px;
 }
 .miniSteps {
