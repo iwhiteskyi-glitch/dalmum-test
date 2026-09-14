@@ -21,6 +21,7 @@ import { buildShareCard } from "@/lib/shareCard";
 import { SITE } from "@/lib/site";
 import SiteFooter from "@/components/SiteFooter";
 import AdSlot from "@/components/AdSlot";
+import { track } from "@vercel/analytics";
 
 const CAPTIONS = [
   "눈 뜯어보는 중...",
@@ -381,6 +382,9 @@ export default function Page() {
       setMe(null);
       setTarget(null);
       setStep(2);
+      // 방문자 수 대비 "실제로 결과까지 본 사람"이 몇 명인지 보려는 용도.
+      // 사진이나 개인정보는 전혀 안 담기고, 이벤트가 발생했다는 사실만 기록됩니다.
+      track("result_viewed", { locale: "ko" });
     } catch (e) {
       await minDelay.catch(() => {});
       setError(
