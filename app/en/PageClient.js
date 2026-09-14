@@ -48,7 +48,7 @@ const CAPTIONS = [
   "Checking feature layout...",
 ];
 const CHECK_LABELS = ["Eyes", "Brows", "Nose", "Mouth", "Face shape", "Layout"];
-const STEP_LABELS = ["01 Upload", "02 Compare", "03 Result"];
+const STEP_LABELS = ["Upload", "Compare", "Result"];
 
 /* ------------------------------------------------------------------ *
  *  사진 업로드 + 위치/확대 조정 슬롯 (로직은 한국어 버전과 동일)
@@ -520,9 +520,9 @@ export default function Page() {
                 }
               </p>
               <ol className={styles.miniSteps}>
-                <li>01 Two photos</li>
-                <li>02 Feature-by-feature</li>
-                <li>03 Share results</li>
+                <li>Two photos</li>
+                <li>By feature</li>
+                <li>Share it</li>
               </ol>
             </div>
 
