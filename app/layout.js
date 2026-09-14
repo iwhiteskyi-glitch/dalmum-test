@@ -2,6 +2,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { SITE, ADS } from "@/lib/site";
+import KakaoBrowserBanner from "@/components/KakaoBrowserBanner";
 
 const TITLE_DEFAULT = `${SITE.name} — ${SITE.shortDesc}`;
 
@@ -92,6 +93,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBAPP_JSONLD) }}
         />
+        <KakaoBrowserBanner />
         {children}
         <Analytics />
         {ADS.client ? (
