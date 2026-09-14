@@ -25,9 +25,6 @@ export default function SiteHeaderEn() {
           <img src="/logo.png" alt="" width={26} height={15} className={styles.brandLogo} />
           Dalmum
         </Link>
-        <Link href={koHref} className={styles.langSwitch} aria-label="한국어로 보기">
-          한국어
-        </Link>
       </div>
       <nav className={styles.nav} aria-label="Main menu">
         {NAV_EN.map((n) => (
@@ -37,6 +34,9 @@ export default function SiteHeaderEn() {
         ))}
         <Link href="/en" className={styles.cta}>
           Take the test
+        </Link>
+        <Link href={koHref} className={styles.langSwitch} aria-label="한국어로 보기">
+          한국어
         </Link>
       </nav>
     </header>

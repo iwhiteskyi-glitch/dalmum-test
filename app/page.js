@@ -512,9 +512,6 @@ export default function Page() {
             />
             {SITE.name}
           </a>
-          <a href="/en" className={styles.langSwitch} aria-label="Switch to English">
-            EN
-          </a>
         </div>
         <nav className={styles.steps} aria-label="진행 단계">
           {STEP_LABELS.map((label, i) => (
@@ -525,6 +522,9 @@ export default function Page() {
               {label}
             </span>
           ))}
+          <a href="/en" className={styles.langSwitch} aria-label="Switch to English">
+            EN
+          </a>
         </nav>
       </header>
 

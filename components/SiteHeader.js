@@ -24,9 +24,6 @@ export default function SiteHeader() {
           />
           {SITE.name}
         </Link>
-        <Link href={enHref} className={styles.langSwitch} aria-label="Switch to English">
-          EN
-        </Link>
       </div>
       <nav className={styles.nav} aria-label="주요 메뉴">
         {NAV.filter((n) => n.href !== "/").map((n) => (
@@ -36,6 +33,9 @@ export default function SiteHeader() {
         ))}
         <Link href="/" className={styles.cta}>
           테스트 하러가기
+        </Link>
+        <Link href={enHref} className={styles.langSwitch} aria-label="Switch to English">
+          EN
         </Link>
       </nav>
     </header>

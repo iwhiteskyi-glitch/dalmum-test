@@ -492,9 +492,6 @@ export default function Page() {
             />
             {BRAND}
           </a>
-          <a href="/" className={styles.langSwitch} aria-label="한국어로 보기">
-            한국어
-          </a>
         </div>
         <nav className={styles.steps} aria-label="Progress steps">
           {STEP_LABELS.map((label, i) => (
@@ -505,6 +502,9 @@ export default function Page() {
               {label}
             </span>
           ))}
+          <a href="/" className={styles.langSwitch} aria-label="한국어로 보기">
+            한국어
+          </a>
         </nav>
       </header>
 
