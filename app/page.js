@@ -497,16 +497,21 @@ export default function Page() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <a className={styles.brand} href="/">
-          <img
-            src="/logo.png"
-            alt=""
-            width={26}
-            height={15}
-            className={styles.brandLogo}
-          />
-          {SITE.name}
-        </a>
+        <div className={styles.brandRow}>
+          <a className={styles.brand} href="/">
+            <img
+              src="/logo.png"
+              alt=""
+              width={26}
+              height={15}
+              className={styles.brandLogo}
+            />
+            {SITE.name}
+          </a>
+          <a href="/en" className={styles.langSwitch} aria-label="Switch to English">
+            EN
+          </a>
+        </div>
         <nav className={styles.steps} aria-label="진행 단계">
           {STEP_LABELS.map((label, i) => (
             <span

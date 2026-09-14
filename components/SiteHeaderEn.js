@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./site.module.css";
 
 /** 영문(/en) 페이지 전용 헤더. SiteHeader.js의 영문판 — 링크가 /en/* 경로를 가리킵니다. */
@@ -10,12 +13,22 @@ const NAV_EN = [
 ];
 
 export default function SiteHeaderEn() {
+  const pathname = usePathname() || "/en";
+  // 현재 보고 있는 영문 페이지와 짝이 되는 한국어 페이지로 이동합니다.
+  // (예: /en/guide → /guide, /en → /)
+  const koHref = pathname === "/en" ? "/" : pathname.replace(/^\/en/, "") || "/";
+
   return (
     <header className={styles.header}>
-      <Link href="/en" className={styles.brand}>
-        <img src="/logo.png" alt="" width={26} height={15} className={styles.brandLogo} />
-        Dalmum
-      </Link>
+      <div className={styles.brandRow}>
+        <Link href="/en" className={styles.brand}>
+          <img src="/logo.png" alt="" width={26} height={15} className={styles.brandLogo} />
+          Dalmum
+        </Link>
+        <Link href={koHref} className={styles.langSwitch} aria-label="한국어로 보기">
+          한국어
+        </Link>
+      </div>
       <nav className={styles.nav} aria-label="Main menu">
         {NAV_EN.map((n) => (
           <Link key={n.href} href={n.href} className={styles.navLink}>
