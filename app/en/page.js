@@ -5,12 +5,14 @@
  * app/page.js(한국어 버전)를 그대로 복사해서 화면에 보이는 문구만 영어로 바꾼
  * 버전입니다. 로직/스타일/분석 엔진은 한국어 버전과 완전히 동일하게 공유합니다.
  *
- * 아직 번역이 안 된 부분 (2단계 작업 예정):
- *  - 분석 결과의 부위 이름(예: "눈","눈썹")과 부위별 설명 문장, 총평 문장은
- *    lib/faceAnalysis.js 안에서 한글로 생성돼서, 결과 화면 일부는 여전히
- *    한글로 보입니다.
- *  - 결과를 이미지로 저장/공유할 때 만들어지는 카드(lib/shareCard.js)도
- *    같은 이유로 한글 그대로 나갑니다.
+ * 결과 화면(부위 이름/설명 문장/총평)도 lib/faceAnalysis.js의 analyzePair()에
+ * locale="en"을 넘겨서 영문으로 생성합니다 (한국어 버전은 기본값 그대로라 영향
+ * 없음).
+ *
+ * 아직 번역이 안 된 부분 (다음 단계 작업 예정):
+ *  - 결과를 이미지로 저장/공유할 때 만들어지는 카드(lib/shareCard.js)는
+ *    한글 그대로 나갑니다 (캔버스에 결과 텍스트를 그려 넣는 방식이라 별도
+ *    영문 버전이 필요합니다).
  *  - 하단 푸터(SiteFooter)와 그 안에서 연결되는 소개/가이드/FAQ 등 페이지는
  *    아직 한국어 페이지로 연결됩니다.
  */
@@ -365,7 +367,8 @@ export default function Page() {
       const res = analyzePair(
         { canvas: meCanvas, detection: meDet },
         { canvas: targetCanvas, detection: tgDet },
-        "대상"
+        "Their",
+        "en"
       );
       await minDelay;
       setResult({ ...res, meCroppedUrl, targetCroppedUrl });
@@ -515,7 +518,7 @@ export default function Page() {
               <h1 className={styles.title}>{"How much\ndo we look alike?"}</h1>
               <p className={styles.subtitle}>
                 {
-                  "Everyone says you two look alike — is it true?\nA free look-alike test that compares two photos, feature by feature."
+                  "They say you look alike — is it true?\nA free look-alike test that compares two photos, feature by feature."
                 }
               </p>
               <ol className={styles.miniSteps}>
@@ -705,9 +708,7 @@ export default function Page() {
           </div>
         )}
 
-        {/* ---------- 2. Result ----------
-             주의: 아래 p.name / meDesc / targetDesc / result.comment는
-             lib/faceAnalysis.js가 한글로 생성한 값을 그대로 씁니다 (2단계 작업 예정). */}
+        {/* ---------- 2. Result ---------- */}
         {step === 2 && result && (
           <>
           <div className={styles.resultWrap}>
