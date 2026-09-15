@@ -1,7 +1,7 @@
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import { SITE, ADS } from "@/lib/site";
+import { SITE, ADS, GA } from "@/lib/site";
 import KakaoBrowserBanner from "@/components/KakaoBrowserBanner";
 
 const TITLE_DEFAULT = `${SITE.name} — ${SITE.shortDesc}`;
@@ -104,6 +104,24 @@ export default function RootLayout({ children }) {
             crossOrigin="anonymous"
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS.client}`}
           />
+        ) : null}
+        {GA.id ? (
+          <>
+            <Script
+              id="ga4-lib"
+              async
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA.id}`}
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA.id}');
+              `}
+            </Script>
+          </>
         ) : null}
       </body>
     </html>
