@@ -829,19 +829,86 @@
   margin-top: 18px;
 }
 
-/* 결과: 저장될 카드 이미지를 그대로 미리보기 */
-.cardPreview {
+/* 결과: 저장될 카드 이미지를 그대로, 옆으로 넘겨 보기 */
+.carouselWrap {
+  position: relative;
   max-width: 340px;
   margin: 0 auto;
+}
+.carousel {
+  display: flex;
+  align-items: flex-start;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
   border-radius: 20px;
-  overflow: hidden;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
   background: #f2ebe4;
+  scrollbar-width: none;
 }
-.cardPreview img {
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+.slide img {
   display: block;
   width: 100%;
   height: auto;
+}
+.slideArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+}
+.slideArrow:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+.slideArrowPrev {
+  left: -14px;
+}
+.slideArrowNext {
+  right: -14px;
+}
+.slideChips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+.slideChip {
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 6px 13px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  cursor: pointer;
+}
+.slideChipOn {
+  background: var(--t-teal);
+  border-color: var(--t-teal);
+  color: #fff;
+}
+.shareAllBtn {
+  width: 100%;
+  margin-top: 10px;
 }
 .cardLoading {
   aspect-ratio: 1080 / 1920;

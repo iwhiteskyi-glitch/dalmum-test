@@ -90,7 +90,10 @@ export default function TravelTest({ country, city }) {
   const [current, setCurrent] = useState(0);
   // 사람마다: { cards, selected, seen(이미 보여준 이름), roll(다시 뽑은 횟수), recycled }
   const [draws, setDraws] = useState([]);
-  const [cardImage, setCardImage] = useState(null);
+  // 결과 카드 이미지들 (한 사람당 1장 + 여럿이면 마지막에 단체 카드 1장)
+  const [cardImages, setCardImages] = useState([]);
+  const [slide, setSlide] = useState(0);
+  const trackRef = useRef(null);
   const [busy, setBusy] = useState(false);
   const [inKakao, setInKakao] = useState(false);
 
@@ -197,49 +200,84 @@ export default function TravelTest({ country, city }) {
           card: draws[i].cards[draws[i].selected],
         }))
       : [];
-  const main = members[0];
   const stepIdx = STEPS.indexOf(step);
   const pageUrl = `${SITE.url}/travel/${country.code}/${city.city_code}`;
   const selectionKey = draws.map((d) => (d ? `${d.roll}:${d.selected}` : "")).join(",");
+  const slides = [
+    ...members.map((m, i) => ({ layout: "single", focus: i, label: m.nick })),
+    ...(group ? [{ layout: "group", focus: 0, label: "단체" }] : []),
+  ];
+  const currentImage = cardImages[slide];
 
   // 결과 단계에 들어오면 저장·공유할 이미지를 미리 만들어 화면에 그대로 보여줍니다.
+  // 한 장씩 완성되는 대로 바로 보여줘서 첫 카드가 늦게 뜨지 않게 합니다.
   useEffect(() => {
     if (step !== "final") return;
     let cancelled = false;
-    setCardImage(null);
+    setCardImages([]);
+    setSlide(0);
+    trackRef.current?.scrollTo({ left: 0 });
     const displayFont =
       getComputedStyle(rootRef.current).getPropertyValue("--font-gaegu").trim() || "sans-serif";
-    buildTravelCard({
+    const base = {
       members,
       country,
       city,
       phrases: country.phrases,
       urlText: pageUrl.replace(/^https?:\/\//, ""),
       displayFont,
-    })
-      .then((img) => !cancelled && setCardImage(img))
-      .catch(() => !cancelled && setCardImage({ error: true }));
+    };
+    (async () => {
+      for (let i = 0; i < slides.length; i++) {
+        let img;
+        try {
+          img = await buildTravelCard({ ...base, layout: slides[i].layout, focus: slides[i].focus });
+        } catch {
+          img = { error: true };
+        }
+        if (cancelled) return;
+        setCardImages((prev) => {
+          const next = [...prev];
+          next[i] = img;
+          return next;
+        });
+      }
+    })();
     return () => {
       cancelled = true;
     };
-    // members는 step·selectionKey가 같으면 내용도 같습니다.
+    // members·slides는 step·selectionKey가 같으면 내용도 같습니다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, selectionKey]);
 
-  const fileName = main ? `여행이름_${city.city_name}_${main.card.pronunciation_kr}.png` : "";
+  const goSlide = (i) => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" });
+  };
+  const onTrackScroll = (e) => {
+    const el = e.currentTarget;
+    const i = Math.round(el.scrollLeft / el.clientWidth);
+    if (i !== slide) setSlide(i);
+  };
 
-  const downloadImage = () => {
+  const fileNameFor = (i) =>
+    slides[i].layout === "group"
+      ? `여행이름_${city.city_name}_단체.png`
+      : `여행이름_${city.city_name}_${members[slides[i].focus].card.pronunciation_kr}.png`;
+
+  const download = (img, name) => {
     const a = document.createElement("a");
-    a.href = cardImage.dataUrl;
-    a.download = fileName;
+    a.href = img.dataUrl;
+    a.download = name;
     document.body.appendChild(a);
     a.click();
     a.remove();
   };
 
   const onSave = () => {
-    if (!cardImage?.dataUrl) return;
-    downloadImage();
+    if (!currentImage?.dataUrl) return;
+    download(currentImage, fileNameFor(slide));
     track("travel_card_saved", { country: country.code, city: city.city_code });
   };
 
@@ -248,30 +286,37 @@ export default function TravelTest({ country, city }) {
     window.location.href = `kakaotalk://web/openExternal?url=${encodeURIComponent(window.location.href)}`;
   };
 
-  const onShare = async () => {
-    if (!cardImage?.blob) return;
+  const shareFiles = async (indexes) => {
+    const files = indexes.map(
+      (i) => new File([cardImages[i].blob], `travel-name-card-${i + 1}.png`, { type: "image/png" })
+    );
+    const names = members.map((m) => `'${m.card.pronunciation_kr}'`).join(", ");
+    const text = `${city.city_name} 여행 가면 ${group ? "우리" : "내"} 이름은 ${names} ✈️ 너도 받아봐!\n${pageUrl}`;
     setBusy(true);
     try {
-      const file = new File([cardImage.blob], "travel-name-card.png", { type: "image/png" });
-      const names = members.map((m) => `'${m.card.pronunciation_kr}'`).join(", ");
-      const text = `${city.city_name} 여행 가면 ${group ? "우리" : "내"} 이름은 ${names} ✈️ 너도 받아봐!\n${pageUrl}`;
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      if (navigator.canShare && navigator.canShare({ files })) {
         // 파일과 함께 공유하면 url 필드가 무시되는 앱이 많아 링크를 text 안에 넣습니다.
-        await navigator.share({ files: [file], title: "여행가면 내 이름은?", text });
+        await navigator.share({ files, title: "여행가면 내 이름은?", text });
       } else {
         try {
           await navigator.clipboard?.writeText(pageUrl);
         } catch {}
-        downloadImage();
-        alert("이 브라우저는 바로 공유가 안 돼요. 링크를 복사하고 카드 이미지를 저장했어요!");
+        download(cardImages[slide], fileNameFor(slide));
+        alert("이 브라우저는 바로 공유가 안 돼요. 링크를 복사하고 지금 보고 있는 카드를 저장했어요!");
       }
-      track("travel_card_shared", { country: country.code, city: city.city_code });
+      track("travel_card_shared", {
+        country: country.code,
+        city: city.city_code,
+        cards: indexes.length,
+      });
     } catch (e) {
       if (e.name !== "AbortError") alert("공유하지 못했어요. 다시 시도해 주세요.");
     } finally {
       setBusy(false);
     }
   };
+
+  const allReady = slides.length > 0 && slides.every((_, i) => cardImages[i]?.blob);
 
   return (
     <section ref={rootRef} className={styles.test} aria-label={`${city.city_name} 여행 이름 테스트`}>
@@ -439,30 +484,87 @@ export default function TravelTest({ country, city }) {
             </div>
           )}
 
-          {step === "final" && main && (
+          {step === "final" && members.length > 0 && (
             <div>
               <h2 className={`${styles.display} ${styles.stepTitle}`} style={{ textAlign: "center" }}>
                 완성된 여행 카드예요!
               </h2>
               <p className={styles.stepLead} style={{ textAlign: "center" }}>
                 {group
-                  ? `${members.map((m) => m.nick).join(", ")}의 ${city.city_name} 여행 이름`
-                  : `${main.nick} 님의 ${city.city_name} 여행 이름`}
+                  ? "옆으로 넘기면 한 명씩, 마지막엔 단체 카드가 있어요"
+                  : `${members[0].nick} 님의 ${city.city_name} 여행 이름`}
               </p>
 
-              <div className={styles.cardPreview}>
-                {cardImage?.dataUrl ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={cardImage.dataUrl}
-                    alt={`${members.map((m) => m.card.pronunciation_kr).join(", ")} 여행 이름 카드와 ${city.city_name} 인사말·명소·음식`}
-                  />
-                ) : (
-                  <div className={styles.cardLoading}>
-                    {cardImage?.error ? "카드를 만들지 못했어요. 다시 시도해 주세요." : "카드 만드는 중…"}
-                  </div>
+              <div className={styles.carouselWrap}>
+                <div
+                  ref={trackRef}
+                  className={styles.carousel}
+                  onScroll={onTrackScroll}
+                  aria-label="여행 카드 넘겨보기"
+                >
+                  {slides.map((sl, i) => {
+                    const img = cardImages[i];
+                    return (
+                      <div key={`${sl.layout}-${sl.focus}`} className={styles.slide}>
+                        {img?.dataUrl ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={img.dataUrl}
+                            alt={
+                              sl.layout === "group"
+                                ? `일행 전원의 ${city.city_name} 여행 이름 단체 카드`
+                                : `${sl.label} 님의 여행 이름 ${members[sl.focus].card.pronunciation_kr} 카드와 ${city.city_name} 인사말·명소·음식`
+                            }
+                          />
+                        ) : (
+                          <div className={styles.cardLoading}>
+                            {img?.error ? "카드를 만들지 못했어요. 다시 시도해 주세요." : "카드 만드는 중…"}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+                {slides.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      className={`${styles.slideArrow} ${styles.slideArrowPrev}`}
+                      onClick={() => goSlide(slide - 1)}
+                      disabled={slide === 0}
+                      aria-label="이전 카드"
+                    >
+                      ‹
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.slideArrow} ${styles.slideArrowNext}`}
+                      onClick={() => goSlide(slide + 1)}
+                      disabled={slide === slides.length - 1}
+                      aria-label="다음 카드"
+                    >
+                      ›
+                    </button>
+                  </>
                 )}
               </div>
+
+              {slides.length > 1 && (
+                <div className={styles.slideChips} role="tablist" aria-label="카드 선택">
+                  {slides.map((sl, i) => (
+                    <button
+                      key={`${sl.layout}-${sl.focus}`}
+                      type="button"
+                      role="tab"
+                      aria-selected={slide === i}
+                      className={`${styles.slideChip} ${slide === i ? styles.slideChipOn : ""}`}
+                      onClick={() => goSlide(i)}
+                    >
+                      {sl.label}
+                    </button>
+                  ))}
+                </div>
+              )}
 
               <p className={styles.finalHint}>
                 인사말·명소·음식까지 담긴 카드예요. 저장해두면 여행 중에 꺼내 보기 좋아요.
@@ -472,10 +574,10 @@ export default function TravelTest({ country, city }) {
                 <button
                   type="button"
                   className={styles.darkBtn}
-                  disabled={!cardImage?.dataUrl}
+                  disabled={!currentImage?.dataUrl}
                   onClick={onSave}
                 >
-                  이미지 저장
+                  {group ? "이 카드 저장" : "이미지 저장"}
                 </button>
                 {inKakao ? (
                   <button type="button" className={`${styles.cta} ${styles.shareBtn}`} onClick={openExternal}>
@@ -485,13 +587,23 @@ export default function TravelTest({ country, city }) {
                   <button
                     type="button"
                     className={`${styles.cta} ${styles.shareBtn}`}
-                    disabled={!cardImage?.blob || busy}
-                    onClick={onShare}
+                    disabled={!currentImage?.blob || busy}
+                    onClick={() => shareFiles([slide])}
                   >
-                    공유하기
+                    {group ? "이 카드 공유" : "공유하기"}
                   </button>
                 )}
               </div>
+              {group && !inKakao && (
+                <button
+                  type="button"
+                  className={`${styles.ghost} ${styles.shareAllBtn}`}
+                  disabled={!allReady || busy}
+                  onClick={() => shareFiles(slides.map((_, i) => i))}
+                >
+                  카드 {slides.length}장 한 번에 공유
+                </button>
+              )}
               {inKakao && (
                 <p className={styles.kakaoHint}>
                   카카오톡 안에서는 사진 공유가 막혀 있어요. 이미지를 저장해서 보내거나, 다른
