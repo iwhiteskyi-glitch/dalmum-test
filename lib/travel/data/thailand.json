@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "reviewed",
   "country": {
     "code": "thailand",
     "name": "태국",
@@ -9,41 +9,324 @@
     "intro": "황금빛 사원과 길거리 음식, 에메랄드빛 바다까지 한 번에 즐길 수 있는 동남아 대표 여행지예요. 수도 방콕의 활기, 북부 치앙마이의 여유, 남부 섬의 휴양이 모두 다른 매력을 가지고 있어요.",
     "name_note": "태국 사람들은 긴 본명 대신 짧은 별명(츠 렌)으로 서로를 불러요. 과일·동물·영어 단어도 흔한 별명이라, 여행용 이름으로 딱 어울려요.",
     "phrases": [
-      { "category": "인사", "meaning_kr": "안녕하세요", "text_local": "สวัสดีครับ / ค่ะ", "pronunciation_kr": "사왓디 캅 / 카", "note": "남성은 캅, 여성은 카로 끝내요" },
-      { "category": "감사", "meaning_kr": "감사합니다", "text_local": "ขอบคุณครับ / ค่ะ", "pronunciation_kr": "컵쿤 캅 / 카" },
-      { "category": "주문", "meaning_kr": "이거 주세요", "text_local": "เอาอันนี้ครับ / ค่ะ", "pronunciation_kr": "아오 안니 캅 / 카" },
-      { "category": "쇼핑", "meaning_kr": "얼마예요?", "text_local": "เท่าไหร่ครับ / คะ", "pronunciation_kr": "타오라이 캅 / 카" },
-      { "category": "식사", "meaning_kr": "정말 맛있어요", "text_local": "อร่อยมาก", "pronunciation_kr": "아로이 막" }
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "สวัสดีครับ / ค่ะ",
+        "pronunciation_kr": "사왓디 캅 / 카",
+        "note": "남성은 캅, 여성은 카로 끝내요"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "ขอบคุณครับ / ค่ะ",
+        "pronunciation_kr": "컵쿤 캅 / 카"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "เอาอันนี้ครับ / ค่ะ",
+        "pronunciation_kr": "아오 안니 캅 / 카"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "เท่าไหร่ครับ / คะ",
+        "pronunciation_kr": "타오라이 캅 / 카"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "อร่อยมาก",
+        "pronunciation_kr": "아로이 막"
+      }
     ],
     "name_pool": [
-      { "name_local": "แบงค์", "pronunciation_kr": "뱅크", "romanized": "Bank", "gender_style": "male", "vibe_tags": ["카리스마", "멋짐"], "meaning_kr": "영어 'bank(은행)'에서 온 별명" },
-      { "name_local": "กอล์ฟ", "pronunciation_kr": "골프", "romanized": "Golf", "gender_style": "male", "vibe_tags": ["발랄함", "멋짐"], "meaning_kr": "영어 'golf(골프)'에서 온 별명" },
-      { "name_local": "บอส", "pronunciation_kr": "보스", "romanized": "Boss", "gender_style": "male", "vibe_tags": ["카리스마", "발랄함"], "meaning_kr": "영어 'boss(대장)'에서 온 별명" },
-      { "name_local": "ท็อป", "pronunciation_kr": "톱", "romanized": "Top", "gender_style": "male", "vibe_tags": ["카리스마", "멋짐"], "meaning_kr": "영어 'top(최고)'에서 온 별명" },
-      { "name_local": "ต้น", "pronunciation_kr": "똔", "romanized": "Ton", "gender_style": "male", "vibe_tags": ["카리스마", "사랑스러움"], "meaning_kr": "나무·시작이라는 뜻" },
-      { "name_local": "ชัย", "pronunciation_kr": "차이", "romanized": "Chai", "gender_style": "male", "vibe_tags": ["카리스마", "발랄함"], "meaning_kr": "승리라는 뜻" },
-      { "name_local": "เกม", "pronunciation_kr": "겜", "romanized": "Game", "gender_style": "male", "vibe_tags": ["발랄함", "귀여움"], "meaning_kr": "영어 'game(게임)'에서 온 별명" },
-      { "name_local": "ทอง", "pronunciation_kr": "통", "romanized": "Thong", "gender_style": "male", "vibe_tags": ["멋짐", "카리스마"], "meaning_kr": "금(황금)이라는 뜻" },
-      { "name_local": "วิน", "pronunciation_kr": "윈", "romanized": "Win", "gender_style": "male", "vibe_tags": ["발랄함", "멋짐"], "meaning_kr": "영어 'win(이기다)'에서 온 별명" },
-      { "name_local": "พลอย", "pronunciation_kr": "플로이", "romanized": "Ploy", "gender_style": "female", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "보석이라는 뜻" },
-      { "name_local": "ฟ้า", "pronunciation_kr": "파", "romanized": "Fah", "gender_style": "female", "vibe_tags": ["발랄함", "우아함"], "meaning_kr": "하늘이라는 뜻" },
-      { "name_local": "มิ้นท์", "pronunciation_kr": "민트", "romanized": "Mint", "gender_style": "female", "vibe_tags": ["발랄함", "귀여움"], "meaning_kr": "영어 'mint(민트)'에서 온 별명" },
-      { "name_local": "แก้ว", "pronunciation_kr": "깨우", "romanized": "Kaew", "gender_style": "female", "vibe_tags": ["사랑스러움", "우아함"], "meaning_kr": "유리·보석, 소중한 것이라는 뜻" },
-      { "name_local": "เตย", "pronunciation_kr": "떠이", "romanized": "Toey", "gender_style": "female", "vibe_tags": ["귀여움", "발랄함"], "meaning_kr": "디저트에 쓰는 향긋한 판단 잎이라는 뜻" },
-      { "name_local": "ออม", "pronunciation_kr": "엄", "romanized": "Aom", "gender_style": "female", "vibe_tags": ["사랑스러움", "귀여움"], "meaning_kr": "아끼고 모은다(저축)는 뜻" },
-      { "name_local": "น้ำหวาน", "pronunciation_kr": "남완", "romanized": "Namwan", "gender_style": "female", "vibe_tags": ["귀여움", "사랑스러움"], "meaning_kr": "달콤한 음료라는 뜻" },
-      { "name_local": "บัว", "pronunciation_kr": "부아", "romanized": "Bua", "gender_style": "female", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "연꽃이라는 뜻" },
-      { "name_local": "ดาว", "pronunciation_kr": "다오", "romanized": "Dao", "gender_style": "female", "vibe_tags": ["멋짐", "우아함"], "meaning_kr": "별이라는 뜻" },
-      { "name_local": "ฝน", "pronunciation_kr": "폰", "romanized": "Fon", "gender_style": "female", "vibe_tags": ["우아함", "멋짐"], "meaning_kr": "비라는 뜻" },
-      { "name_local": "ฝ้าย", "pronunciation_kr": "파이", "romanized": "Fai", "gender_style": "female", "vibe_tags": ["사랑스러움", "귀여움"], "meaning_kr": "목화라는 뜻" },
-      { "name_local": "น้ำ", "pronunciation_kr": "남", "romanized": "Nam", "gender_style": "neutral", "vibe_tags": ["사랑스러움", "발랄함"], "meaning_kr": "물이라는 뜻" },
-      { "name_local": "นก", "pronunciation_kr": "녹", "romanized": "Nok", "gender_style": "neutral", "vibe_tags": ["발랄함", "귀여움"], "meaning_kr": "새라는 뜻" },
-      { "name_local": "ไอซ์", "pronunciation_kr": "아이스", "romanized": "Ice", "gender_style": "neutral", "vibe_tags": ["멋짐", "우아함"], "meaning_kr": "영어 'ice(얼음)'에서 온 별명" },
-      { "name_local": "ปลา", "pronunciation_kr": "쁠라", "romanized": "Pla", "gender_style": "neutral", "vibe_tags": ["귀여움", "발랄함"], "meaning_kr": "물고기라는 뜻" },
-      { "name_local": "ฟิล์ม", "pronunciation_kr": "필름", "romanized": "Film", "gender_style": "neutral", "vibe_tags": ["멋짐", "발랄함"], "meaning_kr": "영어 'film(필름)'에서 온 별명" },
-      { "name_local": "บี", "pronunciation_kr": "비", "romanized": "Bee", "gender_style": "neutral", "vibe_tags": ["귀여움", "발랄함"], "meaning_kr": "영어 'bee(꿀벌)'에서 온 별명" },
-      { "name_local": "เนย", "pronunciation_kr": "너이", "romanized": "Noey", "gender_style": "neutral", "vibe_tags": ["귀여움", "사랑스러움"], "meaning_kr": "버터라는 뜻" },
-      { "name_local": "โอ๊ต", "pronunciation_kr": "옷", "romanized": "Oat", "gender_style": "neutral", "vibe_tags": ["귀여움", "발랄함"], "meaning_kr": "영어 'oat(귀리)'에서 온 별명" }
+      {
+        "name_local": "แบงค์",
+        "pronunciation_kr": "뱅크",
+        "romanized": "Bank",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "영어 'bank(은행)'에서 온 별명"
+      },
+      {
+        "name_local": "กอล์ฟ",
+        "pronunciation_kr": "골프",
+        "romanized": "Golf",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "영어 'golf(골프)'에서 온 별명"
+      },
+      {
+        "name_local": "บอส",
+        "pronunciation_kr": "보스",
+        "romanized": "Boss",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "발랄함"
+        ],
+        "meaning_kr": "영어 'boss(대장)'에서 온 별명"
+      },
+      {
+        "name_local": "ท็อป",
+        "pronunciation_kr": "톱",
+        "romanized": "Top",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "영어 'top(최고)'에서 온 별명"
+      },
+      {
+        "name_local": "ต้น",
+        "pronunciation_kr": "똔",
+        "romanized": "Ton",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "사랑스러움"
+        ],
+        "meaning_kr": "나무·시작이라는 뜻"
+      },
+      {
+        "name_local": "เกม",
+        "pronunciation_kr": "겜",
+        "romanized": "Game",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "영어 'game(게임)'에서 온 별명"
+      },
+      {
+        "name_local": "วิน",
+        "pronunciation_kr": "윈",
+        "romanized": "Win",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "영어 'win(이기다)'에서 온 별명"
+      },
+      {
+        "name_local": "พลอย",
+        "pronunciation_kr": "플로이",
+        "romanized": "Ploy",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "보석이라는 뜻"
+      },
+      {
+        "name_local": "ฟ้า",
+        "pronunciation_kr": "파",
+        "romanized": "Fah",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "우아함"
+        ],
+        "meaning_kr": "하늘이라는 뜻"
+      },
+      {
+        "name_local": "มิ้นท์",
+        "pronunciation_kr": "민트",
+        "romanized": "Mint",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "영어 'mint(민트)'에서 온 별명"
+      },
+      {
+        "name_local": "แก้ว",
+        "pronunciation_kr": "깨우",
+        "romanized": "Kaew",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "유리·보석, 소중한 것이라는 뜻"
+      },
+      {
+        "name_local": "เตย",
+        "pronunciation_kr": "떠이",
+        "romanized": "Toey",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "디저트에 쓰는 향긋한 판단 잎이라는 뜻"
+      },
+      {
+        "name_local": "ออม",
+        "pronunciation_kr": "엄",
+        "romanized": "Aom",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "아끼고 모은다(저축)는 뜻"
+      },
+      {
+        "name_local": "น้ำหวาน",
+        "pronunciation_kr": "남완",
+        "romanized": "Namwan",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "달콤한 음료라는 뜻"
+      },
+      {
+        "name_local": "บัว",
+        "pronunciation_kr": "부아",
+        "romanized": "Bua",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "연꽃이라는 뜻"
+      },
+      {
+        "name_local": "ดาว",
+        "pronunciation_kr": "다오",
+        "romanized": "Dao",
+        "gender_style": "female",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "별이라는 뜻"
+      },
+      {
+        "name_local": "ฝน",
+        "pronunciation_kr": "폰",
+        "romanized": "Fon",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "비라는 뜻"
+      },
+      {
+        "name_local": "ฝ้าย",
+        "pronunciation_kr": "파이",
+        "romanized": "Fai",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "목화라는 뜻"
+      },
+      {
+        "name_local": "น้ำ",
+        "pronunciation_kr": "남",
+        "romanized": "Nam",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "발랄함"
+        ],
+        "meaning_kr": "물이라는 뜻"
+      },
+      {
+        "name_local": "นก",
+        "pronunciation_kr": "녹",
+        "romanized": "Nok",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "새라는 뜻"
+      },
+      {
+        "name_local": "ไอซ์",
+        "pronunciation_kr": "아이스",
+        "romanized": "Ice",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "영어 'ice(얼음)'에서 온 별명"
+      },
+      {
+        "name_local": "ปลา",
+        "pronunciation_kr": "쁠라",
+        "romanized": "Pla",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "물고기라는 뜻"
+      },
+      {
+        "name_local": "ฟิล์ม",
+        "pronunciation_kr": "필름",
+        "romanized": "Film",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "영어 'film(필름)'에서 온 별명"
+      },
+      {
+        "name_local": "บี",
+        "pronunciation_kr": "비",
+        "romanized": "Bee",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ]
+      },
+      {
+        "name_local": "เนย",
+        "pronunciation_kr": "너이",
+        "romanized": "Noey",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "버터라는 뜻"
+      },
+      {
+        "name_local": "โอ๊ต",
+        "pronunciation_kr": "옷",
+        "romanized": "Oat",
+        "gender_style": "male",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "영어 'oat(귀리)'에서 온 별명"
+      }
     ]
   },
   "cities": [
@@ -53,14 +336,36 @@
       "tier": 1,
       "intro": "화려한 황금빛 사원과 초고층 루프톱 바가 함께 있는 태국의 수도예요. 짜오프라야강을 따라 수상 보트를 타면 왕궁과 새벽 사원(왓 아룬)을 차례로 둘러볼 수 있어요.",
       "attractions": [
-        { "name": "왓 아룬", "map_query": "Wat Arun Bangkok", "one_line_desc": "짜오프라야 강변에 선 '새벽 사원'. 도자기 조각으로 장식된 탑이 해 질 녘에 특히 아름다워요." },
-        { "name": "왕궁과 왓 프라깨우", "short": "왕궁", "map_query": "Grand Palace Bangkok", "one_line_desc": "태국 왕실의 옛 궁전. 에메랄드 불상을 모신 왓 프라깨우가 함께 있어요." },
-        { "name": "카오산 로드", "map_query": "Khao San Road", "one_line_desc": "전 세계 배낭여행자들이 모이는 거리. 밤이 되면 노점과 음악으로 가득해요." }
+        {
+          "name": "왓 아룬",
+          "map_query": "Wat Arun Bangkok",
+          "one_line_desc": "짜오프라야 강변에 선 '새벽 사원'. 도자기 조각으로 장식된 탑이 해 질 녘에 특히 아름다워요."
+        },
+        {
+          "name": "왕궁과 왓 프라깨우",
+          "short": "왕궁",
+          "map_query": "Grand Palace Bangkok",
+          "one_line_desc": "태국 왕실의 옛 궁전. 에메랄드 불상을 모신 왓 프라깨우가 함께 있어요."
+        },
+        {
+          "name": "카오산 로드",
+          "map_query": "Khao San Road",
+          "one_line_desc": "전 세계 배낭여행자들이 모이는 거리. 밤이 되면 노점과 음악으로 가득해요."
+        }
       ],
       "foods": [
-        { "name": "팟타이", "one_line_desc": "쌀국수를 새우·숙주·땅콩과 함께 볶은 태국 대표 볶음국수예요." },
-        { "name": "똠얌꿍", "one_line_desc": "새우를 넣어 맵고 시고 향긋하게 끓인 태국 대표 수프예요." },
-        { "name": "망고 스티키 라이스", "one_line_desc": "코코넛 밀크를 머금은 찹쌀밥에 잘 익은 망고를 곁들인 디저트예요." }
+        {
+          "name": "팟타이",
+          "one_line_desc": "쌀국수를 새우·숙주·땅콩과 함께 볶은 태국 대표 볶음국수예요."
+        },
+        {
+          "name": "똠얌꿍",
+          "one_line_desc": "새우를 넣어 맵고 시고 향긋하게 끓인 태국 대표 수프예요."
+        },
+        {
+          "name": "망고 스티키 라이스",
+          "one_line_desc": "코코넛 밀크를 머금은 찹쌀밥에 잘 익은 망고를 곁들인 디저트예요."
+        }
       ]
     },
     {
@@ -69,14 +374,37 @@
       "tier": 1,
       "intro": "산자락에 자리한 태국 북부 옛 란나 왕국의 수도예요. 해자로 둘러싸인 올드시티 안에만 사원이 수십 곳 있고, 느긋한 카페 문화 덕분에 '한 달 살기' 여행지로도 인기가 많아요.",
       "attractions": [
-        { "name": "도이수텝 사원", "short": "도이수텝", "map_query": "Wat Phra That Doi Suthep", "one_line_desc": "산 위에 자리한 황금빛 사원. 치앙마이 시내가 발아래로 펼쳐져요." },
-        { "name": "타패 게이트", "map_query": "Tha Phae Gate Chiang Mai", "one_line_desc": "올드시티를 둘러싼 옛 성벽의 대표 성문. 치앙마이 여행의 출발점 같은 곳이에요." },
-        { "name": "선데이 워킹 스트리트", "short": "선데이 마켓", "map_query": "Chiang Mai Sunday Walking Street", "one_line_desc": "일요일 저녁 올드시티 대로가 거대한 야시장으로 변해요. 수공예품 구경이 특히 재밌어요." }
+        {
+          "name": "도이수텝 사원",
+          "short": "도이수텝",
+          "map_query": "Wat Phra That Doi Suthep",
+          "one_line_desc": "산 위에 자리한 황금빛 사원. 치앙마이 시내가 발아래로 펼쳐져요."
+        },
+        {
+          "name": "타패 게이트",
+          "map_query": "Tha Phae Gate Chiang Mai",
+          "one_line_desc": "올드시티를 둘러싼 옛 성벽의 대표 성문. 치앙마이 여행의 출발점 같은 곳이에요."
+        },
+        {
+          "name": "선데이 워킹 스트리트",
+          "short": "선데이 마켓",
+          "map_query": "Chiang Mai Sunday Walking Street",
+          "one_line_desc": "일요일 저녁 올드시티 대로가 거대한 야시장으로 변해요. 수공예품 구경이 특히 재밌어요."
+        }
       ],
       "foods": [
-        { "name": "카오소이", "one_line_desc": "코코넛 카레 국물에 삶은 면과 바삭하게 튀긴 면을 함께 올린 북부 대표 국수예요." },
-        { "name": "사이우아", "one_line_desc": "레몬그라스 등 허브를 듬뿍 넣은 태국 북부식 소시지예요." },
-        { "name": "남프릭눔", "one_line_desc": "구운 풋고추를 으깨 만든 북부식 딥 소스. 돼지껍데기 튀김과 찍어 먹어요." }
+        {
+          "name": "카오소이",
+          "one_line_desc": "코코넛 카레 국물에 삶은 면과 바삭하게 튀긴 면을 함께 올린 북부 대표 국수예요."
+        },
+        {
+          "name": "사이우아",
+          "one_line_desc": "레몬그라스 등 허브를 듬뿍 넣은 태국 북부식 소시지예요."
+        },
+        {
+          "name": "남프릭눔",
+          "one_line_desc": "구운 풋고추를 으깨 만든 북부식 딥 소스. 돼지껍데기 튀김과 찍어 먹어요."
+        }
       ]
     },
     {
@@ -85,14 +413,185 @@
       "tier": 1,
       "intro": "태국에서 가장 큰 섬으로, 안다만해의 에메랄드빛 바다를 품은 대표 휴양지예요. 해변에서의 휴식과 함께, 알록달록한 중국·포르투갈풍 건물이 늘어선 올드타운 산책도 놓치기 아까워요.",
       "attractions": [
-        { "name": "빠통 비치", "map_query": "Patong Beach Phuket", "one_line_desc": "푸껫에서 가장 활기찬 해변. 해변 뒤쪽 방라 로드는 밤마다 축제처럼 붐벼요." },
-        { "name": "푸껫 올드타운", "short": "올드타운", "map_query": "Phuket Old Town", "one_line_desc": "파스텔톤 중국·포르투갈풍 건물이 늘어선 거리. 일요일 저녁에는 야시장도 열려요." },
-        { "name": "빅 부다", "map_query": "Big Buddha Phuket", "one_line_desc": "언덕 위에 앉은 높이 45m의 하얀 대리석 불상. 섬의 바다 풍경이 한눈에 보여요." }
+        {
+          "name": "빠통 비치",
+          "map_query": "Patong Beach Phuket",
+          "one_line_desc": "푸껫에서 가장 활기찬 해변. 해변 뒤쪽 방라 로드는 밤마다 축제처럼 붐벼요."
+        },
+        {
+          "name": "푸껫 올드타운",
+          "short": "올드타운",
+          "map_query": "Phuket Old Town",
+          "one_line_desc": "파스텔톤 중국·포르투갈풍 건물이 늘어선 거리. 일요일 저녁에는 야시장도 열려요."
+        },
+        {
+          "name": "빅 부다",
+          "map_query": "Big Buddha Phuket",
+          "one_line_desc": "언덕 위에 앉은 높이 45m의 하얀 대리석 불상. 섬의 바다 풍경이 한눈에 보여요."
+        }
       ],
       "foods": [
-        { "name": "무홍", "one_line_desc": "간장과 향신료로 달콤짭짤하게 오래 조린 푸껫식 돼지고기 조림이에요." },
-        { "name": "미 호끼엔", "one_line_desc": "중국 푸젠 출신 이민자들이 전해 준 노란 면 볶음국수. 푸껫 올드타운의 명물이에요." },
-        { "name": "카놈찐", "one_line_desc": "가는 쌀국수에 커리를 붓고 채소를 곁들여 먹는, 푸껫 사람들의 든든한 아침 식사예요." }
+        {
+          "name": "무홍",
+          "one_line_desc": "간장과 향신료로 달콤짭짤하게 오래 조린 푸껫식 돼지고기 조림이에요."
+        },
+        {
+          "name": "미 호끼엔",
+          "one_line_desc": "중국 푸젠 출신 이민자들이 전해 준 노란 면 볶음국수. 푸껫 올드타운의 명물이에요."
+        },
+        {
+          "name": "카놈찐",
+          "one_line_desc": "가는 쌀국수에 커리를 붓고 채소를 곁들여 먹는, 푸껫 사람들의 든든한 아침 식사예요."
+        }
+      ]
+    },
+    {
+      "city_code": "pattaya",
+      "city_name": "파타야",
+      "tier": 1,
+      "intro": "방콕에서 자동차로 약 2시간이면 닿는 가까운 해변 휴양지예요. 원래는 조용한 어촌이었지만 지금은 다양한 해양 액티비티와 리조트가 모인 태국 동부의 대표 휴양 도시로 성장했어요.",
+      "attractions": [
+        {
+          "name": "농눅빌리지",
+          "map_query": "Nong Nooch Tropical Garden Pattaya",
+          "one_line_desc": "코끼리 쇼와 전통 공연을 볼 수 있는 대형 열대 정원. 테마별 정원들을 산책하듯 둘러볼 수 있어요."
+        },
+        {
+          "name": "진리의 성전",
+          "map_query": "Sanctuary of Truth Pattaya",
+          "one_line_desc": "목조 조각으로 가득한 웅장한 사원 형태의 건축물. 불교와 힌두교 신화 속 이야기가 정교하게 새겨져 있어요."
+        },
+        {
+          "name": "코란섬",
+          "map_query": "Koh Larn Pattaya",
+          "one_line_desc": "파타야 앞바다의 섬으로 배를 타고 갈 수 있어요. 맑은 바다에서 스노클링 등 해양 액티비티를 즐기기 좋아요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "뿌팟퐁커리",
+          "one_line_desc": "부드러운 게살에 노란 커리를 부어 볶은 요리. 나끌루아 해산물 식당들의 대표 메뉴로 꼽혀요."
+        },
+        {
+          "name": "생굴",
+          "one_line_desc": "나끌루아 수산시장에서 즉석으로 골라 까주는 싱싱한 굴. 레몬과 칠리소스를 곁들여 먹어요."
+        },
+        {
+          "name": "숯불새우구이",
+          "one_line_desc": "수산시장에서 고른 새우를 그 자리에서 숯불에 구워주는 파타야식 해산물 상차림이에요."
+        }
+      ]
+    },
+    {
+      "city_code": "kohsamui",
+      "city_name": "코사무이",
+      "tier": 1,
+      "intro": "태국에서 손꼽히게 큰 섬으로, 야자수가 가득해 '코코넛 섬'이라는 별명을 가지고 있어요. 섬 안에 국제공항이 있어 방콕에서 비행기로 편하게 올 수 있는 인기 휴양지예요.",
+      "attractions": [
+        {
+          "name": "왓 프라야이",
+          "map_query": "Wat Phra Yai Big Buddha Koh Samui",
+          "one_line_desc": "작은 다리를 건너면 만나는 12m 높이의 황금 불상. 언덕 위에서 바다 전망도 함께 즐길 수 있어요."
+        },
+        {
+          "name": "나무앙 폭포",
+          "map_query": "Na Muang Waterfall Koh Samui",
+          "one_line_desc": "정글 트레킹 코스 끝에 만나는 폭포로, 시원한 물웅덩이에서 물놀이를 할 수 있어요."
+        },
+        {
+          "name": "피셔맨스 빌리지",
+          "map_query": "Fisherman's Village Bophut Koh Samui",
+          "one_line_desc": "옛 어촌 모습이 남은 보풋 해변 거리예요. 금요일 저녁마다 워킹 스트리트 야시장이 열려요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "코코넛아이스크림",
+          "one_line_desc": "코코넛 과육을 갈아 만든 아이스크림을 코코넛 껍데기에 담아줘요. 보풋 야시장의 인기 간식이에요."
+        },
+        {
+          "name": "생코코넛",
+          "one_line_desc": "야자수가 많은 사무이에서 갓 딴 코코넛을 그 자리에서 잘라 마시는 시원한 음료예요."
+        },
+        {
+          "name": "게살볶음밥",
+          "one_line_desc": "싱싱한 게살을 듬뿍 넣어 볶은 볶음밥으로, 해산물이 풍부한 사무이 해변 식당의 인기 메뉴예요."
+        }
+      ]
+    },
+    {
+      "city_code": "krabi",
+      "city_name": "끄라비",
+      "tier": 1,
+      "intro": "안다만해를 따라 기이한 석회암 절벽이 늘어선 해안 지역이에요. 아오낭에서 배를 타면 라일레이 등 주변 명소로 쉽게 이동할 수 있어 섬·해변 투어의 거점으로도 인기가 많아요.",
+      "attractions": [
+        {
+          "name": "라일레이 비치",
+          "map_query": "Railay Beach Krabi",
+          "one_line_desc": "깎아지른 석회암 절벽에 둘러싸인 해변. 육로가 없어 아오낭에서 배를 타고 들어가야 해요."
+        },
+        {
+          "name": "아오낭 비치",
+          "map_query": "Ao Nang Beach Krabi",
+          "one_line_desc": "끄라비 해변 여행의 중심지로 호텔과 식당이 모여 있어요. 각종 섬 투어 보트가 이곳에서 출발해요."
+        },
+        {
+          "name": "호랑이 동굴 사원",
+          "short": "호랑이 동굴",
+          "map_query": "Wat Tham Suea Krabi",
+          "one_line_desc": "가파른 계단을 올라야 하는 산 위 사원으로, 정상에서 끄라비 시내와 바다 전망을 볼 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "뿌담찜",
+          "one_line_desc": "끄라비 앞바다 맹그로브 갯벌에서 잡히는 검은 게를 쪄서 먹는 별미로, 끄라비를 상징하는 식재료예요."
+        },
+        {
+          "name": "쁠라눙마나오",
+          "one_line_desc": "생선을 라임과 마늘, 고추로 새콤 매콤하게 쪄낸 요리로, 신선한 생선이 풍부한 끄라비에서 즐겨 먹어요."
+        },
+        {
+          "name": "꾸어끌링",
+          "one_line_desc": "다진 고기를 향신료와 함께 바짝 볶아낸 매콤한 태국 남부식 볶음 요리예요."
+        }
+      ]
+    },
+    {
+      "city_code": "huahin",
+      "city_name": "후아힌",
+      "tier": 1,
+      "intro": "방콕에서 기차나 자동차로 오갈 수 있는 가까운 해변 도시예요. 태국 왕실의 여름 별궁이 있어 오래전부터 사랑받은 휴양지로, 조용한 해변과 아기자기한 야시장이 매력이에요.",
+      "attractions": [
+        {
+          "name": "카오 타키압",
+          "map_query": "Khao Takiab Hua Hin",
+          "one_line_desc": "해변 끝자락 언덕 위 사원으로, 원숭이들이 많이 살아 '몽키 마운틴'이라고도 불려요."
+        },
+        {
+          "name": "왓 후아이 몽콜",
+          "map_query": "Wat Huay Mongkol Hua Hin",
+          "one_line_desc": "높이 12m의 거대한 스님 동상이 있는 사원으로, 후아힌 시내에서 서쪽으로 차로 20~30분 거리에 있어요."
+        },
+        {
+          "name": "후아힌 기차역",
+          "map_query": "Hua Hin Railway Station",
+          "one_line_desc": "태국 왕실 별장 양식의 빨간 지붕이 인상적인 기차역으로, 사진 명소로도 잘 알려져 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "쏨땀뿌마",
+          "one_line_desc": "덜 익은 파파야를 채썰어 매콤새콤하게 무친 뒤 게살을 듬뿍 얹은 후아힌 해변 식당의 인기 메뉴예요."
+        },
+        {
+          "name": "파인애플새우커리",
+          "one_line_desc": "새우와 파인애플을 부드러운 커리에 넣고 끓인 요리로, 새콤달콤한 맛이 특징이에요."
+        },
+        {
+          "name": "호이텃",
+          "one_line_desc": "달군 철판에 반죽과 굴을 부쳐 만든 오믈렛으로, 후아힌 야시장의 대표 길거리 음식이에요."
+        }
       ]
     }
   ]

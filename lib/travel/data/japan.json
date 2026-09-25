@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "reviewed",
   "country": {
     "code": "japan",
     "name": "일본",
@@ -9,49 +9,434 @@
     "intro": "한국인이 가장 많이 찾는 해외 여행지예요. 비행기로 두세 시간이면 닿는 가까운 거리에, 도시마다 음식과 분위기가 확연히 달라서 몇 번을 가도 새로운 곳을 발견하게 돼요.",
     "name_note": "일본 이름은 같은 발음이라도 어떤 한자를 쓰느냐에 따라 뜻이 달라져요. 여기서는 그 발음에 자주 쓰이는 대표 한자를 예로 보여드려요.",
     "phrases": [
-      { "category": "인사", "meaning_kr": "안녕하세요", "text_local": "こんにちは", "pronunciation_kr": "콘니치와" },
-      { "category": "감사", "meaning_kr": "감사합니다", "text_local": "ありがとうございます", "pronunciation_kr": "아리가토 고자이마스" },
-      { "category": "주문", "meaning_kr": "이거 주세요", "text_local": "これください", "pronunciation_kr": "코레 쿠다사이" },
-      { "category": "쇼핑", "meaning_kr": "얼마예요?", "text_local": "いくらですか", "pronunciation_kr": "이쿠라 데스카" },
-      { "category": "식사", "meaning_kr": "맛있어요", "text_local": "おいしいです", "pronunciation_kr": "오이시이 데스" }
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "こんにちは",
+        "pronunciation_kr": "콘니치와"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "ありがとうございます",
+        "pronunciation_kr": "아리가토 고자이마스"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "これください",
+        "pronunciation_kr": "코레 쿠다사이"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "いくらですか",
+        "pronunciation_kr": "이쿠라 데스카"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "맛있어요",
+        "text_local": "おいしいです",
+        "pronunciation_kr": "오이시이 데스"
+      }
     ],
     "name_pool": [
-      { "name_local": "陽翔", "pronunciation_kr": "하루토", "romanized": "Haruto", "gender_style": "male", "vibe_tags": ["발랄함", "멋짐"], "meaning_kr": "볕 양(陽) + 날 상(翔), 햇살 속을 힘차게 날아오른다는 뜻" },
-      { "name_local": "蓮", "pronunciation_kr": "렌", "romanized": "Ren", "gender_style": "male", "vibe_tags": ["우아함", "멋짐"], "meaning_kr": "연꽃 련(蓮), 연꽃처럼 맑고 곧게 자라라는 뜻" },
-      { "name_local": "蒼太", "pronunciation_kr": "소타", "romanized": "Sota", "gender_style": "male", "vibe_tags": ["발랄함", "귀여움"], "meaning_kr": "푸를 창(蒼) + 클 태(太), 푸른 하늘처럼 크게 자라라는 뜻" },
-      { "name_local": "悠斗", "pronunciation_kr": "유토", "romanized": "Yuto", "gender_style": "male", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "멀 유(悠) + 북두 두(斗), 여유롭고 별처럼 빛나라는 뜻" },
-      { "name_local": "大輝", "pronunciation_kr": "다이키", "romanized": "Daiki", "gender_style": "male", "vibe_tags": ["카리스마", "발랄함"], "meaning_kr": "큰 대(大) + 빛날 휘(輝), 크게 빛나라는 뜻" },
-      { "name_local": "健", "pronunciation_kr": "켄", "romanized": "Ken", "gender_style": "male", "vibe_tags": ["멋짐", "카리스마"], "meaning_kr": "굳셀 건(健), 튼튼하고 건강하다는 뜻" },
-      { "name_local": "陸", "pronunciation_kr": "리쿠", "romanized": "Riku", "gender_style": "male", "vibe_tags": ["카리스마", "멋짐"], "meaning_kr": "뭍 륙(陸), 넓은 대지처럼 든든하라는 뜻" },
-      { "name_local": "海斗", "pronunciation_kr": "카이토", "romanized": "Kaito", "gender_style": "male", "vibe_tags": ["멋짐", "발랄함"], "meaning_kr": "바다 해(海) + 북두 두(斗), 바다와 별처럼 넓고 빛나라는 뜻" },
-      { "name_local": "翔太", "pronunciation_kr": "쇼타", "romanized": "Shota", "gender_style": "male", "vibe_tags": ["귀여움", "발랄함"], "meaning_kr": "날 상(翔) + 클 태(太), 크게 날아오르라는 뜻" },
-      { "name_local": "涼", "pronunciation_kr": "료", "romanized": "Ryo", "gender_style": "male", "vibe_tags": ["멋짐", "우아함"], "meaning_kr": "서늘할 량(涼), 시원하고 산뜻하다는 뜻" },
-      { "name_local": "隼人", "pronunciation_kr": "하야토", "romanized": "Hayato", "gender_style": "male", "vibe_tags": ["카리스마", "멋짐"], "meaning_kr": "송골매 준(隼) + 사람 인(人), 매처럼 날쌘 사람이라는 뜻" },
-      { "name_local": "匠", "pronunciation_kr": "타쿠미", "romanized": "Takumi", "gender_style": "male", "vibe_tags": ["카리스마", "우아함"], "meaning_kr": "장인 장(匠), 솜씨 좋은 장인이라는 뜻" },
-      { "name_local": "結衣", "pronunciation_kr": "유이", "romanized": "Yui", "gender_style": "female", "vibe_tags": ["사랑스러움", "우아함"], "meaning_kr": "맺을 결(結) + 옷 의(衣), 좋은 인연을 맺으라는 뜻" },
-      { "name_local": "桜", "pronunciation_kr": "사쿠라", "romanized": "Sakura", "gender_style": "female", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "벚꽃 앵(桜), 일본을 상징하는 벚꽃" },
-      { "name_local": "陽菜", "pronunciation_kr": "히나", "romanized": "Hina", "gender_style": "female", "vibe_tags": ["귀여움", "발랄함"], "meaning_kr": "볕 양(陽) + 나물 채(菜), 햇살 아래 싱그러운 새싹 같다는 뜻" },
-      { "name_local": "芽依", "pronunciation_kr": "메이", "romanized": "Mei", "gender_style": "female", "vibe_tags": ["귀여움", "사랑스러움"], "meaning_kr": "싹 아(芽) + 의지할 의(依), 새싹처럼 싱그럽다는 뜻" },
-      { "name_local": "莉子", "pronunciation_kr": "리코", "romanized": "Riko", "gender_style": "female", "vibe_tags": ["귀여움", "발랄함"], "meaning_kr": "말리 리(莉), 재스민꽃처럼 향기롭다는 뜻" },
-      { "name_local": "澪", "pronunciation_kr": "미오", "romanized": "Mio", "gender_style": "female", "vibe_tags": ["우아함", "멋짐"], "meaning_kr": "물길 령(澪), 배가 다니는 맑은 물길이라는 뜻" },
-      { "name_local": "結菜", "pronunciation_kr": "유나", "romanized": "Yuna", "gender_style": "female", "vibe_tags": ["사랑스러움", "귀여움"], "meaning_kr": "맺을 결(結) + 나물 채(菜), 싱그러운 인연이라는 뜻" },
-      { "name_local": "灯", "pronunciation_kr": "아카리", "romanized": "Akari", "gender_style": "female", "vibe_tags": ["사랑스러움", "발랄함"], "meaning_kr": "등불 등(灯), 주변을 밝히는 불빛이라는 뜻" },
-      { "name_local": "花", "pronunciation_kr": "하나", "romanized": "Hana", "gender_style": "female", "vibe_tags": ["귀여움", "사랑스러움"], "meaning_kr": "꽃 화(花), 꽃이라는 뜻" },
-      { "name_local": "美咲", "pronunciation_kr": "미사키", "romanized": "Misaki", "gender_style": "female", "vibe_tags": ["우아함", "발랄함"], "meaning_kr": "아름다울 미(美) + 꽃 필 소(咲), 아름답게 피어나라는 뜻" },
-      { "name_local": "桃花", "pronunciation_kr": "모모카", "romanized": "Momoka", "gender_style": "female", "vibe_tags": ["귀여움", "사랑스러움"], "meaning_kr": "복숭아 도(桃) + 꽃 화(花), 복숭아꽃이라는 뜻" },
-      { "name_local": "栞", "pronunciation_kr": "시오리", "romanized": "Shiori", "gender_style": "female", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "책갈피 간(栞), 길잡이가 되는 책갈피라는 뜻" },
-      { "name_local": "葵", "pronunciation_kr": "아오이", "romanized": "Aoi", "gender_style": "neutral", "vibe_tags": ["우아함", "멋짐"], "meaning_kr": "아욱 규(葵), 해를 따라 피는 접시꽃이라는 뜻" },
-      { "name_local": "光", "pronunciation_kr": "히카루", "romanized": "Hikaru", "gender_style": "neutral", "vibe_tags": ["발랄함", "카리스마"], "meaning_kr": "빛 광(光), 빛이라는 뜻" },
-      { "name_local": "誠", "pronunciation_kr": "마코토", "romanized": "Makoto", "gender_style": "neutral", "vibe_tags": ["카리스마", "우아함"], "meaning_kr": "정성 성(誠), 진실하고 성실하다는 뜻" },
-      { "name_local": "春", "pronunciation_kr": "하루", "romanized": "Haru", "gender_style": "neutral", "vibe_tags": ["발랄함", "사랑스러움"], "meaning_kr": "봄 춘(春), 봄이라는 뜻" },
-      { "name_local": "直", "pronunciation_kr": "나오", "romanized": "Nao", "gender_style": "neutral", "vibe_tags": ["귀여움", "발랄함"], "meaning_kr": "곧을 직(直), 곧고 솔직하다는 뜻" },
-      { "name_local": "雪", "pronunciation_kr": "유키", "romanized": "Yuki", "gender_style": "neutral", "vibe_tags": ["귀여움", "우아함"], "meaning_kr": "눈 설(雪), 하얀 눈이라는 뜻" },
-      { "name_local": "空", "pronunciation_kr": "소라", "romanized": "Sora", "gender_style": "neutral", "vibe_tags": ["발랄함", "멋짐"], "meaning_kr": "빌 공(空), 하늘이라는 뜻" },
-      { "name_local": "玲", "pronunciation_kr": "레이", "romanized": "Rei", "gender_style": "neutral", "vibe_tags": ["멋짐", "우아함"], "meaning_kr": "옥소리 령(玲), 옥이 부딪혀 나는 맑은 소리라는 뜻" },
-      { "name_local": "薫", "pronunciation_kr": "카오루", "romanized": "Kaoru", "gender_style": "neutral", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "향풀 훈(薫), 은은한 향기라는 뜻" },
-      { "name_local": "千尋", "pronunciation_kr": "치히로", "romanized": "Chihiro", "gender_style": "neutral", "vibe_tags": ["사랑스러움", "발랄함"], "meaning_kr": "일천 천(千) + 찾을 심(尋), 아주 깊고 넓다는 뜻" },
-      { "name_local": "瑞希", "pronunciation_kr": "미즈키", "romanized": "Mizuki", "gender_style": "neutral", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "상서 서(瑞) + 바랄 희(希), 좋은 일을 바란다는 뜻" },
-      { "name_local": "凛", "pronunciation_kr": "린", "romanized": "Rin", "gender_style": "neutral", "vibe_tags": ["카리스마", "멋짐"], "meaning_kr": "찰 름(凛), 늠름하고 기품 있다는 뜻" }
+      {
+        "name_local": "陽翔",
+        "pronunciation_kr": "하루토",
+        "romanized": "Haruto",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "볕 양(陽) + 날 상(翔), 햇살 속을 힘차게 날아오른다는 뜻"
+      },
+      {
+        "name_local": "蓮",
+        "pronunciation_kr": "렌",
+        "romanized": "Ren",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "연꽃 련(蓮), 연꽃처럼 맑고 곧게 자라라는 뜻"
+      },
+      {
+        "name_local": "蒼太",
+        "pronunciation_kr": "소타",
+        "romanized": "Sota",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "푸를 창(蒼) + 클 태(太), 푸른 하늘처럼 크게 자라라는 뜻"
+      },
+      {
+        "name_local": "悠斗",
+        "pronunciation_kr": "유토",
+        "romanized": "Yuto",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "멀 유(悠) + 북두 두(斗), 여유롭고 별처럼 빛나라는 뜻"
+      },
+      {
+        "name_local": "大輝",
+        "pronunciation_kr": "다이키",
+        "romanized": "Daiki",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "발랄함"
+        ],
+        "meaning_kr": "큰 대(大) + 빛날 휘(輝), 크게 빛나라는 뜻"
+      },
+      {
+        "name_local": "健",
+        "pronunciation_kr": "켄",
+        "romanized": "Ken",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "굳셀 건(健), 튼튼하고 건강하다는 뜻"
+      },
+      {
+        "name_local": "陸",
+        "pronunciation_kr": "리쿠",
+        "romanized": "Riku",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "뭍 륙(陸), 넓은 대지처럼 든든하라는 뜻"
+      },
+      {
+        "name_local": "海斗",
+        "pronunciation_kr": "카이토",
+        "romanized": "Kaito",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "바다 해(海) + 북두 두(斗), 바다와 별처럼 넓고 빛나라는 뜻"
+      },
+      {
+        "name_local": "翔太",
+        "pronunciation_kr": "쇼타",
+        "romanized": "Shota",
+        "gender_style": "male",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "날 상(翔) + 클 태(太), 크게 날아오르라는 뜻"
+      },
+      {
+        "name_local": "涼",
+        "pronunciation_kr": "료",
+        "romanized": "Ryo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "서늘할 량(涼), 시원하고 산뜻하다는 뜻"
+      },
+      {
+        "name_local": "隼人",
+        "pronunciation_kr": "하야토",
+        "romanized": "Hayato",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "송골매 준(隼) + 사람 인(人), 매처럼 날쌘 사람이라는 뜻"
+      },
+      {
+        "name_local": "匠",
+        "pronunciation_kr": "타쿠미",
+        "romanized": "Takumi",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "장인 장(匠), 솜씨 좋은 장인이라는 뜻"
+      },
+      {
+        "name_local": "結衣",
+        "pronunciation_kr": "유이",
+        "romanized": "Yui",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "맺을 결(結) + 옷 의(衣), 좋은 인연을 맺으라는 뜻"
+      },
+      {
+        "name_local": "桜",
+        "pronunciation_kr": "사쿠라",
+        "romanized": "Sakura",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "벚꽃 앵(桜), 일본을 상징하는 벚꽃"
+      },
+      {
+        "name_local": "陽菜",
+        "pronunciation_kr": "히나",
+        "romanized": "Hina",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "볕 양(陽) + 나물 채(菜), 햇살 아래 싱그러운 새싹 같다는 뜻"
+      },
+      {
+        "name_local": "芽依",
+        "pronunciation_kr": "메이",
+        "romanized": "Mei",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "싹 아(芽) + 의지할 의(依), 새싹처럼 싱그럽다는 뜻"
+      },
+      {
+        "name_local": "莉子",
+        "pronunciation_kr": "리코",
+        "romanized": "Riko",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "말리 리(莉) + 아들 자(子), 재스민꽃처럼 향기로운 아이라는 뜻"
+      },
+      {
+        "name_local": "澪",
+        "pronunciation_kr": "미오",
+        "romanized": "Mio",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "물길 령(澪), 배가 다니는 맑은 물길이라는 뜻"
+      },
+      {
+        "name_local": "結菜",
+        "pronunciation_kr": "유나",
+        "romanized": "Yuna",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "맺을 결(結) + 나물 채(菜), 싱그러운 인연이라는 뜻"
+      },
+      {
+        "name_local": "灯",
+        "pronunciation_kr": "아카리",
+        "romanized": "Akari",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "발랄함"
+        ],
+        "meaning_kr": "등불 등(灯), 주변을 밝히는 불빛이라는 뜻"
+      },
+      {
+        "name_local": "花",
+        "pronunciation_kr": "하나",
+        "romanized": "Hana",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "꽃 화(花), 꽃이라는 뜻"
+      },
+      {
+        "name_local": "美咲",
+        "pronunciation_kr": "미사키",
+        "romanized": "Misaki",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "발랄함"
+        ],
+        "meaning_kr": "아름다울 미(美) + 꽃 필 소(咲), 아름답게 피어나라는 뜻"
+      },
+      {
+        "name_local": "桃花",
+        "pronunciation_kr": "모모카",
+        "romanized": "Momoka",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "복숭아 도(桃) + 꽃 화(花), 복숭아꽃이라는 뜻"
+      },
+      {
+        "name_local": "栞",
+        "pronunciation_kr": "시오리",
+        "romanized": "Shiori",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "책갈피 간(栞), 길잡이가 되는 책갈피라는 뜻"
+      },
+      {
+        "name_local": "葵",
+        "pronunciation_kr": "아오이",
+        "romanized": "Aoi",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "아욱 규(葵), 해를 따라 피는 접시꽃이라는 뜻"
+      },
+      {
+        "name_local": "光",
+        "pronunciation_kr": "히카루",
+        "romanized": "Hikaru",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "카리스마"
+        ],
+        "meaning_kr": "빛 광(光), 빛이라는 뜻"
+      },
+      {
+        "name_local": "誠",
+        "pronunciation_kr": "마코토",
+        "romanized": "Makoto",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "정성 성(誠), 진실하고 성실하다는 뜻"
+      },
+      {
+        "name_local": "春",
+        "pronunciation_kr": "하루",
+        "romanized": "Haru",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "봄 춘(春), 봄이라는 뜻"
+      },
+      {
+        "name_local": "直",
+        "pronunciation_kr": "나오",
+        "romanized": "Nao",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "곧을 직(直), 곧고 솔직하다는 뜻"
+      },
+      {
+        "name_local": "雪",
+        "pronunciation_kr": "유키",
+        "romanized": "Yuki",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "우아함"
+        ],
+        "meaning_kr": "눈 설(雪), 하얀 눈이라는 뜻"
+      },
+      {
+        "name_local": "空",
+        "pronunciation_kr": "소라",
+        "romanized": "Sora",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "빌 공(空), 하늘이라는 뜻"
+      },
+      {
+        "name_local": "玲",
+        "pronunciation_kr": "레이",
+        "romanized": "Rei",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "옥소리 령(玲), 옥이 부딪혀 나는 맑은 소리라는 뜻"
+      },
+      {
+        "name_local": "薫",
+        "pronunciation_kr": "카오루",
+        "romanized": "Kaoru",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "향풀 훈(薫), 은은한 향기라는 뜻"
+      },
+      {
+        "name_local": "千尋",
+        "pronunciation_kr": "치히로",
+        "romanized": "Chihiro",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "사랑스러움",
+          "발랄함"
+        ],
+        "meaning_kr": "일천 천(千) + 찾을 심(尋), 아주 깊고 넓다는 뜻"
+      },
+      {
+        "name_local": "瑞希",
+        "pronunciation_kr": "미즈키",
+        "romanized": "Mizuki",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "상서 서(瑞) + 바랄 희(希), 좋은 일을 바란다는 뜻"
+      },
+      {
+        "name_local": "凛",
+        "pronunciation_kr": "린",
+        "romanized": "Rin",
+        "gender_style": "female",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "찰 름(凛), 늠름하고 기품 있다는 뜻"
+      }
     ]
   },
   "cities": [
@@ -61,14 +446,36 @@
       "tier": 1,
       "intro": "일본의 수도 도쿄는 초고층 빌딩 숲과 수백 년 된 사찰이 한 동네에 공존하는 도시예요. 시부야·신주쿠의 네온사인부터 아사쿠사의 골목 상점가까지, 지하철 몇 정거장마다 전혀 다른 분위기를 만날 수 있어요.",
       "attractions": [
-        { "name": "센소지", "map_query": "Senso-ji Tokyo", "one_line_desc": "아사쿠사에 있는 도쿄에서 가장 오래된 절. 거대한 붉은 등이 걸린 가미나리몬이 상징이에요." },
-        { "name": "시부야 스크램블 교차로", "short": "시부야 교차로", "map_query": "Shibuya Scramble Crossing", "one_line_desc": "신호가 바뀌면 사방에서 수많은 사람이 한꺼번에 건너는 도쿄의 명물 교차로예요." },
-        { "name": "메이지 신궁", "map_query": "Meiji Jingu Tokyo", "one_line_desc": "하라주쿠 바로 옆, 도심 한가운데 울창한 숲으로 둘러싸인 신사예요." }
+        {
+          "name": "센소지",
+          "map_query": "Senso-ji Tokyo",
+          "one_line_desc": "아사쿠사에 있는 도쿄에서 가장 오래된 절. 거대한 붉은 등이 걸린 가미나리몬이 상징이에요."
+        },
+        {
+          "name": "시부야 스크램블 교차로",
+          "short": "시부야 교차로",
+          "map_query": "Shibuya Scramble Crossing",
+          "one_line_desc": "신호가 바뀌면 사방에서 수많은 사람이 한꺼번에 건너는 도쿄의 명물 교차로예요."
+        },
+        {
+          "name": "메이지 신궁",
+          "map_query": "Meiji Jingu Tokyo",
+          "one_line_desc": "하라주쿠 바로 옆, 도심 한가운데 울창한 숲으로 둘러싸인 신사예요."
+        }
       ],
       "foods": [
-        { "name": "스시", "one_line_desc": "밥 위에 생선을 올리는 지금의 스시 스타일은 에도(옛 도쿄)에서 시작됐어요." },
-        { "name": "몬자야키", "one_line_desc": "쓰키시마 '몬자 거리'가 유명한 도쿄 서민 음식. 철판 위 묽은 반죽을 작은 주걱으로 떠먹어요." },
-        { "name": "츠케멘", "one_line_desc": "차가운 면을 진한 국물에 찍어 먹는 라멘. 도쿄에서 시작돼 전국으로 퍼졌어요." }
+        {
+          "name": "스시",
+          "one_line_desc": "밥 위에 생선을 올리는 지금의 스시 스타일은 에도(옛 도쿄)에서 시작됐어요."
+        },
+        {
+          "name": "몬자야키",
+          "one_line_desc": "쓰키시마 '몬자 거리'가 유명한 도쿄 서민 음식. 철판 위 묽은 반죽을 작은 주걱으로 떠먹어요."
+        },
+        {
+          "name": "츠케멘",
+          "one_line_desc": "차가운 면을 진한 국물에 찍어 먹는 라멘. 도쿄에서 시작돼 전국으로 퍼졌어요."
+        }
       ]
     },
     {
@@ -77,14 +484,36 @@
       "tier": 1,
       "intro": "'먹다가 망한다(구이다오레)'는 말이 있을 만큼 먹거리에 진심인 도시예요. 도톤보리 운하를 따라 늘어선 화려한 간판과 활기찬 상인 문화 덕분에 일본에서 가장 유쾌한 여행지로 꼽혀요.",
       "attractions": [
-        { "name": "오사카성", "map_query": "Osaka Castle", "one_line_desc": "16세기 도요토미 히데요시가 세운 성. 천수각 전망대에서 오사카 시내가 한눈에 보여요." },
-        { "name": "도톤보리", "map_query": "Dotonbori Osaka", "one_line_desc": "운하를 따라 화려한 간판과 맛집이 늘어선 먹방 여행의 중심지. 달리는 사람 모양의 글리코 간판이 유명해요." },
-        { "name": "유니버설 스튜디오 재팬", "short": "USJ", "map_query": "Universal Studios Japan", "one_line_desc": "해리 포터, 슈퍼 닌텐도 월드 등을 즐길 수 있는 대형 테마파크예요." }
+        {
+          "name": "오사카성",
+          "map_query": "Osaka Castle",
+          "one_line_desc": "16세기 도요토미 히데요시가 세운 성. 천수각 전망대에서 오사카 시내가 한눈에 보여요."
+        },
+        {
+          "name": "도톤보리",
+          "map_query": "Dotonbori Osaka",
+          "one_line_desc": "운하를 따라 화려한 간판과 맛집이 늘어선 먹방 여행의 중심지. 달리는 사람 모양의 글리코 간판이 유명해요."
+        },
+        {
+          "name": "유니버설 스튜디오 재팬",
+          "short": "USJ",
+          "map_query": "Universal Studios Japan",
+          "one_line_desc": "해리 포터, 슈퍼 닌텐도 월드 등을 즐길 수 있는 대형 테마파크예요."
+        }
       ],
       "foods": [
-        { "name": "타코야키", "one_line_desc": "문어를 넣고 동그랗게 구운 오사카 대표 길거리 간식이에요." },
-        { "name": "오코노미야키", "one_line_desc": "양배추를 듬뿍 넣은 반죽을 철판에 구워 소스와 마요네즈를 올려 먹어요." },
-        { "name": "쿠시카츠", "one_line_desc": "고기·채소를 꼬치에 꽂아 튀긴 음식. 공용 소스는 한 번만 찍는 게 규칙이에요." }
+        {
+          "name": "타코야키",
+          "one_line_desc": "문어를 넣고 동그랗게 구운 오사카 대표 길거리 간식이에요."
+        },
+        {
+          "name": "오코노미야키",
+          "one_line_desc": "양배추를 듬뿍 넣은 반죽을 철판에 구워 소스와 마요네즈를 올려 먹어요."
+        },
+        {
+          "name": "쿠시카츠",
+          "one_line_desc": "고기·채소를 꼬치에 꽂아 튀긴 음식. 공용 소스는 한 번만 찍는 게 규칙이에요."
+        }
       ]
     },
     {
@@ -93,14 +522,37 @@
       "tier": 1,
       "intro": "천 년 넘게 일본의 수도였던 교토에는 1,600곳이 넘는 사찰과 신사가 남아 있어요. 기모노를 입고 돌길을 걷거나, 이른 아침 붉은 도리이 터널을 지나는 것만으로도 시간 여행을 하는 기분이 들어요.",
       "attractions": [
-        { "name": "후시미 이나리 신사", "short": "후시미 이나리", "map_query": "Fushimi Inari Taisha", "one_line_desc": "산길을 따라 붉은 도리이 수천 개가 터널처럼 이어진 신사예요." },
-        { "name": "기요미즈데라", "map_query": "Kiyomizu-dera Kyoto", "one_line_desc": "절벽 위에 못 하나 쓰지 않고 세운 나무 무대로 유명한 절이에요." },
-        { "name": "아라시야마 대나무 숲", "short": "아라시야마", "map_query": "Arashiyama Bamboo Grove", "one_line_desc": "하늘 높이 뻗은 대나무 사이로 난 산책길. 바람 소리까지 여행의 일부가 돼요." }
+        {
+          "name": "후시미 이나리 신사",
+          "short": "후시미 이나리",
+          "map_query": "Fushimi Inari Taisha",
+          "one_line_desc": "산길을 따라 붉은 도리이 수천 개가 터널처럼 이어진 신사예요."
+        },
+        {
+          "name": "기요미즈데라",
+          "map_query": "Kiyomizu-dera Kyoto",
+          "one_line_desc": "절벽 위에 못 하나 쓰지 않고 세운 나무 무대로 유명한 절이에요."
+        },
+        {
+          "name": "아라시야마 대나무 숲",
+          "short": "아라시야마",
+          "map_query": "Arashiyama Bamboo Grove",
+          "one_line_desc": "하늘 높이 뻗은 대나무 사이로 난 산책길. 바람 소리까지 여행의 일부가 돼요."
+        }
       ],
       "foods": [
-        { "name": "유도후", "one_line_desc": "다시마 국물에 두부를 데워 먹는 담백한 교토 요리예요." },
-        { "name": "말차 디저트", "one_line_desc": "교토 남부 우지는 이름난 말차 산지. 말차 파르페와 아이스크림이 인기예요." },
-        { "name": "니신소바", "one_line_desc": "달짝지근하게 조린 청어를 올린 교토 명물 메밀국수예요." }
+        {
+          "name": "유도후",
+          "one_line_desc": "다시마 국물에 두부를 데워 먹는 담백한 교토 요리예요."
+        },
+        {
+          "name": "말차 디저트",
+          "one_line_desc": "교토 남부 우지는 이름난 말차 산지. 말차 파르페와 아이스크림이 인기예요."
+        },
+        {
+          "name": "니신소바",
+          "one_line_desc": "달짝지근하게 조린 청어를 올린 교토 명물 메밀국수예요."
+        }
       ]
     },
     {
@@ -109,14 +561,263 @@
       "tier": 1,
       "intro": "부산에서 배로도 갈 수 있을 만큼 한국과 가까운 규슈 최대 도시예요. 공항에서 시내까지 지하철로 10분 남짓이면 닿고, 밤이면 나카스 강변에 포장마차(야타이)가 불을 밝혀요.",
       "attractions": [
-        { "name": "나카스 야타이 거리", "short": "나카스 야타이", "map_query": "Nakasu Yatai Fukuoka", "one_line_desc": "해가 지면 강변을 따라 포장마차가 줄지어 서는 후쿠오카의 밤 명소예요." },
-        { "name": "다자이후 텐만구", "short": "다자이후", "map_query": "Dazaifu Tenmangu", "one_line_desc": "학문의 신을 모신 신사. 시내에서 전철로 갈 수 있고, 참배길의 매화떡(우메가에모치)이 명물이에요." },
-        { "name": "후쿠오카 타워", "map_query": "Fukuoka Tower", "one_line_desc": "모모치 해변 옆에 선 234m 높이의 전망 타워. 바다 위로 지는 노을이 아름다워요." }
+        {
+          "name": "나카스 야타이 거리",
+          "short": "나카스 야타이",
+          "map_query": "Nakasu Yatai Fukuoka",
+          "one_line_desc": "해가 지면 강변을 따라 포장마차가 줄지어 서는 후쿠오카의 밤 명소예요."
+        },
+        {
+          "name": "다자이후 텐만구",
+          "short": "다자이후",
+          "map_query": "Dazaifu Tenmangu",
+          "one_line_desc": "학문의 신을 모신 신사. 시내에서 전철로 갈 수 있고, 참배길의 매화떡(우메가에모치)이 명물이에요."
+        },
+        {
+          "name": "후쿠오카 타워",
+          "map_query": "Fukuoka Tower",
+          "one_line_desc": "모모치 해변 옆에 선 234m 높이의 전망 타워. 바다 위로 지는 노을이 아름다워요."
+        }
       ],
       "foods": [
-        { "name": "돈코츠 라멘", "one_line_desc": "뽀얀 돼지뼈 육수에 가는 면을 넣은 하카타 라멘. 면만 추가하는 '카에다마' 주문이 유명해요." },
-        { "name": "모츠나베", "one_line_desc": "소 곱창을 양배추·부추와 함께 끓인 후쿠오카 대표 전골이에요." },
-        { "name": "멘타이코", "one_line_desc": "매콤하게 절인 명란젓. 밥은 물론 파스타·빵에도 올려 먹는 후쿠오카 명물이에요." }
+        {
+          "name": "돈코츠 라멘",
+          "one_line_desc": "뽀얀 돼지뼈 육수에 가는 면을 넣은 하카타 라멘. 면만 추가하는 '카에다마' 주문이 유명해요."
+        },
+        {
+          "name": "모츠나베",
+          "one_line_desc": "소 곱창을 양배추·부추와 함께 끓인 후쿠오카 대표 전골이에요."
+        },
+        {
+          "name": "멘타이코",
+          "one_line_desc": "매콤하게 절인 명란젓. 밥은 물론 파스타·빵에도 올려 먹는 후쿠오카 명물이에요."
+        }
+      ]
+    },
+    {
+      "city_code": "sapporo",
+      "city_name": "삿포로",
+      "tier": 1,
+      "intro": "홋카이도의 중심 도시 삿포로는 겨울마다 세계적인 눈 축제가 열리는 곳으로 유명해요. 도심 한복판에 넓은 녹지와 붉은 벽돌 건물이 남아 있고, 매서운 추위 속에서 더 진해지는 향토 음식 문화가 발달했어요.",
+      "attractions": [
+        {
+          "name": "오도리 공원",
+          "map_query": "Odori Park Sapporo",
+          "one_line_desc": "삿포로 도심을 동서로 가로지르는 녹지 공원. 겨울엔 눈축제, 여름엔 맥주 축제가 열려요."
+        },
+        {
+          "name": "삿포로 시계탑",
+          "map_query": "Sapporo Clock Tower",
+          "one_line_desc": "1878년에 지어진 목조 건물로, 삿포로역과 오도리 공원 사이에 있는 도시의 상징이에요."
+        },
+        {
+          "name": "삿포로 맥주 박물관",
+          "short": "맥주 박물관",
+          "map_query": "Sapporo Beer Museum",
+          "one_line_desc": "붉은 벽돌 건물에서 삿포로 맥주의 역사를 살펴보고 갓 뽑은 생맥주를 시음할 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "수프카레",
+          "one_line_desc": "삿포로에서 시작된 향신료 수프에 채소와 고기를 따로 조리해 담아내는 홋카이도 명물이에요."
+        },
+        {
+          "name": "징기스칸",
+          "one_line_desc": "돔 모양 철판에 양고기와 채소를 구워 먹는 홋카이도 대표 요리. 삿포로에 전문점이 많아요."
+        },
+        {
+          "name": "미소라멘",
+          "one_line_desc": "된장 육수를 라드로 덮어 잘 식지 않게 만든 라멘. 삿포로의 한 노포에서 처음 시작됐어요."
+        }
+      ]
+    },
+    {
+      "city_code": "okinawa",
+      "city_name": "오키나와",
+      "tier": 1,
+      "intro": "일본 본토와는 다른 류큐 왕국의 역사와 에메랄드빛 바다를 함께 만날 수 있는 곳이에요. 나하 시내의 번화가부터 북부의 대형 수족관까지, 오키나와 본섬 곳곳에 볼거리가 흩어져 있어요.",
+      "attractions": [
+        {
+          "name": "슈리성",
+          "map_query": "Shurijo Castle Naha",
+          "one_line_desc": "류큐 왕국의 옛 왕궁 터. 2019년 화재로 소실된 정전은 지금도 복원 공사 중인 모습을 볼 수 있어요."
+        },
+        {
+          "name": "추라우미 수족관",
+          "short": "추라우미",
+          "map_query": "Okinawa Churaumi Aquarium",
+          "one_line_desc": "고래상어가 헤엄치는 대형 수조로 유명한 오키나와 북부의 수족관이에요."
+        },
+        {
+          "name": "국제거리",
+          "map_query": "Kokusai Dori Naha",
+          "one_line_desc": "나하 시내를 가로지르는 약 1.6km 번화가로, 기념품점과 식당이 줄지어 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "오키나와 소바",
+          "one_line_desc": "메밀이 아닌 밀가루 면을 돼지뼈와 가다랑어 육수에 말아낸 오키나와식 소바예요."
+        },
+        {
+          "name": "고야참프루",
+          "one_line_desc": "쓴맛 나는 여주와 두부, 돼지고기를 함께 볶은 오키나와식 볶음 요리예요."
+        },
+        {
+          "name": "사타안다기",
+          "one_line_desc": "흑설탕 반죽을 둥글게 튀긴 오키나와식 도넛. 겉은 바삭하고 속은 폭신해요."
+        }
+      ]
+    },
+    {
+      "city_code": "nagoya",
+      "city_name": "나고야",
+      "tier": 1,
+      "intro": "일본 정중앙에 자리해 도쿄와 오사카를 잇는 교통의 요지로 꼽히는 도시예요. 진한 팔초 된장(하츠초미소)을 활용한 요리들이 발달해 있어 '나고야메시'라는 말이 따로 있을 정도예요.",
+      "attractions": [
+        {
+          "name": "나고야성",
+          "map_query": "Nagoya Castle",
+          "one_line_desc": "1610년 도쿠가와 이에야스가 쌓기 시작한 성으로, 금빛 샤치호코 장식이 상징이에요."
+        },
+        {
+          "name": "아츠타 신궁",
+          "map_query": "Atsuta Jingu Nagoya",
+          "one_line_desc": "일본 왕실의 삼종신기 중 하나인 검을 모신 신사로, 이세신궁 다음가는 격식을 지녀요."
+        },
+        {
+          "name": "오스 상점가",
+          "map_query": "Osu Shopping Street Nagoya",
+          "one_line_desc": "약 400년 역사를 가진 상점가. 8개 거리에 1,200여 개 점포가 모여 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "히츠마부시",
+          "one_line_desc": "구운 장어를 잘게 썰어 밥에 올리는 나고야식 장어덮밥. 세 가지 방법으로 나눠 먹어요."
+        },
+        {
+          "name": "미소카츠",
+          "one_line_desc": "돈가스에 걸쭉한 팔초 된장 소스를 끼얹어 먹는 나고야식 돈가스예요."
+        },
+        {
+          "name": "데바사키",
+          "one_line_desc": "닭 날개 끝부분을 튀겨 짭짤하게 양념한 나고야의 대표 술안주예요."
+        }
+      ]
+    },
+    {
+      "city_code": "kobe",
+      "city_name": "고베",
+      "tier": 1,
+      "intro": "1868년 개항 이후 서양 문물이 가장 먼저 들어온 항구 도시로, 이국적인 서양식 저택 거리가 그 흔적을 보여줘요. 고급 소고기와 나다 지역의 사케 양조 문화로도 널리 알려져 있어요.",
+      "attractions": [
+        {
+          "name": "기타노 이진칸",
+          "map_query": "Kitano Ijinkan Kobe",
+          "one_line_desc": "개항 시기 외국인들이 살던 서양식 저택 거리. '비늘의 집' 등 여러 채를 둘러볼 수 있어요."
+        },
+        {
+          "name": "메리켄 파크",
+          "map_query": "Meriken Park Kobe",
+          "one_line_desc": "붉은 철골의 고베 포트타워가 서 있는 항구 공원으로, 야경 명소로 유명해요."
+        },
+        {
+          "name": "하쿠츠루 주조 자료관",
+          "short": "하쿠츠루 자료관",
+          "map_query": "Hakutsuru Sake Brewery Museum Kobe",
+          "one_line_desc": "다이쇼 시대 양조장을 개조한 사케 박물관. 무료로 관람하고 시음도 할 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "고베규",
+          "one_line_desc": "개항 이후 외국인들에게 맛이 알려지며 명성을 얻은 효고현의 브랜드 소고기예요."
+        },
+        {
+          "name": "부타만",
+          "one_line_desc": "고베 차이나타운 난킨마치의 명물 돼지고기 만두. 100년 넘은 원조집이 있어요."
+        },
+        {
+          "name": "소바메시",
+          "one_line_desc": "볶음면과 밥을 철판에 함께 볶는 요리로, 고베 나가타구 노동자들의 음식에서 시작됐어요."
+        }
+      ]
+    },
+    {
+      "city_code": "nara",
+      "city_name": "나라",
+      "tier": 1,
+      "intro": "일본의 옛 수도였던 나라에는 사슴이 자유롭게 뛰노는 공원과 거대한 불상이 있는 절이 있어요. 오사카에서 전철로 40분이면 닿는 가까운 거리라 당일치기 여행지로도 인기예요.",
+      "attractions": [
+        {
+          "name": "나라공원",
+          "map_query": "Nara Park",
+          "one_line_desc": "1,000마리가 넘는 사슴이 자유롭게 돌아다니는 공원으로, 사슴센베이 먹이 주기가 인기예요."
+        },
+        {
+          "name": "도다이지",
+          "map_query": "Todai-ji Nara",
+          "one_line_desc": "거대한 불상이 모셔진 절로, 경내를 걷다 보면 사슴들과 자주 마주치게 돼요."
+        },
+        {
+          "name": "카스가타이샤",
+          "map_query": "Kasuga Taisha Nara",
+          "one_line_desc": "수천 개의 등롱이 늘어선 신사로, 나라공원 안쪽 숲길을 따라 이어져 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "카키노하즈시",
+          "one_line_desc": "소금에 절인 고등어를 감잎으로 싸서 숙성시킨 나라의 초기 스시 형태예요."
+        },
+        {
+          "name": "미와소면",
+          "one_line_desc": "일본 소면의 발상지로 알려진 나라 사쿠라이 지역의 손으로 뽑은 소면이에요."
+        },
+        {
+          "name": "나라즈케",
+          "one_line_desc": "채소를 사케 만들 때 나오는 술지게미에 절여 숙성시킨 나라의 전통 장아찌예요."
+        }
+      ]
+    },
+    {
+      "city_code": "yufuin",
+      "city_name": "유후인",
+      "tier": 1,
+      "intro": "규슈를 대표하는 온천 마을로, 호수를 둘러싼 조용한 풍경과 아기자기한 상점 거리가 매력이에요. 큰 온천 도시인 벳푸보다 아담한 규모라 하루 코스로 여유롭게 걷기 좋아요.",
+      "attractions": [
+        {
+          "name": "킨린코 호수",
+          "map_query": "Kinrin Lake Yufuin",
+          "one_line_desc": "호수 바닥에서 온천수가 솟아 나와, 쌀쌀한 아침이면 물안개가 피어오르는 풍경으로 유명해요."
+        },
+        {
+          "name": "유노츠보 거리",
+          "map_query": "Yunotsubo Kaido Yufuin",
+          "one_line_desc": "유후인역에서 이어지는 메인 거리로, 70여 개의 상점과 먹거리가 늘어서 있어요."
+        },
+        {
+          "name": "유후인 플로랄 빌리지",
+          "short": "플로랄 빌리지",
+          "map_query": "Yufuin Floral Village",
+          "one_line_desc": "유럽 마을을 재현한 무료 입장 포토 스팟으로, 작은 동물들과도 만날 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "분고규",
+          "one_line_desc": "유후인이 있는 오이타현의 브랜드 소고기예요. 료칸 저녁 식사나 스테이크·덮밥으로 자주 나와요."
+        },
+        {
+          "name": "토리텐",
+          "one_line_desc": "닭고기에 튀김옷을 입혀 튀긴 오이타현 향토 음식. 폰즈 간장에 찍어 먹어요."
+        },
+        {
+          "name": "단고지루",
+          "one_line_desc": "밀가루 반죽을 넓적하게 늘인 면과 채소를 된장 국물에 끓인 오이타현 향토 요리예요."
+        }
       ]
     }
   ]
