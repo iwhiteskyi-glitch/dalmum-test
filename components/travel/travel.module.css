@@ -746,89 +746,55 @@
   margin-top: 18px;
 }
 
-/* 결과 엽서 */
-.postcardFrame {
-  max-width: 360px;
+/* 결과: 저장될 카드 이미지를 그대로 미리보기 */
+.cardPreview {
+  max-width: 340px;
   margin: 0 auto;
-  padding: 4px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, #a6dfe3, #fcd9a8);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-}
-.postcardInner {
-  position: relative;
-  background: #fffaf6;
   border-radius: 20px;
-  padding: 26px 20px 22px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+  background: #f2ebe4;
 }
-.postcardStamp {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 30px;
-  height: 30px;
-  border: 2px dashed rgba(18, 164, 176, 0.55);
-  border-radius: 6px;
-  transform: rotate(8deg);
-}
-.eyebrow {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: var(--muted-ink);
-  margin: 0 0 4px;
-}
-.finalName {
-  font-size: 34px;
-  line-height: 1.1;
-  margin: 4px 0 0;
-}
-.finalLocal {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--muted-ink);
-  margin: 0;
-}
-.finalMeaning {
-  font-size: 12.5px;
-  color: var(--t-teal-deep);
-  line-height: 1.5;
-  margin: 2px 0 0;
-}
-.finalBlurb {
-  font-size: 14px;
-  line-height: 1.55;
-  margin: 2px 0 0;
-}
-.divider {
+.cardPreview img {
+  display: block;
   width: 100%;
-  border: none;
-  border-top: 1px solid #eee3da;
-  margin: 8px 0 4px;
+  height: auto;
 }
-.tagRow {
+.cardLoading {
+  aspect-ratio: 1080 / 1920;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 6px;
-}
-.tag {
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--t-teal-deep);
-  background: var(--t-teal-soft);
-  border-radius: 999px;
-  padding: 4px 11px;
-}
-.place {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted-ink);
-  margin: 4px 0 0;
+  padding: 20px;
+  text-align: center;
+}
+.shareRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+.darkBtn,
+.shareBtn {
+  flex: 1;
+  padding: 15px 12px;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+}
+.darkBtn {
+  border: none;
+  background: #3a2f2a;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+.darkBtn:hover:not(:disabled) {
+  background: #241c18;
+}
+.darkBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 .finalHint {
   font-size: 13px;

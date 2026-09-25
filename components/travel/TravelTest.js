@@ -6,6 +6,8 @@ import Avatar from "./Avatar";
 import styles from "./travel.module.css";
 import { MOODS, STYLES } from "@/lib/travel/texts";
 import { drawNameCards } from "@/lib/travel/recommend";
+import { buildTravelCard } from "@/lib/travel/travelCard";
+import { SITE } from "@/lib/site";
 
 const STEPS = ["info", "result", "final"];
 
@@ -20,6 +22,8 @@ export default function TravelTest({ country, city }) {
   const [cards, setCards] = useState([]);
   const [selected, setSelected] = useState(null);
   const [recycled, setRecycled] = useState(false);
+  const [cardImage, setCardImage] = useState(null);
+  const [busy, setBusy] = useState(false);
   const firstRender = useRef(true);
 
   useEffect(() => {
@@ -79,6 +83,72 @@ export default function TravelTest({ country, city }) {
 
   const chosen = selected !== null ? cards[selected] : null;
   const stepIdx = STEPS.indexOf(step);
+  const pageUrl = `${SITE.url}/travel/${country.code}/${city.city_code}`;
+  const fileName = chosen ? `여행이름_${city.city_name}_${chosen.pronunciation_kr}.png` : "";
+
+  // 결과 단계에 들어오면 저장·공유할 이미지를 미리 만들어 화면에 그대로 보여줍니다.
+  useEffect(() => {
+    if (step !== "final" || !chosen) return;
+    let cancelled = false;
+    setCardImage(null);
+    const displayFont =
+      getComputedStyle(rootRef.current).getPropertyValue("--font-gaegu").trim() || "sans-serif";
+    buildTravelCard({
+      card: chosen,
+      moods,
+      country,
+      city,
+      phrases: country.phrases,
+      urlText: pageUrl.replace(/^https?:\/\//, ""),
+      displayFont,
+    })
+      .then((img) => !cancelled && setCardImage(img))
+      .catch(() => !cancelled && setCardImage({ error: true }));
+    return () => {
+      cancelled = true;
+    };
+    // chosen/moods가 바뀌는 건 step 전환과 함께라 step·selected만 보면 충분합니다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step, selected]);
+
+  const downloadImage = () => {
+    const a = document.createElement("a");
+    a.href = cardImage.dataUrl;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
+  const onSave = () => {
+    if (!cardImage?.dataUrl) return;
+    downloadImage();
+    track("travel_card_saved", { country: country.code, city: city.city_code });
+  };
+
+  const onShare = async () => {
+    if (!cardImage?.blob) return;
+    setBusy(true);
+    try {
+      const file = new File([cardImage.blob], "travel-name-card.png", { type: "image/png" });
+      const text = `${city.city_name} 여행 가면 내 이름은 '${chosen.pronunciation_kr}' ✈️ 너도 받아봐!\n${pageUrl}`;
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        // 파일과 함께 공유하면 url 필드가 무시되는 앱이 많아 링크를 text 안에 넣습니다.
+        await navigator.share({ files: [file], title: "여행가면 내 이름은?", text });
+      } else {
+        try {
+          await navigator.clipboard?.writeText(pageUrl);
+        } catch {}
+        downloadImage();
+        alert("이 브라우저는 바로 공유가 안 돼요. 링크를 복사하고 카드 이미지를 저장했어요!");
+      }
+      track("travel_card_shared", { country: country.code, city: city.city_code });
+    } catch (e) {
+      if (e.name !== "AbortError") alert("공유하지 못했어요. 다시 시도해 주세요.");
+    } finally {
+      setBusy(false);
+    }
+  };
 
   return (
     <section ref={rootRef} className={styles.test} aria-label={`${city.city_name} 여행 이름 테스트`}>
@@ -253,39 +323,42 @@ export default function TravelTest({ country, city }) {
                 {trimmedNick} 님의 {city.city_name} 여행 이름
               </p>
 
-              <div className={styles.postcardFrame}>
-                <div className={styles.postcardInner}>
-                  <span className={styles.postcardStamp} aria-hidden="true" />
-                  <p className={styles.eyebrow}>TRAVEL NAME CARD</p>
-                  <Avatar avatar={chosen.avatar} size={96} title={`${chosen.pronunciation_kr} 캐릭터`} />
-                  <p className={`${styles.display} ${styles.finalName}`}>{chosen.pronunciation_kr}</p>
-                  <p className={styles.finalLocal} lang={country.lang_code}>
-                    {chosen.name_local !== chosen.romanized
-                      ? `${chosen.name_local} · ${chosen.romanized}`
-                      : chosen.romanized}
-                  </p>
-                  {chosen.meaning_kr && <p className={styles.finalMeaning}>{chosen.meaning_kr}</p>}
-                  <p className={styles.finalBlurb}>{chosen.blurb}</p>
-                  <hr className={styles.divider} />
-                  <div className={styles.tagRow}>
-                    <span className={styles.titleBadge} style={{ marginTop: 0 }}>
-                      {chosen.title}
-                    </span>
-                    {(moods.length ? moods : [chosen.vibe]).map((m) => (
-                      <span key={m} className={styles.tag}>
-                        #{m}
-                      </span>
-                    ))}
+              <div className={styles.cardPreview}>
+                {cardImage?.dataUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={cardImage.dataUrl}
+                    alt={`${chosen.pronunciation_kr} 여행 이름 카드와 ${city.city_name} 인사말·명소·음식`}
+                  />
+                ) : (
+                  <div className={styles.cardLoading}>
+                    {cardImage?.error ? "카드를 만들지 못했어요. 다시 시도해 주세요." : "카드 만드는 중…"}
                   </div>
-                  <p className={styles.place}>
-                    📍 {city.city_name}, {country.name}
-                  </p>
-                </div>
+                )}
               </div>
 
               <p className={styles.finalHint}>
-                아래에서 {city.city_name} 여행 인사말·명소·음식도 확인해보세요 ↓
+                인사말·명소·음식까지 담긴 카드예요. 저장해두면 여행 중에 꺼내 보기 좋아요.
               </p>
+
+              <div className={styles.shareRow}>
+                <button
+                  type="button"
+                  className={styles.darkBtn}
+                  disabled={!cardImage?.dataUrl}
+                  onClick={onSave}
+                >
+                  이미지 저장
+                </button>
+                <button
+                  type="button"
+                  className={`${styles.cta} ${styles.shareBtn}`}
+                  disabled={!cardImage?.blob || busy}
+                  onClick={onShare}
+                >
+                  공유하기
+                </button>
+              </div>
 
               <div className={styles.actions}>
                 <button type="button" className={styles.ghost} onClick={() => setStep("result")}>

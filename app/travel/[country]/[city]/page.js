@@ -38,7 +38,9 @@ export default async function CityPage({ params }) {
   const testCountry = {
     code: country.code,
     name: country.name,
+    language: country.language,
     lang_code: country.lang_code,
+    phrases: country.phrases,
     name_pool: country.name_pool,
   };
   const testCity = {
