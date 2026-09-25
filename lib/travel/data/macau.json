@@ -1,0 +1,351 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "macau",
+    "name": "마카오",
+    "language": "광동어(마카오)",
+    "lang_code": "yue",
+    "tier": 2,
+    "intro": "마카오는 400년 넘게 포르투갈의 식민지였던 역사 덕분에 유럽풍 건물과 중국 문화가 함께 어우러진 독특한 거리 풍경을 가지고 있어요. 지금은 대형 카지노와 리조트가 모여 있는 세계적인 엔터테인먼트 도시로도 유명하고, 홍콩에서 페리로 한 시간이면 닿을 수 있어서 당일치기 여행지로도 인기가 많아요.",
+    "name_note": "마카오도 홍콩처럼 이름을 한자로 짓고 광동어로 읽어서, 같은 한자라도 한국식 한자음과는 소리가 많이 달라요. 포르투갈어 세례명을 함께 쓰는 사람도 있지만, 여기서는 광동어 발음 그대로의 이름을 소개해드려요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "你好",
+        "pronunciation_kr": "네이 호우"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "唔該",
+        "pronunciation_kr": "음고이",
+        "note": "서비스를 받았을 때 쓰는 감사 인사예요. 선물처럼 물건을 그냥 받았을 때는 '多謝(도제)'를 써요."
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "唔該，呢個",
+        "pronunciation_kr": "음고이, 네이고"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "幾多錢呀？",
+        "pronunciation_kr": "게이도 친 아"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "맛있어요",
+        "text_local": "好味呀！",
+        "pronunciation_kr": "호우메이 아"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "家豪",
+        "pronunciation_kr": "가호",
+        "romanized": "Ka Ho",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "집 가(家) + 호걸 호(豪), 집안을 빛낼 호걸이 되라는 뜻"
+      },
+      {
+        "name_local": "志明",
+        "pronunciation_kr": "지밍",
+        "romanized": "Chi Ming",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "뜻 지(志) + 밝을 명(明), 뜻을 밝게 세우고 나아가라는 뜻"
+      },
+      {
+        "name_local": "俊傑",
+        "pronunciation_kr": "쥔깃",
+        "romanized": "Chun Kit",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "준수할 준(俊) + 뛰어날 걸(傑), 재주가 뛰어난 인재라는 뜻"
+      },
+      {
+        "name_local": "偉倫",
+        "pronunciation_kr": "와이런",
+        "romanized": "Wai Lun",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "훌륭할 위(偉) + 인륜 륜(倫), 훌륭한 인품을 갖추라는 뜻"
+      },
+      {
+        "name_local": "子軒",
+        "pronunciation_kr": "지힌",
+        "romanized": "Tsz Hin",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "아들 자(子) + 집 헌(軒), 높고 넓은 집처럼 도량이 크라는 뜻"
+      },
+      {
+        "name_local": "浩然",
+        "pronunciation_kr": "호인",
+        "romanized": "Ho Yin",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "넓을 호(浩) + 그러할 연(然), 마음이 넓고 당당하라는 뜻"
+      },
+      {
+        "name_local": "天佑",
+        "pronunciation_kr": "틴야우",
+        "romanized": "Tin Yau",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "하늘 천(天) + 도울 우(佑), 하늘이 늘 도와준다는 뜻"
+      },
+      {
+        "name_local": "建華",
+        "pronunciation_kr": "긴와",
+        "romanized": "Kin Wa",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "세울 건(建) + 빛날 화(華), 화려하고 훌륭한 것을 세우라는 뜻"
+      },
+      {
+        "name_local": "志強",
+        "pronunciation_kr": "지컹",
+        "romanized": "Chi Keung",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "뜻 지(志) + 강할 강(強), 뜻이 굳세고 강인하다는 뜻"
+      },
+      {
+        "name_local": "家俊",
+        "pronunciation_kr": "가쥔",
+        "romanized": "Ka Chun",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "집 가(家) + 준수할 준(俊), 집안에 훤칠한 인재가 되라는 뜻"
+      },
+      {
+        "name_local": "美玲",
+        "pronunciation_kr": "메이링",
+        "romanized": "Mei Ling",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아름다울 미(美) + 옥소리 령(玲), 옥처럼 맑고 아름답다는 뜻"
+      },
+      {
+        "name_local": "詩琪",
+        "pronunciation_kr": "시케이",
+        "romanized": "Sze Ki",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "시 시(詩) + 아름다운옥 기(琪), 시처럼 아름다운 사람이라는 뜻"
+      },
+      {
+        "name_local": "芷晴",
+        "pronunciation_kr": "지칭",
+        "romanized": "Tsz Ching",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "구릿대 지(芷) + 갤 청(晴), 향긋한 풀과 맑게 갠 하늘이라는 뜻"
+      },
+      {
+        "name_local": "曉彤",
+        "pronunciation_kr": "히우퉁",
+        "romanized": "Hiu Tung",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "새벽 효(曉) + 붉을 동(彤), 붉은 새벽빛처럼 밝다는 뜻"
+      },
+      {
+        "name_local": "樂怡",
+        "pronunciation_kr": "록이",
+        "romanized": "Lok Yi",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "즐거울 락(樂) + 기쁠 이(怡), 늘 즐겁고 기쁘게 지내라는 뜻"
+      },
+      {
+        "name_local": "詩慧",
+        "pronunciation_kr": "시와이",
+        "romanized": "Sze Wai",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "시 시(詩) + 지혜 혜(慧), 시처럼 감성 있고 지혜롭다는 뜻"
+      },
+      {
+        "name_local": "雅婷",
+        "pronunciation_kr": "응아팅",
+        "romanized": "Nga Ting",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "우아할 아(雅) + 예쁠 정(婷), 우아하고 예쁘다는 뜻"
+      },
+      {
+        "name_local": "心怡",
+        "pronunciation_kr": "삼이",
+        "romanized": "Sam Yi",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "마음 심(心) + 기쁠 이(怡), 마음이 늘 기쁘고 편안하다는 뜻"
+      },
+      {
+        "name_local": "佩珊",
+        "pronunciation_kr": "푸이산",
+        "romanized": "Pui Shan",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "귀여움"
+        ],
+        "meaning_kr": "찰 패(佩) + 산호 산(珊), 산호 노리개를 찬 듯 곱다는 뜻"
+      },
+      {
+        "name_local": "美琪",
+        "pronunciation_kr": "메이케이",
+        "romanized": "Mei Ki",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아름다울 미(美) + 아름다운옥 기(琪), 아름다운 옥처럼 곱다는 뜻"
+      },
+      {
+        "name_local": "子悅",
+        "pronunciation_kr": "지윗",
+        "romanized": "Tsz Yuet",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아들 자(子) + 기쁠 열(悅), 기쁨을 안겨 주는 아이라는 뜻"
+      },
+      {
+        "name_local": "希文",
+        "pronunciation_kr": "헤이만",
+        "romanized": "Hei Man",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "바랄 희(希) + 글월 문(文), 학식을 갖추길 바란다는 뜻"
+      },
+      {
+        "name_local": "立仁",
+        "pronunciation_kr": "랍얀",
+        "romanized": "Lap Yan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "설 립(立) + 어질 인(仁), 어진 사람으로 우뚝 서라는 뜻"
+      },
+      {
+        "name_local": "家寶",
+        "pronunciation_kr": "가보",
+        "romanized": "Ka Bo",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "집 가(家) + 보배 보(寶), 집안의 보배라는 뜻"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "macau",
+      "city_name": "마카오",
+      "tier": 2,
+      "intro": "마카오는 반도와 타이파·코타이 지역이 다리로 이어진 작은 도시라서 하루 만에 옛 거리와 대형 리조트를 함께 둘러볼 수 있어요. 유네스코 역사지구를 걸어서 돌아보고 나면 베네시안 마카오 같은 카지노 리조트에서 또 다른 볼거리를 즐길 수 있어요.",
+      "attractions": [
+        {
+          "name": "성 바울 성당 유적",
+          "short": "성바울 유적",
+          "map_query": "Ruins of St. Paul's Macau",
+          "one_line_desc": "1835년 화재로 벽면만 남은 성 바울 성당 유적으로, 마카오 역사지구를 상징하는 랜드마크예요."
+        },
+        {
+          "name": "세나도 광장",
+          "map_query": "Senado Square Macau",
+          "one_line_desc": "흑백 물결무늬 돌바닥이 인상적인 광장으로, 유네스코 마카오 역사지구의 중심지예요."
+        },
+        {
+          "name": "아마 사원",
+          "map_query": "A-Ma Temple Macau",
+          "one_line_desc": "500년 넘게 이어온 마카오에서 가장 오래된 사원으로, 마카오라는 지명이 여기서 유래했어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "포르투갈에그타르트",
+          "one_line_desc": "포르투갈식 커스터드 타르트로, 겉은 바삭하고 표면이 캐러멜라이즈되어 홍콩 에그타르트와 맛이 달라요."
+        },
+        {
+          "name": "포크찹번",
+          "one_line_desc": "포르투갈식 빵 사이에 뼈째 튀기거나 구운 돼지고기를 끼운 마카오 대표 길거리 음식이에요."
+        },
+        {
+          "name": "아프리칸치킨",
+          "one_line_desc": "포르투갈령 아프리카의 향신료로 조리한 매콤한 닭 요리로, 마카오를 대표하는 명물 요리예요."
+        }
+      ]
+    }
+  ]
+}

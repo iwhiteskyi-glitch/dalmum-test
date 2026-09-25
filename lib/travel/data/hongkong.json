@@ -1,0 +1,351 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "hongkong",
+    "name": "홍콩",
+    "language": "광동어(홍콩)",
+    "lang_code": "yue",
+    "tier": 2,
+    "intro": "홍콩은 서울에서 비행기로 서너 시간이면 닿는 가까운 여행지예요. 좁은 땅에 마천루와 옛 거리, 홍콩섬과 주룽(구룡) 반도, 크고 작은 섬들이 촘촘히 모여 있어서 짧게 머물러도 다채로운 풍경을 만날 수 있어요.",
+    "name_note": "홍콩 사람 이름은 한자로 짓고 광동어로 읽어서, 같은 한자라도 한국식 한자음과는 소리가 많이 달라요. 요즘은 영어 이름을 함께 쓰는 경우도 많지만, 여기서는 광동어 발음 그대로의 이름을 소개해드려요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "你好",
+        "pronunciation_kr": "네이 호우"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "唔該",
+        "pronunciation_kr": "음고이",
+        "note": "서비스를 받았을 때 쓰는 감사 인사예요. 선물처럼 물건을 그냥 받았을 때는 '多謝(도제)'를 써요."
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "唔該，呢個",
+        "pronunciation_kr": "음고이, 네이고"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "幾多錢呀？",
+        "pronunciation_kr": "게이도 친 아"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "맛있어요",
+        "text_local": "好味呀！",
+        "pronunciation_kr": "호우메이 아"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "家豪",
+        "pronunciation_kr": "가호",
+        "romanized": "Ka Ho",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "집 가(家) + 호걸 호(豪), 집안을 빛낼 호걸이 되라는 뜻"
+      },
+      {
+        "name_local": "志明",
+        "pronunciation_kr": "지밍",
+        "romanized": "Chi Ming",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "뜻 지(志) + 밝을 명(明), 뜻을 밝게 세우고 나아가라는 뜻"
+      },
+      {
+        "name_local": "俊傑",
+        "pronunciation_kr": "쥔깃",
+        "romanized": "Chun Kit",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "준수할 준(俊) + 뛰어날 걸(傑), 재주가 뛰어난 인재라는 뜻"
+      },
+      {
+        "name_local": "偉倫",
+        "pronunciation_kr": "와이런",
+        "romanized": "Wai Lun",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "훌륭할 위(偉) + 인륜 륜(倫), 훌륭한 인품을 갖추라는 뜻"
+      },
+      {
+        "name_local": "子軒",
+        "pronunciation_kr": "지힌",
+        "romanized": "Tsz Hin",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "아들 자(子) + 집 헌(軒), 높고 넓은 집처럼 도량이 크라는 뜻"
+      },
+      {
+        "name_local": "浩然",
+        "pronunciation_kr": "호인",
+        "romanized": "Ho Yin",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "넓을 호(浩) + 그러할 연(然), 마음이 넓고 당당하라는 뜻"
+      },
+      {
+        "name_local": "天佑",
+        "pronunciation_kr": "틴야우",
+        "romanized": "Tin Yau",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "하늘 천(天) + 도울 우(佑), 하늘이 늘 도와준다는 뜻"
+      },
+      {
+        "name_local": "建華",
+        "pronunciation_kr": "긴와",
+        "romanized": "Kin Wa",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "세울 건(建) + 빛날 화(華), 화려하고 훌륭한 것을 세우라는 뜻"
+      },
+      {
+        "name_local": "志強",
+        "pronunciation_kr": "지컹",
+        "romanized": "Chi Keung",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "뜻 지(志) + 강할 강(強), 뜻이 굳세고 강인하다는 뜻"
+      },
+      {
+        "name_local": "家俊",
+        "pronunciation_kr": "가쥔",
+        "romanized": "Ka Chun",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "집 가(家) + 준수할 준(俊), 집안에 훤칠한 인재가 되라는 뜻"
+      },
+      {
+        "name_local": "美玲",
+        "pronunciation_kr": "메이링",
+        "romanized": "Mei Ling",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아름다울 미(美) + 옥소리 령(玲), 옥처럼 맑고 아름답다는 뜻"
+      },
+      {
+        "name_local": "詩琪",
+        "pronunciation_kr": "시케이",
+        "romanized": "Sze Ki",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "시 시(詩) + 아름다운옥 기(琪), 시처럼 아름다운 사람이라는 뜻"
+      },
+      {
+        "name_local": "芷晴",
+        "pronunciation_kr": "지칭",
+        "romanized": "Tsz Ching",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "구릿대 지(芷) + 갤 청(晴), 향긋한 풀과 맑게 갠 하늘이라는 뜻"
+      },
+      {
+        "name_local": "曉彤",
+        "pronunciation_kr": "히우퉁",
+        "romanized": "Hiu Tung",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "새벽 효(曉) + 붉을 동(彤), 붉은 새벽빛처럼 밝다는 뜻"
+      },
+      {
+        "name_local": "樂怡",
+        "pronunciation_kr": "록이",
+        "romanized": "Lok Yi",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "즐거울 락(樂) + 기쁠 이(怡), 늘 즐겁고 기쁘게 지내라는 뜻"
+      },
+      {
+        "name_local": "詩慧",
+        "pronunciation_kr": "시와이",
+        "romanized": "Sze Wai",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "시 시(詩) + 지혜 혜(慧), 시처럼 감성 있고 지혜롭다는 뜻"
+      },
+      {
+        "name_local": "雅婷",
+        "pronunciation_kr": "응아팅",
+        "romanized": "Nga Ting",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "우아할 아(雅) + 예쁠 정(婷), 우아하고 예쁘다는 뜻"
+      },
+      {
+        "name_local": "心怡",
+        "pronunciation_kr": "삼이",
+        "romanized": "Sam Yi",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "마음 심(心) + 기쁠 이(怡), 마음이 늘 기쁘고 편안하다는 뜻"
+      },
+      {
+        "name_local": "佩珊",
+        "pronunciation_kr": "푸이산",
+        "romanized": "Pui Shan",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "귀여움"
+        ],
+        "meaning_kr": "찰 패(佩) + 산호 산(珊), 산호 노리개를 찬 듯 곱다는 뜻"
+      },
+      {
+        "name_local": "美琪",
+        "pronunciation_kr": "메이케이",
+        "romanized": "Mei Ki",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아름다울 미(美) + 아름다운옥 기(琪), 아름다운 옥처럼 곱다는 뜻"
+      },
+      {
+        "name_local": "子悅",
+        "pronunciation_kr": "지윗",
+        "romanized": "Tsz Yuet",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아들 자(子) + 기쁠 열(悅), 기쁨을 안겨 주는 아이라는 뜻"
+      },
+      {
+        "name_local": "希文",
+        "pronunciation_kr": "헤이만",
+        "romanized": "Hei Man",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "바랄 희(希) + 글월 문(文), 학식을 갖추길 바란다는 뜻"
+      },
+      {
+        "name_local": "立仁",
+        "pronunciation_kr": "랍얀",
+        "romanized": "Lap Yan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "설 립(立) + 어질 인(仁), 어진 사람으로 우뚝 서라는 뜻"
+      },
+      {
+        "name_local": "家寶",
+        "pronunciation_kr": "가보",
+        "romanized": "Ka Bo",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "집 가(家) + 보배 보(寶), 집안의 보배라는 뜻"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "hongkong",
+      "city_name": "홍콩",
+      "tier": 2,
+      "intro": "홍콩은 도시 전체가 하나의 여행지예요. 좁은 면적 안에 홍콩섬의 고층 빌딩, 침사추이의 야경, 란타우 섬의 대불이 모여 있어서 대중교통만으로도 섬과 반도를 오가며 다채로운 모습을 볼 수 있어요.",
+      "attractions": [
+        {
+          "name": "빅토리아 피크",
+          "map_query": "Victoria Peak Hong Kong",
+          "one_line_desc": "홍콩섬에서 가장 높은 곳으로, 피크 트램을 타고 오르면 마천루와 빅토리아 항구가 한눈에 내려다보여요."
+        },
+        {
+          "name": "스타페리",
+          "map_query": "Star Ferry Pier Tsim Sha Tsui",
+          "one_line_desc": "1888년 카오룽 페리로 출발해 1898년 지금 이름을 얻은 여객선으로, 홍콩섬과 카오룽을 오가요."
+        },
+        {
+          "name": "톈탄 대불",
+          "short": "톈탄대불",
+          "map_query": "Tian Tan Buddha Ngong Ping",
+          "one_line_desc": "란타우 섬 포린사 옆에 있는 높이 26m의 청동 좌불상으로, 앙핑 360 케이블카를 타고 오를 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "완탕면",
+          "one_line_desc": "새우 완탕과 가는 면을 맑은 육수에 담은 국수로, 홍콩 곳곳의 차찬텡에서 즐겨 먹어요."
+        },
+        {
+          "name": "에그타르트",
+          "one_line_desc": "겉은 바삭하고 속은 부드러운 커스터드 타르트로, 홍콩 빵집을 대표하는 간식이에요."
+        },
+        {
+          "name": "밀크티",
+          "one_line_desc": "찻잎을 진하게 우려 연유를 넣어 마시는 홍콩식 밀크티로, '실크스타킹 밀크티'라는 별명이 있어요."
+        }
+      ]
+    }
+  ]
+}

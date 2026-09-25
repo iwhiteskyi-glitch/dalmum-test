@@ -1,0 +1,591 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "china",
+    "name": "중국",
+    "language": "중국어",
+    "lang_code": "zh",
+    "tier": 2,
+    "intro": "넓은 국토만큼 도시마다 역사와 음식, 풍경이 확연히 다른 나라예요. 상하이의 세련된 스카이라인부터 시안의 고대 유적, 장자제의 웅장한 산까지 한 나라 안에서 전혀 다른 여행을 경험할 수 있어요.",
+    "name_note": "중국 이름도 한자로 이루어져 있어서 같은 발음이라도 어떤 한자를 쓰는지에 따라 뜻이 완전히 달라져요. 여기서는 한어병음 발음을 한국어 소리로 옮겨 표기했으니 참고해서 불러 보세요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "你好",
+        "pronunciation_kr": "니 하오"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "谢谢",
+        "pronunciation_kr": "셰셰"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "我要这个",
+        "pronunciation_kr": "워 야오 쩌거"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "多少钱？",
+        "pronunciation_kr": "둬사오 첸"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "很好吃！",
+        "pronunciation_kr": "헌 하오츠"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "浩宇",
+        "pronunciation_kr": "하오위",
+        "romanized": "Haoyu",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "넓을 호(浩) + 집 우(宇), 우주처럼 넓고 큰 마음을 가지라는 뜻"
+      },
+      {
+        "name_local": "子轩",
+        "pronunciation_kr": "쯔쉬안",
+        "romanized": "Zixuan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "아들 자(子) + 집 헌(轩), 헌칠하고 늠름하게 자라라는 뜻"
+      },
+      {
+        "name_local": "浩然",
+        "pronunciation_kr": "하오란",
+        "romanized": "Haoran",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "넓을 호(浩) + 그러할 연(然), 거침없이 넓고 당당한 기개라는 뜻"
+      },
+      {
+        "name_local": "泽宇",
+        "pronunciation_kr": "쩌위",
+        "romanized": "Zeyu",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "못 택(泽) + 집 우(宇), 은혜가 온 세상에 미치라는 뜻"
+      },
+      {
+        "name_local": "明轩",
+        "pronunciation_kr": "밍쉬안",
+        "romanized": "Mingxuan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "발랄함"
+        ],
+        "meaning_kr": "밝을 명(明) + 집 헌(轩), 밝고 헌칠한 사람이 되라는 뜻"
+      },
+      {
+        "name_local": "俊杰",
+        "pronunciation_kr": "쥔제",
+        "romanized": "Junjie",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "준수할 준(俊) + 뛰어날 걸(杰), 준수하고 뛰어난 인재가 되라는 뜻"
+      },
+      {
+        "name_local": "天佑",
+        "pronunciation_kr": "톈유",
+        "romanized": "Tianyou",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "하늘 천(天) + 도울 우(佑), 하늘이 돕고 지켜준다는 뜻"
+      },
+      {
+        "name_local": "致远",
+        "pronunciation_kr": "즈위안",
+        "romanized": "Zhiyuan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "이를 치(致) + 멀 원(远), '차분해야 멀리 이른다(宁静致远)'는 옛말에서 따온 뜻"
+      },
+      {
+        "name_local": "宇轩",
+        "pronunciation_kr": "위쉬안",
+        "romanized": "Yuxuan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "집 우(宇) + 집 헌(轩), 기개가 크고 당당하다는 뜻"
+      },
+      {
+        "name_local": "明哲",
+        "pronunciation_kr": "밍저",
+        "romanized": "Mingzhe",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "밝을 명(明) + 밝을 철(哲), 명석하고 지혜롭다는 뜻"
+      },
+      {
+        "name_local": "睿哲",
+        "pronunciation_kr": "루이저",
+        "romanized": "Ruizhe",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "슬기로울 예(睿) + 밝을 철(哲), 지혜롭고 총명하다는 뜻"
+      },
+      {
+        "name_local": "弘毅",
+        "pronunciation_kr": "훙이",
+        "romanized": "Hongyi",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "클 홍(弘) + 굳셀 의(毅), '뜻이 크고 굳세야 한다'는 논어 구절에서 따온 뜻"
+      },
+      {
+        "name_local": "欣怡",
+        "pronunciation_kr": "신이",
+        "romanized": "Xinyi",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "기쁠 흔(欣) + 기쁠 이(怡), 기쁘고 즐겁게 지내라는 뜻"
+      },
+      {
+        "name_local": "雨桐",
+        "pronunciation_kr": "위퉁",
+        "romanized": "Yutong",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "비 우(雨) + 오동나무 동(桐), 비 내린 뒤 오동나무처럼 청아하다는 뜻"
+      },
+      {
+        "name_local": "梦瑶",
+        "pronunciation_kr": "멍야오",
+        "romanized": "Mengyao",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "귀여움"
+        ],
+        "meaning_kr": "꿈 몽(梦) + 아름다운옥 요(瑶), 옥처럼 귀한 꿈을 가지라는 뜻"
+      },
+      {
+        "name_local": "若曦",
+        "pronunciation_kr": "뤄시",
+        "romanized": "Ruoxi",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "같을 약(若) + 햇빛 희(曦), 아침 햇살처럼 밝다는 뜻"
+      },
+      {
+        "name_local": "思颖",
+        "pronunciation_kr": "쓰잉",
+        "romanized": "Siying",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "발랄함"
+        ],
+        "meaning_kr": "생각 사(思) + 빼어날 영(颖), 생각이 빼어나고 총명하다는 뜻"
+      },
+      {
+        "name_local": "雅婷",
+        "pronunciation_kr": "야팅",
+        "romanized": "Yating",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "우아할 아(雅) + 예쁠 정(婷), 우아하고 아름답다는 뜻"
+      },
+      {
+        "name_local": "婉清",
+        "pronunciation_kr": "완칭",
+        "romanized": "Wanqing",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "순할 완(婉) + 맑을 청(清), 부드럽고 맑은 성품이라는 뜻"
+      },
+      {
+        "name_local": "诗涵",
+        "pronunciation_kr": "스한",
+        "romanized": "Shihan",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "시 시(诗) + 젖을 함(涵), 시처럼 포용력 있고 정취가 있다는 뜻"
+      },
+      {
+        "name_local": "佳怡",
+        "pronunciation_kr": "자이",
+        "romanized": "Jiayi",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아름다울 가(佳) + 기쁠 이(怡), 아름답고 기쁘게 지내라는 뜻"
+      },
+      {
+        "name_local": "静怡",
+        "pronunciation_kr": "징이",
+        "romanized": "Jingyi",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "고요할 정(静) + 기쁠 이(怡), 고요하고 편안하게 지내라는 뜻"
+      },
+      {
+        "name_local": "梓涵",
+        "pronunciation_kr": "쯔한",
+        "romanized": "Zihan",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "가래나무 재(梓) + 젖을 함(涵), 가래나무처럼 곧고 포용력 있다는 뜻"
+      },
+      {
+        "name_local": "沐晴",
+        "pronunciation_kr": "무칭",
+        "romanized": "Muqing",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "머리감을 목(沐) + 갤 청(晴), 비 갠 뒤처럼 맑고 상쾌하다는 뜻"
+      },
+      {
+        "name_local": "一诺",
+        "pronunciation_kr": "이눠",
+        "romanized": "Yinuo",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "한 일(一) + 허락할 낙(诺), 한번 한 약속은 천금같이 지킨다는 '일낙천금(一诺千金)'에서 따온 뜻"
+      },
+      {
+        "name_local": "若水",
+        "pronunciation_kr": "뤄수이",
+        "romanized": "Ruoshui",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "같을 약(若) + 물 수(水), '최고의 선은 물과 같다(上善若水)'는 노자의 말에서 따온 뜻"
+      },
+      {
+        "name_local": "星辰",
+        "pronunciation_kr": "싱천",
+        "romanized": "Xingchen",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "별 성(星) + 별 진(辰), 밤하늘의 별처럼 빛난다는 뜻"
+      },
+      {
+        "name_local": "悦",
+        "pronunciation_kr": "웨",
+        "romanized": "Yue",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "기쁠 열(悦), 기쁘고 즐겁다는 뜻"
+      },
+      {
+        "name_local": "安然",
+        "pronunciation_kr": "안란",
+        "romanized": "Anran",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "편안할 안(安) + 그러할 연(然), 평안하고 침착하다는 뜻"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "shanghai",
+      "city_name": "상하이",
+      "tier": 2,
+      "intro": "중국 최대 경제 도시 상하이는 황푸강을 사이에 두고 유럽풍 옛 건물과 초고층 빌딩숲이 마주 보는 독특한 스카이라인으로 유명해요. 옛 강남 정원과 최첨단 전망대를 한나절 안에 오갈 수 있어요.",
+      "attractions": [
+        {
+          "name": "와이탄",
+          "map_query": "The Bund Shanghai",
+          "one_line_desc": "황푸강 건너 푸둥의 초고층 빌딩숲과 유럽풍 옛 건물이 마주 보는 상하이의 대표 산책로예요."
+        },
+        {
+          "name": "예원",
+          "map_query": "Yuyuan Garden Shanghai",
+          "one_line_desc": "명·청 시대에 조성된 강남식 정원으로, 바로 옆 옛 거리에서 길거리 간식도 함께 즐길 수 있어요."
+        },
+        {
+          "name": "상하이타워",
+          "map_query": "Shanghai Tower",
+          "one_line_desc": "높이 632m로 중국에서 가장 높은 건물이며, 118층 전망대에서 상하이 시내를 내려다볼 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "샤오롱바오",
+          "one_line_desc": "얇은 만두피 안에 뜨거운 육즙이 가득한 딤섬으로, 상하이 인근에서 유래해 상하이의 명물이 됐어요."
+        },
+        {
+          "name": "셩젠바오",
+          "one_line_desc": "밑면은 노릇하게 구워 바삭하고 속에는 육즙이 가득한 상하이식 군만두예요."
+        },
+        {
+          "name": "홍샤오러우",
+          "one_line_desc": "간장과 설탕으로 윤기 나게 조린 삼겹살 요리로, 상하이 가정식을 대표하는 메뉴예요."
+        }
+      ]
+    },
+    {
+      "city_code": "beijing",
+      "city_name": "베이징",
+      "tier": 2,
+      "intro": "중국의 수도 베이징은 명·청 시대 황궁인 고궁을 중심으로 옛 골목 후통과 현대적인 거리가 뒤섞여 있어요. 근교에는 산등성이를 따라 굽이치는 만리장성이 있어 당일치기로 다녀오기 좋아요.",
+      "attractions": [
+        {
+          "name": "고궁",
+          "map_query": "Forbidden City Beijing",
+          "one_line_desc": "명·청 두 왕조 500년 가까이 황궁으로 쓰였고 '자금성'이라고도 불리며, 세계 최대 규모의 목조 고건축군이에요."
+        },
+        {
+          "name": "만리장성",
+          "map_query": "Badaling Great Wall",
+          "one_line_desc": "베이징에서 당일치기로 다녀올 수 있는 바다링 구간으로, 산 능선을 따라 성벽이 굽이쳐 뻗어 있어요."
+        },
+        {
+          "name": "천단공원",
+          "map_query": "Temple of Heaven Beijing",
+          "one_line_desc": "황제가 하늘에 제사를 지내던 곳으로, 파란 지붕의 원형 목조 건물 기년전이 상징이에요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "베이징덕",
+          "one_line_desc": "얇은 밀전병에 구운 오리 껍질과 파를 싸서 소스에 찍어 먹는 베이징의 대표 요리예요."
+        },
+        {
+          "name": "자장몐",
+          "one_line_desc": "손으로 뽑은 면에 볶은 춘장과 채소를 비벼 먹는 베이징 노포의 전통 국수예요."
+        },
+        {
+          "name": "징장러우쓰",
+          "one_line_desc": "돼지고기를 채 썰어 베이징식 춘장에 볶은 뒤, 얇은 전병에 파와 함께 싸 먹는 요리예요."
+        }
+      ]
+    },
+    {
+      "city_code": "qingdao",
+      "city_name": "칭다오",
+      "tier": 2,
+      "intro": "독일 조계지 시절 지어진 붉은 지붕 건물들이 해안을 따라 남아 있는 항구 도시예요. 바닷바람을 맞으며 걷는 잔교 산책과 갓 뽑은 생맥주 시음이 칭다오 여행의 대표적인 즐길 거리예요.",
+      "attractions": [
+        {
+          "name": "잔교",
+          "map_query": "Zhanqiao Pier Qingdao",
+          "one_line_desc": "길이 440m의 칭다오에서 가장 오래된 부두 중 하나로, 끝자락에 회란각이라는 정자가 서 있어요."
+        },
+        {
+          "name": "팔대관",
+          "map_query": "Badaguan Scenic Area Qingdao",
+          "one_line_desc": "200여 채의 유럽풍 옛 별장이 늘어선 해안 거리로, '세계 건축 박물관'이라 불려요."
+        },
+        {
+          "name": "칭다오맥주박물관",
+          "short": "맥주박물관",
+          "map_query": "Tsingtao Beer Museum",
+          "one_line_desc": "칭다오 맥주 최초의 양조장 터에 세운 박물관으로, 갓 만든 생맥주를 그 자리에서 시음할 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "칭다오맥주",
+          "one_line_desc": "독일 기술로 시작된 칭다오의 대표 맥주로, 이 도시에서는 조개 요리와 함께 먹는 문화가 발달했어요."
+        },
+        {
+          "name": "매운조개볶음",
+          "one_line_desc": "칭다오 사람들이 맥주와 즐겨 먹는 명물 요리로, 매콤하게 볶은 모시조개가 술안주로 인기예요."
+        },
+        {
+          "name": "라오산녹차",
+          "one_line_desc": "칭다오 라오산 지역에서 나는 녹차로, 해산물 요리의 느끼함을 잡아 주는 지역 특산차예요."
+        }
+      ]
+    },
+    {
+      "city_code": "zhangjiajie",
+      "city_name": "장자제",
+      "tier": 2,
+      "intro": "기둥처럼 솟은 바위 봉우리 수천 개가 펼쳐진 산악 도시로, 영화 '아바타'의 배경으로도 알려졌어요. 유리 다리와 케이블카를 타고 협곡과 봉우리를 내려다보는 스릴 넘치는 경험을 할 수 있어요.",
+      "attractions": [
+        {
+          "name": "장자제 국가삼림공원",
+          "short": "장자제 삼림공원",
+          "map_query": "Zhangjiajie National Forest Park",
+          "one_line_desc": "기둥 모양의 사암 봉우리들이 빽빽이 솟아 있는 국가급 삼림공원으로, 산책로를 따라 걸으며 감상해요."
+        },
+        {
+          "name": "톈먼산",
+          "map_query": "Tianmen Mountain Zhangjiajie",
+          "one_line_desc": "거대한 자연 동굴 천문동과 절벽에 놓인 유리잔도로 유명한 산으로, 케이블카로 오를 수 있어요."
+        },
+        {
+          "name": "대협곡 유리다리",
+          "map_query": "Zhangjiajie Grand Canyon Glass Bridge",
+          "one_line_desc": "지상 약 300m 높이, 길이 430m의 전면 유리 바닥 다리로, 협곡 위를 걷는 짜릿함을 느낄 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "투자산샤궈",
+          "one_line_desc": "훈제 돼지고기와 두부, 무를 한 냄비에 넣고 끓이는 투자족 전통 요리로, 장자제의 대표 향토 음식이에요."
+        },
+        {
+          "name": "샹시라러우",
+          "one_line_desc": "장자제가 속한 샹시 지역에서 오래 훈연해 만드는 절임 돼지고기로, 여러 요리에 두루 쓰이는 재료예요."
+        },
+        {
+          "name": "옌얼둔지",
+          "one_line_desc": "절벽에서 자라는 버섯 옌얼을 토종닭과 함께 오래 고아낸 장자제 산간 지역의 보양식이에요."
+        }
+      ]
+    },
+    {
+      "city_code": "xian",
+      "city_name": "시안",
+      "tier": 2,
+      "intro": "실크로드의 출발점이자 여러 왕조의 수도였던 옛 도시예요. 땅속에서 발굴된 병마용부터 옛 성벽, 회민가의 먹거리까지 한 도시 안에서 역사와 음식을 함께 즐길 수 있어요.",
+      "attractions": [
+        {
+          "name": "병마용",
+          "map_query": "Terracotta Army Xi'an",
+          "one_line_desc": "진시황릉을 지키기 위해 흙으로 빚은 실물 크기의 병사·말 조각상 수천 점이 발굴된 유적이에요."
+        },
+        {
+          "name": "시안성벽",
+          "map_query": "Xi'an City Wall",
+          "one_line_desc": "명나라 때 도시 전체를 두르며 쌓은 성벽으로, 자전거를 타고 성벽 위를 한 바퀴 돌 수 있어요."
+        },
+        {
+          "name": "회민가",
+          "map_query": "Muslim Quarter Xi'an",
+          "one_line_desc": "이슬람을 믿는 후이족이 모여 사는 거리로, 양고기 요리와 길거리 간식점이 가득 늘어서 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "양러우파오모",
+          "one_line_desc": "딱딱하게 구운 빵을 잘게 뜯어 넣은 양고기탕으로, 시안을 대표하는 후이족 음식이에요."
+        },
+        {
+          "name": "비앙비앙면",
+          "one_line_desc": "이름을 적는 한자가 따로 있을 만큼 독특한, 넓고 두꺼운 시안식 손칼국수예요."
+        },
+        {
+          "name": "로우자모",
+          "one_line_desc": "잘게 다져 조린 고기를 화덕에 구운 빵 사이에 끼운 시안식 샌드위치예요."
+        }
+      ]
+    },
+    {
+      "city_code": "chengdu",
+      "city_name": "청두",
+      "tier": 2,
+      "intro": "판다의 고향으로 잘 알려진 쓰촨 지역의 중심 도시예요. 얼얼하고 매운 사천 요리와 여유로운 찻집 문화 덕분에 '느긋한 도시'라는 별명으로도 불려요.",
+      "attractions": [
+        {
+          "name": "청두 판다기지",
+          "map_query": "Chengdu Research Base of Giant Panda Breeding",
+          "one_line_desc": "자이언트 판다를 보호하고 번식시키는 연구기지로, 대나무 숲 사이에서 노니는 판다를 가까이 볼 수 있어요."
+        },
+        {
+          "name": "콴자이샹쯔",
+          "map_query": "Kuanzhai Alley Chengdu",
+          "one_line_desc": "청나라 시절 만들어진 옛 골목길로, 콴샹쯔·자이샹쯔·징샹쯔 세 골목에 찻집과 상점이 늘어서 있어요."
+        },
+        {
+          "name": "진리 거리",
+          "map_query": "Jinli Ancient Street Chengdu",
+          "one_line_desc": "삼국지 촉나라 유적인 우허우사 옆 거리로, 옛 촉나라 분위기를 살린 상점가예요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "마라훠궈",
+          "one_line_desc": "얼얼하고 매운 사천식 향신료 육수에 재료를 데쳐 먹는 청두의 대표 훠궈예요."
+        },
+        {
+          "name": "마파두부",
+          "one_line_desc": "1862년 청두에서 처음 만들어진, 두부와 다진 고기를 매콤하게 볶은 사천 요리예요."
+        },
+        {
+          "name": "단단면",
+          "one_line_desc": "매콤한 소스에 비벼 먹는 사천식 비빔국수로, 짐을 지던 막대에 걸어 팔던 데서 이름이 유래했어요."
+        }
+      ]
+    }
+  ]
+}
