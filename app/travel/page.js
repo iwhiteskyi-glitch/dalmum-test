@@ -3,13 +3,14 @@ import styles from "@/components/travel/travel.module.css";
 import Avatar from "@/components/travel/Avatar";
 import CountryPicker from "@/components/travel/CountryPicker";
 import { COUNTRIES } from "@/lib/travel/data";
+import { travelMetadata } from "@/lib/travel/seo";
 
-export const metadata = {
+export const metadata = travelMetadata({
   title: "여행가면 내 이름은? | 여행지별 현지식 이름 추천",
   description:
     "여행 갈 나라와 도시를 고르고 내 분위기를 알려주면, 그 나라 감성 이름 3개를 캐릭터와 함께 추천해드려요. 현지 인사말·명소·음식 정보도 함께 확인하세요.",
-  alternates: { canonical: "/travel" },
-};
+  path: "/travel",
+});
 
 const HERO_AVATAR = {
   skin: "#FFE1C4",

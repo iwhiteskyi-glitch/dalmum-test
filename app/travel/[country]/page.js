@@ -4,6 +4,7 @@ import styles from "@/components/travel/travel.module.css";
 import Phrases from "@/components/travel/Phrases";
 import { COUNTRIES, getCountry, cityPath } from "@/lib/travel/data";
 import { nameLocalLine } from "@/lib/travel/texts";
+import { travelMetadata, breadcrumbJsonLd } from "@/lib/travel/seo";
 
 export const dynamicParams = false;
 
@@ -16,11 +17,11 @@ export async function generateMetadata({ params }) {
   const country = getCountry(code);
   if (!country) return {};
   const cityNames = country.cities.map((c) => c.city_name).join("·");
-  return {
+  return travelMetadata({
     title: `${country.name} 여행 가면 내 이름은? | ${country.language} 인사말·${country.name} 이름 추천`,
     description: `${country.name} 여행에서 쓸 나만의 현지식 이름을 추천받아 보세요. ${cityNames} 도시별 명소·음식과 ${country.language} 기본 인사말도 정리했어요.`,
-    alternates: { canonical: `/travel/${country.code}` },
-  };
+    path: `/travel/${country.code}`,
+  });
 }
 
 // 이름 스타일별로 몇 개씩만 미리 보여줍니다. (결과의 재미를 해치지 않을 정도)
@@ -35,8 +36,14 @@ export default async function CountryPage({ params }) {
   const country = getCountry(code);
   if (!country) notFound();
 
+  const jsonLd = breadcrumbJsonLd([
+    { name: "여행 이름", path: "/travel" },
+    { name: country.name, path: `/travel/${country.code}` },
+  ]);
+
   return (
     <article>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <nav className={styles.breadcrumb} aria-label="현재 위치">
         <Link href="/travel">여행 이름</Link>
         <span aria-hidden="true">›</span>
