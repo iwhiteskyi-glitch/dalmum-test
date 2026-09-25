@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import styles from "@/components/travel/travel.module.css";
 import Phrases from "@/components/travel/Phrases";
 import { COUNTRIES, getCountry, cityPath } from "@/lib/travel/data";
+import { nameLocalLine } from "@/lib/travel/texts";
 
 export const dynamicParams = false;
 
@@ -87,9 +88,7 @@ export default async function CountryPage({ params }) {
           {sampleNames(country.name_pool).map((n) => (
             <li key={n.name_local} className={styles.nameSample}>
               <strong>{n.pronunciation_kr}</strong>
-              <span lang={country.lang_code}>
-                {n.name_local !== n.romanized ? `${n.name_local} · ${n.romanized}` : n.romanized}
-              </span>
+              <span lang={country.lang_code}>{nameLocalLine(n)}</span>
               <p>{n.meaning_kr}</p>
             </li>
           ))}

@@ -63,7 +63,7 @@ export default function TravelHome() {
           </li>
           <li>
             <strong>2. 내 분위기 알려주기</strong>
-            닉네임, 이름 스타일, 원하는 분위기
+            닉네임, 이름 스타일, 원하는 분위기 (동행자도 함께)
           </li>
           <li>
             <strong>3. 이름 카드 받기</strong>
