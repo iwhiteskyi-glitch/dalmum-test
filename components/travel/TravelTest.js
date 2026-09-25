@@ -7,6 +7,7 @@ import styles from "./travel.module.css";
 import { MOODS, STYLES, nameLocalLine } from "@/lib/travel/texts";
 import { drawNameCards } from "@/lib/travel/recommend";
 import { buildTravelCard } from "@/lib/travel/travelCard";
+import { encodeResultHash, decodeResultHash } from "@/lib/travel/shareState";
 import { SITE } from "@/lib/site";
 
 const STEPS = ["info", "result", "final"];
@@ -142,6 +143,25 @@ export default function TravelTest({ country, city }) {
 
   useEffect(() => {
     setInKakao(/KAKAOTALK/i.test(navigator.userAgent));
+
+    // 카카오톡에서 "브라우저에서 공유"로 넘어온 경우: 주소에 담긴 결과로 완성 카드를 바로 보여줍니다.
+    const restored = decodeResultHash(window.location.hash, country.name_pool);
+    if (!restored) return;
+    setPeople(restored.map((m, i) => ({ id: i, nick: m.nick, style: "any", moods: m.moods })));
+    nextId.current = restored.length;
+    setDraws(
+      restored.map((m) => ({
+        cards: [m.card],
+        selected: 0,
+        seen: new Set([m.card.name_local]),
+        roll: 1,
+        recycled: false,
+      }))
+    );
+    setStep("final");
+    // 닉네임이 담긴 주소가 남아 있다가 복사·공유되지 않도록 바로 지웁니다.
+    window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -325,8 +345,11 @@ export default function TravelTest({ country, city }) {
   };
 
   // 카카오톡 안의 브라우저는 사진 공유를 막아서, 기기 기본 브라우저로 넘겨줍니다.
+  // 결과를 주소에 담아 넘겨서, 새 브라우저에서 처음부터 다시 입력하지 않아도 되게 합니다.
   const openExternal = () => {
-    window.location.href = `kakaotalk://web/openExternal?url=${encodeURIComponent(window.location.href)}`;
+    const { origin, pathname } = window.location;
+    const url = `${origin}${pathname}${encodeResultHash(members)}`;
+    window.location.href = `kakaotalk://web/openExternal?url=${encodeURIComponent(url)}`;
   };
 
   const shareFiles = async (indexes) => {
@@ -648,8 +671,8 @@ export default function TravelTest({ country, city }) {
               )}
               {inKakao && (
                 <p className={styles.kakaoHint}>
-                  카카오톡 안에서는 사진 공유가 막혀 있어요. 이미지를 저장해서 보내거나, 다른
-                  브라우저로 열어 다시 만들어 공유해 주세요.
+                  카카오톡 안에서는 사진 공유가 막혀 있어요. &lsquo;브라우저에서 공유&rsquo;를 누르면
+                  지금 카드 그대로 다른 브라우저에서 열려요.
                 </p>
               )}
 
