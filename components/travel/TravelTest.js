@@ -13,11 +13,72 @@ const STEPS = ["info", "result", "final"];
 const MAX_COMPANIONS = 4;
 const newPerson = (id) => ({ id, nick: "", style: "any", moods: [] });
 
-function PersonFields({ person, idPrefix, compact, onChange, onEnter }) {
-  const toggleMood = (m) =>
+function MoodPills({ person, small, onChange }) {
+  const toggle = (m) =>
     onChange({
       moods: person.moods.includes(m) ? person.moods.filter((x) => x !== m) : [...person.moods, m],
     });
+  return (
+    <div className={styles.moodRow}>
+      {MOODS.map((m) => (
+        <button
+          key={m}
+          type="button"
+          aria-pressed={person.moods.includes(m)}
+          className={`${styles.mood} ${small ? styles.moodSm : ""} ${
+            person.moods.includes(m) ? styles.moodOn : ""
+          }`}
+          onClick={() => toggle(m)}
+        >
+          {m}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// 동행자 입력은 한 줄 요약형: 닉네임 + 이름 스타일만 보이고, 분위기는 눌러야 펼쳐집니다.
+function CompanionFields({ person, label, onChange }) {
+  const [showMoods, setShowMoods] = useState(person.moods.length > 0);
+  return (
+    <>
+      <input
+        className={`${styles.input} ${styles.inputSm}`}
+        value={person.nick}
+        maxLength={12}
+        placeholder="동행자 닉네임 (예: 태오)"
+        aria-label={`${label} 닉네임`}
+        onChange={(e) => onChange({ nick: e.target.value })}
+      />
+      <div className={styles.styleRow} role="group" aria-label={`${label} 이름 스타일`}>
+        {STYLES.map((s) => (
+          <button
+            key={s.value}
+            type="button"
+            aria-pressed={person.style === s.value}
+            className={`${styles.toggle} ${styles.toggleSm} ${
+              person.style === s.value ? styles.toggleOn : ""
+            }`}
+            onClick={() => onChange({ style: s.value })}
+          >
+            {s.label}
+          </button>
+        ))}
+      </div>
+      {showMoods ? (
+        <div className={styles.mateMoods}>
+          <MoodPills person={person} small onChange={onChange} />
+        </div>
+      ) : (
+        <button type="button" className={styles.moreBtn} onClick={() => setShowMoods(true)}>
+          + 분위기도 고르기 <span>(선택)</span>
+        </button>
+      )}
+    </>
+  );
+}
+
+function PersonFields({ person, idPrefix, onChange, onEnter }) {
   return (
     <>
       <div className={styles.field}>
@@ -29,22 +90,20 @@ function PersonFields({ person, idPrefix, compact, onChange, onEnter }) {
           className={styles.input}
           value={person.nick}
           maxLength={12}
-          placeholder={compact ? "예: 태오" : "예: 민지, 태오, 하늘"}
+          placeholder="예: 민지, 태오, 하늘"
           onChange={(e) => onChange({ nick: e.target.value })}
           onKeyDown={(e) => e.key === "Enter" && onEnter?.()}
         />
       </div>
       <div className={styles.field}>
         <span className={styles.label}>이름 스타일</span>
-        <div className={compact ? styles.styleRow : styles.styleGrid}>
+        <div className={styles.styleGrid}>
           {STYLES.map((s) => (
             <button
               key={s.value}
               type="button"
               aria-pressed={person.style === s.value}
-              className={`${styles.toggle} ${compact ? styles.toggleSm : ""} ${
-                person.style === s.value ? styles.toggleOn : ""
-              }`}
+              className={`${styles.toggle} ${person.style === s.value ? styles.toggleOn : ""}`}
               onClick={() => onChange({ style: s.value })}
             >
               {s.label}
@@ -56,26 +115,10 @@ function PersonFields({ person, idPrefix, compact, onChange, onEnter }) {
         <span className={styles.label}>
           원하는 분위기<span className={styles.subLabel}>여러 개 선택 가능</span>
         </span>
-        <div className={styles.moodRow}>
-          {MOODS.map((m) => (
-            <button
-              key={m}
-              type="button"
-              aria-pressed={person.moods.includes(m)}
-              className={`${styles.mood} ${compact ? styles.moodSm : ""} ${
-                person.moods.includes(m) ? styles.moodOn : ""
-              }`}
-              onClick={() => toggleMood(m)}
-            >
-              {m}
-            </button>
-          ))}
-        </div>
-        {!compact && (
-          <p className={styles.helper}>
-            {person.moods.length ? `선택: ${person.moods.join(", ")}` : "선택 안 해도 괜찮아요"}
-          </p>
-        )}
+        <MoodPills person={person} onChange={onChange} />
+        <p className={styles.helper}>
+          {person.moods.length ? `선택: ${person.moods.join(", ")}` : "선택 안 해도 괜찮아요"}
+        </p>
       </div>
     </>
   );
@@ -379,10 +422,9 @@ export default function TravelTest({ country, city }) {
                         삭제
                       </button>
                     </div>
-                    <PersonFields
+                    <CompanionFields
                       person={p}
-                      idPrefix={`travel-mate-${p.id}`}
-                      compact
+                      label={`동행자 ${k + 1}`}
                       onChange={(patch) => updatePerson(k + 1, patch)}
                     />
                   </div>

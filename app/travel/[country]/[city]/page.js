@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import styles from "@/components/travel/travel.module.css";
 import Phrases from "@/components/travel/Phrases";
 import TravelTest from "@/components/travel/TravelTest";
+import InfoTabs from "@/components/travel/InfoTabs";
 import { COUNTRIES, getCity, cityPath, mapLink } from "@/lib/travel/data";
 import { travelMetadata, breadcrumbJsonLd } from "@/lib/travel/seo";
 
@@ -75,58 +76,77 @@ export default async function CityPage({ params }) {
 
       <TravelTest country={testCountry} city={testCity} />
 
-      <section className={styles.section} aria-labelledby="phrases">
-        <h2 id="phrases" className={styles.sectionTitle}>
-          {city.city_name}에서 바로 쓰는 {country.language} 표현
-        </h2>
-        <p className={styles.sectionLead}>한글 발음은 실제 소리에 가깝게 적었어요.</p>
-        <Phrases country={country} />
-      </section>
-
-      <section className={styles.section} aria-labelledby="sights">
-        <h2 id="sights" className={styles.sectionTitle}>
-          {city.city_name} 대표 명소
-        </h2>
-        <ul className={styles.infoList}>
-          {city.attractions.map((a) => (
-            <li key={a.name} className={styles.infoRow}>
-              <span className={styles.dot} aria-hidden="true" />
-              <div className={styles.infoBody}>
-                <p className={styles.infoName}>{a.name}</p>
-                <p className={styles.infoDesc}>{a.one_line_desc}</p>
-              </div>
-              <a
-                className={styles.mapLink}
-                href={mapLink(a.map_query)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                지도 ↗
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className={styles.section} aria-labelledby="foods">
-        <h2 id="foods" className={styles.sectionTitle}>
-          {city.city_name} 대표 음식
-        </h2>
-        <ul className={styles.infoList}>
-          {city.foods.map((f) => (
-            <li key={f.name} className={styles.infoRow}>
-              <span className={`${styles.dot} ${styles.dotFood}`} aria-hidden="true" />
-              <div className={styles.infoBody}>
-                <p className={styles.infoName}>{f.name}</p>
-                <p className={styles.infoDesc}>{f.one_line_desc}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <p className={styles.phraseNote}>
-          영업시간·가격은 자주 바뀌어서 따로 적지 않았어요. 방문 전 지도 앱에서 확인해주세요.
-        </p>
-      </section>
+      <InfoTabs
+        id="city-info"
+        title={`${city.city_name} 여행 정보`}
+        items={[
+          {
+            key: "phrases",
+            label: "인사말",
+            content: (
+              <>
+                <h3 className={styles.srOnly}>
+                  {city.city_name}에서 바로 쓰는 {country.language} 표현
+                </h3>
+                <p className={styles.sectionLead}>한글 발음은 실제 소리에 가깝게 적었어요.</p>
+                <Phrases country={country} />
+              </>
+            ),
+          },
+          {
+            key: "sights",
+            label: "명소",
+            content: (
+              <>
+                <h3 className={styles.srOnly}>{city.city_name} 대표 명소</h3>
+                <ul className={styles.infoList}>
+                  {city.attractions.map((a) => (
+                    <li key={a.name} className={styles.infoRow}>
+                      <span className={styles.dot} aria-hidden="true" />
+                      <div className={styles.infoBody}>
+                        <p className={styles.infoName}>{a.name}</p>
+                        <p className={styles.infoDesc}>{a.one_line_desc}</p>
+                      </div>
+                      <a
+                        className={styles.mapLink}
+                        href={mapLink(a.map_query)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        지도 ↗
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ),
+          },
+          {
+            key: "foods",
+            label: "음식",
+            content: (
+              <>
+                <h3 className={styles.srOnly}>{city.city_name} 대표 음식</h3>
+                <ul className={styles.infoList}>
+                  {city.foods.map((f) => (
+                    <li key={f.name} className={styles.infoRow}>
+                      <span className={`${styles.dot} ${styles.dotFood}`} aria-hidden="true" />
+                      <div className={styles.infoBody}>
+                        <p className={styles.infoName}>{f.name}</p>
+                        <p className={styles.infoDesc}>{f.one_line_desc}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <p className={styles.phraseNote}>
+                  영업시간·가격은 자주 바뀌어서 따로 적지 않았어요. 방문 전 지도 앱에서
+                  확인해주세요.
+                </p>
+              </>
+            ),
+          },
+        ]}
+      />
 
       {siblings.length > 0 && (
         <section className={styles.section} aria-labelledby="more-cities">

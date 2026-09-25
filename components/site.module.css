@@ -13,7 +13,7 @@
   z-index: 10;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  padding: 16px 20px;
+  padding: 12px 20px;
 }
 /* 넓은 모니터에서 로고와 언어 전환 버튼이 화면 양 끝으로 한없이 벌어지지
    않도록, 헤더 내용물도 본문(.main)과 비슷한 최대 너비로 가운데 정렬합니다. */
@@ -87,6 +87,90 @@
 }
 .langSwitch:hover {
   border-color: var(--accent);
+}
+
+/* ---------- 한국어 헤더: 두 테스트 탭 + ☰ 메뉴 ---------- */
+.brandText {
+  white-space: nowrap;
+}
+/* 닮은꼴 메인은 본문이 더 넓어서(1120px) 헤더 폭도 맞춥니다. */
+.headerWide,
+.headerWide + .menuPanel {
+  max-width: 1120px;
+}
+.testTabs {
+  display: flex;
+  background: #f3ece8;
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.testTab {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--muted-ink);
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 7px 14px;
+  white-space: nowrap;
+}
+.testTab:hover {
+  color: var(--ink);
+}
+.testTabOn,
+.testTabOn:hover {
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: 0 1px 4px rgba(48, 36, 44, 0.12);
+}
+.desktopLinks {
+  display: none;
+  align-items: center;
+  gap: 4px 16px;
+  margin-left: auto;
+}
+.menuBtn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 18px;
+  line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+}
+.menuPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  max-width: 920px;
+  margin: 10px auto 0;
+  padding: 10px 4px 4px;
+  border-top: 1px solid var(--border);
+}
+.menuPanel .navLink {
+  width: 100%;
+  font-size: 15.5px;
+  padding: 10px 2px;
+}
+.menuPanel .langSwitch {
+  margin: 8px 0 4px;
+}
+@media (min-width: 900px) {
+  .desktopLinks {
+    display: flex;
+  }
+  .menuBtn,
+  .menuPanel {
+    display: none;
+  }
+  .testTabs {
+    margin-left: 28px;
+  }
 }
 
 /* ---------- 본문 ---------- */
@@ -293,8 +377,12 @@
 }
 
 @media (max-width: 560px) {
+  .header {
+    padding: 10px 16px;
+  }
   .headerInner {
     flex-wrap: wrap;
+    gap: 8px;
   }
   .pageTitle {
     font-size: 25px;

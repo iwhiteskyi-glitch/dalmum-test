@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "@/components/travel/travel.module.css";
 import Phrases from "@/components/travel/Phrases";
+import InfoTabs from "@/components/travel/InfoTabs";
 import { COUNTRIES, getCountry, cityPath } from "@/lib/travel/data";
 import { nameLocalLine } from "@/lib/travel/texts";
 import { travelMetadata, breadcrumbJsonLd } from "@/lib/travel/seo";
@@ -78,33 +79,46 @@ export default async function CountryPage({ params }) {
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="phrases">
-        <h2 id="phrases" className={styles.sectionTitle}>
-          여행에서 바로 쓰는 {country.language} 표현
-        </h2>
-        <p className={styles.sectionLead}>한글 발음은 실제 소리에 가깝게 적었어요.</p>
-        <Phrases country={country} />
-      </section>
-
-      <section className={styles.section} aria-labelledby="names">
-        <h2 id="names" className={styles.sectionTitle}>
-          {country.name} 여행 이름 미리보기
-        </h2>
-        <p className={styles.sectionLead}>{country.name_note}</p>
-        <ul className={styles.nameSamples}>
-          {sampleNames(country.name_pool).map((n) => (
-            <li key={n.name_local} className={styles.nameSample}>
-              <strong>{n.pronunciation_kr}</strong>
-              <span lang={country.lang_code}>{nameLocalLine(n)}</span>
-              <p>{n.meaning_kr}</p>
-            </li>
-          ))}
-        </ul>
-        <p className={styles.callout}>
-          준비된 {country.name} 이름은 {country.name_pool.length}개예요. 도시를 고르고 테스트를
-          시작하면 내 분위기에 맞는 이름 3개를 뽑아드려요.
-        </p>
-      </section>
+      <InfoTabs
+        id="country-info"
+        title={`${country.name} 여행 미리 알아두기`}
+        items={[
+          {
+            key: "phrases",
+            label: `${country.language} 인사말`,
+            content: (
+              <>
+                <h3 className={styles.srOnly}>여행에서 바로 쓰는 {country.language} 표현</h3>
+                <p className={styles.sectionLead}>한글 발음은 실제 소리에 가깝게 적었어요.</p>
+                <Phrases country={country} />
+              </>
+            ),
+          },
+          {
+            key: "names",
+            label: "이름 미리보기",
+            content: (
+              <>
+                <h3 className={styles.srOnly}>{country.name} 여행 이름 미리보기</h3>
+                <p className={styles.sectionLead}>{country.name_note}</p>
+                <ul className={styles.nameSamples}>
+                  {sampleNames(country.name_pool).map((n) => (
+                    <li key={n.name_local} className={styles.nameSample}>
+                      <strong>{n.pronunciation_kr}</strong>
+                      <span lang={country.lang_code}>{nameLocalLine(n)}</span>
+                      <p>{n.meaning_kr}</p>
+                    </li>
+                  ))}
+                </ul>
+                <p className={styles.callout}>
+                  준비된 {country.name} 이름은 {country.name_pool.length}개예요. 도시를 고르고
+                  테스트를 시작하면 내 분위기에 맞는 이름 3개를 뽑아드려요.
+                </p>
+              </>
+            ),
+          },
+        ]}
+      />
     </article>
   );
 }

@@ -70,6 +70,14 @@
   flex-wrap: nowrap;
   justify-content: flex-end;
 }
+/* 한국어 메인: 공통 헤더를 쓰므로 진행 단계는 본문 맨 위에 둡니다. */
+.stepsBar {
+  display: flex;
+  justify-content: center;
+  gap: 6px 18px;
+  flex-wrap: wrap;
+  margin: -8px 0 22px;
+}
 .step {
   font-size: 13px;
   font-weight: 700;

@@ -20,6 +20,7 @@ import {
 import { buildShareCard } from "@/lib/shareCard";
 import { SITE } from "@/lib/site";
 import SiteFooter from "@/components/SiteFooter";
+import SiteHeader from "@/components/SiteHeader";
 import AdSlot from "@/components/AdSlot";
 import { track } from "@vercel/analytics";
 
@@ -500,21 +501,11 @@ export default function Page() {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <div className={styles.brandRow}>
-            <a className={styles.brand} href="/">
-              <img
-                src="/logo.png"
-                alt=""
-                width={26}
-                height={15}
-                className={styles.brandLogo}
-              />
-              {SITE.name}
-            </a>
-          </div>
-          <nav className={styles.steps} aria-label="진행 단계">
+      <SiteHeader wide />
+
+      <main className={styles.main}>
+        {step > 0 && (
+          <nav className={styles.stepsBar} aria-label="진행 단계">
             {STEP_LABELS.map((label, i) => (
               <span
                 key={label}
@@ -523,14 +514,8 @@ export default function Page() {
                 {label}
               </span>
             ))}
-            <a href="/en" className={styles.langSwitch} aria-label="Switch to English">
-              EN
-            </a>
           </nav>
-        </div>
-      </header>
-
-      <main className={styles.main}>
+        )}
         {/* ---------- 0. 사진 선택 + 위치/확대 조정 ---------- */}
         {step === 0 && (
           <div className={styles.heroGrid}>
