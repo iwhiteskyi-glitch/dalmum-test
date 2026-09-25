@@ -8,8 +8,9 @@ import { NAV, SITE } from "@/lib/site";
 export default function SiteHeader() {
   const pathname = usePathname() || "/";
   // 현재 보고 있는 페이지와 짝이 되는 영문 페이지로 이동합니다.
-  // (예: /guide → /en/guide, / → /en)
-  const enHref = pathname === "/" ? "/en" : `/en${pathname}`;
+  // (예: /guide → /en/guide, / → /en) 여행 섹션은 영문판이 없어서 영문 홈으로 보냅니다.
+  const enHref =
+    pathname === "/" || pathname.startsWith("/travel") ? "/en" : `/en${pathname}`;
 
   return (
     <header className={styles.header}>

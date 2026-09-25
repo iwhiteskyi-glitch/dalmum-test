@@ -1,0 +1,101 @@
+{
+  "status": "draft",
+  "country": {
+    "code": "vietnam",
+    "name": "베트남",
+    "language": "베트남어",
+    "lang_code": "vi",
+    "tier": 1,
+    "intro": "일본 다음으로 한국인이 많이 찾는 나라예요. 남북으로 길게 뻗은 땅 덕분에 북부의 고즈넉한 수도, 중부의 해변 휴양지, 남부의 활기찬 대도시를 한 나라에서 모두 만날 수 있어요.",
+    "name_note": "베트남 이름은 대부분 한자어에서 왔어요. 보통 이름의 맨 마지막 글자로 부르는데, 여기서는 그 글자와 한자 뜻을 함께 보여드려요.",
+    "phrases": [
+      { "category": "인사", "meaning_kr": "안녕하세요", "text_local": "Xin chào", "pronunciation_kr": "신 짜오" },
+      { "category": "감사", "meaning_kr": "감사합니다", "text_local": "Cảm ơn", "pronunciation_kr": "깜 언" },
+      { "category": "주문", "meaning_kr": "이거 주세요", "text_local": "Cho tôi cái này", "pronunciation_kr": "쪼 또이 까이 나이" },
+      { "category": "쇼핑", "meaning_kr": "얼마예요?", "text_local": "Bao nhiêu tiền?", "pronunciation_kr": "바오 니에우 띠엔" },
+      { "category": "식사", "meaning_kr": "정말 맛있어요", "text_local": "Ngon quá", "pronunciation_kr": "응온 꽈" }
+    ],
+    "name_pool": [
+      { "name_local": "Minh", "pronunciation_kr": "민", "romanized": "Minh", "gender_style": "male", "vibe_tags": ["멋짐", "카리스마"], "meaning_kr": "밝을 명(明), 밝고 총명하다는 뜻" },
+      { "name_local": "Huy", "pronunciation_kr": "후이", "romanized": "Huy", "gender_style": "male", "vibe_tags": ["멋짐", "발랄함"], "meaning_kr": "빛날 휘(輝), 환하게 빛난다는 뜻" },
+      { "name_local": "Tuấn", "pronunciation_kr": "뚜언", "romanized": "Tuan", "gender_style": "male", "vibe_tags": ["멋짐", "카리스마"], "meaning_kr": "준걸 준(俊), 재주와 외모가 빼어나다는 뜻" },
+      { "name_local": "Hùng", "pronunciation_kr": "훙", "romanized": "Hung", "gender_style": "male", "vibe_tags": ["카리스마", "멋짐"], "meaning_kr": "수컷 웅(雄), 씩씩한 영웅이라는 뜻" },
+      { "name_local": "Khoa", "pronunciation_kr": "코아", "romanized": "Khoa", "gender_style": "male", "vibe_tags": ["우아함", "카리스마"], "meaning_kr": "과목 과(科), 학문에 뛰어나라는 뜻" },
+      { "name_local": "Nam", "pronunciation_kr": "남", "romanized": "Nam", "gender_style": "male", "vibe_tags": ["발랄함", "멋짐"], "meaning_kr": "남녘 남(南), 따뜻한 남쪽이라는 뜻" },
+      { "name_local": "Đức", "pronunciation_kr": "득", "romanized": "Duc", "gender_style": "male", "vibe_tags": ["사랑스러움", "카리스마"], "meaning_kr": "덕 덕(德), 너그럽고 덕이 있다는 뜻" },
+      { "name_local": "Phong", "pronunciation_kr": "퐁", "romanized": "Phong", "gender_style": "male", "vibe_tags": ["멋짐", "발랄함"], "meaning_kr": "바람 풍(風), 자유로운 바람이라는 뜻" },
+      { "name_local": "Long", "pronunciation_kr": "롱", "romanized": "Long", "gender_style": "male", "vibe_tags": ["카리스마", "멋짐"], "meaning_kr": "용 룡(龍), 용처럼 힘차다는 뜻" },
+      { "name_local": "Bảo", "pronunciation_kr": "바오", "romanized": "Bao", "gender_style": "male", "vibe_tags": ["귀여움", "사랑스러움"], "meaning_kr": "보배 보(寶), 소중한 보물이라는 뜻" },
+      { "name_local": "Hải", "pronunciation_kr": "하이", "romanized": "Hai", "gender_style": "male", "vibe_tags": ["발랄함", "멋짐"], "meaning_kr": "바다 해(海), 넓은 바다라는 뜻" },
+      { "name_local": "Linh", "pronunciation_kr": "린", "romanized": "Linh", "gender_style": "female", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "신령 령(靈), 영롱하고 신비롭다는 뜻" },
+      { "name_local": "Lan", "pronunciation_kr": "란", "romanized": "Lan", "gender_style": "female", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "난초 란(蘭), 난초처럼 고상하다는 뜻" },
+      { "name_local": "Mai", "pronunciation_kr": "마이", "romanized": "Mai", "gender_style": "female", "vibe_tags": ["우아함", "귀여움"], "meaning_kr": "매화 매(梅), 이른 봄에 피는 매화라는 뜻" },
+      { "name_local": "Hoa", "pronunciation_kr": "호아", "romanized": "Hoa", "gender_style": "female", "vibe_tags": ["사랑스러움", "귀여움"], "meaning_kr": "꽃 화(花), 꽃이라는 뜻" },
+      { "name_local": "Hương", "pronunciation_kr": "흐엉", "romanized": "Huong", "gender_style": "female", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "향기 향(香), 은은한 향기라는 뜻" },
+      { "name_local": "Trang", "pronunciation_kr": "짱", "romanized": "Trang", "gender_style": "female", "vibe_tags": ["우아함", "카리스마"] },
+      { "name_local": "Thảo", "pronunciation_kr": "타오", "romanized": "Thao", "gender_style": "female", "vibe_tags": ["사랑스러움", "발랄함"], "meaning_kr": "풀 초(草), 싱그러운 풀이라는 뜻" },
+      { "name_local": "Vy", "pronunciation_kr": "비", "romanized": "Vy", "gender_style": "female", "vibe_tags": ["귀여움", "우아함"], "meaning_kr": "장미 미(薇), 작고 예쁜 풀꽃이라는 뜻" },
+      { "name_local": "Ngọc", "pronunciation_kr": "응옥", "romanized": "Ngoc", "gender_style": "female", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "구슬 옥(玉), 옥처럼 귀하다는 뜻" },
+      { "name_local": "Nhung", "pronunciation_kr": "늉", "romanized": "Nhung", "gender_style": "female", "vibe_tags": ["귀여움", "사랑스러움"], "meaning_kr": "가는 베 융(絨), 벨벳처럼 부드럽다는 뜻" },
+      { "name_local": "Thu", "pronunciation_kr": "투", "romanized": "Thu", "gender_style": "female", "vibe_tags": ["우아함", "사랑스러움"], "meaning_kr": "가을 추(秋), 가을이라는 뜻" },
+      { "name_local": "An", "pronunciation_kr": "안", "romanized": "An", "gender_style": "neutral", "vibe_tags": ["사랑스러움", "귀여움"], "meaning_kr": "편안할 안(安), 평안하다는 뜻" },
+      { "name_local": "Anh", "pronunciation_kr": "아인", "romanized": "Anh", "gender_style": "neutral", "vibe_tags": ["멋짐", "발랄함"], "meaning_kr": "꽃부리 영(英), 뛰어나고 영특하다는 뜻" },
+      { "name_local": "Bình", "pronunciation_kr": "빈", "romanized": "Binh", "gender_style": "neutral", "vibe_tags": ["사랑스러움", "우아함"], "meaning_kr": "평평할 평(平), 평화롭다는 뜻" },
+      { "name_local": "Khánh", "pronunciation_kr": "카인", "romanized": "Khanh", "gender_style": "neutral", "vibe_tags": ["발랄함", "사랑스러움"], "meaning_kr": "경사 경(慶), 기쁜 일이라는 뜻" },
+      { "name_local": "Thanh", "pronunciation_kr": "타인", "romanized": "Thanh", "gender_style": "neutral", "vibe_tags": ["우아함", "멋짐"], "meaning_kr": "맑을 청(清), 맑고 깨끗하다는 뜻" },
+      { "name_local": "Tâm", "pronunciation_kr": "떰", "romanized": "Tam", "gender_style": "neutral", "vibe_tags": ["사랑스러움", "우아함"], "meaning_kr": "마음 심(心), 따뜻한 마음이라는 뜻" },
+      { "name_local": "Phương", "pronunciation_kr": "프엉", "romanized": "Phuong", "gender_style": "neutral", "vibe_tags": ["우아함", "발랄함"], "meaning_kr": "꽃다울 방(芳), 향기롭고 아름답다는 뜻" },
+      { "name_local": "Dương", "pronunciation_kr": "즈엉", "romanized": "Duong", "gender_style": "neutral", "vibe_tags": ["발랄함", "카리스마"], "meaning_kr": "볕 양(陽), 햇볕처럼 밝다는 뜻" }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "danang",
+      "city_name": "다낭",
+      "tier": 1,
+      "intro": "베트남 중부의 해변 도시 다낭은 한국인 여행자가 특히 많이 찾는 휴양지예요. 끝없이 이어진 미케 비치와 구름 위 테마파크 바나힐, 차로 40분 남짓 거리의 호이안 구시가지까지 한 번에 즐길 수 있어요.",
+      "attractions": [
+        { "name": "미케 비치", "map_query": "My Khe Beach Da Nang", "one_line_desc": "고운 모래사장이 수 킬로미터 이어진 다낭 대표 해변이에요." },
+        { "name": "바나힐 골든 브리지", "short": "골든 브리지", "map_query": "Golden Bridge Ba Na Hills", "one_line_desc": "거대한 두 손이 다리를 받치고 있는 모습으로 유명한, 산 위 테마파크의 명소예요." },
+        { "name": "오행산", "map_query": "Marble Mountains Da Nang", "one_line_desc": "대리석 산 다섯 봉우리로 이루어진 곳. 동굴 속 사원과 전망대를 둘러볼 수 있어요." }
+      ],
+      "foods": [
+        { "name": "미꽝", "one_line_desc": "넓적한 쌀국수에 국물을 자작하게 부어 비벼 먹는 중부 지방 대표 국수예요." },
+        { "name": "반쎄오", "one_line_desc": "쌀가루 반죽을 바삭하게 부쳐 채소와 함께 라이스페이퍼에 싸 먹는 베트남식 부침개예요." },
+        { "name": "분짜까", "one_line_desc": "생선 어묵을 넣어 시원하게 끓인 다낭 명물 쌀국수예요." }
+      ]
+    },
+    {
+      "city_code": "hanoi",
+      "city_name": "하노이",
+      "tier": 1,
+      "intro": "천 년 역사를 가진 베트남의 수도로, 호안끼엠 호수를 중심으로 좁은 골목마다 오토바이와 노점이 가득한 구시가지가 펼쳐져요. 쌀국수(퍼)의 본고장이라 아침 식사부터 여행의 하이라이트가 돼요.",
+      "attractions": [
+        { "name": "호안끼엠 호수", "map_query": "Hoan Kiem Lake Hanoi", "one_line_desc": "구시가지 한가운데 있는 호수. 붉은 다리를 건너면 작은 섬 위의 응옥썬 사당이 나와요." },
+        { "name": "하노이 구시가지", "short": "구시가지", "map_query": "Hanoi Old Quarter", "one_line_desc": "'36거리'라 불리는 옛 상점가. 거리마다 파는 물건이 달라 구경하는 재미가 있어요." },
+        { "name": "호찌민 묘", "map_query": "Ho Chi Minh Mausoleum", "one_line_desc": "호찌민 주석이 잠든 곳. 앞의 바딘 광장은 베트남 독립이 선언된 역사적인 장소예요." }
+      ],
+      "foods": [
+        { "name": "분짜", "one_line_desc": "숯불에 구운 돼지고기와 쌀국수를 새콤달콤한 국물에 찍어 먹는 하노이 대표 음식이에요." },
+        { "name": "퍼보", "one_line_desc": "맑고 깊은 국물의 소고기 쌀국수. 북부식 쌀국수는 하노이의 자랑이에요." },
+        { "name": "에그커피", "one_line_desc": "달걀노른자를 크림처럼 휘핑해 올린 하노이 명물 커피예요." }
+      ]
+    },
+    {
+      "city_code": "hochiminh",
+      "city_name": "호찌민",
+      "tier": 1,
+      "intro": "옛 이름 '사이공'으로도 불리는 베트남 최대의 경제 도시예요. 프랑스 식민지 시절의 건물과 높은 빌딩이 섞인 거리에서, 밤늦게까지 꺼지지 않는 활기를 느낄 수 있어요.",
+      "attractions": [
+        { "name": "벤탄 시장", "map_query": "Ben Thanh Market", "one_line_desc": "시내 중심의 대형 재래시장. 기념품과 길거리 음식을 한 번에 구경할 수 있어요." },
+        { "name": "사이공 중앙우체국", "short": "중앙우체국", "map_query": "Saigon Central Post Office", "one_line_desc": "프랑스 식민지 시절 지어진 아치형 천장의 우체국. 지금도 여기서 엽서를 부칠 수 있어요." },
+        { "name": "부이비엔 거리", "map_query": "Bui Vien Walking Street", "one_line_desc": "밤이 되면 음악과 노점으로 들썩이는 여행자들의 거리예요." }
+      ],
+      "foods": [
+        { "name": "껌땀", "one_line_desc": "잘게 부서진 쌀로 지은 밥에 구운 돼지갈비를 올린 사이공식 덮밥이에요." },
+        { "name": "반미", "one_line_desc": "바삭한 바게트에 고기와 채소, 고수를 채운 베트남식 샌드위치예요." },
+        { "name": "후띠에우", "one_line_desc": "남부 지방에서 즐겨 먹는 쫄깃한 쌀국수. 국물 있게도, 비벼서도 먹어요." }
+      ]
+    }
+  ]
+}

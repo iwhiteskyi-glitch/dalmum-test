@@ -1,0 +1,859 @@
+/* 여행 섹션 전용 스타일. 헤더/푸터/기본 글꼴·배경은 닮았네 공통 스타일을 그대로 쓰고,
+   여기서는 여행 분위기를 내는 포인트 색(청록·머스터드)과 손글씨 제목만 더합니다. */
+
+.main {
+  --t-teal: #12a4b0;
+  --t-teal-dark: #0b8792;
+  --t-teal-deep: #0a6f78;
+  --t-teal-soft: #dff4f5;
+  --t-mustard: #f3b54a;
+  --t-mustard-ink: #7a5300;
+  --t-mustard-soft: #fdf0d5;
+  --t-coral: #f07a62;
+  --t-cream: #fff7f0;
+
+  flex: 1;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 20px 64px;
+  /* 한글이 "후쿠/오카"처럼 단어 중간에서 끊기지 않게 단어 단위로 줄바꿈 */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+/* 윈도우 기본 한글 글꼴로 일본어를 그리면 글자 사이가 벌어져 보여서 일본어 글꼴을 우선 사용 */
+.main :lang(ja) {
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+.display {
+  font-family: var(--font-gaegu), "Apple SD Gothic Neo", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- 공통 ---------- */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  font-size: 13px;
+  color: var(--muted-ink);
+  margin: 0 0 18px;
+}
+.breadcrumb a {
+  color: var(--muted-ink);
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  color: var(--t-teal-deep);
+  text-decoration: underline;
+}
+
+.pageTitle {
+  font-size: 34px;
+  line-height: 1.25;
+  margin: 0 0 12px;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.lead {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--muted-ink);
+  margin: 0 0 8px;
+}
+
+.section {
+  margin-top: 40px;
+}
+.sectionTitle {
+  font-size: 19px;
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+.sectionLead {
+  font-size: 14px;
+  color: var(--muted-ink);
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+.callout {
+  background: var(--t-teal-soft);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--t-teal-deep);
+  margin-top: 16px;
+}
+
+/* ---------- /travel 시작 화면 ---------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  padding: 12px 0 8px;
+}
+.postcard {
+  position: relative;
+  background: var(--surface);
+  border: 2px dashed #b9d6d8;
+  border-radius: 18px;
+  padding: 22px 28px 14px;
+  box-shadow: 0 10px 24px rgba(48, 36, 44, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.stamp {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--t-coral);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  transform: rotate(12deg);
+}
+.postcardCaption {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--muted-ink);
+  margin: 0;
+}
+.heroTitle {
+  font-size: 40px;
+  line-height: 1.2;
+  margin: 0;
+}
+.heroNote {
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  margin: 0;
+}
+
+.search {
+  width: 100%;
+  font-size: 15px;
+  padding: 13px 16px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  margin-bottom: 14px;
+}
+.search:focus {
+  outline: none;
+  border-color: var(--t-teal);
+}
+
+.countryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+.countryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.15s, background 0.15s;
+}
+.countryCard:hover {
+  border-color: var(--t-teal);
+  background: var(--t-teal-soft);
+}
+.countryIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--t-teal-soft);
+  color: var(--t-teal-deep);
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.countryName {
+  font-size: 15px;
+  font-weight: 800;
+}
+.countryMeta {
+  font-size: 12px;
+  color: var(--muted-ink);
+}
+.emptySearch {
+  font-size: 14px;
+  color: var(--muted-ink);
+  padding: 12px 2px;
+}
+
+.steps3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.steps3 li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted-ink);
+}
+.steps3 strong {
+  display: block;
+  color: var(--ink);
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+/* ---------- 나라 페이지 ---------- */
+.cityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.cityCard {
+  display: block;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.15s, background 0.15s;
+}
+.cityCard:hover {
+  border-color: var(--t-teal);
+  background: var(--t-teal-soft);
+}
+.cityName {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 4px;
+}
+.cityMeta {
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.nameSamples {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.nameSample {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+.nameSample strong {
+  font-size: 15px;
+}
+.nameSample span {
+  font-size: 12px;
+  color: var(--muted-ink);
+  margin-left: 6px;
+}
+.nameSample p {
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+
+/* ---------- 인사말 / 명소 / 음식 ---------- */
+.phraseList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.phraseRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.phraseKr {
+  font-size: 14px;
+  color: var(--muted-ink);
+}
+.phraseLocal {
+  text-align: right;
+  font-size: 15px;
+  font-weight: 800;
+}
+.phraseReading {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--t-teal-deep);
+  margin-top: 2px;
+}
+.phraseNote {
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  margin: 8px 2px 0;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.infoRow {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 13px 14px;
+}
+.dot {
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--t-teal);
+  margin-top: 6px;
+}
+.dotFood {
+  background: var(--t-mustard);
+}
+.infoBody {
+  flex: 1;
+  min-width: 0;
+}
+.infoName {
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0;
+}
+.infoDesc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted-ink);
+  margin: 3px 0 0;
+}
+.mapLink {
+  flex-shrink: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--t-teal-deep);
+  text-decoration: none;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+.mapLink:hover {
+  text-decoration: underline;
+}
+
+.linkRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chipLink {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--t-teal-deep);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 15px;
+  text-decoration: none;
+}
+.chipLink:hover {
+  border-color: var(--t-teal);
+}
+
+.crossCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--accent-soft);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.crossCard strong {
+  display: block;
+  font-size: 15.5px;
+}
+.crossCard span {
+  font-size: 13px;
+  color: var(--muted-ink);
+}
+.crossArrow {
+  font-size: 20px;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* ---------- 버튼 ---------- */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  border-radius: 999px;
+  background: var(--t-teal);
+  color: #fff;
+  font-size: 16.5px;
+  font-weight: 800;
+  padding: 15px 36px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(18, 164, 176, 0.3);
+  transition: background 0.15s, opacity 0.15s;
+}
+.cta:hover:not(:disabled) {
+  background: var(--t-teal-dark);
+}
+.cta:disabled {
+  background: #e7e2df;
+  color: #a39c98;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.ctaBlock {
+  width: 100%;
+}
+.ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1.5px solid var(--t-teal);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--t-teal-deep);
+  font-size: 15px;
+  font-weight: 800;
+  padding: 13px 22px;
+  cursor: pointer;
+}
+.ghost:hover {
+  background: var(--t-teal-soft);
+}
+.textBtn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 6px;
+}
+.textBtn:hover {
+  color: var(--t-teal-deep);
+}
+
+/* ---------- 테스트 (도시 페이지 안) ---------- */
+.test {
+  scroll-margin-top: 90px;
+  margin-top: 22px;
+  background: var(--t-cream);
+  border: 1px solid #f3e3d6;
+  border-radius: var(--radius-xl);
+  padding: 22px 20px;
+}
+.testStart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+.testStartTitle {
+  font-size: 26px;
+  margin: 0;
+}
+.testStartNote {
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  margin: 0;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.backBtn {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--surface);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--ink);
+}
+.progress {
+  flex: 1;
+  display: flex;
+  gap: 5px;
+}
+.progressSeg {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: #eadfd6;
+}
+.progressOn {
+  background: var(--t-teal);
+}
+
+.stepTitle {
+  font-size: 25px;
+  margin: 0 0 4px;
+}
+.stepLead {
+  font-size: 13.5px;
+  color: var(--muted-ink);
+  margin: 0 0 20px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.subLabel {
+  font-weight: 500;
+  color: var(--muted-ink);
+  font-size: 12.5px;
+  margin-left: 4px;
+}
+.input {
+  width: 100%;
+  font-size: 15px;
+  padding: 13px 16px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+}
+.input:focus {
+  outline: none;
+  border-color: var(--t-teal);
+}
+.styleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.toggle {
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+.toggle:hover {
+  border-color: var(--t-teal);
+}
+.toggleOn,
+.toggleOn:hover {
+  background: var(--t-teal);
+  border-color: var(--t-teal);
+  color: #fff;
+}
+.moodRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.mood {
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+.mood:hover {
+  border-color: var(--t-mustard);
+}
+.moodOn,
+.moodOn:hover {
+  background: var(--t-mustard);
+  border-color: var(--t-mustard);
+  color: var(--t-mustard-ink);
+}
+.helper {
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  margin: 8px 2px 0;
+}
+
+.nameCards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.nameCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  cursor: pointer;
+  color: var(--ink);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.nameCard:hover {
+  border-color: #b9d6d8;
+}
+.nameCardOn,
+.nameCardOn:hover {
+  border-color: var(--t-teal);
+  box-shadow: 0 8px 20px rgba(18, 164, 176, 0.15);
+}
+.nameAvatar {
+  flex-shrink: 0;
+}
+.nameBody {
+  display: block;
+  flex: 1;
+  min-width: 0;
+}
+.nameMeaning,
+.nameBlurb {
+  display: block;
+}
+.nameHead {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+}
+.nameKr {
+  font-size: 21px;
+  font-weight: 900;
+}
+.nameLocal {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--muted-ink);
+}
+.nameMeaning {
+  font-size: 12.5px;
+  color: var(--t-teal-deep);
+  line-height: 1.5;
+  margin: 5px 0 0;
+}
+.nameBlurb {
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 5px 0 0;
+}
+.titleBadge {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--t-mustard-ink);
+  background: var(--t-mustard-soft);
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-top: 8px;
+}
+.check {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #fff;
+}
+.checkOn {
+  background: var(--t-teal);
+  border-color: var(--t-teal);
+}
+.legend {
+  font-size: 12px;
+  color: var(--muted-ink);
+  line-height: 1.6;
+  margin: 14px 2px 0;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* 결과 엽서 */
+.postcardFrame {
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 4px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #a6dfe3, #fcd9a8);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+.postcardInner {
+  position: relative;
+  background: #fffaf6;
+  border-radius: 20px;
+  padding: 26px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+.postcardStamp {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  border: 2px dashed rgba(18, 164, 176, 0.55);
+  border-radius: 6px;
+  transform: rotate(8deg);
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--muted-ink);
+  margin: 0 0 4px;
+}
+.finalName {
+  font-size: 34px;
+  line-height: 1.1;
+  margin: 4px 0 0;
+}
+.finalLocal {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  margin: 0;
+}
+.finalMeaning {
+  font-size: 12.5px;
+  color: var(--t-teal-deep);
+  line-height: 1.5;
+  margin: 2px 0 0;
+}
+.finalBlurb {
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 2px 0 0;
+}
+.divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #eee3da;
+  margin: 8px 0 4px;
+}
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.tag {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--t-teal-deep);
+  background: var(--t-teal-soft);
+  border-radius: 999px;
+  padding: 4px 11px;
+}
+.place {
+  font-size: 13px;
+  color: var(--muted-ink);
+  margin: 4px 0 0;
+}
+.finalHint {
+  font-size: 13px;
+  color: var(--muted-ink);
+  text-align: center;
+  margin: 14px 0 0;
+}
+
+@media (max-width: 480px) {
+  .pageTitle {
+    font-size: 28px;
+  }
+  .heroTitle {
+    font-size: 34px;
+  }
+  .steps3 {
+    grid-template-columns: 1fr;
+  }
+  .test {
+    padding: 18px 14px;
+    /* 모바일에선 상단 헤더가 3줄로 높아져서, 자동 스크롤 시 가려지지 않게 여유를 더 둠 */
+    scroll-margin-top: 160px;
+  }
+  .nameCard {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+}
