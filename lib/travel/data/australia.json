@@ -1,0 +1,537 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "australia",
+    "name": "호주",
+    "language": "영어",
+    "lang_code": "en",
+    "tier": 3,
+    "intro": "호주는 오페라하우스가 있는 시드니, 커피 문화로 유명한 멜버른, 코알라를 만날 수 있는 브리즈번까지 도시마다 색다른 매력을 가진 나라예요. 남반구에 자리해 계절이 한국과 정반대라, 한국이 겨울일 때 오히려 뜨거운 여름 바다를 즐길 수 있어요.",
+    "name_note": "영어권 사람들은 정식 이름 대신 편하게 부르는 짧은 애칭을 자주 써요, 예를 들어 알렉산더(Alexander)는 보통 알렉스(Alex)라고 불러요. 그래서 목록 속 이름 그대로 불러도 되고, 더 캐주얼하게 애칭으로 불러도 자연스러워요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요, 어떻게 지내세요?",
+        "text_local": "Hi, how are you?",
+        "pronunciation_kr": "하이, 하우 아 유",
+        "note": "가장 흔하고 편하게 쓰는 인사예요"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "정말 감사합니다",
+        "text_local": "Thank you so much",
+        "pronunciation_kr": "땡큐 쏘 머치"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "I'll have this, please",
+        "pronunciation_kr": "아윌 해브 디스, 플리즈"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "이거 얼마예요?",
+        "text_local": "How much is this?",
+        "pronunciation_kr": "하우 머치 이즈 디스"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "이거 정말 맛있어요",
+        "text_local": "This is delicious!",
+        "pronunciation_kr": "디스 이즈 딜리셔스"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "James",
+        "pronunciation_kr": "제임스",
+        "romanized": "James",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "히브리어 '야곱'에서 갈라져 나온 이름으로, '뒤꿈치를 붙잡은 자·대신 차지한 자'라는 뜻으로 풀이돼요"
+      },
+      {
+        "name_local": "William",
+        "pronunciation_kr": "윌리엄",
+        "romanized": "William",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어 유래, '굳은 의지를 가진 보호자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Henry",
+        "pronunciation_kr": "헨리",
+        "romanized": "Henry",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어 유래, '집안의 지배자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Benjamin",
+        "pronunciation_kr": "벤저민",
+        "romanized": "Benjamin",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "히브리어 유래, '오른손의 아들'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Daniel",
+        "pronunciation_kr": "대니얼",
+        "romanized": "Daniel",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어 유래, '신은 나의 심판자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Michael",
+        "pronunciation_kr": "마이클",
+        "romanized": "Michael",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어 유래, '신과 같은 이가 누구인가'라는 뜻이에요"
+      },
+      {
+        "name_local": "Ethan",
+        "pronunciation_kr": "에단",
+        "romanized": "Ethan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어 유래, '강하고 굳건하다'는 뜻이에요"
+      },
+      {
+        "name_local": "Lucas",
+        "pronunciation_kr": "루카스",
+        "romanized": "Lucas",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "그리스어 Loukas(원래는 이탈리아 루카니아 지역 출신자를 뜻함)에서 유래했고, 발음이 비슷한 라틴어 lux(빛)와 연결지어 '빛을 가져오는 사람'이라는 뜻으로도 흔히 알려져 있어요"
+      },
+      {
+        "name_local": "Oliver",
+        "pronunciation_kr": "올리버",
+        "romanized": "Oliver",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "올리브 나무에서 유래했다는 설이 널리 알려져 있지만, 실제로는 고대 노르드어·게르만어 계열 이름(엘프+군대)에서 왔다는 설이 더 유력해요"
+      },
+      {
+        "name_local": "Noah",
+        "pronunciation_kr": "노아",
+        "romanized": "Noah",
+        "gender_style": "male",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "히브리어 유래, '안식·평안'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Liam",
+        "pronunciation_kr": "리암",
+        "romanized": "Liam",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "아일랜드에서 윌리엄(William)의 애칭으로 자리 잡은 이름으로, '굳은 의지의 보호자'라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Leo",
+        "pronunciation_kr": "레오",
+        "romanized": "Leo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "라틴어로 '사자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Emma",
+        "pronunciation_kr": "엠마",
+        "romanized": "Emma",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "게르만어 유래, '전체·보편'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Olivia",
+        "pronunciation_kr": "올리비아",
+        "romanized": "Olivia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어 올리브 나무에서 유래했다고 널리 알려져 있어요(남성형 Oliver와 마찬가지로 다른 유래설도 있어요)"
+      },
+      {
+        "name_local": "Sophia",
+        "pronunciation_kr": "소피아",
+        "romanized": "Sophia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "그리스어 유래, '지혜'라는 뜻이에요"
+      },
+      {
+        "name_local": "Isabella",
+        "pronunciation_kr": "이자벨라",
+        "romanized": "Isabella",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "엘리자베스(Elizabeth)에서 갈라져 나온 이름으로, 히브리어로 '신께 맹세하다'라는 뜻이에요"
+      },
+      {
+        "name_local": "Charlotte",
+        "pronunciation_kr": "샬럿",
+        "romanized": "Charlotte",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "찰스(Charles)의 여성형으로, 게르만어 '자유인'이라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Amelia",
+        "pronunciation_kr": "어밀리아",
+        "romanized": "Amelia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "게르만어 '부지런히 일하다'는 뜻의 어원에서 유래했어요"
+      },
+      {
+        "name_local": "Mia",
+        "pronunciation_kr": "미아",
+        "romanized": "Mia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "'나의 것', '사랑스러운 사람'이라는 뜻으로 널리 쓰여요"
+      },
+      {
+        "name_local": "Ava",
+        "pronunciation_kr": "에이바",
+        "romanized": "Ava",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어로 '새'라는 뜻이거나, 생명을 뜻하는 이브(Eve)와 연결된 이름으로 풀이돼요"
+      },
+      {
+        "name_local": "Chloe",
+        "pronunciation_kr": "클로이",
+        "romanized": "Chloe",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "그리스어로 '푸르게 피어나다·새싹'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Emily",
+        "pronunciation_kr": "에밀리",
+        "romanized": "Emily",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "고대 로마 가문 이름 아이밀리우스에서 온 이름으로, '뛰어나려 애쓰다'라는 뜻이에요"
+      },
+      {
+        "name_local": "Hannah",
+        "pronunciation_kr": "한나",
+        "romanized": "Hannah",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "히브리어 유래, '은혜·자비'라는 뜻이에요"
+      },
+      {
+        "name_local": "Lily",
+        "pronunciation_kr": "릴리",
+        "romanized": "Lily",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "꽃 백합(lily)에서 그대로 따온 이름으로 순수함을 상징해요"
+      },
+      {
+        "name_local": "Alex",
+        "pronunciation_kr": "알렉스",
+        "romanized": "Alex",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "알렉산더/알렉산드라의 애칭으로, 그리스어로 '사람들을 지키는 자'라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Jordan",
+        "pronunciation_kr": "조던",
+        "romanized": "Jordan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "성경에 나오는 요르단강 이름에서 유래했고, 히브리어로 '흘러내리다'라는 뜻이에요"
+      },
+      {
+        "name_local": "Taylor",
+        "pronunciation_kr": "테일러",
+        "romanized": "Taylor",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "원래 '재단사'를 뜻하던 영어 직업 이름에서 유래했어요"
+      },
+      {
+        "name_local": "Morgan",
+        "pronunciation_kr": "모건",
+        "romanized": "Morgan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "웨일스어 유래, '바다에서 태어난 사람'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Riley",
+        "pronunciation_kr": "라일리",
+        "romanized": "Riley",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "아일랜드 성씨에서 유래, '용감한 사람'이라는 뜻으로 풀이돼요"
+      },
+      {
+        "name_local": "Casey",
+        "pronunciation_kr": "케이시",
+        "romanized": "Casey",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "아일랜드어 유래, '용맹한 사람'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Charlie",
+        "pronunciation_kr": "찰리",
+        "romanized": "Charlie",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "찰스(Charles)·샬럿(Charlotte)의 애칭으로, '자유인'이라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Avery",
+        "pronunciation_kr": "에이버리",
+        "romanized": "Avery",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어 유래, '요정의 지배자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Rowan",
+        "pronunciation_kr": "로언",
+        "romanized": "Rowan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "아일랜드어 유래, '붉은 머리'라는 뜻이에요"
+      },
+      {
+        "name_local": "Jamie",
+        "pronunciation_kr": "제이미",
+        "romanized": "Jamie",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "제임스(James)의 애칭으로 널리 쓰이는 이름이에요"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "sydney",
+      "city_name": "시드니",
+      "tier": 3,
+      "intro": "뉴사우스웨일스주의 주도로, 조개껍데기 모양 지붕의 오페라하우스와 하버브리지가 시드니 항구를 사이에 두고 마주 보고 있어요. 도심에서 버스로 30분이면 닿는 본다이 비치부터 쿠지 비치까지 이어지는 해안 산책로도 인기가 많아요.",
+      "attractions": [
+        {
+          "name": "오페라하우스",
+          "map_query": "Sydney Opera House",
+          "one_line_desc": "조개껍데기를 닮은 흰 지붕이 인상적인 공연장으로, 매일 가이드 투어로 내부를 둘러볼 수 있어요."
+        },
+        {
+          "name": "하버브리지",
+          "map_query": "Sydney Harbour Bridge",
+          "one_line_desc": "1932년 개통된 강철 아치형 다리로, 보행로를 걸으며 항구와 오페라하우스 전경을 볼 수 있어요."
+        },
+        {
+          "name": "본다이 비치",
+          "map_query": "Bondi Beach Sydney",
+          "one_line_desc": "시드니를 대표하는 해변으로, 쿠지 비치까지 6km 이어지는 해안 산책로의 출발점이에요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "록오이스터",
+          "one_line_desc": "시드니 인근 해안에서 양식되는 토종 굴로, 진한 감칠맛과 짭짤한 맛이 특징이에요."
+        },
+        {
+          "name": "팀탐",
+          "one_line_desc": "1964년 시드니의 아넷츠(Arnott's) 공장에서 처음 만들어진 초콜릿 비스킷이에요."
+        },
+        {
+          "name": "생새우",
+          "one_line_desc": "크리스마스이브마다 시드니 피시마켓에 10만 명 넘게 몰려 새우를 사가는 명물 풍경이 있어요."
+        }
+      ]
+    },
+    {
+      "city_code": "melbourne",
+      "city_name": "멜버른",
+      "tier": 3,
+      "intro": "빅토리아주의 주도로, 세계적으로 손꼽히는 커피 문화와 골목 구석구석(레인웨이)에 숨은 카페들로 유명해요. 시내에서 하루 코스로 다녀오는 그레이트 오션로드의 12사도 바위 투어도 멜버른 여행의 하이라이트예요.",
+      "attractions": [
+        {
+          "name": "페더레이션 스퀘어",
+          "short": "페더레이션광장",
+          "map_query": "Federation Square Melbourne",
+          "one_line_desc": "멜버른 도심 한복판의 광장으로, 미술관과 극장이 모여 있고 연중 다양한 행사가 열려요."
+        },
+        {
+          "name": "퀸빅토리아마켓",
+          "map_query": "Queen Victoria Market Melbourne",
+          "one_line_desc": "1878년 문을 연 재래시장으로, 신선식품 상점과 겨울철(6~8월) 수요일 밤에 열리는 야시장이 유명해요."
+        },
+        {
+          "name": "그레이트 오션로드",
+          "map_query": "Twelve Apostles Great Ocean Road",
+          "one_line_desc": "멜버른에서 당일 투어로 다녀오는 해안 도로로, 석회암 기둥 '12사도 바위'가 명물이에요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "플랫화이트",
+          "one_line_desc": "에스프레소에 스팀 밀크를 부드럽게 얹은 커피로, 멜버른의 카페 문화를 상징하는 대표 메뉴예요."
+        },
+        {
+          "name": "딤심",
+          "one_line_desc": "1945년 멜버른 차이나타운에서 처음 만들어진 튀김·찐만두로, 호주식 딤섬이에요."
+        },
+        {
+          "name": "베지마이트",
+          "one_line_desc": "1922년 멜버른에서 개발돼 이듬해 출시된 짭짤한 이스트 스프레드로, 토스트에 얇게 발라 먹어요."
+        }
+      ]
+    },
+    {
+      "city_code": "brisbane",
+      "city_name": "브리즈번",
+      "tier": 3,
+      "intro": "퀸즐랜드의 주도로, 브리즈번강을 따라 도심 바로 옆 사우스뱅크 파클랜즈에 인공 백사장이 있어 강변에서 바로 물놀이를 즐길 수 있어요. 시내에서 차로 20분 거리의 론파인 코알라 생추어리에서는 코알라를 가까이서 만나고 사진을 찍을 수 있어요.",
+      "attractions": [
+        {
+          "name": "사우스뱅크 파클랜즈",
+          "short": "사우스뱅크",
+          "map_query": "South Bank Parklands Brisbane",
+          "one_line_desc": "브리즈번강변 공원으로, 인공 백사장 '스트리츠 비치'에서 도심을 보며 물놀이를 할 수 있어요."
+        },
+        {
+          "name": "스토리브릿지",
+          "map_query": "Story Bridge Brisbane",
+          "one_line_desc": "브리즈번강을 가로지르는 철제 다리로, 가이드와 함께 다리 위를 오르는 클라임 체험도 가능해요."
+        },
+        {
+          "name": "론파인 코알라 생추어리",
+          "short": "론파인 코알라",
+          "map_query": "Lone Pine Koala Sanctuary Brisbane",
+          "one_line_desc": "100마리 넘는 코알라가 사는 보호구역으로, 가까이서 관찰하고 사진을 찍을 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "모튼베이버그",
+          "one_line_desc": "브리즈번 앞바다 모튼베이에서 잡히는 납작한 바닷가재(슬리퍼 랍스터)로, 살이 달고 부드러워 그릴 요리로 즐겨요."
+        },
+        {
+          "name": "XXXX 맥주",
+          "one_line_desc": "1878년 문을 연 브리즈번 밀턴 양조장에서 1924년부터 만들어 온 퀸즐랜드의 대표 맥주예요."
+        },
+        {
+          "name": "마카다미아",
+          "one_line_desc": "퀸즐랜드가 원산지인 견과류로, 고소한 맛 덕분에 호주 각지 디저트에 즐겨 쓰여요."
+        }
+      ]
+    }
+  ]
+}

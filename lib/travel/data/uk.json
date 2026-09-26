@@ -1,0 +1,497 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "uk",
+    "name": "영국",
+    "language": "영어",
+    "lang_code": "en",
+    "tier": 3,
+    "intro": "빅벤과 버킹엄궁 같은 대표 상징물부터 축구와 록 음악까지, 전통과 대중문화가 함께 살아 숨 쉬는 나라예요. 잉글랜드의 활기찬 런던과 스코틀랜드의 고풍스러운 에든버러가 서로 다른 매력을 보여줘요.",
+    "name_note": "영어권 사람들은 정식 이름 대신 편하게 부르는 짧은 애칭을 자주 써요, 예를 들어 알렉산더(Alexander)는 보통 알렉스(Alex)라고 불러요. 그래서 목록 속 이름 그대로 불러도 되고, 더 캐주얼하게 애칭으로 불러도 자연스러워요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요, 어떻게 지내세요?",
+        "text_local": "Hi, how are you?",
+        "pronunciation_kr": "하이, 하우 아 유",
+        "note": "가장 흔하고 편하게 쓰는 인사예요"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "정말 감사합니다",
+        "text_local": "Thank you so much",
+        "pronunciation_kr": "땡큐 쏘 머치"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "I'll have this, please",
+        "pronunciation_kr": "아윌 해브 디스, 플리즈"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "이거 얼마예요?",
+        "text_local": "How much is this?",
+        "pronunciation_kr": "하우 머치 이즈 디스"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "이거 정말 맛있어요",
+        "text_local": "This is delicious!",
+        "pronunciation_kr": "디스 이즈 딜리셔스"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "James",
+        "pronunciation_kr": "제임스",
+        "romanized": "James",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "히브리어 '야곱'에서 갈라져 나온 이름으로, '뒤꿈치를 붙잡은 자·대신 차지한 자'라는 뜻으로 풀이돼요"
+      },
+      {
+        "name_local": "William",
+        "pronunciation_kr": "윌리엄",
+        "romanized": "William",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어 유래, '굳은 의지를 가진 보호자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Henry",
+        "pronunciation_kr": "헨리",
+        "romanized": "Henry",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어 유래, '집안의 지배자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Benjamin",
+        "pronunciation_kr": "벤저민",
+        "romanized": "Benjamin",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "히브리어 유래, '오른손의 아들'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Daniel",
+        "pronunciation_kr": "대니얼",
+        "romanized": "Daniel",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어 유래, '신은 나의 심판자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Michael",
+        "pronunciation_kr": "마이클",
+        "romanized": "Michael",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어 유래, '신과 같은 이가 누구인가'라는 뜻이에요"
+      },
+      {
+        "name_local": "Ethan",
+        "pronunciation_kr": "에단",
+        "romanized": "Ethan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어 유래, '강하고 굳건하다'는 뜻이에요"
+      },
+      {
+        "name_local": "Lucas",
+        "pronunciation_kr": "루카스",
+        "romanized": "Lucas",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "그리스어 Loukas(원래는 이탈리아 루카니아 지역 출신자를 뜻함)에서 유래했고, 발음이 비슷한 라틴어 lux(빛)와 연결지어 '빛을 가져오는 사람'이라는 뜻으로도 흔히 알려져 있어요"
+      },
+      {
+        "name_local": "Oliver",
+        "pronunciation_kr": "올리버",
+        "romanized": "Oliver",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "올리브 나무에서 유래했다는 설이 널리 알려져 있지만, 실제로는 고대 노르드어·게르만어 계열 이름(엘프+군대)에서 왔다는 설이 더 유력해요"
+      },
+      {
+        "name_local": "Noah",
+        "pronunciation_kr": "노아",
+        "romanized": "Noah",
+        "gender_style": "male",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "히브리어 유래, '안식·평안'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Liam",
+        "pronunciation_kr": "리암",
+        "romanized": "Liam",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "아일랜드에서 윌리엄(William)의 애칭으로 자리 잡은 이름으로, '굳은 의지의 보호자'라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Leo",
+        "pronunciation_kr": "레오",
+        "romanized": "Leo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "라틴어로 '사자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Emma",
+        "pronunciation_kr": "엠마",
+        "romanized": "Emma",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "게르만어 유래, '전체·보편'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Olivia",
+        "pronunciation_kr": "올리비아",
+        "romanized": "Olivia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어 올리브 나무에서 유래했다고 널리 알려져 있어요(남성형 Oliver와 마찬가지로 다른 유래설도 있어요)"
+      },
+      {
+        "name_local": "Sophia",
+        "pronunciation_kr": "소피아",
+        "romanized": "Sophia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "그리스어 유래, '지혜'라는 뜻이에요"
+      },
+      {
+        "name_local": "Isabella",
+        "pronunciation_kr": "이자벨라",
+        "romanized": "Isabella",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "엘리자베스(Elizabeth)에서 갈라져 나온 이름으로, 히브리어로 '신께 맹세하다'라는 뜻이에요"
+      },
+      {
+        "name_local": "Charlotte",
+        "pronunciation_kr": "샬럿",
+        "romanized": "Charlotte",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "찰스(Charles)의 여성형으로, 게르만어 '자유인'이라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Amelia",
+        "pronunciation_kr": "어밀리아",
+        "romanized": "Amelia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "게르만어 '부지런히 일하다'는 뜻의 어원에서 유래했어요"
+      },
+      {
+        "name_local": "Mia",
+        "pronunciation_kr": "미아",
+        "romanized": "Mia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "'나의 것', '사랑스러운 사람'이라는 뜻으로 널리 쓰여요"
+      },
+      {
+        "name_local": "Ava",
+        "pronunciation_kr": "에이바",
+        "romanized": "Ava",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어로 '새'라는 뜻이거나, 생명을 뜻하는 이브(Eve)와 연결된 이름으로 풀이돼요"
+      },
+      {
+        "name_local": "Chloe",
+        "pronunciation_kr": "클로이",
+        "romanized": "Chloe",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "그리스어로 '푸르게 피어나다·새싹'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Emily",
+        "pronunciation_kr": "에밀리",
+        "romanized": "Emily",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "고대 로마 가문 이름 아이밀리우스에서 온 이름으로, '뛰어나려 애쓰다'라는 뜻이에요"
+      },
+      {
+        "name_local": "Hannah",
+        "pronunciation_kr": "한나",
+        "romanized": "Hannah",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "히브리어 유래, '은혜·자비'라는 뜻이에요"
+      },
+      {
+        "name_local": "Lily",
+        "pronunciation_kr": "릴리",
+        "romanized": "Lily",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "꽃 백합(lily)에서 그대로 따온 이름으로 순수함을 상징해요"
+      },
+      {
+        "name_local": "Alex",
+        "pronunciation_kr": "알렉스",
+        "romanized": "Alex",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "알렉산더/알렉산드라의 애칭으로, 그리스어로 '사람들을 지키는 자'라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Jordan",
+        "pronunciation_kr": "조던",
+        "romanized": "Jordan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "성경에 나오는 요르단강 이름에서 유래했고, 히브리어로 '흘러내리다'라는 뜻이에요"
+      },
+      {
+        "name_local": "Taylor",
+        "pronunciation_kr": "테일러",
+        "romanized": "Taylor",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "원래 '재단사'를 뜻하던 영어 직업 이름에서 유래했어요"
+      },
+      {
+        "name_local": "Morgan",
+        "pronunciation_kr": "모건",
+        "romanized": "Morgan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "웨일스어 유래, '바다에서 태어난 사람'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Riley",
+        "pronunciation_kr": "라일리",
+        "romanized": "Riley",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "아일랜드 성씨에서 유래, '용감한 사람'이라는 뜻으로 풀이돼요"
+      },
+      {
+        "name_local": "Casey",
+        "pronunciation_kr": "케이시",
+        "romanized": "Casey",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "아일랜드어 유래, '용맹한 사람'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Charlie",
+        "pronunciation_kr": "찰리",
+        "romanized": "Charlie",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "찰스(Charles)·샬럿(Charlotte)의 애칭으로, '자유인'이라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Avery",
+        "pronunciation_kr": "에이버리",
+        "romanized": "Avery",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어 유래, '요정의 지배자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Rowan",
+        "pronunciation_kr": "로언",
+        "romanized": "Rowan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "아일랜드어 유래, '붉은 머리'라는 뜻이에요"
+      },
+      {
+        "name_local": "Jamie",
+        "pronunciation_kr": "제이미",
+        "romanized": "Jamie",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "제임스(James)의 애칭으로 널리 쓰이는 이름이에요"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "london",
+      "city_name": "런던",
+      "tier": 3,
+      "intro": "영국의 수도로, 템스강을 사이에 두고 웨스트민스터의 유서 깊은 건축물과 최신식 마천루가 마주 보고 있어요. 빨간 이층버스와 지하철 '튜브'를 타고 다니다 보면 여러 시대가 겹친 도시를 실감하게 돼요.",
+      "attractions": [
+        {
+          "name": "런던탑",
+          "map_query": "Tower of London",
+          "one_line_desc": "11세기에 윌리엄 정복왕이 세운 화이트 타워가 중심을 이루는 요새로, 지금은 화려한 왕실 보석을 전시해요."
+        },
+        {
+          "name": "대영박물관",
+          "map_query": "British Museum London",
+          "one_line_desc": "이집트 로제타석을 포함해 800만 점이 넘는 소장품을 무료로 볼 수 있는 세계적인 박물관이에요."
+        },
+        {
+          "name": "타워브리지",
+          "map_query": "Tower Bridge London",
+          "one_line_desc": "템스강 위 42m 높이의 유리 바닥 통로에서 템스강을 내려다보며 걸을 수 있는 상징적인 다리예요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "피시앤칩스",
+          "one_line_desc": "대구 등 흰살생선 튀김에 감자튀김을 곁들인 영국의 국민 음식으로, 런던 어디서나 맛볼 수 있어요."
+        },
+        {
+          "name": "파이앤매시",
+          "one_line_desc": "다진 고기 파이에 으깬 감자와 파슬리 소스(리커)를 곁들인 런던 이스트엔드의 서민 음식이에요."
+        },
+        {
+          "name": "애프터눈티",
+          "one_line_desc": "스콘과 샌드위치, 홍차를 3단 트레이에 함께 내는 영국 특유의 티타임 문화예요."
+        }
+      ]
+    },
+    {
+      "city_code": "edinburgh",
+      "city_name": "에든버러",
+      "tier": 3,
+      "intro": "스코틀랜드의 수도로, 화산 언덕 위에 성이 올라앉은 독특한 스카이라인을 가지고 있어요. 고풍스러운 올드타운과 격자무늬로 정돈된 신도시(뉴타운)가 나란히 있어 두 얼굴의 매력을 함께 즐길 수 있어요.",
+      "attractions": [
+        {
+          "name": "에든버러성",
+          "map_query": "Edinburgh Castle",
+          "one_line_desc": "가파른 캐슬록 위에 자리한 스코틀랜드의 상징적 요새로, 거의 매일 오후 1시면 대포 소리가 울려요."
+        },
+        {
+          "name": "아서스 시트",
+          "map_query": "Arthur's Seat Edinburgh",
+          "one_line_desc": "홀리루드 파크 안에 있는 해발 251m의 사화산으로, 정상에 오르면 에든버러 시내와 바다까지 한눈에 보여요."
+        },
+        {
+          "name": "로열마일",
+          "map_query": "Royal Mile Edinburgh",
+          "one_line_desc": "에든버러 성과 홀리루드궁을 잇는 약 1.4km의 옛길로, 올드타운의 중심 거리예요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "해기스",
+          "one_line_desc": "양의 내장과 오트밀을 향신료와 함께 조리한 스코틀랜드의 국민 음식으로, 으깬 감자·순무와 함께 먹어요."
+        },
+        {
+          "name": "크라나한",
+          "one_line_desc": "휘핑크림과 오트밀, 라즈베리에 위스키를 더한 스코틀랜드 전통 디저트예요."
+        },
+        {
+          "name": "컬렌스킹크",
+          "one_line_desc": "훈제 해덕(대구와 비슷한 흰살생선)과 감자를 넣어 걸쭉하게 끓인 스코틀랜드 대표 수프예요."
+        }
+      ]
+    }
+  ]
+}

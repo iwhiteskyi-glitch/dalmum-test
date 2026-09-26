@@ -1,0 +1,686 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "usa",
+    "name": "미국",
+    "language": "영어",
+    "lang_code": "en",
+    "tier": 2,
+    "intro": "동부의 대도시 뉴욕부터 서부의 사막 도시 라스베이거스, 태평양의 휴양섬 괌·사이판까지 나라 하나에 전혀 다른 여행이 공존해요. 비행 시간과 여행 스타일에 맞춰 목적지를 고를 수 있는 것이 미국 여행의 매력이에요.",
+    "name_note": "영어권 사람들은 정식 이름 대신 편하게 부르는 짧은 애칭을 자주 써요, 예를 들어 알렉산더(Alexander)는 보통 알렉스(Alex)라고 불러요. 그래서 목록 속 이름 그대로 불러도 되고, 더 캐주얼하게 애칭으로 불러도 자연스러워요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요, 어떻게 지내세요?",
+        "text_local": "Hi, how are you?",
+        "pronunciation_kr": "하이, 하우 아 유",
+        "note": "가장 흔하고 편하게 쓰는 인사예요"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "정말 감사합니다",
+        "text_local": "Thank you so much",
+        "pronunciation_kr": "땡큐 쏘 머치"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "I'll have this, please",
+        "pronunciation_kr": "아윌 해브 디스, 플리즈"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "이거 얼마예요?",
+        "text_local": "How much is this?",
+        "pronunciation_kr": "하우 머치 이즈 디스"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "이거 정말 맛있어요",
+        "text_local": "This is delicious!",
+        "pronunciation_kr": "디스 이즈 딜리셔스"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "James",
+        "pronunciation_kr": "제임스",
+        "romanized": "James",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "히브리어 '야곱'에서 갈라져 나온 이름으로, '뒤꿈치를 붙잡은 자·대신 차지한 자'라는 뜻으로 풀이돼요"
+      },
+      {
+        "name_local": "William",
+        "pronunciation_kr": "윌리엄",
+        "romanized": "William",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어 유래, '굳은 의지를 가진 보호자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Henry",
+        "pronunciation_kr": "헨리",
+        "romanized": "Henry",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어 유래, '집안의 지배자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Benjamin",
+        "pronunciation_kr": "벤저민",
+        "romanized": "Benjamin",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "히브리어 유래, '오른손의 아들'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Daniel",
+        "pronunciation_kr": "대니얼",
+        "romanized": "Daniel",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어 유래, '신은 나의 심판자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Michael",
+        "pronunciation_kr": "마이클",
+        "romanized": "Michael",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어 유래, '신과 같은 이가 누구인가'라는 뜻이에요"
+      },
+      {
+        "name_local": "Ethan",
+        "pronunciation_kr": "에단",
+        "romanized": "Ethan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어 유래, '강하고 굳건하다'는 뜻이에요"
+      },
+      {
+        "name_local": "Lucas",
+        "pronunciation_kr": "루카스",
+        "romanized": "Lucas",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "그리스어 Loukas(원래는 이탈리아 루카니아 지역 출신자를 뜻함)에서 유래했고, 발음이 비슷한 라틴어 lux(빛)와 연결지어 '빛을 가져오는 사람'이라는 뜻으로도 흔히 알려져 있어요"
+      },
+      {
+        "name_local": "Oliver",
+        "pronunciation_kr": "올리버",
+        "romanized": "Oliver",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "올리브 나무에서 유래했다는 설이 널리 알려져 있지만, 실제로는 고대 노르드어·게르만어 계열 이름(엘프+군대)에서 왔다는 설이 더 유력해요"
+      },
+      {
+        "name_local": "Noah",
+        "pronunciation_kr": "노아",
+        "romanized": "Noah",
+        "gender_style": "male",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "히브리어 유래, '안식·평안'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Liam",
+        "pronunciation_kr": "리암",
+        "romanized": "Liam",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "아일랜드에서 윌리엄(William)의 애칭으로 자리 잡은 이름으로, '굳은 의지의 보호자'라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Leo",
+        "pronunciation_kr": "레오",
+        "romanized": "Leo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "라틴어로 '사자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Emma",
+        "pronunciation_kr": "엠마",
+        "romanized": "Emma",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "게르만어 유래, '전체·보편'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Olivia",
+        "pronunciation_kr": "올리비아",
+        "romanized": "Olivia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어 올리브 나무에서 유래했다고 널리 알려져 있어요(남성형 Oliver와 마찬가지로 다른 유래설도 있어요)"
+      },
+      {
+        "name_local": "Sophia",
+        "pronunciation_kr": "소피아",
+        "romanized": "Sophia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "그리스어 유래, '지혜'라는 뜻이에요"
+      },
+      {
+        "name_local": "Isabella",
+        "pronunciation_kr": "이자벨라",
+        "romanized": "Isabella",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "엘리자베스(Elizabeth)에서 갈라져 나온 이름으로, 히브리어로 '신께 맹세하다'라는 뜻이에요"
+      },
+      {
+        "name_local": "Charlotte",
+        "pronunciation_kr": "샬럿",
+        "romanized": "Charlotte",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "찰스(Charles)의 여성형으로, 게르만어 '자유인'이라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Amelia",
+        "pronunciation_kr": "어밀리아",
+        "romanized": "Amelia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "게르만어 '부지런히 일하다'는 뜻의 어원에서 유래했어요"
+      },
+      {
+        "name_local": "Mia",
+        "pronunciation_kr": "미아",
+        "romanized": "Mia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "'나의 것', '사랑스러운 사람'이라는 뜻으로 널리 쓰여요"
+      },
+      {
+        "name_local": "Ava",
+        "pronunciation_kr": "에이바",
+        "romanized": "Ava",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어로 '새'라는 뜻이거나, 생명을 뜻하는 이브(Eve)와 연결된 이름으로 풀이돼요"
+      },
+      {
+        "name_local": "Chloe",
+        "pronunciation_kr": "클로이",
+        "romanized": "Chloe",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "그리스어로 '푸르게 피어나다·새싹'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Emily",
+        "pronunciation_kr": "에밀리",
+        "romanized": "Emily",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "고대 로마 가문 이름 아이밀리우스에서 온 이름으로, '뛰어나려 애쓰다'라는 뜻이에요"
+      },
+      {
+        "name_local": "Hannah",
+        "pronunciation_kr": "한나",
+        "romanized": "Hannah",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "히브리어 유래, '은혜·자비'라는 뜻이에요"
+      },
+      {
+        "name_local": "Lily",
+        "pronunciation_kr": "릴리",
+        "romanized": "Lily",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "꽃 백합(lily)에서 그대로 따온 이름으로 순수함을 상징해요"
+      },
+      {
+        "name_local": "Alex",
+        "pronunciation_kr": "알렉스",
+        "romanized": "Alex",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "알렉산더/알렉산드라의 애칭으로, 그리스어로 '사람들을 지키는 자'라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Jordan",
+        "pronunciation_kr": "조던",
+        "romanized": "Jordan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "성경에 나오는 요르단강 이름에서 유래했고, 히브리어로 '흘러내리다'라는 뜻이에요"
+      },
+      {
+        "name_local": "Taylor",
+        "pronunciation_kr": "테일러",
+        "romanized": "Taylor",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "원래 '재단사'를 뜻하던 영어 직업 이름에서 유래했어요"
+      },
+      {
+        "name_local": "Morgan",
+        "pronunciation_kr": "모건",
+        "romanized": "Morgan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "웨일스어 유래, '바다에서 태어난 사람'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Riley",
+        "pronunciation_kr": "라일리",
+        "romanized": "Riley",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "아일랜드 성씨에서 유래, '용감한 사람'이라는 뜻으로 풀이돼요"
+      },
+      {
+        "name_local": "Casey",
+        "pronunciation_kr": "케이시",
+        "romanized": "Casey",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "아일랜드어 유래, '용맹한 사람'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Charlie",
+        "pronunciation_kr": "찰리",
+        "romanized": "Charlie",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "찰스(Charles)·샬럿(Charlotte)의 애칭으로, '자유인'이라는 뜻을 이어받았어요"
+      },
+      {
+        "name_local": "Avery",
+        "pronunciation_kr": "에이버리",
+        "romanized": "Avery",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어 유래, '요정의 지배자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Rowan",
+        "pronunciation_kr": "로언",
+        "romanized": "Rowan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "아일랜드어 유래, '붉은 머리'라는 뜻이에요"
+      },
+      {
+        "name_local": "Jamie",
+        "pronunciation_kr": "제이미",
+        "romanized": "Jamie",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "제임스(James)의 애칭으로 널리 쓰이는 이름이에요"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "guam",
+      "city_name": "괌",
+      "tier": 2,
+      "intro": "한국에서 비행기로 4시간 20분이면 닿는 가까운 미국령 휴양지예요. 투몬 비치의 에메랄드빛 바다와 미군기지가 함께 있는 독특한 분위기 덕분에 신혼여행지로도 오랫동안 사랑받아 왔어요.",
+      "attractions": [
+        {
+          "name": "사랑의 절벽",
+          "map_query": "Two Lovers Point Guam",
+          "one_line_desc": "타뮤닝 절벽 위 전망대로, 두 연인의 전설이 전해져요. 노을 무렵 투몬 해안선이 특히 아름다워요."
+        },
+        {
+          "name": "차모로 빌리지 야시장",
+          "short": "차모로시장",
+          "map_query": "Chamorro Village Hagatna Guam",
+          "one_line_desc": "매주 수요일 저녁 하갓냐에서 열리는 야시장이에요. 바비큐 노점과 전통 공연을 함께 즐길 수 있어요."
+        },
+        {
+          "name": "피시아이 해양공원",
+          "map_query": "Fish Eye Marine Park Guam",
+          "one_line_desc": "계단으로 내려가 수중 관찰창에서 산호와 열대어를 구경할 수 있는 해양공원이에요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "치킨켈라겐",
+          "one_line_desc": "레몬즙에 양파·고추를 더해 닭고기를 무친 요리로, 괌을 대표하는 차모로 전통 음식이에요."
+        },
+        {
+          "name": "레드라이스",
+          "one_line_desc": "아나토 씨앗으로 붉게 물들인 밥으로, 차모로 가정의 잔치상에 빠지지 않는 곁들이 음식이에요."
+        },
+        {
+          "name": "라티야",
+          "one_line_desc": "스펀지케이크에 바닐라 커스터드와 계피를 올린 차모로식 디저트로, 명절 상차림에 자주 올라요."
+        }
+      ]
+    },
+    {
+      "city_code": "saipan",
+      "city_name": "사이판",
+      "tier": 2,
+      "intro": "괌보다 한적하고 자연 그대로의 모습이 많이 남은 북마리아나 제도의 섬이에요. 에메랄드빛 바다 위에 떠 있는 마나가하섬과 세계적인 다이빙 명소 그로토가 대표 볼거리예요.",
+      "attractions": [
+        {
+          "name": "마나가하섬",
+          "map_query": "Managaha Island Saipan",
+          "one_line_desc": "페리로 20분이면 닿는 작은 섬으로, 수심이 얕고 맑은 바다에서 스노클링을 즐기기 좋아요."
+        },
+        {
+          "name": "그로토",
+          "map_query": "The Grotto Saipan",
+          "one_line_desc": "계단을 내려가 만나는 천연 석회암 동굴로, 코발트빛 물빛을 볼 수 있는 세계적인 다이빙 명소예요."
+        },
+        {
+          "name": "아메리칸 메모리얼 파크",
+          "short": "메모리얼파크",
+          "map_query": "American Memorial Park Saipan",
+          "one_line_desc": "가라판 해변가에 자리한 공원으로, 산책로와 함께 사이판 전투 관련 전시관을 둘러볼 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "아피기기",
+          "one_line_desc": "간 코코넛과 타피오카 전분을 바나나 잎에 싸서 구운 사이판의 전통 간식이에요."
+        },
+        {
+          "name": "티티야스",
+          "one_line_desc": "밀가루나 옥수숫가루로 얇게 구운 또띠아 형태의 빵으로, 밥 대신 곁들여 먹어요."
+        },
+        {
+          "name": "코코넛크랩",
+          "one_line_desc": "아유유라고도 불리는 대형 게 요리로, 사이판 잔치상에 오르는 귀한 별미로 꼽혀요."
+        }
+      ]
+    },
+    {
+      "city_code": "hawaii",
+      "city_name": "하와이",
+      "tier": 2,
+      "intro": "오아후섬의 중심 도시 호놀룰루를 품은 곳으로, 와이키키 해변의 여유와 진주만의 역사를 함께 만날 수 있어요. 현대 서핑이 시작된 곳답게 해변 문화가 도시 곳곳에 스며 있어요.",
+      "attractions": [
+        {
+          "name": "와이키키 비치",
+          "map_query": "Waikiki Beach Honolulu",
+          "one_line_desc": "호놀룰루 도심 바로 앞 해변으로, 서핑 강습과 노을 산책을 함께 즐길 수 있어요."
+        },
+        {
+          "name": "다이아몬드 헤드",
+          "map_query": "Diamond Head State Monument Oahu",
+          "one_line_desc": "분화구 능선을 오르는 등산로로, 정상에서 와이키키 해안선이 한눈에 보여요. 사전 예약이 필요해요."
+        },
+        {
+          "name": "진주만",
+          "map_query": "USS Arizona Memorial Pearl Harbor Honolulu",
+          "one_line_desc": "2차 세계대전 역사를 기억하는 추모 공원으로, 배를 타고 애리조나호 기념관을 둘러볼 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "포케",
+          "one_line_desc": "생선회를 간장 양념에 버무려 밥에 올려 먹는 하와이 대표 음식이에요."
+        },
+        {
+          "name": "로코모코",
+          "one_line_desc": "밥 위에 햄버거 패티와 달걀프라이, 그레이비를 올린 하와이 로컬 음식이에요."
+        },
+        {
+          "name": "셰이브아이스",
+          "one_line_desc": "곱게 간 얼음에 시럽을 뿌린 하와이식 빙수로, 무더운 날씨에 인기가 많아요."
+        }
+      ]
+    },
+    {
+      "city_code": "newyork",
+      "city_name": "뉴욕",
+      "tier": 2,
+      "intro": "자유의 여신상과 타임스스퀘어로 대표되는 미국 최대 도시예요. 브로드웨이 뮤지컬과 센트럴파크의 사계절 풍경까지, 도시 안에서 다양한 볼거리를 즐길 수 있어요.",
+      "attractions": [
+        {
+          "name": "자유의 여신상",
+          "map_query": "Statue of Liberty Ferry Battery Park",
+          "one_line_desc": "리버티섬에 서 있는 여신상으로, 배터리 파크에서 페리를 타고 들어가야 해요."
+        },
+        {
+          "name": "센트럴파크",
+          "map_query": "Central Park New York",
+          "one_line_desc": "맨해튼 한복판에 펼쳐진 대형 공원으로, 산책과 자전거 라이딩을 즐기는 사람들로 늘 붐벼요."
+        },
+        {
+          "name": "타임스스퀘어",
+          "map_query": "Times Square Manhattan New York",
+          "one_line_desc": "대형 전광판이 가득한 교차로로, 밤에도 대낮처럼 환하게 빛나는 뉴욕의 상징이에요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "뉴욕피자",
+          "one_line_desc": "얇고 넓게 편 크러스트를 반으로 접어 먹는 뉴욕식 피자로, 거리 어디서나 한 조각씩 팔아요."
+        },
+        {
+          "name": "베이글",
+          "one_line_desc": "동유럽 유대인 이민자들이 전해준 빵으로, 크림치즈를 발라 아침 식사로 즐겨 먹어요."
+        },
+        {
+          "name": "뉴욕치즈케이크",
+          "one_line_desc": "크림치즈를 듬뿍 넣어 진하고 묵직한 것이 특징인 뉴욕식 치즈케이크예요."
+        }
+      ]
+    },
+    {
+      "city_code": "la",
+      "city_name": "LA",
+      "tier": 2,
+      "intro": "할리우드와 영화 산업으로 유명한 남부 캘리포니아의 대도시예요. 그리피스 천문대에서 도심 전망을 감상하고, 산타모니카 해변에서 캘리포니아의 햇살을 즐길 수 있어요.",
+      "attractions": [
+        {
+          "name": "그리피스 천문대",
+          "map_query": "Griffith Observatory Los Angeles",
+          "one_line_desc": "무료로 입장할 수 있는 천문대로, 언덕 위에서 로스앤젤레스 시내와 할리우드 사인을 함께 볼 수 있어요."
+        },
+        {
+          "name": "산타모니카 피어",
+          "map_query": "Santa Monica Pier",
+          "one_line_desc": "해변 위에 놓인 부두로, 관람차가 있는 퍼시픽 파크와 아쿠아리움이 자리해 있어요."
+        },
+        {
+          "name": "할리우드 명예의 거리",
+          "short": "명예의거리",
+          "map_query": "Hollywood Walk of Fame",
+          "one_line_desc": "할리우드 대로 바닥에 유명 스타들의 이름이 새겨진 별 모양 동판이 이어진 거리예요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "프렌치딥",
+          "one_line_desc": "로스트비프 샌드위치를 육즙 소스에 찍어 먹는 요리로, 1908년 무렵 로스앤젤레스에서 탄생했다고 알려져 있어요."
+        },
+        {
+          "name": "길거리타코",
+          "one_line_desc": "화덕에 구운 고기를 잘게 썰어 또띠아에 싸 먹는 타코로, LA 곳곳의 노점에서 맛볼 수 있어요."
+        },
+        {
+          "name": "인앤아웃버거",
+          "one_line_desc": "1948년 LA 인근 볼드윈파크에서 시작한 버거 체인으로, 캘리포니아를 상징하는 패스트푸드예요."
+        }
+      ]
+    },
+    {
+      "city_code": "lasvegas",
+      "city_name": "라스베이거스",
+      "tier": 2,
+      "intro": "네바다 사막 한가운데 세워진 세계적인 엔터테인먼트 도시예요. 화려한 카지노 호텔이 늘어선 스트립 거리와 밤마다 펼쳐지는 무료 쇼가 여행객들을 끌어모아요.",
+      "attractions": [
+        {
+          "name": "벨라지오 분수쇼",
+          "map_query": "Fountains of Bellagio Las Vegas",
+          "one_line_desc": "벨라지오 호텔 앞 호수에서 음악에 맞춰 물줄기가 춤추는 무료 분수쇼예요."
+        },
+        {
+          "name": "프리몬트 스트리트",
+          "short": "프리몬트",
+          "map_query": "Fremont Street Experience Las Vegas",
+          "one_line_desc": "천장을 뒤덮은 대형 스크린에서 매시 정각 빛과 음악 쇼가 펼쳐지는 다운타운 거리예요."
+        },
+        {
+          "name": "하이롤러",
+          "map_query": "High Roller Observation Wheel Las Vegas",
+          "one_line_desc": "높이 168m의 대형 관람차로, 한 바퀴 도는 동안 스트립 전체 야경을 감상할 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "새우칵테일",
+          "one_line_desc": "차가운 삶은 새우에 칵테일 소스를 곁들인 요리로, 1959년 골든게이트 카지노에서 유행을 이끌었어요."
+        },
+        {
+          "name": "프라임립",
+          "one_line_desc": "두툼하게 구운 소고기 등심 요리로, 1940년대부터 카지노 식당의 저렴한 대표 메뉴로 자리잡았어요."
+        },
+        {
+          "name": "베가스뷔페",
+          "one_line_desc": "1946년 카지노 손님을 붙잡기 위해 시작된 뷔페 문화로, 지금도 라스베이거스 식도락의 상징이에요."
+        }
+      ]
+    },
+    {
+      "city_code": "sanfrancisco",
+      "city_name": "샌프란시스코",
+      "tier": 2,
+      "intro": "붉은 현수교 금문교로 유명한 캘리포니아 북부의 항구 도시예요. 가파른 언덕길과 알카트라즈 섬, 피어39의 바다사자까지 걸어서 둘러볼 거리가 많아요.",
+      "attractions": [
+        {
+          "name": "금문교",
+          "map_query": "Golden Gate Bridge San Francisco",
+          "one_line_desc": "골든게이트 브리지라고도 불리는 붉은 현수교로, 무료로 다리 위를 걸어서 건널 수 있어요."
+        },
+        {
+          "name": "알카트라즈 섬",
+          "map_query": "Alcatraz Island San Francisco",
+          "one_line_desc": "옛 연방 교도소가 있던 섬으로, 페리를 타고 들어가 감옥 내부를 둘러볼 수 있어요."
+        },
+        {
+          "name": "피어39",
+          "map_query": "Pier 39 San Francisco",
+          "one_line_desc": "부두에 몰려든 야생 바다사자들을 가까이서 볼 수 있는 피셔맨스 워프의 명소예요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "사워도우빵",
+          "one_line_desc": "새콤한 발효 향이 특징인 빵으로, 샌프란시스코를 상징하는 대표 먹거리예요."
+        },
+        {
+          "name": "던지니스크랩",
+          "one_line_desc": "캘리포니아 앞바다에서 잡히는 게 요리로, 가을부터 봄까지가 제철이에요."
+        },
+        {
+          "name": "미션부리토",
+          "one_line_desc": "1960년대 미션 지구에서 시작된 큼직한 부리토로, 밥과 각종 재료를 푸짐하게 넣어 싸요."
+        }
+      ]
+    }
+  ]
+}
