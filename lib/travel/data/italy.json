@@ -1,0 +1,530 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "italy",
+    "name": "이탈리아",
+    "language": "이탈리아어",
+    "lang_code": "it",
+    "tier": 3,
+    "intro": "콜로세움과 트레비 분수의 나라이자, 피자와 파스타 같은 세계적인 음식 문화의 고향이에요. 로마제국의 유적부터 르네상스 예술, 지중해의 아름다운 해안까지 한 나라 안에서 다채로운 매력을 만날 수 있어요.",
+    "name_note": "이탈리아 사람들은 본명을 부드럽게 줄인 애칭(프란체스코→체코, 주세페→베페처럼)을 가족이나 친구 사이에서 즐겨 불러요. 세례명 전통이 강해 오래전부터 전해오는 이름을 그대로 물려받는 경우가 많아, 예스러운 이름도 요즘 아이들에게 꾸준히 사랑받아요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "Buongiorno",
+        "pronunciation_kr": "부온조르노",
+        "note": "아침부터 오후까지 쓰는 인사예요. 저녁엔 '부오나세라(Buonasera)'라고 해요"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "Grazie mille",
+        "pronunciation_kr": "그라치에 밀레",
+        "note": "직역하면 '천 번 감사합니다'라는 뜻이에요"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "Vorrei questo, per favore",
+        "pronunciation_kr": "보레이 퀘스토, 페르 파보레"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "Quanto costa?",
+        "pronunciation_kr": "콴토 코스타"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "Buonissimo!",
+        "pronunciation_kr": "부오니시모"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "Marco",
+        "pronunciation_kr": "마르코",
+        "romanized": "Marco",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "로마 신화 속 전쟁의 신 '마르스'에서 유래한 이름"
+      },
+      {
+        "name_local": "Alessandro",
+        "pronunciation_kr": "알레산드로",
+        "romanized": "Alessandro",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "그리스어 유래, '사람들을 지키는 자(수호자)'라는 뜻"
+      },
+      {
+        "name_local": "Francesco",
+        "pronunciation_kr": "프란체스코",
+        "romanized": "Francesco",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "'프랑스 사람' 또는 '자유인'이라는 뜻"
+      },
+      {
+        "name_local": "Lorenzo",
+        "pronunciation_kr": "로렌초",
+        "romanized": "Lorenzo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "월계수를 뜻하는 라틴어 'laurus'에서 유래한 이름"
+      },
+      {
+        "name_local": "Matteo",
+        "pronunciation_kr": "마테오",
+        "romanized": "Matteo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "히브리어 유래, '하느님의 선물'이라는 뜻"
+      },
+      {
+        "name_local": "Giovanni",
+        "pronunciation_kr": "조반니",
+        "romanized": "Giovanni",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "히브리어 '요한'에서 온 이름으로, '신은 은혜로우시다'라는 뜻"
+      },
+      {
+        "name_local": "Leonardo",
+        "pronunciation_kr": "레오나르도",
+        "romanized": "Leonardo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "게르만어 유래, '사자처럼 용맹한 자'라는 뜻"
+      },
+      {
+        "name_local": "Edoardo",
+        "pronunciation_kr": "에도아르도",
+        "romanized": "Edoardo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "게르만어 유래, '부유한 수호자'라는 뜻"
+      },
+      {
+        "name_local": "Tommaso",
+        "pronunciation_kr": "톰마소",
+        "romanized": "Tommaso",
+        "gender_style": "male",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "아람어 유래, '쌍둥이'라는 뜻"
+      },
+      {
+        "name_local": "Andrea",
+        "pronunciation_kr": "안드레아",
+        "romanized": "Andrea",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "그리스어 유래, '남자답다·용맹하다'라는 뜻. 영어권과 달리 이탈리아에서는 남자 이름이에요"
+      },
+      {
+        "name_local": "Luca",
+        "pronunciation_kr": "루카",
+        "romanized": "Luca",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "'루카니아 지방 출신' 또는 '빛'이라는 뜻으로 풀이됨"
+      },
+      {
+        "name_local": "Riccardo",
+        "pronunciation_kr": "리카르도",
+        "romanized": "Riccardo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어 유래, '강력한 통치자'라는 뜻"
+      },
+      {
+        "name_local": "Gabriele",
+        "pronunciation_kr": "가브리엘레",
+        "romanized": "Gabriele",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "히브리어 유래, '하느님은 나의 힘'이라는 뜻"
+      },
+      {
+        "name_local": "Antonio",
+        "pronunciation_kr": "안토니오",
+        "romanized": "Antonio",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "고대 로마 가문 이름에서 유래, 흔히 '값을 매길 수 없이 소중하다'는 뜻으로 풀이됨"
+      },
+      {
+        "name_local": "Sofia",
+        "pronunciation_kr": "소피아",
+        "romanized": "Sofia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "그리스어 유래, '지혜'라는 뜻"
+      },
+      {
+        "name_local": "Giulia",
+        "pronunciation_kr": "줄리아",
+        "romanized": "Giulia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "발랄함"
+        ],
+        "meaning_kr": "고대 로마의 명문 '율리우스' 가문에서 유래한 이름"
+      },
+      {
+        "name_local": "Aurora",
+        "pronunciation_kr": "아우로라",
+        "romanized": "Aurora",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어로 '새벽'이라는 뜻"
+      },
+      {
+        "name_local": "Ginevra",
+        "pronunciation_kr": "지네브라",
+        "romanized": "Ginevra",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "웨일스어 Gwenhwyfar에서 유래해 하얀 요정(환영) 또는 하얀 파도라는 뜻으로 풀이돼요. 영어 이름 기네비어와 뿌리가 같아요"
+      },
+      {
+        "name_local": "Vittoria",
+        "pronunciation_kr": "비토리아",
+        "romanized": "Vittoria",
+        "gender_style": "female",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "라틴어로 '승리'라는 뜻"
+      },
+      {
+        "name_local": "Beatrice",
+        "pronunciation_kr": "베아트리체",
+        "romanized": "Beatrice",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어 유래, '행복을 가져다주는 사람'이라는 뜻"
+      },
+      {
+        "name_local": "Chiara",
+        "pronunciation_kr": "키아라",
+        "romanized": "Chiara",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "이탈리아어로 '맑다·밝다'라는 뜻"
+      },
+      {
+        "name_local": "Francesca",
+        "pronunciation_kr": "프란체스카",
+        "romanized": "Francesca",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "'자유로운 여인' 또는 '프랑스 여인'이라는 뜻"
+      },
+      {
+        "name_local": "Elena",
+        "pronunciation_kr": "엘레나",
+        "romanized": "Elena",
+        "gender_style": "female",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "그리스어 유래로 보이며, 흔히 빛·횃불이라는 뜻으로 풀이돼요(정확한 어원은 학계에서도 이견이 있어요)"
+      },
+      {
+        "name_local": "Martina",
+        "pronunciation_kr": "마르티나",
+        "romanized": "Martina",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "카리스마"
+        ],
+        "meaning_kr": "로마 신화 속 전쟁의 신 '마르스'에서 유래한 이름"
+      },
+      {
+        "name_local": "Alessia",
+        "pronunciation_kr": "알레시아",
+        "romanized": "Alessia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "그리스어 유래, '지켜주는 사람'이라는 뜻"
+      },
+      {
+        "name_local": "Valentina",
+        "pronunciation_kr": "발렌티나",
+        "romanized": "Valentina",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "라틴어 유래, '강하고 건강하다'는 뜻"
+      },
+      {
+        "name_local": "Isabella",
+        "pronunciation_kr": "이사벨라",
+        "romanized": "Isabella",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "히브리어 '엘리사벳'에서 갈라져 나온 이름으로, '하느님께 맹세하다'라는 뜻"
+      },
+      {
+        "name_local": "Matilde",
+        "pronunciation_kr": "마틸데",
+        "romanized": "Matilde",
+        "gender_style": "female",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "게르만어 유래, '전쟁에도 강한 사람'이라는 뜻"
+      },
+      {
+        "name_local": "Ludovica",
+        "pronunciation_kr": "루도비카",
+        "romanized": "Ludovica",
+        "gender_style": "female",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어 유래, '유명한 전사'라는 뜻"
+      },
+      {
+        "name_local": "Celeste",
+        "pronunciation_kr": "첼레스테",
+        "romanized": "Celeste",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어로 '하늘에 속한·천상의'라는 뜻. 이탈리아에서 남녀 모두 쓸 수 있는 몇 안 되는 이름 중 하나예요"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "rome",
+      "city_name": "로마",
+      "tier": 3,
+      "intro": "로마제국의 심장이었던 도시로, 콜로세움과 포로 로마노 같은 2000년 전 유적이 시내 한복판에 그대로 남아 있어요. '모든 길은 로마로 통한다'는 말처럼 이탈리아 여행의 관문 역할을 하는 수도이기도 해요.",
+      "attractions": [
+        {
+          "name": "콜로세움",
+          "map_query": "Colosseum Rome",
+          "one_line_desc": "고대 로마 검투사들의 경기장이었던 원형 유적으로, 지금도 로마를 대표하는 상징이에요."
+        },
+        {
+          "name": "트레비 분수",
+          "map_query": "Trevi Fountain Rome",
+          "one_line_desc": "동전을 던지면 로마에 다시 온다는 전설이 전해지는 바로크 양식의 대형 분수예요."
+        },
+        {
+          "name": "판테온",
+          "map_query": "Pantheon Rome",
+          "one_line_desc": "약 2000년 전 지어져 원형이 잘 보존된 고대 로마 신전으로, 천장 중앙에 둥근 구멍이 뚫려 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "까르보나라",
+          "one_line_desc": "달걀과 관찰레(돼지볼살), 페코리노 치즈로 맛을 낸 로마 대표 파스타예요."
+        },
+        {
+          "name": "카치오에페페",
+          "one_line_desc": "페코리노 치즈와 후추만으로 진한 맛을 내는 로마식 파스타예요."
+        },
+        {
+          "name": "수플리",
+          "one_line_desc": "리조또를 길쭉하게 빚어 튀긴 로마의 대표 길거리 간식이에요."
+        }
+      ]
+    },
+    {
+      "city_code": "florence",
+      "city_name": "피렌체",
+      "tier": 3,
+      "intro": "브루넬레스키가 설계한 붉은 돔의 두오모가 도시 전체를 내려다보는, 르네상스 미술과 건축이 꽃핀 토스카나의 중심 도시예요. 미켈란젤로의 다비드상을 비롯한 세계적인 예술 작품이 도시 곳곳에 남아 있어요.",
+      "attractions": [
+        {
+          "name": "피렌체 두오모",
+          "short": "두오모",
+          "map_query": "Florence Cathedral Duomo",
+          "one_line_desc": "브루넬레스키가 설계한 거대한 붉은 돔이 상징인 피렌체의 대성당이에요."
+        },
+        {
+          "name": "우피치 미술관",
+          "map_query": "Uffizi Gallery Florence",
+          "one_line_desc": "보티첼리의 '비너스의 탄생' 등 르네상스 명화를 소장한 세계적인 미술관이에요."
+        },
+        {
+          "name": "베키오 다리",
+          "map_query": "Ponte Vecchio Florence",
+          "one_line_desc": "금은 세공품 상점들이 늘어선, 피렌체에서 가장 오래된 다리예요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "피오렌티나",
+          "one_line_desc": "두꺼운 티본 스테이크를 숯불에 구워내는 피렌체 대표 스테이크예요."
+        },
+        {
+          "name": "판자넬라",
+          "one_line_desc": "토마토와 마른 빵을 올리브유에 버무린 토스카나식 샐러드예요."
+        },
+        {
+          "name": "리볼리타",
+          "one_line_desc": "빵과 콩, 채소를 넣고 오래 끓인 토스카나 전통 수프예요."
+        }
+      ]
+    },
+    {
+      "city_code": "venice",
+      "city_name": "베네치아",
+      "tier": 3,
+      "intro": "크고 작은 섬들이 수많은 다리로 이어진, 자동차 대신 배로만 이동하는 세계적으로 독특한 물의 도시예요. 대운하를 따라 곤돌라를 타거나 산 마르코 광장 주변 골목길을 걷는 것만으로도 특별한 경험이 돼요.",
+      "attractions": [
+        {
+          "name": "산 마르코 광장",
+          "map_query": "St Mark's Square Venice",
+          "one_line_desc": "산 마르코 대성당과 종탑에 둘러싸인 베네치아의 중심 광장이에요."
+        },
+        {
+          "name": "리알토 다리",
+          "map_query": "Rialto Bridge Venice",
+          "one_line_desc": "대운하를 가로지르는 베네치아에서 가장 오래되고 유명한 다리예요."
+        },
+        {
+          "name": "무라노 섬",
+          "map_query": "Murano Island Venice",
+          "one_line_desc": "유리 공예로 유명한 섬으로, 유리 불기 공방을 직접 구경할 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "먹물리조또",
+          "one_line_desc": "오징어 먹물로 검게 물들인 베네치아식 리조또예요."
+        },
+        {
+          "name": "사르데인사오르",
+          "one_line_desc": "튀긴 정어리를 양파와 식초에 절인 베네치아 전통 요리예요."
+        },
+        {
+          "name": "치케티",
+          "one_line_desc": "바카로(선술집)에서 와인과 곁들여 먹는 베네치아식 작은 안주예요."
+        }
+      ]
+    },
+    {
+      "city_code": "milan",
+      "city_name": "밀라노",
+      "tier": 3,
+      "intro": "이탈리아의 경제와 패션을 이끄는 세련된 대도시예요. 세계적인 패션 브랜드들의 본고장이자, 레오나르도 다빈치의 '최후의 만찬'이 보존된 예술 도시이기도 해요.",
+      "attractions": [
+        {
+          "name": "밀라노 두오모",
+          "map_query": "Milan Cathedral Duomo di Milano",
+          "one_line_desc": "수많은 첨탑으로 장식된 대성당으로, 옥상 테라스에 올라가 도시 전망을 볼 수 있어요."
+        },
+        {
+          "name": "비토리오 에마누엘레 2세 갈레리아",
+          "short": "갈레리아",
+          "map_query": "Galleria Vittorio Emanuele II Milan",
+          "one_line_desc": "유리 돔 천장 아래 명품 매장들이 늘어선 19세기의 아름다운 아케이드예요."
+        },
+        {
+          "name": "최후의 만찬",
+          "map_query": "Santa Maria delle Grazie Milan",
+          "one_line_desc": "레오나르도 다빈치의 벽화가 보존된 성당으로, 관람은 사전 예약이 필요해요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "밀라노리조토",
+          "one_line_desc": "사프란을 넣어 노랗게 물들인 밀라노 전통 리조토예요."
+        },
+        {
+          "name": "밀라노커틀렛",
+          "one_line_desc": "뼈가 붙은 송아지 고기를 튀겨낸 밀라노식 커틀렛이에요."
+        },
+        {
+          "name": "파네토네",
+          "one_line_desc": "밀라노에서 탄생한 이탈리아의 크리스마스 전통 빵이에요."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,432 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "turkey",
+    "name": "튀르키예",
+    "language": "튀르키예어",
+    "lang_code": "tr",
+    "tier": 3,
+    "intro": "아시아와 유럽 두 대륙에 걸쳐 있는 나라로, 비잔틴·오스만 제국의 유산이 도시 곳곳에 겹겹이 쌓여 있어요. 이스탄불의 화려한 유적부터 카파도키아의 신비로운 기암 지대까지, 지역마다 전혀 다른 매력을 만날 수 있어요.",
+    "name_note": "튀르키예 이름은 아랍어·페르시아어에서 온 전통 이름과 튀르키예 고유어 이름이 함께 쓰여요. 남녀 구분 없이 쓰는 이름도 많아서 자유롭게 골라도 좋아요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "Merhaba",
+        "pronunciation_kr": "메르하바"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "Teşekkür ederim",
+        "pronunciation_kr": "테셰퀴르 에데림"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "Bunu alabilir miyim?",
+        "pronunciation_kr": "부누 알라빌리르 미이임?",
+        "note": "직역하면 '이거 받을 수 있을까요?'라는 뜻이에요"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "Ne kadar?",
+        "pronunciation_kr": "네 카다르?"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "Çok lezzetli!",
+        "pronunciation_kr": "촉 레제틀리"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "Ahmet",
+        "pronunciation_kr": "아흐멧",
+        "romanized": "Ahmet",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "칭송받는 사람이라는 뜻"
+      },
+      {
+        "name_local": "Mehmet",
+        "pronunciation_kr": "메흐멧",
+        "romanized": "Mehmet",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "튀르키예에서 가장 널리 쓰이는 이름 중 하나로, 칭송받는 사람이라는 뜻"
+      },
+      {
+        "name_local": "Mustafa",
+        "pronunciation_kr": "무스타파",
+        "romanized": "Mustafa",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "발랄함"
+        ],
+        "meaning_kr": "선택된 사람이라는 뜻"
+      },
+      {
+        "name_local": "Ali",
+        "pronunciation_kr": "알리",
+        "romanized": "Ali",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "고귀한, 드높은이라는 뜻"
+      },
+      {
+        "name_local": "Emre",
+        "pronunciation_kr": "엠레",
+        "romanized": "Emre",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "사랑, 우정을 뜻하는 튀르키예 고유어 이름"
+      },
+      {
+        "name_local": "Cem",
+        "pronunciation_kr": "젬",
+        "romanized": "Cem",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "페르시아 신화 속 전설의 왕 이름에서 유래"
+      },
+      {
+        "name_local": "Berk",
+        "pronunciation_kr": "베르크",
+        "romanized": "Berk",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "발랄함"
+        ],
+        "meaning_kr": "굳세고 단단하다는 뜻"
+      },
+      {
+        "name_local": "Kaan",
+        "pronunciation_kr": "칸",
+        "romanized": "Kaan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "군주, 통치자라는 뜻"
+      },
+      {
+        "name_local": "Efe",
+        "pronunciation_kr": "에페",
+        "romanized": "Efe",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "발랄함"
+        ],
+        "meaning_kr": "용감한 사람이라는 뜻"
+      },
+      {
+        "name_local": "Burak",
+        "pronunciation_kr": "부라크",
+        "romanized": "Burak",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "번개라는 뜻"
+      },
+      {
+        "name_local": "Kerem",
+        "pronunciation_kr": "케렘",
+        "romanized": "Kerem",
+        "gender_style": "male",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "너그러움, 아량이라는 뜻"
+      },
+      {
+        "name_local": "Arda",
+        "pronunciation_kr": "아르다",
+        "romanized": "Arda",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "군주·사령관이 의식 때 드는 홀(지팡이)을 뜻하며 권위를 상징한다는 설이 있어요(뜻이 여러 설로 갈려요)"
+      },
+      {
+        "name_local": "Zeynep",
+        "pronunciation_kr": "제이넵",
+        "romanized": "Zeynep",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "보석 같은 존재 또는 향기로운 꽃이라는 뜻으로 전해지며, 정확한 유래는 여러 설이 있어요"
+      },
+      {
+        "name_local": "Elif",
+        "pronunciation_kr": "엘리프",
+        "romanized": "Elif",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아랍 문자의 첫 글자 이름에서 온 이름으로, 날씬하고 우아한 모습을 뜻함"
+      },
+      {
+        "name_local": "Ayşe",
+        "pronunciation_kr": "아이셰",
+        "romanized": "Ayse",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "발랄함"
+        ],
+        "meaning_kr": "생기 넘치게 살다라는 뜻"
+      },
+      {
+        "name_local": "Fatma",
+        "pronunciation_kr": "파트마",
+        "romanized": "Fatma",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "(아기 젖을) 떼다, 스스로 절제하다라는 아랍어 어근에서 유래"
+      },
+      {
+        "name_local": "Ece",
+        "pronunciation_kr": "에제",
+        "romanized": "Ece",
+        "gender_style": "female",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "여왕이라는 뜻"
+      },
+      {
+        "name_local": "Selin",
+        "pronunciation_kr": "셀린",
+        "romanized": "Selin",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "발랄함"
+        ],
+        "meaning_kr": "흐르는 물, 시냇물이라는 뜻"
+      },
+      {
+        "name_local": "Defne",
+        "pronunciation_kr": "데프네",
+        "romanized": "Defne",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "월계수라는 뜻"
+      },
+      {
+        "name_local": "Asya",
+        "pronunciation_kr": "아시아",
+        "romanized": "Asya",
+        "gender_style": "female",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "아시아 대륙을 뜻함"
+      },
+      {
+        "name_local": "Yasemin",
+        "pronunciation_kr": "야세민",
+        "romanized": "Yasemin",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "재스민 꽃이라는 뜻"
+      },
+      {
+        "name_local": "Ceren",
+        "pronunciation_kr": "제렌",
+        "romanized": "Ceren",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "가젤(영양)이라는 뜻"
+      },
+      {
+        "name_local": "Melis",
+        "pronunciation_kr": "멜리스",
+        "romanized": "Melis",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "꿀벌을 뜻하는 말에서 온 이름"
+      },
+      {
+        "name_local": "Sude",
+        "pronunciation_kr": "수데",
+        "romanized": "Sude",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "맑고 순수한 물이라는 뜻"
+      },
+      {
+        "name_local": "Deniz",
+        "pronunciation_kr": "데니즈",
+        "romanized": "Deniz",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "바다라는 뜻"
+      },
+      {
+        "name_local": "Umut",
+        "pronunciation_kr": "우무트",
+        "romanized": "Umut",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "희망이라는 뜻"
+      },
+      {
+        "name_local": "Derya",
+        "pronunciation_kr": "데리아",
+        "romanized": "Derya",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "큰 바다라는 뜻"
+      },
+      {
+        "name_local": "Irmak",
+        "pronunciation_kr": "으르막",
+        "romanized": "Irmak",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "강이라는 뜻"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "istanbul",
+      "city_name": "이스탄불",
+      "tier": 3,
+      "intro": "아시아와 유럽을 가르는 보스포루스 해협을 사이에 둔 튀르키예 최대 도시예요. 비잔틴·오스만 제국의 흔적이 도심 곳곳에 겹겹이 남아 있어서, 하루 종일 걸어도 볼거리가 끝나지 않아요.",
+      "attractions": [
+        {
+          "name": "아야소피아",
+          "map_query": "Hagia Sophia Istanbul",
+          "one_line_desc": "비잔틴 시대에 지어진 웅장한 돔 건축물로, 1500년 가까이 이스탄불의 상징으로 남아 있어요."
+        },
+        {
+          "name": "톱카프 궁전",
+          "map_query": "Topkapi Palace Istanbul",
+          "one_line_desc": "오스만 제국 술탄들이 오랜 기간 머문 궁전으로, 보석과 유물을 모은 보물관이 유명해요."
+        },
+        {
+          "name": "그랜드 바자르",
+          "map_query": "Grand Bazaar Istanbul",
+          "one_line_desc": "수천 개 상점이 모인 세계 최대급 실내 시장으로, 카펫·귀금속·향신료 구경이 재밌어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "이슬락 버거",
+          "one_line_desc": "탁심 거리에서 탄생한 명물 버거로, 토마토 소스에 촉촉하게 적셔 쪄낸 것이 특징이에요."
+        },
+        {
+          "name": "발륵 에크멕",
+          "one_line_desc": "갈라타 다리 아래에서 고등어를 구워 빵에 끼워주는, 이스탄불의 오랜 뱃사공표 노점 음식이에요."
+        },
+        {
+          "name": "미디예 돌마",
+          "one_line_desc": "향신료 밥을 채운 홍합을 레몬즙과 함께 먹는 간식으로, 이스탄불 포장마차마다 팔아요."
+        }
+      ]
+    },
+    {
+      "city_code": "cappadocia",
+      "city_name": "카파도키아",
+      "tier": 3,
+      "intro": "화산 활동이 만든 기암괴석과 동굴 마을이 펼쳐진 중부 아나톨리아의 대표 여행지예요. 이른 아침 하늘을 수놓는 열기구 행렬을 보러 전 세계 여행자들이 이곳을 찾아와요.",
+      "attractions": [
+        {
+          "name": "괴레메 야외 박물관",
+          "short": "괴레메 박물관",
+          "map_query": "Goreme Open Air Museum Cappadocia",
+          "one_line_desc": "동굴을 파서 만든 비잔틴 시대 소규모 성당들이 모여 있고, 벽에 그려진 프레스코화가 남아 있어요."
+        },
+        {
+          "name": "우치히사르 성",
+          "map_query": "Uchisar Castle Cappadocia",
+          "one_line_desc": "카파도키아를 대표하는 우뚝 솟은 바위 언덕으로, 정상에 오르면 기암지대 전경이 한눈에 펼쳐져요."
+        },
+        {
+          "name": "파샤바 계곡",
+          "map_query": "Pasabag Monks Valley Cappadocia",
+          "one_line_desc": "머리가 여러 개 달린 것처럼 보이는 독특한 버섯 모양 바위 기둥들이 모여 있는 계곡이에요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "테스티 케밥",
+          "one_line_desc": "고기와 채소를 항아리에 넣고 밀봉해 오래 끓인 뒤, 손님 앞에서 항아리를 깨서 꺼내는 명물 요리예요."
+        },
+        {
+          "name": "카이세리 만트",
+          "one_line_desc": "쌀알만큼 작게 빚은 만두를 요거트·토마토 소스에 곁들여 먹는 중부 아나톨리아의 명물 만두예요."
+        },
+        {
+          "name": "카파도키아 와인",
+          "one_line_desc": "화산재로 덮인 토양과 동굴 저장고 덕분에, 수천 년 전부터 포도 재배와 와인 양조가 이어졌어요."
+        }
+      ]
+    }
+  ]
+}

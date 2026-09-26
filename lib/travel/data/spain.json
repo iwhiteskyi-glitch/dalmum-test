@@ -1,0 +1,467 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "spain",
+    "name": "스페인",
+    "language": "스페인어",
+    "lang_code": "es",
+    "tier": 3,
+    "intro": "정열의 나라로 불리는 남유럽의 대표 여행지로, 지역마다 언어와 축제, 음식 문화가 뚜렷하게 달라요. 가우디의 건축부터 플라멩코, 투우, 타파스 문화까지 도시마다 서로 다른 매력을 만날 수 있어요.",
+    "name_note": "스페인 사람들은 세례명 한두 개에 아버지 성과 어머니 성을 나란히 붙여 이름을 지어요. 짧고 정겨운 애칭으로 서로를 부르는 경우도 많아서 여행용 이름으로도 부르기 편해요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "¡Hola! / Buenos días",
+        "pronunciation_kr": "올라 / 부에노스 디아스",
+        "note": "올라는 언제든 편하게 쓰고, 부에노스 디아스는 아침 인사로 써요"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "Muchas gracias",
+        "pronunciation_kr": "무차스 그라시아스"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "Esto, por favor",
+        "pronunciation_kr": "에스토, 포르 파보르"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "¿Cuánto cuesta?",
+        "pronunciation_kr": "쿠안토 쿠에스타"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "¡Qué rico!",
+        "pronunciation_kr": "케 리코"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "Mateo",
+        "pronunciation_kr": "마테오",
+        "romanized": "Mateo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "히브리어에서 온 이름으로 '신의 선물'이라는 뜻"
+      },
+      {
+        "name_local": "Hugo",
+        "pronunciation_kr": "우고",
+        "romanized": "Hugo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "게르만어에서 온 이름으로 '지혜로운 마음'이라는 뜻"
+      },
+      {
+        "name_local": "Lucas",
+        "pronunciation_kr": "루카스",
+        "romanized": "Lucas",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ]
+      },
+      {
+        "name_local": "Diego",
+        "pronunciation_kr": "디에고",
+        "romanized": "Diego",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ]
+      },
+      {
+        "name_local": "Alejandro",
+        "pronunciation_kr": "알레한드로",
+        "romanized": "Alejandro",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "그리스어에서 온 이름으로 '사람들을 지키는 자'라는 뜻"
+      },
+      {
+        "name_local": "Pablo",
+        "pronunciation_kr": "파블로",
+        "romanized": "Pablo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "라틴어에서 온 이름으로 '작다, 겸손하다'라는 뜻"
+      },
+      {
+        "name_local": "Daniel",
+        "pronunciation_kr": "다니엘",
+        "romanized": "Daniel",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "히브리어에서 온 이름으로 '신은 나의 심판자'라는 뜻"
+      },
+      {
+        "name_local": "Javier",
+        "pronunciation_kr": "하비에르",
+        "romanized": "Javier",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "전통적으로 바스크어 새 집(etxe berri)이라는 뜻으로 알려졌지만, 최근 바스크어 학술원 연구에서는 다른 어원(금작화·전나무가 있는 땅)을 제시해요"
+      },
+      {
+        "name_local": "Carlos",
+        "pronunciation_kr": "카를로스",
+        "romanized": "Carlos",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "게르만어에서 온 이름으로 '자유인'이라는 뜻"
+      },
+      {
+        "name_local": "Adrián",
+        "pronunciation_kr": "아드리안",
+        "romanized": "Adrian",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "라틴어에서 온 이름으로 '아드리아해 지역 출신'이라는 뜻"
+      },
+      {
+        "name_local": "Sergio",
+        "pronunciation_kr": "세르히오",
+        "romanized": "Sergio",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "카리스마"
+        ]
+      },
+      {
+        "name_local": "Álvaro",
+        "pronunciation_kr": "알바로",
+        "romanized": "Alvaro",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ]
+      },
+      {
+        "name_local": "Manuel",
+        "pronunciation_kr": "마누엘",
+        "romanized": "Manuel",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "히브리어에서 온 이름으로 '신이 우리와 함께 계시다'라는 뜻"
+      },
+      {
+        "name_local": "Sofía",
+        "pronunciation_kr": "소피아",
+        "romanized": "Sofia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "그리스어에서 온 이름으로 '지혜'라는 뜻"
+      },
+      {
+        "name_local": "Lucía",
+        "pronunciation_kr": "루시아",
+        "romanized": "Lucia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어에서 온 이름으로 '빛'이라는 뜻"
+      },
+      {
+        "name_local": "Martina",
+        "pronunciation_kr": "마르티나",
+        "romanized": "Martina",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "카리스마"
+        ],
+        "meaning_kr": "전쟁의 신 '마르스'에서 온 이름"
+      },
+      {
+        "name_local": "María",
+        "pronunciation_kr": "마리아",
+        "romanized": "Maria",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ]
+      },
+      {
+        "name_local": "Emma",
+        "pronunciation_kr": "엠마",
+        "romanized": "Emma",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "게르만어에서 온 이름으로 '전체, 보편'이라는 뜻"
+      },
+      {
+        "name_local": "Olivia",
+        "pronunciation_kr": "올리비아",
+        "romanized": "Olivia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어에서 온 이름으로 '올리브 나무'라는 뜻"
+      },
+      {
+        "name_local": "Elena",
+        "pronunciation_kr": "엘레나",
+        "romanized": "Elena",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "그리스어에서 온 이름으로 '빛, 광채'라는 뜻으로 풀이돼요"
+      },
+      {
+        "name_local": "Carmen",
+        "pronunciation_kr": "카르멘",
+        "romanized": "Carmen",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "이스라엘의 '카르멜산'에서 유래한 이름"
+      },
+      {
+        "name_local": "Paula",
+        "pronunciation_kr": "파울라",
+        "romanized": "Paula",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어에서 온 이름으로 '작다, 겸손하다'라는 뜻"
+      },
+      {
+        "name_local": "Valeria",
+        "pronunciation_kr": "발레리아",
+        "romanized": "Valeria",
+        "gender_style": "female",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "라틴어에서 온 이름으로 '강하고 건강하다'라는 뜻"
+      },
+      {
+        "name_local": "Irene",
+        "pronunciation_kr": "이레네",
+        "romanized": "Irene",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "그리스어에서 온 이름으로 '평화'라는 뜻"
+      },
+      {
+        "name_local": "Rocío",
+        "pronunciation_kr": "로시오",
+        "romanized": "Rocio",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "스페인어로 '이슬'이라는 뜻"
+      },
+      {
+        "name_local": "Alba",
+        "pronunciation_kr": "알바",
+        "romanized": "Alba",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "라틴어에서 온 이름으로 '새벽, 하얀빛'이라는 뜻"
+      },
+      {
+        "name_local": "Reyes",
+        "pronunciation_kr": "레예스",
+        "romanized": "Reyes",
+        "gender_style": "female",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "'왕들'이라는 뜻으로, 주현절(예수 공현 대축일)에서 유래한 이름"
+      },
+      {
+        "name_local": "Trinidad",
+        "pronunciation_kr": "트리니다드",
+        "romanized": "Trinidad",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "라틴어에서 온 이름으로 '삼위일체'라는 뜻"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "barcelona",
+      "city_name": "바르셀로나",
+      "tier": 3,
+      "intro": "가우디가 설계한 사그라다 파밀리아와 구엘 공원이 도시 곳곳에 남아 있는 카탈루냐의 중심 도시예요. 고딕 지구의 좁은 골목과 지중해 해변을 함께 걸을 수 있고, 스페인어와는 다른 카탈루냐어 간판도 자주 눈에 띄어요.",
+      "attractions": [
+        {
+          "name": "사그라다 파밀리아",
+          "short": "사그라다",
+          "map_query": "Sagrada Familia Barcelona",
+          "one_line_desc": "가우디가 평생을 바친 미완성 대성당으로, 화려한 첨탑과 스테인드글라스가 인상적이에요."
+        },
+        {
+          "name": "구엘 공원",
+          "map_query": "Park Guell Barcelona",
+          "one_line_desc": "가우디가 만든 알록달록한 모자이크 벤치와 도마뱀 조각으로 유명한 언덕 위 공원이에요."
+        },
+        {
+          "name": "라 보케리아 시장",
+          "short": "보케리아",
+          "map_query": "La Boqueria Market Barcelona",
+          "one_line_desc": "람블라스 거리에 있는 100년 넘은 재래시장으로, 신선한 과일과 하몽 가게가 즐비해요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "판콘토마테",
+          "one_line_desc": "잘 익은 토마토를 빵에 문질러 바르고 올리브유와 소금을 뿌린 카탈루냐의 대표 식전 빵이에요."
+        },
+        {
+          "name": "크레마카탈라나",
+          "one_line_desc": "커스터드 위에 설탕을 얇게 태워 바삭한 막을 씌운 카탈루냐 전통 디저트예요."
+        },
+        {
+          "name": "부티파라",
+          "one_line_desc": "카탈루냐식 돼지고기 소시지로, 구워서 흰 강낭콩 요리와 함께 먹는 것이 전통적이에요."
+        }
+      ]
+    },
+    {
+      "city_code": "madrid",
+      "city_name": "마드리드",
+      "tier": 3,
+      "intro": "스페인의 수도로, 프라도 미술관을 중심으로 한 '아트 트라이앵글'에 유럽 손꼽는 회화 컬렉션이 모여 있어요. 낮에는 미술관과 왕궁을 둘러보고, 밤에는 타파스 바가 늦게까지 불을 밝히는 활기찬 도시예요.",
+      "attractions": [
+        {
+          "name": "마드리드 왕궁",
+          "short": "왕궁",
+          "map_query": "Royal Palace of Madrid",
+          "one_line_desc": "스페인 왕실의 공식 궁전으로, 유럽에서 손꼽히게 큰 규모의 화려한 내부를 볼 수 있어요."
+        },
+        {
+          "name": "레티로 공원",
+          "map_query": "Parque del Retiro Madrid",
+          "one_line_desc": "왕실 정원이었던 도심 속 대공원으로, 커다란 인공 호수에서 보트를 탈 수 있어요."
+        },
+        {
+          "name": "프라도 미술관",
+          "map_query": "Museo del Prado Madrid",
+          "one_line_desc": "벨라스케스와 고야의 명작을 소장한 스페인 최고의 국립 미술관이에요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "코시도",
+          "one_line_desc": "병아리콩과 고기, 채소를 오래 끓인 마드리드의 대표 가정식 스튜예요."
+        },
+        {
+          "name": "칼라마레스",
+          "one_line_desc": "튀긴 오징어링을 바게트 빵에 끼운 마드리드의 대표 길거리 샌드위치예요."
+        },
+        {
+          "name": "칼로스",
+          "one_line_desc": "소 내장을 토마토와 초리소로 진하게 끓인 마드리드의 전통 겨울 음식이에요."
+        }
+      ]
+    },
+    {
+      "city_code": "seville",
+      "city_name": "세비야",
+      "tier": 3,
+      "intro": "플라멩코의 고향으로 불리는 안달루시아의 중심 도시예요. 무데하르 양식의 알카사르 궁전과 세계에서 손꼽히게 큰 고딕 대성당이 남아 있어, 이슬람과 가톨릭 문화가 겹겹이 쌓인 역사를 볼 수 있어요.",
+      "attractions": [
+        {
+          "name": "레알 알카사르",
+          "short": "알카사르",
+          "map_query": "Real Alcazar of Seville",
+          "one_line_desc": "이슬람 왕조 시대에 짓고 가톨릭 왕들이 증축한 궁전으로, 지금도 왕실이 세비야 방문 시 머무는 곳이에요."
+        },
+        {
+          "name": "세비야 대성당",
+          "map_query": "Seville Cathedral",
+          "one_line_desc": "세계에서 손꼽히게 큰 고딕 대성당으로, 옛 모스크 첨탑이었던 히랄다 탑에 올라 시내를 내려다볼 수 있어요."
+        },
+        {
+          "name": "스페인 광장",
+          "map_query": "Plaza de Espana Seville",
+          "one_line_desc": "1929년 이베로아메리카 박람회를 위해 지은 반원형 광장으로, 영화 스타워즈 촬영지로도 유명해요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "가스파초",
+          "one_line_desc": "토마토와 채소를 갈아 차갑게 먹는 수프로, 무더운 안달루시아 여름에 즐겨 먹어요."
+        },
+        {
+          "name": "가르반소 시금치",
+          "one_line_desc": "시금치와 병아리콩을 볶아낸 세비야 선술집의 대표 타파스로, 오래된 술집마다 조리법이 조금씩 달라요."
+        },
+        {
+          "name": "페스카이토",
+          "one_line_desc": "잘게 썬 생선을 튀겨낸 안달루시아식 요리로, 세비야 강변 튀김집에서 즐겨 먹어요."
+        }
+      ]
+    }
+  ]
+}

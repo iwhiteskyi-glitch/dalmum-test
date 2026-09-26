@@ -1,0 +1,450 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "switzerland",
+    "name": "스위스",
+    "language": "독일어",
+    "lang_code": "de",
+    "tier": 3,
+    "intro": "융프라우와 마터호른 같은 만년설 봉우리와 새파란 빙하호수가 어우러진 알프스의 나라예요. 인터라켄 같은 산악 거점에서는 산악열차를 타고 '유럽의 지붕'까지 오를 수 있고, 취리히 같은 도시에서는 옛 시가지와 호수 산책도 함께 즐길 수 있어요.",
+    "name_note": "독일어권에서는 노아·소피아처럼 짧고 국제적인 느낌의 이름이 최근 몇 년간 꾸준히 1위를 차지하고 있어요. 동시에 프리다·이다·오스카처럼 '평화', '부지런함' 같은 소박한 뜻을 가진 옛 게르만어 이름들도 레트로한 느낌으로 다시 인기를 끌고 있어요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "Guten Tag",
+        "pronunciation_kr": "구텐 탁",
+        "note": "격식 있는 인사예요. 편하게는 '할로(Hallo)'라고도 해요"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "Danke schön",
+        "pronunciation_kr": "당케 쇤"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "Ich hätte gern das, bitte.",
+        "pronunciation_kr": "이히 헤테 게른 다스, 비테"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "Was kostet das?",
+        "pronunciation_kr": "바스 코스테트 다스"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "Das schmeckt sehr gut!",
+        "pronunciation_kr": "다스 슈멕트 제어 굳"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "Lukas",
+        "pronunciation_kr": "루카스",
+        "romanized": "Lukas",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "고대 그리스어로 '루카니아 지방 사람'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Leon",
+        "pronunciation_kr": "레온",
+        "romanized": "Leon",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "그리스어로 '사자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Finn",
+        "pronunciation_kr": "핀",
+        "romanized": "Finn",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "아일랜드어로 '하얀·눈부신'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Paul",
+        "pronunciation_kr": "파울",
+        "romanized": "Paul",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "라틴어로 '작은·겸손한'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Elias",
+        "pronunciation_kr": "엘리아스",
+        "romanized": "Elias",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "히브리어로 '나의 신은 여호와'라는 뜻이에요"
+      },
+      {
+        "name_local": "Felix",
+        "pronunciation_kr": "펠릭스",
+        "romanized": "Felix",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어로 '행운의·행복한'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Jonas",
+        "pronunciation_kr": "요나스",
+        "romanized": "Jonas",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "히브리어로 '비둘기'라는 뜻이에요"
+      },
+      {
+        "name_local": "Maximilian",
+        "pronunciation_kr": "막시밀리안",
+        "romanized": "Maximilian",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "라틴어 '막시무스(가장 큰)'에서 온 이름이에요"
+      },
+      {
+        "name_local": "Noah",
+        "pronunciation_kr": "노아",
+        "romanized": "Noah",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "사랑스러움"
+        ],
+        "meaning_kr": "히브리어로 '안식·위로'라는 뜻이에요"
+      },
+      {
+        "name_local": "Julian",
+        "pronunciation_kr": "율리안",
+        "romanized": "Julian",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "로마 씨족 이름 '율리우스'에서 온 이름이에요"
+      },
+      {
+        "name_local": "Anton",
+        "pronunciation_kr": "안톤",
+        "romanized": "Anton",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "귀여움"
+        ]
+      },
+      {
+        "name_local": "Oskar",
+        "pronunciation_kr": "오스카",
+        "romanized": "Oskar",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "어원이 두 가지로 갈려요: 고대 노르드어 계열(신+창=신의 창)이라는 설과, 아일랜드 신화 속 인물 이름에서 온 사슴의 친구라는 설이 함께 있어요"
+      },
+      {
+        "name_local": "Matteo",
+        "pronunciation_kr": "마테오",
+        "romanized": "Matteo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어로 '신의 선물'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Emma",
+        "pronunciation_kr": "엠마",
+        "romanized": "Emma",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "게르만어로 '전체의·보편적인'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Mia",
+        "pronunciation_kr": "미아",
+        "romanized": "Mia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ]
+      },
+      {
+        "name_local": "Sophia",
+        "pronunciation_kr": "조피아",
+        "romanized": "Sophia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "그리스어로 '지혜'라는 뜻이에요"
+      },
+      {
+        "name_local": "Hannah",
+        "pronunciation_kr": "한나",
+        "romanized": "Hannah",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "히브리어로 '은혜'라는 뜻이에요"
+      },
+      {
+        "name_local": "Lena",
+        "pronunciation_kr": "레나",
+        "romanized": "Lena",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "헬레나의 애칭이에요. 헬레나의 어원은 확실히 밝혀지지 않았는데, 그리스어로 빛·횃불을 뜻한다는 설이 널리 알려져 있어요"
+      },
+      {
+        "name_local": "Marie",
+        "pronunciation_kr": "마리",
+        "romanized": "Marie",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ]
+      },
+      {
+        "name_local": "Anna",
+        "pronunciation_kr": "안나",
+        "romanized": "Anna",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "히브리어로 '은혜'라는 뜻이에요"
+      },
+      {
+        "name_local": "Klara",
+        "pronunciation_kr": "클라라",
+        "romanized": "Klara",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "라틴어로 '맑은·빛나는'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Johanna",
+        "pronunciation_kr": "요한나",
+        "romanized": "Johanna",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "히브리어로 '신은 은혜로우시다'라는 뜻이에요"
+      },
+      {
+        "name_local": "Frieda",
+        "pronunciation_kr": "프리다",
+        "romanized": "Frieda",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "고대 독일어로 '평화'라는 뜻이에요"
+      },
+      {
+        "name_local": "Luisa",
+        "pronunciation_kr": "루이자",
+        "romanized": "Luisa",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "발랄함"
+        ],
+        "meaning_kr": "게르만어로 '유명한 전사'라는 뜻이에요"
+      },
+      {
+        "name_local": "Ida",
+        "pronunciation_kr": "이다",
+        "romanized": "Ida",
+        "gender_style": "female",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "고대 노르드어로 부지런함이라는 뜻이라는 설이 있어요(여성·처녀라는 뜻의 옛 작센어에서 왔다는 설도 있어요)"
+      },
+      {
+        "name_local": "Nora",
+        "pronunciation_kr": "노라",
+        "romanized": "Nora",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "엘레오노라의 애칭이기도 하고, 라틴어로 명예를 뜻하는 호노라의 애칭이기도 해요(엘레오노라 자체의 어원은 확실히 밝혀지지 않았어요)"
+      },
+      {
+        "name_local": "Kim",
+        "pronunciation_kr": "킴",
+        "romanized": "Kim",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ]
+      },
+      {
+        "name_local": "Toni",
+        "pronunciation_kr": "토니",
+        "romanized": "Toni",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "카리스마"
+        ]
+      },
+      {
+        "name_local": "Eike",
+        "pronunciation_kr": "아이케",
+        "romanized": "Eike",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "에케하르트 계열 이름에서 독립된 애칭으로, 옛 독일어 ekka(칼날·서슬)에서 온 이름이에요"
+      },
+      {
+        "name_local": "Janne",
+        "pronunciation_kr": "얀네",
+        "romanized": "Janne",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "요하네스·요한나의 애칭으로 '신은 은혜로우시다'라는 뜻과 연결돼요"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "interlaken",
+      "city_name": "인터라켄",
+      "tier": 3,
+      "intro": "툰 호수와 브리엔츠 호수 사이에 자리해 마을 이름 자체가 '호수 사이'라는 뜻이에요. 아이거·묑크·융프라우로 이어지는 알프스 산악열차가 모두 이곳에서 출발하는 스위스 최고의 산악 여행 거점이에요.",
+      "attractions": [
+        {
+          "name": "하더쿨름",
+          "map_query": "Harder Kulm Interlaken",
+          "one_line_desc": "푸니쿨라를 타고 오르는 전망대로, 정상에서 툰 호수와 브리엔츠 호수를 한눈에 볼 수 있어요."
+        },
+        {
+          "name": "융프라우요흐",
+          "short": "융프라우",
+          "map_query": "Jungfraujoch",
+          "one_line_desc": "'유럽의 지붕'이라 불리는 해발 3,454m 전망대로, 인터라켄에서 산악열차를 갈아타며 오를 수 있어요."
+        },
+        {
+          "name": "베아투스 동굴",
+          "map_query": "St. Beatus Caves",
+          "one_line_desc": "툰 호숫가 절벽에 뚫린 종유동굴로, 용을 물리친 성 베아투스 전설이 전해 내려와요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "알펜마카로니",
+          "one_line_desc": "감자·치즈·크림을 넣고 삶은 마카로니에 사과소스를 곁들이는 베른 산악지대 전통 음식이에요."
+        },
+        {
+          "name": "치즈퐁뒤",
+          "one_line_desc": "스위스 전역에서 즐기는 대표 요리지만, 인터라켄을 비롯한 베르너 오버란트 산악 마을 산장 레스토랑에서 특히 즐겨 먹는 겨울 별미예요."
+        },
+        {
+          "name": "머랭",
+          "one_line_desc": "인터라켄 인근 마을 마이링엔이 탄생지로 알려진 디저트로, 진한 휘핑크림을 곁들여 먹어요."
+        }
+      ]
+    },
+    {
+      "city_code": "zurich",
+      "city_name": "취리히",
+      "tier": 3,
+      "intro": "리마트강이 흐르는 옛 시가지에는 쌍둥이 탑의 그로스뮌스터와 샤갈의 스테인드글라스로 유명한 프라우뮌스터가 마주 보고 서 있어요. 스위스 최대 도시이자 경제 중심지지만, 호수를 따라 걷다 보면 멀리 알프스 봉우리도 눈에 들어와요.",
+      "attractions": [
+        {
+          "name": "그로스뮌스터",
+          "map_query": "Grossmünster Zurich",
+          "one_line_desc": "종교개혁가 츠빙글리가 설교했던 로마네스크 성당으로, 쌍둥이 첨탑에 오르면 구시가지가 내려다보여요."
+        },
+        {
+          "name": "프라우뮌스터",
+          "map_query": "Fraumünster Zurich",
+          "one_line_desc": "화가 마르크 샤갈이 만든 화려한 스테인드글라스 창문으로 유명한 옛 수도원 성당이에요."
+        },
+        {
+          "name": "우에틀리베르크",
+          "short": "우에틀리",
+          "map_query": "Uetliberg Zurich",
+          "one_line_desc": "'취리히의 뒷동산'이라 불리는 산으로, 기차를 타고 올라가 호수와 알프스를 함께 조망할 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "게슈네첼테스",
+          "one_line_desc": "송아지 고기와 버섯을 크림소스에 볶은 취리히 대표 요리로, 감자 뢰스티를 곁들여 먹어요."
+        },
+        {
+          "name": "티르겔",
+          "one_line_desc": "꿀과 향신료 반죽을 그림 틀로 찍어 얇게 구운 취리히의 전통 크리스마스 과자예요."
+        },
+        {
+          "name": "룩셈부르글리",
+          "one_line_desc": "취리히의 유명 제과점 슈프륑글리가 만든 미니 마카롱으로, 파라데플라츠 매장이 잘 알려져 있어요."
+        }
+      ]
+    }
+  ]
+}

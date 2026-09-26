@@ -1,0 +1,372 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "czech",
+    "name": "체코",
+    "language": "체코어",
+    "lang_code": "cs",
+    "tier": 3,
+    "intro": "'유럽에서 가장 아름다운 도시' 중 하나로 꼽히는 프라하를 품은 나라예요. 붉은 지붕과 고딕·바로크 건축물이 어우러진 옛 거리, 그리고 세계적으로 유명한 체코 맥주 문화까지 함께 즐길 수 있어요.",
+    "name_note": "체코 사람들은 달력에 자기 이름이 적힌 날인 '스바텍(이름의 날)'을 생일처럼 챙길 만큼 이름에 애착이 커요. 오래된 슬라브어 이름과 가톨릭 성인 이름이 함께 흔히 쓰이는 것도 특징이에요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "Dobrý den",
+        "pronunciation_kr": "도브리 덴"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "Děkuji",
+        "pronunciation_kr": "디예쿠이"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "Tohle, prosím.",
+        "pronunciation_kr": "토흘레, 프로심"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "Kolik to stojí?",
+        "pronunciation_kr": "콜리크 토 스토이"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "Je to moc dobré!",
+        "pronunciation_kr": "예 토 모츠 도브레"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "Jakub",
+        "pronunciation_kr": "야쿠프",
+        "romanized": "Jakub",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "성경 속 '야곱'에서 온 이름으로, 체코에서 12년 넘게 남자아이 이름 1위예요"
+      },
+      {
+        "name_local": "Jan",
+        "pronunciation_kr": "얀",
+        "romanized": "Jan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "'신은 은혜로우시다'라는 뜻으로, 영어 이름 존(John)에 해당해요"
+      },
+      {
+        "name_local": "Matyáš",
+        "pronunciation_kr": "마티아시",
+        "romanized": "Matyas",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "'신의 선물'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Adam",
+        "pronunciation_kr": "아담",
+        "romanized": "Adam",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "'사람, 흙으로 빚어졌다'는 뜻의 히브리어에서 왔어요"
+      },
+      {
+        "name_local": "Matěj",
+        "pronunciation_kr": "마티예이",
+        "romanized": "Matej",
+        "gender_style": "male",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "Matyáš와 같은 어원으로 '신의 선물'이라는 뜻이에요"
+      },
+      {
+        "name_local": "David",
+        "pronunciation_kr": "다비트",
+        "romanized": "David",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "'사랑받는 자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Vojtěch",
+        "pronunciation_kr": "보이티에흐",
+        "romanized": "Vojtech",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "'군대의 위안'이라는 뜻의 오래된 슬라브어 이름이에요"
+      },
+      {
+        "name_local": "Filip",
+        "pronunciation_kr": "필립",
+        "romanized": "Filip",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "그리스어에서 온 이름으로 '말을 사랑하는 사람'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Tomáš",
+        "pronunciation_kr": "토마시",
+        "romanized": "Tomas",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "아람어로 '쌍둥이'라는 뜻이에요"
+      },
+      {
+        "name_local": "Petr",
+        "pronunciation_kr": "페트르",
+        "romanized": "Petr",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "그리스어로 '바위'라는 뜻이에요"
+      },
+      {
+        "name_local": "Václav",
+        "pronunciation_kr": "바츨라프",
+        "romanized": "Vaclav",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "'더 큰 영광'이라는 뜻의 체코 수호성인 이름이에요"
+      },
+      {
+        "name_local": "Karel",
+        "pronunciation_kr": "카렐",
+        "romanized": "Karel",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "'자유인'이라는 뜻으로, 영어 이름 찰스(Charles)에 해당해요"
+      },
+      {
+        "name_local": "Ondřej",
+        "pronunciation_kr": "온드르제이",
+        "romanized": "Ondrej",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "카리스마"
+        ],
+        "meaning_kr": "그리스어로 '용감한 사람'이라는 뜻이며, 영어 이름 앤드루(Andrew)에 해당해요"
+      },
+      {
+        "name_local": "Eliška",
+        "pronunciation_kr": "엘리슈카",
+        "romanized": "Eliska",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "'신은 나의 맹세'라는 뜻으로"
+      },
+      {
+        "name_local": "Tereza",
+        "pronunciation_kr": "테레자",
+        "romanized": "Tereza",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "그리스어에서 왔다는 설이 있지만 정확한 어원은 확실하지 않아요"
+      },
+      {
+        "name_local": "Viktorie",
+        "pronunciation_kr": "빅토리에",
+        "romanized": "Viktorie",
+        "gender_style": "female",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "라틴어로 '승리'라는 뜻이에요"
+      },
+      {
+        "name_local": "Sofie",
+        "pronunciation_kr": "소피에",
+        "romanized": "Sofie",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "그리스어로 '지혜'라는 뜻이에요"
+      },
+      {
+        "name_local": "Anna",
+        "pronunciation_kr": "아나",
+        "romanized": "Anna",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "히브리어로 '은혜'라는 뜻이에요"
+      },
+      {
+        "name_local": "Natálie",
+        "pronunciation_kr": "나탈리에",
+        "romanized": "Natalie",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "발랄함"
+        ],
+        "meaning_kr": "라틴어로 '(주님이) 태어난 날'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Amálie",
+        "pronunciation_kr": "아말리에",
+        "romanized": "Amalie",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "'부지런히 일하는 사람'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Adéla",
+        "pronunciation_kr": "아델라",
+        "romanized": "Adela",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "'고귀한'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Hana",
+        "pronunciation_kr": "하나",
+        "romanized": "Hana",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "히브리어로 '은혜'라는 뜻으로, 안나(Anna)와 어원이 같아요"
+      },
+      {
+        "name_local": "Klára",
+        "pronunciation_kr": "클라라",
+        "romanized": "Klara",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "라틴어로 '밝고 맑은'이라는 뜻이에요"
+      },
+      {
+        "name_local": "Barbora",
+        "pronunciation_kr": "바르보라",
+        "romanized": "Barbora",
+        "gender_style": "female",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "그리스어로 '이방인 여자'라는 뜻이에요"
+      },
+      {
+        "name_local": "Kateřina",
+        "pronunciation_kr": "카테르지나",
+        "romanized": "Katerina",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "그리스어에서 왔다고 알려져 있지만 정확한 어원은 논쟁이 있어요(초기 기독교 시대에 순수하다는 뜻과 연결됐어요)"
+      },
+      {
+        "name_local": "Lucie",
+        "pronunciation_kr": "루치에",
+        "romanized": "Lucie",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어로 '빛'이라는 뜻이에요"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "prague",
+      "city_name": "프라하",
+      "tier": 3,
+      "intro": "블타바강 위에 놓인 카를교와 언덕 위 프라하성이 마주 보는 '천 개의 첨탑의 도시'예요. 구시가지 광장의 천문시계에서는 매시 정각마다 작은 창이 열리며 12사도 인형이 움직이는 모습을 볼 수 있어요.",
+      "attractions": [
+        {
+          "name": "카를교",
+          "map_query": "Charles Bridge Prague",
+          "one_line_desc": "카렐 4세가 1357년에 놓기 시작한 다리로, 난간에 늘어선 30개의 바로크 양식 성인상이 인상적이에요."
+        },
+        {
+          "name": "프라하성",
+          "map_query": "Prague Castle",
+          "one_line_desc": "총면적 7만㎡가 넘는 세계 최대급 고성 단지로, 안에 있는 성 비투스 대성당의 스테인드글라스가 볼만해요."
+        },
+        {
+          "name": "구시가지 광장의 천문시계",
+          "short": "천문시계",
+          "map_query": "Prague Astronomical Clock",
+          "one_line_desc": "옛 시청사 벽에 걸린 세계에서 가장 오래된 작동 중인 천문시계로, 정교한 중세 기계 장치가 특징이에요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "스비치코바",
+          "one_line_desc": "부드러운 소고기에 채소 크림소스를 끼얹고 빵 경단을 곁들이는 체코 대표 요리예요."
+        },
+        {
+          "name": "굴라시",
+          "one_line_desc": "양파와 파프리카로 걸쭉하게 끓인 소고기 스튜로, 헝가리식보다 더 되직하고 빵 경단(크네들리키)과 함께 먹어요."
+        },
+        {
+          "name": "트르델닉",
+          "one_line_desc": "반죽을 통 모양으로 말아 숯불에 구운 뒤 설탕과 계피를 묻힌 간식으로, 프라하 거리 곳곳에서 팔아요."
+        }
+      ]
+    }
+  ]
+}

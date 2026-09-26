@@ -1,0 +1,431 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "france",
+    "name": "프랑스",
+    "language": "프랑스어",
+    "lang_code": "fr",
+    "tier": 3,
+    "intro": "에펠탑과 루브르 박물관의 파리부터 지중해의 코트다쥐르까지, 예술과 낭만의 나라로 손꼽혀요. 지역마다 건축과 음식 색깔이 뚜렷해서 도시를 옮길 때마다 여행의 분위기가 달라져요.",
+    "name_note": "프랑스 사람들은 정식 이름 외에 부모가 지어준 애칭으로 서로를 편하게 부르는 경우가 많아요. 이름마다 종교·신화·자연에서 온 뜻이 담겨 있어서 의미를 알고 고르면 더 재미있어요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "Bonjour",
+        "pronunciation_kr": "봉주르"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "Merci beaucoup",
+        "pronunciation_kr": "메르시 보쿠"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "Je voudrais ceci, s'il vous plaît",
+        "pronunciation_kr": "즈 부드레 스시, 실 부 플레"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "C'est combien ?",
+        "pronunciation_kr": "세 콩비앙?"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "C'est délicieux !",
+        "pronunciation_kr": "세 델리시외!"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "Gabriel",
+        "pronunciation_kr": "가브리엘",
+        "romanized": "Gabriel",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어로 '신은 나의 힘'이라는 뜻"
+      },
+      {
+        "name_local": "Léo",
+        "pronunciation_kr": "레오",
+        "romanized": "Leo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "라틴어로 '사자'라는 뜻"
+      },
+      {
+        "name_local": "Raphaël",
+        "pronunciation_kr": "라파엘",
+        "romanized": "Raphael",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "히브리어로 '신이 치유하신다'는 뜻"
+      },
+      {
+        "name_local": "Arthur",
+        "pronunciation_kr": "아르튀르",
+        "romanized": "Arthur",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "켈트어에서 유래했으며 '곰'이라는 뜻으로 보기도 함"
+      },
+      {
+        "name_local": "Louis",
+        "pronunciation_kr": "루이",
+        "romanized": "Louis",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "게르만어로 '유명한 전사'라는 뜻"
+      },
+      {
+        "name_local": "Jules",
+        "pronunciation_kr": "쥘",
+        "romanized": "Jules",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ]
+      },
+      {
+        "name_local": "Adam",
+        "pronunciation_kr": "아당",
+        "romanized": "Adam",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "히브리어로 '사람, 흙'이라는 뜻"
+      },
+      {
+        "name_local": "Noah",
+        "pronunciation_kr": "노아",
+        "romanized": "Noah",
+        "gender_style": "male",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "히브리어로 '안식, 위안'이라는 뜻"
+      },
+      {
+        "name_local": "Liam",
+        "pronunciation_kr": "리암",
+        "romanized": "Liam",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "아일랜드어 윌리엄(Uilliam)의 애칭"
+      },
+      {
+        "name_local": "Nathan",
+        "pronunciation_kr": "나탕",
+        "romanized": "Nathan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "히브리어로 '그가 주셨다'는 뜻"
+      },
+      {
+        "name_local": "Ethan",
+        "pronunciation_kr": "에탕",
+        "romanized": "Ethan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "히브리어로 '강함, 견고함'이라는 뜻"
+      },
+      {
+        "name_local": "Isaac",
+        "pronunciation_kr": "이자크",
+        "romanized": "Isaac",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "히브리어로 '그가 웃을 것이다'라는 뜻"
+      },
+      {
+        "name_local": "Louise",
+        "pronunciation_kr": "루이즈",
+        "romanized": "Louise",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "루이(Louis)의 여성형으로 '유명한 전사'라는 뜻"
+      },
+      {
+        "name_local": "Emma",
+        "pronunciation_kr": "엠마",
+        "romanized": "Emma",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "발랄함"
+        ],
+        "meaning_kr": "게르만어로 '전체, 보편적인'이라는 뜻"
+      },
+      {
+        "name_local": "Jade",
+        "pronunciation_kr": "자드",
+        "romanized": "Jade",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "보석 '옥(비취)'에서 온 이름"
+      },
+      {
+        "name_local": "Alba",
+        "pronunciation_kr": "알바",
+        "romanized": "Alba",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "라틴어 albus(하얀)에서 유래했으며, 스페인어·이탈리아어권에서는 같은 이름이 '새벽'이라는 뜻으로도 쓰여요"
+      },
+      {
+        "name_local": "Ambre",
+        "pronunciation_kr": "앙브르",
+        "romanized": "Ambre",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "보석 '호박'을 뜻하는 프랑스어 단어"
+      },
+      {
+        "name_local": "Alice",
+        "pronunciation_kr": "알리스",
+        "romanized": "Alice",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "게르만어로 '고귀함'이라는 뜻"
+      },
+      {
+        "name_local": "Rose",
+        "pronunciation_kr": "로즈",
+        "romanized": "Rose",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "꽃 '장미'에서 온 이름"
+      },
+      {
+        "name_local": "Léa",
+        "pronunciation_kr": "레아",
+        "romanized": "Lea",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "히브리어에서 유래했으며 뜻은 여러 설이 있음"
+      },
+      {
+        "name_local": "Chloé",
+        "pronunciation_kr": "클로에",
+        "romanized": "Chloe",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "그리스어로 '푸른 새싹, 싱그러움'이라는 뜻"
+      },
+      {
+        "name_local": "Inès",
+        "pronunciation_kr": "이네스",
+        "romanized": "Ines",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "그리스어에서 온 아녜스(Agnès)의 변형으로 '순수한'이라는 뜻"
+      },
+      {
+        "name_local": "Julia",
+        "pronunciation_kr": "쥘리아",
+        "romanized": "Julia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ]
+      },
+      {
+        "name_local": "Juliette",
+        "pronunciation_kr": "쥘리에트",
+        "romanized": "Juliette",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ]
+      },
+      {
+        "name_local": "Sacha",
+        "pronunciation_kr": "사샤",
+        "romanized": "Sacha",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "알렉상드르(Alexandre)의 애칭으로 그리스어 '인류의 수호자'에서 유래"
+      },
+      {
+        "name_local": "Camille",
+        "pronunciation_kr": "카미유",
+        "romanized": "Camille",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "고대 로마에서 제사를 돕던 귀족 청년을 뜻하던 라틴어에서 유래"
+      },
+      {
+        "name_local": "Dominique",
+        "pronunciation_kr": "도미니크",
+        "romanized": "Dominique",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "라틴어로 '주님께 속한'이라는 뜻"
+      },
+      {
+        "name_local": "Claude",
+        "pronunciation_kr": "클로드",
+        "romanized": "Claude",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "라틴어 클라우디우스(Claudius)에서 온 이름"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "paris",
+      "city_name": "파리",
+      "tier": 3,
+      "intro": "프랑스의 수도이자 예술과 낭만의 도시예요. 에펠탑과 루브르 박물관 같은 세계적인 명소가 모여 있고, 센강을 따라 걷는 것만으로도 도시 전체가 하나의 미술관처럼 느껴져요.",
+      "attractions": [
+        {
+          "name": "에펠탑",
+          "map_query": "Eiffel Tower Paris",
+          "one_line_desc": "1889년 만국박람회를 위해 세운 330m 높이의 철탑으로, 파리 어디서나 눈에 띄는 상징적인 랜드마크예요."
+        },
+        {
+          "name": "루브르 박물관",
+          "short": "루브르",
+          "map_query": "Louvre Museum Paris",
+          "one_line_desc": "유리 피라미드로 유명한 세계 최대 규모의 박물관으로, 모나리자 등 수많은 명화를 소장하고 있어요."
+        },
+        {
+          "name": "노트르담 대성당",
+          "short": "노트르담",
+          "map_query": "Notre-Dame Cathedral Paris",
+          "one_line_desc": "2019년 화재로 큰 피해를 입었다가 2024년 12월 복원을 마치고 다시 문을 연 파리의 상징적인 대성당이에요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "잠봉뵈르",
+          "one_line_desc": "바게트에 햄과 버터만 넣은 단순한 샌드위치지만, 파리 사람들이 즐겨 먹는 대표적인 국민 간식이에요."
+        },
+        {
+          "name": "오니언수프",
+          "one_line_desc": "치즈를 듬뿍 올려 구운 뜨끈한 수프로, 파리의 옛 중앙시장 레알 시장의 짐꾼들과 밤늦게 놀던 사람들이 해장으로 즐겨 먹던 데서 유래했어요."
+        },
+        {
+          "name": "마카롱",
+          "one_line_desc": "동그란 반죽 두 장 사이에 가나슈를 채운 파리식 마카롱은 1930년대 라뒤레의 피에르 데퐁텐이 처음 만들었어요."
+        }
+      ]
+    },
+    {
+      "city_code": "nice",
+      "city_name": "니스",
+      "tier": 3,
+      "intro": "지중해를 낀 프랑스 남부 코트다쥐르의 대표 휴양 도시예요. 파스텔톤 구시가지와 새파란 바닷가 산책로가 어우러져 여유로운 분위기를 즐길 수 있어요.",
+      "attractions": [
+        {
+          "name": "프롬나드 데 장글레",
+          "short": "프롬나드",
+          "map_query": "Promenade des Anglais Nice",
+          "one_line_desc": "니스 해변을 따라 길게 이어지는 산책로로, 19세기 영국인 휴양객들을 위해 만들어진 데서 이름이 유래했어요."
+        },
+        {
+          "name": "비외 니스",
+          "map_query": "Vieux Nice, Nice France",
+          "one_line_desc": "파스텔톤 건물이 늘어선 니스의 구시가지로, 쿠르 살레야 광장에는 월요일을 제외한 매일 아침 꽃과 채소 시장이 열려요(월요일은 골동품 시장으로 바뀌어요)."
+        },
+        {
+          "name": "콜린 뒤 샤토",
+          "short": "성 언덕",
+          "map_query": "Colline du Château Nice",
+          "one_line_desc": "구시가지 동쪽 언덕에 있는 무료 전망대로, 인공 폭포 너머로 니스 앞바다와 구시가지 전경이 펼쳐져요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "소카",
+          "one_line_desc": "병아리콩 가루 반죽을 화덕에 얇게 구워낸 니스의 오래된 서민 음식으로, 노점에서 즉석으로 잘라 팔아요."
+        },
+        {
+          "name": "니스식 샐러드",
+          "one_line_desc": "토마토·삶은 달걀·올리브·앤초비를 올린 니스의 대표 샐러드로, 도시 이름이 그대로 요리 이름이 됐어요."
+        },
+        {
+          "name": "피살라디에르",
+          "one_line_desc": "양파와 앤초비 페이스트, 올리브를 얹어 구운 니스식 타르트로, 노점과 빵집에서 흔히 볼 수 있어요."
+        }
+      ]
+    }
+  ]
+}
