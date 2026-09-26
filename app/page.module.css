@@ -106,6 +106,33 @@
   color: var(--muted-ink);
 }
 
+/* 여행 이름 섹션으로 넘어가는 교차 카드 (여행 페이지의 .crossCard와 같은 스타일) */
+.crossCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+  background: var(--accent-soft);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.crossCard strong {
+  display: block;
+  font-size: 15.5px;
+}
+.crossCard span {
+  font-size: 13px;
+  color: var(--muted-ink);
+}
+.crossArrow {
+  font-size: 20px;
+  color: var(--accent);
+  font-weight: 800;
+}
+
 /* ---------- 0단계: 사진 선택(소개 + 패널 2열) ---------- */
 .heroGrid {
   display: grid;

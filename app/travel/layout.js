@@ -14,11 +14,6 @@ const gaegu = Gaegu({
   preload: false,
 });
 
-// 개발 중에는 검색엔진 노출을 막습니다. 공개할 때 이 robots 설정만 지우면 됩니다.
-export const metadata = {
-  robots: { index: false, follow: false },
-};
-
 export default function TravelLayout({ children }) {
   return (
     <div className={`${site.shell} ${gaegu.variable}`}>

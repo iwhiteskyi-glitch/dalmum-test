@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import styles from "./page.module.css";
 import {
   loadModels,
@@ -836,6 +837,16 @@ export default function Page() {
               이 수치는 얼굴 특징점 위치를 비교한 <strong>재미용 결과</strong>이며, 신원
               확인이나 친자 판별 등 어떤 공식적 용도로도 쓸 수 없어요.
             </p>
+
+            <Link href="/travel" className={styles.crossCard}>
+              <span>
+                <strong>여행 가면 내 이름은?</strong>
+                <span>나라별 현지식 이름과 여행 정보도 받아보세요</span>
+              </span>
+              <span className={styles.crossArrow} aria-hidden="true">
+                →
+              </span>
+            </Link>
           </div>
           <AdSlot slot="result-bottom" />
           </>
