@@ -1,0 +1,413 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "indonesia",
+    "name": "인도네시아",
+    "language": "인도네시아어",
+    "lang_code": "id",
+    "tier": 2,
+    "intro": "1만 7천 개가 넘는 섬으로 이루어진 동남아시아 최대의 나라예요. 발리의 리조트, 자카르타의 대도시, 각 섬마다 자바·발리·순다 등 서로 다른 문화가 섞여 있어 지역마다 분위기가 확연히 달라요.",
+    "name_note": "인도네시아는 자바, 발리, 순다 등 지역과 종교에 따라 이름 스타일이 아주 다양해요. 특히 발리에서는 태어난 순서에 따라 이름이 정해지는 독특한 전통도 있어요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "Halo",
+        "pronunciation_kr": "할로",
+        "note": "시간대별로 슬라맛 빠기(아침)·시앙(낮)·소레(저녁)라고도 인사해요"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "Terima kasih",
+        "pronunciation_kr": "뜨리마 까시",
+        "note": "편하게 줄여서 '마까시'라고도 해요"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "Minta ini",
+        "pronunciation_kr": "민타 이니"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "Berapa harganya?",
+        "pronunciation_kr": "버라빠 하르가냐"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "Enak sekali",
+        "pronunciation_kr": "에낙 스칼리"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "Putri",
+        "pronunciation_kr": "푸트리",
+        "romanized": "Putri",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "공주라는 뜻"
+      },
+      {
+        "name_local": "Ayu",
+        "pronunciation_kr": "아유",
+        "romanized": "Ayu",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아름답다, 우아하다는 뜻"
+      },
+      {
+        "name_local": "Wulan",
+        "pronunciation_kr": "울란",
+        "romanized": "Wulan",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "달이라는 뜻"
+      },
+      {
+        "name_local": "Dewi",
+        "pronunciation_kr": "데위",
+        "romanized": "Dewi",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "여신이라는 뜻"
+      },
+      {
+        "name_local": "Nabila",
+        "pronunciation_kr": "나빌라",
+        "romanized": "Nabila",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "고귀하다, 뛰어나다는 뜻(아랍어 유래)"
+      },
+      {
+        "name_local": "Anindita",
+        "pronunciation_kr": "아닌디타",
+        "romanized": "Anindita",
+        "gender_style": "female",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "흠 없다, 완벽하다는 뜻(산스크리트어 유래)"
+      },
+      {
+        "name_local": "Siti",
+        "pronunciation_kr": "시티",
+        "romanized": "Siti",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "귀부인이라는 뜻(아랍어 경칭 유래)"
+      },
+      {
+        "name_local": "Sari",
+        "pronunciation_kr": "사리",
+        "romanized": "Sari",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "정수, 꽃의 꿀이라는 뜻"
+      },
+      {
+        "name_local": "Indah",
+        "pronunciation_kr": "인다",
+        "romanized": "Indah",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "아름답다는 뜻"
+      },
+      {
+        "name_local": "Bunga",
+        "pronunciation_kr": "붕아",
+        "romanized": "Bunga",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "꽃이라는 뜻"
+      },
+      {
+        "name_local": "Kirana",
+        "pronunciation_kr": "키라나",
+        "romanized": "Kirana",
+        "gender_style": "female",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "빛줄기라는 뜻(산스크리트어 유래)"
+      },
+      {
+        "name_local": "Rahayu",
+        "pronunciation_kr": "라하유",
+        "romanized": "Rahayu",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "평안하다, 번영한다는 뜻(자바어)"
+      },
+      {
+        "name_local": "Euis",
+        "pronunciation_kr": "으이스",
+        "romanized": "Euis",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아름답다는 뜻(순다어)"
+      },
+      {
+        "name_local": "Budi",
+        "pronunciation_kr": "부디",
+        "romanized": "Budi",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "지혜, 인격이라는 뜻"
+      },
+      {
+        "name_local": "Wahyu",
+        "pronunciation_kr": "와휴",
+        "romanized": "Wahyu",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "계시라는 뜻"
+      },
+      {
+        "name_local": "Putra",
+        "pronunciation_kr": "푸트라",
+        "romanized": "Putra",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "아들이라는 뜻"
+      },
+      {
+        "name_local": "Rayhan",
+        "pronunciation_kr": "라이한",
+        "romanized": "Rayhan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "사랑스러움",
+          "발랄함"
+        ],
+        "meaning_kr": "향긋하다는 뜻(아랍어 유래)"
+      },
+      {
+        "name_local": "Asep",
+        "pronunciation_kr": "아셉",
+        "romanized": "Asep",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "잘생겼다는 뜻(순다어)"
+      },
+      {
+        "name_local": "Bayu",
+        "pronunciation_kr": "바유",
+        "romanized": "Bayu",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "바람이라는 뜻"
+      },
+      {
+        "name_local": "Agus",
+        "pronunciation_kr": "아구스",
+        "romanized": "Agus",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "착하다, 다정하다, 너그럽다는 뜻(자바·말레이어 유래)"
+      },
+      {
+        "name_local": "Arya",
+        "pronunciation_kr": "아리아",
+        "romanized": "Arya",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "고귀하다는 뜻(산스크리트어 유래)"
+      },
+      {
+        "name_local": "Gilang",
+        "pronunciation_kr": "길랑",
+        "romanized": "Gilang",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "빛나다, 눈부시다는 뜻(자바어)"
+      },
+      {
+        "name_local": "Ujang",
+        "pronunciation_kr": "우장",
+        "romanized": "Ujang",
+        "gender_style": "male",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "어린 남자아이를 다정하게 부르는 말(순다어)"
+      },
+      {
+        "name_local": "Rizky",
+        "pronunciation_kr": "리즈키",
+        "romanized": "Rizky",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "카리스마"
+        ],
+        "meaning_kr": "행운, 복이라는 뜻(아랍어 유래)"
+      },
+      {
+        "name_local": "Wayan",
+        "pronunciation_kr": "와얀",
+        "romanized": "Wayan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "발리에서 첫째 아이에게 붙이는 이름"
+      },
+      {
+        "name_local": "Komang",
+        "pronunciation_kr": "코망",
+        "romanized": "Komang",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "발리에서 셋째 아이에게 붙이는 이름"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "bali",
+      "city_name": "발리",
+      "tier": 2,
+      "intro": "인도네시아를 대표하는 휴양 섬으로, 힌두교 사원과 계단식 논, 해변 리조트가 한 섬 안에 모두 있어요. 예술 마을 우붓부터 절벽 사원이 있는 울루와투까지 지역마다 분위기가 확연히 달라요.",
+      "attractions": [
+        {
+          "name": "타나롯 사원",
+          "map_query": "Tanah Lot Temple Bali",
+          "one_line_desc": "바다 위 바위에 세워진 사원으로, 해 질 녘 실루엣이 특히 아름다운 일몰 명소예요."
+        },
+        {
+          "name": "울루와투 사원",
+          "short": "울루와투",
+          "map_query": "Uluwatu Temple Bali",
+          "one_line_desc": "깎아지른 해안 절벽 위에 자리한 사원으로, 저녁마다 께짝 댄스 공연이 열려요."
+        },
+        {
+          "name": "뜨갈랄랑 계단식 논",
+          "short": "뜨갈랄랑",
+          "map_query": "Tegalalang Rice Terrace Bali",
+          "one_line_desc": "우붓 근교 언덕에 펼쳐진 계단식 논으로, 그네를 타며 초록빛 풍경을 즐길 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "바비굴링",
+          "one_line_desc": "화덕에 통째로 구운 발리식 통돼지 구이로, 전통 의례에서 유래한 발리 대표 음식이에요."
+        },
+        {
+          "name": "사테 릴릿",
+          "one_line_desc": "다진 고기와 코코넛을 레몬그라스 줄기에 감아 구운 발리식 꼬치구이예요."
+        },
+        {
+          "name": "라와르",
+          "one_line_desc": "채소와 고기, 갈아낸 코코넛을 향신료로 무친 발리 전통 샐러드예요."
+        }
+      ]
+    },
+    {
+      "city_code": "jakarta",
+      "city_name": "자카르타",
+      "tier": 2,
+      "intro": "인도네시아의 수도이자 동남아시아를 대표하는 대도시예요. 네덜란드 식민지 시절 흔적이 남은 옛 시가지부터 초고층 빌딩이 늘어선 신도심까지, 도시 안에 여러 시대가 함께 있어요.",
+      "attractions": [
+        {
+          "name": "모나스",
+          "map_query": "Monas National Monument Jakarta",
+          "one_line_desc": "132m 높이로 우뚝 솟은 독립기념탑으로, 전망대에 오르면 자카르타 시내가 한눈에 보여요."
+        },
+        {
+          "name": "코타투아",
+          "map_query": "Kota Tua Jakarta",
+          "one_line_desc": "네덜란드 식민지 시절 건물이 남은 옛 시가지로, 중심 파타힐라 광장에 박물관들이 모여 있어요."
+        },
+        {
+          "name": "이스티클랄 모스크",
+          "short": "이스티클랄",
+          "map_query": "Istiqlal Mosque Jakarta",
+          "one_line_desc": "동남아시아에서 가장 큰 모스크로 꼽히며, 비무슬림 방문객도 가이드 투어로 둘러볼 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "끄락뜰로르",
+          "one_line_desc": "찹쌀에 달걀물을 부어 함께 지지고, 볶은 코코넛과 새우가루를 얹어 먹는 브타위 전통 음식이에요."
+        },
+        {
+          "name": "소토브타위",
+          "one_line_desc": "코코넛 밀크 육수에 소고기와 내장을 넣어 끓인 자카르타 브타위족 전통 수프예요."
+        },
+        {
+          "name": "가도가도",
+          "one_line_desc": "삶은 채소와 두부, 템페에 땅콩 소스를 끼얹어 먹는 브타위식 샐러드로 자카르타의 명물이에요."
+        }
+      ]
+    }
+  ]
+}

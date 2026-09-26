@@ -1,0 +1,484 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "philippines",
+    "name": "필리핀",
+    "language": "필리핀어(타갈로그)",
+    "lang_code": "tl",
+    "tier": 2,
+    "intro": "7,000개가 넘는 섬으로 이루어진 동남아 대표 휴양지예요. 하얀 백사장의 보라카이부터 초콜릿 힐이 있는 보홀, 스페인 식민지 유적이 남은 마닐라까지 섬마다 다른 매력을 보여줘요.",
+    "name_note": "필리핀 사람들은 정식 이름과는 다른 편안한 애칭을 어릴 때부터 쭉 써요. 가족이 지어준 애칭을 어른이 되어서도 그대로 쓰는 경우가 많아서, 여행용 이름으로도 친근하게 잘 어울려요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "Kumusta po",
+        "pronunciation_kr": "쿠무스타 포",
+        "note": "po는 존댓말 표시예요. 어른이나 처음 만난 사람에게 꼭 붙여요"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "Salamat po",
+        "pronunciation_kr": "살라맛 포"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "Isa po nito",
+        "pronunciation_kr": "이사 포 니토",
+        "note": "메뉴나 물건을 손으로 가리키면서 말하면 돼요"
+      },
+      {
+        "category": "가격",
+        "meaning_kr": "얼마예요?",
+        "text_local": "Magkano po ito?",
+        "pronunciation_kr": "마그카노 포 이토"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "Ang sarap po nito!",
+        "pronunciation_kr": "앙 사랍 포 니토"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "Juan",
+        "pronunciation_kr": "후안",
+        "romanized": "Juan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "'하느님은 은혜로우시다'라는 뜻. 필리핀에서 가장 흔한 이름 중 하나예요"
+      },
+      {
+        "name_local": "Jose",
+        "pronunciation_kr": "호세",
+        "romanized": "Jose",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "'하느님이 더해 주신다'는 뜻"
+      },
+      {
+        "name_local": "Miguel",
+        "pronunciation_kr": "미겔",
+        "romanized": "Miguel",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "'하느님과 같은 이'라는 뜻"
+      },
+      {
+        "name_local": "Rafael",
+        "pronunciation_kr": "라파엘",
+        "romanized": "Rafael",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "'하느님이 고치신다'는 뜻"
+      },
+      {
+        "name_local": "Gabriel",
+        "pronunciation_kr": "가브리엘",
+        "romanized": "Gabriel",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "'하느님은 나의 힘'이라는 뜻"
+      },
+      {
+        "name_local": "Angelo",
+        "pronunciation_kr": "안젤로",
+        "romanized": "Angelo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "'천사'라는 뜻"
+      },
+      {
+        "name_local": "Antonio",
+        "pronunciation_kr": "안토니오",
+        "romanized": "Antonio",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ]
+      },
+      {
+        "name_local": "Ramon",
+        "pronunciation_kr": "라몬",
+        "romanized": "Ramon",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "'지혜로운 보호자'라는 뜻"
+      },
+      {
+        "name_local": "Paolo",
+        "pronunciation_kr": "파올로",
+        "romanized": "Paolo",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "'작고 겸손하다'는 뜻"
+      },
+      {
+        "name_local": "Maria",
+        "pronunciation_kr": "마리아",
+        "romanized": "Maria",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "필리핀 여성들이 첫 이름으로 흔히 갖는 이름으로, 전통적으로 '바다의 별'이라는 뜻으로 풀이돼요"
+      },
+      {
+        "name_local": "Ana",
+        "pronunciation_kr": "아나",
+        "romanized": "Ana",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "'은혜'라는 뜻"
+      },
+      {
+        "name_local": "Isabel",
+        "pronunciation_kr": "이사벨",
+        "romanized": "Isabel",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "'하느님은 나의 맹세'라는 뜻"
+      },
+      {
+        "name_local": "Carmela",
+        "pronunciation_kr": "카르멜라",
+        "romanized": "Carmela",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "'정원, 과수원'이라는 뜻"
+      },
+      {
+        "name_local": "Rosario",
+        "pronunciation_kr": "로사리오",
+        "romanized": "Rosario",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "'장미 화관(묵주)'이라는 뜻"
+      },
+      {
+        "name_local": "Grace",
+        "pronunciation_kr": "그레이스",
+        "romanized": "Grace",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "영어 'grace(은혜)'에서 온 이름"
+      },
+      {
+        "name_local": "Joy",
+        "pronunciation_kr": "조이",
+        "romanized": "Joy",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "영어 'joy(기쁨)'에서 온 이름"
+      },
+      {
+        "name_local": "Angel",
+        "pronunciation_kr": "에인절",
+        "romanized": "Angel",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "귀여움"
+        ],
+        "meaning_kr": "영어 'angel(천사)'에서 온 이름"
+      },
+      {
+        "name_local": "Bea",
+        "pronunciation_kr": "베아",
+        "romanized": "Bea",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "'행복하게 하는 사람'이라는 뜻의 베아트리스(Beatriz)를 줄인 애칭"
+      },
+      {
+        "name_local": "Jun",
+        "pronunciation_kr": "준",
+        "romanized": "Jun",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "영어 'Junior'에서 온 애칭. 아버지와 이름이 같은 아들을 이렇게 부르곤 해요"
+      },
+      {
+        "name_local": "Bunso",
+        "pronunciation_kr": "분소",
+        "romanized": "Bunso",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "집안의 막내라는 뜻으로, 성별과 상관없이 막내를 부르는 애칭이에요"
+      },
+      {
+        "name_local": "Baby",
+        "pronunciation_kr": "베이비",
+        "romanized": "Baby",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "영어 'baby(아기)'에서 온 애칭으로, 성별과 상관없이 사랑받는 막내에게 흔히 붙여요"
+      },
+      {
+        "name_local": "Boy",
+        "pronunciation_kr": "보이",
+        "romanized": "Boy",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "카리스마"
+        ],
+        "meaning_kr": "영어 'boy(남자아이)'에서 온 애칭으로, 성인이 되어서도 그대로 불리는 경우가 많아요"
+      },
+      {
+        "name_local": "Toto",
+        "pronunciation_kr": "토토",
+        "romanized": "Toto",
+        "gender_style": "male",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "비사야 지역에서 어린 남자아이를 다정하게 부르는 애칭이에요"
+      },
+      {
+        "name_local": "Dodong",
+        "pronunciation_kr": "도동",
+        "romanized": "Dodong",
+        "gender_style": "male",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "비사야 지역에서 아들이나 어린 남자아이를 부르는 애칭이에요"
+      },
+      {
+        "name_local": "Inday",
+        "pronunciation_kr": "인다이",
+        "romanized": "Inday",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "비사야 지역에서 어리고 사랑스러운 여자아이를 부르는 애칭이에요"
+      },
+      {
+        "name_local": "Bong",
+        "pronunciation_kr": "봉",
+        "romanized": "Bong",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "발랄함"
+        ],
+        "meaning_kr": "필리핀 남성들 사이에서 흔히 쓰이는 애칭이에요"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "cebu",
+      "city_name": "세부",
+      "tier": 2,
+      "intro": "세부는 필리핀 기독교 역사가 시작된 곳으로, 1521년 마젤란이 세운 십자가와 산토니뇨 성상이 지금도 남아 있어요. 시내에서 다리를 건너면 리조트가 모인 막탄 섬으로 이어져요.",
+      "attractions": [
+        {
+          "name": "마젤란의 십자가",
+          "map_query": "Magellan's Cross Cebu",
+          "one_line_desc": "1521년 마젤란이 세운 십자가로, 필리핀에 기독교가 처음 전해진 것을 기리는 상징이에요."
+        },
+        {
+          "name": "산토니뇨 대성당",
+          "map_query": "Basilica Minore del Santo Nino Cebu",
+          "one_line_desc": "필리핀에서 가장 오래된 성당 중 하나로, 나라 곳곳에서 사랑받는 아기 예수상 산토니뇨를 모시고 있어요."
+        },
+        {
+          "name": "레아의 사원",
+          "map_query": "Temple of Leah Cebu",
+          "one_line_desc": "세부의 한 사업가가 먼저 세상을 떠난 아내를 기리며 지은 웅장한 그리스풍 건축물이에요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "레촌",
+          "one_line_desc": "통째로 구운 돼지고기 요리로, 세부 레촌은 필리핀에서도 손꼽히는 명물로 알려져 있어요."
+        },
+        {
+          "name": "건망고",
+          "one_line_desc": "잘 익은 망고를 말려 만든 간식으로, 세부를 대표하는 기념품이자 간식이에요."
+        },
+        {
+          "name": "푸소",
+          "one_line_desc": "코코넛 잎으로 엮은 주머니에 밥을 쪄낸 것으로, 레촌이나 꼬치와 늘 함께 먹어요."
+        }
+      ]
+    },
+    {
+      "city_code": "boracay",
+      "city_name": "보라카이",
+      "tier": 2,
+      "intro": "필리핀에서 손꼽히는 휴양섬으로, 고운 하얀 모래의 화이트비치가 가장 유명해요. 작은 섬이라 트라이시클(삼륜 오토바이 택시)을 타면 웬만한 곳은 금방 이동할 수 있어요.",
+      "attractions": [
+        {
+          "name": "화이트비치",
+          "map_query": "White Beach Boracay",
+          "one_line_desc": "보라카이를 대표하는 고운 백사장 해변으로, 노을 질 무렵 풍경이 특히 아름다워요."
+        },
+        {
+          "name": "푸카쉘비치",
+          "map_query": "Puka Shell Beach Boracay",
+          "one_line_desc": "화이트비치보다 한적한 북쪽 해변으로, 푸카 조개껍데기가 많이 밀려와 이런 이름이 붙었어요."
+        },
+        {
+          "name": "마운트루호",
+          "map_query": "Mount Luho Boracay",
+          "one_line_desc": "보라카이에서 가장 높은 지점으로, 전망대에 오르면 섬의 해안선이 한눈에 내려다보여요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "초리버거",
+          "one_line_desc": "화이트비치 노점에서 파는 길거리 음식으로, 초리소를 구워 빵에 끼운 보라카이 명물이에요."
+        },
+        {
+          "name": "칼라만시머핀",
+          "one_line_desc": "보라카이에서 처음 만들어졌다고 알려진 디저트로, 새콤한 현지 라임 칼라만시 향이 나요."
+        },
+        {
+          "name": "탈리파파해산물",
+          "one_line_desc": "탈리파파 시장에서 즉석으로 고른 해산물을 옆 식당에서 바로 요리해 먹는 보라카이식 먹거리예요."
+        }
+      ]
+    },
+    {
+      "city_code": "manila",
+      "city_name": "마닐라",
+      "tier": 2,
+      "intro": "필리핀의 수도로, 스페인 식민지 시절 성벽 도시였던 인트라무로스에 옛 성당과 요새가 남아 있어요. 세계에서 가장 오래된 차이나타운으로 꼽히는 비논도에서는 중국계 필리핀 음식도 즐길 수 있어요.",
+      "attractions": [
+        {
+          "name": "인트라무로스",
+          "map_query": "Intramuros Manila",
+          "one_line_desc": "스페인 식민지 시절 세운 성벽 도시로, 산티아고 요새와 산아구스틴 성당 등 옛 건축물이 남아 있어요."
+        },
+        {
+          "name": "리살공원",
+          "map_query": "Rizal Park Manila",
+          "one_line_desc": "국민 영웅 호세 리살을 기리는 공원으로, 아시아에서도 손꼽히게 넓은 도심 공원이에요."
+        },
+        {
+          "name": "국립미술관",
+          "map_query": "National Museum of Fine Arts Manila",
+          "one_line_desc": "리살공원 옆에 있는 국립박물관 건물로, 입장료 없이 필리핀 미술 작품을 관람할 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "할로할로",
+          "one_line_desc": "1930년대 마닐라 키아포 시장에서 시작됐다고 전해지는 빙수로, 여러 재료를 섞어 먹는 필리핀 대표 디저트예요."
+        },
+        {
+          "name": "판싯말라본",
+          "one_line_desc": "메트로 마닐라 말라본 지역에서 유래한 두꺼운 쌀국수 요리로, 새우와 오징어 고명이 올라가요."
+        },
+        {
+          "name": "호피아",
+          "one_line_desc": "비논도 차이나타운의 화교 제과점에서 만드는 페이스트리로, 우베(보라색 얌) 속이 인기예요."
+        }
+      ]
+    },
+    {
+      "city_code": "bohol",
+      "city_name": "보홀",
+      "tier": 2,
+      "intro": "초콜릿 힐과 세계에서 가장 작은 영장류 중 하나로 꼽히는 안경원숭이 타르시어로 유명한 섬이에요. 롭옥강에서는 배 위에서 필리핀 음식을 먹으며 열대 숲 풍경을 즐기는 크루즈도 탈 수 있어요.",
+      "attractions": [
+        {
+          "name": "초콜릿힐",
+          "map_query": "Chocolate Hills Complex Bohol",
+          "one_line_desc": "건기에 풀이 마르면 갈색으로 변하는 원뿔 모양 언덕 1,000개가 넘게 펼쳐지는 보홀의 상징이에요."
+        },
+        {
+          "name": "타르시어 보호구역",
+          "short": "타르시어",
+          "map_query": "Philippine Tarsier Sanctuary Corella Bohol",
+          "one_line_desc": "세계에서 가장 작은 영장류 중 하나인 안경원숭이 타르시어를 보호 숲에서 가까이 관찰할 수 있어요."
+        },
+        {
+          "name": "롭옥강 크루즈",
+          "map_query": "Loboc River Cruise Bohol",
+          "one_line_desc": "롭옥강을 오가는 플로팅 레스토랑 배 위에서 현지 음식을 먹으며 열대 숲 풍경을 즐기는 투어예요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "피넛키세스",
+          "one_line_desc": "보홀에서 만드는 땅콩 쿠키로, 초콜릿 힐 모양을 닮아 보홀 대표 기념품 과자로 꼽혀요."
+        },
+        {
+          "name": "칼라마이",
+          "one_line_desc": "찹쌀과 코코넛밀크, 무스코바도 설탕을 오래 졸여 만든 보홀 하그나 지역의 대표 디저트예요."
+        },
+        {
+          "name": "키닐라우",
+          "one_line_desc": "생선을 현지 코코넛 식초와 향신료로 새콤하게 무친 요리로, 보홀 등 비사야 지역에서 즐겨 먹어요."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,352 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "mongolia",
+    "name": "몽골",
+    "language": "몽골어",
+    "lang_code": "mn",
+    "tier": 3,
+    "intro": "드넓은 초원과 게르(이동식 전통 천막)에서의 유목 생활 체험으로 유명한 나라예요. 세계 정복자 칭기즈칸의 고향이자, 도시를 벗어나면 쏟아질 듯한 밤하늘의 별을 만날 수 있어요.",
+    "name_note": "몽골 이름은 '바트(굳세다)', '오유/오윤(지혜)'처럼 뜻이 뚜렷한 낱말을 조합해 짓는 경우가 많아요. 부모가 아이에게 바라는 마음을 그대로 담아 짓는 문화라, 뜻을 알고 나면 이름이 훨씬 특별하게 느껴져요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "Сайн байна уу?",
+        "pronunciation_kr": "사인 바이노",
+        "note": "직역하면 '잘 지내십니까?'라는 뜻이에요"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "Баярлалаа",
+        "pronunciation_kr": "바야를랄라"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "Надад үүнийг өгөөч",
+        "pronunciation_kr": "나다드 우닝 우거치",
+        "note": "직역하면 '나에게 이것을 주세요'라는 뜻이에요"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "Ямар үнэтэй вэ?",
+        "pronunciation_kr": "야마르 우네태 베"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "Маш амттай",
+        "pronunciation_kr": "마쉬 암타이"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "Алтан",
+        "pronunciation_kr": "알탄",
+        "romanized": "Altan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "금(황금)이라는 뜻"
+      },
+      {
+        "name_local": "Эрдэнэ",
+        "pronunciation_kr": "에르덴",
+        "romanized": "Erdene",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "보석이라는 뜻"
+      },
+      {
+        "name_local": "Баатар",
+        "pronunciation_kr": "바타르",
+        "romanized": "Baatar",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "영웅이라는 뜻"
+      },
+      {
+        "name_local": "Батбаяр",
+        "pronunciation_kr": "바트바야르",
+        "romanized": "Batbayar",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "발랄함"
+        ],
+        "meaning_kr": "굳세다는 '바트'와 기쁨을 뜻하는 '바야르'가 합쳐진 이름"
+      },
+      {
+        "name_local": "Бат-Эрдэнэ",
+        "pronunciation_kr": "바트에르덴",
+        "romanized": "Bat-Erdene",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "굳센 보석이라는 뜻"
+      },
+      {
+        "name_local": "Алтанбаатар",
+        "pronunciation_kr": "알탄바타르",
+        "romanized": "Altanbaatar",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "황금 영웅이라는 뜻"
+      },
+      {
+        "name_local": "Энхбаяр",
+        "pronunciation_kr": "엥흐바야르",
+        "romanized": "Enkhbayar",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "발랄함"
+        ],
+        "meaning_kr": "평화와 기쁨이라는 뜻"
+      },
+      {
+        "name_local": "Жаргал",
+        "pronunciation_kr": "자르갈",
+        "romanized": "Jargal",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "행복이라는 뜻"
+      },
+      {
+        "name_local": "Наранбаатар",
+        "pronunciation_kr": "나란바타르",
+        "romanized": "Naranbaatar",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "태양 영웅이라는 뜻"
+      },
+      {
+        "name_local": "Төмөр",
+        "pronunciation_kr": "투머르",
+        "romanized": "Tumur",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "쇠(철)라는 뜻"
+      },
+      {
+        "name_local": "Тэмүүлэн",
+        "pronunciation_kr": "테물렌",
+        "romanized": "Temuulen",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "꿈을 향해 나아간다, 열망한다는 뜻"
+      },
+      {
+        "name_local": "Мөнхбат",
+        "pronunciation_kr": "뭉흐바트",
+        "romanized": "Munkhbat",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "영원히 굳세다는 뜻"
+      },
+      {
+        "name_local": "Батцэцэг",
+        "pronunciation_kr": "바트체첵",
+        "romanized": "Battsetseg",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "굳센 꽃이라는 뜻"
+      },
+      {
+        "name_local": "Цолмон",
+        "pronunciation_kr": "촐몬",
+        "romanized": "Tsolmon",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "샛별(금성)이라는 뜻"
+      },
+      {
+        "name_local": "Туяа",
+        "pronunciation_kr": "투야",
+        "romanized": "Tuyaa",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "발랄함"
+        ],
+        "meaning_kr": "빛줄기라는 뜻"
+      },
+      {
+        "name_local": "Сарангэрэл",
+        "pronunciation_kr": "사랑게렐",
+        "romanized": "Sarangerel",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "달빛이라는 뜻"
+      },
+      {
+        "name_local": "Мөнхцэцэг",
+        "pronunciation_kr": "뭉흐체첵",
+        "romanized": "Munkhtsetseg",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "영원한 꽃이라는 뜻"
+      },
+      {
+        "name_local": "Оюунчимэг",
+        "pronunciation_kr": "오윤치메그",
+        "romanized": "Oyuunchimeg",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "지혜의 장식이라는 뜻"
+      },
+      {
+        "name_local": "Алтансарнай",
+        "pronunciation_kr": "알탄사르나이",
+        "romanized": "Altansarnai",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "황금 장미라는 뜻"
+      },
+      {
+        "name_local": "Удвал",
+        "pronunciation_kr": "우드발",
+        "romanized": "Udval",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "매발톱꽃(들꽃의 한 종류)이라는 뜻"
+      },
+      {
+        "name_local": "Номин",
+        "pronunciation_kr": "노민",
+        "romanized": "Nomin",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "청금석(짙은 파란빛 보석)이라는 뜻"
+      },
+      {
+        "name_local": "Сарнай",
+        "pronunciation_kr": "사르나이",
+        "romanized": "Sarnai",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "장미라는 뜻"
+      },
+      {
+        "name_local": "Уянга",
+        "pronunciation_kr": "우양가",
+        "romanized": "Uyanga",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "발랄함"
+        ],
+        "meaning_kr": "멜로디(선율)라는 뜻"
+      },
+      {
+        "name_local": "Болор",
+        "pronunciation_kr": "볼로르",
+        "romanized": "Bolor",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "우아함"
+        ],
+        "meaning_kr": "수정(크리스탈)이라는 뜻"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "ulaanbaatar",
+      "city_name": "울란바토르",
+      "tier": 3,
+      "intro": "세계에서 가장 추운 수도로 꼽히는 몽골의 심장부예요. 도심 수흐바타르 광장을 중심으로 박물관과 사원이 모여 있고, 조금만 벗어나면 끝없는 초원이 펼쳐져요.",
+      "attractions": [
+        {
+          "name": "수흐바타르 광장",
+          "map_query": "Sukhbaatar Square Ulaanbaatar",
+          "one_line_desc": "울란바토르 도심 한복판의 광장으로, 국회의사당과 칭기즈칸 동상이 광장을 둘러싸고 있어요."
+        },
+        {
+          "name": "간단사원",
+          "map_query": "Gandantegchinlen Monastery Ulaanbaatar",
+          "one_line_desc": "몽골 최대의 티베트 불교 사원으로, 높이 26m의 황금빛 관세음보살 입상이 유명해요."
+        },
+        {
+          "name": "몽골국립박물관",
+          "short": "국립박물관",
+          "map_query": "National Museum of Mongolia",
+          "one_line_desc": "수흐바타르 광장 서쪽에 있는 역사박물관으로, 유목 생활사부터 근현대사까지 살펴볼 수 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "보즈",
+          "one_line_desc": "양고기나 소고기를 다져 넣고 찐 몽골식 만두로, 설 명절인 차강사르에 빠지지 않는 음식이에요."
+        },
+        {
+          "name": "호쇼르",
+          "one_line_desc": "고기소를 넣어 기름에 튀긴 몽골식 튀김만두로, 매년 7월 나담 축제 때 노점에서 즐겨 먹어요."
+        },
+        {
+          "name": "아이락",
+          "one_line_desc": "말젖을 발효시켜 만든 몽골 전통 음료로, 손님을 맞을 때 대접하는 새콤한 맛의 음료예요."
+        }
+      ]
+    }
+  ]
+}

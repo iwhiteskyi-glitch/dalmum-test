@@ -1,0 +1,375 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "laos",
+    "name": "라오스",
+    "language": "라오어",
+    "lang_code": "lo",
+    "tier": 3,
+    "intro": "메콩강을 따라 자리한 조용한 내륙의 불교 국가예요. 수도 비엔티안의 차분한 강변과 옛 왕도 루앙프라방의 고즈넉한 사원 골목이 서로 다른 매력을 보여줘요.",
+    "name_note": "라오스 사람들도 태국처럼 긴 본명 대신 짧은 애칭('쓰린')으로 서로를 불러요. 동물이나 꽃, 날씨 같은 친근한 단어를 애칭으로 많이 쓰다 보니 여행용 이름으로도 부르기 편해요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "ສະບາຍດີ",
+        "pronunciation_kr": "사바이디"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "ຂອບໃຈ",
+        "pronunciation_kr": "컵짜이"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주문할게요",
+        "text_local": "ຂ້ອຍຢາກສັ່ງອັນນີ້",
+        "pronunciation_kr": "커이 약 상 안니"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "ນີ້ລາຄາເທົ່າໃດ",
+        "pronunciation_kr": "니 라카 타오다이"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "ແຊບຫລາຍ",
+        "pronunciation_kr": "쌥 라이"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "ຄຳ",
+        "pronunciation_kr": "캄",
+        "romanized": "Kham",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "금(황금)이라는 뜻"
+      },
+      {
+        "name_local": "ບຸນ",
+        "pronunciation_kr": "분",
+        "romanized": "Boun",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "공덕·행운이라는 뜻"
+      },
+      {
+        "name_local": "ໄຊ",
+        "pronunciation_kr": "싸이",
+        "romanized": "Xay",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "발랄함"
+        ],
+        "meaning_kr": "승리라는 뜻"
+      },
+      {
+        "name_local": "ສຸລິຍາ",
+        "pronunciation_kr": "술리야",
+        "romanized": "Souliya",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "태양이라는 뜻"
+      },
+      {
+        "name_local": "ເອກ",
+        "pronunciation_kr": "엑",
+        "romanized": "Ek",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "으뜸, 첫째라는 뜻"
+      },
+      {
+        "name_local": "ໃຫຍ່",
+        "pronunciation_kr": "냐이",
+        "romanized": "Nyai",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "크다는 뜻으로, 맏이에게 흔히 붙는 애칭"
+      },
+      {
+        "name_local": "ໃຈ",
+        "pronunciation_kr": "짜이",
+        "romanized": "Jai",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "사랑스러움",
+          "카리스마"
+        ],
+        "meaning_kr": "마음이라는 뜻"
+      },
+      {
+        "name_local": "ດາວ",
+        "pronunciation_kr": "다오",
+        "romanized": "Dao",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "별이라는 뜻"
+      },
+      {
+        "name_local": "ມະລິ",
+        "pronunciation_kr": "말리",
+        "romanized": "Mali",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "자스민 꽃이라는 뜻"
+      },
+      {
+        "name_local": "ບົວ",
+        "pronunciation_kr": "부아",
+        "romanized": "Boua",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "연꽃이라는 뜻"
+      },
+      {
+        "name_local": "ຟ້າ",
+        "pronunciation_kr": "파",
+        "romanized": "Fah",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "우아함"
+        ],
+        "meaning_kr": "하늘이라는 뜻"
+      },
+      {
+        "name_local": "ຈັນ",
+        "pronunciation_kr": "짠",
+        "romanized": "Jan",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "달이라는 뜻"
+      },
+      {
+        "name_local": "ແກ້ວ",
+        "pronunciation_kr": "께오",
+        "romanized": "Keo",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "유리·보석이라는 뜻"
+      },
+      {
+        "name_local": "ອ້ອຍ",
+        "pronunciation_kr": "오이",
+        "romanized": "Oy",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "사탕수수라는 뜻으로, 다정하게 부르는 애칭"
+      },
+      {
+        "name_local": "ກະຕ່າຍ",
+        "pronunciation_kr": "까따이",
+        "romanized": "Katay",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "토끼라는 뜻"
+      },
+      {
+        "name_local": "ສະຫວັນ",
+        "pronunciation_kr": "사완",
+        "romanized": "Sawan",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "하늘·천국이라는 뜻"
+      },
+      {
+        "name_local": "ນ້ອຍ",
+        "pronunciation_kr": "너이",
+        "romanized": "Noi",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "작다는 뜻으로, 라오스에서 흔히 쓰이는 애칭"
+      },
+      {
+        "name_local": "ເປັດ",
+        "pronunciation_kr": "뻿",
+        "romanized": "Ped",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "오리라는 뜻"
+      },
+      {
+        "name_local": "ໜູ",
+        "pronunciation_kr": "누",
+        "romanized": "Nou",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "쥐라는 뜻"
+      },
+      {
+        "name_local": "ແອ",
+        "pronunciation_kr": "애",
+        "romanized": "Ae",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아기를 부르는 애칭에서 온 이름"
+      },
+      {
+        "name_local": "ກຸ້ງ",
+        "pronunciation_kr": "꿍",
+        "romanized": "Goong",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "발랄함"
+        ],
+        "meaning_kr": "새우라는 뜻"
+      },
+      {
+        "name_local": "ໝີ",
+        "pronunciation_kr": "미",
+        "romanized": "Mee",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "귀여움",
+          "카리스마"
+        ],
+        "meaning_kr": "곰이라는 뜻"
+      },
+      {
+        "name_local": "ຄຳແກ້ວ",
+        "pronunciation_kr": "캄께오",
+        "romanized": "Khamkeo",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "금과 보석이라는 뜻으로, 귀한 아이에게 붙이는 이름"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "vientiane",
+      "city_name": "비엔티안",
+      "tier": 3,
+      "intro": "메콩강을 사이에 두고 태국과 마주 보는 라오스의 수도예요. 높은 빌딩 대신 황금빛 불탑과 프랑스 식민지 시대 건물이 어우러진 조용한 거리가 매력이에요.",
+      "attractions": [
+        {
+          "name": "파탓루앙",
+          "map_query": "Pha That Luang Vientiane",
+          "one_line_desc": "라오스를 상징하는 황금빛 대탑으로, 국가 문장에도 등장하는 대표 불교 유적이에요."
+        },
+        {
+          "name": "빠뚜싸이",
+          "map_query": "Patuxai Vientiane",
+          "one_line_desc": "프랑스 개선문을 닮은 독립 기념탑으로, 계단을 오르면 비엔티안 시내가 한눈에 보여요."
+        },
+        {
+          "name": "왓시사켓",
+          "map_query": "Wat Sisaket Vientiane",
+          "one_line_desc": "비엔티안에서 가장 오래된 사원으로 꼽히며, 회랑을 따라 수많은 불상이 빼곡히 늘어서 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "카오찌",
+          "one_line_desc": "프랑스 바게트에 파테와 채소를 채운 라오스식 샌드위치로, 비엔티안 길거리 아침 메뉴로 인기예요."
+        },
+        {
+          "name": "삥까이",
+          "one_line_desc": "숯불에 통째로 구운 라오스식 닭구이로, 비엔티안 시장과 야시장 어디서나 만날 수 있어요."
+        },
+        {
+          "name": "땀막훙",
+          "one_line_desc": "채 썬 파파야를 맵고 새콤하게 무친 샐러드로, 메콩강변 야시장 노점에서 즐겨 먹어요."
+        }
+      ]
+    },
+    {
+      "city_code": "luangprabang",
+      "city_name": "루앙프라방",
+      "tier": 3,
+      "intro": "메콩강과 남칸강이 만나는 지점에 자리한 옛 란상 왕국의 고도예요. 도시 전체가 유네스코 세계문화유산으로, 이른 아침이면 승려들이 줄지어 탁발하는 모습도 볼 수 있어요.",
+      "attractions": [
+        {
+          "name": "쾅시 폭포",
+          "map_query": "Kuang Si Falls Luang Prabang",
+          "one_line_desc": "청록빛 물빛의 다층 폭포로, 시내에서 남쪽으로 약 30km 거리라 당일치기로 다녀오기 좋아요."
+        },
+        {
+          "name": "푸시산",
+          "map_query": "Mount Phousi Luang Prabang",
+          "one_line_desc": "시내 한가운데 솟은 100m 높이 언덕으로, 가파른 계단을 오르면 시내 전경과 노을을 볼 수 있어요."
+        },
+        {
+          "name": "왓시엥통",
+          "map_query": "Wat Xieng Thong Luang Prabang",
+          "one_line_desc": "루앙프라방에서 가장 중요한 사원으로 꼽히며, 화려한 모자이크 장식과 황금빛 탑이 특징이에요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "올람",
+          "one_line_desc": "고기와 가지, 버섯을 향긋한 허브와 함께 끓인 스튜로, 루앙프라방에서 유래한 라오스 대표 요리예요."
+        },
+        {
+          "name": "쩌우봉",
+          "one_line_desc": "말린 고추와 마늘로 만든 매콤한 디핑소스로, 루앙프라방에서 유래해 찹쌀밥에 찍어 먹어요."
+        },
+        {
+          "name": "카오소이",
+          "one_line_desc": "다진 돼지고기와 토마토 육수를 얹은 쌀국수로, 태국식과 달리 루앙프라방만의 방식으로 끓여요."
+        }
+      ]
+    }
+  ]
+}

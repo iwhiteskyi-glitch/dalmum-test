@@ -1,0 +1,446 @@
+{
+  "status": "reviewed",
+  "country": {
+    "code": "malaysia",
+    "name": "말레이시아",
+    "language": "말레이어",
+    "lang_code": "ms",
+    "tier": 2,
+    "intro": "말레이 반도와 보르네오섬에 걸쳐 있는 다민족 국가로, 말레이·중국·인도 문화가 함께 어우러진 독특한 풍경을 볼 수 있어요. 쌍둥이 빌딩이 솟은 수도 쿠알라룸푸르, 헤리티지 거리가 남은 페낭, 열대우림과 바다를 낀 보르네오 코타키나발루까지 도시마다 다른 매력이 있어요.",
+    "name_note": "말레이시아 이름은 아랍어에서 온 이슬람식 이름이 많아서, 이름 자체에 좋은 뜻을 담고 있는 경우가 흔해요. 말레이·중국·인도계가 함께 사는 나라지만, 이 목록은 공용어인 말레이어 이름들로만 골라봤어요.",
+    "phrases": [
+      {
+        "category": "인사",
+        "meaning_kr": "안녕하세요",
+        "text_local": "Apa khabar?",
+        "pronunciation_kr": "아빠 카바르",
+        "note": "직역하면 \"어떻게 지내세요?\"에 가까운 안부 인사예요"
+      },
+      {
+        "category": "감사",
+        "meaning_kr": "감사합니다",
+        "text_local": "Terima kasih",
+        "pronunciation_kr": "터리마 카시"
+      },
+      {
+        "category": "주문",
+        "meaning_kr": "이거 주세요",
+        "text_local": "Saya nak ni",
+        "pronunciation_kr": "사야 낙 니",
+        "note": "식당이나 노점에서 메뉴를 손으로 가리키며 편하게 쓰는 말이에요"
+      },
+      {
+        "category": "쇼핑",
+        "meaning_kr": "얼마예요?",
+        "text_local": "Berapa harga ini?",
+        "pronunciation_kr": "버라빠 하르가 이니"
+      },
+      {
+        "category": "식사",
+        "meaning_kr": "정말 맛있어요",
+        "text_local": "Sedap sangat!",
+        "pronunciation_kr": "스답 상앗"
+      }
+    ],
+    "name_pool": [
+      {
+        "name_local": "Amir",
+        "pronunciation_kr": "아미르",
+        "romanized": "Amir",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "지도자, 왕자라는 뜻"
+      },
+      {
+        "name_local": "Danial",
+        "pronunciation_kr": "다니알",
+        "romanized": "Danial",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "'신이 심판한다'는 뜻을 가진 다니엘의 말레이어식 이름"
+      },
+      {
+        "name_local": "Haris",
+        "pronunciation_kr": "하리스",
+        "romanized": "Haris",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "지키는 사람, 수호자라는 뜻"
+      },
+      {
+        "name_local": "Iskandar",
+        "pronunciation_kr": "이스칸다르",
+        "romanized": "Iskandar",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "멋짐"
+        ],
+        "meaning_kr": "알렉산더의 말레이어식 이름으로, 사람들을 지키는 사람이라는 뜻"
+      },
+      {
+        "name_local": "Rayyan",
+        "pronunciation_kr": "라이얀",
+        "romanized": "Rayyan",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "천국의 문 이름에서 따온 말로, 푸르고 풍요롭다는 뜻이 있어요"
+      },
+      {
+        "name_local": "Farid",
+        "pronunciation_kr": "파리드",
+        "romanized": "Farid",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "카리스마"
+        ],
+        "meaning_kr": "독보적인, 유일무이하다는 뜻"
+      },
+      {
+        "name_local": "Adam",
+        "pronunciation_kr": "아담",
+        "romanized": "Adam",
+        "gender_style": "male",
+        "vibe_tags": [
+          "카리스마",
+          "우아함"
+        ],
+        "meaning_kr": "인류 최초의 사람이라는 뜻"
+      },
+      {
+        "name_local": "Hafiz",
+        "pronunciation_kr": "하피즈",
+        "romanized": "Hafiz",
+        "gender_style": "male",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "지키는 사람, 보호자라는 뜻"
+      },
+      {
+        "name_local": "Zaid",
+        "pronunciation_kr": "자이드",
+        "romanized": "Zaid",
+        "gender_style": "male",
+        "vibe_tags": [
+          "발랄함",
+          "멋짐"
+        ],
+        "meaning_kr": "성장, 풍요라는 뜻"
+      },
+      {
+        "name_local": "Danish",
+        "pronunciation_kr": "다니시",
+        "romanized": "Danish",
+        "gender_style": "male",
+        "vibe_tags": [
+          "멋짐",
+          "발랄함"
+        ],
+        "meaning_kr": "지식, 지혜라는 뜻"
+      },
+      {
+        "name_local": "Aisyah",
+        "pronunciation_kr": "아이샤",
+        "romanized": "Aisyah",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ],
+        "meaning_kr": "생명력 있다, 잘 살아간다는 뜻"
+      },
+      {
+        "name_local": "Nur",
+        "pronunciation_kr": "누르",
+        "romanized": "Nur",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "빛이라는 뜻"
+      },
+      {
+        "name_local": "Siti",
+        "pronunciation_kr": "시티",
+        "romanized": "Siti",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "고귀한 여성이라는 뜻"
+      },
+      {
+        "name_local": "Farah",
+        "pronunciation_kr": "파라",
+        "romanized": "Farah",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "기쁨, 즐거움이라는 뜻"
+      },
+      {
+        "name_local": "Nadia",
+        "pronunciation_kr": "나디아",
+        "romanized": "Nadia",
+        "gender_style": "female",
+        "vibe_tags": [
+          "사랑스러움",
+          "우아함"
+        ]
+      },
+      {
+        "name_local": "Zara",
+        "pronunciation_kr": "자라",
+        "romanized": "Zara",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "빛나는 꽃이라는 뜻(자흐라에서 변형된 표기)"
+      },
+      {
+        "name_local": "Aina",
+        "pronunciation_kr": "아이나",
+        "romanized": "Aina",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ]
+      },
+      {
+        "name_local": "Sofea",
+        "pronunciation_kr": "소피아",
+        "romanized": "Sofea",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "지혜라는 뜻(소피아의 말레이어식 표기)"
+      },
+      {
+        "name_local": "Maryam",
+        "pronunciation_kr": "마리암",
+        "romanized": "Maryam",
+        "gender_style": "female",
+        "vibe_tags": [
+          "우아함",
+          "사랑스러움"
+        ],
+        "meaning_kr": "뜻이 여러 설로 나뉘는 이름이에요(사랑받는 이, 귀부인 등)"
+      },
+      {
+        "name_local": "Alya",
+        "pronunciation_kr": "알리아",
+        "romanized": "Alya",
+        "gender_style": "female",
+        "vibe_tags": [
+          "멋짐",
+          "우아함"
+        ],
+        "meaning_kr": "하늘, 가장 높은 곳이라는 뜻"
+      },
+      {
+        "name_local": "Qistina",
+        "pronunciation_kr": "키스티나",
+        "romanized": "Qistina",
+        "gender_style": "female",
+        "vibe_tags": [
+          "카리스마",
+          "귀여움"
+        ],
+        "meaning_kr": "공정함, 정의로움이라는 뜻"
+      },
+      {
+        "name_local": "Aiman",
+        "pronunciation_kr": "아이만",
+        "romanized": "Aiman",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "발랄함",
+          "귀여움"
+        ],
+        "meaning_kr": "행운아라는 뜻으로, 남녀 모두에게 쓰여요"
+      },
+      {
+        "name_local": "Iman",
+        "pronunciation_kr": "이만",
+        "romanized": "Iman",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "카리스마"
+        ],
+        "meaning_kr": "믿음, 신앙이라는 뜻"
+      },
+      {
+        "name_local": "Ayu",
+        "pronunciation_kr": "아유",
+        "romanized": "Ayu",
+        "gender_style": "female",
+        "vibe_tags": [
+          "귀여움",
+          "사랑스러움"
+        ],
+        "meaning_kr": "아름답다는 뜻"
+      },
+      {
+        "name_local": "Cahaya",
+        "pronunciation_kr": "차하야",
+        "romanized": "Cahaya",
+        "gender_style": "female",
+        "vibe_tags": [
+          "발랄함",
+          "우아함"
+        ],
+        "meaning_kr": "빛, 밝음이라는 뜻"
+      },
+      {
+        "name_local": "Firdaus",
+        "pronunciation_kr": "피르다우스",
+        "romanized": "Firdaus",
+        "gender_style": "neutral",
+        "vibe_tags": [
+          "우아함",
+          "멋짐"
+        ],
+        "meaning_kr": "천국, 낙원이라는 뜻으로 말레이시아에서는 주로 남자아이에게 쓰이고 여자아이 이름에도 간혹 쓰여요"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "city_code": "kotakinabalu",
+      "city_name": "코타키나발루",
+      "tier": 2,
+      "intro": "보르네오섬 사바주의 주도로, 유네스코 세계유산 키나발루 국립공원으로 가는 관문 도시예요. 시내 앞바다에는 뚠꾸압둘라만 해양공원의 섬들이 떠 있어 반나절 스노클링 투어로도 인기가 많아요.",
+      "attractions": [
+        {
+          "name": "가야 스트리트 마켓",
+          "map_query": "Gaya Street Sunday Market Kota Kinabalu",
+          "one_line_desc": "매주 일요일 아침에만 열리는 사바 최대 노천 시장으로, 수공예품과 열대과일 구경하는 재미가 커요."
+        },
+        {
+          "name": "시그널힐 전망대",
+          "map_query": "Signal Hill Observatory Kota Kinabalu",
+          "one_line_desc": "언덕 위 전망대로, 코타키나발루 시내와 가야만, 앞바다의 섬들을 한눈에 담을 수 있어요."
+        },
+        {
+          "name": "뚠꾸압둘라만 해양공원",
+          "short": "해양공원",
+          "map_query": "Tunku Abdul Rahman Marine Park",
+          "one_line_desc": "코타키나발루 앞바다에 떠 있는 다섯 개 섬으로 이뤄진 해양공원으로, 배로 15~20분이면 닿아요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "투아란미",
+          "one_line_desc": "인근 투아란 마을에서 시작된 볶음면으로, 쫄깃한 면발과 불맛이 특징인 코타키나발루의 대표 국수예요."
+        },
+        {
+          "name": "히나바",
+          "one_line_desc": "사바 카다잔두순족의 전통 회무침으로, 생선살을 라임즙에 절이고 향신료를 더해 상큼해요."
+        },
+        {
+          "name": "사바락사",
+          "one_line_desc": "페낭·사라왁 락사와는 다른 사바만의 커리 락사로, 가야 스트리트 노포에서 즐겨 먹어요."
+        }
+      ]
+    },
+    {
+      "city_code": "kualalumpur",
+      "city_name": "쿠알라룸푸르",
+      "tier": 2,
+      "intro": "말레이시아의 수도로, 페트로나스 트윈타워가 만든 스카이라인이 상징적이에요. 도심에서 차로 20분 거리에는 힌두 사원과 거대한 무루간 신상이 있는 바투 동굴도 있어요.",
+      "attractions": [
+        {
+          "name": "페트로나스 트윈타워",
+          "map_query": "Petronas Twin Towers Kuala Lumpur",
+          "one_line_desc": "1998~2004년 세계에서 가장 높았던 88층 쌍둥이 빌딩으로, 41층 스카이브릿지에 오를 수 있어요."
+        },
+        {
+          "name": "바투 동굴",
+          "map_query": "Batu Caves Kuala Lumpur",
+          "one_line_desc": "272개 계단 위 석회동굴 속 힌두 사원으로, 입구의 황금빛 무루간 신상이 특히 눈에 띄어요."
+        },
+        {
+          "name": "머르데카 광장",
+          "map_query": "Merdeka Square Kuala Lumpur",
+          "one_line_desc": "1957년 말레이시아 독립이 선포된 광장으로, 주변에 식민지 시대 건물들이 늘어서 있어요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "나시르막",
+          "one_line_desc": "코코넛 밀크로 지은 밥에 삼발소스·멸치·땅콩·달걀을 곁들인 말레이시아의 국민 음식이에요."
+        },
+        {
+          "name": "사떼",
+          "one_line_desc": "숯불에 구운 꼬치구이를 땅콩소스에 찍어 먹는 요리로, 밤이면 잘란알로르 거리가 굽는 냄새로 가득해요."
+        },
+        {
+          "name": "바꿋테",
+          "one_line_desc": "돼지갈비를 한약재와 마늘로 진하게 끓인 갈비탕으로, 쿠알라룸푸르 인근 클랑에서 시작된 명물이에요."
+        }
+      ]
+    },
+    {
+      "city_code": "penang",
+      "city_name": "페낭",
+      "tier": 2,
+      "intro": "조지타운의 알록달록한 헤리티지 거리로 유명한 섬으로, 2008년 유네스코 세계문화유산으로 등재된 옛 시가지가 잘 보존돼 있어요. 페낭힐에 오르면 시내와 바다 전망을 한눈에 즐길 수 있어요.",
+      "attractions": [
+        {
+          "name": "츄 제티",
+          "map_query": "Chew Jetty Penang",
+          "one_line_desc": "바다 위 나무 말뚝집이 늘어선 100년 넘은 중국계 이주민 마을 중 가장 유명한 곳이에요."
+        },
+        {
+          "name": "켁록시 사원",
+          "map_query": "Kek Lok Si Temple Penang",
+          "one_line_desc": "1890년부터 지어진 동남아 최대급 불교 사원으로, 중국·태국·미얀마 양식이 섞인 7층 탑이 상징이에요."
+        },
+        {
+          "name": "페낭힐",
+          "map_query": "Penang Hill Penang",
+          "one_line_desc": "푸니쿨라 열차를 타고 오르는 언덕으로, 정상에서 조지타운과 바다 전망이 펼쳐져요."
+        }
+      ],
+      "foods": [
+        {
+          "name": "차퀘티아오",
+          "one_line_desc": "굵은 쌀국수를 새우·꼬막·계란과 함께 센 불에 볶아내는 페낭 최고의 명물 볶음국수예요."
+        },
+        {
+          "name": "아쌈락사",
+          "one_line_desc": "새콤한 타마린드 국물에 고등어살을 풀어낸 페낭식 락사로, 새콤·매콤한 맛이 겹겹이 느껴져요."
+        },
+        {
+          "name": "첸돌",
+          "one_line_desc": "초록빛 쌀가루 젤리에 코코넛밀크와 야자설탕을 부어 먹는 페낭 대표 빙수 디저트예요."
+        }
+      ]
+    }
+  ]
+}
