@@ -49,7 +49,7 @@ export default function TravelHome() {
         <h2 id="pick-country" className={styles.sectionTitle}>
           어디로 떠나볼까요?
         </h2>
-        <p className={styles.sectionLead}>나라를 고르면 도시 목록과 현지 인사말을 볼 수 있어요.</p>
+        <p className={styles.sectionLead}>대륙을 고르고 나라를 누르면 도시 목록과 현지 인사말을 볼 수 있어요.</p>
         <CountryPicker countries={countries} />
       </section>
 

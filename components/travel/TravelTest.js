@@ -6,7 +6,7 @@ import Avatar from "./Avatar";
 import styles from "./travel.module.css";
 import { MOODS, STYLES, nameLocalLine } from "@/lib/travel/texts";
 import { drawNameCards } from "@/lib/travel/recommend";
-import { buildTravelCard } from "@/lib/travel/travelCard";
+import { buildTravelCard, displayTextFor, ensureDisplayFont } from "@/lib/travel/travelCard";
 import { encodeResultHash, decodeResultHash } from "@/lib/travel/shareState";
 import { SITE } from "@/lib/site";
 
@@ -143,6 +143,19 @@ export default function TravelTest({ country, city }) {
 
   useEffect(() => {
     setInKakao(/KAKAOTALK/i.test(navigator.userAgent));
+
+    // 카드에 쓸 손글씨 글자(이 나라의 추천 이름 전부 + 도시명)를 미리 받아 둡니다.
+    // 이름을 고르는 동안 받아지므로, 카드를 그릴 때 일부 글자만 다른 글꼴로 나오는 일을 막아요.
+    const displayFont = rootRef.current
+      ? getComputedStyle(rootRef.current).getPropertyValue("--font-gaegu").trim()
+      : "";
+    ensureDisplayFont(
+      displayFont,
+      displayTextFor(
+        country.name_pool.map((n) => n.pronunciation_kr),
+        city.city_name
+      )
+    );
 
     // 카카오톡에서 "브라우저에서 공유"로 넘어온 경우: 주소에 담긴 결과로 완성 카드를 바로 보여줍니다.
     const restored = decodeResultHash(window.location.hash, country.name_pool);

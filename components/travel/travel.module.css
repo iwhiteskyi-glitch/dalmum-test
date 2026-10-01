@@ -181,18 +181,44 @@
   margin: 0;
 }
 
-.search {
-  width: 100%;
-  font-size: 15px;
-  padding: 13px 16px;
-  border-radius: var(--radius-md);
-  border: 1.5px solid var(--border);
-  background: var(--surface);
-  margin-bottom: 14px;
+
+/* 대륙 탭 */
+.regionTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
 }
-.search:focus {
-  outline: none;
+.regionTab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--muted-ink);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 9px 16px;
+  cursor: pointer;
+}
+.regionTab:hover {
+  color: var(--t-teal-deep);
   border-color: var(--t-teal);
+}
+.regionTabOn,
+.regionTabOn:hover {
+  color: #fff;
+  background: var(--t-teal);
+  border-color: var(--t-teal);
+}
+.regionCount {
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0.75;
+}
+.countryGrid[hidden] {
+  display: none;
 }
 
 .countryGrid {
@@ -235,11 +261,6 @@
 .countryMeta {
   font-size: 12px;
   color: var(--muted-ink);
-}
-.emptySearch {
-  font-size: 14px;
-  color: var(--muted-ink);
-  padding: 12px 2px;
 }
 
 .steps3 {
