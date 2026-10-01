@@ -29,6 +29,7 @@ export default function sitemap() {
   // changeFrequency를 daily로 둡니다.
   const fortuneRoutes = [
     { path: "/fortune", priority: 0.9, changeFrequency: "daily" },
+    { path: "/fortune/saeun", priority: 0.85, changeFrequency: "monthly" },
     { path: "/fortune/saju", priority: 0.8, changeFrequency: "weekly" },
     ...ILGAN_SLUGS.map((_, i) => ({
       path: ilganHref(i),

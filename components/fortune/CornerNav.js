@@ -4,6 +4,7 @@ import styles from "./fortune.module.css";
 // 운세 코너 안의 페이지 전환 버튼. 궁합 등 새 페이지가 생기면 여기에 추가하세요.
 const PAGES = [
   { key: "today", href: "/fortune", label: "오늘의 운세" },
+  { key: "saeun", href: "/fortune/saeun", label: "신년운세" },
   { key: "saju", href: "/fortune/saju", label: "내 사주" },
 ];
 

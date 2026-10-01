@@ -13,6 +13,11 @@ export function dateLabel(d) {
   return `${d.month}월 ${d.day}일 (${WEEKDAYS[w]})`;
 }
 
+/** 월운 목록처럼 요일 없이 짧게 (예: 2월 4일) */
+export function shortDateLabel(d) {
+  return `${d.month}월 ${d.day}일`;
+}
+
 /** 입력한 생년월일을 한 줄로 (예: 양력 1990년 5월 15일 14시 30분) */
 export function birthLabel(saju) {
   const b = saju.input;
