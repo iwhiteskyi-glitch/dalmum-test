@@ -2,6 +2,7 @@ import { SITE } from "@/lib/site";
 import { READS } from "@/lib/reads";
 import { READS_EN } from "@/lib/readsEn";
 import { COUNTRIES, cityPath } from "@/lib/travel/data";
+import { ILGAN_SLUGS, ilganHref } from "@/lib/fortune/ilgan";
 
 export default function sitemap() {
   const now = new Date();
@@ -22,6 +23,18 @@ export default function sitemap() {
     { path: "/face", priority: 0.9, changeFrequency: "weekly" },
     // 영문판이 없는 한국어 전용 페이지
     { path: "/maker", priority: 0.4, changeFrequency: "monthly" },
+  ];
+
+  // 운세 코너: 오늘의 운세·내 사주 + 일간 10종 소개 페이지. 매일 바뀌는 "오늘의 운세"는
+  // changeFrequency를 daily로 둡니다.
+  const fortuneRoutes = [
+    { path: "/fortune", priority: 0.9, changeFrequency: "daily" },
+    { path: "/fortune/saju", priority: 0.8, changeFrequency: "weekly" },
+    ...ILGAN_SLUGS.map((_, i) => ({
+      path: ilganHref(i),
+      priority: 0.5,
+      changeFrequency: "monthly",
+    })),
   ];
 
   // 여행 이름 섹션: 시작 페이지 + 나라 페이지 + 도시 페이지. 아래 enRoutes 복제 대상인
@@ -62,6 +75,12 @@ export default function sitemap() {
       priority: r.priority,
     })),
     ...cornerRoutes.map((r) => ({
+      url: `${SITE.url}${r.path}`,
+      lastModified: now,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+    })),
+    ...fortuneRoutes.map((r) => ({
       url: `${SITE.url}${r.path}`,
       lastModified: now,
       changeFrequency: r.changeFrequency,
