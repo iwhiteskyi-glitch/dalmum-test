@@ -16,6 +16,8 @@
   --c-face-soft: #ffe7ee;
   --c-travel: #0e8f9a;     /* 여행 이름: 청록 (여행 섹션의 --t-teal 계열) */
   --c-travel-soft: #dff4f5;
+  --c-fortune: #5a4fcf;     /* 오늘의 운세: 밤하늘 보라 */
+  --c-fortune-soft: #eeecfb;
   --leaf: #22816b;         /* 로고 새싹 줄기 */
 
   --radius-sm: 12px;  /* 사진/작은 요소 */
