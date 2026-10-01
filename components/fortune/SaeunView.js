@@ -13,6 +13,7 @@ import {
   STEMS_HANJA,
   ELEMENTS,
   ELEMENTS_HANJA,
+  STEM_ELEMENT,
 } from "@/lib/fortune/saju";
 import { useBirth } from "@/lib/fortune/birthStore";
 import BirthForm from "./BirthForm";
@@ -135,21 +136,37 @@ function SaeunResult({ saju, thisYear, sajuYear, onPick }) {
           절기가 바뀌는 시각을 기준으로 한 해를 열두 달로 나눴어요. 달력 월(1일 시작)과는 시작일이
           며칠씩 다를 수 있어요.
         </p>
-        <ol className={styles.week}>
+        <ol className={styles.monthList}>
           {reading.months.map((m, i) => {
             const mg = PERIOD_GODS[m.tenGod];
             const mStars = Math.min(5, Math.max(1, mg.stars.overall + RELATION_ADJUST[m.relation]));
+            const relText = periodText(m.relation, "이 달");
             return (
               <li key={i}>
-                <span className={styles.weekDate}>{shortDateLabel(m.start)}~</span>
-                <span className={styles.weekPillar}>{m.pillar.ko}월</span>
-                <span className={styles.weekTitle}>
-                  {mg.monthNote}
-                  <small>
-                    {mg.god}({mg.keyword})
-                  </small>
-                </span>
-                <Stars n={mStars} label={`${shortDateLabel(m.start)} 시작 달 총운`} />
+                <details className={styles.monthRow}>
+                  <summary>
+                    <span className={styles.weekDate}>{shortDateLabel(m.start)}~</span>
+                    <span className={styles.weekPillar}>{m.pillar.ko}월</span>
+                    <span className={styles.weekTitle}>
+                      {mg.monthNote}
+                      <small>
+                        {mg.god}({mg.keyword})
+                      </small>
+                    </span>
+                    <Stars n={mStars} label={`${shortDateLabel(m.start)} 시작 달 총운`} />
+                  </summary>
+                  <div className={styles.monthRowBody}>
+                    <p>
+                      {m.pillar.ko}({m.pillar.hanja})월은 {ELEMENTS[STEM_ELEMENT[m.pillar.stem]]}(
+                      {ELEMENTS_HANJA[STEM_ELEMENT[m.pillar.stem]]}) 기운의 달이고, 내 일간과는{" "}
+                      <b>
+                        {mg.god}({mg.hanja})
+                      </b>{" "}
+                      관계예요. {mg.meaning}
+                    </p>
+                    <p>{relText}</p>
+                  </div>
+                </details>
               </li>
             );
           })}

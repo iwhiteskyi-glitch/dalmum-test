@@ -513,6 +513,59 @@
   font-size: 12px;
 }
 
+/* ---------- 신년운세: 눌러서 펼치는 열두 달 목록 ---------- */
+.monthList {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+.monthList li {
+  border-top: 1px solid var(--border);
+}
+.monthList li:first-child {
+  border-top: none;
+}
+.monthRow summary {
+  display: grid;
+  grid-template-columns: 96px 56px 1fr auto 14px;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 4px;
+  font-size: 14px;
+  cursor: pointer;
+  list-style: none;
+}
+.monthRow summary::-webkit-details-marker {
+  display: none;
+}
+.monthRow summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--muted-ink);
+  border-bottom: 2px solid var(--muted-ink);
+  transform: rotate(45deg);
+  justify-self: end;
+  transition: transform 0.2s;
+}
+.monthRow[open] summary::after {
+  transform: rotate(-135deg);
+}
+.monthRow summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.monthRowBody {
+  padding: 0 4px 14px 4px;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.monthRowBody p + p {
+  margin-top: 8px;
+}
+
 .pillars {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1078,6 +1131,9 @@
   }
   .week li {
     grid-template-columns: 74px 1fr auto;
+  }
+  .monthRow summary {
+    grid-template-columns: 74px 1fr auto 14px;
   }
   .weekPillar {
     display: none;
