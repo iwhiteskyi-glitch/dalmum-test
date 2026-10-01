@@ -18,6 +18,7 @@ import {
 import { useBirth } from "@/lib/fortune/birthStore";
 import BirthForm from "./BirthForm";
 import { Char, birthLabel } from "./parts";
+import { ilganHref } from "@/lib/fortune/ilgan";
 
 /** /fortune/saju — 생년월일 입력 + 내 사주 팔자 표·오행 분포·일간 풀이 */
 export default function SajuView() {
@@ -164,6 +165,12 @@ function SajuResult({ saju }) {
           </div>
         </div>
         <p className={styles.tip}>{me.tip}</p>
+        <p className={styles.moreLink}>
+          <Link href={ilganHref(saju.dayMaster)}>
+            {me.stem}
+            {me.element} 일간 더 자세히 알아보기 →
+          </Link>
+        </p>
         <p className={styles.disclaimer}>
           사주의 전통적인 해석을 바탕으로 재미로 보는 풀이예요. 사람의 성격과 앞날은 여덟 글자보다 훨씬 다양해요.
         </p>

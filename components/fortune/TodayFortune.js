@@ -18,6 +18,7 @@ import {
   STEM_ELEMENT,
 } from "@/lib/fortune/saju";
 import { useBirth } from "@/lib/fortune/birthStore";
+import { eunNeun } from "@/lib/korean";
 import BirthForm from "./BirthForm";
 import { Stars, dateLabel, range } from "./parts";
 
@@ -182,7 +183,8 @@ function TodayResult({ saju, today }) {
             {day.pillar.ko}({day.pillar.hanja})
           </b>
           일이에요. 오늘의 천간 {STEMS[day.pillar.stem]}({STEMS_HANJA[day.pillar.stem]})
-          {ELEMENTS[STEM_ELEMENT[day.pillar.stem]]}은 나에게 {godRel}이고, 음양이 {samePolarity ? "같아서" : "달라서"}{" "}
+          {ELEMENTS[STEM_ELEMENT[day.pillar.stem]]}
+          {eunNeun(ELEMENTS[STEM_ELEMENT[day.pillar.stem]])} 나에게 {godRel}이고, 음양이 {samePolarity ? "같아서" : "달라서"}{" "}
           <b>{day.god.god}</b>에 해당해요. {day.god.meaning}
         </p>
         <p>

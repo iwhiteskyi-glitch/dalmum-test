@@ -4,6 +4,7 @@ import SajuView from "@/components/fortune/SajuView";
 import CornerNav from "@/components/fortune/CornerNav";
 import CrossCards from "@/components/fortune/CrossCards";
 import { fortuneMetadata } from "@/lib/fortune/seo";
+import { ILGAN_SLUGS, ilganInfo, ilganHref } from "@/lib/fortune/ilgan";
 
 export const metadata = fortuneMetadata({
   title: "내 사주 팔자 보기 | 생년월일로 보는 여덟 글자와 오행",
@@ -43,6 +44,29 @@ export default function SajuPage() {
           여덟 글자는 저마다 목·화·토·금·수 다섯 가지 오행 중 하나에 속해요. 그중 태어난 날의 천간(일간)을
           &lsquo;나&rsquo;로 보고, 나머지 글자들과의 관계로 성향을 풀이하는 것이 사주의 기본이에요.
         </p>
+      </section>
+
+      <section className={styles.section} aria-labelledby="stems">
+        <h2 id="stems" className={styles.sectionTitle}>
+          열 가지 일간 알아보기
+        </h2>
+        <p className={styles.sectionText}>
+          일간은 갑·을·병·정·무·기·경·신·임·계 열 가지예요. 글자를 누르면 그 일간의 상징과 성격, 다른 글자와의 관계를 볼 수
+          있어요.
+        </p>
+        <ul className={styles.stemGrid}>
+          {ILGAN_SLUGS.map((_, i) => {
+            const o = ilganInfo(i);
+            return (
+              <li key={i}>
+                <Link href={ilganHref(i)} className={styles[`el${o.elementIndex}`]}>
+                  <span>{o.hanja}</span>
+                  {o.name}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </section>
 
       <section className={styles.section} aria-labelledby="basis">

@@ -980,3 +980,86 @@
 .result:empty {
   display: none;
 }
+
+/* ---------- 일간 소개 페이지 ---------- */
+.crumb {
+  font-size: 13px;
+  color: var(--muted-ink);
+  margin: 0 0 16px;
+}
+.crumb a {
+  color: var(--muted-ink);
+}
+.ilganHero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+.ilganBadge {
+  flex: none;
+  width: 92px;
+  height: 92px;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  font-size: 52px;
+  font-weight: 700;
+  font-family: "Noto Serif KR", "Batang", serif;
+}
+.ilganTitle {
+  font-size: 30px;
+  line-height: 1.25;
+  margin: 2px 0;
+}
+.ilganAlias {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--f-deep);
+}
+.godTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  margin-top: 8px;
+}
+.godTable th,
+.godTable td {
+  text-align: left;
+  padding: 9px 12px;
+  border-top: 1px solid var(--border);
+}
+.godTable thead th {
+  border-top: none;
+  background: var(--f-soft);
+  color: var(--f-deep);
+  font-size: 13px;
+}
+.godTable a {
+  color: var(--ink);
+  font-weight: 700;
+}
+.stemGrid a[aria-current="page"] {
+  box-shadow: 0 0 0 2.5px var(--f);
+}
+@media (max-width: 520px) {
+  .ilganBadge {
+    width: 76px;
+    height: 76px;
+    font-size: 42px;
+  }
+  .ilganTitle {
+    font-size: 25px;
+  }
+}
+.moreLink {
+  margin: 12px 0 0;
+  font-size: 14.5px;
+  font-weight: 800;
+}
+.moreLink a {
+  color: var(--f);
+}
