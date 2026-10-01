@@ -14,10 +14,8 @@ export default function SiteHeader({ wide = false }) {
 
   useEffect(() => setOpen(false), [pathname]);
 
-  // 현재 보고 있는 페이지와 짝이 되는 영문 페이지로 이동합니다.
-  // (예: /guide → /en/guide, / → /en) 여행 섹션은 영문판이 없어서 영문 홈으로 보냅니다.
-  const enHref =
-    pathname === "/" || pathname.startsWith("/travel") ? "/en" : `/en${pathname}`;
+  // 현재 보고 있는 페이지와 짝이 되는 영문 페이지로 이동합니다. (예: /guide → /en/guide)
+  const enHref = pathname === "/" ? "/en" : `/en${pathname}`;
   const onTravel = pathname.startsWith("/travel");
   const onFace = pathname === "/";
   const links = NAV.filter((n) => n.href !== "/");
@@ -33,9 +31,13 @@ export default function SiteHeader({ wide = false }) {
           {n.label}
         </Link>
       ))}
-      <Link href={enHref} className={styles.langSwitch} aria-label="Switch to English">
-        EN
-      </Link>
+      {/* 여행 이름 섹션은 영문판이 없어서, EN 버튼이 있으면 "여행 이름도 영문으로 볼 수 있다"고
+          오해하기 쉽습니다. 그래서 이 섹션에서는 EN 버튼 자체를 아예 보여주지 않습니다. */}
+      {!onTravel && (
+        <Link href={enHref} className={styles.langSwitch} aria-label="Switch to English">
+          EN
+        </Link>
+      )}
     </>
   );
 
