@@ -147,15 +147,18 @@ function SaeunResult({ saju, thisYear, sajuYear, onPick }) {
               <li key={i}>
                 <details className={styles.monthRow}>
                   <summary>
-                    <span className={styles.weekDate}>{dateText}~</span>
-                    <span className={styles.weekPillar}>{m.pillar.ko}월</span>
-                    <span className={styles.weekTitle}>
-                      {mg.monthNote}
-                      <small>
+                    <div className={styles.monthRowTop}>
+                      <span className={styles.monthRowDate}>
+                        {dateText}~<small>{m.pillar.ko}월</small>
+                      </span>
+                      <Stars n={mStars} label={`${dateText} 시작 달 총운`} />
+                    </div>
+                    <p className={styles.monthRowDesc}>
+                      <b>
                         {mg.god}({mg.keyword})
-                      </small>
-                    </span>
-                    <Stars n={mStars} label={`${dateText} 시작 달 총운`} />
+                      </b>{" "}
+                      {mg.monthNote}
+                    </p>
                   </summary>
                   <div className={styles.monthRowBody}>
                     {crossesYear && (
