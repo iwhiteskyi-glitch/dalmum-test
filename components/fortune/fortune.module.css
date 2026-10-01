@@ -144,6 +144,34 @@
   margin-bottom: 10px;
   padding: 0;
 }
+.areaChecks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.areaCheck {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.areaCheck input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--f);
+}
+.areaCheckOn {
+  border-color: var(--f);
+  color: var(--f-deep);
+  background: var(--f-soft);
+}
 .sectionDivider {
   margin: 4px 0 18px;
   padding-top: 18px;

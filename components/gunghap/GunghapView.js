@@ -46,12 +46,14 @@ function compareText(topA, topB) {
 export default function GunghapView() {
   const [result, setResult] = useState(null);
 
-  function onSubmitted(meSaju, partnerSaju) {
+  function onSubmitted(meSaju, partnerSaju, gender, areas) {
     const reading = gunghapReading(meSaju, partnerSaju);
-    setResult({ me: meSaju, partner: partnerSaju, reading });
+    setResult({ me: meSaju, partner: partnerSaju, reading, gender, areas });
     track("gunghap_result_viewed", {
       meTime: meSaju.input.hour == null ? "unknown" : "known",
       partnerTime: partnerSaju.input.hour == null ? "unknown" : "known",
+      sameGender: gender.me === gender.partner,
+      areas: Object.entries(areas).filter(([, v]) => v).map(([k]) => k).join(","),
     });
     requestAnimationFrame(() => document.getElementById("gunghap-result")?.scrollIntoView({ behavior: "smooth", block: "start" }));
   }
@@ -66,7 +68,7 @@ export default function GunghapView() {
   );
 }
 
-function GunghapResult({ me, partner, reading }) {
+function GunghapResult({ me, partner, reading, gender, areas }) {
   const cat = CATEGORIES[reading.category];
   const score = gunghapScore(reading);
   const stars = Math.min(5, Math.max(1, Math.round(score / 20)));
@@ -79,8 +81,8 @@ function GunghapResult({ me, partner, reading }) {
       <section className={styles.todayCard} aria-labelledby="gunghap-title">
         <div className={styles.todayHead}>
           <p className={styles.todayDate}>
-            나 {STEMS[me.dayMaster]}({STEMS_HANJA[me.dayMaster]}) × 상대 {STEMS[partner.dayMaster]}(
-            {STEMS_HANJA[partner.dayMaster]})
+            나({gender.me}) {STEMS[me.dayMaster]}({STEMS_HANJA[me.dayMaster]}) × 상대({gender.partner}){" "}
+            {STEMS[partner.dayMaster]}({STEMS_HANJA[partner.dayMaster]})
           </p>
           <h2 id="gunghap-title" className={styles.todayTitle}>
             {cat.title}
@@ -118,7 +120,7 @@ function GunghapResult({ me, partner, reading }) {
         <h2 id="area-title" className={styles.blockTitle}>
           영역별 궁합
         </h2>
-        {AREAS.map(([key, label]) => (
+        {AREAS.filter(([key]) => areas[key]).map(([key, label]) => (
           <div key={key} className={styles.areaBlock}>
             <span className={styles.areaLabel}>{label}</span>
             <p className={styles.areaText}>{cat[key]}</p>
