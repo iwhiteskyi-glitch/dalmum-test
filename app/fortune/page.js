@@ -1,14 +1,16 @@
 import Link from "next/link";
 import styles from "@/components/fortune/fortune.module.css";
-import FortuneApp from "@/components/fortune/FortuneApp";
+import TodayFortune from "@/components/fortune/TodayFortune";
 import TodayStrip from "@/components/fortune/TodayStrip";
+import CornerNav from "@/components/fortune/CornerNav";
+import CrossCards from "@/components/fortune/CrossCards";
 import { fortuneMetadata } from "@/lib/fortune/seo";
 import { READS } from "@/lib/reads";
 
 export const metadata = fortuneMetadata({
-  title: "오늘의 운세 | 생년월일로 보는 내 사주와 오늘의 흐름",
+  title: "오늘의 운세 | 생년월일로 보는 오늘 하루 흐름",
   description:
-    "생년월일(양력·음력)로 사주 팔자를 계산하고, 오늘 일진과의 관계로 하루 흐름을 풀어 드려요. 입력한 정보는 서버로 보내지 않아요.",
+    "생년월일(양력·음력)로 내 일간을 찾고, 오늘 일진과의 관계로 하루 흐름과 일주일 흐름을 풀어 드려요. 입력한 정보는 서버로 보내지 않아요.",
   path: "/fortune",
 });
 
@@ -17,6 +19,7 @@ export default function FortunePage() {
 
   return (
     <>
+      <CornerNav current="today" />
       <section className={styles.hero}>
         <div className={styles.heroArt} aria-hidden="true">
           <span>運</span>
@@ -25,12 +28,12 @@ export default function FortunePage() {
         </div>
         <h1 className={styles.heroTitle}>오늘 나의 하루는 어떨까?</h1>
         <p className={styles.lead}>
-          생년월일로 내 사주 팔자를 계산하고, 오늘 일진과 어떤 관계인지로 하루 흐름을 풀어 드려요.
+          생년월일로 나를 뜻하는 글자를 찾고, 오늘 일진과 어떤 관계인지로 하루 흐름을 풀어 드려요.
         </p>
         <TodayStrip />
       </section>
 
-      <FortuneApp />
+      <TodayFortune />
 
       <section className={styles.section} aria-labelledby="how">
         <h2 id="how" className={styles.sectionTitle}>
@@ -38,29 +41,23 @@ export default function FortunePage() {
         </h2>
         <ol className={styles.steps}>
           <li>
-            <strong>1. 내 사주 팔자 계산</strong>
-            태어난 해·달·날·시간을 각각 천간과 지지 두 글자로 바꿔 모두 여덟 글자를 만들어요. 해와 달은
-            설날이나 1일이 아니라 입춘·경칩 같은 절기가 시작되는 시각에 바뀌어요.
+            <strong>1. &lsquo;나&rsquo;를 뜻하는 글자 찾기</strong>
+            생년월일로 사주 팔자를 계산해, 그중 태어난 날의 천간(일간)을 찾아요. 사주에서는 이 글자를 나 자신으로 봐요.
           </li>
           <li>
-            <strong>2. &lsquo;나&rsquo;를 뜻하는 글자 찾기</strong>
-            여덟 글자 가운데 태어난 날의 천간을 일간이라고 하고, 사주에서는 이 글자를 나 자신으로 봐요.
+            <strong>2. 오늘의 일진 확인</strong>
+            날마다 갑자·을축처럼 정해진 간지가 있고, 이를 일진이라고 해요. 60일마다 한 바퀴 돌아요.
           </li>
           <li>
-            <strong>3. 오늘 일진과의 관계 보기</strong>
-            날마다 정해진 간지(일진)가 있어요. 오늘 일진의 천간이 내 일간과 어떤 오행·음양 관계인지에 따라
-            비견부터 정인까지 열 가지(십신) 중 하나가 정해지고, 그 의미에 맞춘 풀이를 보여 드려요.
+            <strong>3. 둘의 관계로 풀이</strong>
+            오늘 천간이 내 일간과 어떤 오행·음양 관계인지에 따라 비견부터 정인까지 열 가지(십신) 중 하나가 정해지고, 그
+            의미에 맞춘 풀이를 보여 드려요. 내 일지와 오늘 일지가 합(合)이나 충(沖)을 이루면 총운 별점을 조금 조정해요.
           </li>
         </ol>
-        <div className={styles.callout}>
-          <strong>계산 기준</strong>
-          <ul>
-            <li>음력은 한국천문연구원 기준 음력으로 양력으로 바꿔 계산해요.</li>
-            <li>태어난 시간은 그 시절 한국의 표준시와 서머타임을 반영하고, 동경 127.5도 기준 지역 시간(지금 표준시보다 30분 늦음)으로 보정해요.</li>
-            <li>밤 11시(보정 시간 기준)부터 시작하는 자시에 태어났다면 다음 날로 계산해요.</li>
-            <li>같은 날 같은 생년월일이면 언제 봐도 같은 풀이가 나와요. 무작위로 뽑지 않아요.</li>
-          </ul>
-        </div>
+        <p className={styles.callout}>
+          같은 날 같은 생년월일이면 언제 봐도 같은 풀이가 나와요. 무작위로 뽑지 않아요. 계산 기준은{" "}
+          <Link href="/fortune/saju">내 사주</Link> 페이지에서 자세히 볼 수 있어요.
+        </p>
       </section>
 
       {reads.length > 0 && (
@@ -78,26 +75,7 @@ export default function FortunePage() {
         </section>
       )}
 
-      <section className={styles.section}>
-        <Link href="/face" className={styles.crossCard} style={{ background: "var(--c-face-soft)" }}>
-          <span>
-            <strong>우리 얼마나 닮았을까?</strong>
-            <span>사진 두 장으로 보는 닮은꼴 테스트도 해보세요</span>
-          </span>
-          <span className={styles.crossArrow} aria-hidden="true">
-            →
-          </span>
-        </Link>
-        <Link href="/travel" className={styles.crossCard} style={{ background: "var(--c-travel-soft)" }}>
-          <span>
-            <strong>여행 가면 내 이름은?</strong>
-            <span>여행지를 고르면 현지 감성 이름 카드를 만들어 드려요</span>
-          </span>
-          <span className={styles.crossArrow} aria-hidden="true">
-            →
-          </span>
-        </Link>
-      </section>
+      <CrossCards />
     </>
   );
 }

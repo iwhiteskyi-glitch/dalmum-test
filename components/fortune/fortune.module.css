@@ -671,7 +671,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
-.twoCol h4 {
+.twoCol h3 {
   margin: 0 0 6px;
   font-size: 14px;
 }
@@ -695,6 +695,143 @@
 }
 .resultFoot p {
   margin: 0 0 10px;
+}
+
+/* ---------- 코너 안 페이지 전환 ---------- */
+.cornerNav {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  width: fit-content;
+  margin: 0 auto 22px;
+  background: var(--f-soft);
+  border-radius: 999px;
+  padding: 4px;
+}
+.cornerNavItem {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--f-deep);
+  text-decoration: none;
+}
+.cornerNavOn {
+  background: var(--f);
+  color: #fff;
+}
+
+/* ---------- 입력한 생년월일 요약 줄 ---------- */
+.formPlaceholder {
+  min-height: 120px;
+  margin-top: 28px;
+}
+.birthBar {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+}
+.birthBar strong {
+  display: block;
+  font-size: 15px;
+}
+.birthBarLabel {
+  display: block;
+  font-size: 12px;
+  color: var(--muted-ink);
+}
+.birthBarSaved {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  margin-top: 2px;
+}
+.birthBarSaved .textBtn {
+  font-size: 12.5px;
+  padding: 0;
+}
+.ghostSm {
+  flex: none;
+  border: 1.5px solid var(--f);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--f-deep);
+  font-size: 14px;
+  font-weight: 800;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.textBtnBlock {
+  display: block;
+  margin: 8px auto 0;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- 결과 사이를 잇는 카드 ---------- */
+.nextCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
+  background: linear-gradient(120deg, #3d3290, #5a4fcf);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  text-decoration: none;
+}
+.nextCard small {
+  display: block;
+  font-size: 12.5px;
+  color: var(--f-gold);
+  font-weight: 700;
+}
+.nextCard strong {
+  display: block;
+  font-size: 17px;
+  margin: 2px 0;
+}
+.nextCard span span {
+  font-size: 13px;
+  color: #d9d4ff;
+}
+.pillarRead {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  margin: 12px 0 0;
+}
+.calcInfo {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--muted-ink);
+}
+.small {
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  line-height: 1.6;
+  margin: 12px 0 0;
+}
+.blockKicker {
+  margin: 0 0 2px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--f);
 }
 
 /* ---------- 설명 영역 (검색엔진이 읽는 정적 내용) ---------- */
@@ -839,4 +976,7 @@
   .todayTitle {
     font-size: 25px;
   }
+}
+.result:empty {
+  display: none;
 }
