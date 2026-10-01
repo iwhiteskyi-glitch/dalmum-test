@@ -7,9 +7,9 @@ import { fortuneMetadata } from "@/lib/fortune/seo";
 import { ILGAN_SLUGS, ilganInfo, ilganHref } from "@/lib/fortune/ilgan";
 
 export const metadata = fortuneMetadata({
-  title: "내 사주 팔자 보기 | 생년월일로 보는 여덟 글자와 오행",
+  title: "내 사주 팔자 보기 · 무료 만세력 | 생년월일로 보는 여덟 글자와 오행",
   description:
-    "생년월일과 태어난 시간(선택)으로 사주 팔자 여덟 글자, 오행 분포, 나를 뜻하는 일간의 성격 풀이를 무료로 보여 드려요. 입력한 정보는 서버로 보내지 않아요.",
+    "무료 만세력으로 생년월일과 태어난 시간(선택)의 사주 팔자 여덟 글자, 오행 분포, 나를 뜻하는 일간의 성격 풀이를 보여 드려요. 입력한 정보는 서버로 보내지 않아요.",
   path: "/fortune/saju",
 });
 
@@ -23,6 +23,7 @@ export default function SajuPage() {
           <i style={{ top: 18, right: 26 }}>☾</i>
           <i style={{ bottom: 24, left: 22, fontSize: 11 }}>★</i>
         </div>
+        <p className={styles.todayStrip}>무료 만세력 · 양력·음력 모두 가능</p>
         <h1 className={styles.heroTitle}>내 사주 팔자 보기</h1>
         <p className={styles.lead}>
           태어난 해·달·날·시간을 여덟 글자로 바꿔, 오행 분포와 나를 뜻하는 글자의 성격을 풀어 드려요.
