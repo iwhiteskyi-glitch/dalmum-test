@@ -4,6 +4,7 @@ import TodayFortune from "@/components/fortune/TodayFortune";
 import TodayStrip from "@/components/fortune/TodayStrip";
 import CornerNav from "@/components/fortune/CornerNav";
 import CrossCards from "@/components/fortune/CrossCards";
+import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
 import { fortuneMetadata } from "@/lib/fortune/seo";
 import { READS } from "@/lib/reads";
 
@@ -35,45 +36,40 @@ export default function FortunePage() {
 
       <TodayFortune />
 
-      <section className={styles.section} aria-labelledby="how">
-        <h2 id="how" className={styles.sectionTitle}>
-          오늘의 운세는 이렇게 정해져요
-        </h2>
-        <ol className={styles.steps}>
-          <li>
-            <strong>1. &lsquo;나&rsquo;를 뜻하는 글자 찾기</strong>
-            생년월일로 사주 팔자를 계산해, 그중 태어난 날의 천간(일간)을 찾아요. 사주에서는 이 글자를 나 자신으로 봐요.
-          </li>
-          <li>
-            <strong>2. 오늘의 일진 확인</strong>
-            날마다 갑자·을축처럼 정해진 간지가 있고, 이를 일진이라고 해요. 60일마다 한 바퀴 돌아요.
-          </li>
-          <li>
-            <strong>3. 둘의 관계로 풀이</strong>
-            오늘 천간이 내 일간과 어떤 오행·음양 관계인지에 따라 비견부터 정인까지 열 가지(십신) 중 하나가 정해지고, 그
-            의미에 맞춘 풀이를 보여 드려요. 내 일지와 오늘 일지가 합(合)이나 충(沖)을 이루면 총운 별점을 조금 조정해요.
-          </li>
-        </ol>
-        <p className={styles.callout}>
-          같은 날 같은 생년월일이면 언제 봐도 같은 풀이가 나와요. 무작위로 뽑지 않아요. 계산 기준은{" "}
-          <Link href="/fortune/saju">내 사주</Link> 페이지에서 자세히 볼 수 있어요.
-        </p>
-      </section>
-
-      {reads.length > 0 && (
-        <section className={styles.section} aria-labelledby="fortune-reads">
-          <h2 id="fortune-reads" className={styles.sectionTitle}>
-            사주·운세 읽을거리
-          </h2>
-          <ul className={styles.readList}>
-            {reads.map((r) => (
-              <li key={r.slug}>
-                <Link href={`/reads/${r.slug}`}>{r.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      <MoreInfo title="오늘의 운세가 궁금하다면" lead="풀이가 어떻게 나오는지, 사주는 어떤 원리인지 모아 뒀어요. 궁금한 항목을 눌러 보세요.">
+        <Fold title="오늘의 운세는 이렇게 정해져요" hint="내 일간과 오늘 일진, 십신으로 풀이하는 방법">
+          <ol className={styles.steps}>
+            <li>
+              <strong>1. &lsquo;나&rsquo;를 뜻하는 글자 찾기</strong>
+              생년월일로 사주 팔자를 계산해, 그중 태어난 날의 천간(일간)을 찾아요. 사주에서는 이 글자를 나 자신으로 봐요.
+            </li>
+            <li>
+              <strong>2. 오늘의 일진 확인</strong>
+              날마다 갑자·을축처럼 정해진 간지가 있고, 이를 일진이라고 해요. 60일마다 한 바퀴 돌아요.
+            </li>
+            <li>
+              <strong>3. 둘의 관계로 풀이</strong>
+              오늘 천간이 내 일간과 어떤 오행·음양 관계인지에 따라 비견부터 정인까지 열 가지(십신) 중 하나가 정해지고, 그
+              의미에 맞춘 풀이를 보여 드려요. 내 일지와 오늘 일지가 합(合)이나 충(沖)을 이루면 총운 별점을 조금 조정해요.
+            </li>
+          </ol>
+          <p className={styles.callout}>
+            같은 날 같은 생년월일이면 언제 봐도 같은 풀이가 나와요. 무작위로 뽑지 않아요. 계산 기준은{" "}
+            <Link href="/fortune/saju">내 사주</Link> 페이지에서 자세히 볼 수 있어요.
+          </p>
+        </Fold>
+        {reads.length > 0 && (
+          <Fold title={`사주·운세 읽을거리 ${reads.length}편`} hint="십신, 오행, 띠와 입춘, 윤달, 태어난 시간 이야기">
+            <ul className={styles.readList}>
+              {reads.map((r) => (
+                <li key={r.slug}>
+                  <Link href={`/reads/${r.slug}`}>{r.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </Fold>
+        )}
+      </MoreInfo>
 
       <CrossCards />
     </>

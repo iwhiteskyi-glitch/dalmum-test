@@ -946,7 +946,123 @@
   font-size: 14.5px;
 }
 
+/* ---------- 더 알아보기: 결과와 구분되는 접는 설명 영역 ---------- */
+.more {
+  margin-top: 56px;
+  background: #f1ebe3;
+  border-radius: var(--radius-xl);
+  padding: 22px 20px 6px;
+  position: relative;
+}
+.more::before {
+  /* 결과 영역과의 경계 표시 */
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  width: 48px;
+  height: 4px;
+  margin-left: -24px;
+  border-radius: 2px;
+  background: var(--border);
+}
+.moreKicker {
+  display: inline-block;
+  margin: 0 0 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted-ink);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.moreTitle {
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+.moreLead {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted-ink);
+}
+.folds {
+  border-top: 1px solid rgba(48, 36, 44, 0.1);
+}
+.fold + .fold {
+  border-top: 1px solid rgba(48, 36, 44, 0.1);
+}
+.fold summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 14px;
+  align-items: center;
+  padding: 15px 2px;
+}
+.fold summary::-webkit-details-marker {
+  display: none;
+}
+.fold summary::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 9px;
+  height: 9px;
+  margin: -4px 4px 0 0;
+  border-right: 2px solid var(--muted-ink);
+  border-bottom: 2px solid var(--muted-ink);
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+}
+.fold[open] summary::after {
+  margin-top: 4px;
+  transform: rotate(-135deg);
+}
+.fold summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.foldTitle {
+  grid-column: 1;
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.foldHint {
+  grid-column: 1;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--muted-ink);
+}
+.foldBody {
+  padding: 0 2px 18px;
+}
+.foldBody .sectionText {
+  font-size: 14.5px;
+}
+.foldBody .steps,
+.foldBody .readList,
+.foldBody .stemGrid {
+  margin-top: 0;
+}
+.foldBody .callout {
+  background: var(--surface);
+}
+.more + .section {
+  margin-top: 28px;
+}
+
 @media (max-width: 520px) {
+  .more {
+    padding: 20px 16px 4px;
+  }
   .heroTitle {
     font-size: 29px;
   }
