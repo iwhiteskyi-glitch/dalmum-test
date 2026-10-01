@@ -52,7 +52,7 @@ const ART = {
     </div>
   ),
   gunghap: (
-    <div className={styles.artFortune} aria-hidden="true">
+    <div className={styles.artGunghap} aria-hidden="true">
       <span className={styles.fortuneMoon}>☾</span>
       <span className={styles.fortuneChar}>緣</span>
       <span className={styles.fortuneStars}>

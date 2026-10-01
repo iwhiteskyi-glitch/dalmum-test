@@ -13,7 +13,7 @@ export default function GunghapLayout({ children }) {
   return (
     <div className={site.shell}>
       <SiteHeader />
-      <main className={styles.main}>{children}</main>
+      <main className={`${styles.main} ${styles.gunghapTheme}`}>{children}</main>
       <AdSlot slot="content-bottom" />
       <SiteFooter />
     </div>
