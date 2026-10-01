@@ -141,11 +141,13 @@ function SaeunResult({ saju, thisYear, sajuYear, onPick }) {
             const mg = PERIOD_GODS[m.tenGod];
             const mStars = Math.min(5, Math.max(1, mg.stars.overall + RELATION_ADJUST[m.relation]));
             const relText = periodText(m.relation, "이 달");
+            const crossesYear = m.start.year !== sajuYear;
+            const dateText = crossesYear ? `${m.start.year}년 ${shortDateLabel(m.start)}` : shortDateLabel(m.start);
             return (
               <li key={i}>
                 <details className={styles.monthRow}>
                   <summary>
-                    <span className={styles.weekDate}>{shortDateLabel(m.start)}~</span>
+                    <span className={styles.weekDate}>{dateText}~</span>
                     <span className={styles.weekPillar}>{m.pillar.ko}월</span>
                     <span className={styles.weekTitle}>
                       {mg.monthNote}
@@ -153,9 +155,15 @@ function SaeunResult({ saju, thisYear, sajuYear, onPick }) {
                         {mg.god}({mg.keyword})
                       </small>
                     </span>
-                    <Stars n={mStars} label={`${shortDateLabel(m.start)} 시작 달 총운`} />
+                    <Stars n={mStars} label={`${dateText} 시작 달 총운`} />
                   </summary>
                   <div className={styles.monthRowBody}>
+                    {crossesYear && (
+                      <p className={styles.note} style={{ margin: "0 0 8px" }}>
+                        {sajuYear}년 세운은 입춘(다음 해 2월 초)부터 그다음 해 소한(1월 초)까지라서,
+                        마지막 달인 이 달은 {m.start.year}년에 속해요.
+                      </p>
+                    )}
                     <p>
                       {m.pillar.ko}({m.pillar.hanja})월은 {ELEMENTS[STEM_ELEMENT[m.pillar.stem]]}(
                       {ELEMENTS_HANJA[STEM_ELEMENT[m.pillar.stem]]}) 기운의 달이고, 내 일간과는{" "}
