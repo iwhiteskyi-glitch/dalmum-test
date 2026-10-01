@@ -18,6 +18,8 @@
   --c-travel-soft: #dff4f5;
   --c-fortune: #5a4fcf;     /* 오늘의 운세: 밤하늘 보라 */
   --c-fortune-soft: #eeecfb;
+  --c-gunghap: var(--c-fortune);      /* 궁합: 같은 사주 엔진 패밀리라 운세와 같은 보라 계열을 씀 */
+  --c-gunghap-soft: var(--c-fortune-soft);
   --leaf: #22816b;         /* 로고 새싹 줄기 */
 
   --radius-sm: 12px;  /* 사진/작은 요소 */

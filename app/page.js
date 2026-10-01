@@ -51,6 +51,15 @@ const ART = {
       </span>
     </div>
   ),
+  gunghap: (
+    <div className={styles.artFortune} aria-hidden="true">
+      <span className={styles.fortuneMoon}>☾</span>
+      <span className={styles.fortuneChar}>緣</span>
+      <span className={styles.fortuneStars}>
+        ★★★<span>★★</span>
+      </span>
+    </div>
+  ),
 };
 
 // 여행지 바로가기: 한국인이 많이 가는 순서로 몇 곳만 보여주고 나머지는 여행 첫 화면에서 고르게 합니다.
