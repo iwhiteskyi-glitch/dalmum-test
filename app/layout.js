@@ -45,7 +45,11 @@ export const metadata = {
   verification: {
     google: "DcgMot_9dJlqREYWtLv5-tuwX3O5CTJoPSzhHBUCGPU",
     other: {
-      "naver-site-verification": "5a159ab7b2f21ba11be0a02f248a30dd25ffa76a",
+      // 네이버 서치어드바이저 소유확인. 앞: 옛 주소(dalmum.com)용, 뒤: 새 주소(www.jaemirobom.com)용
+      "naver-site-verification": [
+        "5a159ab7b2f21ba11be0a02f248a30dd25ffa76a",
+        "23f5c10f95c5e9f0f471034083f364a0ec60d001",
+      ],
     },
   },
 };
