@@ -33,7 +33,7 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-weight: 800;
   font-size: 19px;
   letter-spacing: -0.02em;
@@ -42,8 +42,6 @@
   white-space: nowrap;
 }
 .brandLogo {
-  width: 26px;
-  height: auto;
   flex-shrink: 0;
 }
 .nav {
@@ -121,7 +119,7 @@
 .testTabOn,
 .testTabOn:hover {
   background: var(--surface);
-  color: var(--accent);
+  color: var(--tab-c, var(--accent));
   box-shadow: 0 1px 4px rgba(48, 36, 44, 0.12);
 }
 .desktopLinks {
@@ -352,6 +350,21 @@
   background: var(--surface);
   padding: 28px 20px 32px;
 }
+.footerBrand {
+  max-width: 920px;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted-ink);
+}
+.footerBrand strong {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-right: 6px;
+}
 .footerInner {
   max-width: 920px;
   margin: 0 auto;
@@ -387,4 +400,25 @@
   .pageTitle {
     font-size: 25px;
   }
+}
+/* 읽을거리 카드 위의 작은 코너 이름 (예: 닮았네) */
+.readCardCorner {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--accent);
+  margin: 0 0 4px;
+}
+
+/* FAQ 묶음 (공통 / 코너별) */
+.faqGroup {
+  margin-top: 32px;
+}
+.faqGroup + .faqGroup {
+  margin-top: 40px;
+}
+.faqGroupTitle {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--accent);
+  margin: 0 0 4px;
 }

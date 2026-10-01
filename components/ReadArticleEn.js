@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE } from "@/lib/site";
 import PageIntro from "@/components/PageIntro";
 import styles from "@/components/site.module.css";
 import { getReadEn } from "@/lib/readsEn";
@@ -13,9 +14,9 @@ export default function ReadArticleEn({ slug, children }) {
     description: read.description,
     datePublished: read.date,
     dateModified: read.date,
-    author: { "@type": "Organization", name: "Dalmum" },
-    publisher: { "@type": "Organization", name: "Dalmum" },
-    mainEntityOfPage: `https://dalmum.com/en/reads/${slug}`,
+    author: { "@type": "Organization", name: SITE.nameEn },
+    publisher: { "@type": "Organization", name: SITE.nameEn },
+    mainEntityOfPage: `${SITE.url}/en/reads/${slug}`,
   };
 
   return (
@@ -29,7 +30,7 @@ export default function ReadArticleEn({ slug, children }) {
 
       <div className={styles.callout} style={{ marginTop: 32 }}>
         <strong>Want to try it now?</strong> Two photos, 30 seconds.{" "}
-        <Link href="/en">Try Dalmum →</Link>
+        <Link href="/en">Try the look-alike test →</Link>
       </div>
 
       <Link href="/en/reads" className={styles.backLink}>

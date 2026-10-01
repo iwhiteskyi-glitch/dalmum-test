@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata = {
   title: "문의하기",
-  description: "닮았네 관련 문의, 오류 제보, 개인정보 관련 요청은 이메일로 받습니다.",
+  description: "재미로봄 관련 문의, 오류 제보, 개인정보 관련 요청은 이메일로 받습니다.",
   alternates: { canonical: "/contact" },
 };
 
@@ -27,7 +27,7 @@ export default function ContactPage() {
         </p>
         <p>보통 2~3일 이내에 답변드립니다. 문의 시 아래 내용을 적어주시면 빠르게 확인할 수 있어요.</p>
         <ul>
-          <li>어떤 상황이었는지 (예: 결과 화면에서 저장 버튼이 안 눌림)</li>
+          <li>어떤 코너에서 어떤 상황이었는지 (예: 닮은꼴 결과 화면에서 저장 버튼이 안 눌림)</li>
           <li>사용한 기기와 브라우저 (예: 아이폰 사파리, 윈도우 크롬)</li>
           <li>가능하다면 화면 캡처</li>
         </ul>

@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const metadata = {
   title: "Privacy Policy",
   description:
-    "Dalmum Privacy Policy — uploaded photos are never sent to or stored on a server; they are processed entirely in your browser.",
+    "Jaemirobom Privacy Policy — uploaded photos are never sent to or stored on a server; they are processed entirely in your browser.",
   alternates: { canonical: "/en/privacy" },
 };
 
@@ -21,7 +21,7 @@ export default function PrivacyPageEn() {
 
       <div className={styles.prose}>
         <p>
-          Dalmum (the "Service") takes your privacy seriously and processes
+          Jaemirobom (the "Service") takes your privacy seriously and processes
           personal information as described below, in accordance with
           applicable law.
         </p>

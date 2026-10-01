@@ -287,7 +287,7 @@ export default function TravelTest({ country, city }) {
       country,
       city,
       phrases: country.phrases,
-      urlText: pageUrl.replace(/^https?:\/\//, ""),
+      urlText: pageUrl.replace(/^https?:\/\/(www\.)?/, ""),
       displayFont,
     };
     (async () => {

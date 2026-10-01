@@ -3,8 +3,8 @@
  */
 export const metadata = {
   title: {
-    default: "Dalmum — How much do you look alike?",
-    template: "%s — Dalmum",
+    default: "Jaemirobom — How much do you look alike?",
+    template: "%s — Jaemirobom",
   },
   description:
     "Compare two photos and see how similar your eyes, nose, mouth, and face shape are — a free, just-for-fun look-alike test. Photos are never uploaded or stored.",

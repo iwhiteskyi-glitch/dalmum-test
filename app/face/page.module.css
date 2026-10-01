@@ -42,8 +42,6 @@
   white-space: nowrap;
 }
 .brandLogo {
-  width: 26px;
-  height: auto;
   flex-shrink: 0;
 }
 .langSwitch {
@@ -106,14 +104,15 @@
   color: var(--muted-ink);
 }
 
-/* 여행 이름 섹션으로 넘어가는 교차 카드 (여행 페이지의 .crossCard와 같은 스타일) */
+/* 여행 이름 코너로 넘어가는 교차 카드. 모양은 여행 페이지의 .crossCard와 같고,
+   색은 가려는 코너(여행 = 청록)의 포인트 색을 씁니다. */
 .crossCard {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   margin-top: 24px;
-  background: var(--accent-soft);
+  background: var(--c-travel-soft);
   border-radius: var(--radius-lg);
   padding: 18px 20px;
   text-decoration: none;
@@ -129,7 +128,7 @@
 }
 .crossArrow {
   font-size: 20px;
-  color: var(--accent);
+  color: var(--c-travel);
   font-weight: 800;
 }
 

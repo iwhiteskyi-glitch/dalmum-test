@@ -15,14 +15,14 @@ export const metadata = {
   description: SITE.description,
   applicationName: SITE.name,
   keywords: [
-    "닮았네",
-    "얼굴 비교",
-    "닮은꼴",
+    "재미로봄",
+    "재미 테스트",
     "닮은꼴 테스트",
-    "유사도 분석",
-    "누구랑 닮았을까",
-    "커플 닮음",
-    "가족 닮음",
+    "얼굴 비교",
+    "여행 이름",
+    "현지 이름 추천",
+    "커플 테스트",
+    "친구 테스트",
   ],
   alternates: {
     canonical: "/",
@@ -64,21 +64,9 @@ const WEBSITE_JSONLD = {
   "@type": "WebSite",
   name: SITE.name,
   url: SITE.url,
+  alternateName: SITE.nameEn,
   description: SITE.description,
   inLanguage: "ko",
-};
-
-const WEBAPP_JSONLD = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: SITE.name,
-  url: SITE.url,
-  description: SITE.description,
-  applicationCategory: "LifestyleApplication",
-  operatingSystem: "Any",
-  browserRequirements: "requires JavaScript",
-  isAccessibleForFree: true,
-  offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" },
 };
 
 export default function RootLayout({ children }) {
@@ -88,10 +76,6 @@ export default function RootLayout({ children }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSONLD) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBAPP_JSONLD) }}
         />
         <KakaoBrowserBanner />
         {children}

@@ -443,12 +443,13 @@
   border-color: var(--t-teal);
 }
 
+/* 닮은꼴 코너로 넘어가는 교차 카드: 가려는 코너(닮은꼴 = 라즈베리)의 포인트 색 */
 .crossCard {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  background: var(--accent-soft);
+  background: var(--c-face-soft);
   border-radius: var(--radius-lg);
   padding: 18px 20px;
   text-decoration: none;
@@ -464,7 +465,7 @@
 }
 .crossArrow {
   font-size: 20px;
-  color: var(--accent);
+  color: var(--c-face);
   font-weight: 800;
 }
 

@@ -1,0 +1,330 @@
+/* 재미로봄 첫 화면(허브) 전용 스타일.
+   색·모서리·글꼴은 globals.css 공통 토큰을 쓰고, 코너 카드만 --cc(코너 포인트 색)를 받아
+   각자 색을 냅니다. */
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 36px 20px 56px;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- 상단 소개 ---------- */
+.hero {
+  text-align: center;
+  padding: 8px 0 28px;
+}
+.heroLogo {
+  display: block;
+  margin: 0 auto 10px;
+}
+.heroTitle {
+  font-size: 40px;
+  line-height: 1.22;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 14px;
+}
+/* "나와 우리"에 형광펜 같은 밑줄 */
+.heroMark {
+  color: var(--accent);
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 4px;
+}
+.heroLead {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--muted-ink);
+  margin: 0;
+}
+
+/* ---------- 코너 카드 ---------- */
+.corners {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.corner {
+  --cc: var(--accent);
+  --cc-soft: var(--accent-soft);
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+.corner:hover {
+  transform: translateY(-3px);
+  border-color: var(--cc);
+  box-shadow: 0 14px 30px rgba(48, 36, 44, 0.1);
+}
+.cornerArt {
+  background: var(--cc-soft);
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cornerBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 22px;
+}
+.cornerLabel {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--cc);
+  margin: 0 0 4px;
+}
+.cornerTitle {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+.cornerDesc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted-ink);
+  margin: 0 0 14px;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+}
+.chips li {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--cc);
+  background: var(--cc-soft);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+.cornerCta {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--cc);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+}
+
+/* 카드 그림: 닮은꼴(두 캐릭터 + 닮음 %) */
+.artFace {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.artFace > span:first-child,
+.artFace > span:last-child {
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(206, 40, 87, 0.18);
+  overflow: hidden;
+}
+.matchBadge {
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--c-face);
+  border-radius: 999px;
+  padding: 6px 12px;
+  box-shadow: 0 4px 12px rgba(206, 40, 87, 0.3);
+}
+
+/* 카드 그림: 여행 이름(엽서 속 캐릭터 + 이름표) */
+.artTravel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 2px dashed #b9d6d8;
+  border-radius: 16px;
+  padding: 14px 22px 10px;
+  transform: rotate(-2deg);
+}
+.stamp {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f07a62;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transform: rotate(14deg);
+}
+.nameTag {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--c-travel);
+}
+
+/* ---------- 섹션 공통 ---------- */
+.section {
+  margin-top: 48px;
+}
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sectionTitle {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+.sectionLead {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--muted-ink);
+  margin: 0 0 16px;
+}
+.more {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.more:hover {
+  text-decoration: underline;
+}
+.moreTravel {
+  color: var(--c-travel);
+}
+
+/* 여행지 바로가기 */
+.countryChips {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: 10px;
+}
+.countryChips a {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.15s;
+}
+.countryChips a:hover {
+  border-color: var(--c-travel);
+}
+.countryChips strong {
+  font-size: 15px;
+  font-weight: 800;
+}
+.countryChips span {
+  font-size: 12.5px;
+  color: var(--muted-ink);
+}
+
+/* 읽을거리 */
+.readGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+/* 사이트 소개 */
+.about {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 26px 24px;
+}
+.aboutLead {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+.principles {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.principles li {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted-ink);
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+.principles strong {
+  display: block;
+  font-size: 15.5px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.brWide {
+  display: none;
+}
+@media (min-width: 700px) {
+  .brWide {
+    display: inline;
+  }
+}
+
+@media (max-width: 760px) {
+  .main {
+    padding-top: 24px;
+  }
+  .heroTitle {
+    font-size: 31px;
+  }
+  .heroLead {
+    font-size: 15.5px;
+  }
+  .corners,
+  .readGrid,
+  .principles {
+    grid-template-columns: 1fr;
+  }
+  .countryChips {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .countryChips a {
+    padding: 10px 12px;
+  }
+}

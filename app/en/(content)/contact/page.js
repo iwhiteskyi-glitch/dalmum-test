@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata = {
   title: "Contact",
-  description: "Questions about Dalmum, bug reports, or privacy requests — reach us by email.",
+  description: "Questions about Jaemirobom, bug reports, or privacy requests — reach us by email.",
   alternates: { canonical: "/en/contact" },
 };
 

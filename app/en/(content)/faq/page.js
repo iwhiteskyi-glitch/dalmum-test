@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const metadata = {
   title: "FAQ",
   description:
-    "Frequently asked questions about Dalmum — Is it accurate? Are photos stored? Can I compare pets? and more.",
+    "Frequently asked questions about Jaemirobom — Is it accurate? Are photos stored? Can I compare pets? and more.",
   alternates: { canonical: "/en/faq" },
 };
 
@@ -14,7 +14,7 @@ const FAQ_EN = [
   {
     q: "Is the result accurate?",
     a: [
-      "It's not a precise analysis. Dalmum scores similarity by comparing a few dozen facial landmark points (positions of the eyes, nose, mouth, jawline, etc.) — it's meant to be fun, not scientific.",
+      "It's not a precise analysis. Jaemirobom scores similarity by comparing a few dozen facial landmark points (positions of the eyes, nose, mouth, jawline, etc.) — it's meant to be fun, not scientific.",
       "Even for the same person, scores can vary with angle, expression, and lighting. It should never be used for serious purposes like identity verification or paternity testing.",
     ],
   },

@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const metadata = {
   title: "Terms of Service",
   description:
-    "Dalmum Terms of Service — the Service is for entertainment purposes and does not guarantee the accuracy of its results. Uploading someone else's photo is the user's own responsibility.",
+    "Jaemirobom Terms of Service — the Service is for entertainment purposes and does not guarantee the accuracy of its results. Uploading someone else's photo is the user's own responsibility.",
   alternates: { canonical: "/en/terms" },
 };
 

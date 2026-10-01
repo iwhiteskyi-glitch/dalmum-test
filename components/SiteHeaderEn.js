@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./site.module.css";
+import BrandLogo from "./BrandLogo";
+import { SITE } from "@/lib/site";
 
 /** 영문(/en) 페이지 전용 헤더. SiteHeader.js의 영문판 — 링크가 /en/* 경로를 가리킵니다. */
 const NAV_EN = [
@@ -15,16 +17,16 @@ const NAV_EN = [
 export default function SiteHeaderEn() {
   const pathname = usePathname() || "/en";
   // 현재 보고 있는 영문 페이지와 짝이 되는 한국어 페이지로 이동합니다.
-  // (예: /en/guide → /guide, /en → /)
-  const koHref = pathname === "/en" ? "/" : pathname.replace(/^\/en/, "") || "/";
+  // (예: /en/guide → /guide, /en → /face 한국어 닮은꼴 테스트)
+  const koHref = pathname === "/en" ? "/face" : pathname.replace(/^\/en/, "") || "/face";
 
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
         <div className={styles.brandRow}>
           <Link href="/en" className={styles.brand}>
-            <img src="/logo.png" alt="" width={26} height={15} className={styles.brandLogo} />
-            Dalmum
+            <BrandLogo size={28} className={styles.brandLogo} />
+            {SITE.nameEn}
           </Link>
         </div>
         <nav className={styles.nav} aria-label="Main menu">

@@ -6,7 +6,7 @@ import { READS_EN } from "@/lib/readsEn";
 export const metadata = {
   title: "Reads",
   description:
-    "Short reads to help you enjoy Dalmum more — the science behind face similarity, how to pick a good photo, and more.",
+    "Short reads to help you enjoy Jaemirobom more — the science behind face similarity, how to pick a good photo, and more.",
   alternates: { canonical: "/en/reads" },
 };
 
@@ -16,7 +16,7 @@ export default function ReadsIndexPageEn() {
       <PageIntro
         kicker="READS"
         title="Reads"
-        lead="Short articles to help you get more out of Dalmum."
+        lead="Short articles to help you get more out of Jaemirobom."
       />
 
       <div className={styles.cardList}>

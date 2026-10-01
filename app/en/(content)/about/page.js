@@ -5,7 +5,7 @@ import styles from "@/components/site.module.css";
 export const metadata = {
   title: "About",
   description:
-    "Dalmum is a just-for-fun web app that shows how similar two faces are, part by part, from two photos. Photos are never stored on a server.",
+    "Jaemirobom is a just-for-fun web app that shows how similar two faces are, part by part, from two photos. Photos are never stored on a server.",
   alternates: { canonical: "/en/about" },
 };
 
@@ -14,13 +14,13 @@ export default function AboutPageEn() {
     <article className={styles.article}>
       <PageIntro
         kicker="ABOUT"
-        title="What is Dalmum?"
+        title="What is Jaemirobom?"
         lead="All you need are two photos — see how alike you are, feature by feature."
       />
 
       <div className={styles.prose}>
         <p>
-          <strong>Dalmum</strong> lets you upload your photo alongside anyone
+          <strong>Jaemirobom</strong> lets you upload your photo alongside anyone
           you want to compare (family, friends, a partner, a celebrity, even a
           pet), and analyzes how similar your faces are, part by part. You get
           an <strong>overall similarity %</strong> along with detailed scores
@@ -32,7 +32,7 @@ export default function AboutPageEn() {
         <p>
           Most look-alike apps have you upload one photo and match it against
           a fixed database of celebrities, or compare two photos but only show
-          a single overall number. Dalmum focuses on{" "}
+          a single overall number. Jaemirobom focuses on{" "}
           <strong>comparing two photos directly</strong> and breaking the
           result down by feature, so you can see exactly where you match and
           where you don't. The goal is to spark conversations like "our eyes
@@ -70,12 +70,12 @@ export default function AboutPageEn() {
 
         <h2>Is it free?</h2>
         <p>
-          Yes, Dalmum is completely free with no payment features. The
+          Yes, Jaemirobom is completely free with no payment features. The
           service is funded by the ads shown on the page.
         </p>
 
         <Link href="/en" className={styles.primaryBtn}>
-          Try Dalmum
+          Try Jaemirobom
         </Link>
       </div>
 

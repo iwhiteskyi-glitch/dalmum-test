@@ -5,7 +5,7 @@ import styles from "@/components/site.module.css";
 export const metadata = {
   title: "Guide",
   description:
-    "How to use Dalmum and how to pick photos for better accuracy. Upload two photos (auto face detection) → check your results → share on social media.",
+    "How to use Jaemirobom and how to pick photos for better accuracy. Upload two photos (auto face detection) → check your results → share on social media.",
   alternates: { canonical: "/en/guide" },
 };
 
@@ -14,7 +14,7 @@ export default function GuidePageEn() {
     <article className={styles.article}>
       <PageIntro
         kicker="GUIDE"
-        title="How to use Dalmum"
+        title="How to use Jaemirobom"
         lead="It only takes two photos and 30 seconds. Follow the steps below."
       />
 

@@ -10,7 +10,7 @@ export default function PageEn() {
       <p>
         "Looking alike" feels different to everyone, and it's hard to put into
         words. So how does a computer turn that into a number like "your eyes
-        are 82% alike"? Here's how Dalmum does it, in plain language.
+        are 82% alike"? Here's how Jaemirobom does it, in plain language.
       </p>
 
       <h2>Step 1: Find the "dots" on each face</h2>

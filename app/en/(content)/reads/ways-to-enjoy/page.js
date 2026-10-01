@@ -8,7 +8,7 @@ export default function PageEn() {
   return (
     <ReadArticleEn slug={SLUG}>
       <p>
-        Dalmum doesn't care who — or what — you compare. It doesn't even need
+        Jaemirobom doesn't care who — or what — you compare. It doesn't even need
         to be a person, and an unlikely pairing is fine too. Unexpected
         results are actually the most fun. Here are some combinations people
         try a lot.

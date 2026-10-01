@@ -1,12 +1,13 @@
 import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
 import styles from "@/components/site.module.css";
-import { SITE } from "@/lib/site";
+import { CORNERS, SITE } from "@/lib/site";
 import { getRead } from "@/lib/reads";
 
 /** 읽을거리 글 공통 껍데기: 제목/날짜 + JSON-LD + 본문(children) + 하단 링크 */
 export default function ReadArticle({ slug, children }) {
   const read = getRead(slug);
+  const corner = CORNERS.find((c) => c.key === read.corner);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -28,10 +29,12 @@ export default function ReadArticle({ slug, children }) {
       <PageIntro kicker="READS" title={read.title} meta={`${read.date} · 읽는 데 3분`} />
       <div className={styles.prose}>{children}</div>
 
-      <div className={styles.callout} style={{ marginTop: 32 }}>
-        <strong>바로 해볼까요?</strong> 사진 두 장이면 30초면 끝나요.{" "}
-        <Link href="/">닮았네 하러가기 →</Link>
-      </div>
+      {corner ? (
+        <div className={styles.callout} style={{ marginTop: 32 }}>
+          <strong>바로 해볼까요?</strong> {corner.desc}{" "}
+          <Link href={corner.href}>{corner.cta} →</Link>
+        </div>
+      ) : null}
 
       <Link href="/reads" className={styles.backLink}>
         ← 읽을거리 목록
@@ -43,6 +46,7 @@ export default function ReadArticle({ slug, children }) {
 /** 각 글 page.js 에서 재사용할 메타데이터 생성기 */
 export function readMetadata(slug) {
   const read = getRead(slug);
+  const corner = CORNERS.find((c) => c.key === read.corner);
   return {
     title: read.title,
     description: read.description,

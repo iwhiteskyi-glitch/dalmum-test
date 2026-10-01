@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./site.module.css";
-import { NAV, SITE } from "@/lib/site";
+import { CORNERS, NAV, SITE } from "@/lib/site";
+import BrandLogo from "./BrandLogo";
 
-// 한국어 페이지 공통 헤더. 가운데에 두 테스트(닮은꼴 / 여행 이름)를 탭처럼 나란히 두고,
-// 소개·사용법 같은 나머지 메뉴는 넓은 화면에선 옆에, 휴대폰에선 ☰ 메뉴 안에 넣습니다.
+// 한국어 페이지 공통 헤더. 로고(재미로봄 → 첫 화면) 옆에 코너(닮은꼴 / 여행 이름 …)를 탭처럼
+// 나란히 두고, 소개·읽을거리 같은 나머지 메뉴는 넓은 화면에선 옆에, 휴대폰에선 ☰ 메뉴 안에 넣습니다.
+// 지금 보고 있는 코너의 탭은 그 코너의 포인트 색(globals.css의 --c-<key>)으로 표시됩니다.
 export default function SiteHeader({ wide = false }) {
   const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
@@ -15,10 +17,11 @@ export default function SiteHeader({ wide = false }) {
   useEffect(() => setOpen(false), [pathname]);
 
   // 현재 보고 있는 페이지와 짝이 되는 영문 페이지로 이동합니다. (예: /guide → /en/guide)
-  const enHref = pathname === "/" ? "/en" : `/en${pathname}`;
+  // 영문판은 닮은꼴 테스트만 있어서, 첫 화면과 닮은꼴 페이지는 영문 닮은꼴(/en)로 보냅니다.
+  const enHref = pathname === "/" || pathname === "/face" ? "/en" : `/en${pathname}`;
   const onTravel = pathname.startsWith("/travel");
-  const onFace = pathname === "/";
-  const links = NAV.filter((n) => n.href !== "/");
+  const current = CORNERS.find((c) => pathname === c.href || pathname.startsWith(`${c.href}/`));
+  const links = NAV;
 
   const secondary = (
     <>
@@ -44,26 +47,26 @@ export default function SiteHeader({ wide = false }) {
   return (
     <header className={styles.header}>
       <div className={`${styles.headerInner} ${wide ? styles.headerWide : ""}`}>
-        <Link href="/" className={styles.brand}>
-          <img src="/logo.png" alt="" width={26} height={15} className={styles.brandLogo} />
+        <Link href="/" className={styles.brand} aria-label={`${SITE.name} 첫 화면`}>
+          <BrandLogo size={28} className={styles.brandLogo} />
           <span className={styles.brandText}>{SITE.name}</span>
         </Link>
 
-        <nav className={styles.testTabs} aria-label="테스트 선택">
-          <Link
-            href="/"
-            className={`${styles.testTab} ${onFace ? styles.testTabOn : ""}`}
-            aria-current={onFace ? "page" : undefined}
-          >
-            닮은꼴
-          </Link>
-          <Link
-            href="/travel"
-            className={`${styles.testTab} ${onTravel ? styles.testTabOn : ""}`}
-            aria-current={onTravel ? "page" : undefined}
-          >
-            여행 이름
-          </Link>
+        <nav className={styles.testTabs} aria-label="코너 선택">
+          {CORNERS.map((c) => {
+            const on = current?.key === c.key;
+            return (
+              <Link
+                key={c.key}
+                href={c.href}
+                className={`${styles.testTab} ${on ? styles.testTabOn : ""}`}
+                style={{ "--tab-c": `var(--c-${c.key})` }}
+                aria-current={on ? "page" : undefined}
+              >
+                {c.tab}
+              </Link>
+            );
+          })}
         </nav>
 
         <nav className={styles.desktopLinks} aria-label="주요 메뉴">

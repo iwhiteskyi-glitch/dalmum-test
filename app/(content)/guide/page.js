@@ -92,7 +92,7 @@ export default function GuidePage() {
           시도해 주세요. 얼굴이 뚜렷한 사진일수록 결과가 잘 나옵니다.
         </div>
 
-        <Link href="/" className={styles.primaryBtn}>
+        <Link href="/face" className={styles.primaryBtn}>
           지금 해보기
         </Link>
       </div>

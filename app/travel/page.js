@@ -79,7 +79,7 @@ export default function TravelHome() {
       </section>
 
       <section className={styles.section}>
-        <Link href="/" className={styles.crossCard}>
+        <Link href="/face" className={styles.crossCard}>
           <span>
             <strong>우리 얼마나 닮았을까?</strong>
             <span>사진 두 장으로 보는 닮은꼴 테스트도 해보세요</span>

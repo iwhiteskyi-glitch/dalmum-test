@@ -8,7 +8,7 @@ export default function PageEn() {
   return (
     <ReadArticleEn slug={SLUG}>
       <p>
-        Dalmum bases its results on where landmark points fall on the faces in
+        Jaemirobom bases its results on where landmark points fall on the faces in
         your photos, so the photos you choose can change your score quite a
         bit. The closer your photos are to the conditions below, the more
         stable — and fair — the comparison will be.

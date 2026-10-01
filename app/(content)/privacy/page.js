@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const metadata = {
   title: "개인정보처리방침",
   description:
-    "닮았네 개인정보처리방침 — 업로드한 사진은 서버로 전송·저장되지 않고 브라우저에서만 처리됩니다.",
+    "재미로봄 개인정보처리방침 — 업로드한 사진과 입력한 정보는 서버로 전송·저장되지 않고 브라우저에서만 처리됩니다.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -28,13 +28,13 @@ export default function PrivacyPage() {
         <div className={`${styles.callout} ${styles.calloutYellow}`}>
           <strong>핵심 요약</strong>
           <ul style={{ margin: "8px 0 0", paddingLeft: 20 }}>
-            <li>업로드한 사진은 서버로 전송되지 않고 이용자의 브라우저에서만 분석됩니다.</li>
-            <li>사진은 서버·데이터베이스 어디에도 저장하지 않으며, 창을 닫으면 사라집니다.</li>
+            <li>업로드한 사진과 입력한 정보(닉네임 등)는 서버로 전송되지 않고 이용자의 브라우저에서만 처리됩니다.</li>
+            <li>사진과 입력한 정보는 서버·데이터베이스 어디에도 저장하지 않으며, 창을 닫으면 사라집니다.</li>
             <li>서비스 운영을 위해 접속 기록과 쿠키(광고 포함)가 사용됩니다.</li>
           </ul>
         </div>
 
-        <h2>1. 사진(이미지) 처리</h2>
+        <h2>1. 사진(이미지) 처리 — 닮은꼴 테스트 &ldquo;닮았네&rdquo;</h2>
         <p>
           이용자가 업로드하는 사진은 <strong>이용자의 기기(브라우저) 내부에서만</strong>{" "}
           얼굴 분석에 사용됩니다. 사진 파일 또는 그 분석 데이터는 서비스의 서버로

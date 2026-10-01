@@ -9,7 +9,7 @@ import PageClient from "./PageClient";
  * title 템플릿이 겹쳐 붙지 않고 이 문구 그대로 나오게 합니다.
  */
 export const metadata = {
-  title: { absolute: "Dalmum — How much do you look alike?" },
+  title: { absolute: "Jaemirobom — How much do you look alike?" },
   description:
     "Compare two photos and see how similar your eyes, nose, mouth, and face shape are — a free, just-for-fun look-alike test. Photos are never uploaded or stored.",
   alternates: { canonical: "/en" },

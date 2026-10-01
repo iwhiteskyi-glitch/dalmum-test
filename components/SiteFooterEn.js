@@ -23,7 +23,7 @@ export default function SiteFooterEn() {
         ))}
       </nav>
       <p className={styles.footerNote}>
-        © {new Date().getFullYear()} Dalmum · A just-for-fun look-alike analysis
+        © {new Date().getFullYear()} Jaemirobom · A just-for-fun look-alike analysis
         service. Scores are based on comparing facial landmark positions for
         entertainment only, and can't be used for identity verification,
         paternity testing, or any other official purpose. Uploaded photos are
