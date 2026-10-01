@@ -400,6 +400,32 @@
     flex-wrap: wrap;
     gap: 8px;
   }
+  /* 코너 탭이 3개가 되면서 휴대폰에서 ☰ 버튼이 둘째 줄로 밀리지 않게 조금 줄입니다. */
+  .testTab {
+    font-size: 13px;
+    padding: 7px 9px;
+  }
+  .menuBtn {
+    width: 36px;
+    height: 36px;
+  }
+  .pageTitle {
+    font-size: 25px;
+  }
+}
+@media (max-width: 380px) {
+  .header {
+    padding: 10px 12px;
+  }
+  .headerInner {
+    gap: 6px;
+  }
+  .testTab {
+    font-size: 12.5px;
+    padding: 7px 7px;
+  }
+}
+@media (max-width: 560px) {
   .pageTitle {
     font-size: 25px;
   }

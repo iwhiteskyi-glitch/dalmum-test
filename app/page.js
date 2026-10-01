@@ -20,7 +20,7 @@ export const metadata = {
   alternates: { canonical: "/" },
 };
 
-// 카드 그림. 두 코너 모두 여행 섹션의 캐릭터 그림체를 써서 한 사이트처럼 보이게 합니다.
+// 카드 그림. 닮은꼴·여행은 여행 섹션의 캐릭터 그림체를, 운세는 밤하늘 원판을 씁니다.
 const FACE_A = { skin: "#F6D2B5", hairColor: "#3B2A20", blush: "#FFB3C6", hair: "short", expression: "grin" };
 const FACE_B = { skin: "#FFE1C4", hairColor: "#3B2A20", blush: "#FFB3C6", hair: "bob", expression: "smile", accessory: "ribbon" };
 const TRAVELER = { skin: "#FFE1C4", hairColor: "#5A3E2B", blush: "#FFB3C6", hair: "bob", expression: "smile", accessory: "strawhat" };
@@ -40,6 +40,15 @@ const ART = {
       </span>
       <Avatar avatar={TRAVELER} size={92} bg="#ffffff" />
       <span className={styles.nameTag}>사쿠라 · さくら</span>
+    </div>
+  ),
+  fortune: (
+    <div className={styles.artFortune} aria-hidden="true">
+      <span className={styles.fortuneMoon}>☾</span>
+      <span className={styles.fortuneChar}>運</span>
+      <span className={styles.fortuneStars}>
+        ★★★★<span>★</span>
+      </span>
     </div>
   ),
 };
