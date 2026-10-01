@@ -1,15 +1,16 @@
 import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
+import { pageMetadata } from "@/lib/seo";
 import styles from "@/components/site.module.css";
 import { READS } from "@/lib/reads";
 import { CORNERS, SITE } from "@/lib/site";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "읽을거리",
   description:
     "재미로봄의 테스트를 더 재밌게 즐기는 법, 닮은꼴 분석의 원리, 좋은 사진 고르는 법 등 짧은 글 모음.",
-  alternates: { canonical: "/reads" },
-};
+  path: "/reads",
+});
 
 export default function ReadsIndexPage() {
   return (

@@ -178,6 +178,9 @@
   max-width: 760px;
   margin: 0 auto;
   padding: 40px 20px 64px;
+  /* 한글이 "결/과는"처럼 단어 중간에서 끊기지 않게 단어 단위로 줄바꿈 (첫 화면·여행 섹션과 같게) */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .kicker {
   font-size: 13px;
@@ -421,4 +424,35 @@
   font-weight: 800;
   color: var(--accent);
   margin: 0 0 4px;
+}
+
+/* 만든 사람 페이지: 다른 채널·작품 카드 */
+.workCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+.workMeta {
+  font-size: 13px;
+  color: var(--muted-ink);
+  margin: 8px 0 0;
+}
+.workLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.workLinks a {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: 8px 14px;
+  text-decoration: none;
+}
+.workLinks a:hover {
+  text-decoration: underline;
 }

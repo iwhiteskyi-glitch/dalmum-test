@@ -3,6 +3,7 @@ import PageIntro from "@/components/PageIntro";
 import styles from "@/components/site.module.css";
 import { CORNERS, SITE } from "@/lib/site";
 import { getRead } from "@/lib/reads";
+import { pageMetadata } from "@/lib/seo";
 
 /** 읽을거리 글 공통 껍데기: 제목/날짜 + JSON-LD + 본문(children) + 하단 링크 */
 export default function ReadArticle({ slug, children }) {
@@ -46,11 +47,10 @@ export default function ReadArticle({ slug, children }) {
 /** 각 글 page.js 에서 재사용할 메타데이터 생성기 */
 export function readMetadata(slug) {
   const read = getRead(slug);
-  const corner = CORNERS.find((c) => c.key === read.corner);
-  return {
+  return pageMetadata({
     title: read.title,
     description: read.description,
-    alternates: { canonical: `/reads/${slug}` },
-    openGraph: { title: read.title, description: read.description, type: "article" },
-  };
+    path: `/reads/${slug}`,
+    type: "article",
+  });
 }

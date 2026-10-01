@@ -18,7 +18,11 @@ export default function sitemap() {
 
   // 코너 시작 페이지 중 영문판이 따로 없거나 주소가 다른 것들. (닮은꼴의 영문판은 /en 이라
   // 아래 enRoutes가 이미 "/" → "/en"으로 만들어 줍니다.)
-  const cornerRoutes = [{ path: "/face", priority: 0.9, changeFrequency: "weekly" }];
+  const cornerRoutes = [
+    { path: "/face", priority: 0.9, changeFrequency: "weekly" },
+    // 영문판이 없는 한국어 전용 페이지
+    { path: "/maker", priority: 0.4, changeFrequency: "monthly" },
+  ];
 
   // 여행 이름 섹션: 시작 페이지 + 나라 페이지 + 도시 페이지. 아래 enRoutes 복제 대상인
   // staticRoutes에는 넣지 않고 따로 관리해, /en 아래에 절대 생기지 않게 합니다

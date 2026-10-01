@@ -1,13 +1,14 @@
 import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
+import { pageMetadata } from "@/lib/seo";
 import styles from "@/components/site.module.css";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "사용법",
   description:
     "닮았네 사용법과 정확도를 높이는 사진 고르는 법. 사진 두 장 업로드(자동 얼굴 인식) → 결과 확인 → SNS 공유까지 순서대로 안내합니다.",
-  alternates: { canonical: "/guide" },
-};
+  path: "/guide",
+});
 
 export default function GuidePage() {
   return (

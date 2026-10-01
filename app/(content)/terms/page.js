@@ -1,14 +1,15 @@
 import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
+import { pageMetadata } from "@/lib/seo";
 import styles from "@/components/site.module.css";
 import { SITE } from "@/lib/site";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "이용약관",
   description:
     "재미로봄 이용약관 — 본 서비스는 재미·오락 목적이며 결과의 정확성을 보장하지 않습니다. 타인 사진 업로드에 따른 책임은 이용자에게 있습니다.",
-  alternates: { canonical: "/terms" },
-};
+  path: "/terms",
+});
 
 const SECTIONS = [
   {

@@ -1,13 +1,15 @@
 import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
+import { pageMetadata } from "@/lib/seo";
 import styles from "@/components/site.module.css";
 import { SITE } from "@/lib/site";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "문의하기",
-  description: "재미로봄 관련 문의, 오류 제보, 개인정보 관련 요청은 이메일로 받습니다.",
-  alternates: { canonical: "/contact" },
-};
+  description:
+    "재미로봄 관련 문의, 오류 제보, 개인정보 관련 요청은 이메일로 받습니다.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

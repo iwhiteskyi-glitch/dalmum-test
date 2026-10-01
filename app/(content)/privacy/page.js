@@ -1,14 +1,15 @@
 import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
+import { pageMetadata } from "@/lib/seo";
 import styles from "@/components/site.module.css";
 import { SITE } from "@/lib/site";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "개인정보처리방침",
   description:
     "재미로봄 개인정보처리방침 — 업로드한 사진과 입력한 정보는 서버로 전송·저장되지 않고 브라우저에서만 처리됩니다.",
-  alternates: { canonical: "/privacy" },
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

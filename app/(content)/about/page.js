@@ -1,15 +1,16 @@
 import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
+import { pageMetadata } from "@/lib/seo";
 import styles from "@/components/site.module.css";
 import { SITE } from "@/lib/site";
 import { COUNTRIES } from "@/lib/travel/data";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "서비스 소개",
   description:
     "재미로봄은 닮은꼴 테스트, 여행지 현지 이름 추천 등 '나와 우리'를 재미로 알아보는 무료 테스트 모음입니다. 사진과 입력한 정보는 저장되지 않아요.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   const cityCount = COUNTRIES.reduce((n, c) => n + c.cities.length, 0);
@@ -103,7 +104,8 @@ export default function AboutPage() {
         <h2>궁금한 점이 있다면</h2>
         <p>
           자주 받는 질문은 <Link href="/faq">자주 묻는 질문</Link>에 모아 두었어요. 그 밖의
-          문의나 오류 제보는 <Link href="/contact">문의하기</Link>로 보내주세요.
+          문의나 오류 제보는 <Link href="/contact">문의하기</Link>로 보내주세요. 재미로봄을 만든
+          사람이 궁금하다면 <Link href="/maker">만든 사람</Link> 페이지도 있어요.
         </p>
 
         <Link href="/" className={styles.primaryBtn}>

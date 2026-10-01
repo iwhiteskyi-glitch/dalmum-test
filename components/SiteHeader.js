@@ -6,10 +6,14 @@ import { usePathname } from "next/navigation";
 import styles from "./site.module.css";
 import { CORNERS, NAV, SITE } from "@/lib/site";
 import BrandLogo from "./BrandLogo";
+import { READS_EN } from "@/lib/readsEn";
 
 // 한국어 페이지 공통 헤더. 로고(재미로봄 → 첫 화면) 옆에 코너(닮은꼴 / 여행 이름 …)를 탭처럼
 // 나란히 두고, 소개·읽을거리 같은 나머지 메뉴는 넓은 화면에선 옆에, 휴대폰에선 ☰ 메뉴 안에 넣습니다.
 // 지금 보고 있는 코너의 탭은 그 코너의 포인트 색(globals.css의 --c-<key>)으로 표시됩니다.
+// 영문판(/en/...)이 따로 있는 한국어 페이지. 읽을거리 글은 영문 목록(READS_EN)에 있는 것만 해당.
+const EN_PAGES = ["/about", "/guide", "/reads", "/faq", "/privacy", "/terms", "/contact"];
+
 export default function SiteHeader({ wide = false }) {
   const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
@@ -17,8 +21,10 @@ export default function SiteHeader({ wide = false }) {
   useEffect(() => setOpen(false), [pathname]);
 
   // 현재 보고 있는 페이지와 짝이 되는 영문 페이지로 이동합니다. (예: /guide → /en/guide)
-  // 영문판은 닮은꼴 테스트만 있어서, 첫 화면과 닮은꼴 페이지는 영문 닮은꼴(/en)로 보냅니다.
-  const enHref = pathname === "/" || pathname === "/face" ? "/en" : `/en${pathname}`;
+  // 영문판이 없는 페이지(첫 화면, 닮은꼴, 만든 사람 등)는 영문 닮은꼴(/en)로 보냅니다.
+  const hasEn =
+    EN_PAGES.includes(pathname) || READS_EN.some((r) => pathname === `/reads/${r.slug}`);
+  const enHref = hasEn ? `/en${pathname}` : "/en";
   const onTravel = pathname.startsWith("/travel");
   const current = CORNERS.find((c) => pathname === c.href || pathname.startsWith(`${c.href}/`));
   const links = NAV;

@@ -1,15 +1,16 @@
 import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
+import { pageMetadata } from "@/lib/seo";
 import styles from "@/components/site.module.css";
 import { SITE } from "@/lib/site";
 import { COUNTRIES } from "@/lib/travel/data";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "자주 묻는 질문",
   description:
     "재미로봄 자주 묻는 질문 — 닮은꼴 결과가 정확한가요? 사진이 저장되나요? 여행 이름은 어떤 나라를 고를 수 있나요? 등",
-  alternates: { canonical: "/faq" },
-};
+  path: "/faq",
+});
 
 const CITY_COUNT = COUNTRIES.reduce((n, c) => n + c.cities.length, 0);
 
