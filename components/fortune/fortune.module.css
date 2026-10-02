@@ -54,6 +54,21 @@
   --f-hover: #f7dcc4;
 }
 
+/* 관상 코너 테마. 같은 카드·버튼 모양에 포인트 색만 황갈색(--c-gwansang)으로 바뀝니다. */
+.gwansangTheme {
+  --f: var(--c-gwansang);
+  --f-deep: #6e5420;
+  --f-soft: var(--c-gwansang-soft);
+  --f-gold: #d9a441;
+  --f-glow: #c99a4e;
+  --f-dark1: #3a2c10;
+  --f-dark2: #6e5420;
+  --f-text-soft: #ecd9ae;
+  --f-text-soft2: #f2e3c2;
+  --f-callout-ink: #4d3a16;
+  --f-hover: #ece0c6;
+}
+
 .srOnly {
   position: absolute;
   width: 1px;
