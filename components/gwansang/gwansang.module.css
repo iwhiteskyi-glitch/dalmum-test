@@ -128,43 +128,54 @@
   color: var(--f-deep);
 }
 
-/* 종합 보기 — 턱선(윤곽) × 이목구비 배치를 묶어서 보는 해석 */
+/* 종합 보기 — 결과의 메인. 턱선(윤곽) × 이목구비 배치를 묶어서 보는 해석 */
 .synthesisBox {
-  margin: 22px 0;
-  padding: 18px 20px;
-  border-radius: var(--radius-md, 16px);
-  background: var(--f-soft);
-  border: 1px solid var(--f);
+  margin: 4px 0 24px;
+  padding: 24px 22px;
+  border-radius: var(--radius-lg, 20px);
+  background: linear-gradient(165deg, var(--f-soft), var(--surface));
+  border: 1.5px solid var(--f);
+  box-shadow: 0 6px 18px rgba(110, 84, 32, 0.1);
 }
 .synthesisLabel {
   display: inline-block;
   font-size: 12.5px;
   font-weight: 800;
-  color: var(--f-deep);
-  background: var(--surface);
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--f);
   border-radius: 999px;
-  padding: 4px 11px;
-  margin-bottom: 8px;
-}
-.synthesisLead {
-  font-size: 13px;
-  color: var(--muted-ink);
-  margin: 0 0 10px;
+  padding: 5px 12px;
+  margin-bottom: 10px;
 }
 .synthesisTitle {
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 23px;
+  font-weight: 900;
   color: var(--f-deep);
-  margin: 0 0 6px;
+  margin: 0 0 10px;
+  line-height: 1.3;
 }
 .synthesisText {
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.65;
   color: var(--ink);
   margin: 0;
 }
+.synthesisLead {
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
 
 /* 부위별 해석 목록 */
+.partListLabel {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  margin: 0 0 10px;
+}
 .partList {
   display: flex;
   flex-direction: column;

@@ -312,11 +312,12 @@ function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
   const url = categories ? `${SITE.url}/gwansang${encodeGwansangLink(categories)}` : SITE.url;
 
   async function share() {
-    const shortText = `내 관상 키워드: ${keywordsLine}`;
+    const shortText = synthesis ? `내 관상 종합 보기: ${synthesis.title}` : `내 관상 키워드: ${keywordsLine}`;
     const fullText = [
       shortText,
+      ...(synthesis ? [`\n[종합 보기] ${synthesis.title}\n${synthesis.text}`] : []),
+      "\n부위별로 자세히 보면",
       ...parts.map((p) => `[${p.label}] ${p.keyword} — ${p.text}`),
-      ...(synthesis ? [`\n[종합 보기] ${synthesis.title} — ${synthesis.text}`] : []),
       `\n${TEXTS.disclaimer}`,
       "— 재미로봄 관상",
     ].join("\n");
@@ -364,10 +365,20 @@ function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
           />
         </p>
       )}
+
+      {synthesis && (
+        <div className={gs.synthesisBox}>
+          <span className={gs.synthesisLabel}>{TEXTS.synthesisLabel}</span>
+          <h3 className={gs.synthesisTitle}>{synthesis.title}</h3>
+          <p className={gs.synthesisText}>{synthesis.text}</p>
+          <p className={gs.synthesisLead}>{TEXTS.synthesisLead}</p>
+        </div>
+      )}
+
       <p className={styles.blockLead} style={{ textAlign: "center" }}>
         {keywordsLine}
       </p>
-
+      <p className={gs.partListLabel}>부위별로 자세히 보면</p>
       <div className={gs.partList}>
         {parts.map((p) => (
           <div key={p.part} className={gs.partCard}>
@@ -379,15 +390,6 @@ function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
           </div>
         ))}
       </div>
-
-      {synthesis && (
-        <div className={gs.synthesisBox}>
-          <span className={gs.synthesisLabel}>{TEXTS.synthesisLabel}</span>
-          <p className={gs.synthesisLead}>{TEXTS.synthesisLead}</p>
-          <h3 className={gs.synthesisTitle}>{synthesis.title}</h3>
-          <p className={gs.synthesisText}>{synthesis.text}</p>
-        </div>
-      )}
 
       <p className={styles.disclaimer} style={{ marginTop: 20 }}>
         {TEXTS.disclaimer}
