@@ -58,6 +58,14 @@ export default function FortunePage() {
             <Link href="/fortune/saju">내 사주</Link> 페이지에서 자세히 볼 수 있어요.
           </p>
         </Fold>
+        <Fold title="공유 링크에는 무엇이 담겨요?" hint="생년월일은 담기지 않아요">
+          <p className={styles.sectionText}>
+            결과를 공유하면 받은 사람이 생년월일을 넣지 않아도 같은 풀이를 바로 볼 수 있어요. 링크에
+            담기는 건 풀이를 다시 계산하는 데 쓰는 번호(날짜와 태어난 날의 두 글자)뿐이고, 생년월일
+            자체는 들어가지 않아요. 주소의 &lsquo;#&rsquo; 뒷부분은 서버로 전송되지 않아서 어디에도
+            기록되지 않아요.
+          </p>
+        </Fold>
         {reads.length > 0 && (
           <Fold title={`사주·운세 읽을거리 ${reads.length}편`} hint="십신, 오행, 띠와 입춘, 윤달, 태어난 시간 이야기">
             <ul className={styles.readList}>

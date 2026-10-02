@@ -216,6 +216,18 @@
 .fortuneStars span {
   color: rgba(255, 255, 255, 0.25);
 }
+.artGunghap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #f0924f, #4a1f0c 72%);
+  box-shadow: 0 10px 26px rgba(138, 58, 22, 0.28);
+}
 
 /* ---------- 섹션 공통 ---------- */
 .section {

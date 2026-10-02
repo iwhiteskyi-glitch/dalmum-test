@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import styles from "./KakaoBrowserBanner.module.css";
 
 /**
@@ -19,8 +18,6 @@ import styles from "./KakaoBrowserBanner.module.css";
  * 여는 방법도 함께 안내합니다.
  */
 export default function KakaoBrowserBanner() {
-  const pathname = usePathname() || "/";
-  const isEn = pathname.startsWith("/en");
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -37,24 +34,15 @@ export default function KakaoBrowserBanner() {
   return (
     <div className={styles.bar} role="note">
       <span className={styles.text}>
-        {isEn
-          ? "Sharing works better outside KakaoTalk's built-in browser."
-          : "카카오톡 안에서는 사진 공유가 잘 안 될 수 있어요."}
+        카카오톡 안에서는 사진 공유가 잘 안 될 수 있어요.
         <span className={styles.hint}>
-          {isEn
-            ? "If tapping the button doesn't work, use the ⋮ menu above → \"Open in browser.\""
-            : "버튼이 안 먹으면 위쪽 메뉴(⋮)에서 \"다른 브라우저로 열기\"를 눌러주세요."}
+          버튼이 안 먹으면 위쪽 메뉴(⋮)에서 "다른 브라우저로 열기"를 눌러주세요.
         </span>
       </span>
       <button type="button" onClick={openExternal} className={styles.btn}>
-        {isEn ? "Open in browser" : "다른 브라우저로 열기"}
+        다른 브라우저로 열기
       </button>
-      <button
-        type="button"
-        onClick={() => setShow(false)}
-        className={styles.close}
-        aria-label={isEn ? "Close" : "닫기"}
-      >
+      <button type="button" onClick={() => setShow(false)} className={styles.close} aria-label="닫기">
         ✕
       </button>
     </div>

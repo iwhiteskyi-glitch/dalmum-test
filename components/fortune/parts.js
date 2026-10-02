@@ -18,6 +18,25 @@ export function shortDateLabel(d) {
   return `${d.month}월 ${d.day}일`;
 }
 
+// 시각을 부르는 말 (새벽·아침·오전·오후·저녁·밤)
+function timeWord(hour) {
+  if (hour < 5) return "새벽";
+  if (hour < 9) return "아침";
+  if (hour < 12) return "오전";
+  if (hour < 18) return "오후";
+  if (hour < 21) return "저녁";
+  return "밤";
+}
+
+const clock = (min) => `${Math.floor(min / 60) % 12 || 12}:${String(min % 60).padStart(2, "0")}`;
+
+/** 시진의 시각 범위를 읽기 쉽게 (예: 오전 9:30~11:30, 밤 11:30~새벽 1:30) */
+export function hourRangeLabel(startMin, endMin) {
+  const from = timeWord(Math.floor(startMin / 60));
+  const to = timeWord(Math.floor(endMin / 60));
+  return `${from} ${clock(startMin)}~${from === to ? "" : `${to} `}${clock(endMin)}`;
+}
+
 /** 입력한 생년월일을 한 줄로 (예: 양력 1990년 5월 15일 14시 30분) */
 export function birthLabel(saju) {
   const b = saju.input;

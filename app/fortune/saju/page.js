@@ -69,6 +69,16 @@ export default function SajuPage() {
           </ul>
         </Fold>
 
+        <Fold title="공유 링크에는 무엇이 담겨요?" hint="여덟 글자와 풀이가 담겨요">
+          <p className={styles.sectionText}>
+            결과를 공유하면 여덟 글자와 일간 풀이가 담긴 사진·링크가 전해져서, 받은 사람이 생년월일을
+            넣지 않아도 같은 화면을 볼 수 있어요. 사진에는 &lsquo;더 자세히 알아보기&rsquo;에 있는 성격·관계·
+            일과 공부·오행 균형 이야기까지 함께 담겨요. 생년월일을 그대로 담지는 않지만, 팔자는 태어난 날과
+            시간으로 정해지는 글자라서 받는 사람이 태어난 날을 짐작할 수도 있어요. 공유는 직접 버튼을
+            누를 때만 이뤄지고, 주소의 &lsquo;#&rsquo; 뒷부분은 서버로 전송되지 않아요.
+          </p>
+        </Fold>
+
         <Fold title="계산 기준" hint="입춘·절기, 음력, 옛 표준시·서머타임 보정, 자시">
           <div className={styles.callout}>
             <ul>

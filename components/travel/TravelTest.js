@@ -140,6 +140,7 @@ export default function TravelTest({ country, city }) {
   const trackRef = useRef(null);
   const [busy, setBusy] = useState(false);
   const [inKakao, setInKakao] = useState(false);
+  const [shareHint, setShareHint] = useState("");
 
   useEffect(() => {
     setInKakao(/KAKAOTALK/i.test(navigator.userAgent));
@@ -365,6 +366,23 @@ export default function TravelTest({ country, city }) {
     window.location.href = `kakaotalk://web/openExternal?url=${encodeURIComponent(url)}`;
   };
 
+  const copyLinkQuietly = async () => {
+    try {
+      await navigator.clipboard.writeText(pageUrl);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const copyLink = async () => {
+    setShareHint(
+      (await copyLinkQuietly())
+        ? "공유 링크를 복사했어요. 대화창에 붙여넣으면 친구도 바로 해볼 수 있어요."
+        : "링크를 복사하지 못했어요. 주소창의 주소를 복사해 주세요."
+    );
+  };
+
   const shareFiles = async (indexes) => {
     const files = indexes.map(
       (i) => new File([cardImages[i].blob], `travel-name-card-${i + 1}.png`, { type: "image/png" })
@@ -372,10 +390,18 @@ export default function TravelTest({ country, city }) {
     const names = members.map((m) => `'${m.card.pronunciation_kr}'`).join(", ");
     const text = `${city.city_name} 여행 가면 ${group ? "우리" : "내"} 이름은 ${names} ✈️ 너도 받아봐!\n${pageUrl}`;
     setBusy(true);
+    setShareHint("");
     try {
       if (navigator.canShare && navigator.canShare({ files })) {
         // 파일과 함께 공유하면 url 필드가 무시되는 앱이 많아 링크를 text 안에 넣습니다.
         await navigator.share({ files, title: "여행가면 내 이름은?", text });
+        // 그래도 사진만 보내고 글(링크)은 버리는 앱이 많아서(카카오톡 등), 공유한 뒤 링크를
+        // 복사해 둬서 대화창에 바로 붙여넣을 수 있게 합니다.
+        setShareHint(
+          (await copyLinkQuietly())
+            ? "링크도 복사해 뒀어요. 사진만 전달됐으면 대화창에 붙여넣어 주세요."
+            : "사진만 전달됐으면 아래 '공유 링크 복사'를 눌러 주소도 함께 보내 주세요."
+        );
       } else {
         try {
           await navigator.clipboard?.writeText(pageUrl);
@@ -682,6 +708,10 @@ export default function TravelTest({ country, city }) {
                   카드 {slides.length}장 한 번에 공유
                 </button>
               )}
+              <button type="button" className={`${styles.textBtn} ${styles.copyLinkBtn}`} onClick={copyLink}>
+                공유 링크 복사
+              </button>
+              {shareHint && <p className={styles.shareHint}>{shareHint}</p>}
               {inKakao && (
                 <p className={styles.kakaoHint}>
                   카카오톡 안에서는 사진 공유가 막혀 있어요. &lsquo;브라우저에서 공유&rsquo;를 누르면
