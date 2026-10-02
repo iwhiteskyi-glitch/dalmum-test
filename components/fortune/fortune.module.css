@@ -435,9 +435,13 @@
 }
 .lucky {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  /* 한마디는 한 줄 전체, 아래에 행운의 색·숫자·방향 세 칸 */
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   margin-bottom: 18px;
+}
+.lucky div:first-child {
+  grid-column: 1 / -1;
 }
 .lucky div {
   background: var(--bg);
@@ -490,6 +494,35 @@
   width: auto;
   flex: 1 1 auto;
 }
+/* 오늘 / 내일 전환 */
+.dayTabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.dayTab {
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted-ink);
+  font-size: 14.5px;
+  font-weight: 800;
+  padding: 9px 24px;
+  cursor: pointer;
+}
+.dayTab:hover {
+  background: var(--f-hover);
+}
+.dayTabOn {
+  border-color: var(--f);
+  background: var(--f);
+  color: #fff;
+}
+.dayTabOn:hover {
+  background: var(--f-deep);
+}
+
 /* 친구가 보낸 결과 링크로 들어왔을 때 맨 위에 붙는 안내 */
 .sharedNote {
   margin: 0 0 14px;
@@ -1358,10 +1391,10 @@
     grid-template-columns: 1fr;
   }
   .lucky {
-    grid-template-columns: 1fr 1fr;
+    gap: 6px;
   }
-  .lucky div:first-child {
-    grid-column: 1 / 3;
+  .lucky div {
+    padding: 9px 10px;
   }
   .charHanja {
     font-size: 28px;

@@ -61,6 +61,14 @@ export default function SaeunPage() {
             궁금하면 신년운세를 보면 돼요.
           </p>
         </Fold>
+
+        <Fold title="이 해의 색·숫자·방향은 어떻게 정해져요?" hint="오행마다 정해진 전통 색·숫자·방위">
+          <p className={styles.sectionText}>
+            그해 기운을 부드럽게 이어 주는 오행을 찾아서, 그 오행에 해당하는 전통적인 색과 숫자,
+            방위를 보여 드려요. 방위는 목이 동쪽, 화가 남쪽, 토가 중앙, 금이 서쪽, 수가 북쪽이에요.
+            토가 나오면 중앙이라서, 멀리 떠나기보다 가까운 곳에서 풀어가는 해로 봐요.
+          </p>
+        </Fold>
       </MoreInfo>
 
       <CrossCards />

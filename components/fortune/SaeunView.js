@@ -119,6 +119,10 @@ function SaeunResult({ saju, thisYear, sajuYear, onPick }) {
               <span>이 해의 숫자</span>
               <strong>{reading.year.luckyNumbers.join(", ")}</strong>
             </div>
+            <div>
+              <span>이 해의 방향</span>
+              <strong>{reading.year.luckyDirection}</strong>
+            </div>
           </div>
 
           <p className={styles.disclaimer}>

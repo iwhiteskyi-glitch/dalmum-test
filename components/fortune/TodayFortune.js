@@ -106,10 +106,17 @@ export default function TodayFortune() {
 function TodayResult({ saju, today, snapshot = false }) {
   const [hint, setHint] = useState("");
   const [card, setCard] = useState(null);
-  const day = buildDay(saju, today);
+  // 오늘/내일 전환. 아래 일주일 흐름은 전환과 관계없이 늘 오늘부터 보여 줍니다.
+  const [tomorrow, setTomorrow] = useState(false);
+  const date = tomorrow ? addDays(today, 1) : today;
+  const dayLabel = tomorrow ? "내일" : "오늘";
+  // 풀이 문장은 "오늘"을 기준으로 쓰여 있어요. 내일을 볼 때는 말만 바꿔서 보여 줍니다
+  // (오늘은→내일은, 오늘의→내일의처럼 그대로 이어져요).
+  const asDay = (text) => (tomorrow ? text.replaceAll("오늘", "내일") : text);
+  const day = buildDay(saju, date);
   const week = range(0, 6).map((i) => {
-    const date = addDays(today, i);
-    return { date, ...buildDay(saju, date) };
+    const d = addDays(today, i);
+    return { date: d, ...buildDay(saju, d) };
   });
   const me = TEXTS.ilgan[saju.dayMaster];
   const dm = saju.dayMaster;
@@ -119,22 +126,24 @@ function TodayResult({ saju, today, snapshot = false }) {
 
   // 결과가 바뀔 때마다 공유용 이미지 카드를 미리 그려 둡니다. 공유 버튼을 누른 뒤에 그리면
   // 기기에서 "사용자가 누른 동작"으로 보지 않아 공유 창이 막히는 경우가 있어서예요.
-  const cardKey = `${saju.dayMaster}-${saju.pillars.day.branch}-${today.year}-${today.month}-${today.day}`;
+  const cardKey = `${saju.dayMaster}-${saju.pillars.day.branch}-${date.year}-${date.month}-${date.day}`;
   useEffect(() => {
     if (snapshot) return;
     let cancelled = false;
     setCard(null);
     buildTodayCard({
-      dateText: `${today.year}년 ${dateLabel(today)} · ${day.pillar.ko}(${day.pillar.hanja})일`,
+      dayLabel,
+      dateText: `${date.year}년 ${dateLabel(date)} · ${day.pillar.ko}(${day.pillar.hanja})일`,
       godLine: `${day.god.god}(${day.god.hanja})의 날 · ${day.god.keyword}`,
       title: day.god.title,
       stars: day.overall,
-      summary: day.god.overall,
-      advice: day.advice,
-      areas: AREAS.map(([k, label]) => ({ label, stars: day.god.stars[k], text: day.god[k] })),
+      summary: asDay(day.god.overall),
+      advice: asDay(day.advice),
+      areas: AREAS.map(([k, label]) => ({ label, stars: day.god.stars[k], text: asDay(day.god[k]) })),
       luckyElement: day.luckyElement,
       luckyColor: day.luckyColor,
       luckyNumbers: day.luckyNumbers.join(", "),
+      luckyDirection: day.luckyDirection,
     })
       .then((img) => !cancelled && setCard(img))
       .catch(() => {
@@ -148,23 +157,23 @@ function TodayResult({ saju, today, snapshot = false }) {
   }, [cardKey, snapshot]);
 
   // 링크에 결과를 담아서, 받은 사람이 생년월일을 넣지 않아도 같은 결과를 보게 합니다.
-  const url = `${SITE.url}/fortune${encodeFortuneLink(today, saju)}`;
+  const url = `${SITE.url}/fortune${encodeFortuneLink(date, saju)}`;
 
   async function share() {
-    const shortText = `오늘 나의 운세는 "${day.god.title}" · ${day.god.god}(${day.god.keyword})\n${day.advice}`;
+    const shortText = `${dayLabel} 나의 운세는 "${day.god.title}" · ${day.god.god}(${day.god.keyword})\n${asDay(day.advice)}`;
     const fullText = [
-      `오늘 나의 운세는 "${day.god.title}" (${day.god.god}·${day.god.keyword})`,
-      day.god.overall,
-      `· 오늘의 한마디 ${day.advice}`,
-      `· 행운의 색 ${day.luckyColor} · 행운의 숫자 ${day.luckyNumbers.join(", ")}`,
-      "— 재미로봄 오늘의 운세",
+      `${dayLabel} 나의 운세는 "${day.god.title}" (${day.god.god}·${day.god.keyword})`,
+      asDay(day.god.overall),
+      `· ${dayLabel}의 한마디 ${asDay(day.advice)}`,
+      `· 행운의 색 ${day.luckyColor} · 숫자 ${day.luckyNumbers.join(", ")} · 방향 ${day.luckyDirection}`,
+      `— 재미로봄 ${dayLabel}의 운세`,
     ].join("\n");
     setHint("");
     try {
       const r = await shareResult({
         blob: card?.blob,
         fileName: "jaemirobom-today-fortune.png",
-        title: "재미로봄 오늘의 운세",
+        title: `재미로봄 ${dayLabel}의 운세`,
         shortText,
         fullText,
         url,
@@ -190,10 +199,32 @@ function TodayResult({ saju, today, snapshot = false }) {
 
   return (
     <>
+      {!snapshot && (
+        <div className={styles.dayTabs} role="group" aria-label="보는 날 고르기">
+          {[
+            ["오늘", false],
+            ["내일", true],
+          ].map(([label, value]) => (
+            <button
+              key={label}
+              type="button"
+              className={`${styles.dayTab} ${tomorrow === value ? styles.dayTabOn : ""}`}
+              aria-pressed={tomorrow === value}
+              onClick={() => {
+                setTomorrow(value);
+                setHint("");
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      )}
+
       <section className={styles.todayCard} aria-labelledby="today-title">
         <div className={styles.todayHead}>
           <p className={styles.todayDate}>
-            {today.year}년 {dateLabel(today)} · 오늘의 일진 {day.pillar.ko}({day.pillar.hanja})일
+            {date.year}년 {dateLabel(date)} · {dayLabel}의 일진 {day.pillar.ko}({day.pillar.hanja})일
           </p>
           <p className={styles.todayGod}>
             {day.god.god}({day.god.hanja})의 날 · {day.god.keyword}
@@ -206,12 +237,12 @@ function TodayResult({ saju, today, snapshot = false }) {
           </div>
         </div>
         <div className={styles.todayBody}>
-          <p className={styles.todayText}>{day.god.overall}</p>
+          <p className={styles.todayText}>{asDay(day.god.overall)}</p>
           <p className={styles.relNote}>
             <strong>
               {day.rel.label} · {day.rel.title}
             </strong>
-            {day.rel.text}
+            {asDay(day.rel.text)}
           </p>
 
           <dl className={styles.areas}>
@@ -220,15 +251,15 @@ function TodayResult({ saju, today, snapshot = false }) {
                 <dt>
                   {label} <Stars n={day.god.stars[k]} label={label} />
                 </dt>
-                <dd>{day.god[k]}</dd>
+                <dd>{asDay(day.god[k])}</dd>
               </div>
             ))}
           </dl>
 
           <div className={styles.lucky}>
             <div>
-              <span>오늘의 한마디</span>
-              <strong>{day.advice}</strong>
+              <span>{dayLabel}의 한마디</span>
+              <strong>{asDay(day.advice)}</strong>
             </div>
             <div>
               <span>행운의 색</span>
@@ -240,6 +271,10 @@ function TodayResult({ saju, today, snapshot = false }) {
             <div>
               <span>행운의 숫자</span>
               <strong>{day.luckyNumbers.join(", ")}</strong>
+            </div>
+            <div>
+              <span>행운의 방향</span>
+              <strong>{day.luckyDirection}</strong>
             </div>
           </div>
 
@@ -271,24 +306,26 @@ function TodayResult({ saju, today, snapshot = false }) {
             <b>
               {STEMS[dm]}({STEMS_HANJA[dm]})
             </b>
-            {ELEMENTS[STEM_ELEMENT[dm]]}이고, 오늘의 일진은{" "}
+            {ELEMENTS[STEM_ELEMENT[dm]]}이고, {dayLabel}의 일진은{" "}
             <b>
               {day.pillar.ko}({day.pillar.hanja})
             </b>
-            일이에요. 오늘의 천간 {STEMS[day.pillar.stem]}({STEMS_HANJA[day.pillar.stem]})
+            일이에요. {dayLabel}의 천간 {STEMS[day.pillar.stem]}({STEMS_HANJA[day.pillar.stem]})
             {ELEMENTS[STEM_ELEMENT[day.pillar.stem]]}
             {eunNeun(ELEMENTS[STEM_ELEMENT[day.pillar.stem]])} 나에게 {godRel}이고, 음양이 {samePolarity ? "같아서" : "달라서"}{" "}
             <b>{day.god.god}</b>에 해당해요. {day.god.meaning}
           </p>
           <p>
-            또 내 일지(태어난 날의 지지) {BRANCHES[myDayBranch]}({BRANCHES_HANJA[myDayBranch]})와 오늘 일지{" "}
+            또 내 일지(태어난 날의 지지) {BRANCHES[myDayBranch]}({BRANCHES_HANJA[myDayBranch]})와 {dayLabel} 일지{" "}
             {BRANCHES[day.pillar.branch]}({BRANCHES_HANJA[day.pillar.branch]})의 관계는 <b>{day.rel.label}</b>이라서 총운
             별점에{" "}
             {day.rel.adjust > 0 ? "하나를 더했어요" : day.rel.adjust < 0 ? "하나를 뺐어요" : "변화를 주지 않았어요"}.
           </p>
           <p>
-            행운의 색과 숫자는 오늘 기운을 부드럽게 이어 주는 오행({ELEMENTS[day.luckyElement]}·
-            {ELEMENTS_HANJA[day.luckyElement]})에 해당하는 전통적인 색과 숫자예요.
+            행운의 색·숫자·방향은 {dayLabel} 기운을 부드럽게 이어 주는 오행(
+            {ELEMENTS[day.luckyElement]}·{ELEMENTS_HANJA[day.luckyElement]})에 해당하는 전통적인 색과
+            숫자, 방위예요. 오행마다 방위가 정해져 있는데(목 동·화 남·토 중앙·금 서·수 북), 토가
+            나오는 날은 멀리 가기보다 가까운 곳이 어울리는 날로 봐요.
           </p>
         </details>
 
