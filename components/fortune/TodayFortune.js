@@ -5,6 +5,7 @@ import Link from "next/link";
 import { track } from "@vercel/analytics";
 import styles from "./fortune.module.css";
 import TEXTS from "@/lib/fortune/texts.json";
+import { SITE } from "@/lib/site";
 import {
   dayReading,
   koreaToday,
@@ -18,6 +19,8 @@ import {
   STEM_ELEMENT,
 } from "@/lib/fortune/saju";
 import { useBirth } from "@/lib/fortune/birthStore";
+import { buildTodayCard } from "@/lib/fortune/fortuneCard";
+import { shareResult, copyText } from "@/lib/fortune/shareResult";
 import { eunNeun } from "@/lib/korean";
 import BirthForm from "./BirthForm";
 import { Stars, dateLabel, range } from "./parts";
@@ -76,7 +79,8 @@ export default function TodayFortune() {
 }
 
 function TodayResult({ saju, today }) {
-  const [copied, setCopied] = useState(false);
+  const [hint, setHint] = useState("");
+  const [card, setCard] = useState(null);
   const day = buildDay(saju, today);
   const week = range(0, 6).map((i) => {
     const date = addDays(today, i);
@@ -88,21 +92,73 @@ function TodayResult({ saju, today }) {
   const godRel = REL_WORDS[Math.floor(day.tenGod / 2)];
   const samePolarity = dm % 2 === day.pillar.stem % 2;
 
+  // 결과가 바뀔 때마다 공유용 이미지 카드를 미리 그려 둡니다. 공유 버튼을 누른 뒤에 그리면
+  // 기기에서 "사용자가 누른 동작"으로 보지 않아 공유 창이 막히는 경우가 있어서예요.
+  const cardKey = `${saju.dayMaster}-${saju.pillars.day.branch}-${today.year}-${today.month}-${today.day}`;
+  useEffect(() => {
+    let cancelled = false;
+    setCard(null);
+    buildTodayCard({
+      dateText: `${today.year}년 ${dateLabel(today)} · ${day.pillar.ko}(${day.pillar.hanja})일`,
+      godLine: `${day.god.god}(${day.god.hanja})의 날 · ${day.god.keyword}`,
+      title: day.god.title,
+      stars: day.overall,
+      summary: day.god.overall,
+      advice: day.advice,
+      areas: AREAS.map(([k, label]) => ({ label, stars: day.god.stars[k], text: day.god[k] })),
+      luckyElement: day.luckyElement,
+      luckyColor: day.luckyColor,
+      luckyNumbers: day.luckyNumbers.join(", "),
+    })
+      .then((img) => !cancelled && setCard(img))
+      .catch(() => {
+        /* 카드를 못 그리면 글로만 공유해요 */
+      });
+    return () => {
+      cancelled = true;
+    };
+    // day·week는 saju와 today가 같으면 내용도 같습니다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cardKey]);
+
+  const url = `${SITE.url}/fortune`;
+
   async function share() {
-    const text = `오늘 나의 운세는 "${day.god.title}" — 재미로봄 오늘의 운세`;
-    const url = `${window.location.origin}/fortune`;
-    track("fortune_shared");
+    const shortText = `오늘 나의 운세는 "${day.god.title}" · ${day.god.god}(${day.god.keyword})\n${day.advice}`;
+    const fullText = [
+      `오늘 나의 운세는 "${day.god.title}" (${day.god.god}·${day.god.keyword})`,
+      day.god.overall,
+      `· 오늘의 한마디 ${day.advice}`,
+      `· 행운의 색 ${day.luckyColor} · 행운의 숫자 ${day.luckyNumbers.join(", ")}`,
+      "— 재미로봄 오늘의 운세",
+    ].join("\n");
+    setHint("");
     try {
-      if (navigator.share) {
-        await navigator.share({ title: "재미로봄 오늘의 운세", text, url });
-        return;
+      const r = await shareResult({
+        blob: card?.blob,
+        fileName: "jaemirobom-today-fortune.png",
+        title: "재미로봄 오늘의 운세",
+        shortText,
+        fullText,
+        url,
+      });
+      track("fortune_shared", { mode: r.mode });
+      if (r.mode === "files") {
+        setHint(
+          r.linkCopied
+            ? "링크도 복사해 뒀어요. 사진만 전달됐으면 대화창에 붙여넣어 주세요."
+            : "사진만 전달됐으면 아래 '링크 복사'를 눌러 주소도 함께 보내 주세요."
+        );
+      } else if (r.mode === "copied") {
+        setHint("공유 글과 링크를 복사했어요. 붙여넣어 보내 주세요.");
       }
-      await navigator.clipboard.writeText(`${text}\n${url}`);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      /* 공유 창을 닫은 경우 등 */
+    } catch (e) {
+      if (e.name !== "AbortError") setHint("공유하지 못했어요. 아래 '링크 복사'를 이용해 주세요.");
     }
+  }
+
+  async function copyLink() {
+    setHint((await copyText(url)) ? "링크를 복사했어요." : "링크를 복사하지 못했어요.");
   }
 
   return (
@@ -162,9 +218,13 @@ function TodayResult({ saju, today }) {
 
           <div className={styles.shareRow}>
             <button type="button" className={styles.cta} onClick={share}>
-              {copied ? "링크를 복사했어요" : "친구에게 알려주기"}
+              친구에게 알려주기
+            </button>
+            <button type="button" className={styles.ghostSm} onClick={copyLink}>
+              링크 복사
             </button>
           </div>
+          {hint && <p className={styles.shareHint}>{hint}</p>}
           <p className={styles.disclaimer}>
             사주의 전통적인 해석을 바탕으로 재미로 보는 풀이예요. 중요한 결정은 운세보다 내 판단을 믿어 주세요.
           </p>
@@ -206,13 +266,16 @@ function TodayResult({ saju, today }) {
         <ol className={styles.week}>
           {week.map((w, i) => (
             <li key={i} className={i === 0 ? styles.weekToday : undefined}>
-              <span className={styles.weekDate}>{i === 0 ? "오늘" : dateLabel(w.date)}</span>
-              <span className={styles.weekPillar}>{w.pillar.ko}일</span>
-              <span className={styles.weekTitle}>
-                {w.god.title}
-                <small>{w.god.god}</small>
-              </span>
-              <Stars n={w.overall} label={`${dateLabel(w.date)} 총운`} />
+              <div className={styles.weekTop}>
+                <span className={styles.weekDate}>
+                  {i === 0 ? "오늘" : dateLabel(w.date)}
+                  <small>{w.pillar.ko}일</small>
+                </span>
+                <Stars n={w.overall} label={`${dateLabel(w.date)} 총운`} />
+              </div>
+              <p className={styles.weekDesc}>
+                <b>{w.god.title}</b> {w.god.god}({w.god.keyword})
+              </p>
             </li>
           ))}
         </ol>

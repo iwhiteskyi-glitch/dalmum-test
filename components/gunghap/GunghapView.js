@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { track } from "@vercel/analytics";
 import styles from "@/components/fortune/fortune.module.css";
 import TEXTS from "@/lib/fortune/texts.json";
 import GUNGHAP_TEXTS from "@/lib/fortune/gunghapTexts.json";
+import { buildGunghapCard } from "@/lib/fortune/fortuneCard";
+import { shareResult, copyText } from "@/lib/fortune/shareResult";
+import { SITE } from "@/lib/site";
 import {
   gunghapReading,
   gunghapScore,
@@ -75,41 +78,84 @@ function GunghapResult({ me, partner, reading, gender, areas }) {
   const godAtoB = TEXTS.tenGods[reading.godAtoB];
   const godBtoA = TEXTS.tenGods[reading.godBtoA];
   const dayText = DAY_RELATIONS[reading.dayRelation];
-  const [copied, setCopied] = useState(false);
+  const [hint, setHint] = useState("");
+  const [card, setCard] = useState(null);
 
-  // 제목+점수만 보내면 받는 쪽에서 링크 카드만 덜렁 오는 느낌이라, 실제 결과 내용(오행 관계·
-  // 십신 해석·고른 영역)까지 함께 담아요. url은 따로 넘기지 않고 글 안에 넣어서, 공유 앱이
-  // 글은 빼고 링크 카드만 띄우는 걸 최대한 줄여요.
-  function buildShareText() {
-    const lines = [
+  const pairText = `${STEMS[me.dayMaster]}(${STEMS_HANJA[me.dayMaster]}) × ${STEMS[partner.dayMaster]}(${
+    STEMS_HANJA[partner.dayMaster]
+  })`;
+  const shownAreas = AREAS.filter(([key]) => areas[key]);
+  // 공유용 이미지 카드는 결과가 나오자마자 미리 그려 둡니다. 버튼을 누른 뒤에 그리면 기기가
+  // "사용자가 누른 동작"으로 보지 않아 공유 창이 막히는 경우가 있어서예요. 카드에는 두 사람의
+  // 일간과 풀이만 넣고, 생년월일·성별은 넣지 않아요.
+  const cardKey = `${me.dayMaster}-${partner.dayMaster}-${reading.dayRelation}-${shownAreas.map(([k]) => k).join("")}`;
+  useEffect(() => {
+    let cancelled = false;
+    setCard(null);
+    buildGunghapCard({
+      pairText,
+      title: cat.title,
+      score,
+      stars,
+      summary: cat.summary,
+      relations: [
+        { label: `내가 보는 상대 · ${godAtoB.god}(${godAtoB.hanja})`, text: godAtoB.meaning },
+        { label: `상대가 보는 나 · ${godBtoA.god}(${godBtoA.hanja})`, text: godBtoA.meaning },
+        { label: "일지 관계", text: dayText },
+      ],
+      areas: shownAreas.map(([key, label]) => ({ label, text: cat[key] })),
+    })
+      .then((img) => !cancelled && setCard(img))
+      .catch(() => {
+        /* 카드를 못 그리면 글로만 공유해요 */
+      });
+    return () => {
+      cancelled = true;
+    };
+    // 나머지 값은 모두 cardKey에서 정해집니다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cardKey]);
+
+  const url = `${SITE.url}/gunghap`;
+
+  async function share() {
+    const shortText = `우리 궁합은 "${cat.title}" (${score}점)\n${cat.summary}`;
+    const fullText = [
       `우리 궁합은 "${cat.title}" (${score}점)이에요.`,
       cat.summary,
       `· 내가 보는 상대 (${godAtoB.god}·${godAtoB.hanja}) ${godAtoB.meaning}`,
       `· 상대가 보는 나 (${godBtoA.god}·${godBtoA.hanja}) ${godBtoA.meaning}`,
       `· 일지 관계 ${dayText}`,
-    ];
-    AREAS.filter(([key]) => areas[key]).forEach(([key, label]) => {
-      lines.push(`· ${label} ${cat[key]}`);
-    });
-    lines.push("— 재미로봄 궁합");
-    return lines.join("\n");
+      ...shownAreas.map(([key, label]) => `· ${label} ${cat[key]}`),
+      "— 재미로봄 궁합",
+    ].join("\n");
+    setHint("");
+    try {
+      const r = await shareResult({
+        blob: card?.blob,
+        fileName: "jaemirobom-gunghap.png",
+        title: "재미로봄 궁합",
+        shortText,
+        fullText,
+        url,
+      });
+      track("gunghap_shared", { mode: r.mode });
+      if (r.mode === "files") {
+        setHint(
+          r.linkCopied
+            ? "링크도 복사해 뒀어요. 사진만 전달됐으면 대화창에 붙여넣어 주세요."
+            : "사진만 전달됐으면 아래 '링크 복사'를 눌러 주소도 함께 보내 주세요."
+        );
+      } else if (r.mode === "copied") {
+        setHint("공유 글과 링크를 복사했어요. 붙여넣어 보내 주세요.");
+      }
+    } catch (e) {
+      if (e.name !== "AbortError") setHint("공유하지 못했어요. 아래 '링크 복사'를 이용해 주세요.");
+    }
   }
 
-  async function share() {
-    const url = `${window.location.origin}/gunghap`;
-    const full = `${buildShareText()}\n\n${url}`;
-    track("gunghap_shared");
-    try {
-      if (navigator.share) {
-        await navigator.share({ title: "재미로봄 궁합", text: full });
-        return;
-      }
-      await navigator.clipboard.writeText(full);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      /* 공유 창을 닫은 경우 등 */
-    }
+  async function copyLink() {
+    setHint((await copyText(url)) ? "링크를 복사했어요." : "링크를 복사하지 못했어요.");
   }
 
   return (
@@ -148,9 +194,13 @@ function GunghapResult({ me, partner, reading, gender, areas }) {
 
           <div className={styles.shareRow}>
             <button type="button" className={styles.cta} onClick={share}>
-              {copied ? "링크를 복사했어요" : "친구에게 알려주기"}
+              친구에게 알려주기
+            </button>
+            <button type="button" className={styles.ghostSm} onClick={copyLink}>
+              링크 복사
             </button>
           </div>
+          {hint && <p className={styles.shareHint}>{hint}</p>}
           <p className={styles.disclaimer}>
             사주의 전통적인 개념을 바탕으로 이 사이트가 만든 재미용 참고 점수예요. 관계의 좋고
             나쁨을 판정하는 결과가 아니니, 재미로만 봐 주세요.
@@ -162,7 +212,7 @@ function GunghapResult({ me, partner, reading, gender, areas }) {
         <h2 id="area-title" className={styles.blockTitle}>
           영역별 궁합
         </h2>
-        {AREAS.filter(([key]) => areas[key]).map(([key, label]) => (
+        {shownAreas.map(([key, label]) => (
           <div key={key} className={styles.areaBlock}>
             <span className={styles.areaLabel}>{label}</span>
             <p className={styles.areaText}>{cat[key]}</p>
