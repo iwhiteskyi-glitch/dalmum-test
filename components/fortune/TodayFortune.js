@@ -5,9 +5,11 @@ import Link from "next/link";
 import { track } from "@vercel/analytics";
 import styles from "./fortune.module.css";
 import TEXTS from "@/lib/fortune/texts.json";
+import PERIOD_TEXTS from "@/lib/fortune/periodTexts.json";
 import { SITE } from "@/lib/site";
 import {
   dayReading,
+  hourFlow,
   koreaToday,
   addDays,
   STEMS,
@@ -24,7 +26,7 @@ import { shareResult, copyText } from "@/lib/fortune/shareResult";
 import { encodeFortuneLink, decodeFortuneLink } from "@/lib/fortune/resultLink";
 import { eunNeun } from "@/lib/korean";
 import BirthForm from "./BirthForm";
-import { Stars, dateLabel, range } from "./parts";
+import { Stars, dateLabel, range, hourRangeLabel } from "./parts";
 
 const REL_WORDS = [
   "나와 같은 오행",
@@ -40,6 +42,17 @@ const AREAS = [
   ["health", "건강"],
 ];
 const RELATIONS = Object.fromEntries(TEXTS.relations.map((r) => [r.key, r]));
+const HOUR_NOTES = PERIOD_TEXTS.periodGods.map((g) => g.hourNote);
+const HOUR_FRAMES = Object.fromEntries(PERIOD_TEXTS.hourFrames.map((f) => [f.key, f]));
+
+/** 열두 시진마다 십신·별점·한 줄 설명을 붙입니다. */
+function buildHours(saju, date) {
+  return hourFlow(saju, date).map((h) => {
+    const god = TEXTS.tenGods[h.tenGod];
+    const stars = Math.min(5, Math.max(1, god.stars.overall + RELATIONS[h.relation].adjust));
+    return { ...h, god, stars, note: HOUR_NOTES[h.tenGod] };
+  });
+}
 
 /** 어느 날의 운세 한 묶음 */
 function buildDay(saju, date) {
@@ -114,6 +127,22 @@ function TodayResult({ saju, today, snapshot = false }) {
   // (오늘은→내일은, 오늘의→내일의처럼 그대로 이어져요).
   const asDay = (text) => (tomorrow ? text.replaceAll("오늘", "내일") : text);
   const day = buildDay(saju, date);
+  const hours = buildHours(saju, date);
+  // 추천 시간은 깨어 있는 시간대(묘시 아침 5:30 ~ 해시 밤 11:30) 안에서 골라요. 새벽 2시가
+  // "숨 고르는 시간"으로 나오면 쓸모가 없으니까요. 별점이 같을 때는 사람들이 주로 움직이는
+  // 시간(사시~술시, 오전 9:30~밤 9:30)을 먼저, 그다음엔 이른 시간을 골라 늘 같은 결과가
+  // 나오게 합니다.
+  const awake = hours.filter((h) => h.branch >= 3);
+  const isPrime = (h) => (h.branch >= 5 && h.branch <= 10 ? 1 : 0);
+  const pick = (byStars) => [...awake].sort((a, b) => byStars(a, b) || isPrime(b) - isPrime(a) || a.branch - b.branch)[0];
+  const bestHour = pick((a, b) => b.stars - a.stars);
+  const lowest = pick((a, b) => a.stars - b.stars);
+  // 깨어 있는 아홉 칸의 별점이 모두 같으면 같은 칸이 양쪽으로 뽑히니, 그때는 한 칸만 보여 줍니다.
+  const watchHour = lowest === bestHour ? null : lowest;
+  const hourPicks = [
+    ["best", bestHour],
+    ["watch", watchHour],
+  ].filter(([, h]) => h);
   const week = range(0, 6).map((i) => {
     const d = addDays(today, i);
     return { date: d, ...buildDay(saju, d) };
@@ -144,6 +173,11 @@ function TodayResult({ saju, today, snapshot = false }) {
       luckyColor: day.luckyColor,
       luckyNumbers: day.luckyNumbers.join(", "),
       luckyDirection: day.luckyDirection,
+      hours: hourPicks.map(([key, h]) => ({
+        label: HOUR_FRAMES[key].label,
+        time: hourRangeLabel(h.startMin, h.endMin),
+        sub: `${BRANCHES[h.branch]}시 · ${h.god.god}`,
+      })),
     })
       .then((img) => !cancelled && setCard(img))
       .catch(() => {
@@ -328,6 +362,53 @@ function TodayResult({ saju, today, snapshot = false }) {
             나오는 날은 멀리 가기보다 가까운 곳이 어울리는 날로 봐요.
           </p>
         </details>
+
+        <section className={styles.block} aria-labelledby="hour-title">
+          <h2 id="hour-title" className={styles.blockTitle}>
+            {dayLabel} 시간대별 흐름
+          </h2>
+          <p className={styles.blockLead}>
+            사주에서 하루는 두 시간씩 열두 칸(십이시)으로 나뉘어요. 그날 일간으로 열두 시간의 천간을
+            정하고, 그 천간이 내 일간과 어떤 십신 관계인지에 내 일지와 시지의 관계까지 더해 별점을
+            냈어요. 그래서 십신 이름이 같아도 별점이 다를 수 있어요. 태어난 시간을 몰라도 볼 수 있어요.
+          </p>
+          <div className={styles.hourPicks}>
+            {hourPicks.map(([key, h]) => (
+              <div key={key} className={`${styles.hourPick} ${key === "best" ? styles.hourPickBest : ""}`}>
+                <span className={styles.hourPickLabel}>{HOUR_FRAMES[key].label}</span>
+                <strong className={styles.hourPickTime}>
+                  {hourRangeLabel(h.startMin, h.endMin)}
+                  <small>
+                    {BRANCHES[h.branch]}시({BRANCHES_HANJA[h.branch]}) · {h.god.god}
+                  </small>
+                </strong>
+                <p className={styles.hourPickText}>
+                  {h.note} {HOUR_FRAMES[key].text}
+                </p>
+              </div>
+            ))}
+          </div>
+          <ol className={styles.hourList}>
+            {hours.map((h) => (
+              <li
+                key={h.branch}
+                className={h === bestHour ? styles.hourBest : h === watchHour ? styles.hourWatch : undefined}
+              >
+                <span className={styles.hourTime}>
+                  {hourRangeLabel(h.startMin, h.endMin)}
+                  <small>{BRANCHES[h.branch]}시</small>
+                </span>
+                <span className={styles.hourGod}>{h.god.god}</span>
+                <Stars n={h.stars} label={`${BRANCHES[h.branch]}시 흐름`} />
+              </li>
+            ))}
+          </ol>
+          <p className={styles.note}>
+            시각은 동경 127.5도 기준 30분 보정을 반영해 한국 시계 시각으로 적었어요. 그래서 자시가 밤
+            11:30에 시작해요. 맨 윗줄 자시는 하루가 시작되는 시간이라 시계로는 전날 밤 11:30부터고,
+            위에서 고른 두 시간은 깨어 있는 시간대(아침 5:30~밤 11:30) 안에서 골랐어요.
+          </p>
+        </section>
 
         <section className={styles.block} aria-labelledby="week-title">
           <h2 id="week-title" className={styles.blockTitle}>

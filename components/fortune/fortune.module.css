@@ -655,6 +655,95 @@
   font-weight: 700;
 }
 
+/* ---------- 시간대별 흐름(열두 시진) ---------- */
+.hourPicks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0 0;
+}
+.hourPick {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+.hourPickBest {
+  border-color: var(--f);
+  background: var(--f-soft);
+}
+.hourPickLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted-ink);
+  margin-bottom: 4px;
+}
+.hourPickBest .hourPickLabel {
+  color: var(--f-deep);
+}
+.hourPickTime {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.hourPickTime small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted-ink);
+}
+.hourPickText {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.hourList {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+.hourList li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-top: 1px solid var(--border);
+  font-size: 13.5px;
+}
+.hourList li:first-child {
+  border-top: none;
+}
+.hourList li.hourBest {
+  background: var(--f-soft);
+  border-radius: var(--radius-sm);
+  border-top-color: transparent;
+}
+.hourList li.hourWatch {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  border-top-color: transparent;
+}
+.hourTime {
+  font-weight: 700;
+  color: var(--ink);
+}
+.hourTime small {
+  margin-left: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--muted-ink);
+}
+.hourGod {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--f-deep);
+}
+
 /* ---------- 신년운세: 눌러서 펼치는 열두 달 목록 ---------- */
 .monthList {
   list-style: none;
@@ -1388,6 +1477,9 @@
   }
   .areas,
   .twoCol {
+    grid-template-columns: 1fr;
+  }
+  .hourPicks {
     grid-template-columns: 1fr;
   }
   .lucky {
