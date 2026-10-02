@@ -42,6 +42,12 @@ function resolveParts(categories) {
   });
 }
 
+/** 여섯 부위를 따로 보는 것과 별개로, 턱선(얼굴 윤곽) × 이목구비 배치를 묶어서 보는
+ *  종합 해석. 이미 검증된 두 부위의 카테고리 번호만 조합하므로 새 계산은 없어요. */
+function resolveSynthesis(categories) {
+  return TEXTS.synthesis[`${categories.jaw}-${categories.layout}`];
+}
+
 export default function GwansangView() {
   const [shared, setShared] = useState(null);
   const resultRef = useRef(null);
@@ -69,7 +75,7 @@ export default function GwansangView() {
             친구가 보낸 <b>관상</b> 결과예요. 아래에서 내 관상도 바로 볼 수 있어요.
           </p>
           <div className={styles.result}>
-            <GwansangResult parts={resolveParts(shared)} snapshot />
+            <GwansangResult parts={resolveParts(shared)} categories={shared} snapshot />
           </div>
           <p className={styles.sectionDivider}>내 관상 보기</p>
         </>
@@ -267,6 +273,7 @@ function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
   const [card, setCard] = useState(null);
 
   const keywordsLine = parts.map((p) => p.keyword).join(" · ");
+  const synthesis = categories ? resolveSynthesis(categories) : null;
   const cardKey = PARTS.map((p) => categories?.[p]).join("-");
 
   useEffect(() => {
@@ -290,6 +297,7 @@ function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
         keywordsLine,
         intro: TEXTS.intro,
         parts: parts.map((p) => ({ label: p.label, keyword: p.keyword, text: p.text })),
+        synthesis,
       });
       if (!cancelled) setCard(img);
     })().catch(() => {
@@ -308,6 +316,7 @@ function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
     const fullText = [
       shortText,
       ...parts.map((p) => `[${p.label}] ${p.keyword} — ${p.text}`),
+      ...(synthesis ? [`\n[종합 보기] ${synthesis.title} — ${synthesis.text}`] : []),
       `\n${TEXTS.disclaimer}`,
       "— 재미로봄 관상",
     ].join("\n");
@@ -370,6 +379,15 @@ function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
           </div>
         ))}
       </div>
+
+      {synthesis && (
+        <div className={gs.synthesisBox}>
+          <span className={gs.synthesisLabel}>{TEXTS.synthesisLabel}</span>
+          <p className={gs.synthesisLead}>{TEXTS.synthesisLead}</p>
+          <h3 className={gs.synthesisTitle}>{synthesis.title}</h3>
+          <p className={gs.synthesisText}>{synthesis.text}</p>
+        </div>
+      )}
 
       <p className={styles.disclaimer} style={{ marginTop: 20 }}>
         {TEXTS.disclaimer}

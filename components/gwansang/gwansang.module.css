@@ -128,6 +128,42 @@
   color: var(--f-deep);
 }
 
+/* 종합 보기 — 턱선(윤곽) × 이목구비 배치를 묶어서 보는 해석 */
+.synthesisBox {
+  margin: 22px 0;
+  padding: 18px 20px;
+  border-radius: var(--radius-md, 16px);
+  background: var(--f-soft);
+  border: 1px solid var(--f);
+}
+.synthesisLabel {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--f-deep);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 4px 11px;
+  margin-bottom: 8px;
+}
+.synthesisLead {
+  font-size: 13px;
+  color: var(--muted-ink);
+  margin: 0 0 10px;
+}
+.synthesisTitle {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--f-deep);
+  margin: 0 0 6px;
+}
+.synthesisText {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+
 /* 부위별 해석 목록 */
 .partList {
   display: flex;
