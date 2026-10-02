@@ -22,7 +22,8 @@ import { encodeSajuLink, decodeSajuLink } from "@/lib/fortune/resultLink";
 import { SITE } from "@/lib/site";
 import BirthForm from "./BirthForm";
 import { Char, birthLabel } from "./parts";
-import { ilganHref } from "@/lib/fortune/ilgan";
+import { ilganHref } from "@/lib/fortune/ilganSlugs";
+import { eunNeun } from "@/lib/korean";
 
 /** /fortune/saju — 생년월일 입력 + 내 사주 팔자 표·오행 분포·일간 풀이 */
 export default function SajuView() {
@@ -66,6 +67,18 @@ export default function SajuView() {
   );
 }
 
+/** 일간 소개 페이지(더 자세히 알아보기)에서 공유에 담을 글 — 소제목은 그 페이지와 같게 씁니다. */
+function detailSections(page, name) {
+  if (!page) return null;
+  return [
+    { title: `${name}${eunNeun(name)} 어떤 글자일까`, text: page.symbol },
+    { title: "성격과 기질", text: page.personality },
+    { title: "사람 사이에서는", text: page.relationships },
+    { title: "일과 공부에서는", text: page.workStudy },
+    { title: "오행으로 보는 균형", text: page.balance },
+  ];
+}
+
 /**
  * snapshot: 친구가 보낸 링크로 보는 결과 — 생년월일·음력·보정 안내(링크에 담지 않는 정보)와
  * 공유 버튼을 빼고, 팔자와 풀이만 보여 줍니다.
@@ -73,7 +86,9 @@ export default function SajuView() {
 function SajuResult({ saju, snapshot = false }) {
   const [hint, setHint] = useState("");
   const [card, setCard] = useState(null);
+  const [detail, setDetail] = useState(null);
   const me = TEXTS.ilgan[saju.dayMaster];
+  const ilganName = `${me.stem}${me.element}`;
   const pillarCols = [
     ["시주", saju.pillars.hour, "태어난 시간"],
     ["일주", saju.pillars.day, "태어난 날 · 나"],
@@ -94,37 +109,52 @@ function SajuResult({ saju, snapshot = false }) {
     if (snapshot) return;
     let cancelled = false;
     setCard(null);
+    setDetail(null);
     const char = (n, kind) =>
       n == null
         ? null
         : kind === "stem"
           ? { hanja: STEMS_HANJA[n], ko: STEMS[n], el: STEM_ELEMENT[n] }
           : { hanja: BRANCHES_HANJA[n], ko: BRANCHES[n], el: BRANCH_ELEMENT[n] };
-    buildSajuCard({
-      ilganLine: `${me.stem}(${me.hanja})${me.element} 일간`,
-      alias: me.alias,
-      keywords: me.keywords.map((k) => `#${k}`).join("  "),
-      // 화면의 표와 같은 순서(시주·일주·월주·연주)로 그립니다.
-      pillars: [
-        ["시주", saju.pillars.hour],
-        ["일주", saju.pillars.day],
-        ["월주", saju.pillars.month],
-        ["연주", saju.pillars.year],
-      ].map(([name, p]) => ({
-        name,
-        me: name === "일주",
-        stem: char(p?.stem, "stem"),
-        branch: char(p?.branch, "branch"),
-      })),
-      elements: ELEMENTS.map((el, i) => ({ name: `${el}(${ELEMENTS_HANJA[i]})`, count: saju.elements[i] })),
-      summary: me.summary,
-      strengths: me.strengths,
-      cautions: me.cautions,
-    })
-      .then((img) => !cancelled && setCard(img))
-      .catch(() => {
-        /* 카드를 못 그리면 글로만 공유해요 */
+    (async () => {
+      // '더 자세히 알아보기' 페이지의 글도 공유에 담습니다. 열 가지 일간 글이 모두 들어 있는
+      // 파일이라, 결과를 볼 때만 따로 내려받도록 떼어 뒀어요(없으면 그냥 빼고 만들어요).
+      let page = null;
+      try {
+        page = (await import("@/lib/fortune/ilganPages.json")).default.pages[saju.dayMaster];
+      } catch {
+        /* 못 받아도 기본 풀이로 공유해요 */
+      }
+      if (cancelled) return;
+      setDetail(page || null);
+      const img = await buildSajuCard({
+        ilganLine: `${me.stem}(${me.hanja})${me.element} 일간`,
+        alias: me.alias,
+        keywords: me.keywords.map((k) => `#${k}`).join("  "),
+        // 화면의 표와 같은 순서(시주·일주·월주·연주)로 그립니다.
+        pillars: [
+          ["시주", saju.pillars.hour],
+          ["일주", saju.pillars.day],
+          ["월주", saju.pillars.month],
+          ["연주", saju.pillars.year],
+        ].map(([name, p]) => ({
+          name,
+          me: name === "일주",
+          stem: char(p?.stem, "stem"),
+          branch: char(p?.branch, "branch"),
+        })),
+        elements: ELEMENTS.map((el, i) => ({ name: `${el}(${ELEMENTS_HANJA[i]})`, count: saju.elements[i] })),
+        summary: me.summary,
+        strengths: me.strengths,
+        cautions: me.cautions,
+        detailTitle: `${ilganName} 일간 더 알아보기`,
+        intro: page?.intro,
+        detail: detailSections(page, ilganName),
       });
+      if (!cancelled) setCard(img);
+    })().catch(() => {
+      /* 카드를 못 그리면 글로만 공유해요 */
+    });
     return () => {
       cancelled = true;
     };
@@ -141,12 +171,17 @@ function SajuResult({ saju, snapshot = false }) {
       .map((x) => `${x.ko}(${x.hanja})`)
       .join(" · ");
     const shortText = `내 일간은 ${me.stem}(${me.hanja})${me.element} — ${me.alias}`;
+    const sections = detailSections(detail, ilganName);
     const fullText = [
       `내 일간은 ${me.stem}(${me.hanja})${me.element} — ${me.alias}`,
       `· 여덟 글자 ${eight}`,
       `· 오행 ${ELEMENTS.map((el, i) => `${el} ${saju.elements[i]}`).join(" · ")}`,
       me.summary,
-      "— 재미로봄 내 사주 팔자",
+      `[이런 점이 빛나요] ${me.strengths.join(" / ")}`,
+      `[이런 점은 살펴봐요] ${me.cautions.join(" / ")}`,
+      // 더 자세히 알아보기 페이지의 글까지 이어 붙입니다.
+      ...(sections || []).map((s) => `\n[${s.title}]\n${s.text}`),
+      "\n— 재미로봄 내 사주 팔자",
     ].join("\n");
     setHint("");
     try {
@@ -312,7 +347,8 @@ function SajuResult({ saju, snapshot = false }) {
             </div>
             {hint && <p className={styles.shareHint}>{hint}</p>}
             <p className={styles.small}>
-              공유하면 여덟 글자와 풀이가 담긴 사진·링크가 전해져요. 생년월일은 직접 담지 않지만,
+              공유하면 여덟 글자와 일간 풀이가 담긴 사진·링크가 전해져요. &lsquo;더 자세히 알아보기&rsquo;의
+              글도 사진에 함께 들어가요. 생년월일은 직접 담지 않지만,
               팔자는 태어난 날과 시간으로 정해지는 글자라서 받는 사람이 짐작할 수도 있어요.
             </p>
           </>

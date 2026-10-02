@@ -489,6 +489,8 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  /* 바로 위 버튼·내용과 붙어 보이지 않게 띄웁니다. */
+  margin-top: 22px;
 }
 .shareRow .cta {
   width: auto;
