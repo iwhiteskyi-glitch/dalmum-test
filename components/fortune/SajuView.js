@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { track } from "@vercel/analytics";
 import styles from "./fortune.module.css";
@@ -16,6 +16,10 @@ import {
   BRANCH_ELEMENT,
 } from "@/lib/fortune/saju";
 import { useBirth } from "@/lib/fortune/birthStore";
+import { buildSajuCard } from "@/lib/fortune/fortuneCard";
+import { shareResult, copyText } from "@/lib/fortune/shareResult";
+import { encodeSajuLink, decodeSajuLink } from "@/lib/fortune/resultLink";
+import { SITE } from "@/lib/site";
 import BirthForm from "./BirthForm";
 import { Char, birthLabel } from "./parts";
 import { ilganHref } from "@/lib/fortune/ilgan";
@@ -23,15 +27,37 @@ import { ilganHref } from "@/lib/fortune/ilgan";
 /** /fortune/saju — 생년월일 입력 + 내 사주 팔자 표·오행 분포·일간 풀이 */
 export default function SajuView() {
   const { saju } = useBirth();
+  const [shared, setShared] = useState(null);
   const resultRef = useRef(null);
 
+  // 주소 끝에 친구가 보낸 팔자가 담겨 있으면, 생년월일을 넣지 않아도 그 결과부터 보여 줍니다.
+  useEffect(() => {
+    const got = decodeSajuLink(window.location.hash);
+    if (!got) return;
+    setShared(got.saju);
+    track("saju_shared_link_opened");
+  }, []);
+
   function onSubmitted(input, remember) {
+    setShared(null);
+    if (window.location.hash) window.history.replaceState(null, "", window.location.pathname);
     track("saju_result_viewed", { calendar: input.calendar, time: input.hour == null ? "unknown" : "known", remember });
     requestAnimationFrame(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
   }
 
   return (
     <>
+      {shared && (
+        <>
+          <p className={styles.sharedNote}>
+            친구가 보낸 <b>사주 팔자</b>예요. 아래에서 내 사주도 바로 볼 수 있어요.
+          </p>
+          <div className={styles.result}>
+            <SajuResult saju={shared} snapshot />
+          </div>
+          <p className={styles.sectionDivider}>내 사주 보기</p>
+        </>
+      )}
       <BirthForm submitLabel="내 사주 보기" onSubmitted={onSubmitted} />
       <div ref={resultRef} className={styles.result} aria-live="polite">
         {saju && <SajuResult saju={saju} />}
@@ -40,7 +66,13 @@ export default function SajuView() {
   );
 }
 
-function SajuResult({ saju }) {
+/**
+ * snapshot: 친구가 보낸 링크로 보는 결과 — 생년월일·음력·보정 안내(링크에 담지 않는 정보)와
+ * 공유 버튼을 빼고, 팔자와 풀이만 보여 줍니다.
+ */
+function SajuResult({ saju, snapshot = false }) {
+  const [hint, setHint] = useState("");
+  const [card, setCard] = useState(null);
   const me = TEXTS.ilgan[saju.dayMaster];
   const pillarCols = [
     ["시주", saju.pillars.hour, "태어난 시간"],
@@ -53,15 +85,109 @@ function SajuResult({ saju }) {
   const l = saju.lunar;
   const pad = (n) => String(n).padStart(2, "0");
 
+  // 결과가 바뀔 때마다 공유용 이미지 카드를 미리 그려 둡니다(버튼을 누른 뒤에 그리면 기기가
+  // "사용자가 누른 동작"으로 보지 않아 공유 창이 막히는 경우가 있어서예요).
+  const cardKey = [saju.pillars.year, saju.pillars.month, saju.pillars.day, saju.pillars.hour]
+    .map((x) => (x ? x.index : "x"))
+    .join("-");
+  useEffect(() => {
+    if (snapshot) return;
+    let cancelled = false;
+    setCard(null);
+    const char = (n, kind) =>
+      n == null
+        ? null
+        : kind === "stem"
+          ? { hanja: STEMS_HANJA[n], ko: STEMS[n], el: STEM_ELEMENT[n] }
+          : { hanja: BRANCHES_HANJA[n], ko: BRANCHES[n], el: BRANCH_ELEMENT[n] };
+    buildSajuCard({
+      ilganLine: `${me.stem}(${me.hanja})${me.element} 일간`,
+      alias: me.alias,
+      keywords: me.keywords.map((k) => `#${k}`).join("  "),
+      // 화면의 표와 같은 순서(시주·일주·월주·연주)로 그립니다.
+      pillars: [
+        ["시주", saju.pillars.hour],
+        ["일주", saju.pillars.day],
+        ["월주", saju.pillars.month],
+        ["연주", saju.pillars.year],
+      ].map(([name, p]) => ({
+        name,
+        me: name === "일주",
+        stem: char(p?.stem, "stem"),
+        branch: char(p?.branch, "branch"),
+      })),
+      elements: ELEMENTS.map((el, i) => ({ name: `${el}(${ELEMENTS_HANJA[i]})`, count: saju.elements[i] })),
+      summary: me.summary,
+      strengths: me.strengths,
+      cautions: me.cautions,
+    })
+      .then((img) => !cancelled && setCard(img))
+      .catch(() => {
+        /* 카드를 못 그리면 글로만 공유해요 */
+      });
+    return () => {
+      cancelled = true;
+    };
+    // 팔자가 같으면 풀이도 같습니다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cardKey, snapshot]);
+
+  // 링크에 팔자를 담아서, 받은 사람이 생년월일을 넣지 않아도 같은 결과를 보게 합니다.
+  const url = `${SITE.url}/fortune/saju${encodeSajuLink(saju)}`;
+
+  async function share() {
+    const eight = [saju.pillars.year, saju.pillars.month, saju.pillars.day, saju.pillars.hour]
+      .filter(Boolean)
+      .map((x) => `${x.ko}(${x.hanja})`)
+      .join(" · ");
+    const shortText = `내 일간은 ${me.stem}(${me.hanja})${me.element} — ${me.alias}`;
+    const fullText = [
+      `내 일간은 ${me.stem}(${me.hanja})${me.element} — ${me.alias}`,
+      `· 여덟 글자 ${eight}`,
+      `· 오행 ${ELEMENTS.map((el, i) => `${el} ${saju.elements[i]}`).join(" · ")}`,
+      me.summary,
+      "— 재미로봄 내 사주 팔자",
+    ].join("\n");
+    setHint("");
+    try {
+      const r = await shareResult({
+        blob: card?.blob,
+        fileName: "jaemirobom-saju.png",
+        title: "재미로봄 내 사주 팔자",
+        shortText,
+        fullText,
+        url,
+      });
+      track("saju_shared", { mode: r.mode });
+      if (r.mode === "files") {
+        setHint(
+          r.linkCopied
+            ? "링크도 복사해 뒀어요. 사진만 전달됐으면 대화창에 붙여넣어 주세요."
+            : "사진만 전달됐으면 아래 '링크 복사'를 눌러 주소도 함께 보내 주세요."
+        );
+      } else if (r.mode === "copied") {
+        setHint("공유 글과 링크를 복사했어요. 붙여넣어 보내 주세요.");
+      }
+    } catch (e) {
+      if (e.name !== "AbortError") setHint("공유하지 못했어요. 아래 '링크 복사'를 이용해 주세요.");
+    }
+  }
+
+  async function copyLink() {
+    setHint((await copyText(url)) ? "링크를 복사했어요." : "링크를 복사하지 못했어요.");
+  }
+
   return (
     <>
       <section className={styles.block} aria-labelledby="saju-title">
         <h2 id="saju-title" className={styles.blockTitle}>
           내 사주 팔자
         </h2>
-        <p className={styles.blockLead}>
-          {birthLabel(saju)} · {saju.animal}띠
-        </p>
+        {!snapshot && (
+          <p className={styles.blockLead}>
+            {birthLabel(saju)} · {saju.animal}띠
+          </p>
+        )}
         <div className={styles.pillars}>
           {pillarCols.map(([name, p, sub]) => (
             <div key={name} className={`${styles.pillar} ${name === "일주" ? styles.pillarMe : ""}`}>
@@ -86,6 +212,7 @@ function SajuResult({ saju }) {
             .map((p) => `${p.ko}(${p.hanja})`)
             .join(" · ")}
         </p>
+        {!snapshot && (
         <ul className={styles.calcInfo}>
           {saju.input.calendar === "solar" && l && (
             <li>
@@ -103,11 +230,13 @@ function SajuResult({ saju }) {
           )}
           <li>띠와 연주는 설날이 아니라 입춘, 월주는 그달의 절기가 시작되는 시각을 기준으로 정했어요.</li>
         </ul>
-        {saju.notes.map((n) => (
-          <p key={n} className={styles.note}>
-            {n}
-          </p>
-        ))}
+        )}
+        {!snapshot &&
+          saju.notes.map((n) => (
+            <p key={n} className={styles.note}>
+              {n}
+            </p>
+          ))}
 
         <h3 className={styles.subTitle}>오행 분포</h3>
         <ul className={styles.elements}>
@@ -171,6 +300,23 @@ function SajuResult({ saju }) {
             {me.element} 일간 더 자세히 알아보기 →
           </Link>
         </p>
+        {!snapshot && (
+          <>
+            <div className={styles.shareRow}>
+              <button type="button" className={styles.cta} onClick={share}>
+                친구에게 알려주기
+              </button>
+              <button type="button" className={styles.ghostSm} onClick={copyLink}>
+                링크 복사
+              </button>
+            </div>
+            {hint && <p className={styles.shareHint}>{hint}</p>}
+            <p className={styles.small}>
+              공유하면 여덟 글자와 풀이가 담긴 사진·링크가 전해져요. 생년월일은 직접 담지 않지만,
+              팔자는 태어난 날과 시간으로 정해지는 글자라서 받는 사람이 짐작할 수도 있어요.
+            </p>
+          </>
+        )}
         <p className={styles.disclaimer}>
           사주의 전통적인 해석을 바탕으로 재미로 보는 풀이예요. 사람의 성격과 앞날은 여덟 글자보다 훨씬 다양해요.
         </p>

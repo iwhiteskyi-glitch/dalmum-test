@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { track } from "@vercel/analytics";
 import styles from "./fortune.module.css";
@@ -16,6 +16,10 @@ import {
   STEM_ELEMENT,
 } from "@/lib/fortune/saju";
 import { useBirth } from "@/lib/fortune/birthStore";
+import { buildSaeunCard } from "@/lib/fortune/fortuneCard";
+import { shareResult, copyText } from "@/lib/fortune/shareResult";
+import { encodeSaeunLink, decodeSaeunLink } from "@/lib/fortune/resultLink";
+import { SITE } from "@/lib/site";
 import BirthForm from "./BirthForm";
 import { Stars, shortDateLabel } from "./parts";
 
@@ -32,22 +36,43 @@ export default function SaeunView() {
   const { saju } = useBirth();
   const thisYear = useMemo(() => currentSajuYear(), []);
   const [sajuYear, setSajuYear] = useState(thisYear + 1);
+  const [shared, setShared] = useState(null);
+
+  // 주소 끝에 친구가 보낸 결과가 담겨 있으면, 생년월일을 넣지 않아도 그 결과부터 보여 줍니다.
+  useEffect(() => {
+    const got = decodeSaeunLink(window.location.hash);
+    if (!got) return;
+    setShared(got);
+    track("saeun_shared_link_opened");
+  }, []);
 
   function onSubmitted(input, remember) {
+    setShared(null);
+    if (window.location.hash) window.history.replaceState(null, "", window.location.pathname);
     track("saeun_result_viewed", { calendar: input.calendar, time: input.hour == null ? "unknown" : "known", remember });
   }
 
   return (
     <>
-      <BirthForm submitLabel="신년운세 보기" onSubmitted={onSubmitted} />
-      {saju && (
-        <SaeunResult saju={saju} thisYear={thisYear} sajuYear={sajuYear} onPick={setSajuYear} />
+      {shared && (
+        <>
+          <p className={styles.sharedNote}>
+            친구가 보낸 <b>{shared.sajuYear}년 신년운세</b>예요. 아래에서 내 신년운세도 바로 볼 수 있어요.
+          </p>
+          <SaeunResult saju={shared.saju} thisYear={thisYear} sajuYear={shared.sajuYear} snapshot />
+          <p className={styles.sectionDivider}>내 신년운세 보기</p>
+        </>
       )}
+      <BirthForm submitLabel="신년운세 보기" onSubmitted={onSubmitted} />
+      {saju && <SaeunResult saju={saju} thisYear={thisYear} sajuYear={sajuYear} onPick={setSajuYear} />}
     </>
   );
 }
 
-function SaeunResult({ saju, thisYear, sajuYear, onPick }) {
+/** snapshot: 친구가 보낸 링크로 보는 결과 — 연도 버튼과 공유 버튼 없이 결과만 보여 줍니다. */
+function SaeunResult({ saju, thisYear, sajuYear, onPick, snapshot = false }) {
+  const [hint, setHint] = useState("");
+  const [card, setCard] = useState(null);
   const reading = useMemo(() => {
     try {
       return saeunReading(saju, sajuYear);
@@ -55,6 +80,88 @@ function SaeunResult({ saju, thisYear, sajuYear, onPick }) {
       return null;
     }
   }, [saju, sajuYear]);
+
+  // 결과가 바뀔 때마다 공유용 이미지 카드를 미리 그려 둡니다(버튼을 누른 뒤에 그리면 기기가
+  // "사용자가 누른 동작"으로 보지 않아 공유 창이 막히는 경우가 있어서예요).
+  const cardKey = `${saju.dayMaster}-${saju.pillars.day.branch}-${sajuYear}`;
+  useEffect(() => {
+    if (snapshot || !reading) return;
+    let cancelled = false;
+    setCard(null);
+    const g = PERIOD_GODS[reading.year.tenGod];
+    buildSaeunCard({
+      yearText: `${sajuYear}년 ${reading.year.pillar.ko}(${reading.year.pillar.hanja})년`,
+      godLine: `${g.god}(${g.hanja})의 해 · ${g.keyword}`,
+      title: g.yearTitle,
+      stars: Math.min(5, Math.max(1, g.stars.overall + RELATION_ADJUST[reading.year.relation])),
+      summary: g.yearText,
+      advice: g.advice[0],
+      luckyElement: reading.year.luckyElement,
+      luckyColor: reading.year.luckyColor,
+      luckyNumbers: reading.year.luckyNumbers.join(", "),
+      luckyDirection: reading.year.luckyDirection,
+      months: reading.months.map((m) => {
+        const mg = PERIOD_GODS[m.tenGod];
+        return {
+          date: m.start.year !== sajuYear ? `${m.start.year}년 ${shortDateLabel(m.start)}` : shortDateLabel(m.start),
+          god: mg.god,
+          stars: Math.min(5, Math.max(1, mg.stars.overall + RELATION_ADJUST[m.relation])),
+        };
+      }),
+    })
+      .then((img) => !cancelled && setCard(img))
+      .catch(() => {
+        /* 카드를 못 그리면 글로만 공유해요 */
+      });
+    return () => {
+      cancelled = true;
+    };
+    // reading은 saju와 sajuYear가 같으면 내용도 같습니다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cardKey, snapshot]);
+
+  // 링크에 결과를 담아서, 받은 사람이 생년월일을 넣지 않아도 같은 결과를 보게 합니다.
+  const url = `${SITE.url}/fortune/saeun${encodeSaeunLink(sajuYear, saju)}`;
+
+  async function share() {
+    const g = reading ? PERIOD_GODS[reading.year.tenGod] : null;
+    if (!g) return;
+    const shortText = `${sajuYear}년 나의 신년운세는 "${g.yearTitle}" · ${g.god}(${g.keyword})`;
+    const fullText = [
+      `${sajuYear}년 나의 신년운세는 "${g.yearTitle}" (${g.god}·${g.keyword})`,
+      g.yearText,
+      `· 한 해의 한마디 ${g.advice[0]}`,
+      `· 이 해의 색 ${reading.year.luckyColor} · 숫자 ${reading.year.luckyNumbers.join(", ")} · 방향 ${reading.year.luckyDirection}`,
+      "— 재미로봄 신년운세",
+    ].join("\n");
+    setHint("");
+    try {
+      const r = await shareResult({
+        blob: card?.blob,
+        fileName: "jaemirobom-saeun.png",
+        title: `재미로봄 ${sajuYear}년 신년운세`,
+        shortText,
+        fullText,
+        url,
+      });
+      track("saeun_shared", { mode: r.mode });
+      if (r.mode === "files") {
+        setHint(
+          r.linkCopied
+            ? "링크도 복사해 뒀어요. 사진만 전달됐으면 대화창에 붙여넣어 주세요."
+            : "사진만 전달됐으면 아래 '링크 복사'를 눌러 주소도 함께 보내 주세요."
+        );
+      } else if (r.mode === "copied") {
+        setHint("공유 글과 링크를 복사했어요. 붙여넣어 보내 주세요.");
+      }
+    } catch (e) {
+      if (e.name !== "AbortError") setHint("공유하지 못했어요. 아래 '링크 복사'를 이용해 주세요.");
+    }
+  }
+
+  async function copyLink() {
+    setHint((await copyText(url)) ? "링크를 복사했어요." : "링크를 복사하지 못했어요.");
+  }
 
   if (!reading) {
     return <p className={styles.note}>이 연도의 신년운세는 계산할 수 없어요.</p>;
@@ -66,23 +173,25 @@ function SaeunResult({ saju, thisYear, sajuYear, onPick }) {
 
   return (
     <>
-      <div className={styles.segment} role="radiogroup" aria-label="연도 선택">
-        {[
-          [thisYear, "올해"],
-          [thisYear + 1, "내년"],
-          [thisYear + 2, "내후년"],
-        ].map(([y, label]) => (
-          <button
-            key={y}
-            type="button"
-            className={`${styles.segmentItem} ${sajuYear === y ? styles.segmentOn : ""}`}
-            aria-pressed={sajuYear === y}
-            onClick={() => onPick(y)}
-          >
-            {label} ({y})
-          </button>
-        ))}
-      </div>
+      {!snapshot && (
+        <div className={styles.segment} role="radiogroup" aria-label="연도 선택">
+          {[
+            [thisYear, "올해"],
+            [thisYear + 1, "내년"],
+            [thisYear + 2, "내후년"],
+          ].map(([y, label]) => (
+            <button
+              key={y}
+              type="button"
+              className={`${styles.segmentItem} ${sajuYear === y ? styles.segmentOn : ""}`}
+              aria-pressed={sajuYear === y}
+              onClick={() => onPick(y)}
+            >
+              {label} ({y})
+            </button>
+          ))}
+        </div>
+      )}
 
       <section className={styles.todayCard} aria-labelledby="saeun-title">
         <div className={styles.todayHead}>
@@ -125,6 +234,19 @@ function SaeunResult({ saju, thisYear, sajuYear, onPick }) {
             </div>
           </div>
 
+          {!snapshot && (
+            <>
+              <div className={styles.shareRow}>
+                <button type="button" className={styles.cta} onClick={share}>
+                  친구에게 알려주기
+                </button>
+                <button type="button" className={styles.ghostSm} onClick={copyLink}>
+                  링크 복사
+                </button>
+              </div>
+              {hint && <p className={styles.shareHint}>{hint}</p>}
+            </>
+          )}
           <p className={styles.disclaimer}>
             사주의 전통적인 해석을 바탕으로 재미로 보는 한 해 흐름이에요. 중요한 결정은 운세보다 내
             판단을 믿어 주세요.
