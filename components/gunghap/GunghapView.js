@@ -75,6 +75,24 @@ function GunghapResult({ me, partner, reading, gender, areas }) {
   const godAtoB = TEXTS.tenGods[reading.godAtoB];
   const godBtoA = TEXTS.tenGods[reading.godBtoA];
   const dayText = DAY_RELATIONS[reading.dayRelation];
+  const [copied, setCopied] = useState(false);
+
+  async function share() {
+    const text = `우리 궁합은 "${cat.title}" (${score}점) — 재미로봄 궁합`;
+    const url = `${window.location.origin}/gunghap`;
+    track("gunghap_shared");
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: "재미로봄 궁합", text, url });
+        return;
+      }
+      await navigator.clipboard.writeText(`${text}\n${url}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* 공유 창을 닫은 경우 등 */
+    }
+  }
 
   return (
     <>
@@ -109,6 +127,12 @@ function GunghapResult({ me, partner, reading, gender, areas }) {
             <strong>일지 관계</strong>
             {dayText}
           </p>
+
+          <div className={styles.shareRow}>
+            <button type="button" className={styles.cta} onClick={share}>
+              {copied ? "링크를 복사했어요" : "친구에게 알려주기"}
+            </button>
+          </div>
           <p className={styles.disclaimer}>
             사주의 전통적인 개념을 바탕으로 이 사이트가 만든 재미용 참고 점수예요. 관계의 좋고
             나쁨을 판정하는 결과가 아니니, 재미로만 봐 주세요.

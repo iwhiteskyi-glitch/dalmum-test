@@ -39,11 +39,11 @@ function toInput(form) {
   };
 }
 
-/** 성별 선택 — 여/남 두 버튼. 궁합 결과 표시와 "보고 싶은 영역" 기본값에만 쓰고, 저장하지 않아요. */
+/** 성별 선택 — 남/여 두 버튼. 궁합 결과 표시와 "보고 싶은 영역" 기본값에만 쓰고, 저장하지 않아요. */
 function GenderPicker({ label, value, onChange }) {
   return (
     <div className={styles.segment} role="radiogroup" aria-label={label}>
-      {["여", "남"].map((g) => (
+      {["남", "여"].map((g) => (
         <label key={g} className={`${styles.segmentItem} ${value === g ? styles.segmentOn : ""}`}>
           <input type="radio" name={label} value={g} checked={value === g} onChange={() => onChange(g)} />
           {g}
