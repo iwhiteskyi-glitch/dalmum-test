@@ -77,16 +77,34 @@ function GunghapResult({ me, partner, reading, gender, areas }) {
   const dayText = DAY_RELATIONS[reading.dayRelation];
   const [copied, setCopied] = useState(false);
 
+  // 제목+점수만 보내면 받는 쪽에서 링크 카드만 덜렁 오는 느낌이라, 실제 결과 내용(오행 관계·
+  // 십신 해석·고른 영역)까지 함께 담아요. url은 따로 넘기지 않고 글 안에 넣어서, 공유 앱이
+  // 글은 빼고 링크 카드만 띄우는 걸 최대한 줄여요.
+  function buildShareText() {
+    const lines = [
+      `우리 궁합은 "${cat.title}" (${score}점)이에요.`,
+      cat.summary,
+      `· 내가 보는 상대 (${godAtoB.god}·${godAtoB.hanja}) ${godAtoB.meaning}`,
+      `· 상대가 보는 나 (${godBtoA.god}·${godBtoA.hanja}) ${godBtoA.meaning}`,
+      `· 일지 관계 ${dayText}`,
+    ];
+    AREAS.filter(([key]) => areas[key]).forEach(([key, label]) => {
+      lines.push(`· ${label} ${cat[key]}`);
+    });
+    lines.push("— 재미로봄 궁합");
+    return lines.join("\n");
+  }
+
   async function share() {
-    const text = `우리 궁합은 "${cat.title}" (${score}점) — 재미로봄 궁합`;
     const url = `${window.location.origin}/gunghap`;
+    const full = `${buildShareText()}\n\n${url}`;
     track("gunghap_shared");
     try {
       if (navigator.share) {
-        await navigator.share({ title: "재미로봄 궁합", text, url });
+        await navigator.share({ title: "재미로봄 궁합", text: full });
         return;
       }
-      await navigator.clipboard.writeText(`${text}\n${url}`);
+      await navigator.clipboard.writeText(full);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
