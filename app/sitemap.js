@@ -38,6 +38,9 @@ export default function sitemap() {
     })),
   ];
 
+  // 궁합 코너: 사주 엔진을 재사용하는 네 번째 코너.
+  const gunghapRoutes = [{ path: "/gunghap", priority: 0.85, changeFrequency: "weekly" }];
+
   // 여행 이름 섹션: 시작 페이지 + 나라 페이지 + 도시 페이지. 아래 enRoutes 복제 대상인
   // staticRoutes에는 넣지 않고 따로 관리해, /en 아래에 절대 생기지 않게 합니다
   // (EN에서는 이 기능을 안내하지 않음).
@@ -82,6 +85,12 @@ export default function sitemap() {
       priority: r.priority,
     })),
     ...fortuneRoutes.map((r) => ({
+      url: `${SITE.url}${r.path}`,
+      lastModified: now,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+    })),
+    ...gunghapRoutes.map((r) => ({
       url: `${SITE.url}${r.path}`,
       lastModified: now,
       changeFrequency: r.changeFrequency,

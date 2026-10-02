@@ -10,6 +10,7 @@ export const metadata = fortuneMetadata({
   description:
     "두 사람의 생년월일로 사주 궁합 점수, 오행 궁합, 연애·우정·업무 영역별 풀이를 보여 드려요. 입력한 정보는 서버로 보내지 않아요.",
   path: "/gunghap",
+  image: "gunghap",
 });
 
 export default function GunghapPage() {
