@@ -490,6 +490,20 @@
   width: auto;
   flex: 1 1 auto;
 }
+/* 친구가 보낸 결과 링크로 들어왔을 때 맨 위에 붙는 안내 */
+.sharedNote {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--f-callout-ink);
+  background: var(--f-soft);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  text-align: center;
+}
+.sharedNote b {
+  color: var(--f-deep);
+}
 .shareHint {
   margin: 10px 0 0;
   font-size: 12.5px;

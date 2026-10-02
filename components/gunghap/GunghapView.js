@@ -7,6 +7,7 @@ import TEXTS from "@/lib/fortune/texts.json";
 import GUNGHAP_TEXTS from "@/lib/fortune/gunghapTexts.json";
 import { buildGunghapCard } from "@/lib/fortune/fortuneCard";
 import { shareResult, copyText } from "@/lib/fortune/shareResult";
+import { encodeGunghapLink, decodeGunghapLink } from "@/lib/fortune/resultLink";
 import { SITE } from "@/lib/site";
 import {
   gunghapReading,
@@ -48,10 +49,22 @@ function compareText(topA, topB) {
 
 export default function GunghapView() {
   const [result, setResult] = useState(null);
+  const [shared, setShared] = useState(null);
+
+  // 주소 끝에 친구가 보낸 결과가 담겨 있으면, 생년월일을 넣지 않아도 그 결과부터 보여 줍니다.
+  useEffect(() => {
+    const got = decodeGunghapLink(window.location.hash);
+    if (!got) return;
+    setShared({ ...got, reading: gunghapReading(got.me, got.partner) });
+    track("gunghap_shared_link_opened");
+  }, []);
 
   function onSubmitted(meSaju, partnerSaju, gender, areas) {
     const reading = gunghapReading(meSaju, partnerSaju);
     setResult({ me: meSaju, partner: partnerSaju, reading, gender, areas });
+    // 내 결과를 보기 시작하면 친구 결과와 링크 흔적을 지웁니다.
+    setShared(null);
+    if (window.location.hash) window.history.replaceState(null, "", window.location.pathname);
     track("gunghap_result_viewed", {
       meTime: meSaju.input.hour == null ? "unknown" : "known",
       partnerTime: partnerSaju.input.hour == null ? "unknown" : "known",
@@ -63,6 +76,17 @@ export default function GunghapView() {
 
   return (
     <>
+      {shared && (
+        <>
+          <p className={styles.sharedNote}>
+            친구가 보낸 <b>궁합 결과</b>예요. 아래에서 나도 바로 볼 수 있어요.
+          </p>
+          <div className={styles.result}>
+            <GunghapResult {...shared} snapshot />
+          </div>
+          <p className={styles.sectionDivider}>나도 궁합 보기</p>
+        </>
+      )}
       <GunghapForm onSubmitted={onSubmitted} />
       <div id="gunghap-result" className={styles.result} aria-live="polite">
         {result && <GunghapResult {...result} />}
@@ -71,7 +95,8 @@ export default function GunghapView() {
   );
 }
 
-function GunghapResult({ me, partner, reading, gender, areas }) {
+/** snapshot: 친구가 보낸 링크로 보는 결과 — 공유 버튼 없이 결과만 보여 줍니다. */
+function GunghapResult({ me, partner, reading, gender, areas, snapshot = false }) {
   const cat = CATEGORIES[reading.category];
   const score = gunghapScore(reading);
   const stars = Math.min(5, Math.max(1, Math.round(score / 20)));
@@ -90,6 +115,7 @@ function GunghapResult({ me, partner, reading, gender, areas }) {
   // 일간과 풀이만 넣고, 생년월일·성별은 넣지 않아요.
   const cardKey = `${me.dayMaster}-${partner.dayMaster}-${reading.dayRelation}-${shownAreas.map(([k]) => k).join("")}`;
   useEffect(() => {
+    if (snapshot) return;
     let cancelled = false;
     setCard(null);
     buildGunghapCard({
@@ -114,9 +140,10 @@ function GunghapResult({ me, partner, reading, gender, areas }) {
     };
     // 나머지 값은 모두 cardKey에서 정해집니다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardKey]);
+  }, [cardKey, snapshot]);
 
-  const url = `${SITE.url}/gunghap`;
+  // 링크에 결과를 담아서, 받은 사람이 생년월일을 넣지 않아도 같은 결과를 보게 합니다.
+  const url = `${SITE.url}/gunghap${encodeGunghapLink(me, partner, areas)}`;
 
   async function share() {
     const shortText = `우리 궁합은 "${cat.title}" (${score}점)\n${cat.summary}`;
@@ -163,8 +190,8 @@ function GunghapResult({ me, partner, reading, gender, areas }) {
       <section className={styles.todayCard} aria-labelledby="gunghap-title">
         <div className={styles.todayHead}>
           <p className={styles.todayDate}>
-            나({gender.me}) {STEMS[me.dayMaster]}({STEMS_HANJA[me.dayMaster]}) × 상대({gender.partner}){" "}
-            {STEMS[partner.dayMaster]}({STEMS_HANJA[partner.dayMaster]})
+            나{gender && `(${gender.me})`} {STEMS[me.dayMaster]}({STEMS_HANJA[me.dayMaster]}) × 상대
+            {gender && `(${gender.partner})`} {STEMS[partner.dayMaster]}({STEMS_HANJA[partner.dayMaster]})
           </p>
           <h2 id="gunghap-title" className={styles.todayTitle}>
             {cat.title}
@@ -192,15 +219,19 @@ function GunghapResult({ me, partner, reading, gender, areas }) {
             {dayText}
           </p>
 
-          <div className={styles.shareRow}>
-            <button type="button" className={styles.cta} onClick={share}>
-              친구에게 알려주기
-            </button>
-            <button type="button" className={styles.ghostSm} onClick={copyLink}>
-              링크 복사
-            </button>
-          </div>
-          {hint && <p className={styles.shareHint}>{hint}</p>}
+          {!snapshot && (
+            <>
+              <div className={styles.shareRow}>
+                <button type="button" className={styles.cta} onClick={share}>
+                  친구에게 알려주기
+                </button>
+                <button type="button" className={styles.ghostSm} onClick={copyLink}>
+                  링크 복사
+                </button>
+              </div>
+              {hint && <p className={styles.shareHint}>{hint}</p>}
+            </>
+          )}
           <p className={styles.disclaimer}>
             사주의 전통적인 개념을 바탕으로 이 사이트가 만든 재미용 참고 점수예요. 관계의 좋고
             나쁨을 판정하는 결과가 아니니, 재미로만 봐 주세요.

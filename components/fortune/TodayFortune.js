@@ -21,6 +21,7 @@ import {
 import { useBirth } from "@/lib/fortune/birthStore";
 import { buildTodayCard } from "@/lib/fortune/fortuneCard";
 import { shareResult, copyText } from "@/lib/fortune/shareResult";
+import { encodeFortuneLink, decodeFortuneLink } from "@/lib/fortune/resultLink";
 import { eunNeun } from "@/lib/korean";
 import BirthForm from "./BirthForm";
 import { Stars, dateLabel, range } from "./parts";
@@ -53,13 +54,25 @@ function buildDay(saju, date) {
 export default function TodayFortune() {
   const { saju } = useBirth();
   const [today, setToday] = useState(null);
+  const [shared, setShared] = useState(null);
   const resultRef = useRef(null);
 
-  // "오늘"은 방문한 순간의 한국 날짜로 정합니다.
-  useEffect(() => setToday(koreaToday()), []);
+  // "오늘"은 방문한 순간의 한국 날짜로 정합니다. 주소 끝에 친구가 보낸 결과가 담겨 있으면,
+  // 생년월일을 넣지 않아도 그 결과부터 보여 줍니다.
+  useEffect(() => {
+    setToday(koreaToday());
+    const got = decodeFortuneLink(window.location.hash);
+    if (got) {
+      setShared(got);
+      track("fortune_shared_link_opened");
+    }
+  }, []);
 
   function onSubmitted(input, remember) {
     setToday(koreaToday());
+    // 내 결과를 보기 시작하면 친구 결과와 링크 흔적을 지웁니다.
+    setShared(null);
+    if (window.location.hash) window.history.replaceState(null, "", window.location.pathname);
     track("fortune_result_viewed", {
       calendar: input.calendar,
       time: input.hour == null ? "unknown" : "known",
@@ -70,6 +83,17 @@ export default function TodayFortune() {
 
   return (
     <>
+      {shared && (
+        <>
+          <p className={styles.sharedNote}>
+            친구가 보낸 <b>{dateLabel(shared.date)} 운세</b>예요. 아래에서 내 운세도 바로 볼 수 있어요.
+          </p>
+          <div className={styles.result}>
+            <TodayResult saju={shared.saju} today={shared.date} snapshot />
+          </div>
+          <p className={styles.sectionDivider}>내 운세 보기</p>
+        </>
+      )}
       <BirthForm submitLabel="오늘의 운세 보기" onSubmitted={onSubmitted} />
       <div ref={resultRef} className={styles.result} aria-live="polite">
         {saju && today && <TodayResult saju={saju} today={today} />}
@@ -78,7 +102,8 @@ export default function TodayFortune() {
   );
 }
 
-function TodayResult({ saju, today }) {
+/** snapshot: 친구가 보낸 링크로 보는 결과 — 결과 카드만 보여 주고 공유·내 사주 안내는 숨깁니다. */
+function TodayResult({ saju, today, snapshot = false }) {
   const [hint, setHint] = useState("");
   const [card, setCard] = useState(null);
   const day = buildDay(saju, today);
@@ -96,6 +121,7 @@ function TodayResult({ saju, today }) {
   // 기기에서 "사용자가 누른 동작"으로 보지 않아 공유 창이 막히는 경우가 있어서예요.
   const cardKey = `${saju.dayMaster}-${saju.pillars.day.branch}-${today.year}-${today.month}-${today.day}`;
   useEffect(() => {
+    if (snapshot) return;
     let cancelled = false;
     setCard(null);
     buildTodayCard({
@@ -119,9 +145,10 @@ function TodayResult({ saju, today }) {
     };
     // day·week는 saju와 today가 같으면 내용도 같습니다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardKey]);
+  }, [cardKey, snapshot]);
 
-  const url = `${SITE.url}/fortune`;
+  // 링크에 결과를 담아서, 받은 사람이 생년월일을 넣지 않아도 같은 결과를 보게 합니다.
+  const url = `${SITE.url}/fortune${encodeFortuneLink(today, saju)}`;
 
   async function share() {
     const shortText = `오늘 나의 운세는 "${day.god.title}" · ${day.god.god}(${day.god.keyword})\n${day.advice}`;
@@ -216,83 +243,91 @@ function TodayResult({ saju, today }) {
             </div>
           </div>
 
-          <div className={styles.shareRow}>
-            <button type="button" className={styles.cta} onClick={share}>
-              친구에게 알려주기
-            </button>
-            <button type="button" className={styles.ghostSm} onClick={copyLink}>
-              링크 복사
-            </button>
-          </div>
-          {hint && <p className={styles.shareHint}>{hint}</p>}
+          {!snapshot && (
+            <>
+              <div className={styles.shareRow}>
+                <button type="button" className={styles.cta} onClick={share}>
+                  친구에게 알려주기
+                </button>
+                <button type="button" className={styles.ghostSm} onClick={copyLink}>
+                  링크 복사
+                </button>
+              </div>
+              {hint && <p className={styles.shareHint}>{hint}</p>}
+            </>
+          )}
           <p className={styles.disclaimer}>
             사주의 전통적인 해석을 바탕으로 재미로 보는 풀이예요. 중요한 결정은 운세보다 내 판단을 믿어 주세요.
           </p>
         </div>
       </section>
 
-      <details className={styles.why}>
-        <summary>왜 이렇게 나왔을까?</summary>
-        <p>
-          내 일간(태어난 날의 천간, 사주에서 &lsquo;나&rsquo;를 뜻하는 글자)은{" "}
-          <b>
-            {STEMS[dm]}({STEMS_HANJA[dm]})
-          </b>
-          {ELEMENTS[STEM_ELEMENT[dm]]}이고, 오늘의 일진은{" "}
-          <b>
-            {day.pillar.ko}({day.pillar.hanja})
-          </b>
-          일이에요. 오늘의 천간 {STEMS[day.pillar.stem]}({STEMS_HANJA[day.pillar.stem]})
-          {ELEMENTS[STEM_ELEMENT[day.pillar.stem]]}
-          {eunNeun(ELEMENTS[STEM_ELEMENT[day.pillar.stem]])} 나에게 {godRel}이고, 음양이 {samePolarity ? "같아서" : "달라서"}{" "}
-          <b>{day.god.god}</b>에 해당해요. {day.god.meaning}
-        </p>
-        <p>
-          또 내 일지(태어난 날의 지지) {BRANCHES[myDayBranch]}({BRANCHES_HANJA[myDayBranch]})와 오늘 일지{" "}
-          {BRANCHES[day.pillar.branch]}({BRANCHES_HANJA[day.pillar.branch]})의 관계는 <b>{day.rel.label}</b>이라서 총운
-          별점에{" "}
-          {day.rel.adjust > 0 ? "하나를 더했어요" : day.rel.adjust < 0 ? "하나를 뺐어요" : "변화를 주지 않았어요"}.
-        </p>
-        <p>
-          행운의 색과 숫자는 오늘 기운을 부드럽게 이어 주는 오행({ELEMENTS[day.luckyElement]}·
-          {ELEMENTS_HANJA[day.luckyElement]})에 해당하는 전통적인 색과 숫자예요.
-        </p>
-      </details>
+      {!snapshot && (
+        <>
+        <details className={styles.why}>
+          <summary>왜 이렇게 나왔을까?</summary>
+          <p>
+            내 일간(태어난 날의 천간, 사주에서 &lsquo;나&rsquo;를 뜻하는 글자)은{" "}
+            <b>
+              {STEMS[dm]}({STEMS_HANJA[dm]})
+            </b>
+            {ELEMENTS[STEM_ELEMENT[dm]]}이고, 오늘의 일진은{" "}
+            <b>
+              {day.pillar.ko}({day.pillar.hanja})
+            </b>
+            일이에요. 오늘의 천간 {STEMS[day.pillar.stem]}({STEMS_HANJA[day.pillar.stem]})
+            {ELEMENTS[STEM_ELEMENT[day.pillar.stem]]}
+            {eunNeun(ELEMENTS[STEM_ELEMENT[day.pillar.stem]])} 나에게 {godRel}이고, 음양이 {samePolarity ? "같아서" : "달라서"}{" "}
+            <b>{day.god.god}</b>에 해당해요. {day.god.meaning}
+          </p>
+          <p>
+            또 내 일지(태어난 날의 지지) {BRANCHES[myDayBranch]}({BRANCHES_HANJA[myDayBranch]})와 오늘 일지{" "}
+            {BRANCHES[day.pillar.branch]}({BRANCHES_HANJA[day.pillar.branch]})의 관계는 <b>{day.rel.label}</b>이라서 총운
+            별점에{" "}
+            {day.rel.adjust > 0 ? "하나를 더했어요" : day.rel.adjust < 0 ? "하나를 뺐어요" : "변화를 주지 않았어요"}.
+          </p>
+          <p>
+            행운의 색과 숫자는 오늘 기운을 부드럽게 이어 주는 오행({ELEMENTS[day.luckyElement]}·
+            {ELEMENTS_HANJA[day.luckyElement]})에 해당하는 전통적인 색과 숫자예요.
+          </p>
+        </details>
 
-      <section className={styles.block} aria-labelledby="week-title">
-        <h2 id="week-title" className={styles.blockTitle}>
-          앞으로 일주일 흐름
-        </h2>
-        <ol className={styles.week}>
-          {week.map((w, i) => (
-            <li key={i} className={i === 0 ? styles.weekToday : undefined}>
-              <div className={styles.weekTop}>
-                <span className={styles.weekDate}>
-                  {i === 0 ? "오늘" : dateLabel(w.date)}
-                  <small>{w.pillar.ko}일</small>
-                </span>
-                <Stars n={w.overall} label={`${dateLabel(w.date)} 총운`} />
-              </div>
-              <p className={styles.weekDesc}>
-                <b>{w.god.title}</b> {w.god.god}({w.god.keyword})
-              </p>
-            </li>
-          ))}
-        </ol>
-      </section>
+        <section className={styles.block} aria-labelledby="week-title">
+          <h2 id="week-title" className={styles.blockTitle}>
+            앞으로 일주일 흐름
+          </h2>
+          <ol className={styles.week}>
+            {week.map((w, i) => (
+              <li key={i} className={i === 0 ? styles.weekToday : undefined}>
+                <div className={styles.weekTop}>
+                  <span className={styles.weekDate}>
+                    {i === 0 ? "오늘" : dateLabel(w.date)}
+                    <small>{w.pillar.ko}일</small>
+                  </span>
+                  <Stars n={w.overall} label={`${dateLabel(w.date)} 총운`} />
+                </div>
+                <p className={styles.weekDesc}>
+                  <b>{w.god.title}</b> {w.god.god}({w.god.keyword})
+                </p>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-      <Link href="/fortune/saju" className={styles.nextCard}>
-        <span>
-          <small>내 사주 팔자 자세히 보기</small>
-          <strong>
-            나는 {me.stem}({me.hanja}){me.element} — {me.alias}
-          </strong>
-          <span>여덟 글자 표, 오행 분포, 성격 풀이를 볼 수 있어요</span>
-        </span>
-        <span className={styles.crossArrow} aria-hidden="true">
-          →
-        </span>
-      </Link>
+        <Link href="/fortune/saju" className={styles.nextCard}>
+          <span>
+            <small>내 사주 팔자 자세히 보기</small>
+            <strong>
+              나는 {me.stem}({me.hanja}){me.element} — {me.alias}
+            </strong>
+            <span>여덟 글자 표, 오행 분포, 성격 풀이를 볼 수 있어요</span>
+          </span>
+          <span className={styles.crossArrow} aria-hidden="true">
+            →
+          </span>
+        </Link>
+        </>
+      )}
     </>
   );
 }
