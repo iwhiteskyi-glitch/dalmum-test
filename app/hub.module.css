@@ -432,6 +432,19 @@
   .principles {
     grid-template-columns: 1fr;
   }
+  /* 휴대폰에선 카드 6개가 세로로 이어지니 그림 영역을 낮춰 스크롤을 줄입니다. */
+  .cornerArt {
+    height: 128px;
+  }
+  .cornerArt > * {
+    transform: scale(0.78);
+  }
+  .cornerArt > .artTravel {
+    transform: scale(0.78) rotate(-2deg);
+  }
+  .cornerBody {
+    padding: 16px 18px 18px;
+  }
   .countryChips {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;

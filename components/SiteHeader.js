@@ -24,8 +24,13 @@ export default function SiteHeader({ wide = false }) {
   const current = CORNERS.find((c) => pathname === c.href || pathname.startsWith(`${c.href}/`));
   const links = NAV;
 
+  // scrollIntoView("nearest")는 탭이 끝에 걸쳐 반쯤 잘린 채로 멈춰서, 탭 줄 가운데로 직접 맞춥니다.
   useEffect(() => {
-    activeTabRef.current?.scrollIntoView({ block: "nearest", inline: "nearest" });
+    const tab = activeTabRef.current;
+    const bar = tab?.parentElement;
+    if (!tab || !bar || bar.scrollWidth <= bar.clientWidth) return;
+    const offset = tab.getBoundingClientRect().left - bar.getBoundingClientRect().left;
+    bar.scrollLeft += offset - (bar.clientWidth - tab.offsetWidth) / 2;
   }, [current?.key]);
 
   const secondary = (

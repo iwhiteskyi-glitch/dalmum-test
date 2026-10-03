@@ -294,9 +294,68 @@
   color: var(--muted-ink);
 }
 
-/* 꿈 해몽 모아보기 */
+/* 꿈 해몽 모아보기(접기) */
+.indexFold {
+  margin-top: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 20px);
+  padding: 0 18px;
+}
+.indexFold summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 14px;
+  align-items: center;
+  padding: 16px 2px;
+}
+.indexFold summary::-webkit-details-marker {
+  display: none;
+}
+.indexFold summary::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 9px;
+  height: 9px;
+  margin: -4px 4px 0 0;
+  border-right: 2px solid var(--muted-ink);
+  border-bottom: 2px solid var(--muted-ink);
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+}
+.indexFold[open] summary::after {
+  margin-top: 4px;
+  transform: rotate(-135deg);
+}
+.indexFold summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.indexFoldTitle {
+  grid-column: 1;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.indexFoldHint {
+  grid-column: 1;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--muted-ink);
+}
+.indexFoldBody {
+  padding: 0 2px 18px;
+}
 .indexGroup {
   margin-top: 14px;
+}
+.indexFoldBody .indexGroup:first-child {
+  margin-top: 0;
 }
 .indexGroupTitle {
   font-size: 13.5px;
