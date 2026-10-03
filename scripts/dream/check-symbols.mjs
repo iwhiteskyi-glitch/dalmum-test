@@ -13,27 +13,24 @@ function check(name, cond) {
   }
 }
 
-// 1) select.js의 SYMBOL_IDS와 symbols.json의 id 목록이 정확히 같아야 함(순서는 무관, 집합만 동일)
+// 1) select.js의 SYMBOL_IDS와 symbols.json의 id 집합이 같아야 함
 const dataIds = DATA.symbols.map((s) => s.id);
 check("symbols.json에 중복 id 없음", new Set(dataIds).size === dataIds.length);
-check("select.js SYMBOL_IDS 개수 == symbols.json 개수", SYMBOL_IDS.length === dataIds.length);
+check("select.js SYMBOL_IDS에 중복 없음", new Set(SYMBOL_IDS).size === SYMBOL_IDS.length);
 check(
   "select.js SYMBOL_IDS == symbols.json id 집합",
-  SYMBOL_IDS.every((id) => dataIds.includes(id)) && dataIds.every((id) => SYMBOL_IDS.includes(id))
+  SYMBOL_IDS.length === dataIds.length && dataIds.every((id) => SYMBOL_IDS.includes(id))
 );
-check("상징 36개", dataIds.length === 36);
-
-// 2) 카테고리 6개 × 6개씩
-const catIds = DATA.categories.map((c) => c.id);
-check("카테고리 6개", catIds.length === 6);
-for (const cat of catIds) {
-  const n = DATA.symbols.filter((s) => s.category === cat).length;
-  check(`카테고리 "${cat}" 상징 6개 (실제 ${n}개)`, n === 6);
+for (const id of dataIds) {
+  check(`id "${id}"는 영어 소문자만(주소·공유 링크에 쓰임)`, /^[a-z]+$/.test(id));
 }
-check(
-  "모든 상징의 category가 실제 카테고리를 가리킴",
-  DATA.symbols.every((s) => catIds.includes(s.category))
-);
+
+// 2) 카테고리마다 상징이 하나 이상(상징은 계속 늘어나므로 개수는 고정하지 않음)
+const catIds = DATA.categories.map((c) => c.id);
+for (const cat of catIds) {
+  check(`카테고리 "${cat}"에 상징 있음`, DATA.symbols.some((s) => s.category === cat));
+}
+check("모든 상징의 category가 실제 카테고리를 가리킴", DATA.symbols.every((s) => catIds.includes(s.category)));
 
 // 3) 필드 유효성
 for (const s of DATA.symbols) {
@@ -43,11 +40,16 @@ for (const s of DATA.symbols) {
   check(`${s.id}: luck이 0/1/2 중 하나`, [0, 1, 2].includes(s.luck));
 }
 
-// 4) 전통 민담의 불길한 통설(가족 사고/죽음/질병) 관련 단어가 전혀 없어야 함 — 콘텐츠 안전 규칙
-const BANNED = ["죽음", "죽는다", "사망", "사고사", "불행한 일", "가족을 잃", "질병에 걸", "병에 걸"];
-const allText = DATA.symbols.map((s) => s.text).join("\n") + Object.values(DATA.synthesis).map((s) => s.text).join("\n");
-for (const word of BANNED) {
-  check(`금지어 "${word}" 없음`, !allText.includes(word));
+// 4) 콘텐츠 안전 — 죽음·질병 관련 단어는 민감 상징(sensitive: true, 예: 죽는 꿈)의 자기 문장
+//    말고는 어디에도 나오면 안 됨. 예고·경고처럼 "실제 일이 생긴다"로 읽히는 말은 전부 금지.
+const DEATH_WORDS = ["죽음", "죽는다", "사망", "사고사", "불행한 일", "가족을 잃", "질병에 걸", "병에 걸"];
+const PREDICT_WORDS = ["예고", "경고", "아플 수", "사고가 날", "다칠 수"];
+for (const s of DATA.symbols) {
+  if (!s.sensitive) for (const w of DEATH_WORDS) check(`${s.id}: 금지어 "${w}" 없음`, !s.text.includes(w));
+  for (const w of PREDICT_WORDS) check(`${s.id}: 예고형 표현 "${w}" 없음`, !s.text.includes(w));
+}
+for (const [k, v] of Object.entries(DATA.synthesis)) {
+  for (const w of [...DEATH_WORDS, ...PREDICT_WORDS]) check(`synthesis.${k}: "${w}" 없음`, !v.text.includes(w));
 }
 
 // 5) 종합 버킷 로직 — 대표 사례

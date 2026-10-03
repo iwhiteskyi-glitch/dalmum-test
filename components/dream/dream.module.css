@@ -171,3 +171,138 @@
   background: #fdecec;
   color: #b84a4a;
 }
+
+/* 결과 카드의 "자세히 보기" 링크 */
+.symbolMore {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--f);
+  text-decoration: none;
+}
+
+/* ---------- 상세 페이지(/dream/[id]) ---------- */
+.pageHero {
+  margin: 4px 0 8px;
+}
+.pageTitle {
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.3;
+  margin: 2px 0 6px;
+  color: var(--ink);
+}
+.pageSub {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  margin: 0 0 14px;
+}
+.pageSummary {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+  padding: 16px 18px;
+  border-radius: var(--radius-md, 16px);
+  background: var(--f-soft);
+  color: var(--f-callout-ink);
+  font-weight: 600;
+}
+.situationList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.situationItem {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 16px);
+  padding: 16px 18px;
+  background: var(--surface);
+}
+.situationTitle {
+  font-size: 16.5px;
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: var(--f-deep);
+}
+.situationText {
+  font-size: 15px;
+  line-height: 1.75;
+  margin: 0;
+}
+.careBox {
+  margin-top: 16px;
+  padding: 18px 20px;
+  border-radius: var(--radius-md, 16px);
+  border-left: 4px solid var(--f);
+  background: var(--surface);
+  box-shadow: 0 2px 10px rgba(34, 56, 114, 0.08);
+  font-size: 15px;
+  line-height: 1.75;
+}
+.relatedList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.relatedList a {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 16px);
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--ink);
+}
+.relatedList strong {
+  font-size: 14.5px;
+}
+.relatedList span {
+  font-size: 12.5px;
+  color: var(--muted-ink);
+}
+
+/* 꿈 해몽 모아보기 */
+.indexGroup {
+  margin-top: 14px;
+}
+.indexGroupTitle {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--muted-ink);
+  margin: 0 0 8px;
+}
+.indexList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.indexList a {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+.indexList a[aria-current="page"] {
+  border-color: var(--f);
+  background: var(--f);
+  color: #fff;
+}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "@/components/fortune/fortune.module.css";
 import DreamView from "@/components/dream/DreamView";
+import DreamIndex from "@/components/dream/DreamIndex";
 import CrossCards from "@/components/fortune/CrossCards";
 import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
 import { fortuneMetadata } from "@/lib/fortune/seo";
@@ -30,6 +31,8 @@ export default function DreamPage() {
       </section>
 
       <DreamView />
+
+      <DreamIndex />
 
       <MoreInfo title="꿈해몽이 궁금하다면" lead="무엇을 다루는지, 결과는 어떻게 만들어지는지 모아 뒀어요.">
         <Fold title="꿈해몽이란?" hint="36가지 상징, 전통 해몽 방식">

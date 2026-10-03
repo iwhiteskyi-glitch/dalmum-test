@@ -2,6 +2,7 @@ import { SITE } from "@/lib/site";
 import { READS } from "@/lib/reads";
 import { COUNTRIES, cityPath } from "@/lib/travel/data";
 import { ILGAN_SLUGS, ilganHref } from "@/lib/fortune/ilgan";
+import { PAGE_IDS as DREAM_PAGE_IDS, dreamHref } from "@/lib/dream/pageIds";
 
 export default function sitemap() {
   const now = new Date();
@@ -41,7 +42,10 @@ export default function sitemap() {
   const gwansangRoutes = [{ path: "/gwansang", priority: 0.85, changeFrequency: "weekly" }];
 
   // 꿈해몽 코너: 사진·생년월일 없이 상징 선택만으로 보는 여섯 번째 코너.
-  const dreamRoutes = [{ path: "/dream", priority: 0.85, changeFrequency: "weekly" }];
+  const dreamRoutes = [
+    { path: "/dream", priority: 0.85, changeFrequency: "weekly" },
+    ...DREAM_PAGE_IDS.map((id) => ({ path: dreamHref(id), priority: 0.5, changeFrequency: "monthly" })),
+  ];
 
   // 여행 이름 섹션: 시작 페이지 + 나라 페이지 + 도시 페이지.
   const travelRoutes = [

@@ -10,6 +10,7 @@ import { MIN_SELECT, MAX_SELECT, synthesisBucket } from "@/lib/dream/select";
 import { buildDreamCard } from "@/lib/dream/card";
 import { shareResult, copyText } from "@/lib/fortune/shareResult";
 import { encodeDreamLink, decodeDreamLink } from "@/lib/dream/resultLink";
+import { PAGE_IDS, dreamHref } from "@/lib/dream/pageIds";
 import { SITE } from "@/lib/site";
 
 const SYMBOL_BY_ID = Object.fromEntries(TEXTS.symbols.map((s) => [s.id, s]));
@@ -70,6 +71,19 @@ function SelectFlow({ onResult }) {
 
   const symbolsInTab = useMemo(() => TEXTS.symbols.filter((s) => s.category === tab), [tab]);
 
+  // 상세 페이지의 "이 꿈으로 해몽 보기"(#pick.<id>)로 들어오면 그 상징을 골라 둔 채로 엽니다.
+  useEffect(() => {
+    const m = window.location.hash.match(/^#pick\.([a-z]+)$/);
+    const sym = m && SYMBOL_BY_ID[m[1]];
+    if (!sym) return;
+    setTab(sym.category);
+    setSelected([sym.id]);
+    window.history.replaceState(null, "", window.location.pathname);
+    requestAnimationFrame(() => {
+      document.getElementById("dream-select")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, []);
+
   function toggle(id) {
     setHint("");
     setSelected((prev) => {
@@ -113,7 +127,7 @@ function SelectFlow({ onResult }) {
   }
 
   return (
-    <div>
+    <div id="dream-select">
       <p className={styles.blockLead} style={{ textAlign: "center" }}>
         {TEXTS.selectHint}
       </p>
@@ -271,9 +285,16 @@ function DreamResult({ ids, snapshot = false }) {
           <div key={s.id} className={ds.symbolCard}>
             <div className={ds.symbolHead}>
               <span className={ds.symbolTitle}>{s.label}</span>
-              <span className={`${ds.luckBadge} ${ds[`luck${s.luck}`]}`}>{TEXTS.luckLabels[s.luck]}</span>
+              {!s.sensitive && (
+                <span className={`${ds.luckBadge} ${ds[`luck${s.luck}`]}`}>{TEXTS.luckLabels[s.luck]}</span>
+              )}
             </div>
             <p className={ds.symbolText}>{s.text}</p>
+            {PAGE_IDS.includes(s.id) && (
+              <Link href={dreamHref(s.id)} className={ds.symbolMore}>
+                상황별로 자세히 보기 →
+              </Link>
+            )}
           </div>
         ))}
       </div>
