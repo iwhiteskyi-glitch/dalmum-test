@@ -5,6 +5,7 @@ import Link from "next/link";
 import { track } from "@vercel/analytics";
 import styles from "@/components/fortune/fortune.module.css";
 import ds from "./dream.module.css";
+import ScrollHint from "@/components/ScrollHint";
 import TEXTS from "@/lib/dream/symbols.json";
 import { MIN_SELECT, MAX_SELECT, synthesisBucket } from "@/lib/dream/select";
 import { buildDreamCard } from "@/lib/dream/card";
@@ -153,7 +154,7 @@ function SelectFlow({ onResult }) {
       />
 
       {!searching && (
-        <div className={ds.categoryTabs} role="tablist" aria-label="꿈 카테고리">
+        <ScrollHint className={ds.categoryTabs} wrapClassName={ds.categoryTabsWrap} role="tablist" aria-label="꿈 카테고리">
           {TEXTS.categories.map((c) => (
             <button
               key={c.id}
@@ -161,12 +162,15 @@ function SelectFlow({ onResult }) {
               role="tab"
               aria-selected={tab === c.id}
               className={`${ds.categoryTab} ${tab === c.id ? ds.categoryTabOn : ""}`}
-              onClick={() => setTab(c.id)}
+              onClick={(e) => {
+                setTab(c.id);
+                e.currentTarget.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+              }}
             >
               {c.label}
             </button>
           ))}
-        </div>
+        </ScrollHint>
       )}
 
       {searching && (

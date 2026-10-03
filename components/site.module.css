@@ -80,16 +80,20 @@
 .headerWide + .menuPanel {
   max-width: 1120px;
 }
+/* 코너가 늘어나 한 줄에 다 안 들어가면(좁은 화면) 전체 헤더가 두 줄로 밀리는
+   대신, 탭 줄 안에서만 가로로 스크롤되게 합니다. 감싸는 요소가 flex-shrink를
+   허용해야 부모(.headerInner)가 줄바꿈하지 않고 남은 폭을 내줍니다.
+   가려진 탭이 있으면 ScrollHint가 끝을 흐리게 하고 화살표를 띄웁니다. */
+.testTabsWrap {
+  flex-shrink: 1;
+  min-width: 0;
+}
 .testTabs {
   display: flex;
   background: #f3ece8;
   border-radius: 999px;
   padding: 3px;
   gap: 2px;
-  /* 코너가 늘어나 한 줄에 다 안 들어가면(좁은 화면) 전체 헤더가 두 줄로 밀리는
-     대신, 이 줄 안에서만 가로로 스크롤되게 합니다. flex-shrink를 허용해야
-     부모(.headerInner)가 줄바꿈하지 않고 이 요소에 남은 폭을 내줍니다. */
-  flex-shrink: 1;
   min-width: 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -160,7 +164,7 @@
   .menuPanel {
     display: none;
   }
-  .testTabs {
+  .testTabsWrap {
     margin-left: 28px;
   }
 }

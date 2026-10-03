@@ -23,6 +23,10 @@
   margin: 0 0 10px;
 }
 
+/* 가려진 카테고리가 있으면 ScrollHint가 끝을 흐리게 하고 화살표를 띄웁니다. */
+.categoryTabsWrap {
+  margin-bottom: 14px;
+}
 .categoryTabs {
   display: flex;
   gap: 8px;
@@ -30,7 +34,6 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   padding-bottom: 4px;
-  margin-bottom: 14px;
 }
 .categoryTabs::-webkit-scrollbar {
   display: none;

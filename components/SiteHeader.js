@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import styles from "./site.module.css";
 import { CORNERS, NAV, SITE } from "@/lib/site";
 import BrandLogo from "./BrandLogo";
+import ScrollHint from "./ScrollHint";
 
 // 한국어 페이지 공통 헤더. 로고(재미로봄 → 첫 화면) 옆에 코너(닮은꼴 / 여행 이름 …)를 탭처럼
 // 나란히 두고, 소개·읽을거리 같은 나머지 메뉴는 넓은 화면에선 옆에, 휴대폰에선 ☰ 메뉴 안에 넣습니다.
@@ -55,7 +56,14 @@ export default function SiteHeader({ wide = false }) {
           <span className={styles.brandText}>{SITE.name}</span>
         </Link>
 
-        <nav className={styles.testTabs} aria-label="코너 선택">
+        <ScrollHint
+          as="nav"
+          className={styles.testTabs}
+          wrapClassName={styles.testTabsWrap}
+          bg="#f3ece8"
+          radius="999px"
+          aria-label="코너 선택"
+        >
           {CORNERS.map((c) => {
             const on = current?.key === c.key;
             return (
@@ -71,7 +79,7 @@ export default function SiteHeader({ wide = false }) {
               </Link>
             );
           })}
-        </nav>
+        </ScrollHint>
 
         <nav className={styles.desktopLinks} aria-label="주요 메뉴">
           {secondary}
