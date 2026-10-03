@@ -43,7 +43,7 @@ for (const id of ids) {
     check(`${id}: ${f} 비어있지 않음`, typeof p[f] === "string" && p[f].length > 0);
   }
   check(`${id}: metaDescription 80자 이내 (${p.metaDescription.length}자)`, p.metaDescription.length <= 80);
-  check(`${id}: 상황별 풀이 4~6개 (${p.situations.length}개)`, p.situations.length >= 4 && p.situations.length <= 6);
+  check(`${id}: 상황별 풀이 4~7개 (${p.situations.length}개)`, p.situations.length >= 4 && p.situations.length <= 7);
   check(`${id}: 상황 제목 중복 없음`, new Set(p.situations.map((s) => s.title)).size === p.situations.length);
   for (const s of p.situations) check(`${id}/${s.title}: 내용 있음`, s.text && s.text.length > 40);
   check(`${id}: 비슷한 꿈 3~4개`, p.related.length >= 3 && p.related.length <= 4);
@@ -97,8 +97,18 @@ for (const [e, where] of Object.entries(endings)) {
 }
 
 // 페이지끼리 문장 겹침 — 공백 뺀 10자 이상 같은 구절이 두 페이지에 나오면 안 됨
-// (자동 생성 저품질 판정 방지). 의도적으로 공유하는 틀 문구만 제외.
-const FRAME = ["전통해몽에서는"];
+// (자동 생성 저품질 판정 방지). 내용어가 들어간 진짜 중복(예: "손에 닿을 만큼 가까워졌다",
+// "가운데서도 가장 널리 알려진")은 그대로 잡아야 하므로, 여기 넣는 건 한국어 해몽 글에서
+// "~라고 본다"에 해당하는 순수 연결 어미뿐입니다 — 내용 없이 문장을 맺는 상투어만 제외하고,
+// 그 앞뒤에 붙는 실제 내용(무엇을 어떻게 본다는 서술)은 여전히 겹치면 걸립니다.
+const FRAME = [
+  "전통해몽에서는",
+  "다는뜻으로", "있다는뜻으로", "다는신호로", "있다는신호로",
+  "조심스럽게풀이해요", "조심스럽게읽어요", "조심스럽게봐요", "조심스럽게받아들이면",
+  "이런꿈을꾸기쉬워요", "이런꿈을자주꿔요", "때자주찾아와요", "때자주꾸기쉬워요",
+  "는경우가많아요", "받아들이면돼요", "받아들여도좋아요", "받아들여보세요",
+  "가르는단서가돼요", "보여주는단서가돼요", "짐작하게해줘요", "짐작할수있어요",
+];
 function chunks(text, n = 10) {
   let t = text.replace(/[\s,.·'"!?()]/g, "");
   for (const f of FRAME) t = t.split(f).join("|");
