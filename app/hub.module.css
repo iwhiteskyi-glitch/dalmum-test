@@ -228,6 +228,30 @@
   background: radial-gradient(circle at 30% 25%, #f0924f, #4a1f0c 72%);
   box-shadow: 0 10px 26px rgba(138, 58, 22, 0.28);
 }
+.artGwansang {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #d1a45a, #4a3210 72%);
+  box-shadow: 0 10px 26px rgba(120, 84, 24, 0.28);
+}
+.artDream {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #5b78c9, #131b3a 72%);
+  box-shadow: 0 10px 26px rgba(34, 56, 114, 0.28);
+}
 
 /* ---------- 섹션 공통 ---------- */
 .section {

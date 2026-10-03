@@ -60,6 +60,24 @@ const ART = {
       </span>
     </div>
   ),
+  gwansang: (
+    <div className={styles.artGwansang} aria-hidden="true">
+      <span className={styles.fortuneMoon}>✦</span>
+      <span className={styles.fortuneChar}>相</span>
+      <span className={styles.fortuneStars}>
+        ★★★<span>★★</span>
+      </span>
+    </div>
+  ),
+  dream: (
+    <div className={styles.artDream} aria-hidden="true">
+      <span className={styles.fortuneMoon}>☾</span>
+      <span className={styles.fortuneChar}>夢</span>
+      <span className={styles.fortuneStars}>
+        ★★★★<span>★</span>
+      </span>
+    </div>
+  ),
 };
 
 // 여행지 바로가기: 한국인이 많이 가는 순서로 몇 곳만 보여주고 나머지는 여행 첫 화면에서 고르게 합니다.
