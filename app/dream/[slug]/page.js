@@ -94,6 +94,7 @@ export default async function DreamSymbolPage({ params }) {
           요즘 식으로 보면
         </h2>
         <p className={styles.sectionText}>{p.modern}</p>
+        {p.helpline && <p className={ds.helplineNote}>{p.helpline}</p>}
       </section>
 
       <Link href={dreamPickHref(slug)} className={styles.cta} style={{ marginTop: 32, textDecoration: "none" }}>

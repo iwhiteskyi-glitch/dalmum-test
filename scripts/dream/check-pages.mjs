@@ -32,7 +32,7 @@ const PREDICT = ["예고", "경고", "아플 수", "사고가 날", "다칠 수"
 const GENDER = [/(?<!받)아들/, /딸(?=[을이은일 ,.]|$)/];
 
 function bodyOf(p) {
-  return [p.care || "", p.meaning, ...p.situations.map((s) => s.text), p.modern].join(" ");
+  return [p.care || "", p.meaning, ...p.situations.map((s) => s.text), p.modern, p.helpline || ""].join(" ");
 }
 
 for (const id of ids) {

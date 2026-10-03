@@ -306,3 +306,15 @@
   background: var(--f);
   color: #fff;
 }
+
+/* 자살예방 상담전화 안내(죽음 관련 민감 페이지에만, 작성규칙 §7) */
+.helplineNote {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md, 16px);
+  background: var(--f-soft);
+  color: var(--f-callout-ink);
+  font-size: 13.5px;
+  line-height: 1.6;
+  font-weight: 600;
+}
