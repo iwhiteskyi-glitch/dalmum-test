@@ -253,22 +253,69 @@
   box-shadow: 0 10px 26px rgba(34, 56, 114, 0.28);
 }
 
-/* ---------- 섹션 공통 ---------- */
-.section {
-  margin-top: 48px;
+/* ---------- 카드 아래 접는 영역 ---------- */
+.folds {
+  margin-top: 36px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 4px 22px;
 }
-.sectionHead {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+.fold + .fold {
+  border-top: 1px solid var(--border);
 }
-.sectionTitle {
-  font-size: 21px;
+.fold summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 14px;
+  align-items: center;
+  padding: 18px 2px;
+}
+.fold summary::-webkit-details-marker {
+  display: none;
+}
+.fold summary::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 9px;
+  height: 9px;
+  margin: -4px 4px 0 0;
+  border-right: 2px solid var(--muted-ink);
+  border-bottom: 2px solid var(--muted-ink);
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+}
+.fold[open] summary::after {
+  margin-top: 4px;
+  transform: rotate(-135deg);
+}
+.fold summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.foldTitle {
+  grid-column: 1;
+  margin: 0;
+  font-size: 17px;
   font-weight: 800;
   letter-spacing: -0.02em;
-  margin: 0 0 6px;
+}
+.foldHint {
+  grid-column: 1;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--muted-ink);
+}
+.foldBody {
+  padding: 0 2px 22px;
+}
+.foldMore {
+  display: inline-block;
+  margin-top: 14px;
 }
 .sectionLead {
   font-size: 14.5px;
@@ -332,12 +379,6 @@
 }
 
 /* 사이트 소개 */
-.about {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: 26px 24px;
-}
 .aboutLead {
   font-size: 15px;
   line-height: 1.7;
@@ -397,5 +438,9 @@
   }
   .countryChips a {
     padding: 10px 12px;
+  }
+  .folds {
+    margin-top: 28px;
+    padding: 2px 16px;
   }
 }

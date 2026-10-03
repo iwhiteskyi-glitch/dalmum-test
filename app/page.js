@@ -99,7 +99,7 @@ export default function Home() {
             <span className={styles.heroMark}>나와 우리</span>
           </h1>
           <p className={styles.heroLead}>
-            사진 두 장으로 닮은 정도를, 여행지 하나로 새 이름을.
+            닮은꼴·관상부터 운세·궁합, 꿈해몽, 여행 이름까지.
             <br className={styles.brWide} /> 가볍게 해보고 친구와 나눠 보세요.
           </p>
         </section>
@@ -130,82 +130,91 @@ export default function Home() {
           ))}
         </section>
 
-        <section className={styles.section} aria-labelledby="quick-travel">
-          <div className={styles.sectionHead}>
-            <h2 id="quick-travel" className={styles.sectionTitle}>
-              여행지별 현지 이름 · 인사말 보기
-            </h2>
-            <Link href="/travel" className={`${styles.more} ${styles.moreTravel}`}>
-              {COUNTRIES.length}개국 전체 보기 →
-            </Link>
-          </div>
-          <p className={styles.sectionLead}>
-            나라를 고르면 그 나라 감성 이름과 꼭 알아둘 현지 인사말, 도시별 명소·음식을 볼 수 있어요.
-          </p>
-          <ul className={styles.countryChips}>
-            {quickCountries.map((c) => (
-              <li key={c.code}>
-                <Link href={`/travel/${c.code}`}>
-                  <strong>{c.name}</strong>
-                  <span>{c.cities.length}개 도시</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className={styles.section} aria-labelledby="reads">
-          <div className={styles.sectionHead}>
-            <h2 id="reads" className={styles.sectionTitle}>
-              읽을거리
-            </h2>
-            <Link href="/reads" className={styles.more}>
-              전체 보기 →
-            </Link>
-          </div>
-          <div className={styles.readGrid}>
-            {reads.map((r) => (
-              <Link key={r.slug} href={`/reads/${r.slug}`} className={site.readCard}>
-                {r.corner ? (
-                  <p className={site.readCardCorner}>
-                    {CORNERS.find((c) => c.key === r.corner)?.name}
-                  </p>
-                ) : null}
-                <p className={site.readCardTitle}>{r.title}</p>
-                <p className={site.readCardDesc}>{r.description}</p>
+        {/* 대부분은 위 코너 카드만 쓰므로 아래는 접어 둡니다. 접힌 내용도 HTML에 그대로 있어
+            검색엔진·심사에서는 다 읽힙니다. */}
+        <div className={styles.folds}>
+          <details className={styles.fold}>
+            <summary>
+              <h2 className={styles.foldTitle}>여행지별 현지 이름 · 인사말 보기</h2>
+              <span className={styles.foldHint}>{COUNTRIES.length}개국</span>
+            </summary>
+            <div className={styles.foldBody}>
+              <p className={styles.sectionLead}>
+                나라를 고르면 그 나라 감성 이름과 꼭 알아둘 현지 인사말, 도시별 명소·음식을 볼 수 있어요.
+              </p>
+              <ul className={styles.countryChips}>
+                {quickCountries.map((c) => (
+                  <li key={c.code}>
+                    <Link href={`/travel/${c.code}`}>
+                      <strong>{c.name}</strong>
+                      <span>{c.cities.length}개 도시</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/travel" className={`${styles.more} ${styles.moreTravel} ${styles.foldMore}`}>
+                {COUNTRIES.length}개국 전체 보기 →
               </Link>
-            ))}
-          </div>
-        </section>
+            </div>
+          </details>
 
-        <section className={`${styles.section} ${styles.about}`} aria-labelledby="about">
-          <h2 id="about" className={styles.sectionTitle}>
-            {SITE.name}은 이런 곳이에요
-          </h2>
-          <p className={styles.aboutLead}>
-            {SITE.name}은 &lsquo;나&rsquo;와 &lsquo;우리&rsquo;를 가볍게 들여다보는 재미용 테스트
-            모음이에요. 친구·연인·가족과 결과를 나누며 이야깃거리를 만드는 걸 목표로 해요.
-          </p>
-          <ul className={styles.principles}>
-            <li>
-              <strong>재미로 봐요</strong>
-              모든 점수와 이름 추천은 재미를 위한 결과예요. 정확한 분석이나 공식적인 판단의 근거로 쓸
-              수 없어요.
-            </li>
-            <li>
-              <strong>저장하지 않아요</strong>
-              사진과 입력한 정보는 서버로 보내지 않고 내 브라우저 안에서만 처리돼요. 창을 닫으면
-              사라져요.
-            </li>
-            <li>
-              <strong>모두 무료예요</strong>
-              결제 기능이 없어요. 운영비는 페이지에 보이는 광고로 충당해요.
-            </li>
-          </ul>
-          <Link href="/about" className={styles.more}>
-            {SITE.name} 소개 더 보기 →
-          </Link>
-        </section>
+          <details className={styles.fold}>
+            <summary>
+              <h2 className={styles.foldTitle}>읽을거리</h2>
+              <span className={styles.foldHint}>{READS.length}편</span>
+            </summary>
+            <div className={styles.foldBody}>
+              <div className={styles.readGrid}>
+                {reads.map((r) => (
+                  <Link key={r.slug} href={`/reads/${r.slug}`} className={site.readCard}>
+                    {r.corner ? (
+                      <p className={site.readCardCorner}>
+                        {CORNERS.find((c) => c.key === r.corner)?.name}
+                      </p>
+                    ) : null}
+                    <p className={site.readCardTitle}>{r.title}</p>
+                    <p className={site.readCardDesc}>{r.description}</p>
+                  </Link>
+                ))}
+              </div>
+              <Link href="/reads" className={`${styles.more} ${styles.foldMore}`}>
+                읽을거리 전체 보기 →
+              </Link>
+            </div>
+          </details>
+
+          <details className={styles.fold}>
+            <summary>
+              <h2 className={styles.foldTitle}>{SITE.name}은 이런 곳이에요</h2>
+              <span className={styles.foldHint}>무료 · 저장 안 함</span>
+            </summary>
+            <div className={styles.foldBody}>
+              <p className={styles.aboutLead}>
+                {SITE.name}은 &lsquo;나&rsquo;와 &lsquo;우리&rsquo;를 가볍게 들여다보는 재미용 테스트
+                모음이에요. 친구·연인·가족과 결과를 나누며 이야깃거리를 만드는 걸 목표로 해요.
+              </p>
+              <ul className={styles.principles}>
+                <li>
+                  <strong>재미로 봐요</strong>
+                  모든 점수와 이름 추천은 재미를 위한 결과예요. 정확한 분석이나 공식적인 판단의 근거로 쓸
+                  수 없어요.
+                </li>
+                <li>
+                  <strong>저장하지 않아요</strong>
+                  사진과 입력한 정보는 서버로 보내지 않고 내 브라우저 안에서만 처리돼요. 창을 닫으면
+                  사라져요.
+                </li>
+                <li>
+                  <strong>모두 무료예요</strong>
+                  결제 기능이 없어요. 운영비는 페이지에 보이는 광고로 충당해요.
+                </li>
+              </ul>
+              <Link href="/about" className={styles.more}>
+                {SITE.name} 소개 더 보기 →
+              </Link>
+            </div>
+          </details>
+        </div>
       </main>
       <AdSlot slot="content-bottom" />
       <SiteFooter />
