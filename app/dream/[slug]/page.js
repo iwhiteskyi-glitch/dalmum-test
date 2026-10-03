@@ -100,7 +100,7 @@ export default async function DreamSymbolPage({ params }) {
         이 꿈으로 해몽 보기
       </Link>
       <p className={styles.small} style={{ textAlign: "center", marginTop: 10 }}>
-        같이 꾼 다른 장면도 골라서 종합 흐름까지 볼 수 있어요.
+        꿈에 함께 나온 다른 장면도 골라서, 여러 장면을 합친 해몽까지 볼 수 있어요.
       </p>
 
       {d.related.length > 0 && (
