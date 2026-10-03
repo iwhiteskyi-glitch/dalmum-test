@@ -68,8 +68,18 @@ function SelectFlow({ onResult }) {
   const [selected, setSelected] = useState([]);
   const [done, setDone] = useState(null); // 결과 화면에 고정해 둔 ids(선택을 계속 바꿔도 안 흔들리게)
   const [hint, setHint] = useState("");
+  const [query, setQuery] = useState("");
 
   const symbolsInTab = useMemo(() => TEXTS.symbols.filter((s) => s.category === tab), [tab]);
+
+  // 검색어가 있으면 카테고리를 넘나들며 라벨·키워드로 찾고, 없으면 평소처럼 탭별로 보여줍니다.
+  const q = query.trim();
+  const searching = q.length > 0;
+  const searchResults = useMemo(() => {
+    if (!searching) return [];
+    return TEXTS.symbols.filter((s) => s.label.includes(q) || s.keyword.includes(q));
+  }, [q, searching]);
+  const visibleSymbols = searching ? searchResults : symbolsInTab;
 
   // 상세 페이지의 "이 꿈으로 해몽 보기"(#pick.<id>)로 들어오면 그 상징을 골라 둔 채로 엽니다.
   useEffect(() => {
@@ -132,23 +142,41 @@ function SelectFlow({ onResult }) {
         {TEXTS.selectHint}
       </p>
 
-      <div className={ds.categoryTabs} role="tablist" aria-label="꿈 카테고리">
-        {TEXTS.categories.map((c) => (
-          <button
-            key={c.id}
-            type="button"
-            role="tab"
-            aria-selected={tab === c.id}
-            className={`${ds.categoryTab} ${tab === c.id ? ds.categoryTabOn : ""}`}
-            onClick={() => setTab(c.id)}
-          >
-            {c.label}
-          </button>
-        ))}
-      </div>
+      <input
+        type="search"
+        inputMode="search"
+        className={ds.searchBox}
+        placeholder="상징 이름으로 검색 (예: 뱀, 돈, 이빨)"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        aria-label="상징 검색"
+      />
+
+      {!searching && (
+        <div className={ds.categoryTabs} role="tablist" aria-label="꿈 카테고리">
+          {TEXTS.categories.map((c) => (
+            <button
+              key={c.id}
+              type="button"
+              role="tab"
+              aria-selected={tab === c.id}
+              className={`${ds.categoryTab} ${tab === c.id ? ds.categoryTabOn : ""}`}
+              onClick={() => setTab(c.id)}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {searching && (
+        <p className={ds.searchResultNote}>
+          {searchResults.length > 0 ? `검색 결과 ${searchResults.length}개` : "찾는 상징이 없어요. 다른 낱말로 검색해 보세요."}
+        </p>
+      )}
 
       <div className={ds.symbolGrid}>
-        {symbolsInTab.map((s) => {
+        {visibleSymbols.map((s) => {
           const on = selected.includes(s.id);
           return (
             <button
