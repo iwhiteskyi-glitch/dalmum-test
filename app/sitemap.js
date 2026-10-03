@@ -40,6 +40,9 @@ export default function sitemap() {
   // 관상 코너: 닮은꼴의 얼굴 인식 엔진을 재사용하는 다섯 번째 코너.
   const gwansangRoutes = [{ path: "/gwansang", priority: 0.85, changeFrequency: "weekly" }];
 
+  // 꿈해몽 코너: 사진·생년월일 없이 상징 선택만으로 보는 여섯 번째 코너.
+  const dreamRoutes = [{ path: "/dream", priority: 0.85, changeFrequency: "weekly" }];
+
   // 여행 이름 섹션: 시작 페이지 + 나라 페이지 + 도시 페이지.
   const travelRoutes = [
     { path: "/travel", priority: 0.8, changeFrequency: "weekly" },
@@ -79,6 +82,12 @@ export default function sitemap() {
       priority: r.priority,
     })),
     ...gwansangRoutes.map((r) => ({
+      url: `${SITE.url}${r.path}`,
+      lastModified: now,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+    })),
+    ...dreamRoutes.map((r) => ({
       url: `${SITE.url}${r.path}`,
       lastModified: now,
       changeFrequency: r.changeFrequency,

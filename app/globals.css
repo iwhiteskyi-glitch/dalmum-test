@@ -22,6 +22,8 @@
   --c-gunghap-soft: #fbe8dc;
   --c-gwansang: #a3762c;   /* 관상: 황갈색(묵·한지 느낌). 기존 네 색과 구분되는 다섯 번째 색 */
   --c-gwansang-soft: #f4e9d6;
+  --c-dream: #3a56a8;      /* 꿈해몽: 밤하늘 남색. 운세(보라)와 다르게 더 차분한 파랑 계열 */
+  --c-dream-soft: #e3e8f7;
   --leaf: #22816b;         /* 로고 새싹 줄기 */
 
   --radius-sm: 12px;  /* 사진/작은 요소 */

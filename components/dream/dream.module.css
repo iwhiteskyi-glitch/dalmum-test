@@ -1,0 +1,173 @@
+/* 꿈해몽 전용 스타일 — 상징 선택(카테고리 탭 + 칩)과 결과 목록만 여기 두고,
+   공용 레이아웃은 components/fortune/fortune.module.css(.dreamTheme)를 그대로 씁니다. */
+
+.categoryTabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+  margin-bottom: 14px;
+}
+.categoryTabs::-webkit-scrollbar {
+  display: none;
+}
+.categoryTab {
+  flex-shrink: 0;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--muted-ink);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.categoryTabOn {
+  border-color: var(--f);
+  background: var(--f);
+  color: #fff;
+}
+
+.symbolGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+@media (min-width: 560px) {
+  .symbolGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.symbolChip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md, 16px);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  text-align: left;
+}
+.symbolChip:hover,
+.symbolChip:focus-visible {
+  border-color: var(--f);
+  outline: none;
+}
+.symbolChipOn {
+  border-color: var(--f);
+  background: var(--f-soft);
+}
+.symbolChipLabel {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.symbolChipKeyword {
+  font-size: 12px;
+  color: var(--muted-ink);
+}
+
+.selectedBar {
+  font-size: 13.5px;
+  color: var(--f-deep);
+  background: var(--f-soft);
+  border-radius: var(--radius-md, 16px);
+  padding: 10px 14px;
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+/* 종합 흐름 — 결과의 메인 */
+.synthesisBox {
+  margin: 4px 0 24px;
+  padding: 24px 22px;
+  border-radius: var(--radius-lg, 20px);
+  background: linear-gradient(165deg, var(--f-soft), var(--surface));
+  border: 1.5px solid var(--f);
+  box-shadow: 0 6px 18px rgba(34, 56, 114, 0.12);
+}
+.synthesisLabel {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--f);
+  border-radius: 999px;
+  padding: 5px 12px;
+  margin-bottom: 10px;
+}
+.synthesisTitle {
+  font-size: 23px;
+  font-weight: 900;
+  color: var(--f-deep);
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+.synthesisText {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* 상징별 해석 목록 */
+.symbolListLabel {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  margin: 0 0 10px;
+}
+.symbolList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.symbolCard {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 16px);
+  padding: 16px 18px;
+  background: var(--surface);
+}
+.symbolHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.symbolTitle {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.symbolText {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.luckBadge {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.luck0 {
+  background: #e3f3e8;
+  color: #2f8f55;
+}
+.luck1 {
+  background: var(--f-soft);
+  color: var(--f-deep);
+}
+.luck2 {
+  background: #fdecec;
+  color: #b84a4a;
+}
