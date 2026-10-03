@@ -406,6 +406,32 @@
   border-radius: 12px;
   padding: 13px 14px;
 }
+.infoRowPhoto {
+  flex-wrap: wrap;
+}
+.infoPhoto {
+  flex: 0 0 100%;
+  margin: 0 0 4px;
+}
+.infoPhoto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 10px;
+  background: var(--border);
+}
+.infoPhoto figcaption {
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted-ink);
+  overflow-wrap: anywhere;
+}
+.infoPhoto figcaption a {
+  color: inherit;
+}
 .dot {
   flex-shrink: 0;
   width: 9px;

@@ -4,6 +4,7 @@ import styles from "@/components/travel/travel.module.css";
 import Phrases from "@/components/travel/Phrases";
 import TravelTest from "@/components/travel/TravelTest";
 import InfoTabs from "@/components/travel/InfoTabs";
+import InfoPhoto, { photoFor } from "@/components/travel/InfoPhoto";
 import { COUNTRIES, getCity, cityPath, mapLink } from "@/lib/travel/data";
 import { travelMetadata, breadcrumbJsonLd } from "@/lib/travel/seo";
 
@@ -100,8 +101,11 @@ export default async function CityPage({ params }) {
               <>
                 <h3 className={styles.srOnly}>{city.city_name} 대표 명소</h3>
                 <ul className={styles.infoList}>
-                  {city.attractions.map((a) => (
-                    <li key={a.name} className={styles.infoRow}>
+                  {city.attractions.map((a) => {
+                    const photo = photoFor(country.code, city.city_code, "a", a.name);
+                    return (
+                    <li key={a.name} className={`${styles.infoRow} ${photo ? styles.infoRowPhoto : ""}`}>
+                      {photo && <InfoPhoto photo={photo} alt={`${city.city_name} ${a.name}`} />}
                       <span className={styles.dot} aria-hidden="true" />
                       <div className={styles.infoBody}>
                         <p className={styles.infoName}>{a.name}</p>
@@ -116,7 +120,8 @@ export default async function CityPage({ params }) {
                         지도 ↗
                       </a>
                     </li>
-                  ))}
+                    );
+                  })}
                 </ul>
               </>
             ),
@@ -128,15 +133,19 @@ export default async function CityPage({ params }) {
               <>
                 <h3 className={styles.srOnly}>{city.city_name} 대표 음식</h3>
                 <ul className={styles.infoList}>
-                  {city.foods.map((f) => (
-                    <li key={f.name} className={styles.infoRow}>
-                      <span className={`${styles.dot} ${styles.dotFood}`} aria-hidden="true" />
-                      <div className={styles.infoBody}>
-                        <p className={styles.infoName}>{f.name}</p>
-                        <p className={styles.infoDesc}>{f.one_line_desc}</p>
-                      </div>
-                    </li>
-                  ))}
+                  {city.foods.map((f) => {
+                    const photo = photoFor(country.code, city.city_code, "f", f.name);
+                    return (
+                      <li key={f.name} className={`${styles.infoRow} ${photo ? styles.infoRowPhoto : ""}`}>
+                        {photo && <InfoPhoto photo={photo} alt={f.name} />}
+                        <span className={`${styles.dot} ${styles.dotFood}`} aria-hidden="true" />
+                        <div className={styles.infoBody}>
+                          <p className={styles.infoName}>{f.name}</p>
+                          <p className={styles.infoDesc}>{f.one_line_desc}</p>
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ul>
                 <p className={styles.phraseNote}>
                   영업시간·가격은 자주 바뀌어서 따로 적지 않았어요. 방문 전 지도 앱에서
