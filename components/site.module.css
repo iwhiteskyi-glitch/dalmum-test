@@ -86,7 +86,18 @@
   border-radius: 999px;
   padding: 3px;
   gap: 2px;
-  flex-shrink: 0;
+  /* 코너가 늘어나 한 줄에 다 안 들어가면(좁은 화면) 전체 헤더가 두 줄로 밀리는
+     대신, 이 줄 안에서만 가로로 스크롤되게 합니다. flex-shrink를 허용해야
+     부모(.headerInner)가 줄바꿈하지 않고 이 요소에 남은 폭을 내줍니다. */
+  flex-shrink: 1;
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+.testTabs::-webkit-scrollbar {
+  display: none;
 }
 .testTab {
   font-size: 14px;
@@ -96,6 +107,8 @@
   border-radius: 999px;
   padding: 7px 14px;
   white-space: nowrap;
+  flex-shrink: 0;
+  scroll-snap-align: start;
 }
 .testTab:hover {
   color: var(--ink);
@@ -378,10 +391,11 @@
     padding: 10px 16px;
   }
   .headerInner {
-    flex-wrap: wrap;
     gap: 8px;
   }
-  /* 코너 탭이 3개가 되면서 휴대폰에서 ☰ 버튼이 둘째 줄로 밀리지 않게 조금 줄입니다. */
+  /* 코너가 늘어나 휴대폰 폭에 탭이 다 안 들어가면, 줄바꿈하지 않고 탭 줄
+     안에서 가로 스크롤되게 합니다(.testTabs의 overflow-x: auto). 글자도
+     조금 줄여서 되도록 많은 탭이 스크롤 없이 보이게 합니다. */
   .testTab {
     font-size: 13px;
     padding: 7px 9px;

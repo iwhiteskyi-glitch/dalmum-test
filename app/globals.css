@@ -20,6 +20,8 @@
   --c-fortune-soft: #eeecfb;
   --c-gunghap: #d9622e;    /* 궁합: 코랄(테라코타). 닮았네(라즈베리)·여행이름(청록)·운세(보라)와 구분되게 */
   --c-gunghap-soft: #fbe8dc;
+  --c-gwansang: #a3762c;   /* 관상: 황갈색(묵·한지 느낌). 기존 네 색과 구분되는 다섯 번째 색 */
+  --c-gwansang-soft: #f4e9d6;
   --leaf: #22816b;         /* 로고 새싹 줄기 */
 
   --radius-sm: 12px;  /* 사진/작은 요소 */
