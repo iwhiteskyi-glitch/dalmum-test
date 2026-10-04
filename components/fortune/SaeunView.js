@@ -16,6 +16,7 @@ import {
   STEM_ELEMENT,
 } from "@/lib/fortune/saju";
 import { useBirth } from "@/lib/fortune/birthStore";
+import { keepResult, restoreOnBack } from "@/lib/backRestore";
 import { buildSaeunCard } from "@/lib/fortune/fortuneCard";
 import { shareResult, copyText } from "@/lib/fortune/shareResult";
 import { encodeSaeunLink, decodeSaeunLink } from "@/lib/fortune/resultLink";
@@ -35,7 +36,12 @@ function periodText(relationKey, period) {
 export default function SaeunView() {
   const { saju } = useBirth();
   const thisYear = useMemo(() => currentSajuYear(), []);
-  const [sajuYear, setSajuYear] = useState(thisYear + 1);
+  // 뒤로 가기로 돌아오면 고르던 연도를 그대로 보여 줍니다(탭 메모리에만 둠).
+  const [sajuYear, setSajuYearState] = useState(() => restoreOnBack("saeun-year") ?? thisYear + 1);
+  const setSajuYear = (y) => {
+    setSajuYearState(y);
+    keepResult("saeun-year", y);
+  };
   const [shared, setShared] = useState(null);
 
   // 주소 끝에 친구가 보낸 결과가 담겨 있으면, 생년월일을 넣지 않아도 그 결과부터 보여 줍니다.

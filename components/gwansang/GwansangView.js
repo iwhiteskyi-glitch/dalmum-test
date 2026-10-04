@@ -22,6 +22,7 @@ import { buildGwansangCard } from "@/lib/gwansang/card";
 import { shareResult, copyText } from "@/lib/fortune/shareResult";
 import { encodeGwansangLink, decodeGwansangLink } from "@/lib/gwansang/resultLink";
 import { SITE } from "@/lib/site";
+import { keepResult, dropResult, restoreOnBack } from "@/lib/backRestore";
 
 const CAPTIONS = [
   "눈매 보는 중...",
@@ -87,12 +88,15 @@ export default function GwansangView() {
 
 /** 사진 업로드 → 위치 조정 → 분석 → 결과까지의 전체 흐름. */
 function UploadFlow({ onResult, resultRef }) {
-  const [step, setStep] = useState(0); // 0 업로드 · 1 분석 중 · 2 결과
+  // 결과 아래 링크로 다른 페이지에 갔다가 뒤로 오면 보던 결과를 다시 보여 줍니다. 사진은 이
+  // 탭의 메모리에만 있고(저장·전송 없음), 새로고침하거나 창을 닫으면 사라져요.
+  const [back] = useState(() => restoreOnBack("gwansang"));
+  const [step, setStep] = useState(back ? 2 : 0); // 0 업로드 · 1 분석 중 · 2 결과
   const [entry, setEntry] = useState(null);
   const [uploadError, setUploadError] = useState(null);
   const [error, setError] = useState(null);
   const [loadingIdx, setLoadingIdx] = useState(0);
-  const [result, setResult] = useState(null); // { categories, photoUrl }
+  const [result, setResult] = useState(back); // { categories, photoUrl }
 
   const entryRef = useRef(null);
   useEffect(() => {
@@ -101,7 +105,13 @@ function UploadFlow({ onResult, resultRef }) {
   useEffect(() => {
     return () => releaseCropEntry(entryRef.current);
   }, []);
+  // 단계가 바뀔 때만 맨 위로 올립니다(뒤로 가기로 돌아온 첫 화면은 보던 위치 그대로).
+  const firstStep = useRef(true);
   useEffect(() => {
+    if (firstStep.current) {
+      firstStep.current = false;
+      return;
+    }
     window.scrollTo(0, 0);
   }, [step]);
 
@@ -177,6 +187,7 @@ function UploadFlow({ onResult, resultRef }) {
       const categories = classifyFace(detection);
       await minDelay;
       setResult({ categories, photoUrl });
+      keepResult("gwansang", { categories, photoUrl });
       releaseCropEntry(entry);
       setEntry(null);
       setStep(2);
@@ -209,6 +220,7 @@ function UploadFlow({ onResult, resultRef }) {
             onClick={() => {
               setResult(null);
               setStep(0);
+              dropResult("gwansang");
             }}
           >
             다른 사진으로 다시 보기

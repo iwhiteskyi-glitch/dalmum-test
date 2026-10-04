@@ -18,6 +18,7 @@ import {
 } from "@/lib/faceAnalysis";
 import { buildShareCard } from "@/lib/shareCard";
 import { SITE } from "@/lib/site";
+import { keepResult, dropResult, restoreOnBack } from "@/lib/backRestore";
 import PhotoSlotBase from "@/components/PhotoSlot";
 
 // 공유할 때 보내는 주소. 첫 화면(허브)이 아니라 닮은꼴 테스트로 바로 오게 합니다.
@@ -49,12 +50,15 @@ function PhotoSlot(props) {
  *  메인 페이지
  * ------------------------------------------------------------------ */
 export default function Page() {
-  const [step, setStep] = useState(0); // 0 업로드+위치조정 · 1 로딩 · 2 결과
+  // 결과 아래 링크로 다른 페이지에 갔다가 뒤로 오면 보던 결과를 다시 보여줍니다. 결과에 쓰는
+  // 작은 사진은 이 탭의 메모리에만 있고(저장·전송 없음), 새로고침하거나 창을 닫으면 사라져요.
+  const [back] = useState(() => restoreOnBack("face"));
+  const [step, setStep] = useState(back ? 2 : 0); // 0 업로드+위치조정 · 1 로딩 · 2 결과
   const [me, setMe] = useState(null); // { img, url, zoom, sx, sy }
   const [target, setTarget] = useState(null);
   const [loadingIdx, setLoadingIdx] = useState(0);
   const [loadingPreview, setLoadingPreview] = useState(null); // 로딩 화면에 보여줄 두 사진 미리보기
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState(back);
   const [error, setError] = useState(null);
   const [uploadError, setUploadError] = useState(null);
   const [saving, setSaving] = useState(false);
@@ -80,7 +84,13 @@ export default function Page() {
   }, []);
   // 단계가 바뀔 때마다 화면 맨 위로 스크롤을 올려줍니다. 안 그러면 이전 화면에서
   // 스크롤을 내려놓은 위치가 그대로 남아, 로딩/결과 화면이 중간부터 잘려 보여요.
+  // (뒤로 가기로 돌아온 첫 화면은 보던 위치 그대로 둡니다.)
+  const firstStep = useRef(true);
   useEffect(() => {
+    if (firstStep.current) {
+      firstStep.current = false;
+      return;
+    }
     window.scrollTo(0, 0);
   }, [step]);
   // 컴포넌트가 사라질 때 이미지 objectURL 정리
@@ -215,6 +225,7 @@ export default function Page() {
       );
       await minDelay;
       setResult({ ...res, meCroppedUrl, targetCroppedUrl });
+      keepResult("face", { ...res, meCroppedUrl, targetCroppedUrl });
       // 결과 화면부터는 잘라낸 작은 이미지만 보여주면 되니, 용량이 큰 원본 사진은
       // 바로 해제합니다. (모바일에서 메모리 부족으로 화면이 갑자기 처음으로
       // 돌아가는 문제를 줄여줍니다)
@@ -236,6 +247,7 @@ export default function Page() {
   }, [me, target]);
 
   const restart = () => {
+    dropResult("face");
     releaseCropEntry(me);
     releaseCropEntry(target);
     setMe(null);

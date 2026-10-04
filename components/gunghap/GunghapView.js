@@ -9,6 +9,7 @@ import { buildGunghapCard } from "@/lib/fortune/fortuneCard";
 import { shareResult, copyText } from "@/lib/fortune/shareResult";
 import { encodeGunghapLink, decodeGunghapLink } from "@/lib/fortune/resultLink";
 import { SITE } from "@/lib/site";
+import { keepResult, restoreOnBack } from "@/lib/backRestore";
 import {
   gunghapReading,
   gunghapScore,
@@ -48,7 +49,8 @@ function compareText(topA, topB) {
 }
 
 export default function GunghapView() {
-  const [result, setResult] = useState(null);
+  // 결과 아래 링크로 다른 페이지에 갔다가 뒤로 오면 보던 결과를 다시 보여 줍니다(탭 메모리에만 둠).
+  const [result, setResult] = useState(() => restoreOnBack("gunghap"));
   const [shared, setShared] = useState(null);
 
   // 주소 끝에 친구가 보낸 결과가 담겨 있으면, 생년월일을 넣지 않아도 그 결과부터 보여 줍니다.
@@ -61,7 +63,9 @@ export default function GunghapView() {
 
   function onSubmitted(meSaju, partnerSaju, gender, areas) {
     const reading = gunghapReading(meSaju, partnerSaju);
-    setResult({ me: meSaju, partner: partnerSaju, reading, gender, areas });
+    const next = { me: meSaju, partner: partnerSaju, reading, gender, areas };
+    setResult(next);
+    keepResult("gunghap", next);
     // 내 결과를 보기 시작하면 친구 결과와 링크 흔적을 지웁니다.
     setShared(null);
     if (window.location.hash) window.history.replaceState(null, "", window.location.pathname);

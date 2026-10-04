@@ -13,6 +13,7 @@ import { shareResult, copyText } from "@/lib/fortune/shareResult";
 import { encodeDreamLink, decodeDreamLink } from "@/lib/dream/resultLink";
 import { PAGE_IDS, dreamHref } from "@/lib/dream/pageIds";
 import { SITE } from "@/lib/site";
+import { keepResult, dropResult, restoreOnBack } from "@/lib/backRestore";
 
 const SYMBOL_BY_ID = Object.fromEntries(TEXTS.symbols.map((s) => [s.id, s]));
 
@@ -65,9 +66,11 @@ export default function DreamView() {
 
 /** 상징 선택(카테고리 탭 + 체크박스형 칩) → 결과까지의 전체 흐름. */
 function SelectFlow({ onResult }) {
-  const [tab, setTab] = useState(TEXTS.categories[0].id);
-  const [selected, setSelected] = useState([]);
-  const [done, setDone] = useState(null); // 결과 화면에 고정해 둔 ids(선택을 계속 바꿔도 안 흔들리게)
+  // 결과 안의 "상황별로 자세히 보기"로 갔다가 뒤로 오면, 처음 화면 대신 보던 결과를 다시 보여 줍니다.
+  const [back] = useState(() => restoreOnBack("dream"));
+  const [tab, setTab] = useState(back?.tab ?? TEXTS.categories[0].id);
+  const [selected, setSelected] = useState(back?.ids ?? []);
+  const [done, setDone] = useState(back?.ids ?? null); // 결과 화면에 고정해 둔 ids(선택을 계속 바꿔도 안 흔들리게)
   const [hint, setHint] = useState("");
   const [query, setQuery] = useState("");
 
@@ -110,6 +113,7 @@ function SelectFlow({ onResult }) {
   function viewResult() {
     if (selected.length < MIN_SELECT) return;
     setDone(selected);
+    keepResult("dream", { ids: selected, tab });
     track("dream_analyzed", { count: selected.length });
     onResult();
     requestAnimationFrame(() => {
@@ -128,6 +132,7 @@ function SelectFlow({ onResult }) {
             onClick={() => {
               setDone(null);
               setSelected([]);
+              dropResult("dream");
             }}
           >
             다른 꿈으로 다시 보기
@@ -139,8 +144,14 @@ function SelectFlow({ onResult }) {
 
   return (
     <div id="dream-select">
-      <p className={styles.blockLead} style={{ textAlign: "center" }}>
-        {TEXTS.selectHint}
+      <p className={ds.multiNote}>
+        <span className={ds.multiNoteIcon} aria-hidden="true">
+          ✓✓
+        </span>
+        <span>
+          <b>여러 장면을 함께 골라도 돼요.</b> 꿈에 나온 장면을 최대 {MAX_SELECT}개까지 고르면, 한데 묶어
+          종합 풀이를 해 드려요.
+        </span>
       </p>
 
       <input
@@ -190,6 +201,9 @@ function SelectFlow({ onResult }) {
               className={`${ds.symbolChip} ${on ? ds.symbolChipOn : ""}`}
               onClick={() => toggle(s.id)}
             >
+              <span className={ds.symbolCheck} aria-hidden="true">
+                {on ? "✓" : ""}
+              </span>
               <span className={ds.symbolChipLabel}>{s.label}</span>
               <span className={ds.symbolChipKeyword}>{s.keyword}</span>
             </button>
@@ -201,7 +215,7 @@ function SelectFlow({ onResult }) {
         {selected.length > 0 ? (
           <>선택한 {selected.length}개 — {resolveSymbols(selected).map((s) => s.label.replace(" 꿈", "")).join(", ")}</>
         ) : (
-          "아직 고른 꿈이 없어요."
+          `아직 고른 꿈이 없어요. 여러 개 골라도 돼요(최대 ${MAX_SELECT}개).`
         )}
       </p>
       {hint && (
@@ -211,7 +225,7 @@ function SelectFlow({ onResult }) {
       )}
 
       <button type="button" className={styles.cta} disabled={selected.length < MIN_SELECT} onClick={viewResult}>
-        꿈해몽 보기
+        {selected.length > 1 ? `${selected.length}개 장면 합쳐서 해몽 보기` : "꿈해몽 보기"}
       </button>
       <p className={styles.small} style={{ textAlign: "center", marginTop: 10 }}>
         고른 내용은 이 브라우저 안에서만 쓰이고, 서버로 전송되거나 저장되지 않아요.
@@ -226,21 +240,28 @@ function SelectFlow({ onResult }) {
 function DreamResult({ ids, snapshot = false }) {
   const [hintMsg, setHintMsg] = useState("");
   const [card, setCard] = useState(null);
+  const [pages, setPages] = useState(null); // 상세 페이지의 상황별 풀이(공유 이미지·글에 함께 담음)
 
   const symbols = resolveSymbols(ids);
   const keywordsLine = symbols.map((s) => s.keyword).join(" · ");
   const synthesis = resolveSynthesis(ids);
   const cardKey = ids.join("-");
+  const situationsOf = (id) => pages?.[id]?.situations || [];
 
   useEffect(() => {
     if (snapshot) return;
     let cancelled = false;
     setCard(null);
     (async () => {
+      // 상황별 풀이 데이터는 커서(약 300KB) 첫 화면에서 받지 않고, 결과를 볼 때 따로 불러옵니다.
+      const loaded = (await import("@/lib/dream/pages.json")).default;
+      if (cancelled) return;
+      setPages(loaded);
       const img = await buildDreamCard({
         keywordsLine,
         intro: TEXTS.intro,
-        symbols: symbols.map((s) => ({ label: s.label, text: s.text })),
+        compact: symbols.length >= 3,
+        symbols: symbols.map((s) => ({ label: s.label, text: s.text, situations: loaded[s.id]?.situations || [] })),
         synthesis,
       });
       if (!cancelled) setCard(img);
@@ -261,7 +282,15 @@ function DreamResult({ ids, snapshot = false }) {
       shortText,
       `\n[종합 흐름] ${synthesis.title}\n${synthesis.text}`,
       "\n고른 상징별로 자세히 보면",
-      ...symbols.map((s) => `[${s.label}] ${s.keyword} — ${s.text}`),
+      ...symbols.map((s) => {
+        const situations = situationsOf(s.id);
+        const lines = [`\n[${s.label}] ${s.keyword} — ${s.text}`];
+        if (situations.length) {
+          lines.push("상황별로 보면");
+          situations.forEach((it) => lines.push(`· ${it.title}: ${it.text}`));
+        }
+        return lines.join("\n");
+      }),
       `\n${TEXTS.disclaimer}`,
       "— 재미로봄 꿈해몽",
     ].join("\n");
@@ -347,8 +376,8 @@ function DreamResult({ ids, snapshot = false }) {
           </div>
           {hintMsg && <p className={styles.shareHint}>{hintMsg}</p>}
           <p className={styles.small}>
-            공유하면 고른 상징이 담긴 사진·링크가 전해져요. 링크에는 고른 상징의 이름만 담겨서
-            개인정보가 들어가지 않아요.
+            공유하면 고른 상징의 풀이와 상황별 풀이가 담긴 사진·링크가 전해져요. 링크에는 고른
+            상징의 이름만 담겨서 개인정보가 들어가지 않아요.
           </p>
         </>
       )}

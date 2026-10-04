@@ -98,10 +98,11 @@ export default async function DreamSymbolPage({ params }) {
       </section>
 
       <Link href={dreamPickHref(slug)} className={styles.cta} style={{ marginTop: 32, textDecoration: "none" }}>
-        이 꿈으로 해몽 보기
+        다른 장면과 합쳐서 해몽하기 →
       </Link>
       <p className={styles.small} style={{ textAlign: "center", marginTop: 10 }}>
-        꿈에 함께 나온 다른 장면도 골라서, 여러 장면을 합친 해몽까지 볼 수 있어요.
+        이 꿈이 골라진 채로 해몽 화면이 열려요. 꿈에 함께 나온 장면(최대 6개)을 더 고르면 한데
+        묶어 종합 풀이를 해 드려요.
       </p>
 
       {d.related.length > 0 && (

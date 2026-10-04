@@ -9,6 +9,7 @@ import { drawNameCards } from "@/lib/travel/recommend";
 import { buildTravelCard, displayTextFor, ensureDisplayFont } from "@/lib/travel/travelCard";
 import { encodeResultHash, decodeResultHash } from "@/lib/travel/shareState";
 import { SITE } from "@/lib/site";
+import { keepResult, dropResult, restoreOnBack } from "@/lib/backRestore";
 
 const STEPS = ["info", "result", "final"];
 const MAX_COMPANIONS = 4;
@@ -126,14 +127,23 @@ function PersonFields({ person, idPrefix, onChange, onEnter }) {
 }
 
 export default function TravelTest({ country, city }) {
+  // 페이지 아래 링크(다른 도시 등)로 갔다가 뒤로 오면 하던 단계를 그대로 다시 보여 줍니다.
+  // 닉네임 등은 이 탭의 메모리에만 있고(저장·전송 없음), 새로고침하거나 창을 닫으면 사라져요.
+  const backKey = `travel:${country.code}/${city.city_code}`;
+  const [back] = useState(() => restoreOnBack(backKey));
   const rootRef = useRef(null);
-  const nextId = useRef(1);
+  const nextId = useRef(back?.nextId ?? 1);
   const firstRender = useRef(true);
-  const [step, setStep] = useState("start");
-  const [people, setPeople] = useState(() => [newPerson(0)]);
-  const [current, setCurrent] = useState(0);
+  const [step, setStep] = useState(back?.step ?? "start");
+  const [people, setPeople] = useState(() => back?.people ?? [newPerson(0)]);
+  const [current, setCurrent] = useState(back?.current ?? 0);
   // 사람마다: { cards, selected, seen(이미 보여준 이름), roll(다시 뽑은 횟수), recycled }
-  const [draws, setDraws] = useState([]);
+  const [draws, setDraws] = useState(back?.draws ?? []);
+
+  useEffect(() => {
+    if (step === "start") dropResult(backKey);
+    else keepResult(backKey, { step, people, current, draws, nextId: nextId.current });
+  }, [backKey, step, people, current, draws]);
   // 결과 카드 이미지들 (한 사람당 1장 + 여럿이면 마지막에 단체 카드 1장)
   const [cardImages, setCardImages] = useState([]);
   const [slide, setSlide] = useState(0);
