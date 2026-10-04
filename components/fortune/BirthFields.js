@@ -8,7 +8,7 @@ import { range } from "./parts";
  * 생년월일(양력·음력)+태어난 시간 입력 필드 묶음. BirthForm(나)과 PartnerFields(상대방)에서
  * 함께 씁니다. 바깥에서 form 상태와 set 함수만 넘겨 주면 돼요.
  */
-export default function BirthFields({ form, set, dateLegend = "생년월일", timeLegend = "태어난 시간" }) {
+export default function BirthFields({ form, set, dateLegend = "생년월일", timeLegend = "태어난 시간", timeHelp }) {
   const daysInMonth = form.calendar === "lunar" ? 30 : 31;
 
   return (
@@ -97,6 +97,7 @@ export default function BirthFields({ form, set, dateLegend = "생년월일", ti
             </select>
           </label>
         </div>
+        {timeHelp && <p className={styles.timeHelp}>{timeHelp}</p>}
       </fieldset>
     </>
   );

@@ -48,6 +48,29 @@ function compareText(topA, topB) {
   return `상대의 ${nameB} 기운과 당신의 ${nameA} 기운은 서로 다른 속도로 부딪히는 사이예요. 맞춰가는 과정이 필요해요.`;
 }
 
+const elName = (i) => `${ELEMENTS[i]}(${ELEMENTS_HANJA[i]})`;
+
+/** 오행 보완 풀이: 서로에게 없는 오행을 상대가 넉넉히(두 개 이상) 가지고 있는지 */
+function fillText(reading) {
+  const { lackA = [], lackB = [], fillA = null, fillB = null } = reading;
+  if (!lackA.length && !lackB.length) {
+    return "두 사람 모두 다섯 가지 기운을 고루 가지고 있어서, 서로 채워 줘야 할 빈자리가 크지 않아요. 각자 단단하게 서 있는 조합이에요.";
+  }
+  const side = (lack, fill, who, other) => {
+    if (!lack.length) return `${who}${who === "당신" ? "은" : "는"} 다섯 가지 기운을 고루 가지고 있어요.`;
+    if (fill !== null) return `${who}에게 없는 ${elName(fill)} 기운을 ${other}${other === "당신" ? "이" : "가"} 넉넉히 가지고 있어요.`;
+    return `${who}에게 없는 ${lack.map(elName).join("·")} 기운은 ${other}에게도 많지 않아요.`;
+  };
+  const filled = (fillA !== null) + (fillB !== null);
+  const close =
+    filled === 2
+      ? "서로의 빈자리를 채워 주는 조합이라 함께 있을수록 균형이 잡혀요."
+      : filled === 1
+        ? "한쪽이 다른 쪽의 빈자리를 채워 주는 사이예요."
+        : "비어 있는 기운은 두 사람이 함께 다른 데서 채워 가면 돼요.";
+  return [side(lackA, fillA, "당신", "상대"), side(lackB, fillB, "상대", "당신"), close].join(" ");
+}
+
 export default function GunghapView() {
   // 결과 아래 링크로 다른 페이지에 갔다가 뒤로 오면 보던 결과를 다시 보여 줍니다(탭 메모리에만 둠).
   const [result, setResult] = useState(() => restoreOnBack("gunghap"));
@@ -107,6 +130,11 @@ function GunghapResult({ me, partner, reading, gender, areas, snapshot = false }
   const godAtoB = TEXTS.tenGods[reading.godAtoB];
   const godBtoA = TEXTS.tenGods[reading.godBtoA];
   const dayText = DAY_RELATIONS[reading.dayRelation];
+  const fillBonus = ((reading.fillA ?? null) !== null) * 3 + ((reading.fillB ?? null) !== null) * 3;
+  const fillLabel = `서로 채워 주는 기운${fillBonus ? ` · +${fillBonus}점` : ""}`;
+  const fill = fillText(reading);
+  // 태어난 시간을 모르면 여섯 글자로만 세요(친구가 보낸 링크에는 이 정보가 없어서 안내하지 않아요).
+  const timeMissing = !snapshot && (me.input?.hour == null || partner.input?.hour == null);
   const [hint, setHint] = useState("");
   const [card, setCard] = useState(null);
 
@@ -117,7 +145,7 @@ function GunghapResult({ me, partner, reading, gender, areas, snapshot = false }
   // 공유용 이미지 카드는 결과가 나오자마자 미리 그려 둡니다. 버튼을 누른 뒤에 그리면 기기가
   // "사용자가 누른 동작"으로 보지 않아 공유 창이 막히는 경우가 있어서예요. 카드에는 두 사람의
   // 일간과 풀이만 넣고, 생년월일·성별은 넣지 않아요.
-  const cardKey = `${me.dayMaster}-${partner.dayMaster}-${reading.dayRelation}-${shownAreas.map(([k]) => k).join("")}`;
+  const cardKey = `${me.dayMaster}-${partner.dayMaster}-${reading.dayRelation}-${score}-${fill}-${shownAreas.map(([k]) => k).join("")}`;
   useEffect(() => {
     if (snapshot) return;
     let cancelled = false;
@@ -132,6 +160,7 @@ function GunghapResult({ me, partner, reading, gender, areas, snapshot = false }
         { label: `내가 보는 상대 · ${godAtoB.god}(${godAtoB.hanja})`, text: godAtoB.meaning },
         { label: `상대가 보는 나 · ${godBtoA.god}(${godBtoA.hanja})`, text: godBtoA.meaning },
         { label: "일지 관계", text: dayText },
+        { label: fillLabel, text: fill },
       ],
       areas: shownAreas.map(([key, label]) => ({ label, text: cat[key] })),
     })
@@ -157,6 +186,7 @@ function GunghapResult({ me, partner, reading, gender, areas, snapshot = false }
       `· 내가 보는 상대 (${godAtoB.god}·${godAtoB.hanja}) ${godAtoB.meaning}`,
       `· 상대가 보는 나 (${godBtoA.god}·${godBtoA.hanja}) ${godBtoA.meaning}`,
       `· 일지 관계 ${dayText}`,
+      `· ${fillLabel} ${fill}`,
       ...shownAreas.map(([key, label]) => `· ${label} ${cat[key]}`),
       "— 재미로봄 궁합",
     ].join("\n");
@@ -222,6 +252,10 @@ function GunghapResult({ me, partner, reading, gender, areas, snapshot = false }
             <strong>일지 관계</strong>
             {dayText}
           </p>
+          <p className={styles.relNote}>
+            <strong>{fillLabel}</strong>
+            {fill}
+          </p>
 
           {!snapshot && (
             <>
@@ -260,6 +294,12 @@ function GunghapResult({ me, partner, reading, gender, areas, snapshot = false }
           서로 다른 점 · 비슷한 점
         </h2>
         <p className={styles.blockLead}>{compareText(reading.topElementA, reading.topElementB)}</p>
+        {timeMissing && (
+          <p className={styles.small}>
+            태어난 시간을 모르는 사람은 여섯 글자로 셌어요. 시간을 넣으면 여덟 글자로 세어서 오행 비교와
+            &lsquo;서로 채워 주는 기운&rsquo;, 점수가 그만큼 달라질 수 있어요.
+          </p>
+        )}
         <div style={{ marginTop: 14 }}>
           {ELEMENTS.map((el, i) => {
             const total = Math.max(...reading.elementsA, ...reading.elementsB, 1);

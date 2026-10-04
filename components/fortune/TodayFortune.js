@@ -107,7 +107,11 @@ export default function TodayFortune() {
           <p className={styles.sectionDivider}>내 운세 보기</p>
         </>
       )}
-      <BirthForm submitLabel="오늘의 운세 보기" onSubmitted={onSubmitted} />
+      <BirthForm
+        submitLabel="오늘의 운세 보기"
+        onSubmitted={onSubmitted}
+        timeHelp="오늘의 운세는 태어난 날(일주)을 기준으로 봐서 시간과 상관없이 같아요. 시간은 '내 사주'와 '궁합' 풀이에 반영돼요."
+      />
       <div ref={resultRef} className={styles.result} aria-live="polite">
         {saju && today && <TodayResult saju={saju} today={today} />}
       </div>

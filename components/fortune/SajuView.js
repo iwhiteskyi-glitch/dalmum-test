@@ -14,6 +14,7 @@ import {
   ELEMENTS_HANJA,
   STEM_ELEMENT,
   BRANCH_ELEMENT,
+  tenGod,
 } from "@/lib/fortune/saju";
 import { useBirth } from "@/lib/fortune/birthStore";
 import { buildSajuCard } from "@/lib/fortune/fortuneCard";
@@ -59,7 +60,11 @@ export default function SajuView() {
           <p className={styles.sectionDivider}>내 사주 보기</p>
         </>
       )}
-      <BirthForm submitLabel="내 사주 보기" onSubmitted={onSubmitted} />
+      <BirthForm
+        submitLabel="내 사주 보기"
+        onSubmitted={onSubmitted}
+        timeHelp="시간을 넣으면 넷째 기둥(시주)과 '태어난 시간으로 보는 나' 풀이가 더해지고, 오행도 여덟 글자로 세요."
+      />
       <div ref={resultRef} className={styles.result} aria-live="polite">
         {saju && <SajuResult saju={saju} />}
       </div>
@@ -89,6 +94,10 @@ function SajuResult({ saju, snapshot = false }) {
   const [detail, setDetail] = useState(null);
   const me = TEXTS.ilgan[saju.dayMaster];
   const ilganName = `${me.stem}${me.element}`;
+  // 시주 풀이: 시주 천간이 내 일간과 어떤 관계(십신)인지로 고릅니다. 시간을 모르면 없어요.
+  const hourGod = saju.pillars.hour ? tenGod(saju.dayMaster, saju.pillars.hour.stem) : null;
+  const hourText = hourGod == null ? null : TEXTS.hour.gods[hourGod];
+  const hourGodName = hourGod == null ? null : `${TEXTS.tenGods[hourGod].god}(${TEXTS.tenGods[hourGod].hanja})`;
   const pillarCols = [
     ["시주", saju.pillars.hour, "태어난 시간"],
     ["일주", saju.pillars.day, "태어난 날 · 나"],
@@ -147,6 +156,7 @@ function SajuResult({ saju, snapshot = false }) {
         summary: me.summary,
         strengths: me.strengths,
         cautions: me.cautions,
+        hour: hourText && { label: `태어난 시간으로 보는 나 · 시주 ${hourGodName}`, title: hourText.title, text: hourText.text },
         detailTitle: `${ilganName} 일간 더 알아보기`,
         intro: page?.intro,
         detail: detailSections(page, ilganName),
@@ -179,6 +189,10 @@ function SajuResult({ saju, snapshot = false }) {
       me.summary,
       `[이런 점이 빛나요] ${me.strengths.join(" / ")}`,
       `[이런 점은 살펴봐요] ${me.cautions.join(" / ")}`,
+      ...(hourText ? [`
+[태어난 시간으로 보는 나 · 시주 ${hourGodName}]
+${hourText.title}
+${hourText.text}`] : []),
       // 더 자세히 알아보기 페이지의 글까지 이어 붙입니다.
       ...(sections || []).map((s) => `\n[${s.title}]\n${s.text}`),
       "\n— 재미로봄 내 사주 팔자",
@@ -298,6 +312,32 @@ function SajuResult({ saju, snapshot = false }) {
           주세요.
         </p>
       </section>
+
+      {(hourText || !snapshot) && (
+        <section className={styles.block} aria-labelledby="hour-title">
+          <p className={styles.blockKicker}>태어난 시간으로 보는 나{hourGodName && ` · 시주 ${hourGodName}`}</p>
+          {hourText ? (
+            <>
+              <h2 id="hour-title" className={styles.blockTitle}>
+                {hourText.title}
+              </h2>
+              <p className={styles.para}>{hourText.text}</p>
+              <p className={styles.small}>{TEXTS.hour.intro}</p>
+            </>
+          ) : (
+            <>
+              <h2 id="hour-title" className={styles.blockTitle}>
+                시간을 넣으면 풀이가 더해져요
+              </h2>
+              <p className={styles.para}>
+                태어난 시간을 모르면 시주(넷째 기둥)를 비워 두고 여섯 글자로만 봐요. 위의 &lsquo;바꾸기&rsquo;를
+                눌러 시간을 넣으면 시주가 채워지고, 속마음과 나이가 들수록 드러나는 모습을 보는
+                &lsquo;태어난 시간 풀이&rsquo;가 여기에 더해져요. 오행도 여덟 글자로 다시 세요.
+              </p>
+            </>
+          )}
+        </section>
+      )}
 
       <section className={styles.block} aria-labelledby="me-title">
         <p className={styles.blockKicker}>나를 나타내는 글자(일간)</p>

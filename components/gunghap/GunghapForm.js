@@ -7,6 +7,7 @@ import { useBirth, loadRemembered, setBirth, forgetBirth } from "@/lib/fortune/b
 import { birthLabel } from "@/components/fortune/parts";
 import BirthFields from "@/components/fortune/BirthFields";
 
+const TIME_HELP = "시간을 넣으면 오행을 여덟 글자로 세어서 오행 비교와 '서로 채워 주는 기운', 점수에 반영돼요.";
 const EMPTY = { calendar: "solar", year: "1995", month: "", day: "", leap: false, hour: "", minute: "0" };
 const AREA_LABELS = [
   ["love", "연애"],
@@ -171,7 +172,7 @@ export default function GunghapForm({ onSubmitted }) {
         </div>
       ) : (
         <>
-          <BirthFields form={meForm} set={setMe} dateLegend="나의 생년월일" timeLegend="나의 태어난 시간" />
+          <BirthFields form={meForm} set={setMe} dateLegend="나의 생년월일" timeLegend="나의 태어난 시간" timeHelp={TIME_HELP} />
           <label className={styles.check}>
             <input type="checkbox" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
             <span>
@@ -195,7 +196,7 @@ export default function GunghapForm({ onSubmitted }) {
       </div>
 
       <p className={styles.sectionDivider}>상대방 정보</p>
-      <BirthFields form={partnerForm} set={setPartner} dateLegend="상대방의 생년월일" timeLegend="상대방의 태어난 시간" />
+      <BirthFields form={partnerForm} set={setPartner} dateLegend="상대방의 생년월일" timeLegend="상대방의 태어난 시간" timeHelp={TIME_HELP} />
       <div className={styles.fieldset}>
         <p className={styles.legend}>상대방의 성별</p>
         <GenderPicker label="상대방의 성별" value={partnerGender} onChange={setPartnerGender} />
