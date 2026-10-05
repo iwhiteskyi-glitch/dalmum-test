@@ -50,7 +50,7 @@ export default function SiteHeader({ wide = false }) {
 
   return (
     <header className={styles.header}>
-      <div className={`${styles.headerInner} ${wide ? styles.headerWide : ""}`}>
+      <div className={`${styles.headerInner} ${wide ? styles.headerWide : ""}`} data-content-width>
         <Link href="/" className={styles.brand} aria-label={`${SITE.name} 첫 화면`}>
           <BrandLogo size={28} className={styles.brandLogo} />
           <span className={styles.brandText}>{SITE.name}</span>

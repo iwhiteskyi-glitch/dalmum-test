@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { SITE, ADS, GA } from "@/lib/site";
 import KakaoBrowserBanner from "@/components/KakaoBrowserBanner";
+import SideRailAds from "@/components/SideRailAds";
 
 const TITLE_DEFAULT = `${SITE.name} — ${SITE.shortDesc}`;
 
@@ -83,6 +84,7 @@ export default function RootLayout({ children }) {
         />
         <KakaoBrowserBanner />
         {children}
+        <SideRailAds />
         <Analytics />
         {ADS.client ? (
           <Script
