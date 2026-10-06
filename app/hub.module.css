@@ -252,6 +252,48 @@
   background: radial-gradient(circle at 30% 25%, #5b78c9, #131b3a 72%);
   box-shadow: 0 10px 26px rgba(34, 56, 114, 0.28);
 }
+/* 카드 그림: 미니게임(棋 + 흑백 바둑돌) */
+.artGames {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #6fbf5f, #173f14 72%);
+  box-shadow: 0 10px 26px rgba(40, 90, 35, 0.3);
+}
+.gamesStones {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  display: flex;
+}
+.gamesStones i {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #5a5a5a, #0f0f0f);
+}
+.gamesStones i + i {
+  margin-left: -5px;
+  background: radial-gradient(circle at 35% 30%, #fff, #d9d6d0);
+}
+
+/* 코너 수가 홀수면 마지막 카드는 넓은 화면에서 한 줄을 가로로 다 써요(혼자 반 칸만 차지하지 않게). */
+@media (min-width: 761px) {
+  .corner:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+  .corner:last-child:nth-child(odd) .cornerArt {
+    flex: 0 0 42%;
+    height: auto;
+    min-height: 240px;
+  }
+}
 
 /* ---------- 카드 아래 접는 영역 ---------- */
 .folds {

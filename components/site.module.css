@@ -126,8 +126,16 @@
 .desktopLinks {
   display: none;
   align-items: center;
-  gap: 4px 16px;
+  gap: 4px 14px;
   margin-left: auto;
+  padding-left: 16px;
+  flex-shrink: 0;
+}
+/* 코너가 7개로 늘어 PC에서도 줄이 빠듯해서, 소개·읽을거리 같은 메뉴는 줄바꿈하지 않게 하고
+   탭 줄이 남는 폭 안에서 스크롤되게 둬요. */
+.desktopLinks .navLink {
+  white-space: nowrap;
+  font-size: 13.5px;
 }
 .menuBtn {
   flex-shrink: 0;
@@ -165,7 +173,10 @@
     display: none;
   }
   .testTabsWrap {
-    margin-left: 28px;
+    margin-left: 22px;
+  }
+  .testTab {
+    padding: 7px 12px;
   }
 }
 

@@ -70,6 +70,19 @@
 }
 
 /* 꿈해몽 코너 테마. 같은 카드·버튼 모양에 포인트 색만 밤하늘 남색(--c-dream)으로 바뀝니다. */
+.gamesTheme {
+  --f: var(--c-games);
+  --f-deep: #24561f;
+  --f-soft: var(--c-games-soft);
+  --f-gold: #e8b54a;
+  --f-glow: #6fbf5f;
+  --f-dark1: #173f14;
+  --f-dark2: #2c6b27;
+  --f-text-soft: #d3ecc9;
+  --f-text-soft2: #dff2d8;
+  --f-callout-ink: #24451f;
+  --f-hover: #d8ecd1;
+}
 .dreamTheme {
   --f: var(--c-dream);
   --f-deep: #223872;

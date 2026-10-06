@@ -1,0 +1,491 @@
+/* 미니게임 코너 화면. 색은 globals.css의 --c-games(초록) 한 가지만 코너 색으로 쓰고,
+   나머지(바탕·글자·버튼 모양)는 다른 코너와 같게 맞춥니다. */
+
+.anchor {
+  scroll-margin-top: 80px;
+}
+.placeholder {
+  min-height: 520px;
+}
+
+/* ---------- 게임 목록(허브) ---------- */
+.gameList {
+  list-style: none;
+  padding: 0;
+  margin: 26px 0 0;
+  display: grid;
+  gap: 12px;
+}
+.gameItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+a.gameItem:hover {
+  border-color: var(--c-games);
+  box-shadow: 0 6px 18px rgba(61, 139, 55, 0.14);
+}
+.gameIcon {
+  width: 64px;
+  height: 64px;
+  flex: none;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+}
+.gameItem h2 {
+  font-size: 18px;
+  margin: 0 0 3px;
+}
+.gameItem p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted-ink);
+}
+.gameProg {
+  margin-top: 6px !important;
+  font-size: 13px !important;
+  font-weight: 800;
+  color: var(--c-games) !important;
+}
+.gameGo {
+  margin-left: auto;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--c-games);
+}
+.soon {
+  opacity: 0.6;
+}
+.soonTag {
+  margin-left: auto;
+  flex: none;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted-ink);
+  background: #f1ecee;
+  border-radius: 999px;
+  padding: 5px 10px;
+}
+
+/* ---------- 단계 고르기 ---------- */
+.stagesBox {
+  margin-top: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 20px 18px 18px;
+}
+.tabs {
+  display: flex;
+  gap: 4px;
+  background: #f3ece8;
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+.tab {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
+  padding: 9px 10px;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--muted-ink);
+  cursor: pointer;
+}
+.tab:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.tabOn {
+  background: var(--surface);
+  color: var(--c-games);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+.stagesTitle {
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+.stagesLead {
+  font-size: 14px;
+  color: var(--muted-ink);
+  margin: 0;
+}
+.bar {
+  height: 8px;
+  background: #ebe4e7;
+  border-radius: 9px;
+  overflow: hidden;
+  margin: 10px 0 16px;
+}
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--c-games);
+  border-radius: 9px;
+}
+.stages {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.stage {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 11px 14px;
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+}
+.stage:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+.stageNow {
+  border: 2px solid var(--c-games);
+  box-shadow: 0 4px 14px rgba(61, 139, 55, 0.18);
+}
+.num {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 15px;
+  background: var(--c-games-soft);
+  color: var(--c-games);
+}
+.stageDone .num {
+  background: var(--c-games);
+  color: #fff;
+}
+.stageText {
+  display: flex;
+  flex-direction: column;
+}
+.stageText b {
+  font-size: 15px;
+}
+.stageText small {
+  font-size: 12.5px;
+  color: var(--muted-ink);
+}
+.stageState {
+  margin-left: auto;
+  flex: none;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--c-games);
+}
+.saveNote {
+  margin: 14px 0 0;
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  text-align: center;
+}
+
+/* ---------- 대국 화면 ---------- */
+.play {
+  margin-top: 24px;
+  scroll-margin-top: 80px;
+}
+.playHead {
+  margin-bottom: 10px;
+}
+.kicker {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--c-games);
+  margin: 0 0 2px;
+}
+.opponent {
+  font-size: 21px;
+  margin: 0;
+}
+.vs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.who {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+}
+.dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dotBlack {
+  background: radial-gradient(circle at 35% 30%, #5a5a5a, #0f0f0f);
+}
+.dotWhite {
+  background: radial-gradient(circle at 35% 30%, #fff, #d9d6d0);
+  border: 1px solid #c9c3bb;
+}
+.turn {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--c-games);
+  border-radius: 999px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+.turnEnd {
+  background: var(--muted-ink);
+}
+.boardWrap {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.board {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(110, 70, 20, 0.3);
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.boardWait {
+  cursor: progress;
+}
+.ghost {
+  animation: dm-pop 0.15s ease-out;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.hint {
+  min-height: 21px;
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  color: var(--muted-ink);
+  text-align: center;
+}
+.btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.btn {
+  flex: 1;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.primary {
+  flex: 1;
+  border: 0;
+  background: var(--c-games);
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: 13px 14px;
+  font: inherit;
+  font-size: 15.5px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(61, 139, 55, 0.25);
+}
+.rule {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  text-align: center;
+}
+
+/* ---------- 대국 끝 ---------- */
+.end {
+  margin-top: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  text-align: center;
+}
+.endWin {
+  border: 2px solid var(--c-games);
+  background: linear-gradient(180deg, var(--c-games-soft), var(--surface) 70%);
+}
+.endTitle {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0 0 4px;
+}
+.endText {
+  margin: 0 0 14px;
+  font-size: 14.5px;
+  color: var(--muted-ink);
+  line-height: 1.6;
+}
+.endBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.endBtns > * {
+  flex: 1 1 140px;
+}
+
+/* ---------- 완주 축하 ---------- */
+.celebrate {
+  margin-top: 24px;
+  border-radius: var(--radius-xl);
+  padding: 22px 20px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(160deg, #6a3fc8, #1e1350 75%);
+  box-shadow: 0 10px 26px rgba(42, 25, 110, 0.3);
+}
+.celebrateLegend {
+  background: radial-gradient(circle at 50% 10%, #3a3220, #0d0b07 75%);
+  border: 2px solid #e8c25a;
+}
+.crown {
+  font-size: 40px;
+  display: block;
+}
+.celebrateTitle {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 4px 0;
+}
+.celebrateText {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+/* ---------- 기록 공유 ---------- */
+.share {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+}
+.shareCompact {
+  margin-top: 14px;
+  padding-top: 14px;
+}
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.badge small {
+  display: block;
+  font-size: 12px;
+  opacity: 0.85;
+}
+.badge b {
+  font-size: 18px;
+}
+.badgeDisc {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 19px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+.badge_bronze {
+  background: linear-gradient(135deg, #b77a4a, #5a3416);
+}
+.badge_bronze .badgeDisc {
+  background: radial-gradient(circle at 35% 30%, #f0b98a, #a8642f 60%, #6d3c16);
+  color: #4a2a10;
+}
+.badge_silver {
+  background: linear-gradient(135deg, #8d9bb0, #36414f);
+}
+.badge_silver .badgeDisc {
+  background: radial-gradient(circle at 35% 30%, #fff, #c4ccd8 55%, #7f8a99);
+  color: #2d3646;
+}
+.badge_gold {
+  background: linear-gradient(135deg, #4fa443, #174a14);
+}
+.badge_gold .badgeDisc {
+  background: radial-gradient(circle at 35% 30%, #fff3b8, #f0c53f 55%, #b8860b);
+  color: #6b4b00;
+}
+.badge_master {
+  background: linear-gradient(135deg, #6a3fc8, #1e1350);
+}
+.badge_master .badgeDisc {
+  background: conic-gradient(from 30deg, #ffd76a, #ff8fb1, #9fd4ff, #a6f0c6, #ffd76a);
+  color: #3a1d7a;
+}
+.badge_legend {
+  background: radial-gradient(circle at 30% 20%, #3a3220, #0d0b07 80%);
+  border: 1.5px solid #e8c25a;
+}
+.badge_legend .badgeDisc {
+  background: #000;
+  color: #e8c25a;
+  border-color: #e8c25a;
+}
+.shareHint {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--muted-ink);
+  text-align: center;
+}
+
+@media (max-width: 420px) {
+  .vs {
+    font-size: 13px;
+    padding: 9px 11px;
+  }
+  .stagesBox {
+    padding: 16px 12px 14px;
+  }
+}
