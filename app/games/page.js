@@ -51,6 +51,15 @@ const JanggiIcon = (
   </svg>
 );
 
+const ChessIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#b58863" />
+    <rect x="1" y="1" width="19" height="19" rx="0" fill="#f0d9b5" />
+    <rect x="20" y="20" width="19" height="19" fill="#f0d9b5" />
+    <image href="/games/chess/wN.svg" x="4" y="4" width="32" height="32" />
+  </svg>
+);
+
 export default function GamesPage() {
   return (
     <>
@@ -62,8 +71,8 @@ export default function GamesPage() {
         </div>
         <h1 className={styles.heroTitle}>컴퓨터를 이겨 볼까?</h1>
         <p className={styles.lead}>
-          단계마다 조금씩 강해지는 컴퓨터와 한 판. 설치나 회원가입 없이 바로 시작하고, 몇 단계까지 깼는지
-          친구에게 자랑해 보세요.
+          오목·오델로·장기·체스, 단계마다 조금씩 강해지는 컴퓨터와 한 판. 설치나 회원가입 없이 바로 시작하고,
+          몇 단계까지 깼는지 친구에게 자랑해 보세요.
         </p>
       </section>
 
@@ -83,25 +92,50 @@ export default function GamesPage() {
             </span>
           </Link>
         </li>
-        <li className={`${g.gameItem} ${g.soon}`}>
-          <span className={g.gameIcon} style={{ background: "#e4f1e8" }}>
-            {OthelloIcon}
-          </span>
-          <div>
-            <h2>오델로</h2>
-            <p>상대 돌을 사이에 끼워 내 색으로 뒤집어요</p>
-          </div>
-          <span className={g.soonTag}>준비 중</span>
+        <li>
+          <Link href="/games/othello" className={g.gameItem}>
+            <span className={g.gameIcon} style={{ background: "#e4f1e8" }}>
+              {OthelloIcon}
+            </span>
+            <div>
+              <h2>오델로</h2>
+              <p>상대 돌을 사이에 끼워 내 색으로 뒤집어요</p>
+              <GameProgress game="othello" className={g.gameProg} />
+            </div>
+            <span className={g.gameGo} aria-hidden="true">
+              ›
+            </span>
+          </Link>
         </li>
-        <li className={`${g.gameItem} ${g.soon}`}>
-          <span className={g.gameIcon} style={{ background: "#fbf1e3" }}>
-            {JanggiIcon}
-          </span>
-          <div>
-            <h2>장기</h2>
-            <p>궁을 지키며 상대 왕을 잡는 우리 전통 놀이</p>
-          </div>
-          <span className={g.soonTag}>준비 중</span>
+        <li>
+          <Link href="/games/janggi" className={g.gameItem}>
+            <span className={g.gameIcon} style={{ background: "#fbf1e3" }}>
+              {JanggiIcon}
+            </span>
+            <div>
+              <h2>장기</h2>
+              <p>궁을 지키며 상대 궁을 외통으로 몰아요</p>
+              <GameProgress game="janggi" className={g.gameProg} />
+            </div>
+            <span className={g.gameGo} aria-hidden="true">
+              ›
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link href="/games/chess" className={g.gameItem}>
+            <span className={g.gameIcon} style={{ background: "#f2e6d4" }}>
+              {ChessIcon}
+            </span>
+            <div>
+              <h2>체스</h2>
+              <p>상대 킹을 체크메이트로 몰아넣으면 승리</p>
+              <GameProgress game="chess" className={g.gameProg} />
+            </div>
+            <span className={g.gameGo} aria-hidden="true">
+              ›
+            </span>
+          </Link>
         </li>
       </ul>
 

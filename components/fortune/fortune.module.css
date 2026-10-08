@@ -83,6 +83,9 @@
   --f-callout-ink: #24451f;
   --f-hover: #d8ecd1;
 }
+.gamesTheme .heroArt {
+  box-shadow: 0 12px 30px rgba(40, 90, 35, 0.3);
+}
 .dreamTheme {
   --f: var(--c-dream);
   --f-deep: #223872;

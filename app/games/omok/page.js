@@ -66,7 +66,7 @@ export default function OmokPage() {
           <p className={styles.sectionText}>
             1~3단계 상대는 내가 만든 3을 자주 못 보고 지나쳐요. 4~6단계부터는 3을 대부분 막고, 7단계부터는 4를
             연달아 두어 이기는 수순까지 찾아요. 9~10단계는 3과 4로 몰아붙이는 수순과, 내가 그런 수순을 노리는
-            자리까지 미리 막아요. 막히면 한 판에 세 번까지 &lsquo;한 수 무르기&rsquo;를 쓸 수 있어요.
+            자리까지 미리 막아요. 막히면 한 판에 세 번까지 &lsquo;무르기&rsquo;를 쓸 수 있어요.
           </p>
         </Fold>
         <Fold title="오목은 어디서 왔을까?" hint="바둑판에서 시작된 놀이">
@@ -80,9 +80,9 @@ export default function OmokPage() {
 
       <Link href="/games" className={styles.nextCard}>
         <span>
-          <small>다른 게임도 준비 중이에요</small>
+          <small>다른 게임도 있어요</small>
           <strong>미니게임 목록 보기</strong>
-          <span>오델로와 장기가 곧 나와요</span>
+          <span>오델로·장기·체스에도 도전해 보세요</span>
         </span>
         <span className={styles.crossArrow} aria-hidden="true">
           →

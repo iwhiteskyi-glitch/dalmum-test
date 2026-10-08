@@ -51,6 +51,9 @@ export default function sitemap() {
   const gamesRoutes = [
     { path: "/games", priority: 0.8, changeFrequency: "weekly" },
     { path: "/games/omok", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/othello", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/janggi", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/chess", priority: 0.75, changeFrequency: "monthly" },
   ];
 
   // 여행 이름 섹션: 시작 페이지 + 나라 페이지 + 도시 페이지.
