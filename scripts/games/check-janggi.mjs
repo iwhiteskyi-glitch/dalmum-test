@@ -67,7 +67,7 @@ check("궁끼리 마주 보면 빅장", isBikjang(boardWith([[8, 4, "K"], [1, 4,
 check("사이에 말이 있으면 빅장 아님", !isBikjang(boardWith([[8, 4, "K"], [5, 4, "P"], [1, 4, "k"]]).squares));
 {
   const r = play(boardWith([[8, 4, "K"], [5, 4, "P"], [1, 4, "k"]]), { from: at(5, 4), to: at(5, 3) });
-  check("빅장을 만드는 수는 무승부", r && r.end && r.end.winner === null);
+  check("빅장이 돼도 끝나지 않고 계속 둬요(웹 규칙)", r && !r.end);
 }
 {
   const first = play(boardWith([[8, 4, "K"], [1, 3, "k"]]), { pass: true });

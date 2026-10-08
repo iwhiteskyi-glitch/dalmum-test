@@ -44,8 +44,8 @@ const OthelloIcon = (
 
 const JanggiIcon = (
   <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
-    <polygon points="20,3 35,12 35,28 20,37 5,28 5,12" fill="#fff" stroke="#c0392b" strokeWidth="2" />
-    <text x="20" y="26" textAnchor="middle" fontSize="15" fill="#c0392b" fontFamily="Batang, serif">
+    <polygon points="13,3 27,3 37,13 37,27 27,37 13,37 3,27 3,13" fill="#fbf4e6" stroke="#b3261e" strokeWidth="2" />
+    <text x="20" y="26" textAnchor="middle" fontSize="15" fill="#b3261e" fontFamily="Batang, serif">
       車
     </text>
   </svg>

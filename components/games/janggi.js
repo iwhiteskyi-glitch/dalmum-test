@@ -172,5 +172,5 @@ export const janggiRules = {
   Extra: PassButton,
   createWorker: () => new Worker(new URL("../../lib/games/janggi/worker.js", import.meta.url)),
   loadAi: () => import("@/lib/games/janggi/ai"),
-  rule: `외통으로 이기고, 빅장·연속 한수쉼은 무승부 · ${MOVE_LIMIT}수가 지나면 점수(차13·포7·마5·상3·사3·졸2, 한 덤 1.5)로 판정`,
+  rule: `외통으로 이기고, 연속 한수쉼은 무승부(빅장은 그대로 계속) · ${MOVE_LIMIT}수가 지나면 점수(차13·포7·마5·상3·사3·졸2, 한 덤 1.5)로 판정`,
 };

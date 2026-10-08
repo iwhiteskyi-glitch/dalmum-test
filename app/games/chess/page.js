@@ -18,7 +18,8 @@ export default function ChessPage() {
     <>
       <section className={styles.hero}>
         <div className={styles.heroArt} aria-hidden="true">
-          <span>♔</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/games/chess/wK.svg" alt="" width="78" height="78" />
           <i style={{ top: 18, right: 26 }}>●</i>
           <i style={{ bottom: 24, left: 22, fontSize: 11 }}>✦</i>
         </div>
