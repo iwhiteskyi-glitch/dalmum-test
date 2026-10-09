@@ -10,6 +10,10 @@ const nextConfig = {
     return [
       { source: "/", has: OLD_HOST, destination: "https://www.jaemirobom.com/face", permanent: true },
       { source: "/:path*", has: OLD_HOST, destination: "https://www.jaemirobom.com/:path*", permanent: true },
+      // 예전 영어판(/en, /en/…)은 없앴어요. 검색엔진에 남은 옛 주소는 같은 내용의 한국어 페이지로 보내요
+      // (/en 첫 화면은 영어 닮은꼴 테스트였으므로 /face 로).
+      { source: "/en", destination: "/face", permanent: true },
+      { source: "/en/:path*", destination: "/:path*", permanent: true },
     ];
   },
   // 얼굴 분석은 100% 브라우저에서 실행됩니다. 사진은 서버로 전송되지 않습니다.
