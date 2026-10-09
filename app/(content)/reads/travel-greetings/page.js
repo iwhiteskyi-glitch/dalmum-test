@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ReadArticle, { readMetadata } from "@/components/ReadArticle";
 
 const SLUG = "travel-greetings";
@@ -28,6 +29,10 @@ export default function Page() {
 
       <p>
         인도네시아는 "할로(Halo)"가 기본이지만, 시간대에 따라 슬라맛 빠기(아침)·시앙(낮)·소레(저녁)로 나눠 인사하기도 해요. 고맙다는 말은 "뜨리마 까시(Terima kasih)"인데, 편하게 줄여서 "마까시"라고도 한대요. 필리핀은 인사말 뒤에 "포(po)"를 붙이는 게 포인트예요. "쿠무스타 포(Kumusta po)"처럼요. po는 존댓말 표시라서 어른이나 처음 만난 사람에게는 꼭 붙이는 게 좋아요.
+      </p>
+
+      <p>
+        싱가포르는 공용어가 영어·중국어·말레이어·타밀어 네 가지라서 인사도 다양해요. 여행 중에는 영어 인사만으로 충분하지만, 상대에 맞춰 "니 하오", "슬라맛 빠기(아침 인사)", "바나깜"을 건네 볼 수도 있어요. 자세한 표현은 <Link href="/travel/singapore">싱가포르 인사말·여행 이름</Link> 페이지에 한글 발음과 함께 정리해 뒀어요.
       </p>
 
       <h2>발음할 때 이것만 조심하세요</h2>

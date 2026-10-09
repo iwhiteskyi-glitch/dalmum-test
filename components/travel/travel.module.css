@@ -1094,3 +1094,24 @@
     gap: 10px;
   }
 }
+
+/* ---------- 나라별 추가 안내(extras) ---------- */
+.extraHeading {
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+.extraText {
+  font-size: 14px;
+  color: var(--muted-ink);
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+.extraGroup {
+  margin-top: 18px;
+}
+.extraGroupTitle {
+  font-size: 14px;
+  font-weight: 800;
+  margin: 0 0 8px;
+}

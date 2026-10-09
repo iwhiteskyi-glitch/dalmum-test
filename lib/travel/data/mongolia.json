@@ -307,7 +307,146 @@
         ],
         "meaning_kr": "수정(크리스탈)이라는 뜻"
       }
-    ]
+    ],
+    "extras": [
+      {
+        "key": "nameguide",
+        "label": "몽골 이름 특징",
+        "heading": "몽골 이름, 이렇게 지어요",
+        "paragraphs": [
+          "몽골 이름은 대부분 뜻이 분명한 낱말 하나, 또는 두세 개를 이어 붙여 만들어요. 예를 들어 '바트(굳세다)'와 '바야르(기쁨)'를 이으면 바트바야르가 되고, '알탄(금)'과 '체첵(꽃)'을 이으면 알탄체첵(황금 꽃)이 돼요. 부모가 아이에게 바라는 마음을 낱말로 골라 담는 셈이라서, 이름의 뜻을 알면 그 사람이 어떤 바람 속에 태어났는지 짐작할 수 있어요.",
+          "알탄, 에르덴, 촐몬처럼 남녀 구분 없이 쓰는 이름이 꽤 많은 것도 특징이에요. 티베트 불교에서 들어온 이름도 흔한데, '도르지(금강저를 뜻하는 말)'가 들어간 이름이 그런 예예요.",
+          "성(姓) 대신 아버지의 이름을 쓰는 점도 한국과 달라요. 공식 서류에는 씨족 이름도 적게 되어 있지만 일상에서는 거의 쓰지 않고, 아버지 이름을 '~의'를 뜻하는 소유격 형태로 바꿔 내 이름 앞에 둬요. 차히아의 아들 엘벡도르지는 '차히아긴 엘벡도르지(Tsakhiagiin Elbegdorj)'가 되는 식이에요. 서류나 기사에서는 아버지 이름의 첫 글자만 따서 'Ts. Elbegdorj'처럼 줄여 적기도 하고, 부를 때는 맨 뒤에 오는 본인 이름을 불러요.",
+          "예전에는 아이가 건강하게 자라도록 일부러 '네르귀(이름 없음)', '에네비시(이것이 아님)' 같은 이름을 붙이는 풍습도 있었다고 알려져 있어요. 나쁜 기운이 아이를 알아보지 못하게 하려는 뜻이라고 해요."
+        ],
+        "groups": [
+          {
+            "title": "이름에 자주 들어가는 낱말",
+            "lang_code": "mn",
+            "rows": [
+              {
+                "meaning_kr": "굳세다",
+                "text_local": "Бат",
+                "pronunciation_kr": "바트"
+              },
+              {
+                "meaning_kr": "기쁨",
+                "text_local": "Баяр",
+                "pronunciation_kr": "바야르"
+              },
+              {
+                "meaning_kr": "영웅",
+                "text_local": "Баатар",
+                "pronunciation_kr": "바타르"
+              },
+              {
+                "meaning_kr": "강철",
+                "text_local": "Болд",
+                "pronunciation_kr": "볼드"
+              },
+              {
+                "meaning_kr": "금(황금)",
+                "text_local": "Алтан",
+                "pronunciation_kr": "알탄"
+              },
+              {
+                "meaning_kr": "보석",
+                "text_local": "Эрдэнэ",
+                "pronunciation_kr": "에르덴"
+              },
+              {
+                "meaning_kr": "해(태양)",
+                "text_local": "Наран",
+                "pronunciation_kr": "나란"
+              },
+              {
+                "meaning_kr": "달",
+                "text_local": "Саран",
+                "pronunciation_kr": "사란"
+              },
+              {
+                "meaning_kr": "꽃",
+                "text_local": "Цэцэг",
+                "pronunciation_kr": "체첵"
+              },
+              {
+                "meaning_kr": "빛",
+                "text_local": "Гэрэл",
+                "pronunciation_kr": "게렐"
+              },
+              {
+                "meaning_kr": "빛줄기",
+                "text_local": "Туяа",
+                "pronunciation_kr": "투야"
+              },
+              {
+                "meaning_kr": "영원",
+                "text_local": "Мөнх",
+                "pronunciation_kr": "뭉흐"
+              },
+              {
+                "meaning_kr": "평화",
+                "text_local": "Энх",
+                "pronunciation_kr": "엥흐"
+              },
+              {
+                "meaning_kr": "행복",
+                "text_local": "Жаргал",
+                "pronunciation_kr": "자르갈"
+              },
+              {
+                "meaning_kr": "지혜",
+                "text_local": "Оюун",
+                "pronunciation_kr": "오윤"
+              }
+            ]
+          },
+          {
+            "title": "낱말을 이으면 이런 이름이 돼요",
+            "lang_code": "mn",
+            "rows": [
+              {
+                "meaning_kr": "굳센 강철",
+                "text_local": "Батболд",
+                "pronunciation_kr": "바트볼드"
+              },
+              {
+                "meaning_kr": "황금 꽃",
+                "text_local": "Алтанцэцэг",
+                "pronunciation_kr": "알탄체첵"
+              },
+              {
+                "meaning_kr": "해의 빛줄기",
+                "text_local": "Нарантуяа",
+                "pronunciation_kr": "나란투야"
+              },
+              {
+                "meaning_kr": "평화의 빛줄기",
+                "text_local": "Энхтуяа",
+                "pronunciation_kr": "엥흐투야"
+              },
+              {
+                "meaning_kr": "평화와 행복",
+                "text_local": "Энхжаргал",
+                "pronunciation_kr": "엥흐자르갈"
+              },
+              {
+                "meaning_kr": "영원한 보석",
+                "text_local": "Мөнхэрдэнэ",
+                "pronunciation_kr": "뭉흐에르덴"
+              },
+              {
+                "meaning_kr": "지혜의 보석",
+                "text_local": "Оюунэрдэнэ",
+                "pronunciation_kr": "오윤에르덴"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "meta_title": "몽골어 이름·몽골 이름 추천 | 몽골 여행 가면 내 이름은?",
+    "meta_description": "몽골 이름은 어떻게 지을까요? 바트(굳세다)·에르덴(보석)처럼 뜻을 이어 붙이는 몽골 이름 짓는 법, 아버지 이름을 앞에 쓰는 방식, 몽골어 인사말과 여행 이름 추천까지 정리했어요."
   },
   "cities": [
     {

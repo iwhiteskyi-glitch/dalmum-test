@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import styles from "@/components/travel/travel.module.css";
 import Phrases from "@/components/travel/Phrases";
 import InfoTabs from "@/components/travel/InfoTabs";
+import ExtraGuide from "@/components/travel/ExtraGuide";
 import { COUNTRIES, getCountry, cityPath } from "@/lib/travel/data";
 import { nameLocalLine } from "@/lib/travel/texts";
 import { travelMetadata, breadcrumbJsonLd } from "@/lib/travel/seo";
@@ -19,8 +20,12 @@ export async function generateMetadata({ params }) {
   if (!country) return {};
   const cityNames = country.cities.map((c) => c.city_name).join("·");
   return travelMetadata({
-    title: `${country.name} 여행 가면 내 이름은? | ${country.language} 인사말·${country.name} 이름 추천`,
-    description: `${country.name} 여행에서 쓸 나만의 현지식 이름을 추천받아 보세요. ${cityNames} 도시별 명소·음식과 ${country.language} 기본 인사말도 정리했어요.`,
+    title:
+      country.meta_title ||
+      `${country.name} 여행 가면 내 이름은? | ${country.language} 인사말·${country.name} 이름 추천`,
+    description:
+      country.meta_description ||
+      `${country.name} 여행에서 쓸 나만의 현지식 이름을 추천받아 보세요. ${cityNames} 도시별 명소·음식과 ${country.language} 기본 인사말도 정리했어요.`,
     path: `/travel/${country.code}`,
   });
 }
@@ -36,6 +41,13 @@ export default async function CountryPage({ params }) {
   const { country: code } = await params;
   const country = getCountry(code);
   if (!country) notFound();
+
+  const extras = (country.extras || []).map((e) => ({
+    key: e.key,
+    label: e.label,
+    first: e.position === "first",
+    content: <ExtraGuide extra={e} />,
+  }));
 
   const jsonLd = breadcrumbJsonLd([
     { name: "여행 이름", path: "/travel" },
@@ -83,6 +95,7 @@ export default async function CountryPage({ params }) {
         id="country-info"
         title={`${country.name} 여행 미리 알아두기`}
         items={[
+          ...extras.filter((e) => e.first),
           {
             key: "phrases",
             label: `${country.language} 인사말`,
@@ -117,6 +130,7 @@ export default async function CountryPage({ params }) {
               </>
             ),
           },
+          ...extras.filter((e) => !e.first),
         ]}
       />
     </article>
