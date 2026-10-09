@@ -20,8 +20,9 @@ const pos = (i) => MARGIN + i * STEP;
  *  ghost: 놓을 자리 미리보기(한 번 누르면 표시, 같은 자리를 한 번 더 누르면 둠)
  *  ghostColor: 1 흑 / 2 백 · lastCell: 마지막 수 표시 · winLine: 이긴 줄 강조
  *  blocked: 방금 둘 수 없다고 알려 준 자리(쌍삼)
+ *  area: 힌트로 살짝 칠해 줄 칸들(오늘의 문제에서 "이 근처에 답이 있어요")
  */
-export default function OmokBoard({ moves, ghost, ghostColor, lastCell, winLine, blocked, disabled, onTap }) {
+export default function OmokBoard({ moves, ghost, ghostColor, lastCell, winLine, blocked, disabled, onTap, area = null }) {
   function handle(e) {
     if (disabled) return;
     const rect = e.currentTarget.getBoundingClientRect();
@@ -70,6 +71,10 @@ export default function OmokBoard({ moves, ghost, ghostColor, lastCell, winLine,
           <circle key={`${row}-${col}`} cx={pos(col)} cy={pos(row)} r="4.5" fill="#6b4a1f" />
         ))}
 
+        {area &&
+          area.map((cell) => (
+            <rect key={`a${cell}`} x={pos(colOf(cell)) - STEP / 2} y={pos(rowOf(cell)) - STEP / 2} width={STEP} height={STEP} fill="rgba(47,122,42,0.22)" />
+          ))}
         {moves.map((cell, i) => {
           const black = i % 2 === 0;
           const cx = pos(colOf(cell));

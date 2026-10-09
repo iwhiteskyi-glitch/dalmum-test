@@ -54,6 +54,10 @@ export default function sitemap() {
     { path: "/games/othello", priority: 0.75, changeFrequency: "monthly" },
     { path: "/games/janggi", priority: 0.75, changeFrequency: "monthly" },
     { path: "/games/chess", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/puzzle", priority: 0.75, changeFrequency: "daily" },
+    { path: "/games/puzzle/omok", priority: 0.7, changeFrequency: "daily" },
+    { path: "/games/puzzle/janggi", priority: 0.7, changeFrequency: "daily" },
+    { path: "/games/puzzle/chess", priority: 0.7, changeFrequency: "daily" },
   ];
 
   // 여행 이름 섹션: 시작 페이지 + 나라 페이지 + 도시 페이지.

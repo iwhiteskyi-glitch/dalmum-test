@@ -15,8 +15,11 @@ const PROMO = [
   ["N", "나이트"],
 ];
 
-/** 체스판: 내 말을 누르면 갈 수 있는 칸이 표시되고, 그 칸을 누르면 움직여요. 흑일 때는 판을 뒤집어 보여 줘요. */
-function ChessBoard({ state, mySide, active, end, onMove }) {
+/**
+ * 체스판: 내 말을 누르면 갈 수 있는 칸이 표시되고, 그 칸을 누르면 움직여요. 흑일 때는 판을 뒤집어 보여 줘요.
+ * hint: 힌트로 테두리를 그려 줄 칸(오늘의 문제에서 "이 말을 움직여 보세요")
+ */
+function ChessBoard({ state, mySide, active, end, onMove, hint = null }) {
   const [sel, setSel] = useState(null);
   const [promo, setPromo] = useState(null); // 프로모션 고르는 중인 수 { from, to }
   useEffect(() => {
@@ -84,6 +87,9 @@ function ChessBoard({ state, mySide, active, end, onMove }) {
             </text>
           </g>
         ))}
+        {hint !== null && (
+          <rect x={xy(hint)[0] + 3} y={xy(hint)[1] + 3} width={STEP - 6} height={STEP - 6} rx="6" fill="rgba(47,122,42,0.18)" stroke="#2f7a2a" strokeWidth="4" strokeDasharray="8 5" />
+        )}
         {checkedKing >= 0 && (
           <circle cx={xy(checkedKing)[0] + STEP / 2} cy={xy(checkedKing)[1] + STEP / 2} r={STEP * 0.47} fill="rgba(206,40,87,0.45)" />
         )}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "@/components/fortune/fortune.module.css";
 import ChessGame from "@/components/games/ChessGame";
+import TodayPuzzles from "@/components/games/TodayPuzzles";
 import CrossCards from "@/components/fortune/CrossCards";
 import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
 import { fortuneMetadata } from "@/lib/fortune/seo";
@@ -101,6 +102,8 @@ export default function ChessPage() {
           </p>
         </Fold>
       </MoreInfo>
+
+      <TodayPuzzles only="chess" />
 
       <Link href="/games" className={styles.nextCard}>
         <span>

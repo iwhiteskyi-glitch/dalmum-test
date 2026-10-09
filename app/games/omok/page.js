@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "@/components/fortune/fortune.module.css";
 import OmokGame from "@/components/games/OmokGame";
+import TodayPuzzles from "@/components/games/TodayPuzzles";
 import CrossCards from "@/components/fortune/CrossCards";
 import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
 import { fortuneMetadata } from "@/lib/fortune/seo";
@@ -77,6 +78,8 @@ export default function OmokPage() {
           </p>
         </Fold>
       </MoreInfo>
+
+      <TodayPuzzles only="omok" />
 
       <Link href="/games" className={styles.nextCard}>
         <span>

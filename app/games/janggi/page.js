@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "@/components/fortune/fortune.module.css";
 import JanggiGame from "@/components/games/JanggiGame";
+import TodayPuzzles from "@/components/games/TodayPuzzles";
 import CrossCards from "@/components/fortune/CrossCards";
 import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
 import { fortuneMetadata } from "@/lib/fortune/seo";
@@ -102,6 +103,8 @@ export default function JanggiPage() {
           </p>
         </Fold>
       </MoreInfo>
+
+      <TodayPuzzles only="janggi" />
 
       <Link href="/games" className={styles.nextCard}>
         <span>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "@/components/fortune/fortune.module.css";
 import g from "@/components/games/games.module.css";
 import GameProgress from "@/components/games/GameProgress";
+import TodayPuzzles from "@/components/games/TodayPuzzles";
 import CrossCards from "@/components/fortune/CrossCards";
 import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
 import { fortuneMetadata } from "@/lib/fortune/seo";
@@ -139,12 +140,21 @@ export default function GamesPage() {
         </li>
       </ul>
 
+      <h2 className={g.listTitle}>매일 바뀌는 오늘의 문제</h2>
+      <TodayPuzzles />
+
       <MoreInfo title="미니게임이 궁금하다면" lead="어떻게 즐기는지, 기록은 어떻게 남는지 모아 뒀어요.">
         <Fold title="어떻게 즐기나요?" hint="10단계 도전 · 2회차">
           <p className={styles.sectionText}>
             게임마다 10명의 컴퓨터 상대가 있어요. 1단계 상대는 실수가 많아서 처음 해 보는 사람도 금방
             이길 수 있고, 단계가 오를수록 수를 더 멀리 내다봐요. 앞 단계를 이겨야 다음 단계가 열리고, 10단계를
             모두 깨면 더 어려운 2회차 도전이 열려요.
+          </p>
+        </Fold>
+        <Fold title="오늘의 문제는 무엇인가요?" hint="매일 바뀌는 묘수풀이">
+          <p className={styles.sectionText}>
+            오목·장기·체스 대국 중간의 한 장면에서 정해진 수 안에 이기는 길을 찾는 문제예요. 문제는 한국 시간
+            자정마다 바뀌고, 요일에 따라 쉬움·보통·어려움으로 난이도가 달라요. 지난 문제도 다시 풀 수 있어요.
           </p>
         </Fold>
         <Fold title="기록은 어디에 저장되나요?" hint="이 브라우저에만, 서버 저장 없음">

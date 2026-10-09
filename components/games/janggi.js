@@ -35,8 +35,11 @@ function octagon(cx, cy, r) {
   return pts.join(" ");
 }
 
-/** 장기판: 내 말을 누르면 갈 수 있는 곳이 보이고, 그곳을 누르면 움직여요. 한으로 둘 때는 판을 뒤집어 내 쪽이 아래예요. */
-function JanggiBoard({ state, mySide, active, onMove }) {
+/**
+ * 장기판: 내 말을 누르면 갈 수 있는 곳이 보이고, 그곳을 누르면 움직여요. 한으로 둘 때는 판을 뒤집어 내 쪽이 아래예요.
+ * hint: 힌트로 테두리를 그려 줄 자리(오늘의 문제에서 "이 말을 움직여 보세요")
+ */
+function JanggiBoard({ state, mySide, active, onMove, hint = null }) {
   const [sel, setSel] = useState(null);
   useEffect(() => setSel(null), [state]);
   const flip = mySide === 1;
@@ -112,6 +115,9 @@ function JanggiBoard({ state, mySide, active, onMove }) {
             </g>
           );
         })}
+        {hint !== null && (
+          <circle cx={pos(hint)[0]} cy={pos(hint)[1]} r={STEP * 0.5} fill="rgba(47,122,42,0.15)" stroke="#2f7a2a" strokeWidth="3.5" strokeDasharray="7 5" />
+        )}
         {targets.map((p) => {
           const [x, y] = pos(p);
           return state.squares[p] !== "." ? (

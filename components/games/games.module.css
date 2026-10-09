@@ -608,3 +608,154 @@ a.gameItem:hover {
   font-size: 12px;
   color: var(--muted-ink);
 }
+
+/* ---------- 오늘의 문제 ---------- */
+.pzError {
+  margin: 28px 0;
+  text-align: center;
+  color: var(--muted-ink);
+}
+.lv {
+  display: inline-block;
+  vertical-align: 3px;
+  margin-left: 6px;
+  font-size: 12.5px;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+.lv_easy {
+  background: #e3f3df;
+  color: #2f7a2a;
+}
+.lv_medium {
+  background: #fff1d6;
+  color: #9a6400;
+}
+.lv_hard {
+  background: #fde3e6;
+  color: #b3261e;
+}
+.lvText_easy {
+  color: #2f7a2a;
+}
+.lvText_medium {
+  color: #9a6400;
+}
+.lvText_hard {
+  color: #b3261e;
+}
+.pzGoal {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 10px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: var(--c-games-soft);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.pzGoal .dot {
+  flex: none;
+  margin-top: 2px;
+}
+.pzDone {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--c-games);
+}
+.pzStreak {
+  color: #c2410c;
+}
+.pzMore {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+}
+.pzMore a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+.pzPast {
+  margin-top: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 16px 14px;
+}
+.pzPastTitle {
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+.pzPastTitle small {
+  margin-left: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-ink);
+}
+.pzDays {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 8px;
+}
+.pzDay {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 9px 4px 7px;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+}
+.pzDay b {
+  font-size: 13.5px;
+}
+.pzDay small {
+  font-size: 12px;
+  font-weight: 800;
+}
+.pzDay span {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--muted-ink);
+}
+.pzDaySolved span {
+  color: var(--c-games);
+}
+.pzDayOn {
+  border-color: var(--c-games);
+  box-shadow: 0 0 0 2px var(--c-games-soft);
+}
+.pzCard {
+  border-style: dashed;
+  border-color: var(--c-games);
+  background: linear-gradient(180deg, var(--c-games-soft), var(--surface) 80%);
+}
+.pzCardIcon {
+  width: 52px;
+  height: 52px;
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  background: var(--c-games);
+}
+.listTitle {
+  font-size: 18px;
+  margin: 30px 0 -12px;
+}
