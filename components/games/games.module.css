@@ -912,7 +912,25 @@ a.gameItem:hover {
     padding: 5px 9px;
   }
 }
+.listHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 34px 0 -14px;
+}
 .listTitle {
   font-size: 18px;
-  margin: 34px 0 -14px;
+  margin: 0;
+}
+.listMore {
+  flex: none;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--c-games);
+  text-decoration: none;
+  padding: 4px 2px;
+}
+.listMore:hover {
+  text-decoration: underline;
 }

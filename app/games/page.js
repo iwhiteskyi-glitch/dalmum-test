@@ -97,7 +97,12 @@ export default function GamesPage() {
         </li>
       </ul>
 
-      <h2 className={g.listTitle}>매일 바뀌는 오늘의 문제</h2>
+      <div className={g.listHead}>
+        <h2 className={g.listTitle}>매일 바뀌는 오늘의 문제</h2>
+        <Link href="/games/puzzle" className={g.listMore}>
+          모아 보기 ›
+        </Link>
+      </div>
       <TodayPuzzles />
 
       <MoreInfo title="미니게임이 궁금하다면" lead="어떻게 즐기는지, 기록은 어떻게 남는지 모아 뒀어요.">
