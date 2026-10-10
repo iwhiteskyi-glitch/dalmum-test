@@ -1640,3 +1640,71 @@
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
+
+/* ---------- 띠별 운세 ---------- */
+.ttiGrid {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.ttiCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--ink);
+  text-decoration: none;
+}
+.ttiCard[aria-current="page"] {
+  box-shadow: 0 0 0 2.5px var(--f);
+}
+.ttiBadge {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  font-family: "Noto Serif KR", "Batang", serif;
+}
+.ttiCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.ttiCardBody strong {
+  font-size: 15px;
+}
+.ttiCardTitle {
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--muted-ink);
+}
+.ttiMatches {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  margin: 12px 0 0;
+  font-size: 14px;
+}
+.ttiMatches dt {
+  font-weight: 800;
+  color: var(--f-deep);
+}
+.ttiMatches dd {
+  margin: 0;
+}
+@media (min-width: 640px) {
+  .ttiGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
