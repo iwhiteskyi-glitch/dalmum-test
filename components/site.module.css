@@ -156,6 +156,30 @@
   font-size: 15.5px;
   padding: 10px 2px;
 }
+.menuShare {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.menuShareBtn {
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.menuNote {
+  margin: 2px 2px 6px;
+  font-size: 13px;
+  color: var(--muted-ink);
+}
 @media (min-width: 900px) {
   .desktopLinks {
     display: flex;
