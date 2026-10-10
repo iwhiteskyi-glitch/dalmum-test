@@ -1,0 +1,58 @@
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  padding: 14px 40px 14px 14px;
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.icon {
+  flex: none;
+  border-radius: 10px;
+}
+.body {
+  min-width: 0;
+}
+.title {
+  margin: 0 0 3px;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted-ink);
+}
+.desc strong {
+  color: var(--ink);
+}
+.btn {
+  margin-top: 8px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+.close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 32px;
+  height: 32px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--muted-ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}

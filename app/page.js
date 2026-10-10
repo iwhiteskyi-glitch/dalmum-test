@@ -3,6 +3,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import AdSlot from "@/components/AdSlot";
 import BrandLogo from "@/components/BrandLogo";
+import InstallPrompt from "@/components/InstallPrompt";
 import Avatar from "@/components/travel/Avatar";
 import site from "@/components/site.module.css";
 import styles from "./hub.module.css";
@@ -103,6 +104,8 @@ export default function Home() {
             <br className={styles.brWide} /> 가볍게 해보고 친구와 나눠 보세요.
           </p>
         </section>
+
+        <InstallPrompt />
 
         <section className={styles.corners} aria-label="코너">
           {CORNERS.map((c) => (
