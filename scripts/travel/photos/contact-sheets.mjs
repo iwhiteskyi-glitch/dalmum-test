@@ -8,7 +8,13 @@ import { createRequire } from "node:module";
 const country = process.argv[2];
 const ROOT = path.resolve(import.meta.dirname, "../../..");
 const DIR = path.join(ROOT, "docs/travel/사진검토", country);
-const cands = JSON.parse(fs.readFileSync(path.join(DIR, "candidates.json"), "utf8"));
+const cands0 = JSON.parse(fs.readFileSync(path.join(DIR, "candidates.json"), "utf8"));
+// 보강 모드: ONLY=<missing.json 경로>를 주면 사진이 없는 항목만 대상으로 하고 파일 이름 끝에 -add를 붙입니다.
+const ONLY = process.env.ONLY ? JSON.parse(fs.readFileSync(process.env.ONLY, "utf8")) : null;
+const SUF = ONLY ? "-add" : "";
+const onlyKeys = (country) => (ONLY ? new Set((ONLY[country] || []).map((k) => `${country}/${k}`)) : null);
+const keep = onlyKeys(country);
+const cands = keep ? Object.fromEntries(Object.entries(cands0).filter(([k]) => keep.has(k))) : cands0;
 const require = createRequire(path.join(process.env.PUPPETEER_DIR || ROOT, "noop.js"));
 const puppeteer = require("puppeteer-core");
 
@@ -32,7 +38,7 @@ for (const [city, items] of Object.entries(byCity)) {
     .cell i{position:absolute;left:4px;top:4px;background:#000;color:#fff;font:bold 18px sans-serif;padding:2px 8px;font-style:normal}
     .empty{color:#999}
   </style></head><body>${rows}</body></html>`, { waitUntil: "load" });
-  await p.screenshot({ path: path.join(DIR, `sheet-${city}.png`), fullPage: true });
+  await p.screenshot({ path: path.join(DIR, `sheet-${city}${SUF}.png`), fullPage: true });
   console.log("sheet", city, items.length);
 }
 await b.close();
