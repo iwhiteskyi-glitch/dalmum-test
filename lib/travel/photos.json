@@ -26,6 +26,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Macadamia_nuts_on_tree.JPG"
  },
+ "australia/brisbane/f/모튼베이버그": {
+  "src": "/travel/photos/australia/brisbane-f0.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Kingturkey",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cooked_whole_Moreton_Bay_Bug.JPG"
+ },
  "australia/melbourne/a/그레이트 오션로드": {
   "src": "/travel/photos/australia/melbourne-a2.webp",
   "w": 640,
@@ -107,6 +116,15 @@
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Sydney_Harbour_Bridge-16_October_2025.jpg"
  },
+ "australia/sydney/f/생새우": {
+  "src": "/travel/photos/australia/sydney-f2.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Maksym Kozlenko",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Prawns_at_Sydney_Fish_Market_-_1.jpg"
+ },
  "australia/sydney/f/팀탐": {
   "src": "/travel/photos/australia/sydney-f1.webp",
   "w": 640,
@@ -125,6 +143,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Salzburg,_Getreidegasse_9,_Mozarts_Geburtshaus.jpg"
  },
+ "austria/salzburg/a/미라벨 정원": {
+  "src": "/travel/photos/austria/salzburg-a1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Cezar Suceveanu",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Palatul_Mirabell1.jpg"
+ },
  "austria/salzburg/a/호엔잘츠부르크 성": {
   "src": "/travel/photos/austria/salzburg-a0.webp",
   "w": 640,
@@ -133,6 +160,24 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Salzburg_-_Festung_Hohensalzburg.JPG"
+ },
+ "austria/salzburg/f/모차르트쿠겔": {
+  "src": "/travel/photos/austria/salzburg-f0.webp",
+  "w": 640,
+  "h": 960,
+  "author": "Roberta F.",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Original_Salzburger_Mozartkugel_F%C3%BCrst_2009.jpg"
+ },
+ "austria/salzburg/f/슈티글 맥주": {
+  "src": "/travel/photos/austria/salzburg-f2.webp",
+  "w": 640,
+  "h": 427,
+  "author": "Nemracc",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Stiegl_beer_served_at_Klobenstein_Inn,_Entenlochklamm_Tyrol.jpg"
  },
  "austria/salzburg/f/잘츠부르거노케를": {
   "src": "/travel/photos/austria/salzburg-f1.webp",
@@ -224,6 +269,15 @@
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Toronto_-_ON_-_Toronto_Harbourfront7.jpg"
  },
+ "canada/toronto/f/버터타르트": {
+  "src": "/travel/photos/canada/toronto-f2.webp",
+  "w": 640,
+  "h": 360,
+  "author": "Alex Lozupone",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:ButtertartS1360020.jpg"
+ },
  "canada/toronto/f/자메이카패티": {
   "src": "/travel/photos/canada/toronto-f1.webp",
   "w": 640,
@@ -268,6 +322,33 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Capilano_Suspension_Bridge,_Vancouver,_Canada_(July_2016)_1.jpg"
+ },
+ "canada/vancouver/f/스팟프라운": {
+  "src": "/travel/photos/canada/vancouver-f1.webp",
+  "w": 640,
+  "h": 452,
+  "author": "Bloopityboop",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Spot_prawn.jpg"
+ },
+ "canada/vancouver/f/자파도그": {
+  "src": "/travel/photos/canada/vancouver-f0.webp",
+  "w": 640,
+  "h": 360,
+  "author": "Cn1992",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Food_Vendors_in_Downtown_Vancouver_-_Japadog.jpg"
+ },
+ "canada/vancouver/f/BC롤": {
+  "src": "/travel/photos/canada/vancouver-f2.webp",
+  "w": 640,
+  "h": 478,
+  "author": "Underbar dk",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:BC_Roll.jpg"
  },
  "china/beijing/a/고궁": {
   "src": "/travel/photos/china/beijing-a0.webp",
@@ -323,6 +404,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Jing_Jiang_Rou_Si_01.jpg"
  },
+ "china/chengdu/a/진리 거리": {
+  "src": "/travel/photos/china/chengdu-a2.webp",
+  "w": 640,
+  "h": 480,
+  "author": "작자 미상",
+  "license": "CC BY 1.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/1.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Jingli.jpeg"
+ },
  "china/chengdu/a/청두 판다기지": {
   "src": "/travel/photos/china/chengdu-a0.webp",
   "w": 640,
@@ -340,6 +430,15 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Shops_-_Kuanzhai_Alleys_-_Chengdu,_China_-_DSC05305.jpg"
+ },
+ "china/chengdu/f/단단면": {
+  "src": "/travel/photos/china/chengdu-f2.webp",
+  "w": 640,
+  "h": 426,
+  "author": "Steven G. Johnson",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dan-dan_noodles,_Shanghai.jpg"
  },
  "china/chengdu/f/마라훠궈": {
   "src": "/travel/photos/china/chengdu-f0.webp",
@@ -386,6 +485,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:%E9%9D%92%E5%B2%9B%E5%85%AB%E5%A4%A7%E5%85%B3%E8%8A%B1%E7%9F%B3%E6%A5%BC.jpg"
  },
+ "china/qingdao/f/라오산녹차": {
+  "src": "/travel/photos/china/qingdao-f2.webp",
+  "w": 640,
+  "h": 512,
+  "author": "Difference engine",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Laoshan_green_tea.jpg"
+ },
  "china/qingdao/f/칭다오맥주": {
   "src": "/travel/photos/china/qingdao-f0.webp",
   "w": 640,
@@ -404,6 +512,15 @@
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:20191114_Shanghai_Tower_(2).jpg"
  },
+ "china/shanghai/a/예원": {
+  "src": "/travel/photos/china/shanghai-a1.webp",
+  "w": 640,
+  "h": 376,
+  "author": "Stefan Fussan",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Shanghai_-_Yu_Garden_-_0035.jpg"
+ },
  "china/shanghai/a/와이탄": {
   "src": "/travel/photos/china/shanghai-a0.webp",
   "w": 640,
@@ -421,6 +538,24 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Soup_dumplings.jpg"
+ },
+ "china/shanghai/f/셩젠바오": {
+  "src": "/travel/photos/china/shanghai-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Brian Harrington Spier",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Sheng_Jian_Bao_on_a_pan.jpg"
+ },
+ "china/shanghai/f/홍샤오러우": {
+  "src": "/travel/photos/china/shanghai-f2.webp",
+  "w": 640,
+  "h": 461,
+  "author": "FotoosVanRobin Photostream",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%E7%B4%85%E7%87%92%E8%82%89_Braised_pork_in_brown_sauce.jpg"
  },
  "china/xian/a/병마용": {
   "src": "/travel/photos/china/xian-a0.webp",
@@ -466,6 +601,15 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Bi%C3%A1ng_Bi%C3%A1ng_Mi%C3%A0n_noodles_with_its_Hanzi.jpg"
+ },
+ "china/xian/f/양러우파오모": {
+  "src": "/travel/photos/china/xian-f0.webp",
+  "w": 605,
+  "h": 451,
+  "author": "NNU-1-05100104",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pita_Bread_Soaked_in_Lamb_Soup.jpg"
  },
  "china/zhangjiajie/a/대협곡 유리다리": {
   "src": "/travel/photos/china/zhangjiajie-a2.webp",
@@ -530,6 +674,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Sv%C3%AD%C4%8Dkov%C3%A1_na_smetan%C4%9B.JPG"
  },
+ "czech/prague/f/트르델닉": {
+  "src": "/travel/photos/czech/prague-f2.webp",
+  "w": 640,
+  "h": 427,
+  "author": "Tamorlan",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Trdeln%C3%ADk-Basket-20101.JPG"
+ },
  "france/nice/a/비외 니스": {
   "src": "/travel/photos/france/nice-a1.webp",
   "w": 640,
@@ -547,6 +700,24 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:CollineDuChateau_NiceFrance2022.png"
+ },
+ "france/nice/f/니스식 샐러드": {
+  "src": "/travel/photos/france/nice-f1.webp",
+  "w": 640,
+  "h": 426,
+  "author": "Wusel007",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Nizza-Salat_an_der_F_Mittelmeerk%C3%BCste.JPG"
+ },
+ "france/nice/f/소카": {
+  "src": "/travel/photos/france/nice-f0.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Myrabella",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Socca_a_Nice.jpg"
  },
  "france/nice/f/피살라디에르": {
   "src": "/travel/photos/france/nice-f2.webp",
@@ -809,6 +980,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Lawar_babi_guling.jpg"
  },
+ "indonesia/bali/f/사테 릴릿": {
+  "src": "/travel/photos/indonesia/bali-f1.webp",
+  "w": 640,
+  "h": 460,
+  "author": "lifestyle.okezone.com",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Sate_lilit.jpg"
+ },
  "indonesia/jakarta/a/모나스": {
   "src": "/travel/photos/indonesia/jakarta-a0.webp",
   "w": 640,
@@ -844,6 +1024,24 @@
   "license": "CC BY 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Gado-gado_in_Jakarta.JPG"
+ },
+ "indonesia/jakarta/f/끄락뜰로르": {
+  "src": "/travel/photos/indonesia/jakarta-f0.webp",
+  "w": 640,
+  "h": 359,
+  "author": "Warta Kota",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kerak_telor_Betawi.jpg"
+ },
+ "indonesia/jakarta/f/소토브타위": {
+  "src": "/travel/photos/indonesia/jakarta-f1.webp",
+  "w": 640,
+  "h": 415,
+  "author": "Irhanz",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:SOTO_BETAWI.jpg"
  },
  "italy/florence/a/베키오 다리": {
   "src": "/travel/photos/italy/florence-a2.webp",
@@ -890,6 +1088,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Italian_Panzanella.jpg"
  },
+ "italy/florence/f/피오렌티나": {
+  "src": "/travel/photos/italy/florence-f0.webp",
+  "w": 640,
+  "h": 496,
+  "author": "mike packard",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Bistecca_alla_fiorentina-01.jpg"
+ },
  "italy/milan/a/밀라노 두오모": {
   "src": "/travel/photos/italy/milan-a0.webp",
   "w": 640,
@@ -916,6 +1123,24 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Santa_Maria_delle_Grazie_Milan_2013.jpg"
+ },
+ "italy/milan/f/밀라노리조토": {
+  "src": "/travel/photos/italy/milan-f0.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Number55",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Risotto_alla_Milanese.JPG"
+ },
+ "italy/milan/f/밀라노커틀렛": {
+  "src": "/travel/photos/italy/milan-f1.webp",
+  "w": 516,
+  "h": 760,
+  "author": "Paolo Piscolla",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cotoletta_e_patate_al_forno.jpg"
  },
  "italy/milan/f/파네토네": {
   "src": "/travel/photos/italy/milan-f2.webp",
@@ -971,6 +1196,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Vari_Suppl%C3%AC.JPG"
  },
+ "italy/rome/f/카치오에페페": {
+  "src": "/travel/photos/italy/rome-f1.webp",
+  "w": 640,
+  "h": 360,
+  "author": "Popo le Chien",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cacio_e_pepe.jpg"
+ },
  "italy/venice/a/리알토 다리": {
   "src": "/travel/photos/italy/venice-a1.webp",
   "w": 640,
@@ -997,6 +1231,24 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Piazza_San_Marco_(Venice)_at_night-msu-2021-6449-.jpg"
+ },
+ "italy/venice/f/먹물리조또": {
+  "src": "/travel/photos/italy/venice-f0.webp",
+  "w": 640,
+  "h": 396,
+  "author": "Micaela &amp; Massimo",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Risotto_al_nero_di_seppia.jpg"
+ },
+ "italy/venice/f/치케티": {
+  "src": "/travel/photos/italy/venice-f2.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Benreis",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cicchetti_Venezia_(1).jpg"
  },
  "japan/fukuoka/a/다자이후 텐만구": {
   "src": "/travel/photos/japan/fukuoka-a1.webp",
@@ -1511,6 +1763,33 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Panoramic_view_of_Mount_Phou_Si_seen_from_Wat_Chomphet_in_Luang_Prabang_Laos.jpg"
  },
+ "laos/luangprabang/f/올람": {
+  "src": "/travel/photos/laos/luangprabang-f0.webp",
+  "w": 420,
+  "h": 420,
+  "author": "Misterbenzen",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:O-lam.png"
+ },
+ "laos/luangprabang/f/쩌우봉": {
+  "src": "/travel/photos/laos/luangprabang-f1.webp",
+  "w": 640,
+  "h": 763,
+  "author": "Isan1985",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Jeow_Bong_-_Laotian_chili_dip.jpg"
+ },
+ "laos/luangprabang/f/카오소이": {
+  "src": "/travel/photos/laos/luangprabang-f2.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Mindmaker",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Lao-style_khao_soi.jpg"
+ },
  "laos/vientiane/a/빠뚜싸이": {
   "src": "/travel/photos/laos/vientiane-a1.webp",
   "w": 640,
@@ -1547,6 +1826,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Lao_papaya_salad_3_(cropped).jpg"
  },
+ "laos/vientiane/f/카오찌": {
+  "src": "/travel/photos/laos/vientiane-f0.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Jpatokal",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Khao_ji_patte_breakfast.jpg"
+ },
  "macau/macau/a/성 바울 성당 유적": {
   "src": "/travel/photos/macau/macau-a0.webp",
   "w": 640,
@@ -1574,6 +1862,33 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:A_Ma_Temple_200907.jpg"
  },
+ "macau/macau/f/아프리칸치킨": {
+  "src": "/travel/photos/macau/macau-f2.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Fancy-cats-are-happy-cats",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:African_chicken_macau.JPG"
+ },
+ "macau/macau/f/포르투갈에그타르트": {
+  "src": "/travel/photos/macau/macau-f0.webp",
+  "w": 640,
+  "h": 853,
+  "author": "Pauloleong2002",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Portuguese_egg_tart_in_Macau.jpg"
+ },
+ "macau/macau/f/포크찹번": {
+  "src": "/travel/photos/macau/macau-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Chensiyuan",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Porkchopbun.jpg"
+ },
  "malaysia/kotakinabalu/a/가야 스트리트 마켓": {
   "src": "/travel/photos/malaysia/kotakinabalu-a0.webp",
   "w": 640,
@@ -1600,6 +1915,15 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Kota_Kinabalu,_view_from_the_observatory,_Malaysia.JPG"
+ },
+ "malaysia/kotakinabalu/f/투아란미": {
+  "src": "/travel/photos/malaysia/kotakinabalu-f0.webp",
+  "w": 640,
+  "h": 427,
+  "author": "CEphoto, Uwe Aranas",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tuaran_Sabah_TuaranMee-2.jpg"
  },
  "malaysia/kotakinabalu/f/히나바": {
   "src": "/travel/photos/malaysia/kotakinabalu-f1.webp",
@@ -1664,6 +1988,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Penang_Hil,_George_Town,_Penang_2023.jpg"
  },
+ "malaysia/penang/f/아쌈락사": {
+  "src": "/travel/photos/malaysia/penang-f1.webp",
+  "w": 640,
+  "h": 428,
+  "author": "DTW",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Assam_Laksa,_Air_Itam,_Penang.JPG"
+ },
  "malaysia/penang/f/첸돌": {
   "src": "/travel/photos/malaysia/penang-f2.webp",
   "w": 640,
@@ -1700,6 +2033,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Chinggis_Square.jpg"
  },
+ "mongolia/ulaanbaatar/f/보즈": {
+  "src": "/travel/photos/mongolia/ulaanbaatar-f0.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Mizu_Basyo",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Buuz.jpg"
+ },
  "mongolia/ulaanbaatar/f/아이락": {
   "src": "/travel/photos/mongolia/ulaanbaatar-f2.webp",
   "w": 640,
@@ -1708,6 +2050,15 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Kumys-bottle.jpg"
+ },
+ "mongolia/ulaanbaatar/f/호쇼르": {
+  "src": "/travel/photos/mongolia/ulaanbaatar-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Sivserver",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:MongoliaLastDay_153.JPG"
  },
  "philippines/bohol/a/롭옥강 크루즈": {
   "src": "/travel/photos/philippines/bohol-a2.webp",
@@ -1736,6 +2087,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Philippine_tarsier_(Carlito_syrichta_fraterculus)_Bohol.jpg"
  },
+ "philippines/bohol/f/키닐라우": {
+  "src": "/travel/photos/philippines/bohol-f2.webp",
+  "w": 640,
+  "h": 640,
+  "author": "Lokalpedia",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kinilaw_of_Northern_Mindanao.jpg"
+ },
  "philippines/boracay/a/마운트루호": {
   "src": "/travel/photos/philippines/boracay-a2.webp",
   "w": 640,
@@ -1744,6 +2104,15 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Boracay_view_from_Mount_Luho_2012-10-27.jpg"
+ },
+ "philippines/boracay/a/푸카쉘비치": {
+  "src": "/travel/photos/philippines/boracay-a1.webp",
+  "w": 640,
+  "h": 360,
+  "author": "Tirakatol",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Puka_beach,_boracay_island.jpg"
  },
  "philippines/boracay/a/화이트비치": {
   "src": "/travel/photos/philippines/boracay-a0.webp",
@@ -1781,6 +2150,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Basilica_Minore_del_Santo_Ni%C3%B1o_de_Cebu_(Osme%C3%B1a_Boulevard,_Cebu_City;_09-05-2022).jpg"
  },
+ "philippines/cebu/f/푸소": {
+  "src": "/travel/photos/philippines/cebu-f2.webp",
+  "w": 640,
+  "h": 853,
+  "author": "Prussiakira",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Puso-_Rice_from_Cebu_City.JPG"
+ },
  "philippines/manila/a/국립미술관": {
   "src": "/travel/photos/philippines/manila-a2.webp",
   "w": 640,
@@ -1808,6 +2186,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Baluartillo_de_San_Jos%C3%A9,_Manila,_Filipinas,_2023-08-26,_DD_41.jpg"
  },
+ "philippines/manila/f/판싯말라본": {
+  "src": "/travel/photos/philippines/manila-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Ramon FVelasquez",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pancitjf1337.JPG"
+ },
  "philippines/manila/f/할로할로": {
   "src": "/travel/photos/philippines/manila-f0.webp",
   "w": 640,
@@ -1816,6 +2203,15 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Halo_halo1.jpg"
+ },
+ "philippines/manila/f/호피아": {
+  "src": "/travel/photos/philippines/manila-f2.webp",
+  "w": 640,
+  "h": 482,
+  "author": "Ralff Nestor Nacor",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hopia_Ube,_Mar_2024.jpg"
  },
  "singapore/singapore/a/가든스 바이 더 베이": {
   "src": "/travel/photos/singapore/singapore-a0.webp",
@@ -1898,6 +2294,24 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:SF_maig_2_cropped.jpg"
  },
+ "spain/barcelona/f/크레마카탈라나": {
+  "src": "/travel/photos/spain/barcelona-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Popo le Chien",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Creme_catalane.jpg"
+ },
+ "spain/barcelona/f/판콘토마테": {
+  "src": "/travel/photos/spain/barcelona-f0.webp",
+  "w": 640,
+  "h": 427,
+  "author": "Jennifer Woodard Maderazo",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pa_amb_tomaquet.jpg"
+ },
  "spain/madrid/a/레티로 공원": {
   "src": "/travel/photos/spain/madrid-a1.webp",
   "w": 640,
@@ -1924,6 +2338,24 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Museo_del_Prado_2016_(25185969599).jpg"
+ },
+ "spain/madrid/f/칼라마레스": {
+  "src": "/travel/photos/spain/madrid-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Tamorlan",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:BocadilloCalamaresAtocha.JPG"
+ },
+ "spain/madrid/f/칼로스": {
+  "src": "/travel/photos/spain/madrid-f2.webp",
+  "w": 640,
+  "h": 427,
+  "author": "Javier Lastras",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Callos_a_la_Madrile%C3%B1a_spanish.jpg"
  },
  "spain/madrid/f/코시도": {
   "src": "/travel/photos/spain/madrid-f0.webp",
@@ -1961,6 +2393,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Plaza_de_Espa%C3%B1a_(Sevilla)_-_01.jpg"
  },
+ "spain/seville/f/가르반소 시금치": {
+  "src": "/travel/photos/spain/seville-f1.webp",
+  "w": 640,
+  "h": 556,
+  "author": "Toniher",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Potaje_de_vigilia.jpg"
+ },
  "spain/seville/f/가스파초": {
   "src": "/travel/photos/spain/seville-f0.webp",
   "w": 640,
@@ -1969,6 +2410,15 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Tomato_gazpacho.jpg"
+ },
+ "spain/seville/f/페스카이토": {
+  "src": "/travel/photos/spain/seville-f2.webp",
+  "w": 640,
+  "h": 427,
+  "author": "Tamorlan",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Frito_gaditano-_2009.jpg"
  },
  "switzerland/interlaken/a/베아투스 동굴": {
   "src": "/travel/photos/switzerland/interlaken-a2.webp",
@@ -2006,6 +2456,15 @@
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Meringues_9027.jpg"
  },
+ "switzerland/interlaken/f/알펜마카로니": {
+  "src": "/travel/photos/switzerland/interlaken-f0.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Adrian Michael",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%C3%84lplermagronen_2021.jpeg"
+ },
  "switzerland/interlaken/f/치즈퐁뒤": {
   "src": "/travel/photos/switzerland/interlaken-f1.webp",
   "w": 640,
@@ -2042,6 +2501,24 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Z%C3%BCrich_Switzerland-M%C3%BCnsterbr%C3%BCcke-and-Fraum%C3%BCnster-01_(cropped).jpg"
  },
+ "switzerland/zurich/f/게슈네첼테스": {
+  "src": "/travel/photos/switzerland/zurich-f0.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Jpatokal",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Z%C3%BCrcher_Geschnetzeltes_at_Zur_rote_Buech.jpg"
+ },
+ "switzerland/zurich/f/티르겔": {
+  "src": "/travel/photos/switzerland/zurich-f1.webp",
+  "w": 640,
+  "h": 455,
+  "author": "Sandstein. Any incorporated copyrighted artwork is not by…",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Migros-Tirggel.jpg"
+ },
  "taiwan/hualien/a/둥다먼야시장": {
   "src": "/travel/photos/taiwan/hualien-a2.webp",
   "w": 640,
@@ -2050,6 +2527,15 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:41-%E8%8A%B1%E8%93%AE%E6%9D%B1%E5%A4%A7%E9%96%80%E5%A4%9C%E5%B8%82%EF%BC%8C%E6%9E%97%E8%A8%98%E7%87%92%E7%95%AA%E9%BA%A5_(29518961025).jpg"
+ },
+ "taiwan/hualien/a/치싱탄": {
+  "src": "/travel/photos/taiwan/hualien-a1.webp",
+  "w": 640,
+  "h": 426,
+  "author": "Fred Hsu (Wikipedia:Fred Hsu on en.wikipedia)",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taiwan_2009_HuaLien_City_CiSingTan_Bay_FRD_8343.jpg"
  },
  "taiwan/hualien/a/타이루거국가공원": {
   "src": "/travel/photos/taiwan/hualien-a0.webp",
@@ -2159,6 +2645,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:The_Garden_Night_Market_in_Tainan_2014-05-29.jpg"
  },
+ "taiwan/tainan/f/니우러우탕": {
+  "src": "/travel/photos/taiwan/tainan-f1.webp",
+  "w": 640,
+  "h": 428,
+  "author": "Sinchen.Lin",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:16-%E5%8F%B0%E5%8D%97%E6%97%A9%E9%A4%90%E5%9C%8B%E8%8F%AF%E8%A1%97%E9%98%BF%E6%9D%91%E7%89%9B%E8%82%89%E6%B9%AF%EF%BC%8C%E5%8F%B0%E5%8D%97%E7%9C%9F%E5%A5%BD_(29484622036).jpg"
+ },
  "taiwan/tainan/f/단짜이몐": {
   "src": "/travel/photos/taiwan/tainan-f0.webp",
   "w": 640,
@@ -2185,6 +2680,15 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Taipei_Taiwan_Taipei-101-Tower-01.jpg"
+ },
+ "taiwan/taipei/f/다샹창": {
+  "src": "/travel/photos/taiwan/taipei-f2.webp",
+  "w": 640,
+  "h": 427,
+  "author": "Jirka Matousek",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Grilled_bone_sausage_in_front_of_Carton_King_in_Taichung.jpg"
  },
  "taiwan/taipei/f/샤오롱바오": {
   "src": "/travel/photos/taiwan/taipei-f0.webp",
@@ -2276,6 +2780,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Chiang_Mai_-_East_gate_of_the_city_wall_-_0001.jpg"
  },
+ "thailand/chiangmai/f/남프릭눔": {
+  "src": "/travel/photos/thailand/chiangmai-f2.webp",
+  "w": 640,
+  "h": 639,
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Nam_phrik_num.jpg"
+ },
  "thailand/chiangmai/f/사이우아": {
   "src": "/travel/photos/thailand/chiangmai-f1.webp",
   "w": 640,
@@ -2321,6 +2834,24 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Hua_Hin_Railway_Station_20240113_09.jpg"
  },
+ "thailand/huahin/f/쏨땀뿌마": {
+  "src": "/travel/photos/thailand/huahin-f0.webp",
+  "w": 640,
+  "h": 640,
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Som_tam_pu.jpg"
+ },
+ "thailand/kohsamui/a/나무앙 폭포": {
+  "src": "/travel/photos/thailand/kohsamui-a1.webp",
+  "w": 640,
+  "h": 853,
+  "author": "Thajsko",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Na_Muang_Watefall_-_vodop%C3%A1dy_Na_Muang_-_panoramio.jpg"
+ },
  "thailand/kohsamui/a/왓 프라야이": {
   "src": "/travel/photos/thailand/kohsamui-a0.webp",
   "w": 640,
@@ -2338,6 +2869,15 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Koh_Mak,_Thailand,_Fried_rice_with_seafood,_Thai_fried_rice.jpg"
+ },
+ "thailand/kohsamui/f/코코넛아이스크림": {
+  "src": "/travel/photos/thailand/kohsamui-f0.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Anilakeo",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Coconut_Ice_Cream,_Bangkok.jpg"
  },
  "thailand/krabi/a/라일레이 비치": {
   "src": "/travel/photos/thailand/krabi-a0.webp",
@@ -2365,6 +2905,15 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Wat_Tham_Sua_15.jpg"
+ },
+ "thailand/krabi/f/꾸어끌링": {
+  "src": "/travel/photos/thailand/krabi-f2.webp",
+  "w": 640,
+  "h": 450,
+  "author": "Takeaway",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Khua_kling.JPG"
  },
  "thailand/pattaya/a/농눅빌리지": {
   "src": "/travel/photos/thailand/pattaya-a0.webp",
@@ -2410,6 +2959,15 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Rock-oyster.jpg"
+ },
+ "thailand/pattaya/f/숯불새우구이": {
+  "src": "/travel/photos/thailand/pattaya-f2.webp",
+  "w": 640,
+  "h": 427,
+  "author": "PattayaPatrol",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:DFC_5516_Freshly_grilled_prawns_lined_up_for_sale_at_a_local_market_in_Sattahip_Thailand.jpg"
  },
  "thailand/phuket/a/빅 부다": {
   "src": "/travel/photos/thailand/phuket-a2.webp",
@@ -2474,6 +3032,15 @@
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:CAPPADOCIA_G%C3%B6reme_National_Park_and_the_Rock_Sites._World_Heritage_List._Pasabag_(Monks_Valley).jpg"
  },
+ "turkey/cappadocia/f/카이세리 만트": {
+  "src": "/travel/photos/turkey/cappadocia-f1.webp",
+  "w": 640,
+  "h": 381,
+  "author": "Kızılkum",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kayseride_bir_restoranda_Kayseri_mant%C4%B1s%C4%B1_(cropped).jpg"
+ },
  "turkey/cappadocia/f/테스티 케밥": {
   "src": "/travel/photos/turkey/cappadocia-f0.webp",
   "w": 640,
@@ -2510,6 +3077,24 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Topkap%C4%B1_-_01.jpg"
  },
+ "turkey/istanbul/f/미디예 돌마": {
+  "src": "/travel/photos/turkey/istanbul-f2.webp",
+  "w": 640,
+  "h": 427,
+  "author": "Fenerli1978",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Midye_dolma_(6).JPG"
+ },
+ "turkey/istanbul/f/발륵 에크멕": {
+  "src": "/travel/photos/turkey/istanbul-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "(WT-shared) Shoestring at wts wikivoyage",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Fish_sandwich,_Istanbul,_Turkey.JPG"
+ },
  "uk/edinburgh/a/로열마일": {
   "src": "/travel/photos/uk/edinburgh-a2.webp",
   "w": 640,
@@ -2536,6 +3121,15 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:City_of_Edinburgh_-_Edinburgh_Castle_-_20140421004403.jpg"
+ },
+ "uk/edinburgh/f/컬렌스킹크": {
+  "src": "/travel/photos/uk/edinburgh-f2.webp",
+  "w": 640,
+  "h": 427,
+  "author": "Metukkalihis",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cullen_Skink.JPG"
  },
  "uk/edinburgh/f/크라나한": {
   "src": "/travel/photos/uk/edinburgh-f1.webp",
@@ -2591,6 +3185,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Afternoon_meal_in_Tiffin.jpg"
  },
+ "uk/london/f/파이앤매시": {
+  "src": "/travel/photos/uk/london-f1.webp",
+  "w": 640,
+  "h": 427,
+  "author": "Sumit Surai",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pie,_mash_and_liquor.jpg"
+ },
  "uk/london/f/피시앤칩스": {
   "src": "/travel/photos/uk/london-f0.webp",
   "w": 640,
@@ -2617,6 +3220,24 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Fish_at_Piti_Bomb_Holes_Marine_Preserve,_Guam_in_2012.jpg"
+ },
+ "usa/guam/f/라티야": {
+  "src": "/travel/photos/usa/guam-f2.webp",
+  "w": 640,
+  "h": 480,
+  "author": "LittleT889",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Latiya.jpg"
+ },
+ "usa/guam/f/레드라이스": {
+  "src": "/travel/photos/usa/guam-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Joyakdol",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Chamorro_red_rice.png"
  },
  "usa/guam/f/치킨켈라겐": {
   "src": "/travel/photos/usa/guam-f0.webp",
@@ -2699,6 +3320,24 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Los_Angeles_(California,_USA),_Hollywood_Boulevard,_The_Doors_--_2012_--_5040.jpg"
  },
+ "usa/la/f/길거리타코": {
+  "src": "/travel/photos/usa/la-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "T.Tseng",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tacos_al_pastor.jpg"
+ },
+ "usa/la/f/인앤아웃버거": {
+  "src": "/travel/photos/usa/la-f2.webp",
+  "w": 640,
+  "h": 360,
+  "author": "DoulosBen",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:In-N-Out_Restaurant.jpg"
+ },
  "usa/la/f/프렌치딥": {
   "src": "/travel/photos/usa/la-f0.webp",
   "w": 640,
@@ -2735,6 +3374,24 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Downtown,_Las_Vegas,_NV,_USA_-_panoramio_(6).jpg"
  },
+ "usa/lasvegas/f/새우칵테일": {
+  "src": "/travel/photos/usa/lasvegas-f0.webp",
+  "w": 640,
+  "h": 480,
+  "author": "see below.",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Cocktail_1_bg_060702.jpg"
+ },
+ "usa/lasvegas/f/프라임립": {
+  "src": "/travel/photos/usa/lasvegas-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "NV89119",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Prime_Rib_in_Indianapolis.jpg"
+ },
  "usa/newyork/a/센트럴파크": {
   "src": "/travel/photos/usa/newyork-a1.webp",
   "w": 640,
@@ -2761,6 +3418,15 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:2024-06-17_10_15_08_View_south-southwest_from_near_the_intersection_of_7th_Avenue,_Broadway_and_44th_Street_in_Times_Square,_Manhattan,_New_York_City,_New_York.jpg"
+ },
+ "usa/newyork/f/뉴욕치즈케이크": {
+  "src": "/travel/photos/usa/newyork-f2.webp",
+  "w": 640,
+  "h": 506,
+  "author": "zingyyellow",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Baked_cheesecake_with_raspberries_and_blueberries.jpg"
  },
  "usa/newyork/f/뉴욕피자": {
   "src": "/travel/photos/usa/newyork-f0.webp",
@@ -2806,6 +3472,15 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:American_Memorial_Park.jpg"
+ },
+ "usa/saipan/f/아피기기": {
+  "src": "/travel/photos/usa/saipan-f0.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Abasaa",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Apigigi_2.JPG"
  },
  "usa/saipan/f/코코넛크랩": {
   "src": "/travel/photos/usa/saipan-f2.webp",
@@ -2888,6 +3563,15 @@
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:HangNgaCrazyHouse2.jpg"
  },
+ "vietnam/dalat/f/반짱느엉": {
+  "src": "/travel/photos/vietnam/dalat-f0.webp",
+  "w": 600,
+  "h": 341,
+  "author": "Huutai11791",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pizzabanhtrangnuong1.jpg"
+ },
  "vietnam/danang/a/미케 비치": {
   "src": "/travel/photos/vietnam/danang-a0.webp",
   "w": 640,
@@ -2915,6 +3599,15 @@
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Ngu_hanh_son_toan_canh.jpg"
  },
+ "vietnam/danang/f/미꽝": {
+  "src": "/travel/photos/vietnam/danang-f0.webp",
+  "w": 640,
+  "h": 427,
+  "author": "Christopher Crouzet",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:M%C3%AC_Qu%E1%BA%A3ng,_Da_Nang,_Vietnam.jpg"
+ },
  "vietnam/danang/f/반쎄오": {
   "src": "/travel/photos/vietnam/danang-f1.webp",
   "w": 640,
@@ -2923,6 +3616,15 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Banh_Xeo,_Eden_Center.jpg"
+ },
+ "vietnam/danang/f/분짜까": {
+  "src": "/travel/photos/vietnam/danang-f2.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Everyday English",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Bun_cha_ca.jpg"
  },
  "vietnam/halong/a/승솟동굴": {
   "src": "/travel/photos/vietnam/halong-a0.webp",
@@ -2941,6 +3643,15 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:H%E1%BA%A1_Long_Bay,_Ti_T%E1%BB%91p_Island,_2020-01_CN-01.jpg"
+ },
+ "vietnam/halong/f/오징어완자": {
+  "src": "/travel/photos/vietnam/halong-f0.webp",
+  "w": 640,
+  "h": 852,
+  "author": "Quyentruongrohgf",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ch%E1%BA%A3_m%E1%BB%B1c_H%E1%BA%A1_Long,_Qu%E1%BA%A3ng_Ninh,_Vi%E1%BB%87t_Nam.jpg"
  },
  "vietnam/hanoi/a/하노이 구시가지": {
   "src": "/travel/photos/vietnam/hanoi-a1.webp",
@@ -3014,6 +3725,24 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Saigon_Central_Post_Office_(52681461470).jpg"
  },
+ "vietnam/hochiminh/f/껌땀": {
+  "src": "/travel/photos/vietnam/hochiminh-f0.webp",
+  "w": 640,
+  "h": 427,
+  "author": "Christopher Crouzet",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:C%C6%A1m_T%E1%BA%A5m,_Da_Nang,_Vietnam.jpg"
+ },
+ "vietnam/hochiminh/f/반미": {
+  "src": "/travel/photos/vietnam/hochiminh-f1.webp",
+  "w": 640,
+  "h": 604,
+  "author": "nsaum75¡שיחת!‎",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png"
+ },
  "vietnam/hochiminh/f/후띠에우": {
   "src": "/travel/photos/vietnam/hochiminh-f2.webp",
   "w": 640,
@@ -3041,6 +3770,24 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:2024-11-23_An_Bang_Beach_in_Hoi_An_in_November.jpg"
  },
+ "vietnam/hoian/f/까오러우": {
+  "src": "/travel/photos/vietnam/hoian-f0.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Chainwit.",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cao_l%E1%BA%A7u_H%E1%BB%99i_An_(2024).jpg"
+ },
+ "vietnam/hoian/f/화이트로즈": {
+  "src": "/travel/photos/vietnam/hoian-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Chainwit.",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:B%C3%A1nh_bao_b%C3%A1nh_v%E1%BA%A1c_-_hoi_an_(2024).jpg"
+ },
  "vietnam/nhatrang/a/빈원더스": {
   "src": "/travel/photos/vietnam/nhatrang-a0.webp",
   "w": 640,
@@ -3059,6 +3806,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Ganesh_Tempel_Po_Nagar_Nha_Trang.jpg"
  },
+ "vietnam/nhatrang/a/혼쫑곶": {
+  "src": "/travel/photos/vietnam/nhatrang-a2.webp",
+  "w": 640,
+  "h": 512,
+  "author": "Phương Huy (thảo luận)",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:H%C3%B2n_ch%E1%BB%93ng_Nha_Trang_n%C4%83m_2016_(5).jpg"
+ },
  "vietnam/nhatrang/f/넴느엉": {
   "src": "/travel/photos/vietnam/nhatrang-f0.webp",
   "w": 640,
@@ -3067,6 +3823,15 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Nem_n%C6%B0%E1%BB%9Bng.jpg"
+ },
+ "vietnam/nhatrang/f/반깐짜까": {
+  "src": "/travel/photos/vietnam/nhatrang-f1.webp",
+  "w": 640,
+  "h": 480,
+  "author": "Kham Tran - www.khamtran.com",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Banh-Canh-Noodle-Soup.jpg"
  },
  "vietnam/phuquoc/a/빈펄 사파리": {
   "src": "/travel/photos/vietnam/phuquoc-a2.webp",

@@ -9,10 +9,13 @@ const country = process.argv[2];
 const ROOT = path.resolve(import.meta.dirname, "../../..");
 const DIR = path.join(ROOT, "docs/travel/사진검토", country);
 const read = (f) => JSON.parse(fs.readFileSync(path.join(DIR, f), "utf8"));
+// 보강 모드: ONLY=<missing.json 경로>를 주면 사진이 없는 항목만 대상으로 하고 파일 이름 끝에 -add를 붙입니다.
+const ONLY = process.env.ONLY ? JSON.parse(fs.readFileSync(process.env.ONLY, "utf8")) : null;
+const SUF = ONLY ? "-add" : "";
 const cands = read("candidates.json");
-const input = read("review-input.json");
-const r1 = read("review1.json");
-const r2 = read("review2.json");
+const input = read(`review-input${SUF}.json`);
+const r1 = read(`review1${SUF}.json`);
+const r2 = read(`review2${SUF}.json`);
 const PUB = path.join(ROOT, "public/travel/photos", country);
 fs.mkdirSync(PUB, { recursive: true });
 const DB = path.join(ROOT, "lib/travel/photos.json");
@@ -26,7 +29,7 @@ function cleanAuthor(s) {
   return a.length > 60 ? a.slice(0, 57) + "…" : a || "작자 미상";
 }
 
-for (const k of Object.keys(db)) if (k.startsWith(`${country}/`)) delete db[k];
+if (!ONLY) for (const k of Object.keys(db)) if (k.startsWith(`${country}/`)) delete db[k];
 const report = [];
 for (const item of input) {
   const c = cands[item.key];
@@ -53,7 +56,7 @@ for (const item of input) {
 }
 const sorted = Object.fromEntries(Object.entries(db).sort(([a], [b]) => a.localeCompare(b)));
 fs.writeFileSync(DB, JSON.stringify(sorted, null, 1) + "\n");
-fs.writeFileSync(path.join(DIR, "selected.md"), `# ${country} 사진 선택 결과\n\n${report.join("\n")}\n`);
+fs.writeFileSync(path.join(DIR, `selected${SUF}.md`), `# ${country} 사진 선택 결과\n\n${report.join("\n")}\n`);
 const got = report.filter((l) => !l.endsWith("사진 없음")).length;
 console.log(`${country}: ${got}/${input.length}개 항목에 사진`);
 console.log(report.filter((l) => l.endsWith("사진 없음")).join("\n"));
