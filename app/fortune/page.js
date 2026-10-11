@@ -36,6 +36,17 @@ export default function FortunePage() {
 
       <TodayFortune />
 
+      <Link href="/fortune/tti" className={styles.nextCard}>
+        <span>
+          <small>생년월일 없이 가볍게</small>
+          <strong>오늘의 띠별 운세 보기</strong>
+          <span>쥐띠부터 돼지띠까지, 내 띠로 보는 오늘 하루와 년생별 한마디</span>
+        </span>
+        <span className={styles.crossArrow} aria-hidden="true">
+          →
+        </span>
+      </Link>
+
       <MoreInfo title="오늘의 운세가 궁금하다면" lead="풀이가 어떻게 나오는지, 사주는 어떤 원리인지 모아 뒀어요. 궁금한 항목을 눌러 보세요.">
         <Fold title="오늘의 운세는 이렇게 정해져요" hint="내 일간과 오늘 일진, 십신으로 풀이하는 방법">
           <ol className={styles.steps}>

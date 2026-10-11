@@ -1167,6 +1167,17 @@
   background: var(--f);
   color: #fff;
 }
+/* 메뉴가 넷이라 좁은 폰에서는 간격을 줄여 한 줄에 들어가게 해요 */
+@media (max-width: 420px) {
+  .cornerNav {
+    gap: 2px;
+  }
+  .cornerNavItem {
+    padding: 8px 9px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+}
 
 /* ---------- 입력한 생년월일 요약 줄 ---------- */
 .formPlaceholder {
