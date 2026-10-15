@@ -37,7 +37,7 @@ export default function SajuPage() {
       <SajuView />
 
       <MoreInfo title="사주가 처음이라면" lead="사주 팔자의 기본과 이 사이트의 계산 기준을 모아 뒀어요. 궁금한 항목을 눌러 보세요.">
-        <Fold title="사주 팔자란?" hint="네 기둥, 여덟 글자, 오행이 뜻하는 것">
+        <Fold open title="사주 팔자란?" hint="네 기둥, 여덟 글자, 오행이 뜻하는 것">
           <p className={styles.sectionText}>
             사주(四柱)는 &lsquo;네 기둥&rsquo;이라는 뜻으로, 태어난 해·달·날·시간을 각각 하나의 기둥으로 봐요. 기둥마다
             위에는 천간(갑·을·병·정·무·기·경·신·임·계 중 하나), 아래에는 지지(자·축·인·묘·진·사·오·미·신·유·술·해 중

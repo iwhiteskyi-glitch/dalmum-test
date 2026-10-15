@@ -37,7 +37,7 @@ export default function SaeunPage() {
       <SaeunView />
 
       <MoreInfo title="신년운세가 궁금하다면" lead="세운·월운이 무엇인지, 오늘의 운세와 무엇이 다른지 모아 뒀어요.">
-        <Fold title="세운·월운이란?" hint="한 해 전체의 간지(세운)와 열두 달의 간지(월운)">
+        <Fold open title="세운·월운이란?" hint="한 해 전체의 간지(세운)와 열두 달의 간지(월운)">
           <p className={styles.sectionText}>
             사주에서는 날마다 일진(그날의 간지)이 있듯, 해마다 <strong>세운</strong>(그해 전체의
             간지), 달마다 <strong>월운</strong>(그달의 간지)이 있어요. 신년운세는 내 일간과 그해

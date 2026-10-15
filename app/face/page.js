@@ -26,6 +26,11 @@ const FACE_URL = `${SITE.url}/face`;
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import AdSlot from "@/components/AdSlot";
+import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
+import fstyles from "@/components/fortune/fortune.module.css";
+import { READS } from "@/lib/reads";
+
+const FACE_READS = READS.filter((r) => r.corner === "face");
 import { track } from "@vercel/analytics";
 
 const CAPTIONS = [
@@ -702,9 +707,72 @@ export default function Page() {
           <AdSlot slot="result-bottom" />
           </>
         )}
+        {step !== 1 && <FaceMoreInfo />}
       </main>
 
       <SiteFooter />
+    </div>
+  );
+}
+
+/* 사진 입력·결과 화면 아래에 붙는 참고 정보. 결과와 섞이지 않게 경계선 아래 별도 상자로 둡니다. */
+function FaceMoreInfo() {
+  return (
+    <div className={`${fstyles.faceTheme} ${fstyles.moreWrap}`}>
+      <MoreInfo
+        title="닮은꼴 테스트가 궁금하다면"
+        lead="점수가 어떻게 나오는지, 사진은 어떻게 처리되는지 모아 뒀어요. 궁금한 항목을 눌러 보세요."
+      >
+        <Fold open title="닮은 정도는 이렇게 계산해요" hint="얼굴 점 68개와 부위별 비율, 전체 인상을 함께 봐요">
+          <ol className={fstyles.steps}>
+            <li>
+              <strong>1. 얼굴 찾기</strong>
+              사진에서 얼굴 위치를 찾은 뒤 눈·눈썹·코·입·턱선의 윤곽을 따라 68개의 점을 찍어요. 한 사진에 얼굴이
+              여러 개면 비교할 얼굴을 직접 고를 수 있어요.
+            </li>
+            <li>
+              <strong>2. 부위별 비교</strong>
+              점 사이의 거리와 비율을 얼굴 크기에 맞춰 견줘요. 눈은 가로세로 비율과 기울기, 눈썹은 길이와 간격, 코는
+              길이와 너비, 입은 너비와 비율, 턱선은 너비와 각도, 이목구비 배치는 눈·코·입 사이 간격을 봐요.
+            </li>
+            <li>
+              <strong>3. 전체 닮은 정도</strong>
+              얼굴 전체의 특징을 128개의 숫자로 요약해 두 사람을 비교한 값(45%)과 여섯 부위 점수(55%)를 합쳐 하나의
+              퍼센트로 보여 줘요.
+            </li>
+          </ol>
+          <p className={fstyles.callout}>
+            같은 사람이라도 조명, 각도, 표정에 따라 점수가 달라질 수 있어요. 과학적인 판정이 아니라 재미로 보는
+            결과예요.
+          </p>
+        </Fold>
+        <Fold title="사진은 어디에도 저장되지 않아요" hint="분석은 모두 이 브라우저 안에서만 해요">
+          <p className={fstyles.sectionText}>
+            얼굴을 찾고 비교하는 계산은 모두 지금 쓰고 있는 브라우저 안에서 이루어져요. 사진은 서버로 보내지 않고,
+            어디에도 저장하지 않아요. 결과 화면에 쓰는 작은 사진도 이 탭 안에만 잠시 있다가, 새로고침하거나 창을 닫으면
+            사라져요. 결과 카드는 공유 버튼을 눌러 내가 고른 앱으로 직접 보낼 때만 밖으로 나가요.
+          </p>
+        </Fold>
+        <Fold title="결과가 더 잘 나오는 사진" hint="정면, 밝은 곳, 가리지 않은 얼굴">
+          <ul className={fstyles.tipList}>
+            <li>얼굴이 정면을 보고 있는 사진이 가장 정확해요. 고개가 많이 돌아가면 점의 위치가 틀어져요.</li>
+            <li>밝고 고른 조명에서 찍은 사진을 골라 주세요. 그림자가 짙으면 윤곽을 잘못 읽을 수 있어요.</li>
+            <li>앞머리, 안경, 마스크, 손으로 눈썹·눈·입을 가리지 않은 사진이 좋아요.</li>
+            <li>두 사진의 표정이 비슷할수록 입과 눈 비교가 공정해져요.</li>
+          </ul>
+        </Fold>
+        {FACE_READS.length > 0 && (
+          <Fold title={`닮은꼴 읽을거리 ${FACE_READS.length}편`} hint="닮음의 원리, 사진 팁, 가족·부부 이야기">
+            <ul className={fstyles.readList}>
+              {FACE_READS.map((r) => (
+                <li key={r.slug}>
+                  <Link href={`/reads/${r.slug}`}>{r.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </Fold>
+        )}
+      </MoreInfo>
     </div>
   );
 }

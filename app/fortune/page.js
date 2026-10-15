@@ -37,7 +37,7 @@ export default function FortunePage() {
       <TodayFortune />
 
       <MoreInfo title="오늘의 운세가 궁금하다면" lead="풀이가 어떻게 나오는지, 사주는 어떤 원리인지 모아 뒀어요. 궁금한 항목을 눌러 보세요.">
-        <Fold title="오늘의 운세는 이렇게 정해져요" hint="내 일간과 오늘 일진, 십신으로 풀이하는 방법">
+        <Fold open title="오늘의 운세는 이렇게 정해져요" hint="내 일간과 오늘 일진, 십신으로 풀이하는 방법">
           <ol className={styles.steps}>
             <li>
               <strong>1. &lsquo;나&rsquo;를 뜻하는 글자 찾기</strong>

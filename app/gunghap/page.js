@@ -32,7 +32,7 @@ export default function GunghapPage() {
       <GunghapView />
 
       <MoreInfo title="궁합이 궁금하다면" lead="궁합 점수는 어떻게 나오는지, 무엇을 기준으로 풀이하는지 모아 뒀어요.">
-        <Fold title="궁합 점수는 어떻게 정해져요?" hint="오행 관계 · 음양 · 일지 합충 · 오행 보완을 더한 점수">
+        <Fold open title="궁합 점수는 어떻게 정해져요?" hint="오행 관계 · 음양 · 일지 합충 · 오행 보완을 더한 점수">
           <p className={styles.sectionText}>
             두 사람의 일간(태어난 날의 천간)이 오행으로 어떤 관계인지(같음·상생·상극), 음양이
             같은지 다른지, 그리고 일지(태어난 날의 지지)가 합(合)을 이루는지 충(沖)을 이루는지를

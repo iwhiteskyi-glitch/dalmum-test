@@ -32,7 +32,7 @@ export default function GwansangPage() {
       <GwansangView />
 
       <MoreInfo title="관상이 궁금하다면" lead="무엇을 보는지, 사진은 어떻게 처리되는지 모아 뒀어요.">
-        <Fold title="관상이란?" hint="측정 가능한 여섯 부위만 다뤄요">
+        <Fold open title="관상이란?" hint="측정 가능한 여섯 부위만 다뤄요">
           <p className={styles.sectionText}>
             관상은 얼굴의 생김새에서 그 사람의 기질과 분위기를 읽어보려는 오래된 전통이에요. 이
             코너는 눈·눈썹·코·입·턱선·이목구비 배치, 사진으로 측정 가능한 여섯 부위만 다뤄요.

@@ -70,6 +70,28 @@
 }
 
 /* 꿈해몽 코너 테마. 같은 카드·버튼 모양에 포인트 색만 밤하늘 남색(--c-dream)으로 바뀝니다. */
+/* 닮은꼴(/face) 화면 아래 참고 정보 상자에만 쓰는 색(라즈베리) */
+.faceTheme {
+  --f: var(--c-face);
+  --f-deep: #8f1c3e;
+  --f-soft: var(--c-face-soft);
+  --f-callout-ink: #6b1530;
+}
+.tipList {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14.5px;
+  line-height: 1.75;
+}
+.tipList li + li {
+  margin-top: 6px;
+}
+.moreWrap {
+  max-width: 760px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
+}
+
 .dreamTheme {
   --f: var(--c-dream);
   --f-deep: #223872;
@@ -1394,24 +1416,27 @@
 }
 
 /* ---------- 더 알아보기: 결과와 구분되는 접는 설명 영역 ---------- */
+.moreDivider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 56px 0 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-ink);
+}
+.moreDivider::before,
+.moreDivider::after {
+  content: "";
+  flex: 1;
+  border-top: 1.5px dashed rgba(48, 36, 44, 0.22);
+}
 .more {
-  margin-top: 56px;
+  margin-top: 0;
   background: #f1ebe3;
   border-radius: var(--radius-xl);
   padding: 22px 20px 6px;
   position: relative;
-}
-.more::before {
-  /* 결과 영역과의 경계 표시 */
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  width: 48px;
-  height: 4px;
-  margin-left: -24px;
-  border-radius: 2px;
-  background: var(--border);
 }
 .moreKicker {
   display: inline-block;
