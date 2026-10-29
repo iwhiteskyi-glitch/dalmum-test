@@ -272,6 +272,39 @@
   }
 }
 
+/* 결과 화면 맨 위 — 아래까지 내리지 않아도 검색 결과로 돌아가거나 새로 찾게 */
+.resultNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.resultNavBack,
+.resultNavNew {
+  min-height: 40px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.resultNavBack {
+  border: 1.5px solid var(--f);
+  background: var(--surface);
+  color: var(--f-deep);
+}
+.resultNavNew {
+  border: 1.5px solid transparent;
+  background: var(--f-soft);
+  color: var(--f-deep);
+}
+.resultNavBack:hover,
+.resultNavNew:hover {
+  background: var(--f-hover);
+}
+
 /* ---------- 검색 결과 ---------- */
 .results {
   margin: 26px 0 8px;

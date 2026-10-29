@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { track } from "@vercel/analytics";
 import styles from "@/components/fortune/fortune.module.css";
@@ -41,8 +41,10 @@ export default function DreamView({ titles }) {
   const [shared, setShared] = useState(null);
   const [query, setQuery] = useState(back?.query ?? "");
   const [done, setDone] = useState(back?.ids ?? null); // 결과 화면에 고정해 둔 ids(선택을 계속 바꿔도 안 흔들리게)
+  const [doneFrom, setDoneFrom] = useState(back?.tab ? "select" : "search"); // 결과를 연 곳(돌아갈 자리)
   // 장면 칸에서 고른 것 — "다른 꿈으로 다시 보기"로 돌아왔을 때 처음부터 다시 고르지 않게 남겨 둡니다.
   const [picked, setPicked] = useState(back?.tab ? back.ids : []);
+  const closeTo = useRef(null); // 결과를 닫은 뒤 옮겨 갈 자리(버튼으로 닫을 때 정함)
 
   useEffect(() => {
     const got = decodeDreamLink(window.location.hash);
@@ -61,13 +63,18 @@ export default function DreamView({ titles }) {
     setQuery(q);
     setDone(null);
     keepResult("dream", { query: q });
+    // 결과를 보다가 위 검색창으로 새로 찾으면, 결과용으로 쌓아 둔 뒤로 가기 기록은 이제 필요 없어요
+    if (window.history.state?.dreamResult) window.history.replaceState(null, "", window.location.pathname);
   }
 
   function showResult(ids, from, tab) {
     clearShared();
     setDone(ids);
+    setDoneFrom(from);
     if (from === "select") setPicked(ids);
     keepResult("dream", { ids, query, tab });
+    // 휴대폰·브라우저의 뒤로 가기로 결과를 닫고 검색 결과(또는 장면 칸)로 돌아오게 기록을 하나 쌓아 둡니다(주소는 그대로)
+    window.history.pushState({ dreamResult: true }, "", window.location.pathname);
     track("dream_analyzed", { count: ids.length, from });
     track("dream_result_viewed");
     requestAnimationFrame(() => {
@@ -75,17 +82,46 @@ export default function DreamView({ titles }) {
     });
   }
 
-  function reset() {
-    const fromSelect = done === picked; // 장면 칸에서 연 결과면 장면 칸으로, 검색에서 열었으면 검색 결과로
+  /** 결과를 닫고 to(없으면 결과를 연 자리: 검색 결과 또는 장면 칸)로 옮겨 갑니다. */
+  function closeResult(to) {
+    const target = to ?? (doneFrom === "search" && query ? "dream-search-results" : "dream-select");
     setDone(null);
     if (query) keepResult("dream", { query });
     else dropResult("dream");
     requestAnimationFrame(() => {
-      document
-        .getElementById(query && !fromSelect ? "dream-search-results" : "dream-select")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (target === "dream-search") {
+        const input = document.querySelector("#dream-search input");
+        input?.focus({ preventScroll: true });
+        input?.select();
+      }
     });
   }
+
+  // 결과를 보는 중에 뒤로 가기를 누르면 페이지를 떠나지 않고 결과만 닫아요.
+  useEffect(() => {
+    if (!done) return;
+    const onPop = () => {
+      if (window.history.state?.dreamResult) return;
+      closeResult(closeTo.current);
+      closeTo.current = null;
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [done, doneFrom, query]);
+
+  /** 결과 화면의 돌아가기 버튼 — 쌓아 둔 기록이 있으면 뒤로 가기와 똑같이 닫습니다. */
+  function reset(to) {
+    if (window.history.state?.dreamResult) {
+      closeTo.current = to ?? null;
+      window.history.back();
+    } else {
+      closeResult(to);
+    }
+  }
+
+  const backLabel = doneFrom === "search" && query ? "검색 결과로" : "장면 다시 고르기";
 
   return (
     <>
@@ -110,9 +146,17 @@ export default function DreamView({ titles }) {
 
       {done ? (
         <div id="dream-result-top" className={styles.result}>
+          <div className={ds.resultNav}>
+            <button type="button" className={ds.resultNavBack} onClick={() => reset()}>
+              <span aria-hidden="true">←</span> {backLabel}
+            </button>
+            <button type="button" className={ds.resultNavNew} onClick={() => reset("dream-search")}>
+              새 꿈 검색
+            </button>
+          </div>
           <DreamResult ids={done} />
           <p style={{ textAlign: "center", marginTop: 24 }}>
-            <button type="button" className={styles.ghostSm} onClick={reset}>
+            <button type="button" className={styles.ghostSm} onClick={() => reset()}>
               다른 꿈으로 다시 보기
             </button>
           </p>
