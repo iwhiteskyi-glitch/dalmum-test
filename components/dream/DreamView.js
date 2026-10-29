@@ -41,6 +41,8 @@ export default function DreamView({ titles }) {
   const [shared, setShared] = useState(null);
   const [query, setQuery] = useState(back?.query ?? "");
   const [done, setDone] = useState(back?.ids ?? null); // 결과 화면에 고정해 둔 ids(선택을 계속 바꿔도 안 흔들리게)
+  // 장면 칸에서 고른 것 — "다른 꿈으로 다시 보기"로 돌아왔을 때 처음부터 다시 고르지 않게 남겨 둡니다.
+  const [picked, setPicked] = useState(back?.tab ? back.ids : []);
 
   useEffect(() => {
     const got = decodeDreamLink(window.location.hash);
@@ -64,6 +66,7 @@ export default function DreamView({ titles }) {
   function showResult(ids, from, tab) {
     clearShared();
     setDone(ids);
+    if (from === "select") setPicked(ids);
     keepResult("dream", { ids, query, tab });
     track("dream_analyzed", { count: ids.length, from });
     track("dream_result_viewed");
@@ -73,11 +76,14 @@ export default function DreamView({ titles }) {
   }
 
   function reset() {
+    const fromSelect = done === picked; // 장면 칸에서 연 결과면 장면 칸으로, 검색에서 열었으면 검색 결과로
     setDone(null);
     if (query) keepResult("dream", { query });
     else dropResult("dream");
     requestAnimationFrame(() => {
-      document.getElementById(query ? "dream-search-results" : "dream-select")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document
+        .getElementById(query && !fromSelect ? "dream-search-results" : "dream-select")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }
 
@@ -114,7 +120,11 @@ export default function DreamView({ titles }) {
       ) : (
         <>
           <PopularDreams />
-          <SelectFlow initialTab={back?.tab} onView={(ids, tab) => showResult(ids, "select", tab)} />
+          <SelectFlow
+            initialTab={back?.tab}
+            initialSelected={picked}
+            onView={(ids, tab) => showResult(ids, "select", tab)}
+          />
         </>
       )}
     </>
@@ -149,9 +159,9 @@ function PopularDreams() {
 }
 
 /** 장면 고르기(카테고리 탭 + 그림 칸) → 종합 해몽. */
-function SelectFlow({ initialTab, onView }) {
+function SelectFlow({ initialTab, initialSelected, onView }) {
   const [tab, setTab] = useState(initialTab ?? TEXTS.categories[0].id);
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState(initialSelected);
   const [hint, setHint] = useState("");
 
   const symbolsInTab = useMemo(() => TEXTS.symbols.filter((s) => s.category === tab), [tab]);
