@@ -6,7 +6,8 @@
 .popular,
 .selectSection,
 .synthesisBox,
-.symbolCard {
+.symbolCard,
+.detail {
   --night1: #121a36;
   --night2: #1d2a56;
   --gold: #f2c14e;
@@ -851,59 +852,298 @@
 }
 
 /* ---------- 상세 페이지(/dream/[id]) ---------- */
+/* 머리 카드: 첫 화면 히어로와 같은 밤하늘에 상징 그림을 얹습니다 */
 .pageHero {
+  position: relative;
+  overflow: hidden;
   margin: 4px 0 8px;
+  padding: 22px;
+  border-radius: 24px;
+  background:
+    radial-gradient(120% 70% at 85% -10%, rgba(90, 116, 196, 0.5), transparent 60%),
+    linear-gradient(180deg, var(--night1) 0%, var(--night2) 100%);
+  color: #fff;
+  box-shadow: 0 14px 34px rgba(19, 27, 58, 0.28);
+}
+.pageHero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.6px 1.6px at 52% 14%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 74% 30%, #fff 50%, transparent 52%),
+    radial-gradient(2px 2px at 93% 12%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 64% 48%, #fff 50%, transparent 52%),
+    radial-gradient(1.6px 1.6px at 88% 56%, #fff 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 8% 72%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 40% 90%, #fff 50%, transparent 52%),
+    radial-gradient(1.6px 1.6px at 95% 92%, #f7dc93 50%, transparent 52%);
+  opacity: 0.75;
+}
+.pageHeroTop {
+  position: relative;
+  display: grid;
+  grid-template-columns: 168px 1fr;
+  gap: 22px;
+  align-items: center;
+}
+.pageArt {
+  display: block;
+  width: 168px;
+  height: 168px;
+  border-radius: 20px;
+  background: var(--night1);
+  box-shadow: 0 0 0 1px rgba(242, 193, 78, 0.35), 0 10px 26px rgba(0, 0, 0, 0.3);
+}
+.pageHeroText {
+  min-width: 0;
 }
 .pageTitle {
-  font-size: 28px;
+  position: relative;
+  margin: 0 0 10px;
+  font-size: 30px;
   font-weight: 900;
-  line-height: 1.3;
-  margin: 2px 0 6px;
-  color: var(--ink);
+  line-height: 1.28;
+  color: #fff;
+  word-break: keep-all;
+  text-wrap: balance;
 }
 .pageSub {
+  position: relative;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-  font-size: 15px;
+  margin: 0;
+  font-size: 14.5px;
   font-weight: 700;
-  color: var(--muted-ink);
-  margin: 0 0 14px;
+  color: var(--star-ink);
 }
 .pageSummary {
+  position: relative;
+  margin: 20px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(242, 193, 78, 0.3);
   font-size: 16px;
-  line-height: 1.7;
-  margin: 0;
-  padding: 16px 18px;
-  border-radius: var(--radius-md, 16px);
-  background: var(--f-soft);
-  color: var(--f-callout-ink);
+  line-height: 1.75;
   font-weight: 600;
+  color: #eef2fd;
 }
+@media (max-width: 520px) {
+  .pageHero {
+    padding: 18px 16px;
+    border-radius: 20px;
+  }
+  .pageHeroTop {
+    grid-template-columns: 104px 1fr;
+    gap: 14px;
+  }
+  .pageArt {
+    width: 104px;
+    height: 104px;
+    border-radius: 16px;
+  }
+  .pageTitle {
+    font-size: 23px;
+    margin-bottom: 8px;
+  }
+  .pageHero .heroKicker {
+    margin-bottom: 4px;
+    font-size: 12px;
+  }
+  .pageSummary {
+    margin-top: 16px;
+    padding-top: 14px;
+    font-size: 15.5px;
+  }
+}
+
+/* 차례 칩 */
+.pageToc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 16px 0 0;
+}
+.pageToc a {
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--f-deep);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+}
+@media (max-width: 520px) {
+  /* 휴대폰에선 한 줄로 두고 옆으로 밀어 봅니다 */
+  .pageToc {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-right: -16px;
+    padding-right: 16px;
+  }
+  .pageToc::-webkit-scrollbar {
+    display: none;
+  }
+  .pageToc a {
+    flex-shrink: 0;
+  }
+}
+.pageToc a:hover,
+.pageToc a:focus-visible {
+  border-color: var(--f);
+  background: var(--f-soft);
+}
+
+/* 섹션: 금빛 별 붙은 소제목 + 카드 */
+.secBlock {
+  margin-top: 40px;
+}
+.secTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--ink);
+  scroll-margin-top: 76px;
+  word-break: keep-all;
+}
+.secTitle::before {
+  content: "✦";
+  flex-shrink: 0;
+  font-size: 15px;
+  color: #d9a32a;
+}
+.secCard {
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+}
+.secText {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--ink);
+}
+.secText + .secText {
+  margin-top: 12px;
+}
+
+/* 상황별 풀이: 번호 붙은 카드 */
 .situationList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 .situationItem {
   scroll-margin-top: 76px; /* 검색 결과의 "가장 비슷한 장면" 링크로 왔을 때 헤더에 안 가리게 */
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 12px;
+  padding: 16px 18px 16px 14px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-md, 16px);
-  padding: 16px 18px;
+  border-radius: 18px;
   background: var(--surface);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+/* 검색 결과에서 이 장면으로 바로 왔을 때 금빛 테로 알려 줍니다 */
+.situationItem:target {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(242, 193, 78, 0.35), 0 8px 22px rgba(19, 27, 58, 0.1);
+}
+.situationNum {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--night2), var(--night1));
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .situationTitle {
   font-size: 16.5px;
   font-weight: 800;
-  margin: 0 0 6px;
+  line-height: 1.45;
+  margin: 3px 0 6px;
   color: var(--f-deep);
+  word-break: keep-all;
 }
 .situationText {
+  grid-column: 2;
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.8;
   margin: 0;
 }
+/* 휴대폰: 번호는 제목 옆에만, 본문은 카드 폭을 다 씁니다 */
+@media (max-width: 520px) {
+  .situationItem {
+    grid-template-columns: 28px 1fr;
+    gap: 6px 10px;
+    padding: 16px;
+  }
+  .situationNum {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+  .situationTitle {
+    align-self: center;
+    margin: 0;
+  }
+  .situationText {
+    grid-column: 1 / -1;
+  }
+}
+
+/* 자주 묻는 질문 */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.faqItem {
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+}
+.faqQ {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.5;
+  color: var(--ink);
+  word-break: keep-all;
+}
+.faqQ::before {
+  content: "Q";
+  flex-shrink: 0;
+  font-weight: 900;
+  color: #d9a32a;
+}
+.faqA {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
 .careBox {
   margin-top: 16px;
   padding: 18px 20px;
@@ -914,31 +1154,68 @@
   font-size: 15px;
   line-height: 1.75;
 }
-.relatedList {
+
+/* 종합 해몽으로 이어지는 밤하늘 띠 */
+.pickBand {
+  position: relative;
+  overflow: hidden;
+  margin-top: 44px;
+  padding: 26px 22px 24px;
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 80% at 10% -10%, rgba(90, 116, 196, 0.5), transparent 60%),
+    linear-gradient(180deg, var(--night1), var(--night2));
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(19, 27, 58, 0.22);
+}
+.pickBandTitle {
+  position: relative;
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 900;
+  color: #fff;
+}
+.pickBandText {
+  position: relative;
+  max-width: 440px;
+  margin: 0 auto 16px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--star-ink);
+  text-wrap: balance;
+}
+.pickBandBtn {
+  position: relative;
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f6d27a, #e3ad3c);
+  color: #1b2346;
+  font-size: 15.5px;
+  font-weight: 900;
+  text-decoration: none;
+}
+.pickBandBtn:hover {
+  background: linear-gradient(180deg, #f8da8e, #e8b64c);
+}
+.pickBandBtn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* 비슷한 꿈: 첫 화면 '많이 찾는 꿈'과 같은 그림 카드 */
+.relatedGrid {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
-.relatedList a {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md, 16px);
-  background: var(--surface);
-  text-decoration: none;
-  color: var(--ink);
-}
-.relatedList strong {
-  font-size: 14.5px;
-}
-.relatedList span {
-  font-size: 12.5px;
-  color: var(--muted-ink);
+@media (min-width: 560px) {
+  .relatedGrid {
+    grid-template-columns: repeat(var(--n, 4), 1fr);
+  }
 }
 
 /* 꿈 해몽 모아보기(접기) */
