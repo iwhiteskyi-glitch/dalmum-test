@@ -34,6 +34,10 @@ const GENDER = [/(?<!받)아들/, /딸(?=[을이은일 ,.]|$)/];
 function bodyOf(p) {
   return [p.care || "", p.meaning, ...p.situations.map((s) => s.text), p.modern, p.helpline || ""].join(" ");
 }
+// 보강 글(reading·faq) — 노출 많은 페이지에만 있음. 본문 분량 기준과는 따로 셉니다.
+function extraOf(p) {
+  return [...(p.reading || []), ...(p.faq || []).flatMap((f) => [f.q, f.a])].join(" ");
+}
 
 for (const id of ids) {
   const p = PAGES[id];
@@ -55,7 +59,25 @@ for (const id of ids) {
 
   const body = bodyOf(p);
   check(`${id}: 본문 ${MIN_LEN}~${MAX_LEN}자 (${body.length}자)`, body.length >= MIN_LEN && body.length <= MAX_LEN);
-  const all = [body, p.summary, p.metaDescription].join(" ");
+
+  const extra = extraOf(p);
+  check(`${id}: reading과 readingTitle은 함께 있음`, !p.reading === !p.readingTitle);
+  if (p.reading) {
+    check(`${id}: reading 2~3문단`, Array.isArray(p.reading) && p.reading.length >= 2 && p.reading.length <= 3);
+    for (const t of p.reading) check(`${id}: reading 문단 120자 이상`, typeof t === "string" && t.length >= 120);
+  }
+  if (p.faq) {
+    check(`${id}: 자주 묻는 질문 2~3개`, Array.isArray(p.faq) && p.faq.length >= 2 && p.faq.length <= 3);
+    for (const f of p.faq) check(`${id}/${f.q}: 질문·답 있음 (답 80자 이상)`, f.q && f.a && f.a.length >= 80);
+    const titles = new Set(p.situations.map((s) => s.title));
+    for (const f of p.faq) check(`${id}/${f.q}: 상황 제목과 겹치지 않음`, !titles.has(f.q));
+  }
+  if (extra) {
+    const cnt = (re) => (extra.match(re) || []).length;
+    check(`${id}: 보강 글 "풀이" 2회 이하 (${cnt(/풀이/g)}회)`, cnt(/풀이/g) <= 2);
+    check(`${id}: 보강 글 "~다면" 4회 이하 (${cnt(/다면/g)}회)`, cnt(/다면/g) <= 4);
+  }
+  const all = [body, extra, p.readingTitle || "", p.summary, p.metaDescription].join(" ");
   for (const w of FAKE_SOURCE) check(`${id}: 출처 지어내기 표현 "${w}" 없음`, !all.includes(w));
   for (const w of MEDICAL) check(`${id}: 의료·진단 표현 "${w}" 없음`, !all.includes(w));
   for (const w of PREDICT) check(`${id}: 예고·단정 표현 "${w}" 없음`, !all.includes(w));
@@ -149,7 +171,7 @@ function chunks(text, n = 10) {
   for (const part of t.split("|")) for (let i = 0; i + n <= part.length; i++) set.add(part.slice(i, i + n));
   return set;
 }
-const chunkSets = ids.map((id) => ({ id, set: chunks(bodyOf(PAGES[id])) }));
+const chunkSets = ids.map((id) => ({ id, set: chunks(bodyOf(PAGES[id]) + " " + extraOf(PAGES[id])) }));
 for (let i = 0; i < chunkSets.length; i++) {
   for (let j = i + 1; j < chunkSets.length; j++) {
     const common = [...chunkSets[i].set].filter((c) => chunkSets[j].set.has(c));
@@ -157,6 +179,20 @@ for (let i = 0; i < chunkSets.length; i++) {
   }
 }
 
-for (const id of ids) console.log(`  ${id}: 본문 ${bodyOf(PAGES[id]).length}자, 상황 ${PAGES[id].situations.length}개`);
+// 보강 글이 같은 페이지 본문을 그대로 되풀이하지 않게 — 공백 뺀 12자 이상 겹침 금지
+for (const id of ids) {
+  const extra = extraOf(PAGES[id]).replace(/[\s,.·'"!?()]/g, "");
+  if (!extra) continue;
+  const own = bodyOf(PAGES[id]).replace(/[\s,.·'"!?()]/g, "");
+  let hit = null;
+  for (let i = 0; i + 12 <= extra.length && !hit; i++) if (own.includes(extra.slice(i, i + 12))) hit = extra.slice(i, i + 12);
+  check(`${id}: 보강 글이 같은 페이지 본문과 12자 이상 겹치지 않음${hit ? ` ("${hit}")` : ""}`, !hit);
+}
+
+for (const id of ids) {
+  const p = PAGES[id];
+  const extra = p.reading ? `, 보강 ${extraOf(p).length}자` : "";
+  console.log(`  ${id}: 본문 ${bodyOf(p).length}자, 상황 ${p.situations.length}개${extra}`);
+}
 console.log(fail === 0 ? `전부 통과 (상세 페이지 ${ids.length}개)` : `${fail}건 실패`);
 process.exit(fail === 0 ? 0 : 1);

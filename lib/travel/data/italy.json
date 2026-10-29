@@ -373,6 +373,51 @@
         ],
         "meaning_kr": "라틴어로 '하늘에 속한·천상의'라는 뜻. 이탈리아에서 남녀 모두 쓸 수 있는 몇 안 되는 이름 중 하나예요"
       }
+    ],
+    "extras": [
+      {
+        "key": "namecall",
+        "label": "이름 부르는 법",
+        "heading": "이탈리아 이름과 호칭 이야기",
+        "paragraphs": [
+          "이탈리아에서는 이름을 먼저, 성을 나중에 써요. 다만 관공서 서류나 출석부처럼 명단을 정리할 때는 'Rossi Mario'처럼 성을 앞에 적는 경우도 많아요. 가장 흔한 성은 로시(Rossi)인데, 붉은 머리나 붉은 얼굴빛을 가리키던 별명에서 왔다고 알려져 있어요. 대장장이를 뜻하던 말에서 온 페라리(Ferrari)처럼 직업에서 생긴 성도 많아요.",
+          "이탈리아 사람들은 생일 말고도 '오노마스티코(onomastico)'라는 날을 챙기기도 해요. 자기 이름과 같은 성인(聖人)을 기리는 날로, 6월 29일은 성 베드로와 성 바오로를 기리는 날이라 피에트로(Pietro)라는 이름의 사람이 축하 인사를 받는 식이에요.",
+          "처음 만난 사람은 '시뇨르(Signor) + 성', '시뇨라(Signora) + 성'으로 부르면 정중해요. 원래 낱말은 시뇨레(Signore)인데 성 앞에서는 끝소리가 빠져 '시뇨르 로시'가 돼요. 대학을 졸업한 사람을 '도토레(Dottore, 남성)', '도토레사(Dottoressa, 여성)'라고 높여 부르는 문화도 있어서, 의사가 아닌 사람도 이렇게 불리곤 해요."
+        ],
+        "groups": [
+          {
+            "title": "알아 두면 좋은 호칭과 한마디",
+            "lang_code": "it",
+            "rows": [
+              {
+                "meaning_kr": "~씨 (남성, 성 앞에서)",
+                "text_local": "Signor",
+                "pronunciation_kr": "시뇨르"
+              },
+              {
+                "meaning_kr": "~씨 (여성)",
+                "text_local": "Signora",
+                "pronunciation_kr": "시뇨라"
+              },
+              {
+                "meaning_kr": "대학 졸업자·의사를 높여 부르는 말 (남성)",
+                "text_local": "Dottore",
+                "pronunciation_kr": "도토레"
+              },
+              {
+                "meaning_kr": "대학 졸업자·의사를 높여 부르는 말 (여성)",
+                "text_local": "Dottoressa",
+                "pronunciation_kr": "도토레사"
+              },
+              {
+                "meaning_kr": "만나서 반가워요",
+                "text_local": "Piacere",
+                "pronunciation_kr": "피아체레"
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   "cities": [

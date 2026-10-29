@@ -97,6 +97,36 @@ export default async function DreamSymbolPage({ params }) {
         {p.helpline && <p className={ds.helplineNote}>{p.helpline}</p>}
       </section>
 
+      {/* 노출이 많은 페이지에만 있는 보강 글 — 풀이가 갈리는 지점과 자주 묻는 질문 */}
+      {p.reading && (
+        <section className={styles.section} aria-labelledby="reading">
+          <h2 id="reading" className={styles.sectionTitle}>
+            {p.readingTitle}
+          </h2>
+          {p.reading.map((text) => (
+            <p key={text} className={styles.sectionText}>
+              {text}
+            </p>
+          ))}
+        </section>
+      )}
+
+      {p.faq && (
+        <section className={styles.section} aria-labelledby="faq">
+          <h2 id="faq" className={styles.sectionTitle}>
+            자주 묻는 질문
+          </h2>
+          <div className={ds.situationList}>
+            {p.faq.map((f) => (
+              <div key={f.q} className={ds.situationItem}>
+                <h3 className={ds.situationTitle}>{f.q}</h3>
+                <p className={ds.situationText}>{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <Link href={dreamPickHref(slug)} className={styles.cta} style={{ marginTop: 32, textDecoration: "none" }}>
         다른 장면과 합쳐서 해몽하기 →
       </Link>
