@@ -80,8 +80,9 @@ export default async function DreamSymbolPage({ params }) {
           상황별로 보면
         </h2>
         <div className={ds.situationList}>
-          {p.situations.map((s) => (
-            <div key={s.title} className={ds.situationItem}>
+          {/* id(s1, s2…)는 첫 화면 검색 결과의 "이 장면이 가장 비슷해요" 링크가 바로 찾아오는 자리 */}
+          {p.situations.map((s, i) => (
+            <div key={s.title} id={`s${i + 1}`} className={ds.situationItem}>
               <h3 className={ds.situationTitle}>{s.title}</h3>
               <p className={ds.situationText}>{s.text}</p>
             </div>

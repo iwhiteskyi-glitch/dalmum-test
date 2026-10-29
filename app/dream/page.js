@@ -5,11 +5,12 @@ import DreamIndex from "@/components/dream/DreamIndex";
 import CrossCards from "@/components/fortune/CrossCards";
 import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
 import { fortuneMetadata } from "@/lib/fortune/seo";
+import { dreamSearchTitles } from "@/lib/dream/searchData";
 
 export const metadata = fortuneMetadata({
   title: "꿈해몽 | 기억나는 꿈속 장면으로 보는 상징별 의미",
   description:
-    "기억나는 꿈속 장면을 고르면, 전통 해몽 방식으로 상징별 의미와 종합 흐름을 풀어 드려요. 사진이나 생년월일 없이 바로 볼 수 있어요.",
+    "기억나는 꿈을 문장 그대로 적거나 장면을 고르면, 99가지 상징 중 가장 비슷한 꿈을 찾아 전통 해몽 방식으로 의미와 종합 흐름을 풀어 드려요. 사진이나 생년월일 없이 바로 볼 수 있어요.",
   path: "/dream",
   image: "dream",
 });
@@ -17,20 +18,7 @@ export const metadata = fortuneMetadata({
 export default function DreamPage() {
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.heroArt} aria-hidden="true">
-          <span>夢</span>
-          <i style={{ top: 18, right: 26 }}>☾</i>
-          <i style={{ bottom: 24, left: 22, fontSize: 11 }}>✦</i>
-        </div>
-        <h1 className={styles.heroTitle}>지난밤 꿈, 무슨 뜻이었을까?</h1>
-        <p className={styles.lead}>
-          기억나는 꿈속 장면을 고르면, 전통 해몽 방식으로 상징별 의미와 종합 흐름을 풀어
-          드려요. 운명을 점치는 게 아니라 재미로 가볍게 보는 풀이예요.
-        </p>
-      </section>
-
-      <DreamView />
+      <DreamView titles={dreamSearchTitles()} />
 
       <DreamIndex />
 
@@ -42,10 +30,12 @@ export default function DreamPage() {
             지나치게 불길하거나 무서운 통설은 담지 않고, 재미로 가볍게 볼 수 있는 해석만 골랐어요.
           </p>
         </Fold>
-        <Fold title="입력한 내용은 어떻게 처리되나요?" hint="브라우저 안에서만, 저장 안 해요">
+        <Fold title="입력한 내용은 어떻게 처리되나요?" hint="브라우저 안에서만, 서버로 안 보내요">
           <p className={styles.sectionText}>
-            고른 상징은 이 브라우저 안에서만 쓰이고 서버로 전송되거나 저장되지 않아요. 사진이나
-            생년월일처럼 민감한 정보도 전혀 입력하지 않아요.
+            검색창에 적은 꿈 내용과 고른 상징은 이 브라우저 안에서만 쓰이고 서버로 전송되거나
+            저장되지 않아요. 최근 검색어는 다시 찾기 편하도록 이 기기의 브라우저에만 남고, 검색창
+            아래 &lsquo;지우기&rsquo;로 언제든 지울 수 있어요. 사진이나 생년월일처럼 민감한 정보는
+            전혀 입력하지 않아요.
           </p>
         </Fold>
         <Fold title="공유 링크에는 무엇이 담겨요?" hint="고른 상징의 이름만">
