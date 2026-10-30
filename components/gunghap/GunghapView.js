@@ -19,7 +19,7 @@ import {
   ELEMENTS_HANJA,
   BRANCHES,
   BRANCHES_HANJA,
-  ANIMALS,
+  STEM_ELEMENT,
 } from "@/lib/fortune/saju";
 import { Stars, GOD_PLAIN, stemLabel } from "@/components/fortune/parts";
 import GunghapForm, { RELATION_LABELS } from "./GunghapForm";
@@ -37,14 +37,53 @@ const AREA_TITLES = {
 // 상대 쪽에서 본 나 — GOD_PLAIN("나를 다스리는 기운" 등)을 상대 기준으로 바꾼 말
 const GOD_PLAIN_PARTNER = ["상대와 같은 기운", "상대가 낳는 기운", "상대가 다스리는 기운", "상대를 다스리는 기운", "상대를 낳는 기운"];
 
-// 일지(태어난 날의 아랫글자) 관계 이름과 쉬운 설명
+// 일지(태어난 날의 아랫글자) 관계 이름과, 사주를 처음 보는 사람도 그림이 그려지는 설명
 const DAY_LABELS = {
-  same: ["같은 글자", "두 사람의 아랫글자가 똑같아요"],
-  six: ["육합(六合)", "서로 끌어당겨 짝을 이루는 두 글자예요"],
-  three: ["반합(半合)", "같은 기운으로 모이는 세 글자 가운데 두 글자예요. 둘만 만나도 그 기운이 반쯤 생긴다고 봐요"],
-  clash: ["충(沖)", "열두 글자 둘레에서 정반대 자리에 마주 선 두 글자예요"],
+  same: ["같은 글자", "두 사람의 아랫글자가 똑같아서 생활 리듬이 닮았다고 봐요"],
+  six: ["육합(六合)", "열두 글자 가운데 서로 짝이 되어 끌어당기는 두 글자예요(이런 짝이 여섯 쌍 있어요)"],
+  three: [
+    "반합(半合)",
+    "열두 글자는 세 글자씩 네 무리로 모여 한 가지 기운을 이뤄요. 두 사람은 같은 무리의 두 글자라 같은 방향을 본다고 봐요",
+  ],
+  clash: ["충(沖)", "열두 글자를 시계처럼 둥글게 놓았을 때 정반대에 있는 두 글자라, 성향이 반대라고 봐요"],
   none: ["무난", "특별히 끌어당기지도 부딪히지도 않는 두 글자예요"],
 };
+// 점수 카드에 쓰는 짧은 말
+const DAY_SHORT = {
+  same: "아랫글자가 같은 글자예요",
+  six: "서로 끌어당기는 짝이에요(육합)",
+  three: "같은 무리로 모이는 두 글자예요(반합)",
+  clash: "정반대 자리의 두 글자예요(충)",
+  none: "특별히 얽히지 않는 두 글자예요",
+};
+// 아랫글자 열두 개가 뜻하는 계절 속 자연의 모습
+const BRANCH_PLAIN = [
+  "한겨울의 깊은 물",
+  "겨울 끝의 언 땅",
+  "이른 봄의 나무",
+  "봄꽃 핀 나무",
+  "늦봄의 촉촉한 흙",
+  "초여름의 불",
+  "한여름의 불",
+  "늦여름의 마른 흙",
+  "초가을의 단단한 쇠",
+  "가을의 반짝이는 쇠붙이",
+  "늦가을의 단단한 흙",
+  "초겨울의 넓은 물",
+];
+
+// 오행을 처음 보는 사람도 알 수 있게: [자연물, 어떤 기운, 사람으로 치면]
+const EL_PLAIN = [
+  ["나무", "자라고 뻗어 가는 기운", "새로 시작하고 키우는 힘"],
+  ["불", "뜨겁고 밝게 퍼지는 기운", "열정과 표현력"],
+  ["흙", "받쳐 주고 모으는 기운", "믿음직함과 꾸준함"],
+  ["쇠", "단단하고 맺고 끊는 기운", "결단력과 원칙"],
+  ["물", "흐르고 스며드는 기운", "깊은 생각과 유연함"],
+];
+// i가 i+1을 낳는 모습(상생), i가 i+2를 다스리는 모습(상극)
+const EL_GEN = ["나무가 불을 피우듯", "불이 타고 남은 재가 흙이 되듯", "흙 속에서 쇠가 나오듯", "차가운 쇠에 물방울이 맺히듯", "물이 나무를 키우듯"];
+const EL_CTRL = ["나무뿌리가 흙을 파고들듯", "흙이 물길을 막듯", "물이 불을 끄듯", "불이 쇠를 녹이듯", "쇠가 나무를 베듯"];
+const elWord = (i) => `${EL_PLAIN[i][0]}(${ELEMENTS[i]})`;
 
 // 점수 줄마다 최고점(막대 길이 기준)
 const SCORE_MAX = { element: 22, polarity: 10, day: 15, fill: 6 };
@@ -54,16 +93,16 @@ function elementRel(elA, elB) {
   return (elB - elA + 5) % 5;
 }
 
-const elName = (i) => `${ELEMENTS[i]}(${ELEMENTS_HANJA[i]})`;
-
 function compareText(topA, topB) {
   if (topA === topB) {
-    return `두 사람 모두 ${elName(topA)} 기운이 가장 많아요. 비슷한 성향이 많아서 통하는 부분이 클 거예요.`;
+    return `두 사람 모두 ${elWord(topA)}, 곧 ${EL_PLAIN[topA][1]}이 가장 많아요. 둘 다 ${EL_PLAIN[topA][2]}이 두드러진 편이라 통하는 부분이 클 거예요.`;
   }
+  const lead = `나에게는 ${elWord(topA)} 기운이, 상대에게는 ${elWord(topB)} 기운이 가장 많아요.`;
   const rel = elementRel(topA, topB);
-  if (rel === 1) return `내게 가장 많은 ${elName(topA)} 기운이 상대에게 가장 많은 ${elName(topB)} 기운을 북돋아 주는 조합이에요.`;
-  if (rel === 4) return `상대에게 가장 많은 ${elName(topB)} 기운이 내게 가장 많은 ${elName(topA)} 기운을 북돋아 주는 조합이에요.`;
-  return `내게 가장 많은 ${elName(topA)} 기운과 상대에게 가장 많은 ${elName(topB)} 기운은 서로 다스리는 사이라, 속도를 맞춰 가는 과정이 필요해요.`;
+  if (rel === 1) return `${lead} ${EL_GEN[topA]} 내 쪽 기운이 상대 기운을 북돋아 주는 조합이에요.`;
+  if (rel === 4) return `${lead} ${EL_GEN[topB]} 상대 쪽 기운이 내 기운을 북돋아 주는 조합이에요.`;
+  if (rel === 2) return `${lead} ${EL_CTRL[topA]} 내 쪽 기운이 상대 기운을 누르는 사이라, 속도를 맞춰 가는 과정이 필요해요.`;
+  return `${lead} ${EL_CTRL[topB]} 상대 쪽 기운이 내 기운을 누르는 사이라, 속도를 맞춰 가는 과정이 필요해요.`;
 }
 
 /** 오행 보완 풀이: 서로에게 없는 오행을 상대가 넉넉히(두 개 이상) 가지고 있는지 */
@@ -74,8 +113,8 @@ function fillText(reading) {
   }
   const side = (lack, fill, who, other) => {
     if (!lack.length) return `${who}는 다섯 가지 기운을 고루 가지고 있어요.`;
-    if (fill !== null) return `${who}에게 없는 ${elName(fill)} 기운을 ${other === "나" ? "내가" : "상대가"} 넉넉히 가지고 있어요.`;
-    return `${who}에게 없는 ${lack.map(elName).join("·")} 기운은 ${other}에게도 많지 않아요.`;
+    if (fill !== null) return `${who}에게 없는 ${elWord(fill)} 기운을 ${other === "나" ? "내가" : "상대가"} 넉넉히 가지고 있어요.`;
+    return `${who}에게 없는 ${lack.map(elWord).join("·")} 기운은 ${other}에게도 많지 않아요.`;
   };
   const filled = (fillA !== null) + (fillB !== null);
   const close =
@@ -87,28 +126,44 @@ function fillText(reading) {
   return [side(lackA, fillA, "나", "상대"), side(lackB, fillB, "상대", "나"), close].join(" ");
 }
 
-/** 점수 항목별 줄: [이름, 무엇이었는지, 점수, 최고점] */
+/** 점수 항목별 줄: [이름, 우리 둘은 어땠는지, 다른 경우엔 몇 점인지, 점수, 최고점] */
 function scoreRows(reading, parts, me, partner) {
   const cat = reading.category;
+  const a = STEM_ELEMENT[me.dayMaster];
+  const b = STEM_ELEMENT[partner.dayMaster];
   const element =
     cat === 0
-      ? "같은 오행"
+      ? `둘 다 ${elWord(a)} 기운이라 같은 편이에요`
       : cat === 1
-        ? "내 오행이 상대 오행을 낳아 줌(상생)"
+        ? `${EL_GEN[a]} 내 ${elWord(a)} 기운이 상대의 ${elWord(b)} 기운을 낳아 줘요`
         : cat === 4
-          ? "상대 오행이 내 오행을 낳아 줌(상생)"
+          ? `${EL_GEN[b]} 상대의 ${elWord(b)} 기운이 내 ${elWord(a)} 기운을 낳아 줘요`
           : cat === 2
-            ? "내 오행이 상대 오행을 다스림(상극)"
-            : "상대 오행이 내 오행을 다스림(상극)";
+            ? `${EL_CTRL[a]} 내 ${elWord(a)} 기운이 상대의 ${elWord(b)} 기운을 다스려요`
+            : `${EL_CTRL[b]} 상대의 ${elWord(b)} 기운이 내 ${elWord(a)} 기운을 다스려요`;
   const polarity = reading.samePolarity
-    ? `둘 다 ${me.dayMaster % 2 === 0 ? "양(陽)" : "음(陰)"}`
-    : "한 사람은 양(陽), 한 사람은 음(陰)";
+    ? me.dayMaster % 2 === 0
+      ? "둘 다 양(陽) — 밝고 힘차게 나서는 쪽이에요"
+      : "둘 다 음(陰) — 차분하고 부드럽게 받는 쪽이에요"
+    : "한 사람은 양(나서는 쪽), 한 사람은 음(받는 쪽)이라 짝이 맞아요";
   const filled = ((reading.fillA ?? null) !== null) + ((reading.fillB ?? null) !== null);
   return [
-    ["윗글자(일간)의 오행 관계", element, parts.element, SCORE_MAX.element],
-    ["음양", polarity, parts.polarity, SCORE_MAX.polarity],
-    ["아랫글자(일지) 관계", DAY_LABELS[reading.dayRelation][0], parts.day, SCORE_MAX.day],
-    ["서로 채워 주는 기운", filled === 2 ? "서로 채워 줌" : filled === 1 ? "한쪽이 채워 줌" : "해당 없음", parts.fill, SCORE_MAX.fill],
+    ["두 사람을 나타내는 글자의 기운", element, "같은 편 +8 · 낳아 주는 사이 +22 · 다스리는 사이 +7", parts.element, SCORE_MAX.element],
+    ["음과 양", polarity, "서로 다르면 +10 · 같으면 +4", parts.polarity, SCORE_MAX.polarity],
+    [
+      "태어난 날 아랫글자끼리",
+      DAY_SHORT[reading.dayRelation],
+      "끌어당기는 짝·같은 무리 +15 · 같은 글자 +4 · 그 밖 +2 · 정반대 −12",
+      parts.day,
+      SCORE_MAX.day,
+    ],
+    [
+      "서로 없는 기운 채워 주기",
+      filled === 2 ? "서로의 빈 기운을 채워 줘요" : filled === 1 ? "한쪽이 다른 쪽의 빈 기운을 채워 줘요" : "서로 빈 기운을 채워 주지는 못해요",
+      "한 사람에게 없는 기운을 상대가 두 개 이상 가졌으면 +3씩",
+      parts.fill,
+      SCORE_MAX.fill,
+    ],
   ];
 }
 
@@ -192,7 +247,6 @@ function GunghapResult({ me, partner, reading, relation, snapshot = false }) {
   const timeMissing = !snapshot && (me.input?.hour == null || partner.input?.hour == null);
   const mainAreas = relation === "all" ? AREAS : AREAS.filter(([key]) => key === relation);
   const otherAreas = relation === "all" ? [] : AREAS.filter(([key]) => key !== relation);
-  const branchLabel = (b) => `${BRANCHES[b]}(${BRANCHES_HANJA[b]}) · ${ANIMALS[b]}`;
 
   const [hint, setHint] = useState("");
   const [card, setCard] = useState(null);
@@ -326,13 +380,16 @@ function GunghapResult({ me, partner, reading, relation, snapshot = false }) {
         <h2 id="gunghap-score-title" className={t.cardTitle}>
           점수는 이렇게 나왔어요
         </h2>
-        <p className={t.cardLead}>기본 {parts.base}점에서 시작해 네 가지를 더하고 빼요.</p>
+        <p className={t.cardLead}>
+          기본 {parts.base}점에서 시작해 네 가지를 더하고 빼요. 줄마다 우리 둘은 어땠는지, 다른 경우엔 몇 점인지 적었어요.
+        </p>
         <ul className={g.scoreList}>
-          {rows.map(([name, what, value, max]) => (
+          {rows.map(([name, what, rule, value, max]) => (
             <li key={name}>
               <span className={g.scoreName}>
                 {name}
-                <small>{what}</small>
+                <span className={g.scoreWhat}>{what}</span>
+                <small>{rule}</small>
               </span>
               <span className={g.scoreBar} aria-hidden="true">
                 <i
@@ -345,16 +402,21 @@ function GunghapResult({ me, partner, reading, relation, snapshot = false }) {
           ))}
         </ul>
         <p className={g.scoreSum}>
-          {parts.base} {rows.map(([, , v]) => (v < 0 ? `− ${-v}` : `+ ${v}`)).join(" ")} = <b>{parts.sum}점</b>
+          {parts.base} {rows.map(([, , , v]) => (v < 0 ? `− ${-v}` : `+ ${v}`)).join(" ")} = <b>{parts.sum}점</b>
           {parts.sum > 100 && " → 최고점인 100점으로 맞췄어요"}
         </p>
         <details className={t.more}>
-          <summary>음양·상생·상극이 뭐예요?</summary>
+          <summary>오행·음양이 뭐예요?</summary>
           <p className={g.small}>
-            갑·병·무·경·임은 양(陽), 을·정·기·신·계는 음(陰)이에요. 음양이 서로 다르면 짝처럼 맞물린다고 봐서 점수를 더 줘요.
-            상생은 한쪽 오행이 다른 쪽을 낳아 주는 사이(나무→불→흙→쇠→물→나무), 상극은 한쪽이 다른 쪽을 다스리는
-            사이(나무→흙→물→불→쇠→나무)예요. 이 점수는 전통 개념을 바탕으로 이 사이트가 정한 계산식이라, 관계의 좋고 나쁨을
-            판정하지 않아요.
+            사주에서는 세상 모든 것을 나무(목)·불(화)·흙(토)·쇠(금)·물(수) 다섯 가지 기운, 곧 오행으로 나눠요. 서로 낳아
+            주는 순서(상생)는 나무→불→흙→쇠→물→나무예요. 나무가 불을 피우고, 타고 남은 재가 흙이 되고, 흙 속에서 쇠가 나오고,
+            차가운 쇠에 물방울이 맺히고, 물이 나무를 키운다고 봐요. 다스리는 순서(상극)는 나무→흙→물→불→쇠→나무예요. 뿌리가
+            흙을 파고들고, 흙이 물길을 막고, 물이 불을 끄고, 불이 쇠를 녹이고, 쇠가 나무를 벤다고 봐요.
+          </p>
+          <p className={g.small}>
+            음양은 밝고 힘차게 나서는 쪽(양: 갑·병·무·경·임)과 차분하고 부드럽게 받는 쪽(음: 을·정·기·신·계)이에요. 서로
+            다르면 짝처럼 맞물린다고 봐서 점수를 더 줘요. 이 점수는 전통 개념을 바탕으로 이 사이트가 정한 계산식이라, 관계의
+            좋고 나쁨을 판정하지 않아요.
           </p>
         </details>
       </section>
@@ -367,7 +429,9 @@ function GunghapResult({ me, partner, reading, relation, snapshot = false }) {
           {mainAreas.map(([key, label]) => (
             <div key={key} className={t.area}>
               {/* 하나만 골랐으면 카드 제목이 이미 그 사이라서 이름을 다시 쓰지 않아요 */}
-              <dt className={otherAreas.length ? g.srOnly : undefined}>{label}</dt>
+              <dt className={otherAreas.length ? g.srOnly : undefined}>
+                <span className={`${g.tag} ${g[`tag_${key}`]}`}>{label}</span>
+              </dt>
               <dd>{areas[key][reading.godAtoB]}</dd>
             </div>
           ))}
@@ -378,7 +442,9 @@ function GunghapResult({ me, partner, reading, relation, snapshot = false }) {
             <dl className={t.areas}>
               {otherAreas.map(([key, label]) => (
                 <div key={key} className={t.area}>
-                  <dt>{label}</dt>
+                  <dt>
+                    <span className={`${g.tag} ${g[`tag_${key}`]}`}>{label}</span>
+                  </dt>
                   <dd>{areas[key][reading.godAtoB]}</dd>
                 </div>
               ))}
@@ -422,24 +488,27 @@ function GunghapResult({ me, partner, reading, relation, snapshot = false }) {
           태어난 날 아랫글자(일지) 궁합
         </h2>
         <p className={t.cardLead}>
-          태어난 날은 윗글자(일간)와 아랫글자(일지) 두 글자로 적어요. 윗글자가 그 사람 자신이라면, 아랫글자는 그 사람이 머무는
-          자리와 생활 방식을 나타낸다고 봐요.
+          태어난 날은 윗글자(일간)와 아랫글자(일지) 두 글자로 적어요. 윗글자가 그 사람 자신이라면, 아랫글자는 생활 방식과
+          가까운 사람을 대하는 방식을 나타낸다고 봐요. 아랫글자는 열두 가지가 있고, 저마다 계절 속 자연의 모습을 뜻해요.
         </p>
         <div className={g.dayRow}>
           <span className={g.dayChip}>
             <small>나</small>
-            {branchLabel(branchA)}
+            {BRANCHES[branchA]}({BRANCHES_HANJA[branchA]})
+            <em>{BRANCH_PLAIN[branchA]}</em>
           </span>
           <span className={g.dayOp} aria-hidden="true">
             ↔
           </span>
           <span className={g.dayChip}>
             <small>상대</small>
-            {branchLabel(branchB)}
+            {BRANCHES[branchB]}({BRANCHES_HANJA[branchB]})
+            <em>{BRANCH_PLAIN[branchB]}</em>
           </span>
         </div>
         <p className={g.dayName}>
-          <b>{dayName}</b> · {dayPlain}
+          <b>{dayName}</b>
+          {dayPlain}
         </p>
         <p className={g.para}>{dayText}</p>
       </section>
@@ -449,7 +518,8 @@ function GunghapResult({ me, partner, reading, relation, snapshot = false }) {
           서로 다른 점 · 비슷한 점
         </h2>
         <p className={t.cardLead}>
-          태어난 해·달·날(·시간)의 글자를 목·화·토·금·수 다섯 가지 기운(오행)으로 나눠 세어 견줬어요.
+          태어난 해·달·날(·시간)의 글자를 다섯 가지 기운(오행)으로 나눠 세어 견줬어요. 많은 기운일수록 그 성향이 두드러진다고
+          봐요.
         </p>
         <p className={g.para}>{compareText(reading.topElementA, reading.topElementB)}</p>
         <div className={g.fillBox}>
@@ -470,7 +540,10 @@ function GunghapResult({ me, partner, reading, relation, snapshot = false }) {
             return (
               <div key={el} className={styles.compareEl}>
                 <p className={styles.compareElName}>
-                  {el}({ELEMENTS_HANJA[i]})
+                  {el}({ELEMENTS_HANJA[i]}) · {EL_PLAIN[i][0]}
+                  <span className={g.elPlain}>
+                    {EL_PLAIN[i][1]} — {EL_PLAIN[i][2]}
+                  </span>
                 </p>
                 {[
                   ["나", reading.elementsA[i]],
