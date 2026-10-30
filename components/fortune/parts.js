@@ -86,7 +86,7 @@ export function Matchup({ dayMaster, otherStem, when, unit, god }) {
         </span>
       </div>
       <p className={t.matchResult}>
-        {when}의 기운이 나에게 <b>{GOD_PLAIN[Math.floor(god / 2)]}</b>이라서 <b>{TEN_GODS[god]}</b>의 {unit}
+        {when}의 기운은 <b>{GOD_PLAIN[Math.floor(god / 2)]}</b>이라서 <b>{TEN_GODS[god]}</b>의 {unit}
         {hasBatchim(unit) ? "이에요" : "예요"}. 점수와
         풀이는 이 관계로 정해져요.
       </p>
