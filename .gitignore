@@ -30,3 +30,6 @@ yarn-error.log*
 # editor
 .vscode/
 .idea/
+
+# dream art originals (large, kept locally)
+docs/dream/그림원본/

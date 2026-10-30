@@ -1,61 +1,875 @@
-/* 꿈해몽 전용 스타일 — 상징 선택(카테고리 탭 + 칩)과 결과 목록만 여기 두고,
-   공용 레이아웃은 components/fortune/fortune.module.css(.dreamTheme)를 그대로 씁니다. */
+/* 꿈해몽 전용 스타일 — 밤하늘 히어로·문장 검색·그림 카드·장면 고르기·결과 목록·상세 페이지.
+   공용 레이아웃은 components/fortune/fortune.module.css(.dreamTheme)를 그대로 씁니다.
+   밤하늘 색은 상징 그림(public/dream/art) 바탕색에 맞췄어요. */
+.hero,
+.answer,
+.similar,
+.popular,
+.selectSection,
+.detail {
+  --night1: #121a36;
+  --night2: #1d2a56;
+  --gold: #f2c14e;
+  --gold-soft: #f1e2b8;
+  --star-ink: #d6e0fa;
+}
 
-/* 여러 개 고를 수 있다는 안내 */
-.multiNote {
+/* ---------- 밤하늘 히어로 + 검색창 ---------- */
+.hero {
+  position: relative;
+  margin: 0 0 8px;
+  padding: 36px 22px 22px;
+  border-radius: 24px;
+  background:
+    radial-gradient(120% 70% at 85% -10%, rgba(90, 116, 196, 0.5), transparent 60%),
+    linear-gradient(180deg, var(--night1) 0%, var(--night2) 100%);
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 14px 34px rgba(19, 27, 58, 0.28);
+  scroll-margin-top: 76px;
+}
+/* 별: 작은 점을 여러 개 흩뿌린 배경(그림 파일 없이 CSS만) */
+.hero::before,
+.synthesisStars {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.6px 1.6px at 8% 18%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 22% 64%, #fff 50%, transparent 52%),
+    radial-gradient(2px 2px at 31% 12%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 46% 30%, #fff 50%, transparent 52%),
+    radial-gradient(1.6px 1.6px at 63% 9%, #fff 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 71% 52%, #f7dc93 50%, transparent 52%),
+    radial-gradient(2px 2px at 92% 40%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 13% 88%, #fff 50%, transparent 52%),
+    radial-gradient(1.6px 1.6px at 86% 82%, #fff 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 55% 94%, #f7dc93 50%, transparent 52%);
+  opacity: 0.75;
+}
+/* 초승달: 둥근 원에 그림자를 얹어 깎아 냅니다 */
+.heroMoon {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: -7px 5px 0 0 var(--gold);
+  transform: rotate(-12deg);
+  opacity: 0.9;
+}
+.heroKicker {
+  position: relative;
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+}
+.heroTitle {
+  position: relative;
+  margin: 0 0 10px;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.28;
+  color: #fff;
+  text-wrap: balance;
+}
+.heroLead {
+  position: relative;
+  margin: 0 auto;
+  max-width: 470px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--star-ink);
+  text-wrap: balance;
+}
+
+.searchForm {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+  max-width: 580px;
+  margin: 22px auto 0;
+  padding: 6px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 0 0 1.5px rgba(242, 193, 78, 0.6), 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+.searchForm:focus-within {
+  box-shadow: 0 0 0 3px var(--gold), 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 12px 10px 12px 12px;
+  font-size: 16px; /* 16px 아래면 아이폰이 화면을 확대해 버려요 */
+  color: #1d2440;
+}
+.searchInput:focus {
+  outline: none;
+}
+.searchInput::placeholder {
+  color: #8a90a6;
+}
+.searchBtn {
+  flex-shrink: 0;
+  border: none;
+  border-radius: 13px;
+  padding: 0 18px;
+  background: linear-gradient(180deg, #f6d27a, #e3ad3c);
+  color: #1b2346;
+  font-size: 15.5px;
+  font-weight: 900;
+  cursor: pointer;
+}
+.searchBtn:hover {
+  background: linear-gradient(180deg, #f8da8e, #e8b64c);
+}
+.searchBtn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* 자동 완성 목록 */
+.suggestList {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(10, 16, 40, 0.32);
+  text-align: left;
+}
+.suggestItem {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin: 0 0 14px;
-  padding: 12px 16px;
-  border-radius: var(--radius-md, 16px);
-  background: var(--f-soft);
-  border: 1.5px solid var(--f);
-  color: var(--f-callout-ink, var(--ink));
-  font-size: 14.5px;
-  line-height: 1.55;
+  gap: 10px;
+  padding: 7px 8px;
+  border-radius: 11px;
+  cursor: pointer;
+  color: #1d2440;
 }
-.multiNote b {
-  color: var(--f-deep);
+.suggestItem:hover,
+.suggestItemOn {
+  background: #eef1fa;
 }
-.multiNoteIcon {
+.suggestArt {
   flex-shrink: 0;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--f);
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+}
+.suggestText {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.suggestType {
+  flex-shrink: 0;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #6b7393;
+  background: #eef1fa;
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+.suggestItemOn .suggestType {
+  background: #fff;
+}
+
+/* 많이 찾는 꿈·최근 검색 칩 */
+.heroChips {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  max-width: 580px;
+  margin: 18px auto 0;
+}
+.heroChips + .heroChips {
+  margin-top: 12px;
+}
+.heroChipsLabel {
+  width: 100%;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: rgba(214, 224, 250, 0.75);
+}
+.heroChip {
+  border: 1px solid rgba(242, 193, 78, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--gold-soft);
+  border-radius: 999px;
+  padding: 6px 13px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.heroChip:hover,
+.heroChip:focus-visible {
+  background: rgba(242, 193, 78, 0.16);
+  outline: none;
+}
+.heroChipRecent {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-color: rgba(214, 224, 250, 0.35);
+  color: var(--star-ink);
+}
+.heroChipClear {
+  border: none;
+  background: none;
+  color: rgba(214, 224, 250, 0.7);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 6px 4px;
+}
+.heroNote {
+  position: relative;
+  margin: 18px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(214, 224, 250, 0.7);
+}
+
+@media (max-width: 520px) {
+  .hero {
+    padding: 32px 16px 20px;
+    border-radius: 20px;
+  }
+  .heroTitle {
+    font-size: 25px;
+  }
+  .heroLead {
+    font-size: 14.5px;
+  }
+  .searchBtn {
+    padding: 0 14px;
+    font-size: 15px;
+  }
+}
+
+/* ---------- 결과 화면(남색 판) ----------
+   검색 막대부터 결과까지 한 판에 담고, 그 아래 비슷한 꿈·설명은 흰 바탕으로 둬서 어디까지가 결과인지 보이게 해요. */
+.answer {
+  position: relative;
+  margin: 0 0 8px;
+  padding: 14px 18px 24px;
+  border-radius: 24px;
+  background:
+    radial-gradient(120% 50% at 85% -5%, rgba(90, 116, 196, 0.45), transparent 60%),
+    linear-gradient(180deg, var(--night1) 0%, var(--night2) 100%);
   color: #fff;
+  box-shadow: 0 14px 34px rgba(19, 27, 58, 0.28);
+}
+.answerStars {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.6px 1.6px at 8% 6%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 46% 3%, #fff 50%, transparent 52%),
+    radial-gradient(2px 2px at 93% 12%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 4% 40%, #fff 50%, transparent 52%),
+    radial-gradient(1.6px 1.6px at 97% 55%, #fff 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 3% 80%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.6px 1.6px at 96% 92%, #f7dc93 50%, transparent 52%);
+  opacity: 0.7;
+}
+
+/* 판 맨 위: 처음으로 + 작은 검색창 */
+.answerBar {
+  position: relative;
+  z-index: 3; /* 자동 완성 목록이 아래 결과 위로 뜨게 */
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(214, 224, 250, 0.16);
+}
+.answerBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  margin: 0 0 8px -6px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  color: var(--gold-soft);
   font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.answerBack:hover,
+.answerBack:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+.searchFormCompact {
+  max-width: none;
+  margin: 0;
+  padding: 4px;
+  border-radius: 14px;
+}
+.searchFormCompact .searchInput {
+  padding: 9px 8px 9px 10px;
+}
+.searchFormCompact .searchBtn {
+  border-radius: 11px;
+  padding: 0 16px;
+  font-size: 15px;
+}
+
+.answerBody {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.answerKicker {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  overflow-wrap: anywhere;
+}
+.answerTitle {
+  margin: 0 0 10px;
+  font-size: 23px;
   font-weight: 900;
-  letter-spacing: -3px;
+  line-height: 1.35;
+  color: #fff;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.answerLead {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--star-ink);
+}
+/* 메인 문구 — 결과에서 가장 먼저 읽히도록 본문보다 크고 굵게 */
+.mainLead {
+  margin: 0;
+  font-size: 18.5px;
+  font-weight: 700;
+  line-height: 1.65;
+  color: #fff;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.answerSub {
+  margin: 24px 0 8px;
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--gold);
+}
+.answerSub::before {
+  content: "✦ ";
+}
+.answerText {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--star-ink);
+}
+.answerCare {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--gold-soft);
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--star-ink);
+}
+.answerNote {
+  margin: 18px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: rgba(214, 224, 250, 0.72);
+  text-align: center;
+}
+
+/* 가장 비슷한 꿈(크게) */
+.mainHead {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.mainArt {
+  width: 112px;
+  height: 112px;
+  border-radius: 20px;
+  box-shadow: 0 0 0 1.5px rgba(242, 193, 78, 0.5), 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+.mainNames {
+  min-width: 0;
+}
+.mainName {
+  margin: 0 0 4px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: #fff;
+  word-break: keep-all;
+}
+.mainKeyword {
+  margin: 0 0 8px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--gold-soft);
+}
+
+/* 적어 준 꿈과 가장 비슷한 장면 / 함께 나온 것까지 묶어 본 종합 흐름 */
+/* 메인: 적어 준 꿈과 가장 비슷한 장면 — 결과에서 가장 먼저, 가장 크게 */
+.sceneMain {
+  margin: 4px 0 6px;
+  padding: 20px 20px 22px;
+  border-radius: 20px;
+  background: linear-gradient(160deg, rgba(242, 193, 78, 0.16), rgba(242, 193, 78, 0.05) 60%);
+  border: 1.5px solid rgba(242, 193, 78, 0.75);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+.sceneMainLabel {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #1b2346;
+  font-size: 12.5px;
+  font-weight: 900;
+}
+.sceneMainTitle {
+  margin: 0 0 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(242, 193, 78, 0.35);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--gold); /* 제목은 금색, 풀이는 흰 글씨 — 한눈에 구분되게 */
+  word-break: keep-all;
+}
+.sceneMainText {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.8;
+  color: #f4f6fc;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* 꿈에 함께 나온 것까지 묶어 본 종합 흐름 */
+.comboBox {
+  margin: 20px 0 0;
+  padding: 16px 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(242, 193, 78, 0.35);
+}
+.sceneBoxLabel {
+  margin: 0 0 4px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--gold);
+}
+.sceneBoxTitle {
+  margin: 0 0 8px;
+  font-size: 17.5px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: #fff;
+}
+.comboChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 10px;
+}
+.comboChips span {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(242, 193, 78, 0.16);
+  color: var(--gold-soft);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+/* 판 안의 하나뿐인 큰 버튼 */
+.answerBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: 3px;
+  gap: 8px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  margin: 22px 0 0;
+  padding: 14px 16px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f6d27a, #e3ad3c);
+  color: #1b2346;
+  font-size: 16px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.answerBtn:hover {
+  background: linear-gradient(180deg, #f8da8e, #e8b64c);
+}
+.answerBtn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+.answerBtnIcon {
+  font-size: 13px;
+  transition: transform 0.2s;
+}
+.answerBtnIconOpen {
+  transform: rotate(180deg);
+}
+.answerCopy {
+  min-height: 40px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(214, 224, 250, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--star-ink);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.answerCopy:hover {
+  background: rgba(242, 193, 78, 0.16);
 }
 
-.searchBox {
-  display: block;
+/* 펼친 상황별 풀이(판 안) */
+.sitList {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sitItem {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 12px;
+  padding: 14px 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(214, 224, 250, 0.14);
+}
+.sitItemOn {
+  border: 1.5px solid var(--gold);
+  background: rgba(242, 193, 78, 0.08);
+}
+.sitNum {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(242, 193, 78, 0.16);
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 900;
+}
+.sitTitle {
+  margin: 3px 0 6px;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: #fff;
+}
+.sitFoot {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+/* 장면 칸 종합 해몽의 상징별 카드(판 안) */
+.answerCards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.answerCard {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(214, 224, 250, 0.14);
+}
+.answerCardArt {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  box-shadow: 0 0 0 1px rgba(242, 193, 78, 0.4);
+}
+.answerCardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.answerCardTitle {
+  margin: 0;
+  font-size: 16.5px;
+  font-weight: 800;
+  color: #fff;
+}
+.answerCardMore {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--gold);
+  text-decoration: none;
+}
+.answerCardMore:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .answer {
+    padding: 12px 14px 22px;
+    border-radius: 20px;
+  }
+  .mainHead {
+    grid-template-columns: 92px 1fr;
+    gap: 14px;
+  }
+  .mainArt {
+    width: 92px;
+    height: 92px;
+    border-radius: 18px;
+  }
+  .mainName {
+    font-size: 21px;
+  }
+  .answerTitle {
+    font-size: 21px;
+  }
+  .mainLead {
+    font-size: 17.5px;
+  }
+  .sceneMain {
+    padding: 18px 16px 20px;
+  }
+  .sceneMainTitle {
+    font-size: 20px;
+  }
+  .sceneMainText {
+    font-size: 16.5px;
+  }
+}
+
+/* ---------- 결과 아래 흰 바탕: 비슷한 꿈 ---------- */
+.similar {
+  margin-top: 30px;
+}
+.similarList {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 560px) {
+  .similarList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.similarCard {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 12px;
   width: 100%;
-  font-size: 15px;
-  padding: 12px 16px;
-  margin-bottom: 12px;
-  border-radius: var(--radius-md, 16px);
+  padding: 10px 14px 10px 10px;
   border: 1.5px solid var(--border);
+  border-radius: 16px;
   background: var(--surface);
   color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
-.searchBox:focus {
-  outline: none;
+.similarCard:hover,
+.similarCard:focus-visible {
   border-color: var(--f);
+  box-shadow: 0 6px 16px rgba(34, 56, 114, 0.1);
+  outline: none;
 }
-.searchResultNote {
-  font-size: 13.5px;
-  font-weight: 700;
+.similarArt {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--night1);
+}
+.similarText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.similarText strong {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+.similarText span {
+  font-size: 13px;
   color: var(--muted-ink);
-  margin: 0 0 10px;
+}
+.similarArrow {
+  font-weight: 900;
+  color: var(--f);
+}
+.similarFoot {
+  margin: 18px 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted-ink);
+  text-align: center;
+}
+.similarFoot small {
+  font-size: 12.5px;
+}
+.textLink {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--f);
+  font: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
 }
 
+/* ---------- 공통 소제목 ---------- */
+.sectionHead {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--ink);
+}
+.sectionLead {
+  margin: 0 0 14px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted-ink);
+}
+
+/* ---------- 많이 찾는 꿈(그림 카드) ---------- */
+.popular {
+  margin-top: 36px;
+}
+.popularGrid {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (min-width: 560px) {
+  .popularGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.popularCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--night1);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(19, 27, 58, 0.16);
+}
+.popularArt {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  transition: transform 0.35s ease;
+}
+.popularCard:hover .popularArt,
+.popularCard:focus-visible .popularArt {
+  transform: scale(1.04);
+}
+.popularCard:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+.popularCaption {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px 13px;
+  background: var(--night1);
+}
+.popularCaption strong {
+  font-size: 14.5px;
+  font-weight: 800;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+.popularCaption span {
+  font-size: 12.5px;
+  color: var(--gold-soft);
+}
+
+/* ---------- 장면 고르기(그림 칸) ---------- */
+.selectSection {
+  margin-top: 40px;
+  scroll-margin-top: 76px;
+}
 /* 가려진 카테고리가 있으면 ScrollHint가 끝을 흐리게 하고 화살표를 띄웁니다. */
 .categoryTabsWrap {
   margin-bottom: 14px;
@@ -83,155 +897,123 @@
   cursor: pointer;
 }
 .categoryTabOn {
-  border-color: var(--f);
-  background: var(--f);
+  border-color: var(--f-deep);
+  background: var(--f-deep);
   color: #fff;
 }
 
 .symbolGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-bottom: 16px;
 }
 @media (min-width: 560px) {
   .symbolGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
   }
 }
-.symbolChip {
-  position: relative;
+.symbolTile {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 3px;
-  padding: 12px 38px 12px 14px;
-  border-radius: var(--radius-md, 16px);
-  border: 1.5px solid var(--border);
-  background: var(--surface);
+  gap: 7px;
+  padding: 0 0 10px;
+  border: none;
+  background: none;
   cursor: pointer;
-  text-align: left;
+  text-align: center;
+  color: var(--ink);
 }
-.symbolChip:hover,
-.symbolChip:focus-visible {
-  border-color: var(--f);
+.symbolTileArt {
+  position: relative;
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--night1);
+  transition: box-shadow 0.15s;
+}
+.symbolTileArt img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+.symbolTile:hover .symbolTileArt,
+.symbolTile:focus-visible .symbolTileArt {
+  box-shadow: 0 0 0 2px var(--f);
+}
+.symbolTile:focus-visible {
   outline: none;
 }
-.symbolChipOn {
-  border-color: var(--f);
-  background: var(--f-soft);
+.symbolTileOn .symbolTileArt,
+.symbolTileOn:hover .symbolTileArt {
+  box-shadow: 0 0 0 3px var(--gold), 0 6px 16px rgba(19, 27, 58, 0.25);
+}
+.symbolTileLabel {
+  padding: 0 2px;
+  font-size: 13.5px;
+  font-weight: 800;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+.symbolTileOn .symbolTileLabel {
+  color: var(--f-deep);
 }
 /* 체크박스처럼 보이는 동그라미 — 여러 개 고를 수 있다는 걸 한눈에 알게 합니다. */
 .symbolCheck {
   position: absolute;
-  top: 11px;
-  right: 11px;
-  width: 20px;
-  height: 20px;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  border: 2px solid var(--border);
-  background: var(--surface);
-  color: #fff;
-  font-size: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  background: rgba(18, 26, 54, 0.45);
+  color: #1b2346;
+  font-size: 13px;
   font-weight: 900;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.symbolChipOn .symbolCheck {
-  border-color: var(--f);
-  background: var(--f);
-}
-.symbolChipLabel {
-  font-size: 14.5px;
-  font-weight: 800;
-  color: var(--ink);
-}
-.symbolChipKeyword {
-  font-size: 12px;
-  color: var(--muted-ink);
+.symbolTileOn .symbolCheck {
+  border-color: var(--gold);
+  background: var(--gold);
 }
 
+/* 고른 꿈 + 해몽 보기 버튼 — 하나라도 고르면 그림 칸을 내리는 동안 화면 아래에 붙어 있어요 */
+.selectDock {
+  padding: 12px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.selectDockOn {
+  position: sticky;
+  bottom: 12px;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 26px rgba(19, 27, 58, 0.16);
+}
 .selectedBar {
   font-size: 13.5px;
   color: var(--f-deep);
-  background: var(--f-soft);
-  border-radius: var(--radius-md, 16px);
-  padding: 10px 14px;
-  margin: 0 0 16px;
+  margin: 0 0 10px;
+  text-align: center;
+  line-height: 1.5;
+}
+.selectHint {
+  margin: -4px 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #b84a4a;
   text-align: center;
 }
 
-/* 종합 흐름 — 결과의 메인 */
-.synthesisBox {
-  margin: 4px 0 24px;
-  padding: 24px 22px;
-  border-radius: var(--radius-lg, 20px);
-  background: linear-gradient(165deg, var(--f-soft), var(--surface));
-  border: 1.5px solid var(--f);
-  box-shadow: 0 6px 18px rgba(34, 56, 114, 0.12);
-}
-.synthesisLabel {
-  display: inline-block;
-  font-size: 12.5px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  color: #fff;
-  background: var(--f);
-  border-radius: 999px;
-  padding: 5px 12px;
-  margin-bottom: 10px;
-}
-.synthesisTitle {
-  font-size: 23px;
-  font-weight: 900;
-  color: var(--f-deep);
-  margin: 0 0 10px;
-  line-height: 1.3;
-}
-.synthesisText {
-  font-size: 16px;
-  line-height: 1.65;
-  color: var(--ink);
-  margin: 0;
-}
-
-/* 상징별 해석 목록 */
-.symbolListLabel {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--muted-ink);
-  margin: 0 0 10px;
-}
-.symbolList {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.symbolCard {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md, 16px);
-  padding: 16px 18px;
-  background: var(--surface);
-}
-.symbolHead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-.symbolTitle {
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--ink);
-}
-.symbolText {
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: var(--ink);
-}
+/* 길흉 배지(결과 판·상세 페이지 공용) */
 .luckBadge {
   flex-shrink: 0;
   font-size: 12px;
@@ -253,69 +1035,299 @@
   color: #b84a4a;
 }
 
-/* 결과 카드의 "자세히 보기" 링크 */
-.symbolMore {
-  display: inline-block;
-  margin-top: 8px;
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--f);
-  text-decoration: none;
-}
-
 /* ---------- 상세 페이지(/dream/[id]) ---------- */
+/* 머리 카드: 첫 화면 히어로와 같은 밤하늘에 상징 그림을 얹습니다 */
 .pageHero {
+  position: relative;
+  overflow: hidden;
   margin: 4px 0 8px;
+  padding: 22px;
+  border-radius: 24px;
+  background:
+    radial-gradient(120% 70% at 85% -10%, rgba(90, 116, 196, 0.5), transparent 60%),
+    linear-gradient(180deg, var(--night1) 0%, var(--night2) 100%);
+  color: #fff;
+  box-shadow: 0 14px 34px rgba(19, 27, 58, 0.28);
+}
+.pageHero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.6px 1.6px at 52% 14%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 74% 30%, #fff 50%, transparent 52%),
+    radial-gradient(2px 2px at 93% 12%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 64% 48%, #fff 50%, transparent 52%),
+    radial-gradient(1.6px 1.6px at 88% 56%, #fff 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 8% 72%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 40% 90%, #fff 50%, transparent 52%),
+    radial-gradient(1.6px 1.6px at 95% 92%, #f7dc93 50%, transparent 52%);
+  opacity: 0.75;
+}
+.pageHeroTop {
+  position: relative;
+  display: grid;
+  grid-template-columns: 168px 1fr;
+  gap: 22px;
+  align-items: center;
+}
+.pageArt {
+  display: block;
+  width: 168px;
+  height: 168px;
+  border-radius: 20px;
+  background: var(--night1);
+  box-shadow: 0 0 0 1px rgba(242, 193, 78, 0.35), 0 10px 26px rgba(0, 0, 0, 0.3);
+}
+.pageHeroText {
+  min-width: 0;
 }
 .pageTitle {
-  font-size: 28px;
+  position: relative;
+  margin: 0 0 10px;
+  font-size: 30px;
   font-weight: 900;
-  line-height: 1.3;
-  margin: 2px 0 6px;
-  color: var(--ink);
+  line-height: 1.28;
+  color: #fff;
+  word-break: keep-all;
+  text-wrap: balance;
 }
 .pageSub {
+  position: relative;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-  font-size: 15px;
+  margin: 0;
+  font-size: 14.5px;
   font-weight: 700;
-  color: var(--muted-ink);
-  margin: 0 0 14px;
+  color: var(--star-ink);
 }
 .pageSummary {
+  position: relative;
+  margin: 20px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(242, 193, 78, 0.3);
   font-size: 16px;
-  line-height: 1.7;
-  margin: 0;
-  padding: 16px 18px;
-  border-radius: var(--radius-md, 16px);
-  background: var(--f-soft);
-  color: var(--f-callout-ink);
+  line-height: 1.75;
   font-weight: 600;
+  color: #eef2fd;
 }
+@media (max-width: 520px) {
+  .pageHero {
+    padding: 18px 16px;
+    border-radius: 20px;
+  }
+  .pageHeroTop {
+    grid-template-columns: 104px 1fr;
+    gap: 14px;
+  }
+  .pageArt {
+    width: 104px;
+    height: 104px;
+    border-radius: 16px;
+  }
+  .pageTitle {
+    font-size: 23px;
+    margin-bottom: 8px;
+  }
+  .pageHero .heroKicker {
+    margin-bottom: 4px;
+    font-size: 12px;
+  }
+  .pageSummary {
+    margin-top: 16px;
+    padding-top: 14px;
+    font-size: 15.5px;
+  }
+}
+
+/* 차례 칩 */
+.pageToc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 16px 0 0;
+}
+.pageToc a {
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--f-deep);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+}
+@media (max-width: 520px) {
+  /* 휴대폰에선 한 줄로 두고 옆으로 밀어 봅니다 */
+  .pageToc {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-right: -16px;
+    padding-right: 16px;
+  }
+  .pageToc::-webkit-scrollbar {
+    display: none;
+  }
+  .pageToc a {
+    flex-shrink: 0;
+  }
+}
+.pageToc a:hover,
+.pageToc a:focus-visible {
+  border-color: var(--f);
+  background: var(--f-soft);
+}
+
+/* 섹션: 금빛 별 붙은 소제목 + 카드 */
+.secBlock {
+  margin-top: 40px;
+}
+.secTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--ink);
+  scroll-margin-top: 76px;
+  word-break: keep-all;
+}
+.secTitle::before {
+  content: "✦";
+  flex-shrink: 0;
+  font-size: 15px;
+  color: #d9a32a;
+}
+.secCard {
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+}
+.secText {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--ink);
+}
+.secText + .secText {
+  margin-top: 12px;
+}
+
+/* 상황별 풀이: 번호 붙은 카드 */
 .situationList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 .situationItem {
+  scroll-margin-top: 76px; /* 검색 결과의 "가장 비슷한 장면" 링크로 왔을 때 헤더에 안 가리게 */
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 12px;
+  padding: 16px 18px 16px 14px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-md, 16px);
-  padding: 16px 18px;
+  border-radius: 18px;
   background: var(--surface);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+/* 검색 결과에서 이 장면으로 바로 왔을 때 금빛 테로 알려 줍니다 */
+.situationItem:target {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(242, 193, 78, 0.35), 0 8px 22px rgba(19, 27, 58, 0.1);
+}
+.situationNum {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--night2), var(--night1));
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .situationTitle {
   font-size: 16.5px;
   font-weight: 800;
-  margin: 0 0 6px;
+  line-height: 1.45;
+  margin: 3px 0 6px;
   color: var(--f-deep);
+  word-break: keep-all;
 }
 .situationText {
+  grid-column: 2;
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.8;
   margin: 0;
 }
+/* 휴대폰: 번호는 제목 옆에만, 본문은 카드 폭을 다 씁니다 */
+@media (max-width: 520px) {
+  .situationItem {
+    grid-template-columns: 28px 1fr;
+    gap: 6px 10px;
+    padding: 16px;
+  }
+  .situationNum {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+  .situationTitle {
+    align-self: center;
+    margin: 0;
+  }
+  .situationText {
+    grid-column: 1 / -1;
+  }
+}
+
+/* 자주 묻는 질문 */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.faqItem {
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+}
+.faqQ {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.5;
+  color: var(--ink);
+  word-break: keep-all;
+}
+.faqQ::before {
+  content: "Q";
+  flex-shrink: 0;
+  font-weight: 900;
+  color: #d9a32a;
+}
+.faqA {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
 .careBox {
   margin-top: 16px;
   padding: 18px 20px;
@@ -326,31 +1338,68 @@
   font-size: 15px;
   line-height: 1.75;
 }
-.relatedList {
+
+/* 종합 해몽으로 이어지는 밤하늘 띠 */
+.pickBand {
+  position: relative;
+  overflow: hidden;
+  margin-top: 44px;
+  padding: 26px 22px 24px;
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 80% at 10% -10%, rgba(90, 116, 196, 0.5), transparent 60%),
+    linear-gradient(180deg, var(--night1), var(--night2));
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(19, 27, 58, 0.22);
+}
+.pickBandTitle {
+  position: relative;
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 900;
+  color: #fff;
+}
+.pickBandText {
+  position: relative;
+  max-width: 440px;
+  margin: 0 auto 16px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--star-ink);
+  text-wrap: balance;
+}
+.pickBandBtn {
+  position: relative;
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f6d27a, #e3ad3c);
+  color: #1b2346;
+  font-size: 15.5px;
+  font-weight: 900;
+  text-decoration: none;
+}
+.pickBandBtn:hover {
+  background: linear-gradient(180deg, #f8da8e, #e8b64c);
+}
+.pickBandBtn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* 비슷한 꿈: 첫 화면 '많이 찾는 꿈'과 같은 그림 카드 */
+.relatedGrid {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
-.relatedList a {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md, 16px);
-  background: var(--surface);
-  text-decoration: none;
-  color: var(--ink);
-}
-.relatedList strong {
-  font-size: 14.5px;
-}
-.relatedList span {
-  font-size: 12.5px;
-  color: var(--muted-ink);
+@media (min-width: 560px) {
+  .relatedGrid {
+    grid-template-columns: repeat(var(--n, 4), 1fr);
+  }
 }
 
 /* 꿈 해몽 모아보기(접기) */
