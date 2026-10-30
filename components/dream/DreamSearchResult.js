@@ -25,12 +25,31 @@ function loadPages() {
   return pagesPromise;
 }
 
-/** 가장 비슷한 장면 — 1등이 뚜렷할 때만(여러 장면이 똑같이 맞으면 굳이 하나를 고르지 않음) */
+/**
+ * 가장 비슷한 장면 — 1등이 뚜렷할 때만(여러 장면이 똑같이 맞으면 굳이 하나를 고르지 않음).
+ * 점수가 같아도 검색어에 없는 낱말이 확실히 적은 쪽은 고릅니다
+ * ("집에 불이 났어" → "다른 사람의 집에 불이 나는 꿈"보다 "집이나 건물에 불이 나는 꿈").
+ */
 function bestSituation(r) {
   const [a, b] = r.situations;
   if (!a || a.score < 0.5 || !PAGE_IDS.includes(r.id)) return null;
-  if (b && a.score - b.score < 0.05) return null;
+  if (b && a.score - b.score < 0.05 && b.miss - a.miss < 0.3) return null;
   return a;
+}
+
+/** 받침 있으면 a, 없으면 b("불꿈과" / "나비와") */
+function josa(word, a, b) {
+  const code = word.charCodeAt(word.length - 1) - 0xac00;
+  return code >= 0 && code <= 11171 && code % 28 !== 0 ? a : b;
+}
+
+/** "불꿈(열정이 오르는 꿈)과 돼지꿈(재물이 들어오는 꿈)이 한 꿈에 함께 나왔어요." */
+function comboLead(ids, pages) {
+  const names = ids.map((id) => pages[id]?.searchName || SYMBOL_BY_ID[id].label);
+  const parts = ids.map((id, i) => `${names[i]}(${SYMBOL_BY_ID[id].keyword})`);
+  const last = names.length - 1;
+  const head = parts.slice(0, last).join(", ");
+  return `${head}${josa(names[last - 1], "과", "와")} ${parts[last]}${josa(names[last], "이", "가")} 한 꿈에 함께 나왔어요.`;
 }
 
 /**
@@ -44,11 +63,22 @@ export default function DreamSearchResult({ bar, titles, query, onSearch, onPick
   const { engine, failed: engineFailed, warmUp } = useDreamEngine(titles);
   const [pages, setPages] = useState(pagesReady);
   const [pagesFailed, setPagesFailed] = useState(false);
+  // '함께 나온 꿈'에서 다른 꿈을 눌러 메인으로 바꿔 본 것(검색어가 바뀌면 처음으로)
+  const [picked, setPicked] = useState(null);
+  const headRef = useRef(null);
 
   useEffect(() => {
     warmUp();
     if (!pagesReady) loadPages().then(setPages, () => setPagesFailed(true));
   }, [warmUp]);
+
+  useEffect(() => setPicked(null), [query]);
+
+  function pick(id) {
+    setPicked(id);
+    track("dream_combo_pick", { id });
+    requestAnimationFrame(() => headRef.current?.scrollIntoView({ block: "start", behavior: "smooth" }));
+  }
 
   const results = engine ? engine.search(query) : null;
 
@@ -92,22 +122,24 @@ export default function DreamSearchResult({ bar, titles, query, onSearch, onPick
     );
   }
 
-  const main = found[0];
+  const main = found.find((r) => r.id === picked) || found[0];
   const s = SYMBOL_BY_ID[main.id];
   const page = pages[main.id];
   const scene = bestSituation(main);
   const sceneText = scene && page?.situations[scene.index]?.text;
-  // 꿈에 상징 이름이 여럿 직접 나왔으면("뱀이 집에 들어왔어") 한데 묶어 본 종합 흐름도 보여 줘요
+  // 꿈에 상징 이름이 여럿 직접 나왔으면("뱀이 마당에서 나를 물었어", 장소로만 쓰인 '집'은 빼고)
+  // 나머지 꿈도 가장 비슷한 장면과 함께 보여 주고, 한데 묶어 본 종합 흐름을 붙여요
   const named = found.filter((r) => r.via === "symbol").map((r) => r.id).slice(0, MAX_SELECT);
   const combo = named.length >= 2 ? named : null;
+  const others = combo ? combo.filter((id) => id !== main.id).map((id) => found.find((r) => r.id === id)) : [];
   const synthesis = combo && TEXTS.synthesis[synthesisBucket(combo.map((id) => SYMBOL_BY_ID[id].luck))];
-  const similar = [...found.slice(1).map((r) => r.id), ...(page?.related || [])];
+  const similar = [...found.filter((r) => r !== main && !combo?.includes(r.id)).map((r) => r.id), ...(page?.related || [])];
 
   return (
     <>
       <AnswerPanel bar={bar}>
         <p className={ds.answerKicker}>‘{query}’ 꿈해몽</p>
-        <div className={ds.mainHead}>
+        <div className={ds.mainHead} ref={headRef}>
           <DreamArt id={s.id} alt="" className={ds.mainArt} eager />
           <div className={ds.mainNames}>
             <h1 className={ds.mainName}>{page?.searchName ? `${page.searchName} 해몽` : s.label}</h1>
@@ -148,13 +180,15 @@ export default function DreamSearchResult({ bar, titles, query, onSearch, onPick
         {synthesis && (
           <div className={ds.comboBox}>
             <p className={ds.sceneBoxLabel}>꿈에 함께 나온 것까지 묶어 보면</p>
-            <p className={ds.comboChips}>
-              {combo.map((id) => (
-                <span key={id}>{SYMBOL_BY_ID[id].label}</span>
-              ))}
-            </p>
-            <h2 className={ds.sceneBoxTitle}>{synthesis.title}</h2>
-            <p className={ds.answerText}>{synthesis.text}</p>
+            {others.map((r) => (
+              <ComboItem key={r.id} result={r} page={pages[r.id]} onPick={() => pick(r.id)} />
+            ))}
+            <div className={ds.comboSum}>
+              <h2 className={ds.sceneBoxTitle}>{synthesis.title}</h2>
+              <p className={ds.answerText}>
+                {comboLead(combo, pages)} {synthesis.text.replace(/^고른 상징들을 함께 보면 /, "이렇게 묶어 보면 ")}
+              </p>
+            </div>
           </div>
         )}
 
@@ -163,6 +197,30 @@ export default function DreamSearchResult({ bar, titles, query, onSearch, onPick
 
       <Similar title="비슷한 꿈도 살펴보세요" ids={similar} exclude={main.id} onSearch={onSearch} onPickScenes={onPickScenes} />
     </>
+  );
+}
+
+/** 함께 나온 꿈 하나 — 가장 비슷한 장면(없으면 짧은 해석)을 짧게, 누르면 이 꿈이 메인으로 */
+function ComboItem({ result, page, onPick }) {
+  const s = SYMBOL_BY_ID[result.id];
+  const scene = bestSituation(result);
+  const text = (scene && page?.situations[scene.index]?.text) || s.text;
+  const name = page?.searchName || s.label;
+  return (
+    <div className={ds.comboItem}>
+      <div className={ds.comboHead}>
+        <DreamArt id={result.id} small alt="" className={ds.comboArt} />
+        <div className={ds.comboNames}>
+          <h3 className={ds.comboName}>{name}</h3>
+          <p className={ds.comboKeyword}>{s.keyword}</p>
+        </div>
+      </div>
+      {scene && <p className={ds.comboScene}>가장 비슷한 장면 · {scene.title}</p>}
+      <p className={ds.answerText}>{text}</p>
+      <button type="button" className={ds.comboBtn} onClick={onPick}>
+        {name} 자세히 보기 →
+      </button>
+    </div>
   );
 }
 

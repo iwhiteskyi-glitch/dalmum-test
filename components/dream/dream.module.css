@@ -422,6 +422,7 @@
   gap: 16px;
   align-items: center;
   margin-bottom: 16px;
+  scroll-margin-top: 96px; /* 함께 나온 꿈을 눌러 메인을 바꿀 때 위 메뉴에 가리지 않게 */
 }
 .mainArt {
   width: 112px;
@@ -508,19 +509,76 @@
   line-height: 1.4;
   color: #fff;
 }
-.comboChips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 6px 0 10px;
+/* 함께 나온 꿈 하나(장면 짧게 + 이 꿈을 메인으로 보기) */
+.comboItem {
+  margin: 10px 0 0;
+  padding: 14px 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
 }
-.comboChips span {
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: rgba(242, 193, 78, 0.16);
-  color: var(--gold-soft);
-  font-size: 12.5px;
+.comboHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.comboArt {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: var(--night1);
+  box-shadow: 0 0 0 1px rgba(242, 193, 78, 0.4);
+}
+.comboNames {
+  min-width: 0;
+}
+.comboName {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: #fff;
+  word-break: keep-all;
+}
+.comboKeyword {
+  margin: 2px 0 0;
+  font-size: 13.5px;
   font-weight: 700;
+  color: var(--gold-soft);
+}
+.comboScene {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--gold);
+  word-break: keep-all;
+}
+.comboBtn {
+  margin: 12px 0 0;
+  padding: 8px 14px;
+  border: 1px solid rgba(242, 193, 78, 0.6);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--gold);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.comboBtn:hover {
+  background: rgba(242, 193, 78, 0.12);
+}
+.comboBtn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+/* 묶어 본 종합 흐름 */
+.comboSum {
+  margin: 16px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(242, 193, 78, 0.25);
 }
 
 /* 판 안의 하나뿐인 큰 버튼 */
