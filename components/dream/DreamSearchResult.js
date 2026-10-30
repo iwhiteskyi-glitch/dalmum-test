@@ -36,7 +36,7 @@ function bestSituation(r) {
 
 /**
  * 문장 검색 결과 화면.
- *  - 남색 판: 가장 비슷한 꿈 하나를 크게(풀이·가장 비슷한 장면·전통 해몽·요즘 식으로) + 꿈에 상징이 여럿 나왔으면 묶어 본 종합 흐름
+ *  - 남색 판: 가장 비슷한 꿈 하나를 크게(적어 준 꿈과 가장 비슷한 장면이 메인·짧은 풀이·전통 해몽·요즘 식으로) + 꿈에 상징이 여럿 나왔으면 묶어 본 종합 흐름
  *  - 흰 바탕: 비슷한 꿈(누르면 그 꿈이 결과로 바뀜) + 장면 직접 고르기
  * bar: 판 맨 위에 붙일 검색 막대(처음으로 + 작은 검색창)
  * onSearch(q): 다른 꿈으로 다시 찾기 / onPickScenes(): 첫 화면의 장면 고르기로
@@ -120,14 +120,19 @@ export default function DreamSearchResult({ bar, titles, query, onSearch, onPick
         {/* 가까운 분을 떠나보낸 사람이 가장 먼저 보도록 맨 위에 둡니다(상세 페이지와 같은 원칙) */}
         {page?.care && <p className={ds.answerCare}>{page.care}</p>}
 
-        <p className={ds.mainLead}>{s.text}</p>
-
-        {sceneText && (
-          <div className={ds.sceneBox}>
-            <p className={ds.sceneBoxLabel}>적어 주신 꿈과 가장 비슷한 장면</p>
-            <h2 className={ds.sceneBoxTitle}>{scene.title}</h2>
-            <p className={ds.answerText}>{sceneText}</p>
-          </div>
+        {/* 적어 준 꿈과 가장 비슷한 장면이 있으면 그게 이 결과의 메인 — 맨 앞에 크게 */}
+        {sceneText ? (
+          <>
+            <div className={ds.sceneMain}>
+              <p className={ds.sceneMainLabel}>적어 주신 꿈과 가장 비슷한 장면</p>
+              <h2 className={ds.sceneMainTitle}>{scene.title}</h2>
+              <p className={ds.sceneMainText}>{sceneText}</p>
+            </div>
+            <h2 className={ds.answerSub}>{page.searchName} 전반으로 보면</h2>
+            <p className={ds.answerText}>{s.text}</p>
+          </>
+        ) : (
+          <p className={ds.mainLead}>{s.text}</p>
         )}
 
         {page && (
@@ -195,7 +200,7 @@ function Situations({ id, page, highlight }) {
         aria-controls={listId}
         onClick={() => (open ? close() : setOpen(true))}
       >
-        {open ? "상황별 풀이 접기" : `상황별 풀이 ${page.situations.length}가지 모두 보기`}
+        {open ? `${page.searchName} 풀이 접기` : `${page.searchName} 풀이 ${page.situations.length}가지 모두 보기`}
         <span className={`${ds.answerBtnIcon} ${open ? ds.answerBtnIconOpen : ""}`} aria-hidden="true">
           ▾
         </span>
