@@ -20,6 +20,15 @@ PERSONAL.texts.forEach((row, d) => {
     if (!/요\.$/.test(s)) fail(`${where} 끝맺음: ${s.slice(-6)}`);
   });
 });
+// 오늘 찾아온 글자를 "(정화)"처럼 밝혔는지 — 십신 번호로 오늘 천간을 거꾸로 구함
+const STEM_NAMES = ["갑목", "을목", "병화", "정화", "무토", "기토", "경금", "신금", "임수", "계수"];
+PERSONAL.texts.forEach((row, d) =>
+  row.forEach((s, g) => {
+    const element = ((d >> 1) + (g >> 1)) % 5;
+    const stem = element * 2 + (g % 2 === 0 ? d % 2 : 1 - (d % 2));
+    if (!s.includes(`(${STEM_NAMES[stem]})`)) fail(`${TEXTS.ilgan[d].stem}-${TEXTS.tenGods[g].god}: "(${STEM_NAMES[stem]})" 없음`);
+  })
+);
 const all = PERSONAL.texts.flat();
 if (new Set(all).size !== all.length) fail("맞춤 풀이에 똑같은 문장이 있음");
 
