@@ -209,14 +209,56 @@
 .notes b {
   color: var(--f-deep);
 }
+/* 팔자 표 아래: 십신 이름 뜻 펼쳐 보기 — 눈에 띄게 옅은 보라 상자로 */
+.legend {
+  margin-top: 12px;
+  padding: 2px 14px;
+  border-radius: var(--radius-md);
+  background: var(--f-soft);
+}
+.legend summary {
+  cursor: pointer;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--f-deep);
+}
+.legend[open] {
+  padding-bottom: 14px;
+}
+.legend .small {
+  margin-top: 0;
+}
 .godDefs {
-  margin: 6px 0 0;
+  margin: 10px 0 0;
   display: grid;
   gap: 10px;
 }
+.godDefs div {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
 .godDefs dt {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
   font-size: 14px;
   font-weight: 800;
+}
+/* 팔자 표에 적힌 이름(비견·겁재 등)은 묶음 이름 아래 한 줄로 */
+.godDefs dt em {
+  display: block;
+  margin-top: 1px;
+  font-style: normal;
+  font-size: 13px;
+  color: var(--f-deep);
+}
+.godDefs dt small {
+  flex: none;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--muted-ink);
 }
 .godDefs dd {
   margin: 2px 0 0;

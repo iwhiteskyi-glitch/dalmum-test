@@ -234,7 +234,29 @@ function SajuResult({ saju, snapshot = false }) {
             .map((x) => `${x.ko}(${x.hanja})`)
             .join(" · ")}
         </p>
-        <p className={j.small}>글자 아래 작은 이름은 그 글자가 나(일간)에게 어떤 관계인지 나타내는 십신이에요.</p>
+        <details className={j.legend}>
+          <summary>글자 아래 작은 이름 뜻 보기</summary>
+          <p className={j.small}>
+            작은 이름은 십신이에요. 그 글자가 나(일주의 윗글자)에게 어떤 관계인지 열 가지로 나눈 이름인데, 다섯
+            묶음으로 보면 쉬워요. 한 묶음 안에서는 나와 음양이 같으면 앞 이름, 다르면 뒤 이름이에요.
+          </p>
+          <dl className={j.godDefs}>
+            {SAJU.godGroups.map((g, i) => (
+              <div key={g.name}>
+                <dt>
+                  <span>
+                    {g.name}({g.hanja})
+                    <em>
+                      {godName(i * 2)} · {godName(i * 2 + 1)}
+                    </em>
+                  </span>
+                  <small>내 팔자에 {p.groups[i]}개</small>
+                </dt>
+                <dd>{g.desc}</dd>
+              </div>
+            ))}
+          </dl>
+        </details>
         {!snapshot &&
           saju.notes.map((n) => (
             <p key={n} className={styles.note}>
@@ -394,19 +416,7 @@ function SajuResult({ saju, snapshot = false }) {
             <p>{SAJU.godBalanced}</p>
           )}
         </div>
-        <details className={t.more}>
-          <summary>다섯 묶음이 뜻하는 것</summary>
-          <dl className={j.godDefs}>
-            {SAJU.godGroups.map((g) => (
-              <div key={g.name}>
-                <dt>
-                  {g.name}({g.hanja}) · {g.plain}
-                </dt>
-                <dd>{g.desc}</dd>
-              </div>
-            ))}
-          </dl>
-        </details>
+        <p className={j.small}>묶음마다 뜻은 위 팔자 표의 &lsquo;글자 아래 작은 이름 뜻 보기&rsquo;에 있어요.</p>
       </section>
 
       <section className={`${t.card} ${j.cAreas}`} aria-labelledby="saju-area-title">
