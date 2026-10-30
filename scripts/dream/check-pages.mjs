@@ -87,6 +87,12 @@ for (const id of ids) {
   for (const w of ["무섭지 않게", "불길", "흉몽이라고"]) check(`${id}: 통설 암시 표현 "${w}" 없음`, !all.includes(w));
   check(`${id}: meaningTitle은 있으면 문자열`, p.meaningTitle === undefined || typeof p.meaningTitle === "string");
 
+  // 기준만 던지고 결론이 없는 문장 금지(2026-10-30 사용자 지적: "아프지 않았는지를 눈여겨봐요"로 끝남)
+  // — "~였는지 떠올려 보면 가늠할 수 있어요" 대신 "~였으면 ~, ~였으면 ~"로 끝까지 풀어 씀
+  for (const re of [/가늠할 수 있어요/, /짐작할 수 있어요/, /단서가 돼요\./, /눈여겨봐요\./]) {
+    check(`${id}: 결론 없는 기준 문장 ${re} 없음`, !re.test(all));
+  }
+
   // 틀에 찍어 낸 글처럼 보이지 않게 — 반복 표현 빈도 제한(§8)
   const count = (re) => (body.match(re) || []).length;
   check(`${id}: "풀이" 4회 이하 (${count(/풀이/g)}회)`, count(/풀이/g) <= 4);
