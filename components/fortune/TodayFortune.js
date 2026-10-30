@@ -98,6 +98,8 @@ export default function TodayFortune() {
   const { saju } = useBirth();
   const [today, setToday] = useState(null);
   const [shared, setShared] = useState(null);
+  // 생년월일을 바꾸는 동안에는 예전 결과를 숨겨요(취소하면 다시 보여요).
+  const [editing, setEditing] = useState(false);
   const resultRef = useRef(null);
 
   // "오늘"은 방문한 순간의 한국 날짜로 정합니다. 예전에 친구가 보낸 결과 링크로 들어오면,
@@ -141,9 +143,15 @@ export default function TodayFortune() {
         submitLabel="오늘의 운세 보기"
         onSubmitted={onSubmitted}
         timeHelp="오늘의 운세는 태어난 날(일주)을 기준으로 봐서 시간과 상관없이 같아요. 시간은 '내 사주'와 '궁합' 풀이에 반영돼요."
+        onEditingChange={setEditing}
       />
       <div ref={resultRef} className={styles.result} aria-live="polite">
-        {saju && today && <TodayResult saju={saju} today={today} />}
+        {saju && today && !editing && (
+          <div className={t.zone}>
+            <p className={t.zoneLabel}>내 운세 결과</p>
+            <TodayResult saju={saju} today={today} />
+          </div>
+        )}
       </div>
     </>
   );
@@ -244,7 +252,7 @@ function TodayResult({ saju, today, snapshot = false }) {
         </p>
       </section>
 
-      <section className={t.card} aria-labelledby="area-title">
+      <section className={`${t.card} ${t.cArea}`} aria-labelledby="area-title">
         <h2 id="area-title" className={t.cardTitle}>
           영역별 운
         </h2>
@@ -261,7 +269,7 @@ function TodayResult({ saju, today, snapshot = false }) {
         </dl>
       </section>
 
-      <section className={t.card} aria-labelledby="todo-title">
+      <section className={`${t.card} ${t.cTodo}`} aria-labelledby="todo-title">
         <h2 id="todo-title" className={t.cardTitle}>
           {dayLabel} 이렇게 보내 보세요
         </h2>
@@ -286,7 +294,7 @@ function TodayResult({ saju, today, snapshot = false }) {
         </div>
       </section>
 
-      <section className={t.card} aria-labelledby="lucky-title">
+      <section className={`${t.card} ${t.cLucky}`} aria-labelledby="lucky-title">
         <h2 id="lucky-title" className={t.cardTitle}>
           {dayLabel}의 행운
         </h2>
@@ -319,7 +327,7 @@ function TodayResult({ saju, today, snapshot = false }) {
 
       {!snapshot && (
         <>
-          <section className={t.card} aria-labelledby="hour-title">
+          <section className={`${t.card} ${t.cHour}`} aria-labelledby="hour-title">
             <h2 id="hour-title" className={t.cardTitle}>
               {dayLabel} 시간대별 흐름
             </h2>
@@ -366,7 +374,7 @@ function TodayResult({ saju, today, snapshot = false }) {
             </details>
           </section>
 
-          <section className={t.card} aria-labelledby="week-title">
+          <section className={`${t.card} ${t.cWeek}`} aria-labelledby="week-title">
             <h2 id="week-title" className={t.cardTitle}>
               앞으로 일주일
             </h2>

@@ -144,18 +144,70 @@
 }
 
 /* ---------- 아래 흰 카드들 ---------- */
+/* ---------- 결과 묶음: 옅은 보라 바탕 위에 결과 카드를 모아, 아래 참고 정보와 확실히 나눠요 ---------- */
+.zone {
+  background: var(--f-soft);
+  border-radius: calc(var(--radius-xl) + 6px);
+  padding: 12px 12px 16px;
+}
+.zoneLabel {
+  margin: 2px 4px 10px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--f-deep);
+  letter-spacing: 0.02em;
+}
+
+/* 카드마다 위쪽 색 띠와 제목 앞 막대 색을 달리해서 어떤 묶음인지 한눈에 구분돼요 */
 .card {
-  margin-top: 14px;
+  --accent: var(--f);
+  margin-top: 12px;
   background: var(--surface);
   border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
   border-radius: var(--radius-xl);
   padding: 18px 18px 20px;
+  box-shadow: 0 4px 14px rgba(42, 34, 102, 0.06);
 }
 .cardTitle {
-  margin: 0 0 12px;
-  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 14px;
+  font-size: 18.5px;
   font-weight: 800;
   color: var(--ink);
+}
+.cardTitle::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 20px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+.cArea {
+  --accent: #6d61dc;
+}
+.cTodo {
+  --accent: #2f9e6e;
+}
+.cLucky {
+  --accent: #e0a93a;
+}
+.cHour {
+  --accent: #3b8fd6;
+}
+.cWeek {
+  --accent: #3d3290;
+}
+@media (max-width: 380px) {
+  .zone {
+    padding: 10px 8px 14px;
+  }
+  .card {
+    padding: 16px 14px 18px;
+  }
 }
 
 .areas {
