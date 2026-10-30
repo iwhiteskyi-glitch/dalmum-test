@@ -1,14 +1,13 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import Link from "next/link";
 import { track } from "@vercel/analytics";
 import ds from "./dream.module.css";
 import DreamArt from "./DreamArt";
 import { useDreamEngine } from "./DreamSearch";
 import TEXTS from "@/lib/dream/symbols.json";
 import { MAX_SELECT, synthesisBucket } from "@/lib/dream/select";
-import { PAGE_IDS, dreamHref } from "@/lib/dream/pageIds";
+import { PAGE_IDS } from "@/lib/dream/pageIds";
 
 const SYMBOL_BY_ID = Object.fromEntries(TEXTS.symbols.map((s) => [s.id, s]));
 const SIMILAR_MAX = 6;
@@ -142,7 +141,7 @@ export default function DreamSearchResult({ bar, titles, query, onSearch, onPick
             <h2 className={ds.answerSub}>요즘 식으로 보면</h2>
             <p className={ds.answerText}>{page.modern}</p>
             {page.helpline && <p className={ds.answerCare}>{page.helpline}</p>}
-            <Situations key={`${query}-${main.id}`} id={main.id} page={page} highlight={scene?.index} />
+            <Situations key={`${query}-${main.id}`} page={page} highlight={scene?.index} />
           </>
         )}
 
@@ -179,7 +178,7 @@ export function AnswerPanel({ bar, children }) {
 }
 
 /** 상황별 풀이 — 다른 페이지로 넘어가지 않고 결과 판 안에서 아래로 펼쳐요 */
-function Situations({ id, page, highlight }) {
+function Situations({ page, highlight }) {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef(null);
   const listId = useId();
@@ -225,9 +224,6 @@ function Situations({ id, page, highlight }) {
             <button type="button" className={ds.answerCopy} onClick={close}>
               접기 ▴
             </button>
-            <Link href={dreamHref(id)} className={ds.sitPageLink}>
-              {page.searchName} 해몽 페이지 따로 보기 →
-            </Link>
           </div>
         </div>
       )}

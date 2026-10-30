@@ -45,7 +45,8 @@ export default function DreamView({ titles }) {
   const [picked, setPicked] = useState(() => view.ids ?? []);
   const [lastTab, setLastTab] = useState(view.tab);
   const viewRef = useRef(view);
-  const scrollTo = useRef(null);
+  // 화면이 바뀐 뒤 옮겨 갈 자리: "top" / 요소 id / 숫자(뒤로 와서 되돌릴 스크롤 위치)
+  const scrollTo = useRef(view.scrollY ?? null);
 
   useEffect(() => {
     const got = decodeDreamLink(window.location.hash);
@@ -74,6 +75,18 @@ export default function DreamView({ titles }) {
     apply(next, target);
   }
 
+  // 결과를 보다가 링크(상세 페이지·다른 코너)로 나갈 때 보던 위치도 기억해 두고, 뒤로 오면 그 자리로 돌려놓아요.
+  useEffect(() => {
+    const onClick = (e) => {
+      const a = e.target.closest?.("a[href]");
+      if (!a || a.origin !== window.location.origin || a.pathname === window.location.pathname) return;
+      const v = viewRef.current;
+      if (v.query || v.ids) keepResult("dream", { ...v, scrollY: window.scrollY });
+    };
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
+  }, []);
+
   useEffect(() => {
     const onPop = () => apply(window.history.state?.dreamView ?? {});
     window.addEventListener("popstate", onPop);
@@ -83,10 +96,11 @@ export default function DreamView({ titles }) {
 
   useEffect(() => {
     const target = scrollTo.current;
-    if (!target) return;
+    if (target == null) return;
     scrollTo.current = null;
     requestAnimationFrame(() => {
       if (target === "top") window.scrollTo({ top: 0 });
+      else if (typeof target === "number") window.scrollTo({ top: target });
       else document.getElementById(target)?.scrollIntoView({ block: "start" });
     });
   }, [view]);

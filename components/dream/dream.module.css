@@ -616,18 +616,8 @@
 }
 .sitFoot {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+  justify-content: center;
   margin-top: 14px;
-}
-.sitPageLink {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--gold-soft);
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 /* 장면 칸 종합 해몽의 상징별 카드(판 안) */
