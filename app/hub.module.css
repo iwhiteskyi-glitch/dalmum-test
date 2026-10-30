@@ -45,212 +45,147 @@
 .corners {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: 12px;
 }
+/* 코너 카드: 작은 아이콘 + 제목 + 짧은 정보 한 줄(가로형) */
 .corner {
   --cc: var(--accent);
   --cc-soft: var(--accent-soft);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px 14px 14px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
+  border-radius: var(--radius-lg, 20px);
   text-decoration: none;
   color: var(--ink);
   transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
 }
 .corner:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   border-color: var(--cc);
-  box-shadow: 0 14px 30px rgba(48, 36, 44, 0.1);
+  box-shadow: 0 10px 24px rgba(48, 36, 44, 0.08);
 }
-.cornerArt {
+.corner:focus-visible {
+  outline: 3px solid var(--cc);
+  outline-offset: 2px;
+}
+.cornerIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
   background: var(--cc-soft);
-  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .cornerBody {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  padding: 20px 22px 22px;
+  min-width: 0;
 }
 .cornerLabel {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 800;
   color: var(--cc);
-  margin: 0 0 4px;
+  margin: 0 0 2px;
 }
 .cornerTitle {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: -0.02em;
-  margin: 0 0 8px;
+  line-height: 1.35;
+  margin: 0;
+  word-break: keep-all;
 }
 .cornerDesc {
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.6;
   color: var(--muted-ink);
-  margin: 0 0 14px;
+  margin: 6px 0 0;
 }
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 18px;
-}
-.chips li {
+.cornerMeta {
   font-size: 12.5px;
   font-weight: 700;
-  color: var(--cc);
-  background: var(--cc-soft);
-  border-radius: 999px;
-  padding: 4px 10px;
-}
-.cornerCta {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: 15.5px;
-  font-weight: 800;
-  color: #fff;
-  background: var(--cc);
-  border-radius: var(--radius-md);
-  padding: 14px 18px;
-}
-
-/* 카드 그림: 닮은꼴(두 캐릭터 + 닮음 %) */
-.artFace {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.artFace > span:first-child,
-.artFace > span:last-child {
-  border-radius: 50%;
-  box-shadow: 0 6px 16px rgba(206, 40, 87, 0.18);
+  color: var(--muted-ink);
+  margin-top: 6px;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
-.matchBadge {
-  font-size: 17px;
+.cornerArrow {
+  font-size: 18px;
   font-weight: 800;
-  color: #fff;
-  background: var(--c-face);
-  border-radius: 999px;
-  padding: 6px 12px;
-  box-shadow: 0 4px 12px rgba(206, 40, 87, 0.3);
+  color: var(--cc);
 }
 
-/* 카드 그림: 여행 이름(엽서 속 캐릭터 + 이름표) */
-.artTravel {
+/* 아이콘: 닮은꼴(두 얼굴이 살짝 겹침) */
+.iconFace {
+  display: flex;
+}
+.iconFace > span {
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(206, 40, 87, 0.2);
+}
+.iconFace > span + span {
+  margin-left: -10px;
+}
+/* 아이콘: 여행 이름(캐릭터 + 비행기 도장) */
+.iconTravel {
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  background: var(--surface);
-  border: 2px dashed #b9d6d8;
-  border-radius: 16px;
-  padding: 14px 22px 10px;
-  transform: rotate(-2deg);
+}
+.iconTravel > span:first-child {
+  border-radius: 50%;
+  overflow: hidden;
 }
 .stamp {
   position: absolute;
-  top: -12px;
-  right: -12px;
-  width: 34px;
-  height: 34px;
+  top: -4px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: #f07a62;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
+  font-size: 11px;
   transform: rotate(14deg);
 }
-.nameTag {
-  font-size: 13px;
-  font-weight: 800;
-  color: var(--c-travel);
-}
-.artFortune {
-  position: relative;
+/* 아이콘: 운세·궁합·관상·꿈해몽(밤하늘 원판 + 한자 한 글자) */
+.iconOrb {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 148px;
-  height: 148px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 25%, #6d61dc, #2a2266 72%);
-  box-shadow: 0 10px 26px rgba(61, 50, 144, 0.28);
+  box-shadow: 0 5px 14px rgba(19, 27, 58, 0.25);
 }
-.fortuneMoon {
-  position: absolute;
-  top: 16px;
-  right: 26px;
-  color: #e8b54a;
-  font-size: 22px;
-}
-.fortuneChar {
+.orbChar {
   color: #fff;
-  font-size: 54px;
+  font-size: 26px;
   line-height: 1;
   font-family: "Noto Serif KR", "Batang", serif;
   font-weight: 700;
 }
-.fortuneStars {
-  margin-top: 8px;
-  color: #e8b54a;
-  font-size: 13px;
-  letter-spacing: 1px;
+.orb_fortune {
+  background: radial-gradient(circle at 30% 25%, #6d61dc, #2a2266 72%);
 }
-.fortuneStars span {
-  color: rgba(255, 255, 255, 0.25);
-}
-.artGunghap {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 148px;
-  height: 148px;
-  border-radius: 50%;
+.orb_gunghap {
   background: radial-gradient(circle at 30% 25%, #f0924f, #4a1f0c 72%);
-  box-shadow: 0 10px 26px rgba(138, 58, 22, 0.28);
 }
-.artGwansang {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 148px;
-  height: 148px;
-  border-radius: 50%;
+.orb_gwansang {
   background: radial-gradient(circle at 30% 25%, #d1a45a, #4a3210 72%);
-  box-shadow: 0 10px 26px rgba(120, 84, 24, 0.28);
 }
-.artDream {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 148px;
-  height: 148px;
-  border-radius: 50%;
+.orb_dream {
   background: radial-gradient(circle at 30% 25%, #5b78c9, #131b3a 72%);
-  box-shadow: 0 10px 26px rgba(34, 56, 114, 0.28);
 }
 
 /* ---------- 카드 아래 접는 영역 ---------- */
@@ -419,31 +354,58 @@
 
 @media (max-width: 760px) {
   .main {
-    padding-top: 24px;
+    padding-top: 18px;
+  }
+  .hero {
+    padding-bottom: 18px;
+  }
+  .heroLogo {
+    width: 38px;
+    height: auto;
+    margin-bottom: 6px;
   }
   .heroTitle {
-    font-size: 31px;
+    font-size: 26px;
+    margin-bottom: 8px;
   }
   .heroLead {
-    font-size: 15.5px;
+    font-size: 14.5px;
   }
   .corners,
   .readGrid,
   .principles {
     grid-template-columns: 1fr;
   }
-  /* 휴대폰에선 카드 6개가 세로로 이어지니 그림 영역을 낮춰 스크롤을 줄입니다. */
-  .cornerArt {
-    height: 128px;
+  /* 휴대폰에선 카드 6개가 한 줄씩 이어지니 소개 문장은 빼고 짧게(스크롤 줄이기) */
+  .corners {
+    gap: 10px;
   }
-  .cornerArt > * {
-    transform: scale(0.78);
+  .corner {
+    grid-template-columns: 60px minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 11px 14px 11px 11px;
+    border-radius: 18px;
   }
-  .cornerArt > .artTravel {
-    transform: scale(0.78) rotate(-2deg);
+  .cornerIcon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
   }
-  .cornerBody {
-    padding: 16px 18px 18px;
+  .iconOrb {
+    width: 46px;
+    height: 46px;
+  }
+  .orbChar {
+    font-size: 22px;
+  }
+  .cornerTitle {
+    font-size: 16.5px;
+  }
+  .cornerDesc {
+    display: none;
+  }
+  .cornerMeta {
+    margin-top: 3px;
   }
   .countryChips {
     grid-template-columns: repeat(3, minmax(0, 1fr));

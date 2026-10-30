@@ -12,8 +12,8 @@ import { READS } from "@/lib/reads";
 import { COUNTRIES } from "@/lib/travel/data";
 
 // 재미로봄 첫 화면(허브). 코너 카드 → 여행지 바로가기 → 읽을거리 → 사이트 소개 순서입니다.
-// 새 코너(예: 오늘의 운세)를 만들면 lib/site.js의 CORNERS에 추가하고, 아래 ART에
-// 카드 그림을 하나 넣으면 됩니다. 매일 바뀌는 코너라면 코너 카드 위에 따로 두는 걸 권장해요.
+// 새 코너(예: 오늘의 운세)를 만들면 lib/site.js의 CORNERS에 추가하고, 아래 CornerIcon에
+// 아이콘을 하나 넣으면 됩니다. 매일 바뀌는 코너라면 코너 카드 위에 따로 두는 걸 권장해요.
 
 export const metadata = {
   title: { absolute: `${SITE.name} — ${SITE.shortDesc}` },
@@ -21,65 +21,37 @@ export const metadata = {
   alternates: { canonical: "/" },
 };
 
-// 카드 그림. 닮은꼴·여행은 여행 섹션의 캐릭터 그림체를, 운세는 밤하늘 원판을 씁니다.
+// 카드 아이콘. 닮은꼴·여행은 여행 섹션의 캐릭터 그림체를, 운세·궁합·관상·꿈해몽은 밤하늘 원판에 한자 한 글자를 씁니다.
+// 휴대폰에서 스크롤을 줄이려고 카드는 작은 아이콘 + 제목 한 줄의 가로형으로 둡니다(2026-10-30).
 const FACE_A = { skin: "#F6D2B5", hairColor: "#3B2A20", blush: "#FFB3C6", hair: "short", expression: "grin" };
 const FACE_B = { skin: "#FFE1C4", hairColor: "#3B2A20", blush: "#FFB3C6", hair: "bob", expression: "smile", accessory: "ribbon" };
 const TRAVELER = { skin: "#FFE1C4", hairColor: "#5A3E2B", blush: "#FFB3C6", hair: "bob", expression: "smile", accessory: "strawhat" };
 
-const ART = {
-  face: (
-    <div className={styles.artFace}>
-      <Avatar avatar={FACE_A} size={92} bg="#ffffff" />
-      <span className={styles.matchBadge}>87%</span>
-      <Avatar avatar={FACE_B} size={92} bg="#ffffff" />
-    </div>
-  ),
-  travel: (
-    <div className={styles.artTravel}>
-      <span className={styles.stamp} aria-hidden="true">
-        ✈
+const ORB = { fortune: "運", gunghap: "緣", gwansang: "相", dream: "夢" };
+
+function CornerIcon({ k }) {
+  if (k === "face") {
+    return (
+      <span className={styles.iconFace}>
+        <Avatar avatar={FACE_A} size={38} bg="#ffffff" />
+        <Avatar avatar={FACE_B} size={38} bg="#ffffff" />
       </span>
-      <Avatar avatar={TRAVELER} size={92} bg="#ffffff" />
-      <span className={styles.nameTag}>사쿠라 · さくら</span>
-    </div>
-  ),
-  fortune: (
-    <div className={styles.artFortune} aria-hidden="true">
-      <span className={styles.fortuneMoon}>☾</span>
-      <span className={styles.fortuneChar}>運</span>
-      <span className={styles.fortuneStars}>
-        ★★★★<span>★</span>
+    );
+  }
+  if (k === "travel") {
+    return (
+      <span className={styles.iconTravel}>
+        <Avatar avatar={TRAVELER} size={50} bg="#ffffff" />
+        <span className={styles.stamp}>✈</span>
       </span>
-    </div>
-  ),
-  gunghap: (
-    <div className={styles.artGunghap} aria-hidden="true">
-      <span className={styles.fortuneMoon}>☾</span>
-      <span className={styles.fortuneChar}>緣</span>
-      <span className={styles.fortuneStars}>
-        ★★★<span>★★</span>
-      </span>
-    </div>
-  ),
-  gwansang: (
-    <div className={styles.artGwansang} aria-hidden="true">
-      <span className={styles.fortuneMoon}>✦</span>
-      <span className={styles.fortuneChar}>相</span>
-      <span className={styles.fortuneStars}>
-        ★★★<span>★★</span>
-      </span>
-    </div>
-  ),
-  dream: (
-    <div className={styles.artDream} aria-hidden="true">
-      <span className={styles.fortuneMoon}>☾</span>
-      <span className={styles.fortuneChar}>夢</span>
-      <span className={styles.fortuneStars}>
-        ★★★★<span>★</span>
-      </span>
-    </div>
-  ),
-};
+    );
+  }
+  return (
+    <span className={`${styles.iconOrb} ${styles[`orb_${k}`]}`}>
+      <span className={styles.orbChar}>{ORB[k]}</span>
+    </span>
+  );
+}
 
 // 여행지 바로가기: 한국인이 많이 가는 순서로 몇 곳만 보여주고 나머지는 여행 첫 화면에서 고르게 합니다.
 const QUICK_TRAVEL = ["japan", "vietnam", "thailand", "taiwan", "china", "philippines", "usa", "france", "italy", "uk", "spain", "australia"];
@@ -100,7 +72,7 @@ export default function Home() {
             <span className={styles.heroMark}>나와 우리</span>
           </h1>
           <p className={styles.heroLead}>
-            닮은꼴·관상부터 운세·궁합, 꿈해몽, 여행 이름까지.
+            꿈해몽·운세·궁합부터 관상, 닮은꼴, 여행 이름까지.
             <br className={styles.brWide} /> 가볍게 해보고 친구와 나눠 보세요.
           </p>
         </section>
@@ -115,20 +87,19 @@ export default function Home() {
               className={styles.corner}
               style={{ "--cc": `var(--c-${c.key})`, "--cc-soft": `var(--c-${c.key}-soft)` }}
             >
-              <div className={styles.cornerArt}>{ART[c.key]}</div>
-              <div className={styles.cornerBody}>
-                <p className={styles.cornerLabel}>{c.name}</p>
+              <span className={styles.cornerIcon} aria-hidden="true">
+                <CornerIcon k={c.key} />
+              </span>
+              <span className={styles.cornerBody}>
+                <span className={styles.cornerLabel}>{c.name}</span>
                 <h2 className={styles.cornerTitle}>{c.title}</h2>
-                <p className={styles.cornerDesc}>{c.desc}</p>
-                <ul className={styles.chips}>
-                  {c.chips.map((chip) => (
-                    <li key={chip}>{chip}</li>
-                  ))}
-                </ul>
-                <span className={styles.cornerCta}>
-                  {c.cta} <span aria-hidden="true">→</span>
-                </span>
-              </div>
+                {/* 소개 문장은 PC에서만, 휴대폰에선 짧은 정보 한 줄만 */}
+                <span className={styles.cornerDesc}>{c.desc}</span>
+                <span className={styles.cornerMeta}>{c.chips.slice(0, 2).join(" · ")}</span>
+              </span>
+              <span className={styles.cornerArrow} aria-hidden="true">
+                →
+              </span>
             </Link>
           ))}
         </section>

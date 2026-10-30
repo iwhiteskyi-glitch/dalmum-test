@@ -468,19 +468,21 @@
   font-weight: 900;
 }
 .sceneMainTitle {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(242, 193, 78, 0.35);
   font-size: 22px;
   font-weight: 900;
   line-height: 1.35;
-  color: #fff;
+  color: var(--gold); /* 제목은 금색, 풀이는 흰 글씨 — 한눈에 구분되게 */
   word-break: keep-all;
 }
 .sceneMainText {
   margin: 0;
-  font-size: 17.5px;
-  font-weight: 600;
-  line-height: 1.75;
-  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.8;
+  color: #f4f6fc;
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
