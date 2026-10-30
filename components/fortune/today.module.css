@@ -142,6 +142,59 @@
 .rel b {
   color: #fff;
 }
+/* 보조 풀이 첫 줄: 무엇과 무엇을 견줬는지(날의 아랫글자끼리) */
+.relHead {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--f-gold);
+}
+
+/* ---------- "나 + 오늘 = 관계" 한 줄(parts.js Matchup) ---------- */
+.match {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.16);
+}
+.matchRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.matchChip {
+  display: grid;
+  justify-items: center;
+  min-width: 0;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+}
+.matchChip small {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--f-text-soft);
+}
+.matchOp {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--f-gold);
+}
+.matchResult {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--f-text-soft);
+}
+.matchResult b {
+  color: #fff;
+}
 
 /* ---------- 아래 흰 카드들 ---------- */
 /* ---------- 결과 묶음: 옅은 보라 바탕 위에 결과 카드를 모아, 아래 참고 정보와 확실히 나눠요 ---------- */
@@ -185,6 +238,13 @@
   height: 20px;
   border-radius: 3px;
   background: var(--accent);
+}
+/* 카드 제목 아래 "이 카드는 무엇인지" 한두 줄 */
+.cardLead {
+  margin: -6px 0 12px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted-ink);
 }
 .cArea {
   --accent: #6d61dc;

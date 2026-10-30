@@ -26,7 +26,7 @@ import { useBirth } from "@/lib/fortune/birthStore";
 import { decodeFortuneLink } from "@/lib/fortune/resultLink";
 import { eunNeun } from "@/lib/korean";
 import BirthForm from "./BirthForm";
-import { Stars, dateLabel, range, hourRangeLabel } from "./parts";
+import { Stars, Matchup, dateLabel, range, hourRangeLabel } from "./parts";
 
 const REL_WORDS = [
   "나와 같은 오행",
@@ -215,6 +215,7 @@ function TodayResult({ saju, today, snapshot = false }) {
         <p className={t.date}>
           {date.year}년 {dateLabel(date)} · {day.pillar.ko}({day.pillar.hanja})일
         </p>
+        <Matchup dayMaster={dm} otherStem={day.pillar.stem} when={dayLabel} unit="날" god={day.tenGod} />
 
         <div className={t.scoreRow}>
           <div className={t.ring} style={{ "--p": day.score }} role="img" aria-label={`${dayLabel}의 점수 100점 중 ${day.score}점`}>
@@ -245,6 +246,10 @@ function TodayResult({ saju, today, snapshot = false }) {
 
         <p className={t.overall}>{asDay(day.god.overall)}</p>
         <p className={t.rel}>
+          <span className={t.relHead}>
+            덧붙는 풀이 · 태어난 날 아랫글자(일지) {BRANCHES[myDayBranch]}({BRANCHES_HANJA[myDayBranch]}) ↔ {dayLabel}{" "}
+            아랫글자 {BRANCHES[day.pillar.branch]}({BRANCHES_HANJA[day.pillar.branch]})
+          </span>
           <b>
             {day.rel.label} · {day.rel.title}
           </b>{" "}
@@ -331,6 +336,10 @@ function TodayResult({ saju, today, snapshot = false }) {
             <h2 id="hour-title" className={t.cardTitle}>
               {dayLabel} 시간대별 흐름
             </h2>
+            <p className={t.cardLead}>
+              사주에서는 하루를 두 시간씩 열두 칸으로 나눠요. 칸마다 찾아오는 기운이 나에게 어떤 관계인지로 잘 맞는
+              시간과 쉬어 가는 시간을 골랐어요.
+            </p>
             <div className={styles.hourPicks}>
               {hourPicks.map(([key, h]) => (
                 <div key={key} className={`${styles.hourPick} ${key === "best" ? styles.hourPickBest : ""}`}>
@@ -446,7 +455,7 @@ function TodayResult({ saju, today, snapshot = false }) {
               <strong>
                 나는 {me.stem}({me.hanja}){me.element} — {me.alias}
               </strong>
-              <span>여덟 글자 표, 오행 분포, 성격 풀이를 볼 수 있어요</span>
+              <span>여덟 글자 표, 내 일주 풀이, 오행·십신 분포를 볼 수 있어요</span>
             </span>
             <span className={styles.crossArrow} aria-hidden="true">
               →

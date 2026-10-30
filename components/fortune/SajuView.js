@@ -29,9 +29,9 @@ import {
 import { useBirth } from "@/lib/fortune/birthStore";
 import { decodeSajuLink } from "@/lib/fortune/resultLink";
 import BirthForm from "./BirthForm";
-import { Char, birthLabel } from "./parts";
+import { Char, birthLabel, stemLabel, GOD_PLAIN } from "./parts";
 import { ilganHref } from "@/lib/fortune/ilganSlugs";
-import { eunNeun, hasBatchim } from "@/lib/korean";
+import { eunNeun, iGa, hasBatchim } from "@/lib/korean";
 
 const AREAS = [
   ["love", "연애·관계"],
@@ -43,6 +43,33 @@ const AREAS = [
 const MANY_GROUP = 3;
 // 글자 수는 5~8개뿐이라 우리말로 읽어요.
 const COUNT_WORDS = { 5: "다섯", 6: "여섯", 7: "일곱", 8: "여덟" };
+const EL_PLAIN = ["나무", "불", "흙", "쇠", "물"];
+
+/**
+ * 팔자 표 위 "내 팔자 한 줄 정리" — 처음 보는 사람도 표가 무슨 뜻인지 먼저 알 수 있게,
+ * 가장 많은 십신 묶음·없는 묶음·오행의 많고 적음을 쉬운 말로 이어 붙여요.
+ * (묶음 이름 비겁·식상·재성·관성·인성은 모두 받침이 있어서 조사를 "이"·"은"으로 고정해요.)
+ */
+function pillarSummary(me, dm, p, elements) {
+  const group = (i) => `${GOD_PLAIN[i]}(${SAJU.godGroups[i].name})`;
+  const n = Math.max(...p.groups);
+  const top =
+    p.topGroups.length === 1
+      ? `${me.alias}, ${stemLabel(dm)}인 나 곁에 ${group(p.topGroups[0])}이 ${n}개로 가장 많아요. ${SAJU.godGroups[p.topGroups[0]].sub} 쪽 성향이 두드러지는 팔자예요.`
+      : `${me.alias}, ${stemLabel(dm)}인 나 곁에 ${p.topGroups.map(group).join("·")}이 ${n}개씩으로 가장 많아, 여러 기운이 비슷하게 섞인 팔자예요.`;
+  const zero = p.groups.flatMap((c, i) => (c === 0 ? [group(i)] : []));
+  const none = zero.length ? ` ${zero.join("·")}은 하나도 없어요.` : "";
+  const el = (i) => `${ELEMENTS[i]}(${EL_PLAIN[i]})`;
+  const maxEl = Math.max(...elements);
+  const most = elements.flatMap((c, i) => (c === maxEl ? [i] : []));
+  const zeroEls = elements.flatMap((c, i) => (c === 0 ? [i] : []));
+  const mostText = `${most.map(el).join("·")}${iGa(ELEMENTS[most[most.length - 1]])} ${maxEl}개${most.length > 1 ? "씩으" : ""}로 가장 많고`;
+  const lowText = zeroEls.length
+    ? `${zeroEls.map(el).join("·")}${eunNeun(ELEMENTS[zeroEls[zeroEls.length - 1]])} 하나도 없어요`
+    : `${el(p.fillElement)}${iGa(ELEMENTS[p.fillElement])} 가장 적어요`;
+  return `${top}${none} 오행으로는 ${mostText}, ${lowText}.`;
+}
+
 const elName = (i) => `${ELEMENTS[i]}(${ELEMENTS_HANJA[i]})`;
 
 /** /fortune/saju — 생년월일 입력 + 내 사주 팔자·일주·계절·오행·십신 풀이 */
@@ -161,6 +188,10 @@ function SajuResult({ saju, snapshot = false }) {
             <p className={j.headSub}>{ilju.title}</p>
           </div>
         </div>
+        <p className={j.headNote}>
+          태어난 날의 두 글자를 <b>일주</b>라고 해요. 윗글자 <b>{stemLabel(dm)}</b>
+          {iGa(ELEMENTS[myEl])} 사주에서 &lsquo;나&rsquo;를 뜻하고, 아래 풀이는 모두 이 글자를 기준으로 봐요.
+        </p>
         <ul className={j.chips}>
           {me.keywords.map((k) => (
             <li key={k}>#{k}</li>
@@ -193,12 +224,13 @@ function SajuResult({ saju, snapshot = false }) {
             <dt>가장 많은 십신</dt>
             <dd>
               {p.topGroups.map((g) => SAJU.godGroups[g].name).join(" · ")} <small>{maxGroup}개</small>
+              <em>{p.topGroups.length === 1 ? SAJU.godGroups[p.topGroups[0]].sub : "여러 기운이 비슷해요"}</em>
             </dd>
           </div>
           <div>
             <dt>태어난 계절</dt>
             <dd>
-              {season} <small>{BRANCHES[monthBranch]}월</small>
+              {season} <small>절기 기준</small>
             </dd>
           </div>
         </dl>
@@ -208,6 +240,7 @@ function SajuResult({ saju, snapshot = false }) {
         <h2 id="saju-pillars-title" className={t.cardTitle}>
           내 사주 팔자
         </h2>
+        <p className={j.summary}>{pillarSummary(me, dm, p, saju.elements)}</p>
         <div className={styles.pillars}>
           {pillarCols.map(([pos, name, pl, sub]) => (
             <div key={name} className={`${styles.pillar} ${pos === "day" ? styles.pillarMe : ""}`}>
@@ -237,8 +270,12 @@ function SajuResult({ saju, snapshot = false }) {
         <details className={j.legend}>
           <summary>글자 아래 작은 이름 뜻 보기</summary>
           <p className={j.small}>
-            작은 이름은 십신이에요. 그 글자가 나(일주의 윗글자)에게 어떤 관계인지 열 가지로 나눈 이름인데, 다섯
-            묶음으로 보면 쉬워요. 한 묶음 안에서는 나와 음양이 같으면 앞 이름, 다르면 뒤 이름이에요.
+            여덟 글자는 다른 사람이 아니라 <b>내가 태어난 해·달·날·시간의 기운</b>이에요. 전통적으로 연주는 어린
+            시절, 월주는 사회생활, 일주는 나와 가까운 관계, 시주는 속마음과 나이 들수록 드러나는 모습을 본다고 해요.
+          </p>
+          <p className={j.small}>
+            작은 이름은 <b>십신</b>이에요. 각 글자가 나(일주의 윗글자)에게 어떤 역할을 하는 기운인지 열 가지로 나눈
+            이름인데, 다섯 묶음으로 보면 쉬워요. 한 묶음 안에서는 나와 음양이 같으면 앞 이름, 다르면 뒤 이름이에요.
           </p>
           <dl className={j.godDefs}>
             {SAJU.godGroups.map((g, i) => (
@@ -288,7 +325,7 @@ function SajuResult({ saju, snapshot = false }) {
       </section>
 
       <section className={`${t.card} ${t.cArea}`} aria-labelledby="saju-me-title">
-        <p className={j.kicker}>나를 나타내는 글자(일간)</p>
+        <p className={j.kicker}>나를 나타내는 글자 · 일주의 윗글자(일간)</p>
         <h2 id="saju-me-title" className={t.cardTitle}>
           {me.stem}({me.hanja}){me.element} — {me.alias}
         </h2>
@@ -321,7 +358,7 @@ function SajuResult({ saju, snapshot = false }) {
 
       <section className={`${t.card} ${j.cSeason}`} aria-labelledby="saju-season-title">
         <p className={j.kicker}>
-          태어난 계절 · {BRANCHES[monthBranch]}({BRANCHES_HANJA[monthBranch]})월
+          태어난 계절 · 월주 아랫글자 {BRANCHES[monthBranch]}({BRANCHES_HANJA[monthBranch]})로 봤어요
         </p>
         <h2 id="saju-season-title" className={t.cardTitle}>
           {season}에 태어난 {me.alias}
@@ -333,6 +370,10 @@ function SajuResult({ saju, snapshot = false }) {
         <h2 id="saju-el-title" className={t.cardTitle}>
           오행 분포
         </h2>
+        <p className={j.lead}>
+          목(나무)·화(불)·토(흙)·금(쇠)·수(물) 다섯 기운을 오행이라고 해요. 내 {COUNT_WORDS[total]} 글자가 각각 어떤
+          기운인지 셌어요.
+        </p>
         <ul className={styles.elements}>
           {ELEMENTS.map((el, i) => {
             const te = TEXTS.elements[i];
@@ -381,9 +422,7 @@ function SajuResult({ saju, snapshot = false }) {
             </div>
           </dl>
         </div>
-        <p className={j.small}>
-          {COUNT_WORDS[total]} 글자가 각각 어떤 오행인지 센 숫자예요. 많고 적음은 성향을 보는 재미로만 봐 주세요.
-        </p>
+        <p className={j.small}>많고 적음은 성향을 보는 재미로만 봐 주세요.</p>
       </section>
 
       <section className={`${t.card} ${j.cGods}`} aria-labelledby="saju-gods-title">

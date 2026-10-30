@@ -34,6 +34,16 @@
   line-height: 1.5;
   color: var(--f-text-soft);
 }
+/* 일주가 무엇이고 누가 '나'인지 — 처음 보는 사람을 위한 한 줄 */
+.headNote {
+  margin: 12px 0 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--f-text-soft);
+}
+.headNote b {
+  color: #fff;
+}
 .chips {
   list-style: none;
   display: flex;
@@ -80,6 +90,15 @@
   font-weight: 700;
   color: var(--f-gold);
 }
+/* 십신 묶음 이름 아래 쉬운 말(배움·보살핌·생각 등) */
+.glance em {
+  display: block;
+  margin-top: 1px;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--f-text-soft);
+}
 
 /* ---------- 흰 카드 ---------- */
 .cPillars {
@@ -118,6 +137,19 @@
   font-size: 13.5px;
   line-height: 1.6;
   color: var(--muted-ink);
+}
+
+/* 팔자 표 위 "내 팔자 한 줄 정리" */
+.summary {
+  margin: -4px 0 14px;
+  padding: 12px 14px;
+  border-left: 4px solid var(--f);
+  border-radius: var(--radius-md);
+  background: var(--f-soft);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--f-callout-ink);
 }
 
 /* 팔자 표 글자 밑 십신 이름 */
@@ -226,7 +258,7 @@
 .legend[open] {
   padding-bottom: 14px;
 }
-.legend .small {
+.legend summary + .small {
   margin-top: 0;
 }
 .godDefs {
