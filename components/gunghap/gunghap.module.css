@@ -1,0 +1,280 @@
+/* 궁합 결과 화면(2026-10 개편). today.module.css 카드에 궁합 전용 색과 부품만 더해요.
+   today.module.css와 같은 단일 클래스끼리는 불러오는 순서에 따라 덮어쓰기가 갈려서, 덮어쓰는 규칙은 클래스를 두 번 적어 우선하게 했어요. */
+
+.panel.panel {
+  background: radial-gradient(circle at 85% 0%, rgba(240, 146, 79, 0.55) 0%, transparent 55%),
+    linear-gradient(180deg, var(--f-dark1), var(--f-dark2));
+  box-shadow: 0 14px 34px rgba(74, 31, 12, 0.22);
+}
+
+.cScore.cScore {
+  --accent: #e0a93a;
+}
+.cArea.cArea {
+  --accent: #d9644a;
+}
+.cPoints.cPoints {
+  --accent: #2f9e6e;
+}
+.cDay.cDay {
+  --accent: #3b8fd6;
+}
+.cElement.cElement {
+  --accent: #8a5cc9;
+}
+.cShare.cShare {
+  --accent: #8a3a16;
+}
+
+.para {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.small {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--muted-ink);
+}
+
+/* ---------- 점수 구성 ---------- */
+.scoreList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.scoreList li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px 38px;
+  align-items: center;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.scoreList li:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+.scoreName {
+  display: grid;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+}
+/* 우리 둘은 어땠는지 — 줄에서 가장 중요한 설명이라 진하게 */
+.scoreWhat {
+  margin-top: 2px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink);
+}
+/* 다른 경우엔 몇 점인지 — 참고용으로 작고 옅게 */
+.scoreName small {
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--muted-ink);
+}
+.scoreBar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--bg);
+  overflow: hidden;
+}
+.scoreBar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--f-glow), var(--f));
+}
+.scoreBar i.scoreMinus {
+  background: var(--el1);
+}
+.scoreList b {
+  text-align: right;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  color: var(--f-deep);
+}
+.scoreList b.minus {
+  color: var(--el1);
+}
+.scoreSum {
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: var(--f-soft);
+  color: var(--f-callout-ink);
+  font-size: 13.5px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+.scoreSum b {
+  font-size: 15px;
+}
+
+/* ---------- 잘 맞는 점 · 조심할 점 ---------- */
+/* 오늘의 운세 할 일보다 문장이 길어서, 휴대폰에서는 두 칸을 위아래로 쌓아요 */
+@media (max-width: 520px) {
+  .todo.todo {
+    grid-template-columns: 1fr;
+  }
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.care li::before {
+  content: "!" !important;
+}
+.subTitle {
+  margin: 16px 0 8px;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--f-deep);
+}
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chips li {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--f-soft);
+  color: var(--f-callout-ink);
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* ---------- 일지 궁합 ---------- */
+.dayRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.dayChip {
+  display: grid;
+  justify-items: center;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.dayChip small {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted-ink);
+}
+.dayChip em {
+  font-style: normal;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted-ink);
+}
+.dayOp {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--accent);
+}
+/* 두 글자의 관계 이름 + 쉬운 설명 상자 */
+.dayName {
+  margin: 14px 0 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--f-soft);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--f-callout-ink);
+}
+.dayName b {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--f-deep);
+  font-size: 15px;
+}
+
+/* ---------- 오행 비교 ---------- */
+.fillBox {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg);
+}
+.fillLabel {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--f-deep);
+}
+.fillBox .small {
+  margin-top: 4px;
+  color: var(--ink);
+}
+
+.disclaimer {
+  margin: 14px 6px 2px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--muted-ink);
+}
+
+@media (max-width: 380px) {
+  .scoreList li {
+    grid-template-columns: minmax(0, 1fr) 44px 34px;
+    gap: 8px;
+  }
+}
+
+/* ---------- 사이 이름표 ---------- */
+.tag {
+  display: inline-block;
+  padding: 3px 11px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+.tag_love {
+  background: #fde4ea;
+  color: #b23a5a;
+}
+.tag_friend {
+  background: #e0f3e8;
+  color: #237a4c;
+}
+.tag_family {
+  background: #fdebd7;
+  color: #a5520f;
+}
+.tag_work {
+  background: #e1ecfb;
+  color: #2c5fa8;
+}
+
+/* 오행 막대 위 이름 옆 "어떤 기운인지" */
+.elPlain {
+  display: block;
+  margin-top: 1px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--muted-ink);
+}

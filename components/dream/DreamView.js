@@ -41,8 +41,8 @@ export default function DreamView({ titles }) {
   // 결과 안의 링크(상세 페이지 등)로 갔다가 뒤로 오면, 처음 화면 대신 보던 결과를 다시 보여 줍니다.
   const [view, setView] = useState(() => restoreOnBack("dream") ?? {});
   const [shared, setShared] = useState(null);
-  // 장면 칸에서 고른 것·보던 탭 — 결과를 보고 돌아왔을 때 처음부터 다시 고르지 않게 남겨 둡니다.
-  const [picked, setPicked] = useState(() => view.ids ?? []);
+  // 장면 칸에서 보던 탭 — 결과를 보고 돌아왔을 때 같은 탭에서 이어 고르게 남겨 둡니다.
+  // 고른 장면은 남기지 않아요("장면 다시 고르기"는 새로 고르겠다는 뜻이라, 체크가 남아 있으면 하나씩 풀어야 해요).
   const [lastTab, setLastTab] = useState(view.tab);
   const viewRef = useRef(view);
   // 화면이 바뀐 뒤 옮겨 갈 자리: "top" / 요소 id / 숫자(뒤로 와서 되돌릴 스크롤 위치)
@@ -59,10 +59,7 @@ export default function DreamView({ titles }) {
     const prev = viewRef.current;
     viewRef.current = next;
     setView(next);
-    if (next.ids) {
-      setPicked(next.ids);
-      setLastTab(next.tab);
-    }
+    if (next.ids) setLastTab(next.tab);
     if (next.query || next.ids) keepResult("dream", next);
     else dropResult("dream");
     // 장면 칸 결과에서 첫 화면으로 돌아오면 장면 칸으로, 나머지는 화면 맨 위로
@@ -152,7 +149,6 @@ export default function DreamView({ titles }) {
       <PopularDreams />
       <SelectFlow
         initialTab={lastTab}
-        initialSelected={picked}
         onView={(ids, tab) => {
           track("dream_analyzed", { count: ids.length, from: "select" });
           track("dream_result_viewed");
@@ -191,9 +187,9 @@ function PopularDreams() {
 }
 
 /** 장면 고르기(카테고리 탭 + 그림 칸) → 종합 해몽. */
-function SelectFlow({ initialTab, initialSelected, onView }) {
+function SelectFlow({ initialTab, onView }) {
   const [tab, setTab] = useState(initialTab ?? TEXTS.categories[0].id);
-  const [selected, setSelected] = useState(initialSelected);
+  const [selected, setSelected] = useState([]);
   const [hint, setHint] = useState("");
 
   const symbolsInTab = useMemo(() => TEXTS.symbols.filter((s) => s.category === tab), [tab]);
