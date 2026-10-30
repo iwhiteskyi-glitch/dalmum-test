@@ -1,0 +1,427 @@
+/* 오늘의 운세 결과 화면(2026-10 개편). 색은 fortune.module.css .main 에 정의된 --f-* 값을 그대로 씁니다. */
+
+/* ---------- 결과 판: 점수·제목·나에게 풀이 ---------- */
+.panel {
+  position: relative;
+  border-radius: var(--radius-xl);
+  padding: 18px 20px 22px;
+  color: #fff;
+  background: radial-gradient(circle at 85% 0%, rgba(109, 97, 220, 0.75) 0%, transparent 55%),
+    linear-gradient(180deg, var(--f-dark1), var(--f-dark2));
+  box-shadow: 0 14px 34px rgba(42, 34, 102, 0.22);
+}
+.tabs {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto 14px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.tab {
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--f-text-soft);
+  font-size: 14px;
+  font-weight: 800;
+  padding: 7px 22px;
+  cursor: pointer;
+}
+.tab:hover {
+  color: #fff;
+}
+.tabOn,
+.tabOn:hover {
+  background: #fff;
+  color: var(--f-deep);
+}
+.date {
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--f-text-soft);
+}
+
+.scoreRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 18px 0 0;
+}
+.ring {
+  --p: 0;
+  flex: none;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(var(--f-gold) calc(var(--p) * 1%), rgba(255, 255, 255, 0.14) 0);
+}
+.ringNum {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  background: var(--f-dark1);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.ringNum small {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--f-text-soft);
+  margin-top: 4px;
+}
+.scoreSide {
+  min-width: 0;
+}
+/* 별점(parts.js Stars)은 어두운 판 위라 금색으로 */
+.scoreSide [role="img"] {
+  font-size: 17px;
+  color: var(--f-gold);
+}
+.scoreSide [role="img"] span {
+  color: rgba(255, 255, 255, 0.22);
+}
+.god {
+  margin: 0 0 3px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--f-gold);
+}
+.title {
+  margin: 0 0 4px;
+  font-size: 23px;
+  line-height: 1.3;
+  color: #fff;
+  text-wrap: balance;
+}
+
+/* 나에게 풀이 — 결과의 주인공이라 금빛 테 상자에 크게 */
+.personal {
+  margin: 20px 0 0;
+  padding: 16px 18px;
+  border: 1.5px solid rgba(232, 181, 74, 0.7);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.07);
+}
+.personalLabel {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--f-gold);
+}
+.personalText {
+  margin: 0;
+  font-size: 17.5px;
+  font-weight: 700;
+  line-height: 1.7;
+  color: #fff;
+}
+.overall {
+  margin: 16px 2px 0;
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.88);
+}
+.rel {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.16);
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--f-text-soft);
+}
+.rel b {
+  color: #fff;
+}
+
+/* ---------- 아래 흰 카드들 ---------- */
+.card {
+  margin-top: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 18px 18px 20px;
+}
+.cardTitle {
+  margin: 0 0 12px;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.areas {
+  margin: 0;
+  display: grid;
+  gap: 0;
+}
+.area {
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+.area:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+.area:last-child {
+  padding-bottom: 0;
+}
+.area dt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 14.5px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.area dd {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #4b3f47;
+}
+
+.advice {
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--f-soft);
+  color: var(--f-callout-ink);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.todo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.doBox,
+.dontBox {
+  border-radius: var(--radius-md);
+  padding: 12px 12px 12px 14px;
+}
+.doBox {
+  background: var(--el0-soft);
+}
+.dontBox {
+  background: var(--el1-soft);
+}
+.todo h3 {
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  font-weight: 800;
+}
+.doBox h3 {
+  color: var(--el0);
+}
+.dontBox h3 {
+  color: var(--el1);
+}
+.todo ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+}
+.todo li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.todo li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 800;
+}
+.doBox li::before {
+  content: "✓";
+  color: var(--el0);
+}
+.dontBox li::before {
+  content: "✕";
+  color: var(--el1);
+}
+
+.lucky {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.lucky div {
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  min-width: 0;
+}
+.lucky dt {
+  font-size: 12px;
+  color: var(--muted-ink);
+  margin-bottom: 3px;
+}
+.lucky dd {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.luckyWide {
+  grid-column: span 3;
+}
+
+.more {
+  margin-top: 12px;
+}
+.more summary {
+  cursor: pointer;
+  padding: 10px 0 2px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--f-deep);
+}
+
+.week {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.week li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  border-top: 1px solid var(--border);
+}
+.week li:first-child {
+  border-top: none;
+}
+.week li.weekToday {
+  background: var(--f-soft);
+  border-radius: var(--radius-md);
+  border-top-color: transparent;
+}
+.week li.weekToday + li {
+  border-top-color: transparent;
+}
+.weekDate {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--f-deep);
+  min-width: 0;
+}
+.weekDate small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--muted-ink);
+}
+.weekBar {
+  height: 7px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+}
+.weekBar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--f-glow), var(--f));
+}
+.weekScore {
+  text-align: right;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.weekScore small {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--muted-ink);
+  margin-left: 1px;
+}
+
+@media (min-width: 640px) {
+  .panel {
+    padding: 22px 28px 26px;
+  }
+  .scoreRow {
+    justify-content: center;
+    gap: 24px;
+  }
+  .ring {
+    width: 120px;
+    height: 120px;
+  }
+  .ringNum {
+    width: 98px;
+    height: 98px;
+    font-size: 40px;
+  }
+  .title {
+    font-size: 27px;
+  }
+  .personalText {
+    font-size: 18.5px;
+  }
+  .card {
+    padding: 22px 24px 24px;
+  }
+  .areas {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+  }
+  .area,
+  .area:first-child,
+  .area:last-child {
+    padding: 0;
+    border-top: none;
+  }
+  .week li {
+    grid-template-columns: minmax(0, 1fr) 160px 52px;
+    gap: 16px;
+  }
+  .lucky {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .luckyWide {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 380px) {
+  .todo {
+    grid-template-columns: 1fr;
+  }
+  .ring {
+    width: 92px;
+    height: 92px;
+  }
+  .ringNum {
+    width: 74px;
+    height: 74px;
+    font-size: 30px;
+  }
+  .title {
+    font-size: 21px;
+  }
+}
