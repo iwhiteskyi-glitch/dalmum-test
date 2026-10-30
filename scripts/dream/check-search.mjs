@@ -161,6 +161,27 @@ const CASES = [
   { q: "지금 금방 갈게", none: ["gold"] },
   { q: "개미가 줄지어 갔어", first: "bug", none: ["dog"] },
   { q: "바람이 세게 불었어", first: "storm", none: ["affair"] },
+  // 2026-10-30 추가 상징 20개
+  { q: "대통령이랑 악수했어", first: "president" },
+  { q: "엄마가 울고 있었어", first: "parents", scene: "엄마가 우는" },
+  { q: "친구한테 배신당했어", first: "friend", scene: "배신" },
+  { q: "스님한테 염주를 받았어", first: "monk", scene: "받는" },
+  { q: "산신령이 뭘 줬어", first: "elder", scene: "산신령" },
+  { q: "시어머니가 나왔어", first: "inlaws", scene: "시어머니" },
+  { q: "해외여행을 갔어", first: "travel", scene: "해외여행" },
+  { q: "두꺼비가 집에 들어왔어", first: "toad", scene: "집에 들어오" },
+  { q: "고래한테 삼켜졌어", first: "whale", scene: "삼켜지" },
+  { q: "늑대한테 물렸어", first: "wolf", scene: "물리" },
+  { q: "벌에 쏘였어", first: "bee", scene: "쏘이" },
+  { q: "목욕탕에 갔어", first: "bath", scene: "목욕탕" },
+  { q: "샤워를 했어", first: "bath", none: ["toilet"] },
+  // 2026-10-30 교회·성당
+  { q: "교회에서 기도했어", first: "church", scene: "기도" },
+  { q: "예수님이 나타났어", first: "church", scene: "예수님" },
+  { q: "결혼식에서 신부님이 너무 예뻤어", first: "wedding" },
+  { q: "성당에서 결혼식 올렸어", first: "wedding" },
+  { q: "성모병원에 입원했어", none: ["church"] },
+  { q: "미사일이 날아왔어", first: "war", none: ["church"] },
 ];
 
 let pass = 0;
