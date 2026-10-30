@@ -22,7 +22,7 @@ export const metadata = {
 };
 
 // 카드 아이콘. 닮은꼴·여행은 여행 섹션의 캐릭터 그림체를, 운세·궁합·관상·꿈해몽은 밤하늘 원판에 한자 한 글자를 씁니다.
-// 휴대폰에서 스크롤을 줄이려고 카드는 작은 아이콘 + 제목 한 줄의 가로형으로 둡니다(2026-10-30).
+// 휴대폰·PC 모두 한눈에 고르도록 카드는 코너 색 배경 + 작은 아이콘 + 이름·제목만 둡니다(2026-10-30).
 const FACE_A = { skin: "#F6D2B5", hairColor: "#3B2A20", blush: "#FFB3C6", hair: "short", expression: "grin" };
 const FACE_B = { skin: "#FFE1C4", hairColor: "#3B2A20", blush: "#FFB3C6", hair: "bob", expression: "smile", accessory: "ribbon" };
 const TRAVELER = { skin: "#FFE1C4", hairColor: "#5A3E2B", blush: "#FFB3C6", hair: "bob", expression: "smile", accessory: "strawhat" };
@@ -93,9 +93,6 @@ export default function Home() {
               <span className={styles.cornerBody}>
                 <span className={styles.cornerLabel}>{c.name}</span>
                 <h2 className={styles.cornerTitle}>{c.title}</h2>
-                {/* 소개 문장은 PC에서만, 휴대폰에선 짧은 정보 한 줄만 */}
-                <span className={styles.cornerDesc}>{c.desc}</span>
-                <span className={styles.cornerMeta}>{c.chips.slice(0, 2).join(" · ")}</span>
               </span>
               <span className={styles.cornerArrow} aria-hidden="true">
                 →

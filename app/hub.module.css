@@ -47,17 +47,22 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
-/* 코너 카드: 작은 아이콘 + 제목 + 짧은 정보 한 줄(가로형) */
+@media (min-width: 900px) {
+  .corners {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+/* 코너 카드: 코너 색 배경 + 흰 아이콘 칸 + 이름·제목(가로형) */
 .corner {
   --cc: var(--accent);
   --cc-soft: var(--accent-soft);
   display: grid;
-  grid-template-columns: 72px minmax(0, 1fr) auto;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
   align-items: center;
   gap: 14px;
   padding: 14px 16px 14px 14px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--cc-soft);
+  border: 1.5px solid transparent;
   border-radius: var(--radius-lg, 20px);
   text-decoration: none;
   color: var(--ink);
@@ -73,10 +78,10 @@
   outline-offset: 2px;
 }
 .cornerIcon {
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   border-radius: 18px;
-  background: var(--cc-soft);
+  background: rgba(255, 255, 255, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,27 +99,12 @@
   margin: 0 0 2px;
 }
 .cornerTitle {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.35;
   margin: 0;
   word-break: keep-all;
-}
-.cornerDesc {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--muted-ink);
-  margin: 6px 0 0;
-}
-.cornerMeta {
-  font-size: 12.5px;
-  font-weight: 700;
-  color: var(--muted-ink);
-  margin-top: 6px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .cornerArrow {
   font-size: 18px;
@@ -400,12 +390,6 @@
   }
   .cornerTitle {
     font-size: 16.5px;
-  }
-  .cornerDesc {
-    display: none;
-  }
-  .cornerMeta {
-    margin-top: 3px;
   }
   .countryChips {
     grid-template-columns: repeat(3, minmax(0, 1fr));
