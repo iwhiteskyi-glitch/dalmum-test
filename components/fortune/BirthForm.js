@@ -26,7 +26,7 @@ function toForm(input) {
  * 이미 입력한 생년월일이 있으면(같은 코너의 다른 페이지에서 넣었거나 이 기기에 기억한 경우)
  * 입력창 대신 한 줄 요약과 "바꾸기" 버튼을 보여 줍니다.
  */
-export default function BirthForm({ submitLabel, onSubmitted, timeHelp }) {
+export default function BirthForm({ submitLabel, onSubmitted, timeHelp, onEditingChange }) {
   const birth = useBirth();
   const [editing, setEditing] = useState(false);
   const [form, setForm] = useState(EMPTY);
@@ -34,6 +34,8 @@ export default function BirthForm({ submitLabel, onSubmitted, timeHelp }) {
   const [error, setError] = useState("");
 
   useEffect(() => loadRemembered(), []);
+  // 바꾸는 중에는 아래 예전 결과를 숨길 수 있게 페이지에 알려 줘요.
+  useEffect(() => onEditingChange?.(editing), [editing, onEditingChange]);
 
   const set = (k) => (e) => {
     const v = e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -90,15 +92,19 @@ export default function BirthForm({ submitLabel, onSubmitted, timeHelp }) {
             </span>
           )}
         </div>
-        <button type="button" className={styles.ghostSm} onClick={startEdit}>
-          바꾸기
+        <button type="button" className={styles.birthBarBtn} onClick={startEdit}>
+          <span aria-hidden="true">✎</span> 생년월일 바꾸기
         </button>
       </div>
     );
   }
 
   return (
-    <form id="fortune-form" className={styles.form} onSubmit={submit} noValidate>
+    <form id="fortune-form" className={`${styles.form} ${styles.birthForm}`} onSubmit={submit} noValidate>
+      <p className={styles.birthFormHead}>
+        <strong>{editing ? "생년월일 바꾸기" : "내 생년월일 넣기"}</strong>
+        <span>{editing ? "바꾼 생년월일로 결과를 다시 보여 드려요." : "태어난 날만 넣으면 바로 풀이가 나와요."}</span>
+      </p>
       <BirthFields form={form} set={set} timeHelp={timeHelp} />
 
       <label className={styles.check}>
