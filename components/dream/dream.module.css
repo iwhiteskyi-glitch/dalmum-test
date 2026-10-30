@@ -2,11 +2,10 @@
    공용 레이아웃은 components/fortune/fortune.module.css(.dreamTheme)를 그대로 씁니다.
    밤하늘 색은 상징 그림(public/dream/art) 바탕색에 맞췄어요. */
 .hero,
-.results,
+.answer,
+.similar,
 .popular,
 .selectSection,
-.synthesisBox,
-.symbolCard,
 .detail {
   --night1: #121a36;
   --night2: #1d2a56;
@@ -272,272 +271,421 @@
   }
 }
 
-/* 결과 화면 맨 위 — 아래까지 내리지 않아도 검색 결과로 돌아가거나 새로 찾게 */
-.resultNav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 14px;
+/* ---------- 결과 화면(남색 판) ----------
+   검색 막대부터 결과까지 한 판에 담고, 그 아래 비슷한 꿈·설명은 흰 바탕으로 둬서 어디까지가 결과인지 보이게 해요. */
+.answer {
+  position: relative;
+  margin: 0 0 8px;
+  padding: 14px 18px 24px;
+  border-radius: 24px;
+  background:
+    radial-gradient(120% 50% at 85% -5%, rgba(90, 116, 196, 0.45), transparent 60%),
+    linear-gradient(180deg, var(--night1) 0%, var(--night2) 100%);
+  color: #fff;
+  box-shadow: 0 14px 34px rgba(19, 27, 58, 0.28);
 }
-.resultNavBack,
-.resultNavNew {
-  min-height: 40px;
-  padding: 8px 14px;
-  border-radius: 999px;
+.answerStars {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.6px 1.6px at 8% 6%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 46% 3%, #fff 50%, transparent 52%),
+    radial-gradient(2px 2px at 93% 12%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 4% 40%, #fff 50%, transparent 52%),
+    radial-gradient(1.6px 1.6px at 97% 55%, #fff 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 3% 80%, #f7dc93 50%, transparent 52%),
+    radial-gradient(1.6px 1.6px at 96% 92%, #f7dc93 50%, transparent 52%);
+  opacity: 0.7;
+}
+
+/* 판 맨 위: 처음으로 + 작은 검색창 */
+.answerBar {
+  position: relative;
+  z-index: 3; /* 자동 완성 목록이 아래 결과 위로 뜨게 */
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(214, 224, 250, 0.16);
+}
+.answerBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  margin: 0 0 8px -6px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  color: var(--gold-soft);
   font-size: 14px;
   font-weight: 800;
   cursor: pointer;
-  white-space: nowrap;
 }
-.resultNavBack {
-  border: 1.5px solid var(--f);
-  background: var(--surface);
-  color: var(--f-deep);
+.answerBack:hover,
+.answerBack:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
 }
-.resultNavNew {
-  border: 1.5px solid transparent;
-  background: var(--f-soft);
-  color: var(--f-deep);
+.searchFormCompact {
+  max-width: none;
+  margin: 0;
+  padding: 4px;
+  border-radius: 14px;
 }
-.resultNavBack:hover,
-.resultNavNew:hover {
-  background: var(--f-hover);
+.searchFormCompact .searchInput {
+  padding: 9px 8px 9px 10px;
+}
+.searchFormCompact .searchBtn {
+  border-radius: 11px;
+  padding: 0 16px;
+  font-size: 15px;
 }
 
-/* ---------- 검색 결과 ---------- */
-.results {
-  margin: 26px 0 8px;
-  scroll-margin-top: 76px;
+.answerBody {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
 }
-.resultsTitle {
-  margin: 0 0 6px;
-  font-size: 20px;
-  font-weight: 900;
-  line-height: 1.35;
-  color: var(--ink);
-  word-break: keep-all;
+.answerKicker {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--gold);
   overflow-wrap: anywhere;
 }
-.resultsLead {
-  margin: 0 0 14px;
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: var(--muted-ink);
-}
-.resultsSub {
+.answerTitle {
   margin: 0 0 10px;
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--f-deep);
+  font-size: 23px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: #fff;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
 }
-.resultsEmpty {
+.answerLead {
   margin: 0;
-  padding: 18px;
-  border-radius: 16px;
-  background: var(--f-soft);
-  color: var(--f-callout-ink);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--star-ink);
+}
+.answerSub {
+  margin: 24px 0 8px;
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--gold);
+}
+.answerSub::before {
+  content: "✦ ";
+}
+.answerText {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--star-ink);
+}
+.answerCare {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--gold-soft);
   font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--star-ink);
+}
+.answerNote {
+  margin: 18px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: rgba(214, 224, 250, 0.72);
   text-align: center;
 }
-.resultList {
-  list-style: none;
+
+/* 가장 비슷한 꿈(크게) */
+.mainHead {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.mainArt {
+  width: 112px;
+  height: 112px;
+  border-radius: 20px;
+  box-shadow: 0 0 0 1.5px rgba(242, 193, 78, 0.5), 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+.mainNames {
+  min-width: 0;
+}
+.mainName {
+  margin: 0 0 4px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: #fff;
+  word-break: keep-all;
+}
+.mainKeyword {
+  margin: 0 0 8px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--gold-soft);
+}
+
+/* 적어 준 꿈과 가장 비슷한 장면 / 함께 나온 것까지 묶어 본 종합 흐름 */
+.sceneBox,
+.comboBox {
+  margin: 20px 0 0;
+  padding: 16px 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(242, 193, 78, 0.35);
+}
+.sceneBox {
+  border-left: 4px solid var(--gold);
+}
+.sceneBoxLabel {
+  margin: 0 0 4px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--gold);
+}
+.sceneBoxTitle {
+  margin: 0 0 8px;
+  font-size: 17.5px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: #fff;
+}
+.comboChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 10px;
+}
+.comboChips span {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(242, 193, 78, 0.16);
+  color: var(--gold-soft);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+/* 판 안의 하나뿐인 큰 버튼 */
+.answerBtn {
+  display: block;
+  margin: 22px 0 0;
+  padding: 14px 16px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f6d27a, #e3ad3c);
+  color: #1b2346;
+  font-size: 16px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.answerBtn:hover {
+  background: linear-gradient(180deg, #f8da8e, #e8b64c);
+}
+.answerBtn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+.answerShareRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+.answerShare,
+.answerCopy {
+  min-height: 42px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(242, 193, 78, 0.6);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--gold-soft);
+  font-size: 14.5px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.answerShare {
+  display: block;
+  margin: 14px auto 0;
+}
+.answerShareRow .answerShare {
   margin: 0;
-  padding: 0;
+}
+.answerCopy {
+  border-color: rgba(214, 224, 250, 0.3);
+  color: var(--star-ink);
+}
+.answerShare:hover,
+.answerCopy:hover {
+  background: rgba(242, 193, 78, 0.16);
+}
+
+/* 장면 칸 종합 해몽의 상징별 카드(판 안) */
+.answerCards {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-.resultCard {
+.answerCard {
   display: grid;
-  grid-template-columns: 96px 1fr;
-  gap: 16px;
-  padding: 16px;
-  border: 1.5px solid var(--border);
-  border-radius: 20px;
-  background: var(--surface);
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-.resultCardOn {
-  border-color: var(--f);
-  box-shadow: 0 6px 18px rgba(34, 56, 114, 0.1);
-}
-.resultArt {
-  width: 96px;
-  height: 96px;
+  grid-template-columns: 64px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 14px;
   border-radius: 16px;
-  background: var(--night1);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(214, 224, 250, 0.14);
 }
-.resultBody {
-  min-width: 0;
+.answerCardArt {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  box-shadow: 0 0 0 1px rgba(242, 193, 78, 0.4);
 }
-.resultHead {
+.answerCardHead {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 8px;
+  margin-bottom: 6px;
 }
-.resultName {
+.answerCardTitle {
   margin: 0;
-  font-size: 17px;
-  font-weight: 900;
-  line-height: 1.35;
-  color: var(--ink);
-}
-.resultKeyword {
-  margin: 2px 0 6px;
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--f);
-}
-.resultText {
-  margin: 0;
-  font-size: 14.5px;
-  line-height: 1.65;
-  color: var(--ink);
-}
-.sceneLink {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  margin-top: 10px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  background: linear-gradient(120deg, var(--f-soft), #f3f5fc);
-  border-left: 3px solid var(--gold);
-  text-decoration: none;
-  color: var(--f-deep);
-}
-.sceneLink small {
-  font-size: 11.5px;
+  font-size: 16.5px;
   font-weight: 800;
-  color: #94690a;
-}
-.sceneLink span {
-  font-size: 14.5px;
-  font-weight: 800;
-}
-.sceneLink span::after {
-  content: " →";
-}
-.sceneLink:hover span {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.resultActions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px 12px;
-  margin-top: 12px;
-}
-.pickBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  border: 1.5px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--muted-ink);
-  font-size: 13.5px;
-  font-weight: 800;
-  padding: 6px 13px 6px 8px;
-  cursor: pointer;
-}
-.pickBtnOn {
-  border-color: var(--f);
-  background: var(--f-soft);
-  color: var(--f-deep);
-}
-.pickCheck {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 900;
   color: #fff;
 }
-.pickBtnOn .pickCheck {
-  border-color: var(--f);
-  background: var(--f);
-}
-.resultMore {
+.answerCardMore {
+  display: inline-block;
+  margin-top: 8px;
   font-size: 13.5px;
   font-weight: 800;
-  color: var(--f);
+  color: var(--gold);
   text-decoration: none;
 }
-.resultMore:hover {
+.answerCardMore:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-.resultsCta {
-  margin-top: 16px;
-}
-.resultsCta:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-.resultsHint {
-  margin: 10px 0 0;
-  font-size: 12.5px;
-  line-height: 1.6;
-  color: var(--muted-ink);
-  text-align: center;
-}
-.tipGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-@media (min-width: 560px) {
-  .tipGrid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-.tipCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 10px;
-  border: 1.5px solid var(--border);
-  border-radius: 16px;
-  background: var(--surface);
-  color: var(--ink);
-  font-size: 13.5px;
-  font-weight: 800;
-  line-height: 1.35;
-  cursor: pointer;
-  word-break: keep-all;
-}
-.tipCard:hover,
-.tipCard:focus-visible {
-  border-color: var(--f);
-  outline: none;
-}
-.tipArt {
-  width: 72px;
-  height: 72px;
-  border-radius: 14px;
 }
 
 @media (max-width: 520px) {
-  .resultCard {
-    grid-template-columns: 72px 1fr;
-    gap: 12px;
-    padding: 14px;
+  .answer {
+    padding: 12px 14px 22px;
+    border-radius: 20px;
   }
-  .resultArt {
-    width: 72px;
-    height: 72px;
-    border-radius: 14px;
+  .mainHead {
+    grid-template-columns: 92px 1fr;
+    gap: 14px;
   }
+  .mainArt {
+    width: 92px;
+    height: 92px;
+    border-radius: 18px;
+  }
+  .mainName {
+    font-size: 21px;
+  }
+  .answerTitle {
+    font-size: 21px;
+  }
+}
+
+/* ---------- 결과 아래 흰 바탕: 비슷한 꿈 ---------- */
+.similar {
+  margin-top: 30px;
+}
+.similarList {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 560px) {
+  .similarList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.similarCard {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px 10px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.similarCard:hover,
+.similarCard:focus-visible {
+  border-color: var(--f);
+  box-shadow: 0 6px 16px rgba(34, 56, 114, 0.1);
+  outline: none;
+}
+.similarArt {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--night1);
+}
+.similarText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.similarText strong {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+.similarText span {
+  font-size: 13px;
+  color: var(--muted-ink);
+}
+.similarArrow {
+  font-weight: 900;
+  color: var(--f);
+}
+.similarFoot {
+  margin: 18px 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted-ink);
+  text-align: center;
+}
+.similarFoot small {
+  font-size: 12.5px;
+}
+.textLink {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--f);
+  font: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
 }
 
 /* ---------- 공통 소제목 ---------- */
@@ -765,94 +913,7 @@
   text-align: center;
 }
 
-/* 종합 흐름 — 결과의 메인 */
-.synthesisBox {
-  position: relative;
-  overflow: hidden;
-  margin: 4px 0 24px;
-  padding: 28px 22px 24px;
-  border-radius: var(--radius-lg, 20px);
-  background:
-    radial-gradient(120% 80% at 90% -10%, rgba(90, 116, 196, 0.5), transparent 60%),
-    linear-gradient(180deg, var(--night1), var(--night2));
-  box-shadow: 0 12px 30px rgba(19, 27, 58, 0.25);
-  text-align: center;
-}
-.synthesisLabel {
-  position: relative;
-  display: inline-block;
-  font-size: 12.5px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  color: #1b2346;
-  background: var(--gold);
-  border-radius: 999px;
-  padding: 5px 12px;
-  margin-bottom: 12px;
-}
-.synthesisTitle {
-  position: relative;
-  font-size: 23px;
-  font-weight: 900;
-  color: #fff;
-  margin: 0 0 10px;
-  line-height: 1.35;
-  text-wrap: balance;
-}
-.synthesisText {
-  position: relative;
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--star-ink);
-  margin: 0;
-  text-align: left; /* 긴 풀이는 왼쪽 정렬이 읽기 편해요(제목만 가운데) */
-}
-
-/* 상징별 해석 목록 */
-.symbolListLabel {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--muted-ink);
-  margin: 0 0 10px;
-}
-.symbolList {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.symbolCard {
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: 14px;
-  align-items: start;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md, 16px);
-  padding: 16px;
-  background: var(--surface);
-}
-.symbolCardArt {
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
-  background: var(--night1);
-}
-.symbolHead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-.symbolTitle {
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--ink);
-}
-.symbolText {
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: var(--ink);
-}
+/* 길흉 배지(결과 판·상세 페이지 공용) */
 .luckBadge {
   flex-shrink: 0;
   font-size: 12px;
@@ -872,16 +933,6 @@
 .luck2 {
   background: #fdecec;
   color: #b84a4a;
-}
-
-/* 결과 카드의 "자세히 보기" 링크 */
-.symbolMore {
-  display: inline-block;
-  margin-top: 8px;
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--f);
-  text-decoration: none;
 }
 
 /* ---------- 상세 페이지(/dream/[id]) ---------- */
