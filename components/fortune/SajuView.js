@@ -175,8 +175,14 @@ function SajuResult({ saju, snapshot = false }) {
         <p className={t.date}>{snapshot ? "친구가 보낸 사주 팔자" : `${birthLabel(saju)} · ${saju.animal}띠`}</p>
         <div className={j.head}>
           <div className={j.seal} aria-hidden="true">
-            <span>{STEMS_HANJA[day.stem]}</span>
-            <span>{BRANCHES_HANJA[day.branch]}</span>
+            <span>
+              {STEMS_HANJA[day.stem]}
+              <small>{STEMS[day.stem]} · 나</small>
+            </span>
+            <span>
+              {BRANCHES_HANJA[day.branch]}
+              <small>{BRANCHES[day.branch]}</small>
+            </span>
           </div>
           <div className={j.headSide}>
             <p className={t.god}>
@@ -189,8 +195,13 @@ function SajuResult({ saju, snapshot = false }) {
           </div>
         </div>
         <p className={j.headNote}>
-          태어난 날의 두 글자를 <b>일주</b>라고 해요. 윗글자 <b>{stemLabel(dm)}</b>
-          {iGa(ELEMENTS[myEl])} 사주에서 &lsquo;나&rsquo;를 뜻하고, 아래 풀이는 모두 이 글자를 기준으로 봐요.
+          태어난 날의 두 글자를 <b>일주</b>라고 해요. 윗글자{" "}
+          <b>
+            {STEMS[dm]}({STEMS_HANJA[dm]})
+          </b>
+          {iGa(STEMS[dm])} 사주에서 &lsquo;나&rsquo;를 뜻해요. {STEMS[dm]}
+          {eunNeun(STEMS[dm])} 오행으로 {ELEMENTS[myEl]}({EL_PLAIN[myEl]})에 속해서 <b>{stemLabel(dm)}</b>
+          {hasBatchim(ELEMENTS[myEl]) ? "이" : ""}라고도 불러요. 아래 풀이는 모두 이 글자를 기준으로 봐요.
         </p>
         <ul className={j.chips}>
           {me.keywords.map((k) => (
