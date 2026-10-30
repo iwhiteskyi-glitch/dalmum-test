@@ -38,12 +38,6 @@ export default function DreamPage() {
             전혀 입력하지 않아요.
           </p>
         </Fold>
-        <Fold title="공유 링크에는 무엇이 담겨요?" hint="고른 상징의 이름만">
-          <p className={styles.sectionText}>
-            결과를 공유하면, 고른 상징의 이름만 담긴 링크가 전달돼요(예: 뱀·물·이가 빠지는 꿈).
-            개인정보가 들어가지 않아서 누구나 안심하고 주고받을 수 있어요.
-          </p>
-        </Fold>
       </MoreInfo>
 
       <Link href="/fortune" className={styles.nextCard}>

@@ -11,11 +11,8 @@ import DreamSearchResult, { AnswerPanel } from "./DreamSearchResult";
 import DreamArt from "./DreamArt";
 import TEXTS from "@/lib/dream/symbols.json";
 import { MIN_SELECT, MAX_SELECT, synthesisBucket } from "@/lib/dream/select";
-import { buildDreamCard } from "@/lib/dream/card";
-import { shareResult, copyText } from "@/lib/fortune/shareResult";
-import { encodeDreamLink, decodeDreamLink } from "@/lib/dream/resultLink";
+import { decodeDreamLink } from "@/lib/dream/resultLink";
 import { PAGE_IDS, dreamHref } from "@/lib/dream/pageIds";
-import { SITE } from "@/lib/site";
 import { keepResult, dropResult, restoreOnBack } from "@/lib/backRestore";
 
 const SYMBOL_BY_ID = Object.fromEntries(TEXTS.symbols.map((s) => [s.id, s]));
@@ -290,92 +287,11 @@ function SelectFlow({ initialTab, initialSelected, onView }) {
 
 /**
  * 장면 칸에서 고른 꿈들의 종합 해몽(남색 결과 판).
- * snapshot: 친구가 보낸 링크로 보는 결과 — 공유 버튼을 빼고 해석만 보여줍니다.
+ * snapshot: 예전에 친구가 보낸 링크(#d1.…)로 보는 결과 — 공유는 뺐지만 이미 퍼진 링크는 계속 열려요.
  */
 function DreamResult({ ids, snapshot = false, bar }) {
-  const [hintMsg, setHintMsg] = useState("");
-  const [card, setCard] = useState(null);
-  const [pages, setPages] = useState(null); // 상세 페이지의 상황별 풀이(공유 이미지·글에 함께 담음)
-
   const symbols = resolveSymbols(ids);
   const synthesis = resolveSynthesis(ids);
-  const cardKey = ids.join("-");
-  const situationsOf = (id) => pages?.[id]?.situations || [];
-
-  useEffect(() => {
-    if (snapshot) return;
-    let cancelled = false;
-    setCard(null);
-    (async () => {
-      // 상황별 풀이 데이터는 커서(약 300KB) 첫 화면에서 받지 않고, 결과를 볼 때 따로 불러옵니다.
-      const loaded = (await import("@/lib/dream/pages.json")).default;
-      if (cancelled) return;
-      setPages(loaded);
-      const img = await buildDreamCard({
-        keywordsLine: symbols.map((s) => s.keyword).join(" · "),
-        intro: TEXTS.intro,
-        compact: symbols.length >= 3,
-        symbols: symbols.map((s) => ({ label: s.label, text: s.text, situations: loaded[s.id]?.situations || [] })),
-        synthesis,
-      });
-      if (!cancelled) setCard(img);
-    })().catch(() => {
-      /* 카드를 못 그리면 글로만 공유해요 */
-    });
-    return () => {
-      cancelled = true;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardKey, snapshot]);
-
-  const url = `${SITE.url}/dream${encodeDreamLink(ids)}`;
-
-  async function share() {
-    const shortText = `내 꿈해몽 종합: ${synthesis.title}`;
-    const fullText = [
-      shortText,
-      `\n[종합 흐름] ${synthesis.title}\n${synthesis.text}`,
-      "\n고른 상징별로 자세히 보면",
-      ...symbols.map((s) => {
-        const situations = situationsOf(s.id);
-        const lines = [`\n[${s.label}] ${s.keyword} — ${s.text}`];
-        if (situations.length) {
-          lines.push("상황별로 보면");
-          situations.forEach((it) => lines.push(`· ${it.title}: ${it.text}`));
-        }
-        return lines.join("\n");
-      }),
-      `\n${TEXTS.disclaimer}`,
-      "— 재미로봄 꿈해몽",
-    ].join("\n");
-    setHintMsg("");
-    try {
-      const r = await shareResult({
-        blob: card?.blob,
-        fileName: "jaemirobom-dream.png",
-        title: "재미로봄 꿈해몽",
-        shortText,
-        fullText,
-        url,
-      });
-      track("dream_shared", { mode: r.mode });
-      if (r.mode === "files") {
-        setHintMsg(
-          r.linkCopied
-            ? "링크도 복사해 뒀어요. 사진만 전달됐으면 대화창에 붙여넣어 주세요."
-            : "사진만 전달됐으면 아래 '링크 복사'를 눌러 주소도 함께 보내 주세요."
-        );
-      } else if (r.mode === "copied") {
-        setHintMsg("공유 글과 링크를 복사했어요. 붙여넣어 보내 주세요.");
-      }
-    } catch (e) {
-      if (e.name !== "AbortError") setHintMsg("공유하지 못했어요. 아래 '링크 복사'를 이용해 주세요.");
-    }
-  }
-
-  async function copyLink() {
-    setHintMsg((await copyText(url)) ? "링크를 복사했어요." : "링크를 복사하지 못했어요.");
-  }
 
   const Title = snapshot ? "h2" : "h1"; // 친구가 보낸 결과는 첫 화면 제목 아래에 붙어요
 
@@ -386,7 +302,7 @@ function DreamResult({ ids, snapshot = false, bar }) {
         {synthesis && (
           <>
             <Title className={ds.answerTitle}>{synthesis.title}</Title>
-            <p className={ds.answerLead}>{synthesis.text}</p>
+            <p className={ds.mainLead}>{synthesis.text}</p>
           </>
         )}
 
@@ -414,24 +330,6 @@ function DreamResult({ ids, snapshot = false, bar }) {
         </div>
 
         <p className={ds.answerNote}>{TEXTS.disclaimer}</p>
-
-        {!snapshot && (
-          <>
-            <div className={ds.answerShareRow}>
-              <button type="button" className={ds.answerShare} onClick={share}>
-                친구에게 알려주기
-              </button>
-              <button type="button" className={ds.answerCopy} onClick={copyLink}>
-                링크 복사
-              </button>
-            </div>
-            {hintMsg && <p className={ds.answerNote}>{hintMsg}</p>}
-            <p className={ds.answerNote}>
-              공유하면 고른 상징의 풀이와 상황별 풀이가 담긴 사진·링크가 전해져요. 링크에는 고른 상징의 이름만
-              담겨서 개인정보가 들어가지 않아요.
-            </p>
-          </>
-        )}
       </AnswerPanel>
 
       {!snapshot && (

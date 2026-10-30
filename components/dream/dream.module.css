@@ -371,6 +371,17 @@
   line-height: 1.75;
   color: var(--star-ink);
 }
+/* 메인 문구 — 결과에서 가장 먼저 읽히도록 본문보다 크고 굵게 */
+.mainLead {
+  margin: 0;
+  font-size: 18.5px;
+  font-weight: 700;
+  line-height: 1.65;
+  color: #fff;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
 .answerSub {
   margin: 24px 0 8px;
   font-size: 15px;
@@ -478,7 +489,14 @@
 
 /* 판 안의 하나뿐인 큰 버튼 */
 .answerBtn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
   margin: 22px 0 0;
   padding: 14px 16px;
   border-radius: 999px;
@@ -497,39 +515,83 @@
   outline: 3px solid #fff;
   outline-offset: 2px;
 }
-.answerShareRow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 20px;
+.answerBtnIcon {
+  font-size: 13px;
+  transition: transform 0.2s;
 }
-.answerShare,
+.answerBtnIconOpen {
+  transform: rotate(180deg);
+}
 .answerCopy {
-  min-height: 42px;
-  padding: 9px 18px;
+  min-height: 40px;
+  padding: 8px 18px;
   border-radius: 999px;
-  border: 1.5px solid rgba(242, 193, 78, 0.6);
+  border: 1.5px solid rgba(214, 224, 250, 0.3);
   background: rgba(255, 255, 255, 0.06);
-  color: var(--gold-soft);
-  font-size: 14.5px;
+  color: var(--star-ink);
+  font-size: 14px;
   font-weight: 800;
   cursor: pointer;
 }
-.answerShare {
-  display: block;
-  margin: 14px auto 0;
-}
-.answerShareRow .answerShare {
-  margin: 0;
-}
-.answerCopy {
-  border-color: rgba(214, 224, 250, 0.3);
-  color: var(--star-ink);
-}
-.answerShare:hover,
 .answerCopy:hover {
   background: rgba(242, 193, 78, 0.16);
+}
+
+/* 펼친 상황별 풀이(판 안) */
+.sitList {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sitItem {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 12px;
+  padding: 14px 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(214, 224, 250, 0.14);
+}
+.sitItemOn {
+  border: 1.5px solid var(--gold);
+  background: rgba(242, 193, 78, 0.08);
+}
+.sitNum {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(242, 193, 78, 0.16);
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 900;
+}
+.sitTitle {
+  margin: 3px 0 6px;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: #fff;
+}
+.sitFoot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+.sitPageLink {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--gold-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* 장면 칸 종합 해몽의 상징별 카드(판 안) */
@@ -599,6 +661,9 @@
   }
   .answerTitle {
     font-size: 21px;
+  }
+  .mainLead {
+    font-size: 17.5px;
   }
 }
 

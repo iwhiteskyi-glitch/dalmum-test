@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { track } from "@vercel/analytics";
 import ds from "./dream.module.css";
@@ -9,9 +9,6 @@ import { useDreamEngine } from "./DreamSearch";
 import TEXTS from "@/lib/dream/symbols.json";
 import { MAX_SELECT, synthesisBucket } from "@/lib/dream/select";
 import { PAGE_IDS, dreamHref } from "@/lib/dream/pageIds";
-import { encodeDreamLink } from "@/lib/dream/resultLink";
-import { shareResult } from "@/lib/fortune/shareResult";
-import { SITE } from "@/lib/site";
 
 const SYMBOL_BY_ID = Object.fromEntries(TEXTS.symbols.map((s) => [s.id, s]));
 const SIMILAR_MAX = 6;
@@ -123,7 +120,7 @@ export default function DreamSearchResult({ bar, titles, query, onSearch, onPick
         {/* 가까운 분을 떠나보낸 사람이 가장 먼저 보도록 맨 위에 둡니다(상세 페이지와 같은 원칙) */}
         {page?.care && <p className={ds.answerCare}>{page.care}</p>}
 
-        <p className={ds.answerLead}>{s.text}</p>
+        <p className={ds.mainLead}>{s.text}</p>
 
         {sceneText && (
           <div className={ds.sceneBox}>
@@ -140,9 +137,7 @@ export default function DreamSearchResult({ bar, titles, query, onSearch, onPick
             <h2 className={ds.answerSub}>요즘 식으로 보면</h2>
             <p className={ds.answerText}>{page.modern}</p>
             {page.helpline && <p className={ds.answerCare}>{page.helpline}</p>}
-            <Link href={`${dreamHref(main.id)}#situations`} className={ds.answerBtn}>
-              상황별 풀이 {page.situations.length}가지 모두 보기 →
-            </Link>
+            <Situations key={`${query}-${main.id}`} id={main.id} page={page} highlight={scene?.index} />
           </>
         )}
 
@@ -160,7 +155,6 @@ export default function DreamSearchResult({ bar, titles, query, onSearch, onPick
         )}
 
         <p className={ds.answerNote}>{TEXTS.disclaimer}</p>
-        <ShareButton ids={combo ?? [main.id]} title={synthesis?.title ?? s.label} />
       </AnswerPanel>
 
       <Similar title="비슷한 꿈도 살펴보세요" ids={similar} exclude={main.id} onSearch={onSearch} onPickScenes={onPickScenes} />
@@ -179,34 +173,59 @@ export function AnswerPanel({ bar, children }) {
   );
 }
 
-/** 공유 — 링크에는 상징 이름만 담겨요(받은 사람은 같은 해몽을 바로 봄) */
-function ShareButton({ ids, title }) {
-  const [msg, setMsg] = useState("");
-  const url = `${SITE.url}/dream${encodeDreamLink(ids)}`;
+/** 상황별 풀이 — 다른 페이지로 넘어가지 않고 결과 판 안에서 아래로 펼쳐요 */
+function Situations({ id, page, highlight }) {
+  const [open, setOpen] = useState(false);
+  const toggleRef = useRef(null);
+  const listId = useId();
 
-  async function share() {
-    const shortText = `내 꿈해몽: ${title}`;
-    setMsg("");
-    try {
-      const r = await shareResult({
-        title: "재미로봄 꿈해몽",
-        shortText,
-        fullText: `${shortText}\n\n${TEXTS.disclaimer}\n— 재미로봄 꿈해몽`,
-        url,
-      });
-      track("dream_shared", { mode: r.mode, from: "search" });
-      if (r.mode === "copied") setMsg("공유 글과 링크를 복사했어요. 붙여넣어 보내 주세요.");
-    } catch (e) {
-      if (e.name !== "AbortError") setMsg("공유하지 못했어요. 잠시 뒤 다시 시도해 주세요.");
-    }
+  function close() {
+    setOpen(false);
+    // 긴 목록 맨 아래에서 접으면 화면이 휙 올라가지 않게 펼치기 버튼 자리로 돌아가요
+    requestAnimationFrame(() => toggleRef.current?.scrollIntoView({ block: "center" }));
   }
 
   return (
     <>
-      <button type="button" className={ds.answerShare} onClick={share}>
-        친구에게 이 해몽 알려주기
+      <button
+        ref={toggleRef}
+        type="button"
+        className={ds.answerBtn}
+        aria-expanded={open}
+        aria-controls={listId}
+        onClick={() => (open ? close() : setOpen(true))}
+      >
+        {open ? "상황별 풀이 접기" : `상황별 풀이 ${page.situations.length}가지 모두 보기`}
+        <span className={`${ds.answerBtnIcon} ${open ? ds.answerBtnIconOpen : ""}`} aria-hidden="true">
+          ▾
+        </span>
       </button>
-      {msg && <p className={ds.answerNote}>{msg}</p>}
+      {open && (
+        <div id={listId}>
+          <ol className={ds.sitList}>
+            {page.situations.map((it, i) => (
+              <li key={it.title} className={`${ds.sitItem} ${i === highlight ? ds.sitItemOn : ""}`}>
+                <span className={ds.sitNum} aria-hidden="true">
+                  {i + 1}
+                </span>
+                <div>
+                  {i === highlight && <p className={ds.sceneBoxLabel}>적어 주신 꿈과 가장 비슷한 장면</p>}
+                  <h3 className={ds.sitTitle}>{it.title}</h3>
+                  <p className={ds.answerText}>{it.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <div className={ds.sitFoot}>
+            <button type="button" className={ds.answerCopy} onClick={close}>
+              접기 ▴
+            </button>
+            <Link href={dreamHref(id)} className={ds.sitPageLink}>
+              {page.searchName} 해몽 페이지 따로 보기 →
+            </Link>
+          </div>
+        </div>
+      )}
     </>
   );
 }
