@@ -73,24 +73,20 @@ const pairs = [
     { calendar: "lunar", year: 2001, month: 5, day: 5, hour: 12, minute: 0 },
   ],
 ];
-const areaSets = [
-  { love: true, friend: true, work: true },
-  { love: false, friend: true, work: false },
-  { love: true, friend: false, work: true },
-];
+const relations = ["all", "love", "friend", "family", "work"];
 for (const [inA, inB] of pairs) {
   const a = calcSaju(inA);
   const b = calcSaju(inB);
   assert(a.ok && b.ok, "사주 계산 실패");
-  for (const areas of areaSets) {
-    const got = decodeGunghapLink(encodeGunghapLink(a, b, areas));
+  for (const relation of relations) {
+    const got = decodeGunghapLink(encodeGunghapLink(a, b, relation));
     assert(got !== null, "궁합 링크 복원 실패");
     if (!got) continue;
     const before = gunghapReading(a, b);
     const after = gunghapReading(got.me, got.partner);
     assert(JSON.stringify(before) === JSON.stringify(after), "궁합 풀이 불일치");
     assert(gunghapScore(before) === gunghapScore(after), "궁합 점수 불일치");
-    assert(JSON.stringify(got.areas) === JSON.stringify(areas), "고른 영역 불일치");
+    assert(got.relation === relation, "고른 관계 불일치");
   }
 }
 console.log("완료");
@@ -131,13 +127,28 @@ const badGunghap = [
   "#f1.20261002.3.7", // 다른 코너 링크
 ];
 for (const h of badGunghap) assert(decodeGunghapLink(h) === null, `궁합: 걸러야 함 → ${h}`);
+const badGunghap2 = [
+  "#g2",
+  "#g2.3.7.9.11.11202.11103", // 관계 빠짐
+  "#g2.3.7.9.11.11202.11103.5", // 관계 범위 초과
+  "#g2.3.7.9.11.11202.11103.x",
+  "#g2.10.7.9.11.11202.11103.0", // 일간 범위 초과
+  "#g3.3.7.9.11.11202.11103.0", // 모르는 판
+];
+for (const h of badGunghap2) assert(decodeGunghapLink(h) === null, `궁합: 걸러야 함 → ${h}`);
+// 예전(#g1) 링크는 계속 열리고, 영역 하나만 골랐으면 그 관계로, 여럿이면 전부 보기로 열려요
+const oldOk = { 1: "love", 2: "friend", 4: "work", 3: "all", 5: "all", 6: "all", 7: "all" };
+for (const [mask, rel] of Object.entries(oldOk)) {
+  const got = decodeGunghapLink(`#g1.3.7.9.11.11202.11103.${mask}`);
+  assert(got && got.relation === rel, `예전 궁합 링크 영역 ${mask} → ${rel} 이어야 함`);
+}
 console.log("완료");
 
 // 4) 링크에 생년월일이 그대로 들어가지 않는지(연도 네 자리가 안 보이는지) 확인
 console.log("4) 링크에 생년월일 비노출 확인");
 const a0 = calcSaju({ calendar: "solar", year: 1995, month: 7, day: 15, hour: 9, minute: 0 });
 const b0 = calcSaju({ calendar: "solar", year: 1997, month: 3, day: 22, hour: null, minute: null });
-const gLink = encodeGunghapLink(a0, b0, { love: true, friend: true, work: true });
+const gLink = encodeGunghapLink(a0, b0, "all");
 assert(!gLink.includes("1995") && !gLink.includes("1997"), `궁합 링크에 생년이 보임: ${gLink}`);
 console.log("완료:", gLink);
 
@@ -223,7 +234,7 @@ console.log("8) 코너 간 링크 격리 확인");
 const sampleSaju = calcSaju({ calendar: "solar", year: 1995, month: 7, day: 15, hour: 9, minute: 0 });
 const links = {
   fortune: encodeFortuneLink({ year: 2026, month: 10, day: 2 }, sampleSaju),
-  gunghap: encodeGunghapLink(sampleSaju, sampleSaju, { love: true, friend: true, work: true }),
+  gunghap: encodeGunghapLink(sampleSaju, sampleSaju, "love"),
   saeun: encodeSaeunLink(2027, sampleSaju),
   saju: encodeSajuLink(sampleSaju),
 };
