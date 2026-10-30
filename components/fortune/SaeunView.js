@@ -27,7 +27,7 @@ import { keepResult, restoreOnBack } from "@/lib/backRestore";
 import { decodeSaeunLink } from "@/lib/fortune/resultLink";
 import { eunNeun } from "@/lib/korean";
 import BirthForm from "./BirthForm";
-import { Stars, shortDateLabel } from "./parts";
+import { Stars, Matchup, shortDateLabel } from "./parts";
 
 const PERIOD_GODS = TEXTS.tenGods.map((g, i) => ({ ...g, ...PERIOD_TEXTS.periodGods[i] }));
 const PERIOD_RELATIONS = Object.fromEntries(PERIOD_TEXTS.periodRelations.map((r) => [r.key, r.text]));
@@ -224,6 +224,7 @@ function SaeunResult({ saju, thisYear, sajuYear, onPick, snapshot = false }) {
         <p className={t.date}>
           {sajuYear}년 {year.pillar.ko}({year.pillar.hanja})년 · {shortDateLabel(months[0].start)} 입춘부터
         </p>
+        <Matchup dayMaster={dm} otherStem={year.pillar.stem} when={`${sajuYear}년`} unit="해" god={year.tenGod} />
 
         <div className={t.scoreRow}>
           <div
@@ -259,6 +260,10 @@ function SaeunResult({ saju, thisYear, sajuYear, onPick, snapshot = false }) {
 
         <p className={t.overall}>{god.yearText}</p>
         <p className={t.rel}>
+          <span className={t.relHead}>
+            덧붙는 풀이 · 태어난 날 아랫글자(일지) {BRANCHES[myDayBranch]}({BRANCHES_HANJA[myDayBranch]}) ↔ 이 해
+            아랫글자 {BRANCHES[year.pillar.branch]}({BRANCHES_HANJA[year.pillar.branch]})
+          </span>
           <b>{year.rel.label}</b> {periodText(year.relation, "이 해")}
         </p>
       </section>
@@ -303,7 +308,8 @@ function SaeunResult({ saju, thisYear, sajuYear, onPick, snapshot = false }) {
             ))}
         </div>
         <p className={s.lead}>
-          사주의 달은 1일이 아니라 절기가 바뀌는 날에 시작해요. 달을 누르면 그 달 풀이를 볼 수 있어요.
+          달마다 찾아오는 기운이 나에게 어떤 관계인지로 점수를 냈어요. 사주의 달은 1일이 아니라 절기가 바뀌는 날에
+          시작해요. 달을 누르면 그 달 풀이를 볼 수 있어요.
         </p>
         <ol className={s.months}>
           {months.map((m, i) => {

@@ -1,6 +1,8 @@
 // 운세 코너 화면들이 함께 쓰는 작은 조각들
 import styles from "./fortune.module.css";
-import { ELEMENTS } from "@/lib/fortune/saju";
+import t from "./today.module.css";
+import { ELEMENTS, ELEMENTS_HANJA, STEMS, STEMS_HANJA, STEM_ELEMENT, TEN_GODS } from "@/lib/fortune/saju";
+import { hasBatchim } from "@/lib/korean";
 
 const WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
 
@@ -54,6 +56,41 @@ export function Stars({ n, label }) {
       {"★".repeat(n)}
       <span className={styles.starsOff}>{"★".repeat(5 - n)}</span>
     </span>
+  );
+}
+
+// 십신 다섯 묶음(비겁·식상·재성·관성·인성)을 처음 보는 사람도 알 수 있게 부르는 말
+export const GOD_PLAIN = ["나와 같은 기운", "내가 낳는 기운", "내가 다스리는 기운", "나를 다스리는 기운", "나를 낳는 기운"];
+
+// 천간을 "정화(丁火)"처럼 읽기 쉽게
+export const stemLabel = (s) => `${STEMS[s]}${ELEMENTS[STEM_ELEMENT[s]]}(${STEMS_HANJA[s]}${ELEMENTS_HANJA[STEM_ELEMENT[s]]})`;
+
+/**
+ * 결과 판 맨 위의 "나 + 오늘 = 관계" 한 줄. 점수와 풀이가 무엇을 견줘서 나오는지 먼저 보여 줘요.
+ * when: "오늘"·"2027년"처럼 견주는 때, unit: "날"·"해"
+ */
+export function Matchup({ dayMaster, otherStem, when, unit, god }) {
+  return (
+    <div className={t.match}>
+      <div className={t.matchRow}>
+        <span className={t.matchChip}>
+          <small>태어난 날의 나</small>
+          {stemLabel(dayMaster)}
+        </span>
+        <span className={t.matchOp} aria-hidden="true">
+          +
+        </span>
+        <span className={t.matchChip}>
+          <small>{when}의 기운</small>
+          {stemLabel(otherStem)}
+        </span>
+      </div>
+      <p className={t.matchResult}>
+        {when}의 기운은 <b>{GOD_PLAIN[Math.floor(god / 2)]}</b>이라서 <b>{TEN_GODS[god]}</b>의 {unit}
+        {hasBatchim(unit) ? "이에요" : "예요"}. 점수와
+        풀이는 이 관계로 정해져요.
+      </p>
+    </div>
   );
 }
 

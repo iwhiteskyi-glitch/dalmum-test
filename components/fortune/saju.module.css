@@ -1,0 +1,323 @@
+/* 내 사주 결과 화면(2026-10 개편). 판·카드·영역·행운은 today.module.css를 같이 쓰고, 여기에는 내 사주에만 있는 것만 둡니다. */
+
+/* ---------- 결과 판: 일주 두 글자 ---------- */
+.head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 0 0;
+}
+/* 일주 두 글자를 도장처럼 세로로 */
+.seal {
+  flex: none;
+  display: grid;
+  gap: 2px;
+  width: 84px;
+  padding: 8px 0;
+  border: 2px solid var(--f-gold);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.08);
+  text-align: center;
+  font-family: "Noto Serif KR", "Batang", "SimSun", serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+}
+/* 도장 글자 아래 한글 읽기(윗글자에는 '나' 표시) */
+.seal span {
+  display: grid;
+  justify-items: center;
+}
+.seal small {
+  /* 도장은 명조체라, 한글 읽기는 본문과 같은 고딕으로 */
+  font-family: -apple-system, "Apple SD Gothic Neo", BlinkMacSystemFont, "Segoe UI", Roboto, "Malgun Gothic", sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--f-gold);
+}
+.headSide {
+  min-width: 0;
+}
+.headSub {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--f-text-soft);
+}
+/* 일주가 무엇이고 누가 '나'인지 — 처음 보는 사람을 위한 한 줄 */
+.headNote {
+  margin: 12px 0 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--f-text-soft);
+}
+.headNote b {
+  color: #fff;
+}
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0 0;
+  padding: 0;
+}
+.chips li {
+  border-radius: 999px;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* 한눈에 보는 나: 2×2 */
+.glance {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 14px 0 0;
+}
+.glance div {
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.16);
+}
+.glance dt {
+  font-size: 12px;
+  color: var(--f-text-soft);
+  margin-bottom: 2px;
+}
+.glance dd {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+}
+.glance small {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--f-gold);
+}
+/* 십신 묶음 이름 아래 쉬운 말(배움·보살핌·생각 등) */
+.glance em {
+  display: block;
+  margin-top: 1px;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--f-text-soft);
+}
+
+/* ---------- 흰 카드 ---------- */
+.cPillars {
+  --accent: #3d3290;
+}
+.cSeason {
+  --accent: #2f9e6e;
+}
+.cElement {
+  --accent: #e0a93a;
+}
+.cGods {
+  --accent: #c2577a;
+}
+.cAreas {
+  --accent: #23889a;
+}
+.kicker {
+  margin: 0 0 4px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--muted-ink);
+}
+/* kicker 바로 아래 제목은 붙여서 */
+.kicker + h2 {
+  margin-top: 0;
+}
+.small {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted-ink);
+}
+.lead {
+  margin: -6px 0 12px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted-ink);
+}
+
+/* 팔자 표 위 "내 팔자 한 줄 정리" */
+.summary {
+  margin: -4px 0 14px;
+  padding: 12px 14px;
+  border-left: 4px solid var(--f);
+  border-radius: var(--radius-md);
+  background: var(--f-soft);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--f-callout-ink);
+}
+
+/* 팔자 표 글자 밑 십신 이름 */
+.godTag {
+  margin: -2px 0 2px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--f-deep);
+}
+
+/* 채우면 좋은 기운 */
+.fill {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--f-soft);
+}
+.fill h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--f-deep);
+}
+.fill > p {
+  margin: 0 0 12px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--f-callout-ink);
+}
+.fill dl div {
+  background: var(--surface);
+}
+
+/* ---------- 십신 분포 막대 ---------- */
+.gods {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.gods li {
+  display: grid;
+  grid-template-columns: 112px 1fr 22px;
+  align-items: center;
+  gap: 8px;
+}
+.godName {
+  font-size: 14.5px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+.godName small {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--muted-ink);
+}
+.godBar {
+  height: 12px;
+  border-radius: 999px;
+  background: var(--bg);
+  overflow: hidden;
+}
+.godBar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--f-glow), var(--f));
+}
+.godCount {
+  text-align: right;
+  font-size: 14px;
+  font-weight: 800;
+}
+.notes {
+  margin-top: 14px;
+  display: grid;
+  gap: 8px;
+}
+.notes p {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+.notes b {
+  color: var(--f-deep);
+}
+/* 팔자 표 아래: 십신 이름 뜻 펼쳐 보기 — 눈에 띄게 옅은 보라 상자로 */
+.legend {
+  margin-top: 12px;
+  padding: 2px 14px;
+  border-radius: var(--radius-md);
+  background: var(--f-soft);
+}
+.legend summary {
+  cursor: pointer;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--f-deep);
+}
+.legend[open] {
+  padding-bottom: 14px;
+}
+.legend summary + .small {
+  margin-top: 0;
+}
+.godDefs {
+  margin: 10px 0 0;
+  display: grid;
+  gap: 10px;
+}
+.godDefs div {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+.godDefs dt {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 800;
+}
+/* 팔자 표에 적힌 이름(비견·겁재 등)은 묶음 이름 아래 한 줄로 */
+.godDefs dt em {
+  display: block;
+  margin-top: 1px;
+  font-style: normal;
+  font-size: 13px;
+  color: var(--f-deep);
+}
+.godDefs dt small {
+  flex: none;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--muted-ink);
+}
+.godDefs dd {
+  margin: 2px 0 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #4b3f47;
+}
+
+@media (max-width: 380px) {
+  .seal {
+    width: 72px;
+    font-size: 30px;
+  }
+  .gods li {
+    grid-template-columns: 96px 1fr 20px;
+  }
+}
