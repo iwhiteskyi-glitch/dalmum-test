@@ -10,7 +10,7 @@ import { dreamSearchTitles } from "@/lib/dream/searchData";
 export const metadata = fortuneMetadata({
   title: "꿈해몽 | 기억나는 꿈속 장면으로 보는 상징별 의미",
   description:
-    "기억나는 꿈을 문장 그대로 적거나 장면을 고르면, 99가지 상징 중 가장 비슷한 꿈을 찾아 전통 해몽 방식으로 의미와 종합 흐름을 풀어 드려요. 사진이나 생년월일 없이 바로 볼 수 있어요.",
+    "기억나는 꿈을 문장 그대로 적거나 장면을 고르면, 119가지 상징 중 가장 비슷한 꿈을 찾아 전통 해몽 방식으로 의미와 종합 흐름을 풀어 드려요. 사진이나 생년월일 없이 바로 볼 수 있어요.",
   path: "/dream",
   image: "dream",
 });
@@ -23,10 +23,10 @@ export default function DreamPage() {
       <DreamIndex />
 
       <MoreInfo title="꿈해몽이 궁금하다면" lead="무엇을 다루는지, 결과는 어떻게 만들어지는지 모아 뒀어요.">
-        <Fold open title="꿈해몽이란?" hint="99가지 상징, 전통 해몽 방식">
+        <Fold open title="꿈해몽이란?" hint="119가지 상징, 전통 해몽 방식">
           <p className={styles.sectionText}>
             꿈해몽은 꿈에 나온 상징으로 그 사람의 상태나 기운을 읽어보려는 오래된 전통이에요. 이
-            코너는 동물·자연현상·사람·신체·사물·행동 6개 카테고리, 99가지 상징을 다뤄요. 민담 중
+            코너는 동물·자연현상·사람·신체·사물·행동 6개 카테고리, 119가지 상징을 다뤄요. 민담 중
             지나치게 불길하거나 무서운 통설은 담지 않고, 재미로 가볍게 볼 수 있는 해석만 골랐어요.
           </p>
         </Fold>

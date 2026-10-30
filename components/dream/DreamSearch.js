@@ -199,7 +199,7 @@ export default function DreamHero({ titles, onSearch }) {
   return (
     <section className={ds.hero} id="dream-search">
       <span className={ds.heroMoon} aria-hidden="true" />
-      <p className={ds.heroKicker}>꿈해몽 · 99가지 상징</p>
+      <p className={ds.heroKicker}>꿈해몽 · 119가지 상징</p>
       <h1 className={ds.heroTitle}>지난밤 꿈, 무슨 뜻이었을까?</h1>
       <p className={ds.heroLead}>
         기억나는 꿈을 문장 그대로 적어 보세요. 가장 비슷한 꿈과 장면을 찾아 전통 해몽 방식으로 풀어
