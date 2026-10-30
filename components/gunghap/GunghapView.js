@@ -258,13 +258,13 @@ function GunghapResult({ me, partner, reading, relation, snapshot = false }) {
         setHint(
           r.linkCopied
             ? "링크도 복사해 뒀어요. 사진만 전달됐으면 대화창에 붙여넣어 주세요."
-            : "사진만 전달됐으면 아래 '링크 복사'를 눌러 주소도 함께 보내 주세요."
+            : "사진만 전달됐으면 '링크 복사' 버튼을 눌러 주소도 함께 보내 주세요."
         );
       } else if (r.mode === "copied") {
         setHint("공유 글과 링크를 복사했어요. 붙여넣어 보내 주세요.");
       }
     } catch (e) {
-      if (e.name !== "AbortError") setHint("공유하지 못했어요. 아래 '링크 복사'를 이용해 주세요.");
+      if (e.name !== "AbortError") setHint("공유하지 못했어요. '링크 복사' 버튼을 이용해 주세요.");
     }
   }
 

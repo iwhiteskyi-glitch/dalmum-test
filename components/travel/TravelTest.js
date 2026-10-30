@@ -410,7 +410,7 @@ export default function TravelTest({ country, city }) {
         setShareHint(
           (await copyLinkQuietly())
             ? "링크도 복사해 뒀어요. 사진만 전달됐으면 대화창에 붙여넣어 주세요."
-            : "사진만 전달됐으면 아래 '공유 링크 복사'를 눌러 주소도 함께 보내 주세요."
+            : "사진만 전달됐으면 '공유 링크 복사' 버튼을 눌러 주소도 함께 보내 주세요."
         );
       } else {
         try {
