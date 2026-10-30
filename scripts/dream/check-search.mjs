@@ -175,6 +175,13 @@ const CASES = [
   { q: "벌에 쏘였어", first: "bee", scene: "쏘이" },
   { q: "목욕탕에 갔어", first: "bath", scene: "목욕탕" },
   { q: "샤워를 했어", first: "bath", none: ["toilet"] },
+  // 2026-10-30 교회·성당
+  { q: "교회에서 기도했어", first: "church", scene: "기도" },
+  { q: "예수님이 나타났어", first: "church", scene: "예수님" },
+  { q: "결혼식에서 신부님이 너무 예뻤어", first: "wedding" },
+  { q: "성당에서 결혼식 올렸어", first: "wedding" },
+  { q: "성모병원에 입원했어", none: ["church"] },
+  { q: "미사일이 날아왔어", first: "war", none: ["church"] },
 ];
 
 let pass = 0;
