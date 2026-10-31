@@ -287,16 +287,18 @@ function GunghapResult({ me, partner, reading, relation, snapshot = false }) {
   const url = `${SITE.url}/gunghap${encodeGunghapLink(me, partner, relation)}`;
 
   async function share() {
-    const shortText = `우리 궁합은 "${cat.title}" (${score}점)\n${pair.name} — ${pair.text}`;
+    // 메신저에서 한눈에 읽히도록 묶음마다 [제목]을 달고 빈 줄로 나눠요.
+    const head = `우리 궁합 ${score}점\n"${cat.title}"`;
+    const shortText = `${head}\n\n[${pair.name}]\n${pair.text}`;
     const fullText = [
-      `우리 궁합은 "${cat.title}" (${score}점)이에요.`,
-      `${pair.name} — ${pair.text}`,
-      ...mainAreas.map(([key, label]) => `· ${label} ${areas[key][reading.godAtoB]}`),
-      `· 잘 맞는 점 ${points.good.join(" / ")}`,
-      `· 조심할 점 ${points.care.join(" / ")}`,
-      `· 아랫글자(일지) ${dayName} ${dayText}`,
+      head,
+      `[${pair.name}]\n${pair.text}`,
+      ...mainAreas.map(([key]) => `[${AREA_TITLES[key]}]\n${areas[key][reading.godAtoB]}`),
+      `[잘 맞는 점]\n${points.good.map((t) => `- ${t}`).join("\n")}`,
+      `[조심할 점]\n${points.care.map((t) => `- ${t}`).join("\n")}`,
+      `[아랫글자(일지) 궁합 · ${dayName}]\n${reading.dayRelation === "none" ? `${dayPlain}. ` : ""}${dayText}`,
       "— 재미로봄 궁합",
-    ].join("\n");
+    ].join("\n\n");
     setHint("");
     try {
       const r = await shareResult({
