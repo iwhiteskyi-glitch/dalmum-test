@@ -1,9 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { track } from "@vercel/analytics";
 import styles from "@/components/fortune/fortune.module.css";
+import t from "@/components/fortune/today.module.css";
 import gs from "./gwansang.module.css";
 import PhotoSlot from "@/components/PhotoSlot";
 import {
@@ -16,7 +16,7 @@ import {
   cropEntryForFace,
   detectFace,
 } from "@/lib/faceAnalysis";
-import { classifyFace, PARTS } from "@/lib/gwansang/classify";
+import { classifyFace, PARTS, synthesisKey } from "@/lib/gwansang/classify";
 import TEXTS from "@/lib/gwansang/texts.json";
 import { buildGwansangCard } from "@/lib/gwansang/card";
 import { shareResult, copyText } from "@/lib/fortune/shareResult";
@@ -34,20 +34,36 @@ const CAPTIONS = [
 ];
 const STEP_MS = 420;
 
-/** 링크로 받은 카테고리 번호를 부위별 해석 묶음으로 바꿉니다. */
+/** 칸 번호 묶음({ eye: [a, b], ... })을 화면에 쓸 부위별 풀이로 바꿉니다. */
 function resolveParts(categories) {
   return PARTS.map((part) => {
     const def = TEXTS.parts[part];
-    const cat = def.categories[categories[part]];
-    return { part, label: def.label, hanja: def.hanja, ...cat };
+    const [a, b] = categories[part];
+    return {
+      part,
+      label: def.label,
+      hanja: def.hanja,
+      about: def.about,
+      dims: def.dims.map((d, i) => ({ label: d.label, steps: d.steps, at: i === 0 ? a : b })),
+      ...def.combos[`${a}-${b}`],
+    };
   });
 }
 
-/** 여섯 부위를 따로 보는 것과 별개로, 턱선(얼굴 윤곽) × 이목구비 배치를 묶어서 보는
- *  종합 해석. 이미 검증된 두 부위의 카테고리 번호만 조합하므로 새 계산은 없어요. */
+/** 종합 보기 — 얼굴형·턱선·두 눈 사이를 묶은 18가지 중 하나. 이름표에 쓸 세 생김새도 함께. */
 function resolveSynthesis(categories) {
-  return TEXTS.synthesis[`${categories.jaw}-${categories.layout}`];
+  const f = TEXTS.synthesisFeatures;
+  return {
+    ...TEXTS.synthesis[synthesisKey(categories)],
+    features: [f.face[categories.jaw[1]], f.jaw[categories.jaw[0]], f.eyes[categories.layout[0]]],
+  };
 }
+
+const LINES = [
+  ["first", "첫인상"],
+  ["work", "일할 때"],
+  ["people", "사람 사이에서"],
+];
 
 export default function GwansangView() {
   const [shared, setShared] = useState(null);
@@ -76,7 +92,10 @@ export default function GwansangView() {
             친구가 보낸 <b>관상</b> 결과예요. 아래에서 내 관상도 바로 볼 수 있어요.
           </p>
           <div className={styles.result}>
-            <GwansangResult parts={resolveParts(shared)} categories={shared} snapshot />
+            <div className={t.zone}>
+              <p className={t.zoneLabel}>친구가 보낸 관상 결과</p>
+              <GwansangResult categories={shared} snapshot />
+            </div>
           </div>
           <p className={styles.sectionDivider}>내 관상 보기</p>
         </>
@@ -212,8 +231,11 @@ function UploadFlow({ onResult, resultRef }) {
   if (step === 2 && result) {
     return (
       <div ref={resultRef} className={styles.result}>
-        <GwansangResult parts={resolveParts(result.categories)} categories={result.categories} photoUrl={result.photoUrl} />
-        <p className={gs.zoomRow} style={{ textAlign: "center", marginTop: 24 }}>
+        <div className={t.zone}>
+          <p className={t.zoneLabel}>내 관상 결과</p>
+          <GwansangResult categories={result.categories} photoUrl={result.photoUrl} />
+        </div>
+        <p className={gs.zoomRow} style={{ textAlign: "center", marginTop: 20 }}>
           <button
             type="button"
             className={styles.ghostSm}
@@ -277,19 +299,19 @@ function UploadFlow({ onResult, resultRef }) {
 }
 
 /**
- * snapshot: 친구가 보낸 링크로 보는 결과 — 사진·공유 버튼을 빼고 해석만 보여줍니다.
+ * snapshot: 친구가 보낸 링크로 보는 결과 — 사진·공유 버튼을 빼고 풀이만 보여줍니다.
  * (링크에는 사진이 담기지 않으므로 받은 사람 화면에는 애초에 사진이 없어요.)
  */
-function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
+function GwansangResult({ categories, photoUrl, snapshot = false }) {
   const [hint, setHint] = useState("");
   const [card, setCard] = useState(null);
 
-  const keywordsLine = parts.map((p) => p.keyword).join(" · ");
-  const synthesis = categories ? resolveSynthesis(categories) : null;
-  const cardKey = PARTS.map((p) => categories?.[p]).join("-");
+  const parts = resolveParts(categories);
+  const syn = resolveSynthesis(categories);
+  const cardKey = encodeGwansangLink(categories);
 
   useEffect(() => {
-    if (snapshot || !categories) return;
+    if (snapshot) return;
     let cancelled = false;
     setCard(null);
     (async () => {
@@ -306,10 +328,9 @@ function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
       if (cancelled) return;
       const img = await buildGwansangCard({
         photo,
-        keywordsLine,
-        intro: TEXTS.intro,
-        parts: parts.map((p) => ({ label: p.label, keyword: p.keyword, text: p.text })),
-        synthesis,
+        synthesis: syn,
+        lines: LINES.map(([key, label]) => ({ label, text: syn[key] })),
+        parts: parts.map((p) => ({ label: p.label, name: p.name, text: p.text })),
       });
       if (!cancelled) setCard(img);
     })().catch(() => {
@@ -318,21 +339,24 @@ function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
     return () => {
       cancelled = true;
     };
+    // 나머지 값은 모두 cardKey에서 정해집니다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardKey, snapshot]);
 
-  const url = categories ? `${SITE.url}/gwansang${encodeGwansangLink(categories)}` : SITE.url;
+  const url = `${SITE.url}/gwansang${cardKey}`;
 
   async function share() {
-    const shortText = synthesis ? `내 관상 종합 보기: ${synthesis.title}` : `내 관상 키워드: ${keywordsLine}`;
+    // 메신저에서 한눈에 읽히도록 묶음마다 [제목]을 달고 빈 줄로 나눠요.
+    const head = `내 관상: "${syn.title}"\n${syn.features.join(" · ")}`;
+    const shortText = `${head}\n\n${syn.text}`;
     const fullText = [
-      shortText,
-      ...(synthesis ? [`\n[종합 보기] ${synthesis.title}\n${synthesis.text}`] : []),
-      "\n부위별로 자세히 보면",
-      ...parts.map((p) => `[${p.label}] ${p.keyword} — ${p.text}`),
-      `\n${TEXTS.disclaimer}`,
+      head,
+      syn.text,
+      LINES.map(([key, label]) => `- ${label}: ${syn[key]}`).join("\n"),
+      ...parts.map((p) => `[${p.label} · ${p.name}]\n${p.text}`),
+      TEXTS.disclaimer,
       "— 재미로봄 관상",
-    ].join("\n");
+    ].join("\n\n");
     setHint("");
     try {
       const r = await shareResult({
@@ -363,52 +387,88 @@ function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
   }
 
   return (
-    <section className={styles.block} aria-labelledby="gwansang-title">
-      <h2 id="gwansang-title" className={styles.blockTitle}>
-        내 관상
-      </h2>
-      {!snapshot && photoUrl && (
-        <p style={{ textAlign: "center", margin: "0 0 16px" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={photoUrl}
-            alt="분석에 쓴 사진"
-            style={{ width: 120, height: 120, borderRadius: "50%", objectFit: "cover", border: "3px solid var(--f-gold)" }}
-          />
-        </p>
-      )}
-
-      {synthesis && (
-        <div className={gs.synthesisBox}>
-          <span className={gs.synthesisLabel}>{TEXTS.synthesisLabel}</span>
-          <h3 className={gs.synthesisTitle}>{synthesis.title}</h3>
-          <p className={gs.synthesisText}>{synthesis.text}</p>
-          <p className={gs.synthesisLead}>{TEXTS.synthesisLead}</p>
-        </div>
-      )}
-
-      <p className={styles.blockLead} style={{ textAlign: "center" }}>
-        {keywordsLine}
-      </p>
-      <p className={gs.partListLabel}>부위별로 자세히 보면</p>
-      <div className={gs.partList}>
-        {parts.map((p) => (
-          <div key={p.part} className={gs.partCard}>
-            <div className={gs.partHead}>
-              <span className={gs.partLabel}>{p.label}</span>
-              <span className={gs.partKeyword}>{p.keyword}</span>
-            </div>
-            <p className={gs.partText}>{p.text}</p>
+    <>
+      <section className={`${t.panel} ${gs.panel}`} aria-labelledby="gwansang-title">
+        <p className={t.date}>{TEXTS.resultLead}</p>
+        <div className={gs.hero}>
+          {!snapshot && photoUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={photoUrl} alt="분석에 쓴 사진" className={gs.heroPhoto} />
+          )}
+          <div className={gs.heroSide}>
+            <p className={t.god}>얼굴 전체로 보면</p>
+            <h2 id="gwansang-title" className={t.title}>
+              {syn.title}
+            </h2>
+            <p className={gs.features}>{syn.features.join(" · ")}</p>
           </div>
-        ))}
-      </div>
+        </div>
+        <div className={t.personal}>
+          <p className={t.personalText}>{syn.text}</p>
+        </div>
+        <dl className={gs.lines}>
+          {LINES.map(([key, label]) => (
+            <div key={key}>
+              <dt>{label}</dt>
+              <dd>{syn[key]}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className={gs.leadNote}>{TEXTS.synthesisLead} 부위마다 따로 본 풀이는 아래에 이어져요.</p>
+        <ul className={gs.chips} aria-label="부위별 한 줄 요약">
+          {parts.map((p) => (
+            <li key={p.part}>
+              <a href={`#gw-${p.part}`}>
+                <small>{p.label}</small>
+                {p.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-      <p className={styles.disclaimer} style={{ marginTop: 20 }}>
-        {TEXTS.disclaimer}
-      </p>
+      {parts.map((p) => (
+        <section
+          key={p.part}
+          id={`gw-${p.part}`}
+          className={`${t.card} ${gs.part} ${gs[`c_${p.part}`]}`}
+          aria-labelledby={`gw-${p.part}-title`}
+        >
+          <h2 id={`gw-${p.part}-title`} className={t.cardTitle}>
+            {p.label}
+            <span className={gs.hanja} aria-hidden="true">
+              {p.hanja}
+            </span>
+          </h2>
+          <p className={t.cardLead}>{p.about}</p>
+          <div className={gs.meters}>
+            {p.dims.map((d) => (
+              <div key={d.label} className={gs.meter}>
+                <span className={gs.meterLabel}>{d.label}</span>
+                <ol className={gs.steps} aria-label={`${d.label}: ${d.steps[d.at]}`}>
+                  {d.steps.map((s, i) => (
+                    <li key={s} className={i === d.at ? gs.stepOn : undefined} aria-hidden="true">
+                      {s}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
+          </div>
+          <p className={gs.partName}>{p.name}</p>
+          <p className={gs.para}>{p.text}</p>
+        </section>
+      ))}
 
       {!snapshot && (
-        <>
+        <section className={`${t.card} ${gs.cShare}`} aria-labelledby="gwansang-share-title">
+          <h2 id="gwansang-share-title" className={t.cardTitle}>
+            결과 보내기
+          </h2>
+          <p className={t.cardLead}>
+            링크에는 사진이 아니라 칸 번호(예: 눈매 세 칸 중 몇 번째)만 담겨서, 원래 사진을 되돌릴 수 없어요. 다만
+            &lsquo;친구에게 알려주기&rsquo;로 만드는 이미지 카드에는 분석에 쓴 사진이 들어가요.
+          </p>
           <div className={styles.shareRow}>
             <button type="button" className={styles.cta} onClick={share}>
               친구에게 알려주기
@@ -418,24 +478,10 @@ function GwansangResult({ parts, categories, photoUrl, snapshot = false }) {
             </button>
           </div>
           {hint && <p className={styles.shareHint}>{hint}</p>}
-          <p className={styles.small}>
-            공유하면 부위별 해석이 담긴 사진·링크가 전해져요. 링크에는 분석에 쓴 사진이 아니라
-            카테고리 번호만 담겨서, 원래 사진을 되돌릴 수 없어요. 다만 공유로 만드는 이미지
-            카드에는 분석에 쓴 사진이 그대로 들어가니 그 점을 참고해 주세요.
-          </p>
-        </>
+        </section>
       )}
 
-      <Link href="/face" className={styles.nextCard}>
-        <span>
-          <small>사진 두 장이면</small>
-          <strong>닮은꼴 테스트도 해보기</strong>
-          <span>가족·친구·연예인과 얼마나 닮았는지 부위별로 비교해 드려요</span>
-        </span>
-        <span className={styles.crossArrow} aria-hidden="true">
-          →
-        </span>
-      </Link>
-    </section>
+      <p className={gs.disclaimer}>{TEXTS.disclaimer}</p>
+    </>
   );
 }
