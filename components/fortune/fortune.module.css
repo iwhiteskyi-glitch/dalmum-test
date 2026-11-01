@@ -1738,18 +1738,34 @@
 }
 
 /* ---------- 띠별 운세 ---------- */
+.ttiHead {
+  margin: 0 4px 12px;
+}
+.ttiHead .ttiHint {
+  margin: -6px 0 0;
+}
+.ttiHint {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted-ink);
+}
 .ttiGrid {
   list-style: none;
-  margin: 16px 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  /* minmax(0, 1fr): 칸 안 글자가 길어도 칸이 화면 밖으로 밀려나지 않게 */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
 }
+.ttiGrid > li {
+  min-width: 0;
+}
+/* 위: 띠 글자 + 이름 / 가운데: 오늘의 한 줄 / 아래: 별점 — 좁은 폰에서도 별점이 한 줄에 들어가요 */
 .ttiCard {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 6px;
   height: 100%;
   padding: 12px;
   background: var(--surface);
@@ -1761,29 +1777,32 @@
 .ttiCard[aria-current="page"] {
   box-shadow: 0 0 0 2.5px var(--f);
 }
-.ttiBadge {
-  flex: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  font-size: 24px;
-  font-family: "Noto Serif KR", "Batang", serif;
-}
-.ttiCardBody {
+.ttiCardHead {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 8px;
   min-width: 0;
 }
-.ttiCardBody strong {
+.ttiCardHead strong {
   font-size: 15px;
 }
+.ttiBadge {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  font-family: "Noto Serif KR", "Batang", serif;
+}
 .ttiCardTitle {
-  font-size: 12.5px;
+  flex: 1;
+  font-size: 13px;
   line-height: 1.4;
   color: var(--muted-ink);
+  text-wrap: balance;
+  word-break: keep-all;
 }
 .ttiMatches {
   display: grid;
@@ -1801,6 +1820,7 @@
 }
 @media (min-width: 640px) {
   .ttiGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
   }
 }
