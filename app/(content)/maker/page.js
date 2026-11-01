@@ -7,7 +7,7 @@ import { SITE } from "@/lib/site";
 export const metadata = pageMetadata({
   title: "만든 사람",
   description:
-    "재미로봄을 만든 KN을 소개합니다. 직접 만든 앱 '맛집기록'과 블로그 등 다른 곳에서도 만나보세요.",
+    "재미로봄을 만든 KN을 소개합니다. 직접 만든 앱 '맛집기록', 웹사이트 '쇼핑 피팅 매니저'와 블로그 등 다른 곳에서도 만나보세요.",
   path: "/maker",
 });
 
@@ -23,6 +23,15 @@ const WORKS = [
     links: [
       { label: "App Store에서 보기", href: "https://apps.apple.com/kr/app/%EB%A7%9B%EC%A7%91%EA%B8%B0%EB%A1%9D/id6814456432" },
     ],
+    ready: true,
+  },
+  {
+    key: "web-fitting",
+    kind: "웹사이트",
+    title: "쇼핑 피팅 매니저",
+    desc: "쇼핑하다 찜한 옷 사진을 모아 AI가 내 체형 마네킹에 입혀 주는 가상 피팅 서비스예요. 여러 쇼핑몰 옷을 섞어 코디를 미리 보고, 산 옷은 내 옷으로 모아 둘 수 있어요.",
+    meta: "무료로 시작 (로그인, AI 입혀보기는 코인 사용) · 재미로봄과는 별도로 운영하는 사이트예요",
+    links: [{ label: "사이트 보러 가기", href: "https://www.fittingmanager.com/" }],
     ready: true,
   },
   {

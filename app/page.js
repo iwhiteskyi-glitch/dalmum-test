@@ -101,6 +101,27 @@ export default function Home() {
           ))}
         </section>
 
+        {/* 운영자의 다른 사이트. 재미로봄 코너가 아니라서(로그인·AI 코인·서버 처리) 코너 카드와 모양을 다르게 하고,
+            맨 위 메뉴·맨 아래 바로가기(CORNERS)에는 넣지 않아요. 바깥 사이트라는 걸 ↗와 안내 문구로 분명히 해요. */}
+        <section className={styles.otherSvc} aria-labelledby="other-svc-title">
+          <h2 id="other-svc-title" className={styles.otherSvcTitle}>
+            만든 사람의 다른 서비스
+          </h2>
+          <a className={styles.otherSvcCard} href="https://www.fittingmanager.com/" target="_blank" rel="noopener">
+            <span className={styles.otherSvcIcon} aria-hidden="true">
+              👗
+            </span>
+            <span className={styles.otherSvcBody}>
+              <strong>쇼핑 피팅 매니저</strong>
+              <span>찜한 옷을 AI가 내 체형에 입혀 봐요</span>
+              <small>다른 사이트로 이동해요 · 로그인·AI 코인이 있는 별도 서비스예요</small>
+            </span>
+            <span className={styles.otherSvcArrow} aria-hidden="true">
+              ↗
+            </span>
+          </a>
+        </section>
+
         {/* 대부분은 위 코너 카드만 쓰므로 아래는 접어 둡니다. 접힌 내용도 HTML에 그대로 있어
             검색엔진·심사에서는 다 읽힙니다. */}
         <div className={styles.folds}>
