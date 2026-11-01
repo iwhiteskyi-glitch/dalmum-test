@@ -4,6 +4,7 @@ import styles from "@/components/travel/travel.module.css";
 import Phrases from "@/components/travel/Phrases";
 import TravelTest from "@/components/travel/TravelTest";
 import InfoTabs from "@/components/travel/InfoTabs";
+import LocalNames, { localNamesSentence } from "@/components/travel/LocalNames";
 import InfoPhoto, { photoFor } from "@/components/travel/InfoPhoto";
 import { COUNTRIES, getCity, cityPath, mapLink } from "@/lib/travel/data";
 import { travelMetadata, breadcrumbJsonLd } from "@/lib/travel/seo";
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }) {
   const foods = city.foods.map((f) => f.name).join("·");
   return travelMetadata({
     title: `${city.city_name} 여행 가면 내 이름은? | ${country.language} 인사말·명소·음식`,
-    description: `${city.city_name} 여행에서 쓸 나만의 ${country.name} 이름을 추천받아 보세요. ${sights} 등 대표 명소와 ${foods} 같은 대표 음식, ${country.language} 기본 인사말까지 한 번에 정리했어요.`,
+    description: `${localNamesSentence(city.city_name, city.local_name)} ${city.city_name} 여행에서 쓸 나만의 ${country.name} 이름을 추천받아 보세요. ${sights} 등 대표 명소와 ${foods} 같은 대표 음식, ${country.language} 기본 인사말까지 한 번에 정리했어요.`,
     path: cityPath(country.code, city.city_code),
   });
 }
@@ -74,6 +75,7 @@ export default async function CityPage({ params }) {
         {city.city_name} 여행 가면 내 이름은?
       </h1>
       <p className={styles.lead}>{city.intro}</p>
+      <LocalNames cityName={city.city_name} local={city.local_name} />
 
       <TravelTest country={testCountry} city={testCity} />
 

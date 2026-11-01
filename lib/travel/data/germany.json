@@ -373,6 +373,14 @@
     {
       "city_code": "berlin",
       "city_name": "베를린",
+      "local_name": {
+        "names": [
+          {
+            "lang": "독일어",
+            "text": "Berlin"
+          }
+        ]
+      },
       "tier": 3,
       "intro": "분단의 상징이었던 브란덴부르크 문과 베를린 장벽의 흔적인 이스트사이드 갤러리가 남아있는 독일의 수도예요. 박물관섬의 유물부터 거리 곳곳의 예술까지, 역사와 현대 문화가 함께 공존해요.",
       "attractions": [
@@ -411,6 +419,18 @@
     {
       "city_code": "munich",
       "city_name": "뮌헨",
+      "local_name": {
+        "names": [
+          {
+            "lang": "독일어",
+            "text": "München"
+          },
+          {
+            "lang": "영어",
+            "text": "Munich"
+          }
+        ]
+      },
       "tier": 3,
       "intro": "매년 가을 옥토버페스트가 열리는 바이에른의 중심 도시예요. 마리엔플라츠의 글로켄슈필 인형극과 님펜부르크 궁전, 넓은 영국 정원까지 전통과 여유를 동시에 즐길 수 있어요.",
       "attractions": [

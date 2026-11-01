@@ -300,6 +300,20 @@
     {
       "city_code": "vientiane",
       "city_name": "비엔티안",
+      "local_name": {
+        "names": [
+          {
+            "lang": "라오어",
+            "text": "ວຽງຈັນ",
+            "read": "위앙짠"
+          },
+          {
+            "lang": "영어",
+            "text": "Vientiane"
+          }
+        ],
+        "note": "우리나라에서는 영어 표기를 따라 '비엔티안'이라고 불러요."
+      },
       "tier": 3,
       "intro": "메콩강을 사이에 두고 태국과 마주 보는 라오스의 수도예요. 높은 빌딩 대신 황금빛 불탑과 프랑스 식민지 시대 건물이 어우러진 조용한 거리가 매력이에요.",
       "attractions": [
@@ -337,6 +351,19 @@
     {
       "city_code": "luangprabang",
       "city_name": "루앙프라방",
+      "local_name": {
+        "names": [
+          {
+            "lang": "라오어",
+            "text": "ຫຼວງພະບາງ",
+            "read": "루앙파방"
+          },
+          {
+            "lang": "영어",
+            "text": "Luang Prabang"
+          }
+        ]
+      },
       "tier": 3,
       "intro": "메콩강과 남칸강이 만나는 지점에 자리한 옛 란상 왕국의 고도예요. 도시 전체가 유네스코 세계문화유산으로, 이른 아침이면 승려들이 줄지어 탁발하는 모습도 볼 수 있어요.",
       "attractions": [

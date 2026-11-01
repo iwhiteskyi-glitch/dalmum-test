@@ -333,6 +333,20 @@
     {
       "city_code": "kotakinabalu",
       "city_name": "코타키나발루",
+      "local_name": {
+        "names": [
+          {
+            "lang": "말레이어·영어",
+            "text": "Kota Kinabalu"
+          },
+          {
+            "lang": "중국어",
+            "text": "亚庇",
+            "read": "Yàbì"
+          }
+        ],
+        "note": "말레이시아의 국어는 말레이어이고 영어도 널리 통해요. 현지에서도 줄여서 KK라고 많이 부르고, Kota는 말레이어로 '도시'라는 뜻이에요."
+      },
       "tier": 2,
       "intro": "보르네오섬 사바주의 주도로, 유네스코 세계유산 키나발루 국립공원으로 가는 관문 도시예요. 시내 앞바다에는 뚠꾸압둘라만 해양공원의 섬들이 떠 있어 반나절 스노클링 투어로도 인기가 많아요.",
       "attractions": [
@@ -371,6 +385,20 @@
     {
       "city_code": "kualalumpur",
       "city_name": "쿠알라룸푸르",
+      "local_name": {
+        "names": [
+          {
+            "lang": "말레이어·영어",
+            "text": "Kuala Lumpur"
+          },
+          {
+            "lang": "중국어",
+            "text": "吉隆坡",
+            "read": "Jílóngpō"
+          }
+        ],
+        "note": "줄여서 KL이라고 많이 불러요."
+      },
       "tier": 2,
       "intro": "말레이시아의 수도로, 페트로나스 트윈타워가 만든 스카이라인이 상징적이에요. 도심에서 차로 20분 거리에는 힌두 사원과 거대한 무루간 신상이 있는 바투 동굴도 있어요.",
       "attractions": [
@@ -408,6 +436,24 @@
     {
       "city_code": "penang",
       "city_name": "페낭",
+      "local_name": {
+        "names": [
+          {
+            "lang": "말레이어",
+            "text": "Pulau Pinang"
+          },
+          {
+            "lang": "영어",
+            "text": "Penang"
+          },
+          {
+            "lang": "중국어",
+            "text": "槟城",
+            "read": "Bīnchéng"
+          }
+        ],
+        "note": "Pulau는 '섬'이라는 뜻이에요. 섬의 중심 도시는 조지타운(George Town)이에요."
+      },
       "tier": 2,
       "intro": "조지타운의 알록달록한 헤리티지 거리로 유명한 섬으로, 2008년 유네스코 세계문화유산으로 등재된 옛 시가지가 잘 보존돼 있어요. 페낭힐에 오르면 시내와 바다 전망을 한눈에 즐길 수 있어요.",
       "attractions": [

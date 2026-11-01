@@ -1115,3 +1115,55 @@
   font-weight: 800;
   margin: 0 0 8px;
 }
+
+/* ---------- 도시 이름, 현지어로는? ---------- */
+.localNames {
+  margin: 12px 0 18px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.localNamesTitle {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--c-travel, var(--ink));
+}
+/* 언어 이름 칸 너비를 모든 줄이 함께 쓰도록 줄 상자는 display: contents로 풀어요 */
+.localNamesList {
+  margin: 0;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 4px 12px;
+  align-items: baseline;
+}
+.localNamesRow {
+  display: contents;
+}
+.localNamesRow dt {
+  font-size: 13px;
+  color: var(--muted-ink);
+  white-space: nowrap;
+}
+.localNamesRow dd {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  align-items: baseline;
+}
+.localNamesText {
+  font-size: 16px;
+  font-weight: 700;
+}
+.localNamesRead {
+  font-size: 13.5px;
+  color: var(--muted-ink);
+}
+.localNamesNote {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted-ink);
+}

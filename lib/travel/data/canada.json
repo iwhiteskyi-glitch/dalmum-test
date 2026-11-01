@@ -422,6 +422,14 @@
     {
       "city_code": "vancouver",
       "city_name": "밴쿠버",
+      "local_name": {
+        "names": [
+          {
+            "lang": "영어",
+            "text": "Vancouver"
+          }
+        ]
+      },
       "tier": 3,
       "intro": "브리티시컬럼비아주 태평양 연안에 자리한 도시로, 도심 바로 옆에 스탠리 파크가 있어 자연과 가깝게 지낼 수 있어요. 다리 하나만 건너면 산이 이어져 근교 하이킹도 가볍게 다녀올 수 있어요.",
       "attractions": [
@@ -461,6 +469,14 @@
     {
       "city_code": "toronto",
       "city_name": "토론토",
+      "local_name": {
+        "names": [
+          {
+            "lang": "영어",
+            "text": "Toronto"
+          }
+        ]
+      },
       "tier": 3,
       "intro": "온타리오 호수 옆에 자리한 캐나다 최대 도시로, 도심 어디서나 보이는 랜드마크 CN타워가 상징이에요. 세계 각지에서 온 이민자들이 모여 살아 동네마다 다른 나라 음식을 만날 수 있어요.",
       "attractions": [

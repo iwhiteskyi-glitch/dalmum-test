@@ -356,6 +356,19 @@
     {
       "city_code": "istanbul",
       "city_name": "이스탄불",
+      "local_name": {
+        "names": [
+          {
+            "lang": "튀르키예어",
+            "text": "İstanbul"
+          },
+          {
+            "lang": "영어",
+            "text": "Istanbul"
+          }
+        ],
+        "note": "튀르키예어에서는 점 있는 İ와 점 없는 I가 서로 다른 글자라서, 이름이 İstanbul로 시작해요."
+      },
       "tier": 3,
       "intro": "아시아와 유럽을 가르는 보스포루스 해협을 사이에 둔 튀르키예 최대 도시예요. 비잔틴·오스만 제국의 흔적이 도심 곳곳에 겹겹이 남아 있어서, 하루 종일 걸어도 볼거리가 끝나지 않아요.",
       "attractions": [
@@ -393,6 +406,18 @@
     {
       "city_code": "cappadocia",
       "city_name": "카파도키아",
+      "local_name": {
+        "names": [
+          {
+            "lang": "튀르키예어",
+            "text": "Kapadokya"
+          },
+          {
+            "lang": "영어",
+            "text": "Cappadocia"
+          }
+        ]
+      },
       "tier": 3,
       "intro": "화산 활동이 만든 기암괴석과 동굴 마을이 펼쳐진 중부 아나톨리아의 대표 여행지예요. 이른 아침 하늘을 수놓는 열기구 행렬을 보러 전 세계 여행자들이 이곳을 찾아와요.",
       "attractions": [
