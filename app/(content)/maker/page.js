@@ -7,12 +7,11 @@ import { SITE } from "@/lib/site";
 export const metadata = pageMetadata({
   title: "만든 사람",
   description:
-    "재미로봄을 만든 KN을 소개합니다. 직접 만든 앱 '맛집기록', 웹사이트 '쇼핑 피팅 매니저'와 블로그 등 다른 곳에서도 만나보세요.",
+    "재미로봄을 만든 KN을 소개합니다. 직접 만든 앱 '맛집기록', 웹사이트 '쇼핑 피팅 매니저', 유튜브 '너머를 보다'와 블로그 등 다른 곳에서도 만나보세요.",
   path: "/maker",
 });
 
 // 운영자의 다른 채널·작품. ready: false 인 항목은 아직 화면에 보이지 않습니다.
-// (예: 유튜브는 첫 영상이 올라오면 ready: true 로 바꾸세요. 안드로이드 앱이 나오면 links에 추가.)
 const WORKS = [
   {
     key: "app-matjip",
@@ -22,6 +21,7 @@ const WORKS = [
     meta: "무료 (앱 내 구입 있음)",
     links: [
       { label: "App Store에서 보기", href: "https://apps.apple.com/kr/app/%EB%A7%9B%EC%A7%91%EA%B8%B0%EB%A1%9D/id6814456432" },
+      { label: "Google Play에서 보기", href: "https://play.google.com/store/apps/details?id=com.kncho.matjipgirok" },
     ],
     ready: true,
   },
@@ -45,10 +45,11 @@ const WORKS = [
   {
     key: "youtube",
     kind: "유튜브",
-    title: "너머를보다",
-    desc: "",
-    links: [{ label: "유튜브 채널 보기", href: "https://www.youtube.com/@%EB%84%88%EB%A8%B8%EB%A5%BC%EB%B3%B4%EB%8B%A4" }],
-    ready: false,
+    title: "너머를 보다",
+    desc: "아름다운 장면 너머의 과학을 차분히 알아보는 과학 교양 채널이에요. 우주·공룡·바다·일상 속 자연현상에서 질문 하나를 찾아 그 이유를 풀어 봐요.",
+    meta: "월 우주 · 수 공룡 · 금 바다 · 일 자연",
+    links: [{ label: "유튜브 채널 보기", href: "https://www.youtube.com/channel/UC2sFQ9wYDxyJp9zDSFB7QNA" }],
+    ready: true,
   },
 ];
 

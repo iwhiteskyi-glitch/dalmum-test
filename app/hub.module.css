@@ -419,13 +419,15 @@
 
 /* ---------- 만든 사람의 다른 서비스(바깥 사이트) ---------- */
 .otherSvc {
+  display: grid;
+  gap: 10px;
   margin-top: 28px;
 }
 .otherSvcTitle {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin: 0 0 10px 4px;
+  margin: 0 0 0 4px;
   font-size: 16px;
   font-weight: 800;
   letter-spacing: -0.01em;
@@ -462,6 +464,14 @@
   display: block;
   width: 44px;
   height: 44px;
+}
+.otherSvcRound {
+  border-radius: 50%;
+}
+/* 흰 바탕 앱 아이콘은 노란 칸 위에서 앱 아이콘처럼 보이게 둥근 네모 + 얇은 테두리 */
+.otherSvcTile {
+  border-radius: 11px;
+  border: 1px solid #e6dcc4;
 }
 .otherSvcBody {
   display: flex;

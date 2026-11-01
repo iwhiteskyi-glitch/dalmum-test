@@ -101,7 +101,7 @@ export default function Home() {
           ))}
         </section>
 
-        {/* 운영자의 다른 사이트. 재미로봄 코너가 아니라서(로그인·AI 코인·서버 처리) 코너 카드와 모양을 다르게 하고,
+        {/* 운영자의 다른 사이트·채널. 재미로봄 코너가 아니라서 코너 카드와 모양을 다르게 하고,
             맨 위 메뉴·맨 아래 바로가기(CORNERS)에는 넣지 않아요. 바깥 사이트라는 걸 ↗와 안내 문구로 분명히 해요. */}
         <section className={styles.otherSvc} aria-labelledby="other-svc-title">
           <h2 id="other-svc-title" className={styles.otherSvcTitle}>
@@ -114,6 +114,35 @@ export default function Home() {
               <strong>쇼핑 피팅 매니저</strong>
               <span>찜한 옷을 AI가 내 체형에 입혀 봐요</span>
               <small>다른 사이트로 이동해요 · 로그인·AI 코인이 있는 별도 서비스예요</small>
+            </span>
+            <span className={styles.otherSvcArrow} aria-hidden="true">
+              ↗
+            </span>
+          </a>
+          <a className={styles.otherSvcCard} href="https://flourishing-cuchufli-3eee2d.netlify.app/app/" target="_blank" rel="noopener">
+            {/* eslint-disable-next-line @next/next/no-img-element -- 44px 작은 아이콘이라 그대로 씀 */}
+            <img className={`${styles.otherSvcIcon} ${styles.otherSvcTile}`} src="/other/matjip.png" width={44} height={44} alt="" loading="lazy" />
+            <span className={styles.otherSvcBody}>
+              <strong>맛집기록</strong>
+              <span>먹은 메뉴를 사진·별점·메모로 남기는 맛집 다이어리</span>
+              <small>아이폰·안드로이드 앱 받는 곳으로 이동해요</small>
+            </span>
+            <span className={styles.otherSvcArrow} aria-hidden="true">
+              ↗
+            </span>
+          </a>
+          <a
+            className={styles.otherSvcCard}
+            href="https://www.youtube.com/channel/UC2sFQ9wYDxyJp9zDSFB7QNA"
+            target="_blank"
+            rel="noopener"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element -- 44px 작은 아이콘이라 그대로 씀 */}
+            <img className={`${styles.otherSvcIcon} ${styles.otherSvcRound}`} src="/other/neomeo-boda.jpg" width={44} height={44} alt="" loading="lazy" />
+            <span className={styles.otherSvcBody}>
+              <strong>너머를 보다</strong>
+              <span>우주·공룡·바다·자연 속 과학 이야기</span>
+              <small>유튜브 채널로 이동해요</small>
             </span>
             <span className={styles.otherSvcArrow} aria-hidden="true">
               ↗
