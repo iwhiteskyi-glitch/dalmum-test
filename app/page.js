@@ -119,6 +119,18 @@ export default function Home() {
               ↗
             </span>
           </a>
+          <a className={styles.otherSvcCard} href="https://flourishing-cuchufli-3eee2d.netlify.app/app/" target="_blank" rel="noopener">
+            {/* eslint-disable-next-line @next/next/no-img-element -- 44px 작은 아이콘이라 그대로 씀 */}
+            <img className={`${styles.otherSvcIcon} ${styles.otherSvcTile}`} src="/other/matjip.png" width={44} height={44} alt="" loading="lazy" />
+            <span className={styles.otherSvcBody}>
+              <strong>맛집기록</strong>
+              <span>먹은 메뉴를 사진·별점·메모로 남기는 맛집 다이어리</span>
+              <small>아이폰·안드로이드 앱 받는 곳으로 이동해요</small>
+            </span>
+            <span className={styles.otherSvcArrow} aria-hidden="true">
+              ↗
+            </span>
+          </a>
           <a
             className={styles.otherSvcCard}
             href="https://www.youtube.com/channel/UC2sFQ9wYDxyJp9zDSFB7QNA"

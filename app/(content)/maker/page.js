@@ -12,7 +12,6 @@ export const metadata = pageMetadata({
 });
 
 // 운영자의 다른 채널·작품. ready: false 인 항목은 아직 화면에 보이지 않습니다.
-// (예: 안드로이드 앱이 나오면 links에 추가.)
 const WORKS = [
   {
     key: "app-matjip",
@@ -22,6 +21,7 @@ const WORKS = [
     meta: "무료 (앱 내 구입 있음)",
     links: [
       { label: "App Store에서 보기", href: "https://apps.apple.com/kr/app/%EB%A7%9B%EC%A7%91%EA%B8%B0%EB%A1%9D/id6814456432" },
+      { label: "Google Play에서 보기", href: "https://play.google.com/store/apps/details?id=com.kncho.matjipgirok" },
     ],
     ready: true,
   },

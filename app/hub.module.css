@@ -468,6 +468,11 @@
 .otherSvcRound {
   border-radius: 50%;
 }
+/* 흰 바탕 앱 아이콘은 노란 칸 위에서 앱 아이콘처럼 보이게 둥근 네모 + 얇은 테두리 */
+.otherSvcTile {
+  border-radius: 11px;
+  border: 1px solid #e6dcc4;
+}
 .otherSvcBody {
   display: flex;
   flex-direction: column;
