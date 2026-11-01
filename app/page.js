@@ -108,9 +108,8 @@ export default function Home() {
             만든 사람의 다른 서비스
           </h2>
           <a className={styles.otherSvcCard} href="https://www.fittingmanager.com/" target="_blank" rel="noopener">
-            <span className={styles.otherSvcIcon} aria-hidden="true">
-              👗
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element -- 44px 작은 아이콘이라 그대로 씀 */}
+            <img className={styles.otherSvcIcon} src="/other/fittingmanager.png" width={44} height={44} alt="" loading="lazy" />
             <span className={styles.otherSvcBody}>
               <strong>쇼핑 피팅 매니저</strong>
               <span>찜한 옷을 AI가 내 체형에 입혀 봐요</span>
