@@ -419,13 +419,15 @@
 
 /* ---------- 만든 사람의 다른 서비스(바깥 사이트) ---------- */
 .otherSvc {
+  display: grid;
+  gap: 10px;
   margin-top: 28px;
 }
 .otherSvcTitle {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin: 0 0 10px 4px;
+  margin: 0 0 0 4px;
   font-size: 16px;
   font-weight: 800;
   letter-spacing: -0.01em;
@@ -462,6 +464,9 @@
   display: block;
   width: 44px;
   height: 44px;
+}
+.otherSvcRound {
+  border-radius: 50%;
 }
 .otherSvcBody {
   display: flex;
