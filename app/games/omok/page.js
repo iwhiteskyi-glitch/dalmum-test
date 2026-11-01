@@ -86,7 +86,7 @@ export default function OmokPage() {
         <span>
           <small>다른 게임도 있어요</small>
           <strong>미니게임 목록 보기</strong>
-          <span>오델로·장기·체스에도 도전해 보세요</span>
+          <span>돌 뒤집기·장기·체스에도 도전해 보세요</span>
         </span>
         <span className={styles.crossArrow} aria-hidden="true">
           →

@@ -4,6 +4,7 @@ import styles from "@/components/fortune/fortune.module.css";
 import CornerNav from "@/components/fortune/CornerNav";
 import TtiToday from "@/components/fortune/TtiToday";
 import TtiGrid from "@/components/fortune/TtiGrid";
+import { Fold } from "@/components/fortune/MoreInfo";
 import TTI_TEXTS from "@/lib/fortune/ttiTexts.json";
 import { koreaToday, ANIMALS, ELEMENTS, ELEMENTS_HANJA } from "@/lib/fortune/saju";
 import { TTI_SLUGS, ttiBySlug, ttiMatches, ttiYears, sajuYearOf } from "@/lib/fortune/tti";
@@ -69,30 +70,25 @@ export default async function TtiPage({ params }) {
         </div>
       </section>
 
-      <TtiToday branch={t.branch} initialDate={today} />
-
-      <section className={styles.section} aria-labelledby="about">
-        <h2 id="about" className={styles.sectionTitle}>
-          {t.name} 이야기
-        </h2>
-        <p className={styles.sectionText}>{TTI_TEXTS.animals[t.branch].intro}</p>
-        <dl className={styles.ttiMatches}>
-          <dt>태어난 해</dt>
-          <dd>{years.join(" · ")}</dd>
-          <dt>삼합 띠</dt>
-          <dd>
-            {m.three.map((b) => `${ANIMALS[b]}띠`).join(" · ")} — 같은 무리로 묶여 힘을 모은다고 봐요
-          </dd>
-          <dt>육합 띠</dt>
-          <dd>{ANIMALS[m.six]}띠 — 짝을 이뤄 잘 어우러진다고 봐요</dd>
-          <dt>충 띠</dt>
-          <dd>{ANIMALS[m.clash]}띠 — 열두 지지에서 정반대 자리라 기운이 엇갈린다고 봐요</dd>
-        </dl>
-        <p className={styles.note}>
-          띠 사이의 합과 충은 옛 해석일 뿐, 실제 사람 사이의 궁합을 정하지 않아요. 더 알고 싶다면{" "}
-          <Link href="/reads/hap-chung">합과 충</Link> 글을 읽어 보세요.
-        </p>
-      </section>
+      <TtiToday branch={t.branch} initialDate={today}>
+        <Fold title={`${t.name} 이야기`} hint="태어난 해 · 삼합 · 육합 · 충">
+          <p className={styles.sectionText}>{TTI_TEXTS.animals[t.branch].intro}</p>
+          <dl className={styles.ttiMatches}>
+            <dt>태어난 해</dt>
+            <dd>{years.join(" · ")}</dd>
+            <dt>삼합 띠</dt>
+            <dd>{m.three.map((b) => `${ANIMALS[b]}띠`).join(" · ")} — 같은 무리로 묶여 힘을 모은다고 봐요</dd>
+            <dt>육합 띠</dt>
+            <dd>{ANIMALS[m.six]}띠 — 짝을 이뤄 잘 어우러진다고 봐요</dd>
+            <dt>충 띠</dt>
+            <dd>{ANIMALS[m.clash]}띠 — 열두 지지에서 정반대 자리라 기운이 엇갈린다고 봐요</dd>
+          </dl>
+          <p className={styles.note}>
+            띠 사이의 합과 충은 옛 해석일 뿐, 실제 사람 사이의 궁합을 정하지 않아요. 더 알고 싶다면{" "}
+            <Link href="/reads/hap-chung">합과 충</Link> 글을 읽어 보세요.
+          </p>
+        </Fold>
+      </TtiToday>
 
       <Link href="/fortune" className={styles.nextCard}>
         <span>

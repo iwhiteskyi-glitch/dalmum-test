@@ -109,7 +109,7 @@ export default function ChessPage() {
         <span>
           <small>다른 게임도 있어요</small>
           <strong>미니게임 목록 보기</strong>
-          <span>오목·오델로·장기에도 도전해 보세요</span>
+          <span>오목·돌 뒤집기·장기에도 도전해 보세요</span>
         </span>
         <span className={styles.crossArrow} aria-hidden="true">
           →

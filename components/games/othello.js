@@ -7,7 +7,7 @@ const VIEW = 400;
 const PAD = 14;
 const STEP = (VIEW - PAD * 2) / SIZE;
 
-/** 오델로 판: 둘 수 있는 칸에 작은 점을 보여 주고, 한 번 누르면 바로 둬요(칸이 커서 잘못 누를 일이 적어요). */
+/** 돌 뒤집기 판: 둘 수 있는 칸에 작은 점을 보여 주고, 한 번 누르면 바로 둬요(칸이 커서 잘못 누를 일이 적어요). */
 function OthelloBoard({ state, mySide, active, onMove }) {
   const hints = active ? legalMoves(state.cells, mySide) : [];
   const flipped = new Set(state.flipped || []);
@@ -30,7 +30,7 @@ function OthelloBoard({ state, mySide, active, onMove }) {
         viewBox={`0 0 ${VIEW} ${VIEW}`}
         onClick={handle}
         role="img"
-        aria-label="오델로 판"
+        aria-label="돌 뒤집기 판"
       >
         <defs>
           <radialGradient id="oth-black" cx="0.35" cy="0.3" r="0.75">

@@ -9,9 +9,9 @@ import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
 import { fortuneMetadata } from "@/lib/fortune/seo";
 
 export const metadata = fortuneMetadata({
-  title: "미니게임 | 오목·오델로·장기·체스, 단계마다 강해지는 컴퓨터와 한 판",
+  title: "미니게임 | 오목·돌 뒤집기·장기·체스, 단계마다 강해지는 컴퓨터와 한 판",
   description:
-    "설치 없이 바로 하는 미니게임. 10단계로 점점 강해지는 컴퓨터와 오목·오델로·장기·체스를 두고, 매일 바뀌는 묘수풀이도 풀어 보세요.",
+    "설치 없이 바로 하는 미니게임. 10단계로 점점 강해지는 컴퓨터와 오목·돌 뒤집기·장기·체스를 두고, 매일 바뀌는 묘수풀이도 풀어 보세요.",
   path: "/games",
   image: "games",
 });
@@ -29,7 +29,7 @@ export default function GamesPage() {
         </div>
         <h1 className={styles.heroTitle}>컴퓨터를 이겨 볼까?</h1>
         <p className={styles.lead}>
-          오목·오델로·장기·체스, 단계마다 조금씩 강해지는 컴퓨터와 한 판. 설치나 회원가입 없이 바로 시작하고,
+          오목·돌 뒤집기·장기·체스, 단계마다 조금씩 강해지는 컴퓨터와 한 판. 설치나 회원가입 없이 바로 시작하고,
           몇 단계까지 깼는지 친구에게 자랑해 보세요.
         </p>
       </section>
@@ -56,7 +56,7 @@ export default function GamesPage() {
               {OthelloIcon}
             </span>
             <div>
-              <h2>오델로</h2>
+              <h2>돌 뒤집기</h2>
               <p>상대 돌을 사이에 끼워 내 색으로 뒤집어요</p>
               <GameProgress game="othello" className={g.gameProg} />
             </div>

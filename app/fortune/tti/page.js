@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "@/components/fortune/fortune.module.css";
+import t from "@/components/fortune/today.module.css";
 import CornerNav from "@/components/fortune/CornerNav";
 import TtiGrid from "@/components/fortune/TtiGrid";
 import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
@@ -20,7 +21,9 @@ export const metadata = fortuneMetadata({
 
 export default function TtiHubPage() {
   const today = koreaToday();
-  const reads = READS.filter((r) => ["zodiac-animals", "zodiac-ipchun", "hap-chung", "ten-gods", "five-elements"].includes(r.slug));
+  const reads = READS.filter((r) =>
+    ["zodiac-animals", "zodiac-ipchun", "hap-chung", "ten-gods", "five-elements"].includes(r.slug),
+  );
 
   return (
     <>
@@ -37,7 +40,10 @@ export default function TtiHubPage() {
         </p>
       </section>
 
-      <TtiGrid initialDate={today} />
+      <div className={t.zone}>
+        <p className={t.zoneLabel}>오늘 열두 띠 운세 · 내 띠를 눌러 자세히 보기</p>
+        <TtiGrid initialDate={today} />
+      </div>
 
       <MoreInfo title="띠별 운세가 궁금하다면" lead="풀이가 어떻게 정해지는지, 내 띠는 어떻게 찾는지 모아 뒀어요.">
         <Fold title="띠별 운세는 이렇게 정해져요" hint="띠 글자의 본기 천간과 오늘 일진의 관계">
@@ -54,8 +60,8 @@ export default function TtiHubPage() {
             </li>
             <li>
               <strong>3. 띠끼리의 관계 더하기</strong>
-              오늘 날짜의 지지(일지)와 내 띠가 육합·삼합을 이루면 총운 별점을 하나 올리고, 정반대 자리(충)면 하나 내려요.
-              소띠와 양띠, 용띠와 개띠는 품은 천간이 같아서 이 관계까지 같은 날엔 풀이도 같아요.
+              오늘 날짜의 지지(일지)와 내 띠가 육합·삼합을 이루면 총운 별점을 하나 올리고, 정반대 자리(충)면 하나
+              내려요. 소띠와 양띠, 용띠와 개띠는 품은 천간이 같아서 이 관계까지 같은 날엔 풀이도 같아요.
             </li>
           </ol>
           <p className={styles.callout}>
@@ -76,13 +82,9 @@ export default function TtiHubPage() {
               {ANIMALS.map((a, b) => (
                 <tr key={a}>
                   <td style={{ whiteSpace: "nowrap" }}>
-                    <Link href={`/fortune/tti/${TTI_SLUGS[b]}`}>
-                      {a}띠
-                    </Link>
+                    <Link href={`/fortune/tti/${TTI_SLUGS[b]}`}>{a}띠</Link>
                   </td>
-                  <td>
-                    {ttiYears(b, sajuYearOf(today), 72).reverse().join(" · ")}
-                  </td>
+                  <td>{ttiYears(b, sajuYearOf(today), 72).reverse().join(" · ")}</td>
                 </tr>
               ))}
             </tbody>
