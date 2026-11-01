@@ -373,6 +373,18 @@
     {
       "city_code": "prague",
       "city_name": "프라하",
+      "local_name": {
+        "names": [
+          {
+            "lang": "체코어",
+            "text": "Praha"
+          },
+          {
+            "lang": "영어",
+            "text": "Prague"
+          }
+        ]
+      },
       "tier": 3,
       "intro": "블타바강 위에 놓인 카를교와 언덕 위 프라하성이 마주 보는 '천 개의 첨탑의 도시'예요. 구시가지 광장의 천문시계에서는 매시 정각마다 작은 창이 열리며 12사도 인형이 움직이는 모습을 볼 수 있어요.",
       "attractions": [

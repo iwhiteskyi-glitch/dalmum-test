@@ -424,6 +424,18 @@
     {
       "city_code": "rome",
       "city_name": "로마",
+      "local_name": {
+        "names": [
+          {
+            "lang": "이탈리아어",
+            "text": "Roma"
+          },
+          {
+            "lang": "영어",
+            "text": "Rome"
+          }
+        ]
+      },
       "tier": 3,
       "intro": "로마제국의 심장이었던 도시로, 콜로세움과 포로 로마노 같은 2000년 전 유적이 시내 한복판에 그대로 남아 있어요. '모든 길은 로마로 통한다'는 말처럼 이탈리아 여행의 관문 역할을 하는 수도이기도 해요.",
       "attractions": [
@@ -461,6 +473,19 @@
     {
       "city_code": "florence",
       "city_name": "피렌체",
+      "local_name": {
+        "names": [
+          {
+            "lang": "이탈리아어",
+            "text": "Firenze"
+          },
+          {
+            "lang": "영어",
+            "text": "Florence"
+          }
+        ],
+        "note": "우리말 이름 '피렌체'는 이탈리아어 Firenze를 따른 거예요."
+      },
       "tier": 3,
       "intro": "브루넬레스키가 설계한 붉은 돔의 두오모가 도시 전체를 내려다보는, 르네상스 미술과 건축이 꽃핀 토스카나의 중심 도시예요. 미켈란젤로의 다비드상을 비롯한 세계적인 예술 작품이 도시 곳곳에 남아 있어요.",
       "attractions": [
@@ -499,6 +524,18 @@
     {
       "city_code": "venice",
       "city_name": "베네치아",
+      "local_name": {
+        "names": [
+          {
+            "lang": "이탈리아어",
+            "text": "Venezia"
+          },
+          {
+            "lang": "영어",
+            "text": "Venice"
+          }
+        ]
+      },
       "tier": 3,
       "intro": "크고 작은 섬들이 수많은 다리로 이어진, 자동차 대신 배로만 이동하는 세계적으로 독특한 물의 도시예요. 대운하를 따라 곤돌라를 타거나 산 마르코 광장 주변 골목길을 걷는 것만으로도 특별한 경험이 돼요.",
       "attractions": [
@@ -536,6 +573,18 @@
     {
       "city_code": "milan",
       "city_name": "밀라노",
+      "local_name": {
+        "names": [
+          {
+            "lang": "이탈리아어",
+            "text": "Milano"
+          },
+          {
+            "lang": "영어",
+            "text": "Milan"
+          }
+        ]
+      },
       "tier": 3,
       "intro": "이탈리아의 경제와 패션을 이끄는 세련된 대도시예요. 세계적인 패션 브랜드들의 본고장이자, 레오나르도 다빈치의 '최후의 만찬'이 보존된 예술 도시이기도 해요.",
       "attractions": [

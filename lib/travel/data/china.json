@@ -411,6 +411,24 @@
     {
       "city_code": "shanghai",
       "city_name": "상하이",
+      "local_name": {
+        "names": [
+          {
+            "lang": "중국어",
+            "text": "上海",
+            "read": "Shànghǎi"
+          },
+          {
+            "lang": "우리 한자음",
+            "text": "상해"
+          },
+          {
+            "lang": "영어",
+            "text": "Shanghai"
+          }
+        ],
+        "note": "강변 거리 와이탄은 중국어로 外滩(Wàitān), 영어로는 The Bund라고 해요."
+      },
       "tier": 2,
       "intro": "중국 최대 경제 도시 상하이는 황푸강을 사이에 두고 유럽풍 옛 건물과 초고층 빌딩숲이 마주 보는 독특한 스카이라인으로 유명해요. 옛 강남 정원과 최첨단 전망대를 한나절 안에 오갈 수 있어요.",
       "attractions": [
@@ -448,6 +466,24 @@
     {
       "city_code": "beijing",
       "city_name": "베이징",
+      "local_name": {
+        "names": [
+          {
+            "lang": "중국어",
+            "text": "北京",
+            "read": "Běijīng"
+          },
+          {
+            "lang": "우리 한자음",
+            "text": "북경"
+          },
+          {
+            "lang": "영어",
+            "text": "Beijing"
+          }
+        ],
+        "note": "옛 로마자 표기 Peking은 지금도 '베이징 덕(Peking duck)' 같은 이름에 남아 있어요."
+      },
       "tier": 2,
       "intro": "중국의 수도 베이징은 명·청 시대 황궁인 고궁을 중심으로 옛 골목 후통과 현대적인 거리가 뒤섞여 있어요. 근교에는 산등성이를 따라 굽이치는 만리장성이 있어 당일치기로 다녀오기 좋아요.",
       "attractions": [
@@ -485,6 +521,28 @@
     {
       "city_code": "qingdao",
       "city_name": "칭다오",
+      "local_name": {
+        "names": [
+          {
+            "lang": "중국어",
+            "text": "青岛",
+            "read": "Qīngdǎo"
+          },
+          {
+            "lang": "번체(대만·홍콩)",
+            "text": "青島"
+          },
+          {
+            "lang": "우리 한자음",
+            "text": "청도"
+          },
+          {
+            "lang": "영어",
+            "text": "Qingdao"
+          }
+        ],
+        "note": "칭다오 맥주 상표의 Tsingtao는 병음이 나오기 전에 쓰던 옛 로마자 표기예요."
+      },
       "tier": 2,
       "intro": "독일 조계지 시절 지어진 붉은 지붕 건물들이 해안을 따라 남아 있는 항구 도시예요. 바닷바람을 맞으며 걷는 잔교 산책과 갓 뽑은 생맥주 시음이 칭다오 여행의 대표적인 즐길 거리예요.",
       "attractions": [
@@ -523,6 +581,27 @@
     {
       "city_code": "zhangjiajie",
       "city_name": "장자제",
+      "local_name": {
+        "names": [
+          {
+            "lang": "중국어",
+            "text": "张家界",
+            "read": "Zhāngjiājiè"
+          },
+          {
+            "lang": "번체(대만·홍콩)",
+            "text": "張家界"
+          },
+          {
+            "lang": "우리 한자음",
+            "text": "장가계"
+          },
+          {
+            "lang": "영어",
+            "text": "Zhangjiajie"
+          }
+        ]
+      },
       "tier": 2,
       "intro": "기둥처럼 솟은 바위 봉우리 수천 개가 펼쳐진 산악 도시로, 영화 '아바타'의 배경으로도 알려졌어요. 유리 다리와 케이블카를 타고 협곡과 봉우리를 내려다보는 스릴 넘치는 경험을 할 수 있어요.",
       "attractions": [
@@ -561,6 +640,24 @@
     {
       "city_code": "xian",
       "city_name": "시안",
+      "local_name": {
+        "names": [
+          {
+            "lang": "중국어",
+            "text": "西安",
+            "read": "Xī'ān"
+          },
+          {
+            "lang": "우리 한자음",
+            "text": "서안"
+          },
+          {
+            "lang": "영어",
+            "text": "Xi'an"
+          }
+        ],
+        "note": "영어로 적을 때 Xi와 an 사이에 작은따옴표를 넣어 '시·안' 두 소리라는 걸 나타내요."
+      },
       "tier": 2,
       "intro": "실크로드의 출발점이자 여러 왕조의 수도였던 옛 도시예요. 땅속에서 발굴된 병마용부터 옛 성벽, 회민가의 먹거리까지 한 도시 안에서 역사와 음식을 함께 즐길 수 있어요.",
       "attractions": [
@@ -598,6 +695,23 @@
     {
       "city_code": "chengdu",
       "city_name": "청두",
+      "local_name": {
+        "names": [
+          {
+            "lang": "중국어",
+            "text": "成都",
+            "read": "Chéngdū"
+          },
+          {
+            "lang": "우리 한자음",
+            "text": "성도"
+          },
+          {
+            "lang": "영어",
+            "text": "Chengdu"
+          }
+        ]
+      },
       "tier": 2,
       "intro": "판다의 고향으로 잘 알려진 쓰촨 지역의 중심 도시예요. 얼얼하고 매운 사천 요리와 여유로운 찻집 문화 덕분에 '느긋한 도시'라는 별명으로도 불려요.",
       "attractions": [

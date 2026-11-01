@@ -381,6 +381,20 @@
     {
       "city_code": "taipei",
       "city_name": "타이베이",
+      "local_name": {
+        "names": [
+          {
+            "lang": "중국어(대만)",
+            "text": "臺北",
+            "read": "Táiběi"
+          },
+          {
+            "lang": "영어",
+            "text": "Taipei"
+          }
+        ],
+        "note": "행정상 표준 글자는 臺北이고, 간판이나 일상 글에서는 台北도 많이 써요. 臺中·臺南도 台中·台南으로 흔히 써요."
+      },
       "tier": 2,
       "intro": "대만의 수도 타이베이는 한때 세계 최고층이었던 마천루와 오래된 야시장이 나란히 있는 도시예요. 시내를 둘러싼 나지막한 산에 올라가면 도심 야경까지 한눈에 담을 수 있어요.",
       "attractions": [
@@ -419,6 +433,20 @@
     {
       "city_code": "kaohsiung",
       "city_name": "가오슝",
+      "local_name": {
+        "names": [
+          {
+            "lang": "중국어(대만)",
+            "text": "高雄",
+            "read": "Gāoxióng"
+          },
+          {
+            "lang": "영어",
+            "text": "Kaohsiung"
+          }
+        ],
+        "note": "영어 표기 Kaohsiung은 예전 로마자 표기법을 그대로 써서 병음(Gaoxiong)과 모양이 달라요."
+      },
       "tier": 2,
       "intro": "대만 남부의 항구 도시 가오슝은 옛 부두 창고를 꾸민 예술지구와 페리로 건너가는 섬이 함께 있어요. 남쪽 지방 특유의 따뜻한 날씨 덕분에 열대 과일 음료 문화도 발달했어요.",
       "attractions": [
@@ -457,6 +485,19 @@
     {
       "city_code": "taichung",
       "city_name": "타이중",
+      "local_name": {
+        "names": [
+          {
+            "lang": "중국어(대만)",
+            "text": "臺中",
+            "read": "Táizhōng"
+          },
+          {
+            "lang": "영어",
+            "text": "Taichung"
+          }
+        ]
+      },
       "tier": 2,
       "intro": "대만 중부의 타이중은 알록달록한 벽화 마을부터 옛 병원을 개조한 디저트 가게까지 볼거리가 다양해요. 버블티를 처음 선보인 곳 중 하나로 꼽히는 찻집도 이 도시에 있어요.",
       "attractions": [
@@ -496,6 +537,19 @@
     {
       "city_code": "tainan",
       "city_name": "타이난",
+      "local_name": {
+        "names": [
+          {
+            "lang": "중국어(대만)",
+            "text": "臺南",
+            "read": "Táinán"
+          },
+          {
+            "lang": "영어",
+            "text": "Tainan"
+          }
+        ]
+      },
       "tier": 2,
       "intro": "대만에서 가장 오래된 도시 타이난은 네덜란드 통치 시절 세워진 성터와 청나라 유적이 곳곳에 남아 있어요. 옛 도읍답게 대만 대표 먹거리의 발상지로도 꼽혀요.",
       "attractions": [
@@ -535,6 +589,19 @@
     {
       "city_code": "hualien",
       "city_name": "화롄",
+      "local_name": {
+        "names": [
+          {
+            "lang": "중국어(대만)",
+            "text": "花蓮",
+            "read": "Huālián"
+          },
+          {
+            "lang": "영어",
+            "text": "Hualien"
+          }
+        ]
+      },
       "tier": 2,
       "intro": "대만 동부 해안 도시 화롄은 대리석 협곡과 초승달 모양 해변이 있는 자연 여행지예요. 예로부터 떡과 만두 같은 손으로 빚은 먹거리가 발달한 곳으로도 잘 알려져 있어요.",
       "attractions": [

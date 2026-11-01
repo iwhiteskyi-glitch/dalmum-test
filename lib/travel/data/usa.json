@@ -467,6 +467,19 @@
     {
       "city_code": "guam",
       "city_name": "괌",
+      "local_name": {
+        "names": [
+          {
+            "lang": "영어",
+            "text": "Guam"
+          },
+          {
+            "lang": "차모로어",
+            "text": "Guåhan"
+          }
+        ],
+        "note": "괌에서는 영어와 함께 원주민 언어인 차모로어도 공용어로 써요."
+      },
       "tier": 2,
       "intro": "한국에서 비행기로 4시간 20분이면 닿는 가까운 미국령 휴양지예요. 투몬 비치의 에메랄드빛 바다와 미군기지가 함께 있는 독특한 분위기 덕분에 신혼여행지로도 오랫동안 사랑받아 왔어요.",
       "attractions": [
@@ -505,6 +518,14 @@
     {
       "city_code": "saipan",
       "city_name": "사이판",
+      "local_name": {
+        "names": [
+          {
+            "lang": "영어",
+            "text": "Saipan"
+          }
+        ]
+      },
       "tier": 2,
       "intro": "괌보다 한적하고 자연 그대로의 모습이 많이 남은 북마리아나 제도의 섬이에요. 에메랄드빛 바다 위에 떠 있는 마나가하섬과 세계적인 다이빙 명소 그로토가 대표 볼거리예요.",
       "attractions": [
@@ -543,6 +564,19 @@
     {
       "city_code": "hawaii",
       "city_name": "하와이",
+      "local_name": {
+        "names": [
+          {
+            "lang": "영어",
+            "text": "Hawaii"
+          },
+          {
+            "lang": "하와이어",
+            "text": "Hawaiʻi"
+          }
+        ],
+        "note": "하와이어 표기의 ʻ는 wai와 i 사이를 한 박자 끊어 읽으라는 표시예요."
+      },
       "tier": 2,
       "intro": "오아후섬의 중심 도시 호놀룰루를 품은 곳으로, 와이키키 해변의 여유와 진주만의 역사를 함께 만날 수 있어요. 현대 서핑이 시작된 곳답게 해변 문화가 도시 곳곳에 스며 있어요.",
       "attractions": [
@@ -580,6 +614,15 @@
     {
       "city_code": "newyork",
       "city_name": "뉴욕",
+      "local_name": {
+        "names": [
+          {
+            "lang": "영어",
+            "text": "New York"
+          }
+        ],
+        "note": "줄여서 NYC(뉴욕시)라고도 써요."
+      },
       "tier": 2,
       "intro": "자유의 여신상과 타임스스퀘어로 대표되는 미국 최대 도시예요. 브로드웨이 뮤지컬과 센트럴파크의 사계절 풍경까지, 도시 안에서 다양한 볼거리를 즐길 수 있어요.",
       "attractions": [
@@ -617,6 +660,15 @@
     {
       "city_code": "la",
       "city_name": "LA",
+      "local_name": {
+        "names": [
+          {
+            "lang": "영어",
+            "text": "Los Angeles"
+          }
+        ],
+        "note": "스페인어에서 온 이름으로 '천사들'이라는 뜻이에요. 줄여서 LA라고 불러요."
+      },
       "tier": 2,
       "intro": "할리우드와 영화 산업으로 유명한 남부 캘리포니아의 대도시예요. 그리피스 천문대에서 도심 전망을 감상하고, 산타모니카 해변에서 캘리포니아의 햇살을 즐길 수 있어요.",
       "attractions": [
@@ -655,6 +707,15 @@
     {
       "city_code": "lasvegas",
       "city_name": "라스베이거스",
+      "local_name": {
+        "names": [
+          {
+            "lang": "영어",
+            "text": "Las Vegas"
+          }
+        ],
+        "note": "스페인어에서 온 이름으로 '초원들'이라는 뜻이에요. 줄여서 Vegas라고도 해요."
+      },
       "tier": 2,
       "intro": "네바다 사막 한가운데 세워진 세계적인 엔터테인먼트 도시예요. 화려한 카지노 호텔이 늘어선 스트립 거리와 밤마다 펼쳐지는 무료 쇼가 여행객들을 끌어모아요.",
       "attractions": [
@@ -693,6 +754,15 @@
     {
       "city_code": "sanfrancisco",
       "city_name": "샌프란시스코",
+      "local_name": {
+        "names": [
+          {
+            "lang": "영어",
+            "text": "San Francisco"
+          }
+        ],
+        "note": "줄여서 SF라고도 써요."
+      },
       "tier": 2,
       "intro": "붉은 현수교 금문교로 유명한 캘리포니아 북부의 항구 도시예요. 가파른 언덕길과 알카트라즈 섬, 피어39의 바다사자까지 걸어서 둘러볼 거리가 많아요.",
       "attractions": [

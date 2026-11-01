@@ -1,0 +1,235 @@
+{
+  "_설명": "도시 페이지 '현지어로는?' 줄 초안(2026-11-01). names: 표기 목록(lang 언어 이름, text 표기, read 읽는 법·로마자 — 없으면 생략), note: 짧은 덧붙임(없으면 생략). 서치 콘솔 검색어 '유후인 일본어로', '상해 중국어로', '나트랑 영어로' 등에 답하려고 만듦.",
+  "japan": {
+    "tokyo": { "names": [{ "lang": "일본어", "text": "東京", "read": "とうきょう" }, { "lang": "영어", "text": "Tokyo" }] },
+    "osaka": { "names": [{ "lang": "일본어", "text": "大阪", "read": "おおさか" }, { "lang": "영어", "text": "Osaka" }] },
+    "kyoto": { "names": [{ "lang": "일본어", "text": "京都", "read": "きょうと" }, { "lang": "영어", "text": "Kyoto" }] },
+    "fukuoka": {
+      "names": [{ "lang": "일본어", "text": "福岡", "read": "ふくおか" }, { "lang": "영어", "text": "Fukuoka" }],
+      "note": "신칸센이 서는 큰 역 이름은 하카타(博多, はかた)라서 함께 알아 두면 길 찾기가 쉬워요."
+    },
+    "sapporo": { "names": [{ "lang": "일본어", "text": "札幌", "read": "さっぽろ" }, { "lang": "영어", "text": "Sapporo" }] },
+    "okinawa": {
+      "names": [{ "lang": "일본어", "text": "沖縄", "read": "おきなわ" }, { "lang": "영어", "text": "Okinawa" }],
+      "note": "공항이 있는 중심 도시는 나하(那覇, なは)예요."
+    },
+    "nagoya": { "names": [{ "lang": "일본어", "text": "名古屋", "read": "なごや" }, { "lang": "영어", "text": "Nagoya" }] },
+    "kobe": { "names": [{ "lang": "일본어", "text": "神戸", "read": "こうべ" }, { "lang": "영어", "text": "Kobe" }] },
+    "nara": { "names": [{ "lang": "일본어", "text": "奈良", "read": "なら" }, { "lang": "영어", "text": "Nara" }] },
+    "yufuin": {
+      "names": [{ "lang": "일본어", "text": "由布院", "read": "ゆふいん" }, { "lang": "영어", "text": "Yufuin" }],
+      "note": "기차역 이름은 由布院이고, 마을 이름은 湯布院으로도 써요. 둘 다 '유후인'이라고 읽어요."
+    }
+  },
+  "china": {
+    "shanghai": {
+      "names": [{ "lang": "중국어", "text": "上海", "read": "Shànghǎi" }, { "lang": "영어", "text": "Shanghai" }],
+      "note": "강변 거리 와이탄은 중국어로 外滩(Wàitān), 영어로는 The Bund라고 해요."
+    },
+    "beijing": {
+      "names": [{ "lang": "중국어", "text": "北京", "read": "Běijīng" }, { "lang": "영어", "text": "Beijing" }],
+      "note": "옛 영어 표기 Peking은 지금도 '베이징 덕(Peking duck)' 같은 이름에 남아 있어요."
+    },
+    "qingdao": {
+      "names": [{ "lang": "중국어", "text": "青岛", "read": "Qīngdǎo" }, { "lang": "영어", "text": "Qingdao" }],
+      "note": "칭다오 맥주 상표에 쓰인 Tsingtao는 예전 영어 표기법으로 적은 이름이에요."
+    },
+    "zhangjiajie": { "names": [{ "lang": "중국어", "text": "张家界", "read": "Zhāngjiājiè" }, { "lang": "영어", "text": "Zhangjiajie" }] },
+    "xian": {
+      "names": [{ "lang": "중국어", "text": "西安", "read": "Xī'ān" }, { "lang": "영어", "text": "Xi'an" }],
+      "note": "영어로 적을 때 Xi와 an 사이에 작은따옴표를 넣어 '시·안' 두 소리라는 걸 나타내요."
+    },
+    "chengdu": { "names": [{ "lang": "중국어", "text": "成都", "read": "Chéngdū" }, { "lang": "영어", "text": "Chengdu" }] }
+  },
+  "taiwan": {
+    "taipei": {
+      "names": [{ "lang": "중국어(대만)", "text": "臺北", "read": "Táiběi" }, { "lang": "영어", "text": "Taipei" }],
+      "note": "공식 표기는 臺北이고, 간판이나 일상 글에서는 台北도 흔히 써요."
+    },
+    "kaohsiung": {
+      "names": [{ "lang": "중국어(대만)", "text": "高雄", "read": "Gāoxióng" }, { "lang": "영어", "text": "Kaohsiung" }],
+      "note": "영어 표기 Kaohsiung은 예전 로마자 표기법을 그대로 써서 병음(Gaoxiong)과 모양이 달라요."
+    },
+    "taichung": { "names": [{ "lang": "중국어(대만)", "text": "臺中", "read": "Táizhōng" }, { "lang": "영어", "text": "Taichung" }] },
+    "tainan": { "names": [{ "lang": "중국어(대만)", "text": "臺南", "read": "Táinán" }, { "lang": "영어", "text": "Tainan" }] },
+    "hualien": { "names": [{ "lang": "중국어(대만)", "text": "花蓮", "read": "Huālián" }, { "lang": "영어", "text": "Hualien" }] }
+  },
+  "hongkong": {
+    "hongkong": {
+      "names": [
+        { "lang": "광동어", "text": "香港", "read": "Hēunggóng" },
+        { "lang": "영어", "text": "Hong Kong" }
+      ],
+      "note": "표준 중국어로는 Xiānggǎng(샹강)이라고 읽어요. '향기로운 항구'라는 뜻이에요."
+    }
+  },
+  "macau": {
+    "macau": {
+      "names": [
+        { "lang": "광동어", "text": "澳門", "read": "Oumún" },
+        { "lang": "포르투갈어", "text": "Macau" },
+        { "lang": "영어", "text": "Macao" }
+      ],
+      "note": "영어로는 Macao와 Macau를 모두 써요."
+    }
+  },
+  "vietnam": {
+    "danang": { "names": [{ "lang": "베트남어", "text": "Đà Nẵng" }, { "lang": "영어", "text": "Da Nang" }] },
+    "hanoi": { "names": [{ "lang": "베트남어", "text": "Hà Nội" }, { "lang": "영어", "text": "Hanoi" }] },
+    "hochiminh": {
+      "names": [{ "lang": "베트남어", "text": "Thành phố Hồ Chí Minh" }, { "lang": "영어", "text": "Ho Chi Minh City" }],
+      "note": "옛 이름 사이공(Sài Gòn)도 지금까지 널리 써요."
+    },
+    "nhatrang": {
+      "names": [{ "lang": "베트남어", "text": "Nha Trang" }, { "lang": "영어", "text": "Nha Trang" }],
+      "note": "베트남어 소리는 '냐짱'에 가깝고, 우리나라에서는 영어 글자대로 '나트랑'이라고 많이 불러요."
+    },
+    "phuquoc": { "names": [{ "lang": "베트남어", "text": "Phú Quốc" }, { "lang": "영어", "text": "Phu Quoc" }] },
+    "hoian": { "names": [{ "lang": "베트남어", "text": "Hội An" }, { "lang": "영어", "text": "Hoi An" }] },
+    "dalat": { "names": [{ "lang": "베트남어", "text": "Đà Lạt" }, { "lang": "영어", "text": "Da Lat" }] },
+    "halong": {
+      "names": [{ "lang": "베트남어", "text": "Vịnh Hạ Long" }, { "lang": "영어", "text": "Ha Long Bay" }],
+      "note": "Vịnh은 '만(바다가 육지 쪽으로 들어온 곳)'이라는 뜻이에요."
+    }
+  },
+  "thailand": {
+    "bangkok": {
+      "names": [{ "lang": "태국어", "text": "กรุงเทพมหานคร", "read": "끄룽텝 마하나콘" }, { "lang": "영어", "text": "Bangkok" }],
+      "note": "태국 사람들은 보통 줄여서 '끄룽텝(กรุงเทพฯ)'이라고 불러요."
+    },
+    "chiangmai": { "names": [{ "lang": "태국어", "text": "เชียงใหม่", "read": "치앙마이" }, { "lang": "영어", "text": "Chiang Mai" }] },
+    "phuket": { "names": [{ "lang": "태국어", "text": "ภูเก็ต", "read": "푸껫" }, { "lang": "영어", "text": "Phuket" }] },
+    "pattaya": { "names": [{ "lang": "태국어", "text": "พัทยา", "read": "팟타야" }, { "lang": "영어", "text": "Pattaya" }] },
+    "kohsamui": {
+      "names": [{ "lang": "태국어", "text": "เกาะสมุย", "read": "꺼 사무이" }, { "lang": "영어", "text": "Ko Samui" }],
+      "note": "앞의 เกาะ(꺼)는 '섬'이라는 뜻이에요. 영어로는 Koh Samui라고도 써요."
+    },
+    "krabi": { "names": [{ "lang": "태국어", "text": "กระบี่", "read": "끄라비" }, { "lang": "영어", "text": "Krabi" }] },
+    "huahin": { "names": [{ "lang": "태국어", "text": "หัวหิน", "read": "후아힌" }, { "lang": "영어", "text": "Hua Hin" }] }
+  },
+  "laos": {
+    "vientiane": { "names": [{ "lang": "라오어", "text": "ວຽງຈັນ", "read": "위앙짠" }, { "lang": "영어", "text": "Vientiane" }] },
+    "luangprabang": { "names": [{ "lang": "라오어", "text": "ຫຼວງພະບາງ", "read": "루앙파방" }, { "lang": "영어", "text": "Luang Prabang" }] }
+  },
+  "malaysia": {
+    "kotakinabalu": {
+      "names": [{ "lang": "말레이어", "text": "Kota Kinabalu" }, { "lang": "영어", "text": "Kota Kinabalu" }],
+      "note": "현지에서도 줄여서 KK라고 많이 불러요. Kota는 말레이어로 '도시'라는 뜻이에요."
+    },
+    "kualalumpur": {
+      "names": [{ "lang": "말레이어", "text": "Kuala Lumpur" }, { "lang": "영어", "text": "Kuala Lumpur" }],
+      "note": "줄여서 KL이라고 많이 불러요."
+    },
+    "penang": {
+      "names": [{ "lang": "말레이어", "text": "Pulau Pinang" }, { "lang": "영어", "text": "Penang" }],
+      "note": "Pulau는 '섬'이라는 뜻이에요. 섬의 중심 도시는 조지타운(George Town)이에요."
+    }
+  },
+  "mongolia": {
+    "ulaanbaatar": {
+      "names": [{ "lang": "몽골어", "text": "Улаанбаатар", "read": "Ulaanbaatar" }, { "lang": "영어", "text": "Ulaanbaatar" }],
+      "note": "'붉은 영웅'이라는 뜻이에요. 몽골어는 러시아어와 같은 키릴 문자로 써요."
+    }
+  },
+  "philippines": {
+    "cebu": {
+      "names": [{ "lang": "세부아노어", "text": "Sugbo" }, { "lang": "영어", "text": "Cebu" }],
+      "note": "세부 사람들은 필리핀어(타갈로그)보다 세부아노어를 더 많이 써요."
+    },
+    "boracay": { "names": [{ "lang": "필리핀어", "text": "Boracay" }, { "lang": "영어", "text": "Boracay" }] },
+    "manila": { "names": [{ "lang": "필리핀어", "text": "Maynila" }, { "lang": "영어", "text": "Manila" }] },
+    "bohol": { "names": [{ "lang": "필리핀어", "text": "Bohol" }, { "lang": "영어", "text": "Bohol" }] }
+  },
+  "singapore": {
+    "singapore": {
+      "names": [
+        { "lang": "영어", "text": "Singapore" },
+        { "lang": "중국어", "text": "新加坡", "read": "Xīnjiāpō" },
+        { "lang": "말레이어", "text": "Singapura" },
+        { "lang": "타밀어", "text": "சிங்கப்பூர்" }
+      ],
+      "note": "공용어가 넷이라 표지판에 네 가지 이름이 함께 적힌 곳이 많아요. Singapura는 '사자의 도시'라는 뜻이에요."
+    }
+  },
+  "indonesia": {
+    "bali": { "names": [{ "lang": "인도네시아어", "text": "Bali" }, { "lang": "영어", "text": "Bali" }] },
+    "jakarta": { "names": [{ "lang": "인도네시아어", "text": "Jakarta" }, { "lang": "영어", "text": "Jakarta" }] }
+  },
+  "usa": {
+    "guam": {
+      "names": [{ "lang": "영어", "text": "Guam" }, { "lang": "차모로어", "text": "Guåhan" }],
+      "note": "괌에서는 영어와 함께 원주민 언어인 차모로어도 공용어로 써요."
+    },
+    "saipan": { "names": [{ "lang": "영어", "text": "Saipan" }] },
+    "hawaii": {
+      "names": [{ "lang": "영어", "text": "Hawaii" }, { "lang": "하와이어", "text": "Hawaiʻi" }],
+      "note": "하와이어 표기에는 i 사이에 짧게 끊어 읽으라는 표시(ʻ)가 들어가요."
+    },
+    "newyork": { "names": [{ "lang": "영어", "text": "New York" }], "note": "줄여서 NYC(뉴욕시)라고도 써요." },
+    "la": {
+      "names": [{ "lang": "영어", "text": "Los Angeles" }],
+      "note": "스페인어에서 온 이름으로 '천사들'이라는 뜻이에요. 줄여서 LA라고 불러요."
+    },
+    "lasvegas": { "names": [{ "lang": "영어", "text": "Las Vegas" }], "note": "스페인어에서 온 이름으로 '초원들'이라는 뜻이에요." },
+    "sanfrancisco": { "names": [{ "lang": "영어", "text": "San Francisco" }], "note": "줄여서 SF라고도 써요." }
+  },
+  "australia": {
+    "sydney": { "names": [{ "lang": "영어", "text": "Sydney" }] },
+    "melbourne": { "names": [{ "lang": "영어", "text": "Melbourne" }] },
+    "brisbane": { "names": [{ "lang": "영어", "text": "Brisbane" }] }
+  },
+  "canada": {
+    "vancouver": { "names": [{ "lang": "영어", "text": "Vancouver" }] },
+    "toronto": { "names": [{ "lang": "영어", "text": "Toronto" }] }
+  },
+  "uk": {
+    "london": { "names": [{ "lang": "영어", "text": "London" }] },
+    "edinburgh": {
+      "names": [{ "lang": "영어", "text": "Edinburgh" }, { "lang": "스코틀랜드 게일어", "text": "Dùn Èideann" }],
+      "note": "영어로 적을 때 끝의 -burgh는 '버러'에 가깝게 읽어요."
+    }
+  },
+  "france": {
+    "paris": { "names": [{ "lang": "프랑스어", "text": "Paris" }], "note": "프랑스어로는 끝의 s를 읽지 않아 '빠히'에 가깝게 소리 나요." },
+    "nice": { "names": [{ "lang": "프랑스어", "text": "Nice" }] }
+  },
+  "germany": {
+    "berlin": { "names": [{ "lang": "독일어", "text": "Berlin" }] },
+    "munich": { "names": [{ "lang": "독일어", "text": "München" }, { "lang": "영어", "text": "Munich" }] }
+  },
+  "austria": {
+    "vienna": {
+      "names": [{ "lang": "독일어", "text": "Wien" }, { "lang": "영어", "text": "Vienna" }],
+      "note": "우리말 이름 '빈'은 독일어 Wien을 따른 거예요."
+    },
+    "salzburg": { "names": [{ "lang": "독일어", "text": "Salzburg" }], "note": "'소금 성'이라는 뜻이에요." }
+  },
+  "switzerland": {
+    "interlaken": { "names": [{ "lang": "독일어", "text": "Interlaken" }], "note": "'호수 사이'라는 뜻의 라틴어에서 온 이름이에요." },
+    "zurich": { "names": [{ "lang": "독일어", "text": "Zürich" }, { "lang": "영어", "text": "Zurich" }] }
+  },
+  "czech": {
+    "prague": { "names": [{ "lang": "체코어", "text": "Praha" }, { "lang": "영어", "text": "Prague" }] }
+  },
+  "italy": {
+    "rome": { "names": [{ "lang": "이탈리아어", "text": "Roma" }, { "lang": "영어", "text": "Rome" }] },
+    "florence": {
+      "names": [{ "lang": "이탈리아어", "text": "Firenze" }, { "lang": "영어", "text": "Florence" }],
+      "note": "우리말 이름 '피렌체'는 이탈리아어 Firenze를 따른 거예요."
+    },
+    "venice": { "names": [{ "lang": "이탈리아어", "text": "Venezia" }, { "lang": "영어", "text": "Venice" }] },
+    "milan": { "names": [{ "lang": "이탈리아어", "text": "Milano" }, { "lang": "영어", "text": "Milan" }] }
+  },
+  "spain": {
+    "barcelona": { "names": [{ "lang": "스페인어", "text": "Barcelona" }], "note": "바르셀로나가 속한 카탈루냐 지방의 말(카탈루냐어)로도 이름이 같아요." },
+    "madrid": { "names": [{ "lang": "스페인어", "text": "Madrid" }] },
+    "seville": { "names": [{ "lang": "스페인어", "text": "Sevilla" }, { "lang": "영어", "text": "Seville" }] }
+  },
+  "turkey": {
+    "istanbul": {
+      "names": [{ "lang": "튀르키예어", "text": "İstanbul" }, { "lang": "영어", "text": "Istanbul" }],
+      "note": "튀르키예어에서는 대문자 I에도 점이 찍힌 İ를 따로 써요."
+    },
+    "cappadocia": { "names": [{ "lang": "튀르키예어", "text": "Kapadokya" }, { "lang": "영어", "text": "Cappadocia" }] }
+  }
+}
