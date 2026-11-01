@@ -10,7 +10,8 @@ export default function GameProgress({ game, className }) {
   useEffect(() => {
     const meta = GAMES[game];
     const p = loadProgress(game);
-    if (p.second) setText(`${meta.tracks.first.short} 완주 · ${meta.tracks.second.short} ${p.second} / ${STAGE_COUNT}단계`);
+    if (p.second >= STAGE_COUNT) setText(p.best ? `👑 전설 · 무한 연승 최고 ${p.best}연승` : "👑 전설 · 무한 연승이 열렸어요");
+    else if (p.second) setText(`${meta.tracks.first.short} 완주 · ${meta.tracks.second.short} ${p.second} / ${STAGE_COUNT}단계`);
     else if (p.first)
       setText(p.first >= STAGE_COUNT ? `${meta.tracks.first.short} 완주! ${meta.tracks.second.label}이 열렸어요` : `${p.first} / ${STAGE_COUNT}단계 깼어요`);
     else setText(`1단계부터 · 모두 ${STAGE_COUNT}단계`);

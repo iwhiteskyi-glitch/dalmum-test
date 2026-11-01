@@ -934,3 +934,51 @@ a.gameItem:hover {
 .listMore:hover {
   text-decoration: underline;
 }
+
+/* ---------- ★(무르기 없이 이김) · 무한 연승 ---------- */
+.star {
+  color: #e0a21b;
+}
+.starNote {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  text-align: center;
+}
+.starHint {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--muted-ink);
+  text-align: center;
+}
+.endStar {
+  margin: -6px 0 14px;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #b07d10;
+}
+.endlessRules {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  font-size: 14.5px;
+  line-height: 1.75;
+}
+.endlessBest {
+  margin: 12px 0 14px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--c-games);
+}
+.endlessStart {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+}
+/* 탭이 셋이라 좁은 폰에서는 글자를 조금 줄여 한 줄에 들어가게 해요 */
+@media (max-width: 420px) {
+  .tab {
+    padding: 9px 4px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+}

@@ -121,7 +121,7 @@ function Solver({ game, meta, rules, p, date, isToday, record, onSolved, streak 
     setState(v.after);
     if (v.kind === "solved") {
       setStatus("solved");
-      const rec = { tries, hint: hintUsed };
+      const rec = { tries, hint: hintUsed, onDay: isToday };
       setResult(rec);
       onSolved(rec);
       track("puzzle_solved", { game, level: p.level, tries, hint: hintUsed, today: isToday });

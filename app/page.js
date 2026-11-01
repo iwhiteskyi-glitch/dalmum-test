@@ -72,7 +72,7 @@ export default function Home() {
             <span className={styles.heroMark}>나와 우리</span>
           </h1>
           <p className={styles.heroLead}>
-            꿈해몽·운세·궁합부터 관상, 닮은꼴, 여행 이름까지.
+            꿈해몽·운세·궁합부터 관상, 닮은꼴, 여행 이름, 미니게임까지.
             <br className={styles.brWide} /> 가볍게 해보고 친구와 나눠 보세요.
           </p>
         </section>

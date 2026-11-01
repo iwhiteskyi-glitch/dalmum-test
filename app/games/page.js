@@ -9,9 +9,9 @@ import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
 import { fortuneMetadata } from "@/lib/fortune/seo";
 
 export const metadata = fortuneMetadata({
-  title: "미니게임 | 단계마다 강해지는 컴퓨터와 두는 오목",
+  title: "미니게임 | 오목·오델로·장기·체스, 단계마다 강해지는 컴퓨터와 한 판",
   description:
-    "설치 없이 바로 하는 미니게임. 10단계로 점점 강해지는 컴퓨터와 오목을 두고, 몇 단계까지 깼는지 친구에게 자랑해 보세요.",
+    "설치 없이 바로 하는 미니게임. 10단계로 점점 강해지는 컴퓨터와 오목·오델로·장기·체스를 두고, 매일 바뀌는 묘수풀이도 풀어 보세요.",
   path: "/games",
   image: "games",
 });
@@ -106,11 +106,16 @@ export default function GamesPage() {
       <TodayPuzzles />
 
       <MoreInfo title="미니게임이 궁금하다면" lead="어떻게 즐기는지, 기록은 어떻게 남는지 모아 뒀어요.">
-        <Fold title="어떻게 즐기나요?" hint="10단계 도전 · 2회차">
+        <Fold title="어떻게 즐기나요?" hint="10단계 도전 · 2회차 · ★ · 무한 연승">
           <p className={styles.sectionText}>
             게임마다 10명의 컴퓨터 상대가 있어요. 1단계 상대는 실수가 많아서 처음 해 보는 사람도 금방
             이길 수 있고, 단계가 오를수록 수를 더 멀리 내다봐요. 앞 단계를 이겨야 다음 단계가 열리고, 10단계를
             모두 깨면 더 어려운 2회차 도전이 열려요.
+          </p>
+          <p className={styles.sectionText}>
+            막히면 한 판에 세 번까지 무르기를 쓸 수 있어요. 무르기 없이 이긴 단계에는 ★이 붙으니, 다 깬 뒤에는
+            ★ 모으기에 도전해 보세요. 두 도전을 모두 깨면 &lsquo;전설&rsquo;이 되고, 가장 센 10단계 상대와
+            무르기 없이 연달아 두는 무한 연승이 열려요.
           </p>
         </Fold>
         <Fold title="오늘의 문제는 무엇인가요?" hint="매일 바뀌는 묘수풀이">
