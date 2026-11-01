@@ -148,7 +148,7 @@
   font-size: 11px;
   transform: rotate(14deg);
 }
-/* 아이콘: 운세·궁합·관상·꿈해몽(밤하늘 원판 + 한자 한 글자) */
+/* 아이콘: 운세·궁합·관상·꿈해몽·미니게임(원판 + 한자 한 글자) */
 .iconOrb {
   width: 54px;
   height: 54px;
@@ -176,6 +176,9 @@
 }
 .orb_dream {
   background: radial-gradient(circle at 30% 25%, #5b78c9, #131b3a 72%);
+}
+.orb_games {
+  background: radial-gradient(circle at 30% 25%, #6fbf5f, #173f14 72%);
 }
 
 /* ---------- 카드 아래 접는 영역 ---------- */

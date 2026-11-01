@@ -1,0 +1,157 @@
+import Link from "next/link";
+import styles from "@/components/fortune/fortune.module.css";
+import g from "@/components/games/games.module.css";
+import GameProgress from "@/components/games/GameProgress";
+import TodayPuzzles from "@/components/games/TodayPuzzles";
+import { OmokIcon, OthelloIcon, JanggiIcon, ChessIcon } from "@/components/games/GameIcons";
+import CrossCards from "@/components/fortune/CrossCards";
+import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
+import { fortuneMetadata } from "@/lib/fortune/seo";
+
+export const metadata = fortuneMetadata({
+  title: "미니게임 | 단계마다 강해지는 컴퓨터와 두는 오목",
+  description:
+    "설치 없이 바로 하는 미니게임. 10단계로 점점 강해지는 컴퓨터와 오목을 두고, 몇 단계까지 깼는지 친구에게 자랑해 보세요.",
+  path: "/games",
+  image: "games",
+});
+
+// 게임을 늘릴 때는 목록에 한 줄 추가하고 app/games/<게임>/page.js 를 만들면 돼요(아이콘은 components/games/GameIcons.js).
+
+export default function GamesPage() {
+  return (
+    <>
+      <section className={styles.hero}>
+        <div className={styles.heroArt} aria-hidden="true">
+          <span>棋</span>
+          <i style={{ top: 18, right: 26 }}>●</i>
+          <i style={{ bottom: 24, left: 22, fontSize: 11 }}>✦</i>
+        </div>
+        <h1 className={styles.heroTitle}>컴퓨터를 이겨 볼까?</h1>
+        <p className={styles.lead}>
+          오목·오델로·장기·체스, 단계마다 조금씩 강해지는 컴퓨터와 한 판. 설치나 회원가입 없이 바로 시작하고,
+          몇 단계까지 깼는지 친구에게 자랑해 보세요.
+        </p>
+      </section>
+
+      <ul className={g.gameList}>
+        <li>
+          <Link href="/games/omok" className={g.gameItem}>
+            <span className={g.gameIcon} style={{ background: "#f6ead3" }}>
+              {OmokIcon}
+            </span>
+            <div>
+              <h2>오목</h2>
+              <p>가로·세로·대각선으로 다섯 개를 먼저 이으면 승리</p>
+              <GameProgress game="omok" className={g.gameProg} />
+            </div>
+            <span className={g.gameGo} aria-hidden="true">
+              ›
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link href="/games/othello" className={g.gameItem}>
+            <span className={g.gameIcon} style={{ background: "#e4f1e8" }}>
+              {OthelloIcon}
+            </span>
+            <div>
+              <h2>오델로</h2>
+              <p>상대 돌을 사이에 끼워 내 색으로 뒤집어요</p>
+              <GameProgress game="othello" className={g.gameProg} />
+            </div>
+            <span className={g.gameGo} aria-hidden="true">
+              ›
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link href="/games/janggi" className={g.gameItem}>
+            <span className={g.gameIcon} style={{ background: "#fbf1e3" }}>
+              {JanggiIcon}
+            </span>
+            <div>
+              <h2>장기</h2>
+              <p>궁을 지키며 상대 궁을 외통으로 몰아요</p>
+              <GameProgress game="janggi" className={g.gameProg} />
+            </div>
+            <span className={g.gameGo} aria-hidden="true">
+              ›
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link href="/games/chess" className={g.gameItem}>
+            <span className={g.gameIcon} style={{ background: "#f2e6d4" }}>
+              {ChessIcon}
+            </span>
+            <div>
+              <h2>체스</h2>
+              <p>상대 킹을 체크메이트로 몰아넣으면 승리</p>
+              <GameProgress game="chess" className={g.gameProg} />
+            </div>
+            <span className={g.gameGo} aria-hidden="true">
+              ›
+            </span>
+          </Link>
+        </li>
+      </ul>
+
+      <div className={g.listHead}>
+        <h2 className={g.listTitle}>매일 바뀌는 오늘의 문제</h2>
+        <Link href="/games/puzzle" className={g.listMore}>
+          모아 보기 ›
+        </Link>
+      </div>
+      <TodayPuzzles />
+
+      <MoreInfo title="미니게임이 궁금하다면" lead="어떻게 즐기는지, 기록은 어떻게 남는지 모아 뒀어요.">
+        <Fold title="어떻게 즐기나요?" hint="10단계 도전 · 2회차">
+          <p className={styles.sectionText}>
+            게임마다 10명의 컴퓨터 상대가 있어요. 1단계 상대는 실수가 많아서 처음 해 보는 사람도 금방
+            이길 수 있고, 단계가 오를수록 수를 더 멀리 내다봐요. 앞 단계를 이겨야 다음 단계가 열리고, 10단계를
+            모두 깨면 더 어려운 2회차 도전이 열려요.
+          </p>
+        </Fold>
+        <Fold title="오늘의 문제는 무엇인가요?" hint="매일 바뀌는 묘수풀이">
+          <p className={styles.sectionText}>
+            오목·장기·체스 대국 중간의 한 장면에서 정해진 수 안에 이기는 길을 찾는 문제예요. 문제는 한국 시간
+            자정마다 바뀌고, 요일에 따라 쉬움·보통·어려움으로 난이도가 달라요. 지난 문제도 다시 풀 수 있어요.
+          </p>
+        </Fold>
+        <Fold title="기록은 어디에 저장되나요?" hint="이 브라우저에만, 서버 저장 없음">
+          <p className={styles.sectionText}>
+            깬 단계는 지금 쓰는 브라우저에만 저장되고 서버로 보내지 않아요. 회원가입이 필요 없는 대신, 다른
+            기기나 브라우저에서는 1단계부터 다시 시작해요. 브라우저의 방문 기록(사이트 데이터)을 지우면 기록도
+            함께 지워져요.
+          </p>
+        </Fold>
+        <Fold title="컴퓨터는 어떻게 두나요?" hint="내 기기 안에서 계산">
+          <p className={styles.sectionText}>
+            컴퓨터의 수는 서버가 아니라 지금 보고 있는 기기 안에서 계산해요. 그래서 인터넷이 느려도 바로
+            두고, 어떤 수를 뒀는지도 어디에 기록되지 않아요. 높은 단계는 한 수에 1~2초쯤 생각하기도 해요.
+          </p>
+        </Fold>
+        <Fold title="자랑하기에는 무엇이 담겨요?" hint="등급 카드와 깬 단계">
+          <p className={styles.sectionText}>
+            지금까지 깬 단계에 따라 동·은·금 메달, 완주, 전설 등급 카드가 만들어져요. 카드에는 등급과 깬 단계,
+            마지막으로 이긴 상대만 담기고 개인정보는 들어가지 않아요.
+          </p>
+        </Fold>
+      </MoreInfo>
+
+      <Link href="/dream" className={styles.nextCard}>
+        <span>
+          <small>재미로 보는 또 다른 코너</small>
+          <strong>꿈해몽도 보러 가기</strong>
+          <span>기억나는 꿈속 장면으로 상징별 의미를 풀어 드려요</span>
+        </span>
+        <span className={styles.crossArrow} aria-hidden="true">
+          →
+        </span>
+      </Link>
+
+      <CrossCards />
+    </>
+  );
+}

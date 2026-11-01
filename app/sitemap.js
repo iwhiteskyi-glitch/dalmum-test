@@ -47,6 +47,19 @@ export default function sitemap() {
     ...DREAM_PAGE_IDS.map((id) => ({ path: dreamHref(id), priority: 0.5, changeFrequency: "monthly" })),
   ];
 
+  // 미니게임 코너: 게임 목록 + 게임별 페이지.
+  const gamesRoutes = [
+    { path: "/games", priority: 0.8, changeFrequency: "weekly" },
+    { path: "/games/omok", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/othello", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/janggi", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/chess", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/puzzle", priority: 0.75, changeFrequency: "daily" },
+    { path: "/games/puzzle/omok", priority: 0.7, changeFrequency: "daily" },
+    { path: "/games/puzzle/janggi", priority: 0.7, changeFrequency: "daily" },
+    { path: "/games/puzzle/chess", priority: 0.7, changeFrequency: "daily" },
+  ];
+
   // 여행 이름 섹션: 시작 페이지 + 나라 페이지 + 도시 페이지.
   const travelRoutes = [
     { path: "/travel", priority: 0.8, changeFrequency: "weekly" },
@@ -92,6 +105,12 @@ export default function sitemap() {
       priority: r.priority,
     })),
     ...dreamRoutes.map((r) => ({
+      url: `${SITE.url}${r.path}`,
+      lastModified: now,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+    })),
+    ...gamesRoutes.map((r) => ({
       url: `${SITE.url}${r.path}`,
       lastModified: now,
       changeFrequency: r.changeFrequency,
