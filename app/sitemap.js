@@ -3,6 +3,7 @@ import { READS } from "@/lib/reads";
 import { COUNTRIES, cityPath } from "@/lib/travel/data";
 import { ILGAN_SLUGS, ilganHref } from "@/lib/fortune/ilgan";
 import { PAGE_IDS as DREAM_PAGE_IDS, dreamHref } from "@/lib/dream/pageIds";
+import { TTI_SLUGS } from "@/lib/fortune/tti";
 
 export default function sitemap() {
   const now = new Date();
@@ -22,10 +23,12 @@ export default function sitemap() {
     { path: "/maker", priority: 0.4, changeFrequency: "monthly" },
   ];
 
-  // 운세 코너: 오늘의 운세·내 사주 + 일간 10종 소개 페이지. 매일 바뀌는 "오늘의 운세"는
+  // 운세 코너: 오늘의 운세·띠별 운세(모음 + 12띠)·신년운세·내 사주 + 일간 10종 소개 페이지. 매일 바뀌는 "오늘의 운세"는
   // changeFrequency를 daily로 둡니다.
   const fortuneRoutes = [
     { path: "/fortune", priority: 0.9, changeFrequency: "daily" },
+    { path: "/fortune/tti", priority: 0.85, changeFrequency: "daily" },
+    ...TTI_SLUGS.map((slug) => ({ path: `/fortune/tti/${slug}`, priority: 0.6, changeFrequency: "daily" })),
     { path: "/fortune/saeun", priority: 0.85, changeFrequency: "monthly" },
     { path: "/fortune/saju", priority: 0.8, changeFrequency: "weekly" },
     ...ILGAN_SLUGS.map((_, i) => ({
@@ -45,6 +48,19 @@ export default function sitemap() {
   const dreamRoutes = [
     { path: "/dream", priority: 0.85, changeFrequency: "weekly" },
     ...DREAM_PAGE_IDS.map((id) => ({ path: dreamHref(id), priority: 0.5, changeFrequency: "monthly" })),
+  ];
+
+  // 미니게임 코너: 게임 목록 + 게임별 페이지.
+  const gamesRoutes = [
+    { path: "/games", priority: 0.8, changeFrequency: "weekly" },
+    { path: "/games/omok", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/othello", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/janggi", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/chess", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/games/puzzle", priority: 0.75, changeFrequency: "daily" },
+    { path: "/games/puzzle/omok", priority: 0.7, changeFrequency: "daily" },
+    { path: "/games/puzzle/janggi", priority: 0.7, changeFrequency: "daily" },
+    { path: "/games/puzzle/chess", priority: 0.7, changeFrequency: "daily" },
   ];
 
   // 여행 이름 섹션: 시작 페이지 + 나라 페이지 + 도시 페이지.
@@ -92,6 +108,12 @@ export default function sitemap() {
       priority: r.priority,
     })),
     ...dreamRoutes.map((r) => ({
+      url: `${SITE.url}${r.path}`,
+      lastModified: now,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+    })),
+    ...gamesRoutes.map((r) => ({
       url: `${SITE.url}${r.path}`,
       lastModified: now,
       changeFrequency: r.changeFrequency,

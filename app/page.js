@@ -21,13 +21,13 @@ export const metadata = {
   alternates: { canonical: "/" },
 };
 
-// 카드 아이콘. 닮은꼴·여행은 여행 섹션의 캐릭터 그림체를, 운세·궁합·관상·꿈해몽은 밤하늘 원판에 한자 한 글자를 씁니다.
+// 카드 아이콘. 닮은꼴·여행은 여행 섹션의 캐릭터 그림체를, 운세·궁합·관상·꿈해몽·미니게임은 원판에 한자 한 글자를 씁니다.
 // 휴대폰·PC 모두 한눈에 고르도록 카드는 코너 색 배경 + 작은 아이콘 + 이름·제목만 둡니다(2026-10-30).
 const FACE_A = { skin: "#F6D2B5", hairColor: "#3B2A20", blush: "#FFB3C6", hair: "short", expression: "grin" };
 const FACE_B = { skin: "#FFE1C4", hairColor: "#3B2A20", blush: "#FFB3C6", hair: "bob", expression: "smile", accessory: "ribbon" };
 const TRAVELER = { skin: "#FFE1C4", hairColor: "#5A3E2B", blush: "#FFB3C6", hair: "bob", expression: "smile", accessory: "strawhat" };
 
-const ORB = { fortune: "運", gunghap: "緣", gwansang: "相", dream: "夢" };
+const ORB = { fortune: "運", gunghap: "緣", gwansang: "相", dream: "夢", games: "棋" };
 
 function CornerIcon({ k }) {
   if (k === "face") {
@@ -72,7 +72,7 @@ export default function Home() {
             <span className={styles.heroMark}>나와 우리</span>
           </h1>
           <p className={styles.heroLead}>
-            꿈해몽·운세·궁합부터 관상, 닮은꼴, 여행 이름까지.
+            꿈해몽·운세·궁합부터 관상, 닮은꼴, 여행 이름, 미니게임까지.
             <br className={styles.brWide} /> 가볍게 해보고 친구와 나눠 보세요.
           </p>
         </section>

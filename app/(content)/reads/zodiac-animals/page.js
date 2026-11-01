@@ -56,7 +56,7 @@ export default function Page() {
       </p>
 
       <p>
-        내 띠가 궁금하다면 <Link href="/fortune/saju">내 사주 보기</Link>에서 생년월일을 넣어 확인해 보세요. 입춘을 기준으로 정확한 띠를 계산해 줘요. 오늘 하루의 기운은 <Link href="/fortune">오늘의 운세</Link>에서 가볍게 살펴볼 수 있어요.
+        내 띠가 궁금하다면 <Link href="/fortune/saju">내 사주 보기</Link>에서 생년월일을 넣어 확인해 보세요. 입춘을 기준으로 정확한 띠를 계산해 줘요. 오늘 하루의 기운은 <Link href="/fortune">오늘의 운세</Link>에서, 생년월일 없이 띠 하나로 보는 풀이는 <Link href="/fortune/tti">띠별 운세</Link>에서 가볍게 살펴볼 수 있어요.
       </p>
     </ReadArticle>
   );
