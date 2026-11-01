@@ -416,3 +416,71 @@
     padding: 2px 16px;
   }
 }
+
+/* ---------- 만든 사람의 다른 서비스(바깥 사이트) ---------- */
+.otherSvc {
+  margin-top: 28px;
+}
+.otherSvcTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px 4px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+/* 제목 앞 작은 막대: 코너 카드들과 다른 묶음이라는 표시 */
+.otherSvcTitle::before {
+  content: "";
+  width: 4px;
+  height: 16px;
+  border-radius: 2px;
+  background: #e0a21b;
+}
+.otherSvcCard {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px 12px 12px;
+  /* 코너 색(꿈 남색·운세 보라·궁합 주황·관상 황토·닮은꼴 분홍·여행 청록·게임 초록)과 겹치지 않는 버터 노랑 */
+  background: #fff4d6;
+  border: 1.5px solid #f2dc9c;
+  border-radius: var(--radius-lg, 20px);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+.otherSvcCard:hover {
+  transform: translateY(-2px);
+  border-color: #e0a21b;
+  box-shadow: 0 10px 24px rgba(48, 36, 44, 0.08);
+}
+.otherSvcIcon {
+  display: block;
+  width: 44px;
+  height: 44px;
+}
+.otherSvcBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.otherSvcBody strong {
+  font-size: 15px;
+}
+.otherSvcBody > span {
+  font-size: 13.5px;
+}
+.otherSvcBody small {
+  font-size: 12px;
+  color: #7a6440;
+}
+.otherSvcArrow {
+  font-size: 16px;
+  font-weight: 800;
+  color: #b07d10;
+}
