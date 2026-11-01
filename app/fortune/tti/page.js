@@ -41,7 +41,6 @@ export default function TtiHubPage() {
       </section>
 
       <div className={t.zone}>
-        <p className={t.zoneLabel}>오늘 열두 띠 운세 · 내 띠를 눌러 자세히 보기</p>
         <TtiGrid initialDate={today} />
       </div>
 

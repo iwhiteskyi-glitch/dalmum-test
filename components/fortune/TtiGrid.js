@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./fortune.module.css";
+import t from "./today.module.css";
 import { koreaToday, BRANCHES } from "@/lib/fortune/saju";
 import { buildTti, sameDate } from "@/lib/fortune/ttiView";
 import { Stars, dateLabel } from "./parts";
@@ -18,9 +19,12 @@ export default function TtiGrid({ initialDate, current }) {
   return (
     <>
       {current == null && (
-        <p className={styles.todayStrip}>
-          {date.year}년 {dateLabel(date)}의 띠별 운세
-        </p>
+        <div className={styles.ttiHead}>
+          <p className={t.zoneLabel}>
+            {date.year}년 {dateLabel(date)} · 열두 띠 오늘의 운세
+          </p>
+          <p className={styles.ttiHint}>내 띠를 누르면 년생별 한마디까지 볼 수 있어요.</p>
+        </div>
       )}
       <ul className={styles.ttiGrid}>
         {BRANCHES.map((_, b) => {
@@ -32,14 +36,14 @@ export default function TtiGrid({ initialDate, current }) {
                 className={styles.ttiCard}
                 aria-current={b === current ? "page" : undefined}
               >
-                <span className={`${styles.ttiBadge} ${styles[`el${d.info.element}`]}`} aria-hidden="true">
-                  {d.info.hanja}
-                </span>
-                <span className={styles.ttiCardBody}>
+                <span className={styles.ttiCardHead}>
+                  <span className={`${styles.ttiBadge} ${styles[`el${d.info.element}`]}`} aria-hidden="true">
+                    {d.info.hanja}
+                  </span>
                   <strong>{d.info.name}</strong>
-                  <span className={styles.ttiCardTitle}>{d.god.title}</span>
-                  <Stars n={d.overall} label={`${d.info.name} 총운`} />
                 </span>
+                <span className={styles.ttiCardTitle}>{d.god.title}</span>
+                <Stars n={d.overall} label={`${d.info.name} 총운`} />
               </Link>
             </li>
           );
