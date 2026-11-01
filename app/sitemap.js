@@ -76,55 +76,24 @@ export default function sitemap() {
     ]),
   ];
 
+  // lastmod(수정일)는 날마다 내용이 바뀌는 페이지에만 적어요. 예전엔 모든 페이지에 배포 시각을 적어서
+  // 배포할 때마다 313쪽이 전부 "방금 바뀜"으로 보였고, 그러면 구글이 이 값을 믿지 않게 돼요(2026-11).
+  const entry = (r) => ({
+    url: `${SITE.url}${r.path}`,
+    ...(r.changeFrequency === "daily" ? { lastModified: now } : {}),
+    changeFrequency: r.changeFrequency,
+    priority: r.priority,
+  });
+
   return [
-    ...staticRoutes.map((r) => ({
-      url: `${SITE.url}${r.path}`,
-      lastModified: now,
-      changeFrequency: r.changeFrequency,
-      priority: r.priority,
-    })),
-    ...cornerRoutes.map((r) => ({
-      url: `${SITE.url}${r.path}`,
-      lastModified: now,
-      changeFrequency: r.changeFrequency,
-      priority: r.priority,
-    })),
-    ...fortuneRoutes.map((r) => ({
-      url: `${SITE.url}${r.path}`,
-      lastModified: now,
-      changeFrequency: r.changeFrequency,
-      priority: r.priority,
-    })),
-    ...gunghapRoutes.map((r) => ({
-      url: `${SITE.url}${r.path}`,
-      lastModified: now,
-      changeFrequency: r.changeFrequency,
-      priority: r.priority,
-    })),
-    ...gwansangRoutes.map((r) => ({
-      url: `${SITE.url}${r.path}`,
-      lastModified: now,
-      changeFrequency: r.changeFrequency,
-      priority: r.priority,
-    })),
-    ...dreamRoutes.map((r) => ({
-      url: `${SITE.url}${r.path}`,
-      lastModified: now,
-      changeFrequency: r.changeFrequency,
-      priority: r.priority,
-    })),
-    ...gamesRoutes.map((r) => ({
-      url: `${SITE.url}${r.path}`,
-      lastModified: now,
-      changeFrequency: r.changeFrequency,
-      priority: r.priority,
-    })),
-    ...travelRoutes.map((r) => ({
-      url: `${SITE.url}${r.path}`,
-      lastModified: now,
-      changeFrequency: r.changeFrequency,
-      priority: r.priority,
-    })),
+    ...staticRoutes.map(entry),
+    ...cornerRoutes.map(entry),
+    ...fortuneRoutes.map(entry),
+    ...gunghapRoutes.map(entry),
+    ...gwansangRoutes.map(entry),
+    ...dreamRoutes.map(entry),
+    ...gamesRoutes.map(entry),
+    ...travelRoutes.map(entry),
     ...READS.map((r) => ({
       url: `${SITE.url}/reads/${r.slug}`,
       lastModified: new Date(r.date),
