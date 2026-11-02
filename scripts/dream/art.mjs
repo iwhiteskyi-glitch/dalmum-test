@@ -16,7 +16,7 @@ const ids = new Set(JSON.parse(readFileSync("lib/dream/symbols.json", "utf8")).s
 
 // 색을 칠한 그림으로 나와 다른 그림과 안 어울리는 것 — 밝기만 남겨 남색→금색으로 다시 칠합니다.
 // 금빛 선화로 다시 그려 넣으면 여기서 빼면 됩니다.
-const RECOLOR = new Set(["whale", "lion", "fox", "wolf", "rice", "bath", "church"]);
+const RECOLOR = new Set([]); // 2026-11-02 whale·lion·fox·wolf·rice·bath·church 금빛 선화로 다시 그려 넣음
 const STOPS = [[0, [18, 26, 56]], [90, [40, 50, 90]], [170, [190, 150, 80]], [255, [250, 225, 160]]];
 const LUT = Array.from({ length: 256 }, (_, v) => {
   for (let i = 1; i < STOPS.length; i++) {
