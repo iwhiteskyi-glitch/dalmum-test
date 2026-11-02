@@ -42,6 +42,19 @@ async function commonsSearch(search, limit = 3) {
   const j = await api("commons.wikimedia.org", { action: "query", list: "search", srsearch: `${search} filetype:bitmap`, srnamespace: "6", srlimit: String(limit) });
   return (j.query?.search || []).map((s) => s.title.replace(/^File:/, ""));
 }
+// queries.json 값이 "cat:분류 이름"이면 위키미디어 공용의 그 분류(+ 바로 아래 하위 분류)에 든 사진에서 고릅니다.
+async function categoryFiles(cat, limit = 30) {
+  const files = async (c) => {
+    const j = await api("commons.wikimedia.org", { action: "query", list: "categorymembers", cmtitle: `Category:${c}`, cmtype: "file", cmlimit: String(limit) });
+    return (j.query?.categorymembers || []).map((m) => m.title.replace(/^File:/, "")).filter((n) => /\.(jpe?g|png|webp)$/i.test(n));
+  };
+  const out = await files(cat);
+  if (out.length < 6) {
+    const j = await api("commons.wikimedia.org", { action: "query", list: "categorymembers", cmtitle: `Category:${cat}`, cmtype: "subcat", cmlimit: "10" });
+    for (const m of j.query?.categorymembers || []) out.push(...(await files(m.title.replace(/^Category:/, ""))));
+  }
+  return out;
+}
 async function fileInfo(name) {
   const j = await api("commons.wikimedia.org", { action: "query", titles: `File:${name}`, prop: "imageinfo", iiprop: "url|extmetadata|size|mime", iiurlwidth: "960" });
   const p = j.query?.pages?.[0];
@@ -82,7 +95,9 @@ for (const city of data.cities) {
     const add = (n, via) => { if (n && !seen.has(n)) { seen.add(n); names.push({ n, via }); } };
     const override = overrides[key];
     try {
-      if (override) {
+      if (override?.startsWith("cat:")) {
+        for (const n of await categoryFiles(override.slice(4))) add(n, `cat:${override.slice(4)}`);
+      } else if (override) {
         for (const p of await pageImages("en.wikipedia.org", override, 1)) add(p.image, `en:${p.title}`);
         for (const n of await commonsSearch(override, 3)) add(n, "commons");
       } else if (it.type === "a") {

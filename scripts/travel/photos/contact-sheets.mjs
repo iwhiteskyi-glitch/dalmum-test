@@ -11,7 +11,7 @@ const DIR = path.join(ROOT, "docs/travel/사진검토", country);
 const cands0 = JSON.parse(fs.readFileSync(path.join(DIR, "candidates.json"), "utf8"));
 // 보강 모드: ONLY=<missing.json 경로>를 주면 사진이 없는 항목만 대상으로 하고 파일 이름 끝에 -add를 붙입니다.
 const ONLY = process.env.ONLY ? JSON.parse(fs.readFileSync(process.env.ONLY, "utf8")) : null;
-const SUF = ONLY ? "-add" : "";
+const SUF = ONLY ? process.env.SUF || "-add" : "";
 const onlyKeys = (country) => (ONLY ? new Set((ONLY[country] || []).map((k) => `${country}/${k}`)) : null);
 const keep = onlyKeys(country);
 const cands = keep ? Object.fromEntries(Object.entries(cands0).filter(([k]) => keep.has(k))) : cands0;
