@@ -43,3 +43,12 @@ export const ChessIcon = (
     <image href="/games/chess/wN.svg" x="4" y="4" width="32" height="32" />
   </svg>
 );
+
+export const SlideIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#3d8b37" />
+    {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+      <rect key={i} x={5 + (i % 3) * 10.5} y={5 + Math.floor(i / 3) * 10.5} width="9" height="9" rx="2" fill={i === 4 ? "#f5c84b" : "#fff"} />
+    ))}
+  </svg>
+);
