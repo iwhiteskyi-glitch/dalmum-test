@@ -1160,7 +1160,7 @@ a.gameItem:hover {
   box-shadow: inset 0 0 0 1.5px rgba(10, 15, 40, 0.55);
 }
 .slideHome {
-  box-shadow: inset 0 0 0 2.5px #e8a91e;
+  box-shadow: inset 0 0 0 3.5px #e8a91e;
 }
 .slideBadge {
   position: absolute;
