@@ -7,7 +7,7 @@ import { SITE } from "@/lib/site";
 export const metadata = pageMetadata({
   title: "만든 사람",
   description:
-    "재미로봄을 만든 KN을 소개합니다. 직접 만든 앱 '맛집기록', 웹사이트 '쇼핑 피팅 매니저', 유튜브 '너머를 보다'와 블로그 등 다른 곳에서도 만나보세요.",
+    "재미로봄을 만든 KN을 소개합니다. 직접 만든 앱 '맛집기록'·'비행기오락실', 웹사이트 '쇼핑 피팅 매니저', 유튜브 '너머를 보다'와 블로그 등 다른 곳에서도 만나보세요.",
   path: "/maker",
 });
 
@@ -23,6 +23,15 @@ const WORKS = [
       { label: "App Store에서 보기", href: "https://apps.apple.com/kr/app/%EB%A7%9B%EC%A7%91%EA%B8%B0%EB%A1%9D/id6814456432" },
       { label: "Google Play에서 보기", href: "https://play.google.com/store/apps/details?id=com.kncho.matjipgirok" },
     ],
+    ready: true,
+  },
+  {
+    key: "app-arcade",
+    kind: "앱",
+    title: "비행기오락실",
+    desc: "오목·장기·체스·빙고·그림 맞히기 같은 보드·파티 게임을 모은 앱이에요. 비행기 모드에서도 블루투스·와이파이만 켜면 옆자리 친구 폰과 바로 연결되고, 혼자서는 컴퓨터와 단계별로 겨루거나 오늘의 퍼즐을 풀 수 있어요.",
+    meta: "무료 · 안드로이드",
+    links: [{ label: "Google Play에서 보기", href: "https://play.google.com/store/apps/details?id=com.kncho.airplanearcade" }],
     ready: true,
   },
   {
