@@ -133,6 +133,23 @@ export default function Home() {
           </a>
           <a
             className={styles.otherSvcCard}
+            href="https://play.google.com/store/apps/details?id=com.kncho.airplanearcade"
+            target="_blank"
+            rel="noopener"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element -- 44px 작은 아이콘이라 그대로 씀 */}
+            <img className={`${styles.otherSvcIcon} ${styles.otherSvcTile}`} src="/other/airplane-arcade.png" width={44} height={44} alt="" loading="lazy" />
+            <span className={styles.otherSvcBody}>
+              <strong>비행기오락실</strong>
+              <span>인터넷 없이 근처 친구와 즐기는 보드·파티 게임 모음</span>
+              <small>구글 플레이로 이동해요 · 안드로이드 앱</small>
+            </span>
+            <span className={styles.otherSvcArrow} aria-hidden="true">
+              ↗
+            </span>
+          </a>
+          <a
+            className={styles.otherSvcCard}
             href="https://www.youtube.com/channel/UC2sFQ9wYDxyJp9zDSFB7QNA"
             target="_blank"
             rel="noopener"
