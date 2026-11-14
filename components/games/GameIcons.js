@@ -52,3 +52,14 @@ export const SlideIcon = (
     ))}
   </svg>
 );
+
+export const SudokuIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#fff" stroke="#3d8b37" strokeWidth="2" />
+    <path d="M14 3v34M26 3v34M3 14h34M3 26h34" stroke="#3d8b37" strokeWidth="1.6" />
+    <text x="8.5" y="11.5" fontSize="8.5" fontWeight="800" textAnchor="middle" fill="#2b2b2b">5</text>
+    <text x="20" y="23.5" fontSize="8.5" fontWeight="800" textAnchor="middle" fill="#2b2b2b">3</text>
+    <text x="31.5" y="35" fontSize="8.5" fontWeight="800" textAnchor="middle" fill="#3d8b37">9</text>
+    <text x="31.5" y="11.5" fontSize="8.5" fontWeight="800" textAnchor="middle" fill="#3d8b37">7</text>
+  </svg>
+);

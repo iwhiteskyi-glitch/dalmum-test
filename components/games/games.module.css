@@ -1260,3 +1260,272 @@ a.gameItem:hover {
     filter: drop-shadow(0 0 6px #e8a91e);
   }
 }
+
+/* ---------- 스도쿠 ---------- */
+.sdOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--muted-ink);
+  cursor: pointer;
+}
+.sdOption input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--c-games);
+}
+.sdEndless {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1.5px solid #e8a91e;
+  border-radius: 16px;
+  background: #fffaf0;
+  text-align: center;
+}
+.sdEndlessTitle {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+.sdEndlessText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted-ink);
+}
+.sdEndless .endlessBest {
+  margin: 10px 0 0;
+}
+.sdTopBtns {
+  display: flex;
+  gap: 12px;
+}
+.sdClock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 460px);
+  margin: 8px auto 2px;
+  padding: 4px 14px 4px 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+}
+.sdPause {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border: 0;
+  border-radius: 50%;
+  background: var(--c-games-soft);
+  color: var(--c-games);
+  font-size: 14px;
+  cursor: pointer;
+}
+.sdPause:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.sdClockTime {
+  flex: 1;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+.sdBest {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  font-variant-numeric: tabular-nums;
+}
+.sdWrong {
+  color: #c62828;
+  font-weight: 800;
+}
+.sdBoardWrap {
+  position: relative;
+  width: max(280px, min(100%, 460px, calc(100svh - 330px)));
+  margin: 0 auto;
+}
+/* 판 = 상자들의 격자(굵은 줄 = 상자 사이 틈), 상자 = 칸들의 격자(가는 줄 = 칸 사이 틈) */
+.sdBoard {
+  display: grid;
+  grid-template-columns: repeat(var(--bx), 1fr);
+  grid-template-rows: repeat(var(--by), 1fr);
+  gap: 2.5px;
+  aspect-ratio: 1;
+  padding: 2.5px;
+  border-radius: 8px;
+  background: #4a4a4a;
+  container-type: inline-size;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.sdBox {
+  display: grid;
+  grid-template-columns: repeat(var(--bc), 1fr);
+  grid-template-rows: repeat(var(--br), 1fr);
+  gap: 1px;
+  background: #cfc6c0;
+}
+.sdCell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: var(--surface);
+  font: inherit;
+  font-size: calc(58cqw / var(--n));
+  font-weight: 600;
+  line-height: 1;
+  color: var(--c-games);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.sdCell:focus-visible {
+  outline: 2px solid var(--c-games);
+  outline-offset: -2px;
+  z-index: 1;
+}
+.sdGiven {
+  font-weight: 900;
+  color: var(--ink);
+}
+.sdHinted {
+  color: #b07d10;
+  font-weight: 800;
+}
+.sdNear {
+  background: #eef6ec;
+}
+.sdSame {
+  background: #cfe8c9;
+}
+.sdSel {
+  background: #a9d6a1;
+}
+.sdClash {
+  color: #c62828;
+  background-image: linear-gradient(rgba(198, 40, 40, 0.12), rgba(198, 40, 40, 0.12));
+}
+.sdNotes {
+  position: absolute;
+  inset: 1px;
+  display: grid;
+  grid-template-columns: repeat(var(--bc), 1fr);
+  grid-template-rows: repeat(var(--br), 1fr);
+}
+.sdNotes i {
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: max(8px, calc(19cqw / var(--n)));
+  color: var(--muted-ink);
+}
+.sdNotes .sdNoteHit {
+  color: #b07d10;
+  font-weight: 900;
+}
+.sdHidden .sdCell {
+  color: transparent;
+  background: var(--surface);
+}
+.sdHidden .sdNotes {
+  visibility: hidden;
+}
+.sdResume {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--c-games);
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+.sdPad {
+  width: min(100%, 460px);
+  margin: 12px auto 0;
+}
+.sdTools {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.sdTool {
+  padding: 9px 2px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink);
+  cursor: pointer;
+}
+.sdTool:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.sdToolOn {
+  border-color: var(--c-games);
+  background: var(--c-games);
+  color: #fff;
+}
+.sdDigits {
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  gap: 5px;
+  margin-top: 8px;
+}
+.sdDigit {
+  height: min(56px, calc((min(100vw, 460px) - 40px) / var(--n) * 1.2));
+  padding: 0;
+  border: 1.5px solid var(--c-games);
+  border-radius: 12px;
+  background: var(--c-games-soft);
+  font: inherit;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--c-games);
+  cursor: pointer;
+}
+.sdDigit:disabled {
+  cursor: default;
+}
+.sdDigitUsed {
+  opacity: 0.35;
+}
+/* 메모를 켜면 숫자 버튼도 메모 글씨처럼 작게 */
+.sdDigitsNote .sdDigit {
+  border-style: dashed;
+  background: var(--surface);
+  font-size: 17px;
+  color: var(--muted-ink);
+}
+.sdKeys {
+  margin: 10px 0 0;
+  font-size: 12px;
+  text-align: center;
+  color: var(--muted-ink);
+}
+@media (hover: none) {
+  .sdKeys {
+    display: none;
+  }
+}
