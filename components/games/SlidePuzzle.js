@@ -78,7 +78,7 @@ function Board({ play, onTile, onLast, peek }) {
   const tiles = [];
   for (let value = 1; value < lastValue; value++) tiles.push(value);
   return (
-    <div className={styles.slideBoard} style={{ "--n": size }} onContextMenu={(e) => e.preventDefault()}>
+    <div className={`${styles.slideBoard} ${lastState === "placed" ? styles.slideBoardDone : ""}`} style={{ "--n": size }} onContextMenu={(e) => e.preventDefault()}>
       <div className={styles.slideFrame} />
       {lastState !== "placed" && <div className={styles.slideSlot} style={at(lastValue - 1 + size)} />}
       {tiles.map((value) => {
@@ -111,6 +111,7 @@ function Board({ play, onTile, onLast, peek }) {
 
 export default function SlidePuzzle() {
   const topRef = useRef(null);
+  const resultRef = useRef(null);
   const roundRef = useRef(0); // 새로 섞을 때마다 1씩(판이 움직임 없이 바로 바뀌게)
   const [modeIndex, setModeIndex] = useState(0);
   const [play, setPlay] = useState(null);
@@ -181,6 +182,13 @@ export default function SlidePuzzle() {
     tile(neighborFor(play.board, e.key));
   };
   const playing = Boolean(play);
+  // 다 끼우면 그림이 나타난 뒤(약 0.7초) 결과와 다시 하기 버튼 쪽으로 내려가요
+  const placed = Boolean(play?.done?.placed);
+  useEffect(() => {
+    if (!placed) return;
+    const timer = setTimeout(() => resultRef.current?.scrollIntoView({ block: "center", behavior: "smooth" }), 750);
+    return () => clearTimeout(timer);
+  }, [placed]);
   useEffect(() => {
     if (!playing) return;
     const onKey = (e) => keys.current(e);
@@ -276,7 +284,7 @@ export default function SlidePuzzle() {
         </button>
       )}
       {done?.placed && (
-        <div className={styles.slideResult}>
+        <div className={styles.slideResult} ref={resultRef}>
           <p className={styles.endTitle}>⏱ {formatTime(done.ms)}</p>
           {done.newBest && <p className={styles.endText}>최고 기록이에요!</p>}
           <div className={styles.btns}>

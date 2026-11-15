@@ -126,6 +126,7 @@ const Picture = memo(function Picture({ run, side, mark, hint, showAll, hidden, 
 
 export default function SpotGame() {
   const topRef = useRef(null);
+  const resultRef = useRef(null);
   const upcoming = useRef(null);
   const timer = useRef(null);
   const token = useRef(0); // 시작·그만두기마다 1씩. 그 전에 시작한 준비가 늦게 끝나면 버려요
@@ -234,6 +235,14 @@ export default function SpotGame() {
     setPausedAt(null);
     refresh();
   };
+
+  // 끝나면(시간·틀림·다 찾음) 결과와 다시 도전 버튼 쪽으로 내려가요. 폰에서는 두 그림이 화면을 거의 채워서 결과가 아래에 숨어요
+  const ended = Boolean(over);
+  useEffect(() => {
+    if (!ended) return;
+    const t = setTimeout(() => resultRef.current?.scrollIntoView({ block: "center", behavior: "smooth" }), 400);
+    return () => clearTimeout(t);
+  }, [ended]);
 
   // 시계: 푸는 동안 0.1초마다. 시간이 다 되면 끝
   const running = Boolean(run) && !over && !clearing && pausedAt === null;
@@ -439,7 +448,7 @@ export default function SpotGame() {
       </div>
 
       {over ? (
-        <div className={styles.slideResult} role="status">
+        <div className={styles.slideResult} role="status" ref={resultRef}>
           {daily_ ? (
             <>
               <p className={styles.endTitle}>⏱ {formatClock(over.ms)}</p>
