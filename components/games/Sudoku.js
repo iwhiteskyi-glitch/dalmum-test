@@ -123,6 +123,7 @@ function Board({ play, selected, clashes, onSelect, hidden }) {
 
 export default function Sudoku() {
   const topRef = useRef(null);
+  const resultRef = useRef(null);
   const roundRef = useRef(0);
   const [record, setRecord] = useState(EMPTY_RECORD);
   const [daily, setDaily] = useState(null);
@@ -296,6 +297,13 @@ export default function Sudoku() {
     }
   };
   const playing = Boolean(run);
+  // 다 풀면 결과와 다음 단계 버튼 쪽으로 내려가요(작은 화면에서는 판 아래에 숨어요)
+  const solved = Boolean(run?.done);
+  useEffect(() => {
+    if (!solved) return;
+    const t = setTimeout(() => resultRef.current?.scrollIntoView({ block: "center", behavior: "smooth" }), 350);
+    return () => clearTimeout(t);
+  }, [solved]);
   useEffect(() => {
     if (!playing) return;
     const onKey = (e) => keys.current(e);
@@ -496,7 +504,7 @@ export default function Sudoku() {
       </div>
 
       {done ? (
-        <div className={styles.slideResult}>
+        <div className={styles.slideResult} ref={resultRef}>
           <p className={styles.endTitle}>{run.stage === ENDLESS && !run.daily ? `연속 ${done.count}문제 성공!` : `⏱ ${formatClock(done.ms)}`}</p>
           {done.newBest && <p className={styles.endText}>최고 기록이에요!</p>}
           {done.star && <p className={styles.endStar}>★ 힌트 없이 풀었어요!</p>}
