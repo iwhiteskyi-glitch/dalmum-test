@@ -75,3 +75,14 @@ export const SpotIcon = (
     <circle cx="28.5" cy="15" r="6" fill="none" stroke="#f5c84b" strokeWidth="1.6" />
   </svg>
 );
+
+export const LinkIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#fff" stroke="#3d8b37" strokeWidth="2" />
+    <rect x="5" y="5" width="11" height="11" rx="3" fill="#ffe08a" stroke="#d9a400" strokeWidth="1.2" />
+    <rect x="24" y="24" width="11" height="11" rx="3" fill="#ffe08a" stroke="#d9a400" strokeWidth="1.2" />
+    <rect x="24" y="5" width="11" height="11" rx="3" fill="#cfe8ff" stroke="#6aa6d8" strokeWidth="1.2" />
+    <rect x="5" y="24" width="11" height="11" rx="3" fill="#cfe8ff" stroke="#6aa6d8" strokeWidth="1.2" />
+    <path d="M10.5 16v4.5h19V24" fill="none" stroke="#3d8b37" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
