@@ -1529,3 +1529,114 @@ a.gameItem:hover {
     display: none;
   }
 }
+
+/* ---------- 틀린 그림 찾기 ---------- */
+.spStatus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(100%, 920px);
+  margin: 8px auto 0;
+  padding: 4px 14px 4px 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+}
+.spCount {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  white-space: nowrap;
+}
+.spCount b {
+  color: var(--c-games);
+  font-size: 17px;
+}
+.spTime {
+  margin-left: auto;
+  font-size: 22px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+.spTimeLow {
+  color: #c62828;
+}
+.spTrack {
+  width: min(100%, 920px);
+  height: 6px;
+  margin: 8px auto 0;
+  border-radius: 9px;
+  background: #ebe4e7;
+  overflow: hidden;
+}
+.spTrack i {
+  display: block;
+  height: 100%;
+  border-radius: 9px;
+  background: var(--c-games);
+  transition: width 100ms linear;
+}
+.spTrack .spTrackLow {
+  background: #e53935;
+}
+/* 폰: 위아래로 두 장, 화면 높이에 맞춰 크기를 줄여요. 넓은 화면: 나란히 두 장 */
+.spPair {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+.spPic {
+  position: relative;
+  width: max(210px, min(100%, 460px, calc((100svh - 300px) / 2)));
+  aspect-ratio: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px var(--border);
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.spPic img,
+.spPic svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+.spHidden img,
+.spHidden svg {
+  visibility: hidden;
+}
+.spHidden {
+  background: #eee4dc;
+}
+@media (min-width: 700px) {
+  .spPair {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .spPic {
+    width: max(260px, min(calc(50% - 4px), 460px, calc(100svh - 270px)));
+  }
+}
+.spBottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.spBottom .sdTool {
+  padding: 10px 18px;
+}
+.spNote {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted-ink);
+}

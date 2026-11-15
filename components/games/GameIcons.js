@@ -63,3 +63,15 @@ export const SudokuIcon = (
     <text x="31.5" y="11.5" fontSize="8.5" fontWeight="800" textAnchor="middle" fill="#3d8b37">7</text>
   </svg>
 );
+
+export const SpotIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#3d8b37" />
+    <rect x="5" y="7" width="13" height="26" rx="3" fill="#fff" />
+    <rect x="22" y="7" width="13" height="26" rx="3" fill="#fff" />
+    <circle cx="11.5" cy="15" r="3" fill="#f5c84b" />
+    <circle cx="28.5" cy="15" r="3" fill="#e57373" />
+    <path d="M7 30l4-6 3 4 2-2 1 4zM24 30l4-6 3 4 2-2 1 4z" fill="#8bc34a" />
+    <circle cx="28.5" cy="15" r="6" fill="none" stroke="#f5c84b" strokeWidth="1.6" />
+  </svg>
+);

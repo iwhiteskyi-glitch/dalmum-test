@@ -3,7 +3,8 @@ import styles from "@/components/fortune/fortune.module.css";
 import g from "@/components/games/games.module.css";
 import GameProgress from "@/components/games/GameProgress";
 import TodayPuzzles from "@/components/games/TodayPuzzles";
-import { OmokIcon, OthelloIcon, JanggiIcon, ChessIcon, SlideIcon, SudokuIcon } from "@/components/games/GameIcons";
+import { OmokIcon, OthelloIcon, JanggiIcon, ChessIcon, SlideIcon, SudokuIcon, SpotIcon } from "@/components/games/GameIcons";
+import SpotProgress from "@/components/games/SpotProgress";
 import SlideProgress from "@/components/games/SlideProgress";
 import SudokuProgress from "@/components/games/SudokuProgress";
 import CrossCards from "@/components/fortune/CrossCards";
@@ -11,9 +12,9 @@ import { MoreInfo, Fold } from "@/components/fortune/MoreInfo";
 import { fortuneMetadata } from "@/lib/fortune/seo";
 
 export const metadata = fortuneMetadata({
-  title: "미니게임 | 오목·장기·체스·스도쿠·슬라이드 퍼즐, 설치 없이 바로 한 판",
+  title: "미니게임 | 오목·장기·체스·스도쿠·틀린 그림 찾기, 설치 없이 바로 한 판",
   description:
-    "설치 없이 바로 하는 미니게임. 10단계로 점점 강해지는 컴퓨터와 오목·돌 뒤집기·장기·체스를 두고, 스도쿠·슬라이드 퍼즐과 매일 바뀌는 묘수풀이도 풀어 보세요.",
+    "설치 없이 바로 하는 미니게임. 10단계로 점점 강해지는 컴퓨터와 오목·돌 뒤집기·장기·체스를 두고, 스도쿠·틀린 그림 찾기·슬라이드 퍼즐과 매일 바뀌는 묘수풀이도 풀어 보세요.",
   path: "/games",
   image: "games",
 });
@@ -31,8 +32,8 @@ export default function GamesPage() {
         </div>
         <h1 className={styles.heroTitle}>컴퓨터를 이겨 볼까?</h1>
         <p className={styles.lead}>
-          오목·돌 뒤집기·장기·체스, 단계마다 조금씩 강해지는 컴퓨터와 한 판. 혼자 푸는 스도쿠와 슬라이드 퍼즐도
-          있어요. 설치나 회원가입 없이 바로 시작해 보세요.
+          오목·돌 뒤집기·장기·체스, 단계마다 조금씩 강해지는 컴퓨터와 한 판. 혼자 푸는 스도쿠·틀린 그림 찾기·슬라이드
+          퍼즐도 있어요. 설치나 회원가입 없이 바로 시작해 보세요.
         </p>
       </section>
 
@@ -113,6 +114,21 @@ export default function GamesPage() {
           </Link>
         </li>
         <li>
+          <Link href="/games/spot" className={g.gameItem}>
+            <span className={g.gameIcon} style={{ background: "#e4f1e8" }}>
+              {SpotIcon}
+            </span>
+            <div>
+              <h2>틀린 그림 찾기</h2>
+              <p>두 그림에서 다른 곳 5곳을 시간 안에 찾아요</p>
+              <SpotProgress className={g.gameProg} />
+            </div>
+            <span className={g.gameGo} aria-hidden="true">
+              ›
+            </span>
+          </Link>
+        </li>
+        <li>
           <Link href="/games/slide" className={g.gameItem}>
             <span className={g.gameIcon} style={{ background: "#e4f1e8" }}>
               {SlideIcon}
@@ -158,7 +174,7 @@ export default function GamesPage() {
         </Fold>
         <Fold title="기록은 어디에 저장되나요?" hint="이 브라우저에만, 서버 저장 없음">
           <p className={styles.sectionText}>
-            깬 단계와 스도쿠·슬라이드 퍼즐 기록은 지금 쓰는 브라우저에만 저장되고 서버로 보내지 않아요. 회원가입이 필요 없는 대신, 다른
+            깬 단계와 스도쿠·틀린 그림 찾기·슬라이드 퍼즐 기록은 지금 쓰는 브라우저에만 저장되고 서버로 보내지 않아요. 회원가입이 필요 없는 대신, 다른
             기기나 브라우저에서는 1단계부터 다시 시작해요. 브라우저의 방문 기록(사이트 데이터)을 지우면 기록도
             함께 지워져요.
           </p>
