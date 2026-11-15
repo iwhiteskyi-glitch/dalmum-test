@@ -85,6 +85,11 @@ export default function MakerPage() {
           <Link href="/about">서비스 소개</Link>와 <Link href="/privacy">개인정보처리방침</Link>에
           적어 두었어요.
         </p>
+        <p>
+          코딩을 몰랐던 사람이 이 사이트를 어떻게 만들었는지는{" "}
+          <Link href="/reads/making-jaemirobom">재미로봄을 만든 이야기</Link>에, 비행기오락실 앱을 만든
+          이유는 <Link href="/reads/airplane-arcade-story">비행기오락실 이야기</Link>에 적었어요.
+        </p>
 
         <h2>다른 곳에서도 만나요</h2>
       </div>
