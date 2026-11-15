@@ -982,3 +982,661 @@ a.gameItem:hover {
     white-space: nowrap;
   }
 }
+
+/* ---------- 슬라이드 퍼즐 ---------- */
+.slideDaily {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 24px 0 16px;
+  padding: 14px 16px;
+  text-align: left;
+  font: inherit;
+  color: var(--ink);
+  background: var(--c-games-soft);
+  border: 1.5px solid var(--c-games);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+}
+.slideDaily strong {
+  display: block;
+  font-size: 17px;
+}
+.slideDaily small {
+  display: block;
+  margin-top: 2px;
+  font-size: 13.5px;
+  color: var(--muted-ink);
+}
+.slideTabOn {
+  background: var(--surface);
+  color: var(--c-games);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+.slideHint {
+  margin: 0 0 10px;
+  font-size: 14px;
+  text-align: center;
+  color: var(--muted-ink);
+}
+.slideSize {
+  width: 100%;
+  padding: 11px 14px;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.slideSizeText strong {
+  display: block;
+  font-size: 19px;
+}
+.slideSizeText small {
+  font-size: 13px;
+  color: var(--c-games);
+  font-weight: 800;
+}
+.slideBest {
+  margin-left: auto;
+  font-size: 14.5px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-ink);
+}
+.slideMini {
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  grid-auto-rows: 1fr;
+  gap: 1.5px;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  padding: 3px;
+  border-radius: 9px;
+  background: var(--c-games-soft);
+}
+.slideMini i {
+  border-radius: 2px;
+  background: var(--c-games);
+}
+.slidePlay {
+  margin-top: 22px;
+}
+.slideTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.slideTitle {
+  font-weight: 900;
+  font-size: 16px;
+}
+.slideBack {
+  border: 0;
+  background: none;
+  padding: 6px 2px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-games);
+  cursor: pointer;
+}
+.slideClock {
+  margin: 6px 0 4px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+/* 판 크기는 --n(칸 수)으로만 계산해요. 조각은 자기 크기의 몇 배로 옮겨서, 화면이 바뀌어도 따로 잴 필요가 없어요.
+   높이는 마지막 조각 자리까지 N+1칸이라, 낮은 화면에서도 판이 다 보이게 화면 높이로도 제한해요. */
+.slideBoard {
+  position: relative;
+  width: max(260px, min(100%, 460px, calc((100svh - 250px) * var(--n) / (var(--n) + 1))));
+  aspect-ratio: var(--n) / calc(var(--n) + 1);
+  margin: 0 auto;
+  container-type: inline-size;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.slideFrame {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  background: #eee4dc;
+  box-shadow: 0 0 0 2px var(--border);
+}
+.slideSlot,
+.slideTile {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(100% / var(--n));
+  aspect-ratio: 1;
+}
+.slideSlot {
+  box-sizing: border-box;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+}
+.slideTile {
+  padding: 1.5px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: transform 70ms ease-out;
+  -webkit-tap-highlight-color: transparent;
+}
+.slideTile:disabled {
+  cursor: default;
+}
+.slideTile:focus-visible {
+  outline: 2px solid var(--c-games);
+  outline-offset: -2px;
+  z-index: 1;
+}
+.slideFace {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 7px;
+  background-color: var(--surface);
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 2px var(--c-games);
+  font-size: min(32px, calc(42cqw / var(--n)));
+  font-weight: 900;
+  color: var(--ink);
+}
+.slideFacePic {
+  background-color: var(--c-games-soft);
+  box-shadow: inset 0 0 0 1.5px rgba(10, 15, 40, 0.55);
+}
+.slideHome {
+  box-shadow: inset 0 0 0 3.5px #e8a91e;
+}
+.slideBadge {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  padding: 0 4px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.58);
+  color: #fff;
+  font-size: max(10px, min(15px, calc(22cqw / var(--n))));
+  line-height: 1.35;
+}
+.slideLast_waiting {
+  opacity: 0.45;
+}
+.slideLast_ready {
+  z-index: 1;
+  animation: slideGlow 0.76s ease-in-out infinite alternate;
+}
+.slideLast_placed {
+  transition: transform 260ms cubic-bezier(0.3, 1.4, 0.6, 1);
+}
+@keyframes slideGlow {
+  from {
+    opacity: 0.55;
+    filter: drop-shadow(0 0 2px #e8a91e);
+  }
+  to {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #e8a91e);
+  }
+}
+.slideWhole,
+.slidePeek {
+  position: absolute;
+  left: 1.5px;
+  right: 1.5px;
+  top: 1.5px;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background-size: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+.slideWhole {
+  opacity: 0;
+  animation: slideFade 0.45s 0.26s forwards;
+}
+@keyframes slideFade {
+  to {
+    opacity: 1;
+  }
+}
+.slidePeek {
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  grid-auto-rows: 1fr;
+  background-color: var(--surface);
+}
+.slidePeek span {
+  display: grid;
+  place-items: center;
+  font-size: min(32px, calc(42cqw / var(--n)));
+  font-weight: 900;
+  color: var(--c-games);
+}
+.slidePeek span:last-child {
+  visibility: hidden;
+}
+.slidePeekBtn {
+  display: block;
+  width: min(100%, 460px);
+  flex: none;
+  margin: 12px auto 0;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.slideResult {
+  max-width: 460px;
+  margin: 14px auto 0;
+  text-align: center;
+}
+.slideResult .endText {
+  margin-bottom: 0;
+  font-weight: 800;
+  color: var(--c-games);
+}
+@media (prefers-reduced-motion: reduce) {
+  .slideTile,
+  .slideLast_placed {
+    transition: none;
+  }
+  .slideLast_ready {
+    animation: none;
+    filter: drop-shadow(0 0 6px #e8a91e);
+  }
+}
+
+/* ---------- 스도쿠 ---------- */
+.sdOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--muted-ink);
+  cursor: pointer;
+}
+.sdOption input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--c-games);
+}
+.sdEndless {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1.5px solid #e8a91e;
+  border-radius: 16px;
+  background: #fffaf0;
+  text-align: center;
+}
+.sdEndlessTitle {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+.sdEndlessText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted-ink);
+}
+.sdEndless .endlessBest {
+  margin: 10px 0 0;
+}
+.sdTopBtns {
+  display: flex;
+  gap: 12px;
+}
+.sdClock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 460px);
+  margin: 8px auto 2px;
+  padding: 4px 14px 4px 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+}
+.sdPause {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border: 0;
+  border-radius: 50%;
+  background: var(--c-games-soft);
+  color: var(--c-games);
+  font-size: 14px;
+  cursor: pointer;
+}
+.sdPause:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.sdClockTime {
+  flex: 1;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+.sdBest {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  font-variant-numeric: tabular-nums;
+}
+.sdWrong {
+  color: #c62828;
+  font-weight: 800;
+}
+.sdBoardWrap {
+  position: relative;
+  width: max(280px, min(100%, 460px, calc(100svh - 330px)));
+  margin: 0 auto;
+}
+/* 판 = 상자들의 격자(굵은 줄 = 상자 사이 틈), 상자 = 칸들의 격자(가는 줄 = 칸 사이 틈) */
+.sdBoard {
+  display: grid;
+  grid-template-columns: repeat(var(--bx), 1fr);
+  grid-template-rows: repeat(var(--by), 1fr);
+  gap: 2.5px;
+  aspect-ratio: 1;
+  padding: 2.5px;
+  border-radius: 8px;
+  background: #4a4a4a;
+  container-type: inline-size;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.sdBox {
+  display: grid;
+  grid-template-columns: repeat(var(--bc), 1fr);
+  grid-template-rows: repeat(var(--br), 1fr);
+  gap: 1px;
+  background: #cfc6c0;
+}
+.sdCell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: var(--surface);
+  font: inherit;
+  font-size: calc(58cqw / var(--n));
+  font-weight: 600;
+  line-height: 1;
+  color: var(--c-games);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.sdCell:focus-visible {
+  outline: 2px solid var(--c-games);
+  outline-offset: -2px;
+  z-index: 1;
+}
+.sdGiven {
+  font-weight: 900;
+  color: var(--ink);
+}
+.sdHinted {
+  color: #b07d10;
+  font-weight: 800;
+}
+.sdNear {
+  background: #eef6ec;
+}
+.sdSame {
+  background: #cfe8c9;
+}
+.sdSel {
+  background: #a9d6a1;
+}
+.sdClash {
+  color: #c62828;
+  background-image: linear-gradient(rgba(198, 40, 40, 0.12), rgba(198, 40, 40, 0.12));
+}
+.sdNotes {
+  position: absolute;
+  inset: 1px;
+  display: grid;
+  grid-template-columns: repeat(var(--bc), 1fr);
+  grid-template-rows: repeat(var(--br), 1fr);
+}
+.sdNotes i {
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: max(8px, calc(19cqw / var(--n)));
+  color: var(--muted-ink);
+}
+.sdNotes .sdNoteHit {
+  color: #b07d10;
+  font-weight: 900;
+}
+.sdHidden .sdCell {
+  color: transparent;
+  background: var(--surface);
+}
+.sdHidden .sdNotes {
+  visibility: hidden;
+}
+.sdResume {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--c-games);
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+.sdPad {
+  width: min(100%, 460px);
+  margin: 12px auto 0;
+}
+.sdTools {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.sdTool {
+  padding: 9px 2px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink);
+  cursor: pointer;
+}
+.sdTool:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.sdToolOn {
+  border-color: var(--c-games);
+  background: var(--c-games);
+  color: #fff;
+}
+.sdDigits {
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  gap: 5px;
+  margin-top: 8px;
+}
+.sdDigit {
+  height: min(56px, calc((min(100vw, 460px) - 40px) / var(--n) * 1.2));
+  padding: 0;
+  border: 1.5px solid var(--c-games);
+  border-radius: 12px;
+  background: var(--c-games-soft);
+  font: inherit;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--c-games);
+  cursor: pointer;
+}
+.sdDigit:disabled {
+  cursor: default;
+}
+.sdDigitUsed {
+  opacity: 0.35;
+}
+/* 메모를 켜면 숫자 버튼도 메모 글씨처럼 작게 */
+.sdDigitsNote .sdDigit {
+  border-style: dashed;
+  background: var(--surface);
+  font-size: 17px;
+  color: var(--muted-ink);
+}
+.sdKeys {
+  margin: 10px 0 0;
+  font-size: 12px;
+  text-align: center;
+  color: var(--muted-ink);
+}
+@media (hover: none) {
+  .sdKeys {
+    display: none;
+  }
+}
+
+/* ---------- 틀린 그림 찾기 ---------- */
+.spStatus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(100%, 920px);
+  margin: 8px auto 0;
+  padding: 4px 14px 4px 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+}
+.spCount {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--muted-ink);
+  white-space: nowrap;
+}
+.spCount b {
+  color: var(--c-games);
+  font-size: 17px;
+}
+.spTime {
+  margin-left: auto;
+  font-size: 22px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+.spTimeLow {
+  color: #c62828;
+}
+.spTrack {
+  width: min(100%, 920px);
+  height: 6px;
+  margin: 8px auto 0;
+  border-radius: 9px;
+  background: #ebe4e7;
+  overflow: hidden;
+}
+.spTrack i {
+  display: block;
+  height: 100%;
+  border-radius: 9px;
+  background: var(--c-games);
+  transition: width 100ms linear;
+}
+.spTrack .spTrackLow {
+  background: #e53935;
+}
+/* 폰: 위아래로 두 장, 화면 높이에 맞춰 크기를 줄여요. 넓은 화면: 나란히 두 장 */
+.spPair {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+.spPic {
+  position: relative;
+  width: max(210px, min(100%, 460px, calc((100svh - 300px) / 2)));
+  aspect-ratio: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px var(--border);
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.spPic img,
+.spPic svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+.spHidden img,
+.spHidden svg {
+  visibility: hidden;
+}
+.spHidden {
+  background: #eee4dc;
+}
+@media (min-width: 700px) {
+  .spPair {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .spPic {
+    width: max(260px, min(calc(50% - 4px), 460px, calc(100svh - 270px)));
+  }
+}
+.spBottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.spBottom .sdTool {
+  padding: 10px 18px;
+}
+.spNote {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted-ink);
+}

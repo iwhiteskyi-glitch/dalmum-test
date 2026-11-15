@@ -43,3 +43,35 @@ export const ChessIcon = (
     <image href="/games/chess/wN.svg" x="4" y="4" width="32" height="32" />
   </svg>
 );
+
+export const SlideIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#3d8b37" />
+    {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+      <rect key={i} x={5 + (i % 3) * 10.5} y={5 + Math.floor(i / 3) * 10.5} width="9" height="9" rx="2" fill={i === 4 ? "#f5c84b" : "#fff"} />
+    ))}
+  </svg>
+);
+
+export const SudokuIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#fff" stroke="#3d8b37" strokeWidth="2" />
+    <path d="M14 3v34M26 3v34M3 14h34M3 26h34" stroke="#3d8b37" strokeWidth="1.6" />
+    <text x="8.5" y="11.5" fontSize="8.5" fontWeight="800" textAnchor="middle" fill="#2b2b2b">5</text>
+    <text x="20" y="23.5" fontSize="8.5" fontWeight="800" textAnchor="middle" fill="#2b2b2b">3</text>
+    <text x="31.5" y="35" fontSize="8.5" fontWeight="800" textAnchor="middle" fill="#3d8b37">9</text>
+    <text x="31.5" y="11.5" fontSize="8.5" fontWeight="800" textAnchor="middle" fill="#3d8b37">7</text>
+  </svg>
+);
+
+export const SpotIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#3d8b37" />
+    <rect x="5" y="7" width="13" height="26" rx="3" fill="#fff" />
+    <rect x="22" y="7" width="13" height="26" rx="3" fill="#fff" />
+    <circle cx="11.5" cy="15" r="3" fill="#f5c84b" />
+    <circle cx="28.5" cy="15" r="3" fill="#e57373" />
+    <path d="M7 30l4-6 3 4 2-2 1 4zM24 30l4-6 3 4 2-2 1 4z" fill="#8bc34a" />
+    <circle cx="28.5" cy="15" r="6" fill="none" stroke="#f5c84b" strokeWidth="1.6" />
+  </svg>
+);
