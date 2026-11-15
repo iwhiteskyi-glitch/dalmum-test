@@ -118,6 +118,7 @@ const Board = memo(function Board({ board, ids, cell, selected, hint, shake, fla
 export default function LinkGame() {
   const topRef = useRef(null);
   const wrapRef = useRef(null);
+  const resultRef = useRef(null);
   const roundRef = useRef(0);
   const keys = useRef(0);
   const [record, setRecord] = useState(EMPTY_RECORD);
@@ -224,6 +225,32 @@ export default function LinkGame() {
     powerUntil.current = 0;
     refresh();
   }, [timedOut]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /* ---------- 하는 동안 화면이 밀리지 않게 ---------- */
+  // 판은 한 화면에 들어오게 크기를 맞춰 두었어요. 그래서 판을 푸는 동안(멈춤·끝 제외)은 화면 스크롤을 막아,
+  // 타일을 누르다 손가락이 미끄러져도 화면이 움직이지 않게 해요. 끝나면 결과와 다음 버튼 쪽으로 내려가요.
+  // (가로로 눕힌 폰처럼 화면이 낮으면 판이 한 화면에 안 들어와서 막지 않아요)
+  const solving = Boolean(run) && !run.done && pausedAt === null && typeof window !== "undefined" && window.innerHeight >= 520;
+  useEffect(() => {
+    if (!solving) return;
+    const root = document.documentElement;
+    const before = { overflow: root.style.overflow, overscroll: root.style.overscrollBehavior };
+    root.style.overflow = "hidden";
+    root.style.overscrollBehavior = "none";
+    const stop = (e) => e.cancelable && e.preventDefault(); // 아이폰 사파리는 overflow만으로는 안 막혀요
+    document.addEventListener("touchmove", stop, { passive: false });
+    return () => {
+      root.style.overflow = before.overflow;
+      root.style.overscrollBehavior = before.overscroll;
+      document.removeEventListener("touchmove", stop);
+    };
+  }, [solving]);
+  const finished = Boolean(run?.done);
+  useEffect(() => {
+    if (!finished) return;
+    const timer = setTimeout(() => resultRef.current?.scrollIntoView({ block: "center", behavior: "smooth" }), 450);
+    return () => clearTimeout(timer);
+  }, [finished]);
 
   /* ---------- 잠깐 멈춤 ---------- */
   const pause = () => {
@@ -589,7 +616,7 @@ export default function LinkGame() {
       </div>
 
       {done ? (
-        <div className={styles.slideResult} role="status">
+        <div className={styles.slideResult} role="status" ref={resultRef}>
           {done.kind === "clear" ? (
             <>
               <p className={styles.endTitle}>{run.stage === ENDLESS && !run.daily ? `연속 ${done.count}판 성공!` : `다 없앴어요! ⏱ ${formatClock(done.ms)}`}</p>
