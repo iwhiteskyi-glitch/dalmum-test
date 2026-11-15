@@ -41,6 +41,16 @@ check("잘못 누르면 1·2·3초 잠금, 그 뒤로 3초", lockMs(1) === 1000 
   check("다른 곳 가운데를 누르면 그 곳, 이미 찾은 곳은 다시 쳐도 틀림 아님", hitOk);
   const far = judgeTap(pickSpots(data[0].m, random), [], -500, -500);
   check("그림 밖 먼 곳은 틀림", far === "miss");
+  // 범위가 겹칠 때: 찾은 곳 가운데가 더 가까워도 못 찾은 곳 범위 안이면 그곳으로
+  const two = [
+    { x: 100, y: 100, radius: 50, polygons: [[60, 60, 140, 60, 140, 140, 60, 140]], color: "#000", remove: false, side: "top" },
+    { x: 220, y: 100, radius: 50, polygons: [[150, 60, 290, 60, 290, 140, 150, 140]], color: "#000", remove: false, side: "top" },
+  ];
+  check("겹친 범위: 찾은 곳보다 못 찾은 곳 먼저", judgeTap(two, [0], 155, 100) === 1 && judgeTap(two, [0, 1], 155, 100) === "again");
+  // 다섯 곳을 못 고르는 그림이 있는지 씨앗을 넉넉히 바꿔 봐요
+  let short = 0;
+  for (const pic of data) for (const level of ["m", "h"]) for (let k = 0; k < 400; k++) if (pickSpots(pic[level], random).length !== SPOT_COUNT) short++;
+  check(`그림 50장 × 2단계 × 400번: 다섯 곳 못 고른 판 ${short}개`, short === 0);
 }
 
 /* ---------- 그림 돌리기 ---------- */

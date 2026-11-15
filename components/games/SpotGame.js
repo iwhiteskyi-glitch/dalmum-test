@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./games.module.css";
 import { seededRandom } from "@/lib/games/slide/slide";
 import {
@@ -14,7 +14,6 @@ import {
   pickSpots,
   rememberPicture,
   shiftClock,
-  SPOT_COUNT,
   spotDataUrl,
   spotPath,
   spotPictureUrl,
@@ -42,9 +41,10 @@ function loadPicture(picture) {
       if (!r.ok) throw new Error(String(r.status));
       return r.json();
     });
-    const image = new Promise((resolve) => {
+    const image = new Promise((resolve, reject) => {
       const img = new window.Image();
-      img.onload = img.onerror = () => resolve();
+      img.onload = () => resolve();
+      img.onerror = () => reject(new Error("image"));
       img.src = spotPictureUrl(picture);
     });
     const both = Promise.all([data, image]).then(([d]) => d);
@@ -54,27 +54,48 @@ function loadPicture(picture) {
   return dataCache.get(picture);
 }
 
-/** 본 그림 기록에서 다음 그림을 골라 기록해요(50장이 한 바퀴 돌기 전에는 겹치지 않아요) */
-function pickNextPicture() {
+/** 본 그림 기록에서 다음 그림을 골라요(50장이 한 바퀴 돌기 전에는 겹치지 않아요). 기록은 실제로 보여 줄 때 해요 */
+function pickNextPicture(exclude = null) {
   const seen = loadSeen(PICTURE_COUNT);
-  const picture = nextPicture(seen, PICTURE_COUNT, Math.random);
-  saveSeen(rememberPicture(seen, picture, PICTURE_COUNT));
-  return picture;
+  return nextPicture(exclude === null ? seen : [...seen, exclude], PICTURE_COUNT, Math.random);
+}
+function markSeen(picture) {
+  saveSeen(rememberPicture(loadSeen(PICTURE_COUNT), picture, PICTURE_COUNT));
 }
 
+/** 손가락을 이만큼 넘게 움직이면 누른 게 아니라 화면을 미는 것으로 봐요 */
+const TAP_SLOP = 12;
+
 /** 그림 한 장: 이쪽을 바꾸는 다른 곳을 덮어 그리고, 찾은 곳·힌트·잘못 누른 표시를 위에 그려요 */
-function Picture({ run, side, now, showAll, hidden, onTap }) {
+// 시계가 0.1초마다 바뀌어도 그림은 다시 그리지 않게 memo로 감싸고, 시각 대신 지금 보일지만 받아요
+const Picture = memo(function Picture({ run, side, mark, hint, showAll, hidden, onTap }) {
   const paths = useMemo(() => run.spots.flatMap((spot) => (spot.side === side ? [{ d: spotPath(spot.polygons), color: spot.color }] : [])), [run.spots, side]);
   const marker = PICTURE_SIZE / 60;
-  const mark = run.mark && now < run.lockUntil ? run.mark : null;
-  const hint = run.hint !== null && now < run.hintUntil ? run.hint : null;
-  const press = (e) => {
+  // 손을 뗄 때 판정해요. 누른 채로 움직이거나(화면 밀기) 두 손가락이면(확대) 누른 걸로 치지 않아요
+  const down = useRef(null);
+  const onDown = (e) => {
     if (e.button !== 0) return;
+    down.current = down.current ? { cancelled: true } : { id: e.pointerId, x: e.clientX, y: e.clientY };
+  };
+  const onUp = (e) => {
+    const d = down.current;
+    down.current = null;
+    if (!d || d.cancelled || d.id !== e.pointerId || Math.hypot(e.clientX - d.x, e.clientY - d.y) > TAP_SLOP) return;
     const r = e.currentTarget.getBoundingClientRect();
     onTap(((e.clientX - r.left) / r.width) * PICTURE_SIZE, ((e.clientY - r.top) / r.height) * PICTURE_SIZE);
   };
+  const cancel = () => {
+    down.current = null;
+  };
   return (
-    <div className={`${styles.spPic} ${hidden ? styles.spHidden : ""}`} onPointerDown={press} onContextMenu={(e) => e.preventDefault()}>
+    <div
+      className={`${styles.spPic} ${hidden ? styles.spHidden : ""}`}
+      onPointerDown={onDown}
+      onPointerUp={onUp}
+      onPointerCancel={cancel}
+      onPointerLeave={cancel}
+      onContextMenu={(e) => e.preventDefault()}
+    >
       {/* eslint-disable-next-line @next/next/no-img-element -- 미리 받아 둔 그림을 그대로 써요 */}
       <img src={spotPictureUrl(run.picture)} alt={side === "top" ? "첫 번째 그림" : "두 번째 그림"} draggable={false} />
       <svg viewBox={`0 0 ${PICTURE_SIZE} ${PICTURE_SIZE}`} aria-hidden="true">
@@ -101,12 +122,13 @@ function Picture({ run, side, now, showAll, hidden, onTap }) {
       </svg>
     </div>
   );
-}
+});
 
 export default function SpotGame() {
   const topRef = useRef(null);
   const upcoming = useRef(null);
   const timer = useRef(null);
+  const token = useRef(0); // 시작·그만두기마다 1씩. 그 전에 시작한 준비가 늦게 끝나면 버려요
   const [best, setBest] = useState(0);
   const [daily, setDaily] = useState(null);
   const [run, setRun] = useState(null);
@@ -128,6 +150,7 @@ export default function SpotGame() {
 
   /** 판 하나 준비: 자료와 그림을 다 받은 뒤에 시작해요(시간이 그림 받는 동안 흐르지 않게) */
   const begin = async (mode, number) => {
+    const mine = token.current;
     setLoading(true);
     setFailed(false);
     try {
@@ -144,6 +167,8 @@ export default function SpotGame() {
         upcoming.current = null;
       }
       const data = await loadPicture(picture);
+      if (mine !== token.current) return;
+      if (mode !== "daily") markSeen(picture);
       const level = mode === "daily" ? "h" : stageLevel(number);
       const at = Date.now();
       setRun({
@@ -165,13 +190,14 @@ export default function SpotGame() {
       });
       setNow(at);
       setClearing(false);
-      setPausedAt(null);
+      setPausedAt(document.hidden ? at : null); // 다른 탭에 있는 동안 시작되면 멈춘 채로
       if (mode !== "daily") {
-        // 다음 판 그림을 미리 받아 둬요
-        upcoming.current = pickNextPicture();
+        // 다음 판 그림을 미리 받아 둬요(본 그림 기록은 실제로 보여 줄 때 남겨요)
+        upcoming.current = pickNextPicture(picture);
         loadPicture(upcoming.current).catch(() => {});
       }
     } catch {
+      if (mine !== token.current) return;
       // 그림을 못 받으면 처음 화면으로(연승 중이었다면 깬 판까지는 기록해요)
       if (mode === "streak" && number > 1) saveBest(number - 1);
       clearTimeout(timer.current);
@@ -185,6 +211,7 @@ export default function SpotGame() {
   };
 
   const start = (mode) => {
+    token.current += 1;
     clearTimeout(timer.current);
     setOver(null);
     setRun(null);
@@ -193,6 +220,7 @@ export default function SpotGame() {
   };
 
   const finish = (current, reason) => {
+    token.current += 1;
     clearTimeout(timer.current);
     if (current.mode === "daily") {
       const ms = Date.now() - current.startedAt;
@@ -256,7 +284,7 @@ export default function SpotGame() {
     const found = [...run.found, result];
     const next = { ...run, found, wrongInARow: 0, hintUntil: run.hint === result ? 0 : run.hintUntil };
     setRun(next);
-    if (found.length < SPOT_COUNT) return;
+    if (found.length < run.spots.length) return;
     if (run.mode === "daily") {
       finish(next, "found");
       return;
@@ -264,6 +292,11 @@ export default function SpotGame() {
     setClearing(true);
     timer.current = setTimeout(() => begin("streak", run.number + 1), CLEAR_MS);
   };
+
+  // 그림이 받는 누르기 함수는 늘 같은 것(그래야 그림이 다시 그려지지 않아요)
+  const tapRef = useRef(tap);
+  tapRef.current = tap;
+  const onTap = useCallback((x, y) => tapRef.current(x, y), []);
 
   const showHint = () => {
     if (!run || run.hintUsed || over || clearing || pausedAt !== null) return;
@@ -276,6 +309,7 @@ export default function SpotGame() {
 
   const leave = () => {
     if (!run || over) {
+      token.current += 1;
       clearTimeout(timer.current);
       setRun(null);
       setOver(null);
@@ -285,6 +319,7 @@ export default function SpotGame() {
     const msg = run.mode === "daily" ? "그만할까요? 오늘의 그림은 언제든 다시 할 수 있어요." : "그만할까요? 지금 판은 사라지고, 깬 판까지 기록에 남아요.";
     if (!window.confirm(msg)) return;
     if (run.mode === "daily") {
+      token.current += 1;
       setRun(null);
       refresh();
     } else finish(run, "quit");
@@ -339,6 +374,8 @@ export default function SpotGame() {
   const leftSeconds = Math.ceil(Math.max(0, left) / 1000);
   const elapsed = over?.ms ?? (pausedAt ?? now) - run.startedAt;
   const lockLeft = Math.ceil((run.lockUntil - now) / 1000);
+  const markShown = run.mark && now < run.lockUntil ? run.mark : null;
+  const hintShown = run.hint !== null && now < run.hintUntil ? run.hint : null;
   const message = over
     ? null
     : clearing
@@ -370,7 +407,7 @@ export default function SpotGame() {
           </svg>
         </button>
         <span className={styles.spCount}>
-          찾음 <b>{run.found.length}</b>/{SPOT_COUNT}
+          찾음 <b>{run.found.length}</b>/{run.spots.length}
         </span>
         <span className={`${styles.spCount} ${run.wrong ? styles.sdWrong : ""}`}>{daily_ ? `틀림 ${run.wrong}` : `틀림 ${run.wrong}/${MAX_WRONG}`}</span>
         <span className={`${styles.spTime} ${!daily_ && !over && leftSeconds <= LOW_SECONDS && !clearing ? styles.spTimeLow : ""}`}>
@@ -392,8 +429,8 @@ export default function SpotGame() {
       )}
 
       <div className={styles.spPair}>
-        <Picture key={`t${run.number}-${run.picture}`} run={run} side="top" now={now} showAll={Boolean(over)} hidden={pausedAt !== null} onTap={tap} />
-        <Picture key={`b${run.number}-${run.picture}`} run={run} side="bottom" now={now} showAll={Boolean(over)} hidden={pausedAt !== null} onTap={tap} />
+        <Picture key={`t${run.number}-${run.picture}`} run={run} side="top" mark={markShown} hint={hintShown} showAll={Boolean(over)} hidden={pausedAt !== null} onTap={onTap} />
+        <Picture key={`b${run.number}-${run.picture}`} run={run} side="bottom" mark={markShown} hint={hintShown} showAll={Boolean(over)} hidden={pausedAt !== null} onTap={onTap} />
         {pausedAt !== null && (
           <button type="button" className={styles.sdResume} onClick={resume}>
             이어서 하기
@@ -418,7 +455,7 @@ export default function SpotGame() {
             </>
           )}
           <div className={styles.btns}>
-            <button type="button" className={styles.primary} onClick={() => start("streak")}>
+            <button type="button" className={styles.primary} onClick={() => start("streak")} disabled={loading}>
               {daily_ ? "연승 도전 하기" : "다시 도전"}
             </button>
             <button type="button" className={styles.btn} onClick={leave}>
