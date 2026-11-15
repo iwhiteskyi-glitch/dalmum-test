@@ -1101,6 +1101,10 @@ a.gameItem:hover {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+/* 다 끼운 뒤에는 판 위에서도 화면을 밀어 내릴 수 있게 */
+.slideBoardDone {
+  touch-action: auto;
+}
 .slideFrame {
   position: absolute;
   left: 0;
