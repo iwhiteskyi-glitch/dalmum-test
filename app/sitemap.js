@@ -59,6 +59,7 @@ export default function sitemap() {
     { path: "/games/chess", priority: 0.75, changeFrequency: "monthly" },
     { path: "/games/sudoku", priority: 0.75, changeFrequency: "daily" },
     { path: "/games/spot", priority: 0.75, changeFrequency: "daily" },
+    { path: "/games/link", priority: 0.75, changeFrequency: "daily" },
     { path: "/games/slide", priority: 0.75, changeFrequency: "daily" },
     { path: "/games/puzzle", priority: 0.75, changeFrequency: "daily" },
     { path: "/games/puzzle/omok", priority: 0.7, changeFrequency: "daily" },
