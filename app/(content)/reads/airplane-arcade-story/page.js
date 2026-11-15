@@ -39,6 +39,7 @@ export default function Page() {
         <li>둘이 겨루는 보드게임: 오목, 장기, 체스</li>
         <li>여럿이 하는 게임: 빙고, 그림 맞히기, 카드 게임</li>
         <li>혼자 푸는 퍼즐: 스도쿠, 틀린 그림 찾기, 슬라이드 퍼즐</li>
+        <li>혼자도, 여럿이 겨루기도 하는 퍼즐: 짝꿍 잇기</li>
       </ul>
 
       <h2>처음 떠올린 게임은 오목</h2>
@@ -66,7 +67,7 @@ export default function Page() {
       </p>
 
       <p>
-        슬라이드 퍼즐은 이 사이트의 <Link href="/games/slide">미니게임</Link>에서도 설치 없이 할 수 있어요. 앱의 <Link href="/games/sudoku">스도쿠</Link>와 <Link href="/games/spot">틀린 그림 찾기</Link>도 사이트로 옮겨 왔어요. 퍼즐과 틀린 그림 찾기에 쓰인 그림 50장은 이 앱과 사이트를 위해 AI 그림 도구로 만들었어요. 슬라이드 퍼즐을 잘 푸는 순서가 궁금하다면 <Link href="/reads/slide-puzzle-tips">슬라이드 퍼즐 푸는 법</Link>을 읽어 보세요.
+        슬라이드 퍼즐은 이 사이트의 <Link href="/games/slide">미니게임</Link>에서도 설치 없이 할 수 있어요. 앱의 <Link href="/games/sudoku">스도쿠</Link>, <Link href="/games/spot">틀린 그림 찾기</Link>, <Link href="/games/link">짝꿍 잇기</Link>도 사이트로 옮겨 왔어요. 퍼즐과 틀린 그림 찾기에 쓰인 그림 50장은 이 앱과 사이트를 위해 AI 그림 도구로 만들었어요. 슬라이드 퍼즐을 잘 푸는 순서가 궁금하다면 <Link href="/reads/slide-puzzle-tips">슬라이드 퍼즐 푸는 법</Link>을 읽어 보세요.
       </p>
 
       <h2>웹사이트와 앱은 이렇게 달랐어요</h2>
@@ -116,7 +117,7 @@ export default function Page() {
       </p>
 
       <p>
-        설치 없이 혼자 즐기고 싶다면 이 사이트의 <Link href="/games">미니게임</Link>도 있어요. 컴퓨터와 겨루는 오목·장기·체스·돌 뒤집기와 스도쿠·틀린 그림 찾기·슬라이드 퍼즐을 할 수 있어요.
+        설치 없이 혼자 즐기고 싶다면 이 사이트의 <Link href="/games">미니게임</Link>도 있어요. 컴퓨터와 겨루는 오목·장기·체스·돌 뒤집기와 스도쿠·틀린 그림 찾기·짝꿍 잇기·슬라이드 퍼즐을 할 수 있어요.
       </p>
 
       <p>

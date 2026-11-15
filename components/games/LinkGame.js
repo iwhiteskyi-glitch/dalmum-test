@@ -2,7 +2,7 @@
 
 import { memo, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import styles from "./games.module.css";
-import { EMPTY, endlessSpec, LEVELS, makeBoard, TILE_PICTURES, tilesLeft } from "@/lib/games/link/link";
+import { EMPTY, endlessSpec, findPair, LEVELS, makeBoard, TILE_PICTURES, tilesLeft } from "@/lib/games/link/link";
 import { breakWithPower, linkPair, newPlay, shufflePlay, takeHint } from "@/lib/games/link/play";
 import {
   addEndlessStreak,
@@ -14,8 +14,8 @@ import {
   dailyStatus,
   EMPTY_RECORD,
   formatClock,
-  isCleared,
   isEndlessOpen,
+  isStageCleared,
   isStageOpen,
   loadRecord,
   nextStage,
@@ -140,14 +140,12 @@ export default function LinkGame() {
     setRecord(loadRecord());
     setDaily(dailyStatus());
   };
+  // 타일 그림은 판을 시작할 때 그 판에 나온 것만 받아요(처음 화면에서 미리 받지 않아요)
   useEffect(() => {
     refresh();
-    // 타일 그림 36장(모두 합쳐 약 230KB)을 미리 받아 둬요
-    TILE_PICTURES.forEach((_, i) => {
-      const img = new window.Image();
-      img.src = tileUrl(i);
-    });
   }, []);
+  const runRef = useRef(run);
+  runRef.current = run;
 
   /** stage: 1~10 단계, 0 무한 도전, "daily" 오늘의 짝꿍 잇기 */
   const start = (stage, streak = 0) => {
@@ -174,8 +172,10 @@ export default function LinkGame() {
     setHint(null);
     setFlash(null);
     setShake(null);
-    setMessage(null);
-    setShuffle(null);
+    // 드물게 처음부터 이을 짝이 없는 판이 나오면(판 만들기가 40번 안에 못 찾을 때) 바로 섞어요
+    const stuck = !findPair(board);
+    setMessage(stuck ? "이을 짝이 없어요! 섞을게요" : null);
+    setShuffle(stuck ? { phase: "wait", at: t } : null);
     setPausedAt(document.hidden ? t : null);
     setNow(t);
     requestAnimationFrame(() => topRef.current?.scrollIntoView({ block: "start" }));
@@ -256,6 +256,12 @@ export default function LinkGame() {
     const timer = setTimeout(() => {
       const t = Date.now();
       shift(t - shuffle.at);
+      // 섞은 판에도 이을 짝이 없으면(아주 드물어요) 한 번 더 섞어요
+      const current = runRef.current?.play.board;
+      if (current && tilesLeft(current) > 0 && !findPair(current)) {
+        setShuffle({ phase: "wait", at: t });
+        return;
+      }
       setShuffle(null);
       setMessage(null);
       setNow(t);
@@ -321,6 +327,11 @@ export default function LinkGame() {
     const { play } = run;
     const cells = play.board.cells;
     if (cells[index] === EMPTY) return;
+    // 시간이 막 다 됐는데 아직 시계가 안 바뀐 때(0.25초 사이)는 누르기를 받지 않아요. 곧 "시간이 다 됐어요"로 바뀌어요
+    if (limitMs && Date.now() - run.startedAt >= limitMs) {
+      setNow(Date.now());
+      return;
+    }
     // 파워: 누른 타일과 같은 그림 하나가 선과 상관없이 함께 깨져요
     if (powerOn) {
       const result = breakWithPower(play, index);
@@ -343,7 +354,7 @@ export default function LinkGame() {
     if (!result) {
       setShake({ key: ++keys.current, indices: [selected, index] });
       setSelected(index);
-      setMessage("선이 두 번 넘게 꺾여서 못 이어요");
+      setMessage("지금은 이을 수 없어요 · 선은 두 번까지만 꺾여요");
       return;
     }
     afterRemove(result);
@@ -418,7 +429,7 @@ export default function LinkGame() {
               const n = i + 1;
               const r = record.stages[n];
               const open = isStageOpen(record, n);
-              const done = isCleared(record, n);
+              const done = isStageCleared(record, n);
               const isNow = n === current && !done;
               return (
                 <li key={n}>

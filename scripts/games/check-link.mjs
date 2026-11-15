@@ -122,7 +122,7 @@ check("타일 그림 36가지", TILE_PICTURES.length === 36);
     const key = day(n);
     const a = dailyLinkBoard(key);
     const b = dailyLinkBoard(key);
-    const spec = DAILY_SPECS[levelOf(key)];
+    const spec = DAILY_SPECS[levelOf(key)] ?? DAILY_SPECS.medium;
     if (JSON.stringify(a) === JSON.stringify(b) && a.cols === spec.cols && a.rows === spec.rows && allPairs(a, true).length) ok++;
     seen.add(JSON.stringify(a.cells));
   }
