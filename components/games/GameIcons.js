@@ -86,3 +86,15 @@ export const LinkIcon = (
     <path d="M10.5 16v4.5h19V24" fill="none" stroke="#3d8b37" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
+
+export const BaseballIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#1d2a3a" />
+    <text x="20" y="18" fontSize="11" fontWeight="900" textAnchor="middle" fill="#ffd54f" letterSpacing="1.5">307</text>
+    <circle cx="11" cy="28" r="3" fill="#4cd964" />
+    <circle cx="19" cy="28" r="3" fill="none" stroke="#4a5a6e" strokeWidth="1.2" />
+    <circle cx="29" cy="28" r="3" fill="#ffb300" />
+    <text x="11" y="36.5" fontSize="5.5" fontWeight="800" textAnchor="middle" fill="#4cd964">S</text>
+    <text x="29" y="36.5" fontSize="5.5" fontWeight="800" textAnchor="middle" fill="#ffb300">B</text>
+  </svg>
+);

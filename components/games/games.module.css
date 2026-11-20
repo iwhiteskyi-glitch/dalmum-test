@@ -1843,3 +1843,364 @@ a.gameItem:hover {
     transition: none;
   }
 }
+
+/* ---------- 숫자 야구 ---------- */
+.bbChance {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  width: min(100%, 460px);
+  margin: 8px auto 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted-ink);
+}
+.bbChance b {
+  font-size: 20px;
+  color: var(--c-games);
+}
+.bbStarNow {
+  font-size: 13.5px;
+  color: #b98a00;
+  white-space: nowrap;
+}
+.bbBalls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  width: min(100%, 460px);
+  margin: 6px auto 0;
+}
+.bbBalls i {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 50%, transparent 52%, #d84343 53% 60%, transparent 61%),
+    radial-gradient(circle at 70% 50%, transparent 52%, #d84343 53% 60%, transparent 61%),
+    #fff;
+  box-shadow: inset 0 0 0 1.5px #d9d0c4;
+}
+.bbBalls .bbBallUsed {
+  opacity: 0.25;
+}
+.bbBoard {
+  width: min(100%, 460px);
+  margin: 8px auto 0;
+  padding: 8px 10px 10px;
+  border-radius: 14px;
+  background: #1d2a3a;
+  color: #e8eef6;
+}
+.bbBoardHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffd54f;
+}
+.bbBoardHead small {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #b0bccb;
+}
+.bbList {
+  /* 전광판이 길어져도 숫자판이 화면 안에 남게, 화면 높이에서 나머지 자리를 빼고 남는 만큼만 */
+  max-height: clamp(84px, calc(100svh - 530px), 260px);
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+}
+.bbRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 2px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.bbRow:first-child {
+  border-top: 0;
+}
+.bbNo {
+  width: 18px;
+  font-size: 12px;
+  color: #8796a8;
+  text-align: right;
+}
+.bbGuess {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #ffd54f;
+  font-variant-numeric: tabular-nums;
+}
+.bbOut {
+  margin-left: auto;
+  font-size: 15px;
+  font-weight: 900;
+  color: #ff6b6b;
+}
+.bbLamps {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+.bbLamps > span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.bbLamps i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid #4a5a6e;
+}
+.bbLamps .bbLampS {
+  background: #4cd964;
+  border-color: #4cd964;
+  box-shadow: 0 0 6px #4cd964;
+}
+.bbLamps .bbLampB {
+  background: #ffb300;
+  border-color: #ffb300;
+  box-shadow: 0 0 6px #ffb300;
+}
+.bbS,
+.bbB {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 13px;
+}
+.bbS {
+  color: #4cd964;
+}
+.bbB {
+  color: #ffb300;
+}
+.bbJudge {
+  margin-left: auto;
+  white-space: nowrap;
+}
+.bbEmpty {
+  padding: 10px 2px;
+  font-size: 13.5px;
+  color: #b0bccb;
+}
+.bbPad {
+  width: min(100%, 460px);
+  margin: 10px auto 0;
+}
+.bbSlots {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.bbSlot {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 52px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 26px;
+  font-weight: 900;
+}
+.bbSlotNext {
+  border-color: var(--c-games);
+}
+.bbMsg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #c62828;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.bbMemo {
+  display: grid;
+  grid-template-columns: auto repeat(10, 1fr);
+  align-items: center;
+  gap: 3px;
+  margin-top: 10px;
+}
+.bbMemoLabel {
+  padding-right: 4px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--muted-ink);
+}
+.bbMemoKey {
+  height: 30px;
+  padding: 0;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.bbMemoNo {
+  border-color: #c9c2ba;
+  background: #ece7e1;
+  color: #a39b92;
+  text-decoration: line-through;
+}
+.bbMemoYes {
+  border-color: var(--c-games);
+  background: var(--c-games-soft);
+  color: var(--c-games);
+}
+.bbMemoHint {
+  margin: 4px 0 0;
+  font-size: 12px;
+  text-align: center;
+  color: var(--muted-ink);
+}
+.bbKeys {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin-top: 8px;
+}
+.bbKey {
+  height: 48px;
+  padding: 0;
+  border: 1.5px solid var(--c-games);
+  border-radius: 12px;
+  background: var(--surface);
+  font: inherit;
+  font-size: 21px;
+  font-weight: 900;
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.bbKey:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.bbKeyNo {
+  border-color: #c9c2ba;
+  color: #a39b92;
+}
+.bbKeyYes {
+  background: var(--c-games-soft);
+}
+.bbErase {
+  grid-column: span 2;
+  border-color: var(--border);
+}
+.bbCall {
+  grid-column: span 3;
+  border-color: var(--c-games);
+  background: var(--c-games);
+  color: #fff;
+  font-size: 18px;
+}
+.bbCall:disabled {
+  opacity: 0.4;
+}
+.bbReveal {
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: var(--c-games);
+}
+.bbStatus {
+  width: min(100%, 460px);
+  margin: 8px auto 0;
+  padding: 9px 14px;
+  border-radius: 12px;
+  background: var(--c-games-soft);
+  font-size: 15px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--c-games);
+}
+.bbStatusWait {
+  background: #eef1f5;
+  color: #5b6b7e;
+}
+.bbStatusWin {
+  background: #fff3c4;
+  color: #8a6100;
+}
+.bbStatusLose {
+  background: #fde4e4;
+  color: #c62828;
+}
+.bbHideNote {
+  width: min(100%, 460px);
+  margin: 8px auto 0;
+  font-size: 13.5px;
+  text-align: center;
+  color: var(--muted-ink);
+}
+.bbSecrets {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: min(100%, 460px);
+  margin: 8px auto 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--muted-ink);
+}
+.bbSecrets b {
+  margin-left: 4px;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: var(--ink);
+}
+.bbTwo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: min(100%, 460px);
+  margin: 0 auto;
+}
+.bbTwo .bbBoard {
+  width: 100%;
+}
+.bbBoardCompact {
+  padding: 7px 8px 8px;
+}
+.bbBoardCompact .bbList {
+  max-height: clamp(70px, calc(100svh - 560px), 200px);
+}
+.bbBoardCompact .bbRow {
+  gap: 6px;
+}
+.bbBoardCompact .bbGuess {
+  font-size: 17px;
+  letter-spacing: 2px;
+}
+.bbBoardCompact .bbNo {
+  width: 14px;
+  font-size: 11px;
+}
+.bbBoardCompact .bbOut,
+.bbBoardCompact .bbS,
+.bbBoardCompact .bbB {
+  font-size: 12px;
+}
+/* 판이 끝나면 숫자판이 없어지니 전광판을 다 펼쳐 지난 기록을 한눈에 */
+.bbBoardOpen .bbList {
+  max-height: none;
+}
