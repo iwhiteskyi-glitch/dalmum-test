@@ -424,7 +424,7 @@ export default function BaseballGame() {
                             </span>
                           )}
                         </b>
-                        <small>{r?.bestUsed ? `최고 ⚾ ${r.bestUsed}번 만에` : n === 6 ? "여기부터 4자리" : "맨 앞 0도 될 수 있어요"}</small>
+                        {(r?.bestUsed || n === 1 || n === 6) && <small>{r?.bestUsed ? `최고 ⚾ ${r.bestUsed}번 만에` : n === 1 ? "맨 앞 0도 될 수 있어요" : "여기부터 4자리"}</small>}
                       </span>
                       <span className={styles.stageState}>{done ? "다시 하기" : open ? "도전 ›" : "잠김"}</span>
                     </button>

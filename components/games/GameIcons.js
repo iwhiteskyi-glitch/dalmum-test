@@ -98,3 +98,39 @@ export const BaseballIcon = (
     <text x="29" y="36.5" fontSize="5.5" fontWeight="800" textAnchor="middle" fill="#ffb300">B</text>
   </svg>
 );
+
+export const BingoIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#faf6ef" stroke="#e6ddd0" />
+    {[0, 1, 2].map((r) =>
+      [0, 1, 2].map((c) => (
+        <rect key={`${r}${c}`} x={5 + c * 10.5} y={5 + r * 10.5} width="9" height="9" rx="2" fill={r === c ? "#3d8b37" : (r + c) % 3 === 1 ? "#ffe9a8" : "#fff"} stroke="#e6ddd0" strokeWidth="0.8" />
+      )),
+    )}
+    <line x1="7" y1="7" x2="33" y2="33" stroke="#f2994a" strokeWidth="2.4" strokeLinecap="round" />
+  </svg>
+);
+
+export const OneCardIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#3d8b37" />
+    <rect x="6" y="9" width="15" height="21" rx="2.5" fill="#fffdf8" stroke="#2f6b2b" transform="rotate(-12 13 19)" />
+    <rect x="18" y="8" width="15" height="21" rx="2.5" fill="#fffdf8" stroke="#2f6b2b" transform="rotate(8 25 18)" />
+    <text x="25.5" y="18.5" fontSize="8" fontWeight="900" textAnchor="middle" fill="#d32f2f" transform="rotate(8 25 18)">7</text>
+    <text x="25.5" y="26" fontSize="8" textAnchor="middle" fill="#d32f2f" transform="rotate(8 25 18)">♥</text>
+    <circle cx="31" cy="31" r="5.5" fill="#ffd54f" stroke="#7d2a22" strokeWidth="1" />
+    <text x="31" y="33.6" fontSize="7" fontWeight="900" textAnchor="middle" fill="#7d2a22">1</text>
+  </svg>
+);
+
+export const ThiefIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#2f6b2b" />
+    <rect x="5" y="10" width="13" height="19" rx="2.5" fill="#fffdf8" stroke="#1f4a1c" transform="rotate(-14 11 19)" />
+    <rect x="13" y="8" width="13" height="19" rx="2.5" fill="#fffdf8" stroke="#1f4a1c" />
+    <rect x="22" y="10" width="13" height="19" rx="2.5" fill="#fff3c4" stroke="#1f4a1c" transform="rotate(14 28 19)" />
+    <text x="19.5" y="21" fontSize="9" fontWeight="900" textAnchor="middle" fill="#1d1d1d">K</text>
+    <text x="28.5" y="23" fontSize="11" fontWeight="900" textAnchor="middle" fill="#d32f2f" transform="rotate(14 28 19)">★</text>
+    <path d="M9 33 q11 -5 22 0" stroke="#ffd54f" strokeWidth="2" fill="none" strokeLinecap="round" />
+  </svg>
+);
