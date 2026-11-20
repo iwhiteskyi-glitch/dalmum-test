@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import styles from "./games.module.css";
-import { endlessSpec, judge, LEVELS, randomNumber, starsFor } from "@/lib/games/baseball/baseball";
-import { botGuessAt } from "@/lib/games/baseball/ai";
+import { endlessSpec, isHomeRun, isOut, judge, LEVELS, randomNumber, starsFor } from "@/lib/games/baseball/baseball";
+import { botCount, botGuessAt } from "@/lib/games/baseball/ai";
 import { BOT, hideMine, ME, newVs, vsCall, VS_LEVELS } from "@/lib/games/baseball/vs";
 import {
   addDailyTry,
@@ -29,7 +29,7 @@ import {
   STAGE_COUNT,
   starTotal,
 } from "@/lib/games/baseball/record";
-import { LEVELS as DAY_LEVELS, levelOf } from "@/lib/games/daily";
+import { LEVELS as DAY_LEVELS, levelOf, todayKey } from "@/lib/games/daily";
 
 // 숫자 야구 화면(비행기오락실 앱의 혼자 하기를 웹으로 옮겼어요).
 //  - 숫자 맞히기: 컴퓨터가 숨긴 숫자를 정해진 기회 안에 맞혀요(10단계 · 무한 도전 · 오늘의 숫자)
@@ -40,11 +40,11 @@ const ENDLESS = 0;
 /** 컴퓨터가 부르기 전에 뜸 들이는 시간 */
 const BOT_THINK_MS = 1300;
 const starText = (n) => "★".repeat(n) + "☆".repeat(3 - n);
-const judgeText = (j) => (j.strike === 0 && j.ball === 0 ? "OUT" : `${j.strike}S ${j.ball}B`);
+const judgeText = (j) => (isOut(j) ? "OUT" : `${j.strike}S ${j.ball}B`);
 
 /** 전광판 한 줄: 번호, 부른 숫자, S·B 불빛 */
 function CallRow({ index, call, count, compact }) {
-  const out = call.judge.strike === 0 && call.judge.ball === 0;
+  const out = isOut(call.judge);
   const lamps = (n, cls) => Array.from({ length: count }, (_, i) => <i key={i} className={i < n ? cls : ""} />);
   return (
     <li className={styles.bbRow} aria-label={`${index}번째 ${call.guess.split("").join(" ")} ${judgeText(call.judge)}`}>
@@ -126,6 +126,8 @@ function NumberPad({ count, disabled, called, onCall, callLabel = "부르기" })
   const keyRef = useRef(null);
   keyRef.current = (e) => {
     if (e.altKey || e.ctrlKey || e.metaKey) return;
+    // 버튼·링크에 초점이 있을 때 Enter는 그 버튼을 누르는 것이라 건드리지 않아요(키보드만 쓰는 사람)
+    if (e.key === "Enter" && e.target instanceof Element && e.target.closest("button, a, input, select, textarea")) return;
     if (/^[0-9]$/.test(e.key)) {
       e.preventDefault();
       press(e.key);
@@ -239,17 +241,17 @@ export default function BaseballGame() {
     let calls = [];
     let dailyKey = null;
     if (stage === "daily") {
-      dailyKey = dailyStatus().today;
+      dailyKey = todayKey();
       spec = dailySpec(dailyKey);
       secret = dailyNumber(dailyKey);
       calls = dailyCalls(dailyKey); // 오늘 부른 것은 나갔다 와도 그대로
     } else {
-      if (stage === ENDLESS) clearEndlessSaved(); // 판을 깨야 다시 저장돼요. 중간에 나가면 연속이 끝나요
+      // 무한 도전의 이어서 할 자리는 첫 숫자를 부를 때 지워요(시작만 하고 나가면 그대로 남아요)
       spec = stage === ENDLESS ? endlessSpec(streak + 1) : LEVELS[stage - 1];
       secret = randomNumber(spec.count);
     }
     roundRef.current += 1;
-    const solvedAt = calls.findIndex((c) => c.judge.strike === spec.count);
+    const solvedAt = calls.findIndex((c) => isHomeRun(c.judge, spec.count));
     const done = solvedAt >= 0 ? { kind: "solved", used: solvedAt + 1 } : calls.length >= spec.chances ? { kind: "failed" } : null;
     setVs(null);
     setRun({ kind: "guess", stage, spec, secret, calls, round: roundRef.current, streak, dailyKey, done, newBest: false, stars: 0 });
@@ -261,10 +263,12 @@ export default function BaseballGame() {
     const j = judge(run.secret, guess);
     const calls = [...run.calls, { guess, judge: j }];
     if (run.dailyKey) addDailyTry(run.dailyKey, guess);
+    // 무한 도전은 첫 숫자를 부르면 이어서 할 자리를 써요(판을 깨야 다시 저장돼요. 중간에 나가면 연속이 끝나요)
+    if (run.stage === ENDLESS && run.calls.length === 0) clearEndlessSaved();
     const used = calls.length;
     let done = null;
     let extra = {};
-    if (j.strike === run.spec.count) {
+    if (isHomeRun(j, run.spec.count)) {
       done = { kind: "solved", used };
       if (run.stage === ENDLESS) extra = { newBest: addEndlessStreak(run.streak + 1).newBest };
       else if (run.stage !== "daily") {
@@ -281,11 +285,18 @@ export default function BaseballGame() {
 
   /* ---------- 컴퓨터와 대결 ---------- */
   const startVs = (level, streak = 0) => {
-    if (level === ENDLESS) clearVsSaved(); // 판이 끝나야 다시 저장돼요. 중간에 나가면 연승이 끝나요
     roundRef.current += 1;
     setRun(null);
     setVs({ kind: "vs", level, game: newVs(level), round: roundRef.current, streak, outcome: null });
     toTop();
+  };
+  // 내 숫자를 숨기면 판이 시작돼요. 무한 연승은 이때 이어서 할 자리를 써요(판이 끝나야 다시 저장. 중간에 나가면 연승이 끝나요)
+  const hide = (secret) => {
+    if (!vs || vs.game.secrets[ME]) return;
+    const next = hideMine(vs.game, secret);
+    if (!next) return;
+    if (vs.level === ENDLESS) clearVsSaved();
+    setVs({ ...vs, game: next });
   };
   const vsGame = vs?.game;
   const botTurn = Boolean(vsGame) && !vsGame.result && !!vsGame.secrets[ME] && vsGame.turn === BOT;
@@ -330,7 +341,7 @@ export default function BaseballGame() {
 
   const leave = () => {
     const inGuess = run && !run.done && run.calls.length > 0 && run.stage !== "daily";
-    const inVs = vs && !vs.outcome && vsGame && (vsGame.calls[ME].length > 0 || vsGame.calls[BOT].length > 0);
+    const inVs = vs && !vs.outcome && vsGame && (vsGame.calls[ME].length > 0 || vsGame.calls[BOT].length > 0 || (vs.level === ENDLESS && vsGame.secrets[ME]));
     if (inGuess || inVs) {
       const endless = (run && run.stage === ENDLESS) || (vs && vs.level === ENDLESS);
       const msg = endless ? "지금 그만두면 연속 기록이 여기서 끝나요. 판이 끝난 뒤에 나가면 다음에 이어서 할 수 있어요. 나갈까요?" : "지금 나가면 이번 판은 사라져요. 나갈까요?";
@@ -464,7 +475,7 @@ export default function BaseballGame() {
                       <span className={styles.num}>{n}</span>
                       <span className={styles.stageText}>
                         <b>
-                          {n}단계 컴퓨터 · {n <= 5 ? 3 : 4}자리
+                          {n}단계 컴퓨터 · {botCount(n)}자리
                         </b>
                         <small>{n === 1 ? "힌트를 자주 잊어버려요" : n === 6 ? "여기부터 4자리, 다시 조금 쉬워져요" : n === 10 ? "가장 센 컴퓨터" : n <= 5 ? "단계마다 힌트를 더 잘 기억해요" : "단계마다 더 빨리 좁혀 와요"}</small>
                       </span>
@@ -561,8 +572,8 @@ export default function BaseballGame() {
                   다음 단계
                 </button>
               ) : (
-                <button type="button" className={styles.primary} onClick={() => startGuess(ENDLESS)}>
-                  👑 무한 도전
+                <button type="button" className={styles.primary} onClick={() => startGuess(ENDLESS, record.endlessSaved)}>
+                  {record.endlessSaved ? `👑 무한 도전 이어서 · ${record.endlessSaved + 1}판째부터` : "👑 무한 도전"}
                 </button>
               )}
               {!isDaily && (
@@ -621,7 +632,7 @@ export default function BaseballGame() {
           <p className={styles.bbHideNote}>
             서로 {g.count}자리 숫자를 숨기고 번갈아 불러요. 먼저 맞히면 이겨요! 같은 숫자 두 번은 안 되고 맨 앞 0은 돼요.
           </p>
-          <NumberPad key={`hide-${vs.round}`} count={g.count} disabled={false} called={[]} callLabel="숨기기" onCall={(secret) => setVs((cur) => ({ ...cur, game: hideMine(cur.game, secret) ?? cur.game }))} />
+          <NumberPad key={`hide-${vs.round}`} count={g.count} disabled={false} called={[]} callLabel="숨기기" onCall={hide} />
         </>
       ) : (
         <>
@@ -655,8 +666,8 @@ export default function BaseballGame() {
                     다음 단계
                   </button>
                 ) : o.won ? (
-                  <button type="button" className={styles.primary} onClick={() => startVs(ENDLESS)}>
-                    👑 무한 연승
+                  <button type="button" className={styles.primary} onClick={() => startVs(ENDLESS, record.vsStreakSaved)}>
+                    {record.vsStreakSaved ? `👑 무한 연승 이어서 · ${record.vsStreakSaved}연승부터` : "👑 무한 연승"}
                   </button>
                 ) : (
                   <button type="button" className={styles.primary} onClick={() => startVs(vs.level)}>
