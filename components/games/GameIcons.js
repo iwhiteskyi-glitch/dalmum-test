@@ -98,3 +98,15 @@ export const BaseballIcon = (
     <text x="29" y="36.5" fontSize="5.5" fontWeight="800" textAnchor="middle" fill="#ffb300">B</text>
   </svg>
 );
+
+export const BingoIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#faf6ef" stroke="#e6ddd0" />
+    {[0, 1, 2].map((r) =>
+      [0, 1, 2].map((c) => (
+        <rect key={`${r}${c}`} x={5 + c * 10.5} y={5 + r * 10.5} width="9" height="9" rx="2" fill={r === c ? "#3d8b37" : (r + c) % 3 === 1 ? "#ffe9a8" : "#fff"} stroke="#e6ddd0" strokeWidth="0.8" />
+      )),
+    )}
+    <line x1="7" y1="7" x2="33" y2="33" stroke="#f2994a" strokeWidth="2.4" strokeLinecap="round" />
+  </svg>
+);
