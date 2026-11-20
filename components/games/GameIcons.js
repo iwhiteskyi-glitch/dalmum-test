@@ -110,3 +110,15 @@ export const BingoIcon = (
     <line x1="7" y1="7" x2="33" y2="33" stroke="#f2994a" strokeWidth="2.4" strokeLinecap="round" />
   </svg>
 );
+
+export const OneCardIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#3d8b37" />
+    <rect x="6" y="9" width="15" height="21" rx="2.5" fill="#fffdf8" stroke="#2f6b2b" transform="rotate(-12 13 19)" />
+    <rect x="18" y="8" width="15" height="21" rx="2.5" fill="#fffdf8" stroke="#2f6b2b" transform="rotate(8 25 18)" />
+    <text x="25.5" y="18.5" fontSize="8" fontWeight="900" textAnchor="middle" fill="#d32f2f" transform="rotate(8 25 18)">7</text>
+    <text x="25.5" y="26" fontSize="8" textAnchor="middle" fill="#d32f2f" transform="rotate(8 25 18)">♥</text>
+    <circle cx="31" cy="31" r="5.5" fill="#ffd54f" stroke="#7d2a22" strokeWidth="1" />
+    <text x="31" y="33.6" fontSize="7" fontWeight="900" textAnchor="middle" fill="#7d2a22">1</text>
+  </svg>
+);
