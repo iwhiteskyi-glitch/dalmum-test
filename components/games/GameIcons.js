@@ -122,3 +122,15 @@ export const OneCardIcon = (
     <text x="31" y="33.6" fontSize="7" fontWeight="900" textAnchor="middle" fill="#7d2a22">1</text>
   </svg>
 );
+
+export const ThiefIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#2f6b2b" />
+    <rect x="5" y="10" width="13" height="19" rx="2.5" fill="#fffdf8" stroke="#1f4a1c" transform="rotate(-14 11 19)" />
+    <rect x="13" y="8" width="13" height="19" rx="2.5" fill="#fffdf8" stroke="#1f4a1c" />
+    <rect x="22" y="10" width="13" height="19" rx="2.5" fill="#fff3c4" stroke="#1f4a1c" transform="rotate(14 28 19)" />
+    <text x="19.5" y="21" fontSize="9" fontWeight="900" textAnchor="middle" fill="#1d1d1d">K</text>
+    <text x="28.5" y="23" fontSize="11" fontWeight="900" textAnchor="middle" fill="#d32f2f" transform="rotate(14 28 19)">★</text>
+    <path d="M9 33 q11 -5 22 0" stroke="#ffd54f" strokeWidth="2" fill="none" strokeLinecap="round" />
+  </svg>
+);
