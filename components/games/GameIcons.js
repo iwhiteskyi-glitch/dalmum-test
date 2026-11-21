@@ -134,3 +134,20 @@ export const ThiefIcon = (
     <path d="M9 33 q11 -5 22 0" stroke="#ffd54f" strokeWidth="2" fill="none" strokeLinecap="round" />
   </svg>
 );
+
+export const TilesIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#3d8b37" />
+    {[
+      [4, "#d32f2f", "7"],
+      [15, "#1e6fd9", "7"],
+      [26, "#d98400", "7"],
+    ].map(([x, c, n]) => (
+      <g key={x}>
+        <rect x={x} y="11" width="10" height="14" rx="2" fill="#fffdf6" stroke="#2f6b2b" strokeWidth="0.8" />
+        <text x={x + 5} y="21.5" fontSize="9" fontWeight="900" textAnchor="middle" fill={c}>{n}</text>
+      </g>
+    ))}
+    <rect x="9" y="27" width="22" height="4" rx="2" fill="#ffd54f" />
+  </svg>
+);

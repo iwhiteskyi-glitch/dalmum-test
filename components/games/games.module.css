@@ -3219,3 +3219,148 @@ button.tfBack {
     animation: none;
   }
 }
+
+/* ---------- 숫자 타일 ---------- */
+.tl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  aspect-ratio: 1 / 1.35;
+  padding: 0;
+  border: 1.5px solid #d9d0c3;
+  border-radius: 18%;
+  background: #fffdf6;
+  font: inherit;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: 0 2px 0 #d9d0c3;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+button.tl {
+  cursor: pointer;
+}
+.tlc0 {
+  color: #d32f2f;
+}
+.tlc1 {
+  color: #1e6fd9;
+}
+.tlc2 {
+  color: #d98400;
+}
+.tlc3 {
+  color: #222;
+}
+.tlJoker {
+  color: #b357b8;
+}
+.tl_hand {
+  width: min(40px, calc((100% - 7 * 5px) / 8));
+  font-size: clamp(16px, 4.6vw, 21px);
+}
+.tl_board {
+  width: 30px;
+  font-size: 16px;
+}
+.tl_mini {
+  width: 20px;
+  font-size: 11px;
+  border-width: 1px;
+  box-shadow: none;
+}
+.tlPicked {
+  border: 2.5px solid #29a8e0;
+  box-shadow: 0 0 0 3px rgba(41, 168, 224, 0.3);
+  transform: translateY(-4px);
+}
+.tlFresh {
+  border-color: #f2b705;
+  background: #fff8dc;
+}
+.tlBoard {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  width: min(100%, 560px);
+  min-height: 160px;
+  margin: 10px auto 0;
+  padding: 12px 10px 40px;
+  border-radius: 18px;
+  background: radial-gradient(circle at 50% 30%, #4c9a45, #2f6b2b);
+}
+.tlEmpty {
+  margin: 30px auto 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #e6f3e2;
+  text-align: center;
+}
+.tlGroup {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.12);
+}
+.tlGroupBad {
+  border-color: #ff6b6b;
+  background: rgba(198, 40, 40, 0.35);
+}
+.tlBoardPicking .tlGroup {
+  border-style: dashed;
+}
+.tlSlot {
+  width: 22px;
+  height: 40px;
+  border: 1.5px dashed #ffe9a8;
+  border-radius: 6px;
+  background: rgba(255, 233, 168, 0.15);
+  color: #ffe9a8;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.tlActions {
+  width: min(100%, 560px);
+  margin: 10px auto 0;
+}
+.tlPickRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.tlPickInfo {
+  flex-basis: 100%;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #1e6fd9;
+}
+.tlHint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted-ink);
+}
+.tlHintBad {
+  font-weight: 800;
+  color: #c62828;
+}
+.tlSorts {
+  display: flex;
+  gap: 10px;
+}
+.tlHand {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding-top: 6px;
+}

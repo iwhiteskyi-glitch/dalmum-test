@@ -64,6 +64,7 @@ export default function sitemap() {
     { path: "/games/bingo", priority: 0.7, changeFrequency: "weekly" },
     { path: "/games/onecard", priority: 0.7, changeFrequency: "weekly" },
     { path: "/games/thief", priority: 0.7, changeFrequency: "weekly" },
+    { path: "/games/tiles", priority: 0.7, changeFrequency: "weekly" },
     { path: "/games/slide", priority: 0.75, changeFrequency: "daily" },
     { path: "/games/puzzle", priority: 0.75, changeFrequency: "daily" },
     { path: "/games/puzzle/omok", priority: 0.7, changeFrequency: "daily" },
