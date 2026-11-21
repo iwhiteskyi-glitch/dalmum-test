@@ -2,7 +2,7 @@
 // 읽을거리(onecard-tips)에 쓴 숫자도 여기서 계산해 보여 줘요(씨앗 고정이라 다시 돌려도 같아요).
 import { allCards, attackOf, BUST_SIZE, canPlay, HAND_SIZE, isJoker, rankOf, suitOf } from "../../lib/games/onecard/cards.js";
 import { bestSuit, chooseCard, oneCardBot } from "../../lib/games/onecard/bot.js";
-import { oneCardLogic } from "../../lib/games/onecard/logic.js";
+import { makeOneCardLogic } from "../../lib/games/onecard/logic.js";
 import { drawCards, isOpening, playCard, startMatch, topOf } from "../../lib/games/onecard/match.js";
 import { finishBots, ME, onlyBotsLeft, sendFromMe, startRoom, tickRoom } from "../../lib/games/localRoom.js";
 import { seededRandom } from "../../lib/games/slide/slide.js";
@@ -58,7 +58,8 @@ function playRoom(bots, seed, wins, iGiveUp = false) {
   const r = seededRandom(seed);
   let now = 1000;
   const players = [ME, ...Array.from({ length: bots }, (_, i) => `bot-${i + 1}`)];
-  let room = startRoom(oneCardLogic, { winsToChampion: wins, turnSeconds: 0 }, players, now);
+  // 방장의 카드 섞기도 씨앗으로 고정해요(다시 돌려도 같은 결과)
+  let room = startRoom(makeOneCardLogic(seededRandom(seed * 7 + 3)), { winsToChampion: wins, turnSeconds: 0 }, players, now);
   let early = false;
   let finished = false;
   for (let step = 0; step < 60000; step++) {
@@ -93,7 +94,9 @@ function playRoom(bots, seed, wins, iGiveUp = false) {
   check("컴퓨터 3명과 2승 경기가 끝까지 감", !res.stuck && m.champions.length > 0);
   check("컴퓨터는 기다리는 시간을 지킴(첫 수는 룰렛까지)", !res.early);
   check("내 화면에는 내 패만(남의 패는 장수만)", Array.isArray(res.room.view.myHand) && !("hands" in m.round) && typeof m.round.handCounts === "object");
-  const bust = playRoom(2, 22, 1, true);
+  // 늘 먹기만 하면 대개 파산해요. 그전에 컴퓨터가 이겨 버리는 판도 있어서, 파산하는 판이 나올 때까지 몇 번 해요
+  let bust = null;
+  for (let k = 0; k < 10 && !bust?.finished; k++) bust = playRoom(2, 22 + k, 1, true);
   check("내가 파산하면 컴퓨터끼리 남은 판을 바로 끝냄", !bust.stuck && bust.finished && bust.room.view.match.round.busted.includes(ME) && bust.room.view.match.champions.length === 1);
 }
 

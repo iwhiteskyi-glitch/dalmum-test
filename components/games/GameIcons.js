@@ -151,3 +151,14 @@ export const TilesIcon = (
     <rect x="9" y="27" width="22" height="4" rx="2" fill="#ffd54f" />
   </svg>
 );
+
+export const DingDongIcon = (
+  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <rect x="1" y="1" width="38" height="38" rx="7" fill="#3d8b37" />
+    <rect x="5" y="7" width="12" height="17" rx="2" fill="#fffdf8" stroke="#2f6b2b" strokeWidth="0.8" />
+    <circle cx="11" cy="15.5" r="3" fill="#d98400" />
+    <circle cx="27" cy="25" r="9" fill="#e53935" stroke="#8e1b1b" strokeWidth="1.5" />
+    <ellipse cx="27" cy="22" rx="5" ry="2.5" fill="#ff8a80" />
+    <text x="27" y="12" fontSize="7" fontWeight="900" textAnchor="middle" fill="#ffd54f">5!</text>
+  </svg>
+);

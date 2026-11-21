@@ -3364,3 +3364,215 @@ button.tl {
   gap: 5px;
   padding-top: 6px;
 }
+
+/* ---------- 띵동 다섯 ---------- */
+.ddCard {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  aspect-ratio: 1 / 1.4;
+  border: 2px solid #e6ddd0;
+  border-radius: 10%/7%;
+  background: #fffdf8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+.ddCard img {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+}
+.ddFresh {
+  animation: ddFlip 0.2s ease-out;
+}
+@keyframes ddFlip {
+  from {
+    transform: perspective(600px) rotateY(80deg) scale(1.15);
+  }
+}
+.ddRuleCards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 20px;
+  font-weight: 900;
+  color: #b07d00;
+}
+.ddRuleCards .ddCard {
+  width: 56px;
+}
+.ddTable {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  width: min(100%, 460px);
+  margin: 10px auto 0;
+  padding: 12px 10px 14px;
+  border-radius: 18px;
+  background: radial-gradient(circle at 50% 50%, #4c9a45, #2f6b2b);
+}
+.ddRow {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.ddSeat {
+  flex: 0 1 46%;
+  max-width: 190px;
+  padding: 7px 8px 6px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top: 4px solid var(--pc);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.12);
+  color: #fff;
+  text-align: center;
+}
+.ddSeat > b {
+  display: block;
+  font-size: 13.5px;
+}
+.ddSeat > small {
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+.ddSeatTurn {
+  border-color: #ffd54f;
+  box-shadow: 0 0 0 3px rgba(255, 213, 79, 0.35);
+}
+.ddSeatWon {
+  border-color: #ffd54f;
+  background: rgba(255, 213, 79, 0.25);
+}
+.ddSeatOut {
+  opacity: 0.5;
+}
+.ddSlot {
+  width: min(92px, 70%);
+  margin: 6px auto 4px;
+}
+.ddEmpty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1.4;
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 10%/7%;
+  font-size: 13px;
+  font-weight: 800;
+}
+.ddTimes {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+.ddControls {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  width: min(100%, 460px);
+  margin: 12px auto 0;
+}
+.ddFlip {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  background: #2f6b2b;
+  color: #fff;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 900;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.ddFlip:disabled {
+  background: #cfc8bd;
+  cursor: default;
+}
+.ddFlip i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  background: #ffd54f;
+}
+.ddBell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 120px;
+  height: 120px;
+  padding: 4px;
+  border: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, #ff6b5b, #c62828);
+  box-shadow: 0 6px 0 #8e1b1b, 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.ddBell img {
+  width: 54px;
+  height: 54px;
+  pointer-events: none;
+}
+.ddBell b {
+  font-size: 19px;
+}
+.ddBell:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #8e1b1b;
+}
+.ddBell:disabled {
+  filter: grayscale(0.6);
+  opacity: 0.6;
+  cursor: default;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ddFresh {
+    animation: none;
+  }
+}
+/* 낮은 화면(작은 폰)에서는 카드와 띵동 버튼이 한 화면에 들어오게 줄여요 */
+@media (max-height: 760px) {
+  .ddSlot {
+    width: min(70px, 60%);
+  }
+  .ddTable {
+    gap: 6px;
+    padding: 8px 8px 10px;
+  }
+  .ddBell {
+    width: 100px;
+    height: 100px;
+  }
+  .ddBell img {
+    width: 44px;
+    height: 44px;
+  }
+}
+@media (max-height: 700px) {
+  .ddSlot {
+    width: min(58px, 55%);
+    margin: 4px auto 2px;
+  }
+  .ddBell {
+    width: 92px;
+    height: 92px;
+  }
+  .ddBell b {
+    font-size: 17px;
+  }
+}
